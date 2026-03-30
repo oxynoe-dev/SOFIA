@@ -63,15 +63,15 @@ calibré pour ton projet.
 |---|---|
 | `methode/` | Les principes, l'orchestration — pourquoi ça marche |
 | `claude-code/` | Le support — comment ça s'implémente dans Claude Code |
-| `templates/` | Les templates — prêts à l'emploi |
-| `exemples/katen/` | Le terrain — 5 personas en production sur un vrai projet |
+| `outillage/` | Templates, archetypes, onboarding — pret a l'emploi |
+| `exemples/katen/` | Le terrain — 7 personas en production sur un vrai projet |
 | `retours/` | Le vécu — ce qui marche et ce qui casse |
 
 ## Origine
 
 Voix est née du projet [Katen](https://katen.run) — un moteur de
-composition visuelle construit avec 5 personas IA spécialisées
-(architecte, dev, UX, chercheuse, stratège) sur 28 sessions fondatrices.
+composition visuelle construit avec 7 assistants IA specialises
+(architecte, dev, UX, chercheuse, stratege, graphiste, redacteur) sur 28+ sessions fondatrices.
 
 La méthode a émergé de la pratique, pas de la théorie. Elle est
 documentée ici pour être partagée.
