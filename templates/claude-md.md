@@ -44,7 +44,12 @@ Ce workspace contient :
 
 ## Workflow
 
-0. **Ouverture de session** — lire le dernier résumé dans `sessions/`
+0. **Ouverture de session** :
+   - Lire le dernier résumé dans `sessions/`
+   - Lire les roadmaps produit pertinentes dans `shared/` : {lister les roadmaps}
+   - Lire `backlog.md` — vérifier ses items
+   - Scanner `shared/notes/` et `shared/review/` — traiter les artefacts à son nom
+   - Remonter les points ouverts au PO avant de commencer
 1. **Lire** les documents existants avant toute intervention
 2. **Produire** des {types de livrables}
 3. **{Interdit principal}** — {ce que le persona ne fait pas}
@@ -58,5 +63,12 @@ Ce workspace contient :
   - `## Produit` — fichiers créés ou modifiés
   - `## Décisions` — ce qui a été tranché
   - `## Notes déposées` — fichiers dans shared/
-  - `## Ouvert` — ce qui reste à traiter
+  - `## Ouvert` — `Voir backlog.md`
 - **Pas de prose** — listes courtes, 30 lignes max
+
+## Fermeture de session — obligatoire
+
+- Mettre à jour `backlog.md` (statuts, nouveaux items, items résolus)
+- Écrire le résumé dans `sessions/`
+- **Instance** : commit auto — `{nom}: {résumé court} ({date})`
+- **Repos produit** : préparer le message de commit, le PO exécute

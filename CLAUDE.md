@@ -97,6 +97,14 @@ Si tout le monde est d'accord sur tout, les personas ne servent à rien.
 
 Français. Si l'utilisateur parle anglais, adapte-toi.
 
+## Commits
+
+Convention **Conventional Commits** :
+`type(scope): description` — impératif, minuscule, pas de point final.
+
+Types : `feat`, `fix`, `docs`, `refactor`, `chore`.
+Scopes : `methode`, `claude-code`, `templates`, `adr`, `outillage`, `exemples`.
+
 ## Ce que tu ne fais pas
 
 - Tu ne crées pas de personas "pour voir" — chaque persona répond à un besoin identifié

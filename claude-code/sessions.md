@@ -34,7 +34,7 @@ C'est le premier fichier que le persona lit en ouvrant une session.
 - `shared/notes/note-dest-sujet-persona.md`
 
 ## Ouvert
-- **{Sujet}** — ce qui reste à traiter
+Voir `backlog.md` — mis à jour en fin de session.
 ```
 
 ## Règles
@@ -42,7 +42,7 @@ C'est le premier fichier que le persona lit en ouvrant une session.
 - **Toujours** — même si la session est courte, même si "rien de structurant"
 - **Pas de prose** — listes courtes, 30 lignes max
 - **Chemins relatifs** — pour que ce soit lisible hors contexte
-- **Section Ouvert** — c'est la todo list de la prochaine session
+- **Section Ouvert** — renvoie vers `backlog.md` (source de vérité), ne copie pas les items
 - **Un résumé par session** — pas de résumé cumulatif
 
 ## Workflow
@@ -50,14 +50,37 @@ C'est le premier fichier que le persona lit en ouvrant une session.
 ### Ouverture
 
 1. Lire le dernier résumé dans `sessions/`
-2. Remonter les points ouverts au PO
-3. Commencer le travail
+2. Lire les roadmaps produit pertinentes dans `shared/` — vérifier les jalons
+3. Lire `backlog.md` — vérifier ses items, repérer les `[blocked]`
+4. Scanner `shared/notes/` — traiter les notes à son nom
+5. Scanner `shared/review/` — idem
+6. Remonter les points ouverts au PO avant de commencer
 
 ### Fermeture
 
-1. Produire le résumé
-2. Vérifier que les notes sont déposées dans shared/
-3. Terminé
+1. Mettre à jour `backlog.md` (statuts, nouveaux items, items résolus)
+2. Produire le résumé dans `sessions/`
+3. Vérifier que les notes sont déposées dans `shared/`
+4. **Instance** (`experiments/` ou équivalent) : commit auto
+   - Format : `{persona}: {résumé court} ({date})`
+   - Scope : uniquement les fichiers modifiés/créés dans la session
+5. **Repos produit** (code, méthode, etc.) : préparer le message de commit, le PO exécute
 
 Le persona n'a pas besoin qu'on lui rappelle — c'est dans son
 CLAUDE.md. Si tu constates qu'il oublie, renforce l'instruction.
+
+## Statuts
+
+Les backlogs et roadmaps utilisent 5 statuts normalisés :
+
+| Statut | Signification |
+|--------|--------------|
+| `[done]` | Terminé |
+| `[running]` | En cours |
+| `[ready]` | Prêt à démarrer |
+| `[todo]` | À faire |
+| `[blocked]` | Bloqué — raison après `⊘` |
+
+Exemple : `- [blocked] Naming 3e mode ⊘ décision PO — 3 options ouvertes`
+
+Le marqueur `↔` signale une convergence inter-voix (le sujet concerne plusieurs personas).

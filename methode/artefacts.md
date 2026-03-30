@@ -64,3 +64,56 @@ lit la note
 - Le nom du fichier dit qui l'a écrit et pour qui/quoi.
 - Les artefacts sont courts. Si ça dépasse 2 pages, c'est un doc, pas une note.
 - Les artefacts ne sont jamais modifiés après dépôt — on en crée un nouveau (v2) si nécessaire.
+
+## Bus d'échange structuré — `shared/`
+
+Le dossier `shared/` est le bus de messages de l'équipe. Trois types
+d'artefacts, chacun avec son emplacement et sa convention :
+
+| Type | Emplacement | Convention | Usage |
+|------|-------------|------------|-------|
+| **Notes** | `shared/notes/` | `note-{destinataire}-{sujet}-{auteur}.md` | Messages inter-personas, signaux, questions |
+| **Reviews** | `shared/review/` | `review-{sujet}-{auteur}.md` | Analyses critiques, retours structurés |
+| **Features** | `shared/features/` | `feature-{sujet}.md` | Specs de nouvelles fonctionnalités |
+
+### Roadmaps produit
+
+`shared/` héberge aussi les roadmaps produit — des fichiers partagés lus
+par tous les personas concernés :
+
+```
+shared/
+├── roadmap-{produit}.md          ← roadmaps produit (PO)
+├── notes/                        ← messages inter-personas
+├── review/                       ← analyses critiques
+└── features/                     ← specs fonctionnalités
+```
+
+Les roadmaps produit sont pilotées par le PO. Chaque persona y lit les
+jalons et en tire ses tâches dans son propre `backlog.md`.
+
+### Frontmatter
+
+Chaque artefact dans `shared/` porte un frontmatter normalisé :
+
+```yaml
+---
+de: mira
+pour: lea
+type: signal           # signal | question | demande | reponse
+statut: nouveau        # nouveau | lu | traite
+date: 2026-03-30
+---
+```
+
+Le statut permet de savoir si un artefact a été traité. Le persona
+destinataire met à jour le statut quand il le lit (`lu`) ou le traite
+(`traite`). Les artefacts sans frontmatter sont traités comme `statut: traite`
+(grandfather clause pour l'existant).
+
+### Protocole de circulation
+
+1. L'auteur dépose l'artefact dans `shared/{type}/`
+2. Le destinataire le découvre à l'ouverture de session (scan `shared/`)
+3. Le destinataire met à jour le statut dans le frontmatter
+4. Le PO peut lire `shared/` pour voir l'état des échanges

@@ -45,16 +45,26 @@ Ce workspace contient : {description}
 - **Reviews** : format `review-<sujet>-{nom}.md`, déposer dans `shared/review/`
 
 ## Workflow
-1. **Ouverture de session** — lire le dernier résumé dans `sessions/`
-2. **Lire** les documents existants avant toute intervention
-3. **Produire** des {types de livrables}
-4. **{Interdit}** — {ce que le persona ne fait pas}
+0. **Ouverture de session** :
+   - Lire le dernier résumé dans `sessions/`
+   - Lire les roadmaps produit pertinentes dans `shared/`
+   - Lire `backlog.md` — vérifier ses items
+   - Scanner `shared/notes/` et `shared/review/`
+   - Remonter les points ouverts au PO
+1. **Lire** les documents existants avant toute intervention
+2. **Produire** des {types de livrables}
+3. **{Interdit}** — {ce que le persona ne fait pas}
 
 ## Résumé de session — obligatoire
 À chaque fin de session, produire un résumé dans `sessions/` :
 - **Nom** : `{YYYY-MM-DD}-{HHmm}-{nom}.md`
-- **Contenu** : Produit, Décisions, Notes déposées, Ouvert
+- **Contenu** : Produit, Décisions, Notes déposées, Ouvert (`Voir backlog.md`)
 - **Pas de prose** — listes courtes, 30 lignes max
+
+## Fermeture de session — obligatoire
+- MAJ `backlog.md`, résumé dans `sessions/`
+- Instance : commit auto — `{nom}: {résumé} ({date})`
+- Repos produit : préparer le message, le PO commit
 ```
 
 ## Sections clé par clé
@@ -87,13 +97,16 @@ ne peut pas toucher. Sans cette section, le persona va déborder.
 
 ### Workflow
 
-Comment une session se déroule. Toujours commencer par lire le
-dernier résumé. Toujours finir par en produire un.
+Comment une session se déroule. L'ouverture est un protocole en 5 étapes :
+résumé, roadmaps produit, backlog, scan inbox, remonter au PO. Les steps
+du milieu sont spécifiques au persona. La fermeture est aussi un protocole :
+MAJ backlog, résumé, commit.
 
-### Résumé de session
+### Résumé de session + Fermeture
 
-Format imposé. Le persona ne peut pas "oublier" — c'est dans
-ses instructions.
+Deux sections distinctes. Le résumé est le format du fichier produit.
+La fermeture est le protocole de fin (MAJ backlog, résumé, commit).
+Le commit est automatique dans l'instance, manuel (PO) dans les repos produit.
 
 ## Erreurs courantes
 
