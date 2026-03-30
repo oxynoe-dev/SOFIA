@@ -111,9 +111,51 @@ destinataire met à jour le statut quand il le lit (`lu`) ou le traite
 (`traite`). Les artefacts sans frontmatter sont traités comme `statut: traite`
 (grandfather clause pour l'existant).
 
+### Archivage
+
+Quand un artefact passe `traite`, le deplacer dans `archives/` du dossier
+parent (`notes/archives/`, `review/archives/`). Cela allege le scan
+d'ouverture de session — seuls les fichiers actifs restent a la racine.
+
+```
+shared/notes/
+├── note-mira-xyz-axel.md          ← actif (statut: nouveau)
+└── archives/
+    └── note-mira-abc-axel.md      ← traite
+```
+
+### Organisation equipe — `shared/orga/`
+
+Les fichiers d'organisation (personas, figures, lexique) vivent dans
+`shared/orga/` — separes du bus de messages :
+
+```
+shared/orga/
+├── personas/          ← fiches personas
+├── figures/           ← schemas d'organisation
+├── team-orga.md       ← matrice RACI, flux
+└── lexique.md         ← termes du projet
+```
+
+### Features multi-produits
+
+Les features dans `shared/features/` portent un champ `produit:` dans
+leur frontmatter pour identifier le produit concerne :
+
+```yaml
+---
+de: po
+produit: regards
+type: feature
+statut: nouveau
+date: 2026-03-17
+---
+```
+
 ### Protocole de circulation
 
-1. L'auteur dépose l'artefact dans `shared/{type}/`
-2. Le destinataire le découvre à l'ouverture de session (scan `shared/`)
-3. Le destinataire met à jour le statut dans le frontmatter
-4. Le PO peut lire `shared/` pour voir l'état des échanges
+1. L'auteur depose l'artefact dans `shared/{type}/`
+2. Le destinataire le decouvre a l'ouverture de session (scan `shared/`)
+3. Le destinataire met a jour le statut dans le frontmatter
+4. Quand l'artefact est `traite`, le deplacer dans `archives/`
+5. Le PO peut lire `shared/` pour voir l'etat des echanges

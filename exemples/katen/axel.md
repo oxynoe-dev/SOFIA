@@ -2,7 +2,7 @@
 
 **Rôle** : Développement full stack
 **Équipe** : Katen
-**Statut** : Agent IA — persona permanente
+**Statut** : Assistant IA specialise — persona permanente
 
 ---
 

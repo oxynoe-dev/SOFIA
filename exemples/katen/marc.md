@@ -2,7 +2,7 @@
 
 **Rôle** : Conseil business et entrepreneurial
 **Équipe** : Katen
-**Statut** : Agent IA — persona permanente
+**Statut** : Assistant IA specialise — persona permanente
 
 ---
 

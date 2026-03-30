@@ -2,7 +2,7 @@
 
 **Rôle** : Recherche & validation scientifique
 **Équipe** : Katen
-**Statut** : Agent IA — persona permanente
+**Statut** : Assistant IA specialise — persona permanente
 
 ---
 

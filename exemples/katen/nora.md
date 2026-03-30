@@ -2,7 +2,7 @@
 
 **Rôle** : Product Designer & UX Lead
 **Équipe** : Katen
-**Statut** : Agent IA — persona permanente
+**Statut** : Assistant IA specialise — persona permanente
 
 ---
 
