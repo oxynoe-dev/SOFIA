@@ -46,8 +46,7 @@ projet/
 ├── architecture/          ← workspace architecte
 │   ├── CLAUDE.md          ← instructions pour ce persona
 │   ├── sessions/          ← résumés de session
-│   ├── doc/               ← specs, ADR, audits
-│   └── histoire/          ← contexte historique
+│   └── doc/               ← specs, ADR, audits
 │
 ├── dev/                   ← workspace dev
 │   ├── CLAUDE.md

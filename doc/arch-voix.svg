@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fig. 1 — Architecture Voix — 30/03/2026 -->
+<svg viewBox="0 0 900 640" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace">
+
+  <rect width="900" height="640" fill="#04060a" rx="6"/>
+
+  <!-- ════════════════════════════════════════
+       TITRE
+  ════════════════════════════════════════ -->
+  <text x="450" y="32" text-anchor="middle" fill="#e8f0ff" font-size="13" font-weight="500">Architecture Voix</text>
+  <text x="450" y="48" text-anchor="middle" fill="rgba(232,240,255,0.35)" font-size="8">methode d'orchestration d'assistants IA specialises</text>
+
+  <!-- ════════════════════════════════════════
+       COUCHE 1 — METHODE (haut)
+  ════════════════════════════════════════ -->
+  <rect x="40" y="70" width="520" height="120" rx="4" fill="rgba(0,229,160,0.05)" stroke="rgba(0,229,160,0.35)" stroke-width="1.2"/>
+  <text x="56" y="90" fill="#00e5a0" font-size="11" font-weight="600">Methode</text>
+  <text x="180" y="90" fill="rgba(232,240,255,0.3)" font-size="8">— le pourquoi (provider-agnostic)</text>
+
+  <!-- 7 docs methode -->
+  <rect x="56" y="102" width="72" height="28" rx="3" fill="rgba(0,229,160,0.08)" stroke="rgba(0,229,160,0.2)" stroke-width="0.7"/>
+  <text x="92" y="120" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">principes</text>
+
+  <rect x="136" y="102" width="66" height="28" rx="3" fill="rgba(0,229,160,0.08)" stroke="rgba(0,229,160,0.2)" stroke-width="0.7"/>
+  <text x="169" y="120" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">personas</text>
+
+  <rect x="210" y="102" width="60" height="28" rx="3" fill="rgba(0,229,160,0.08)" stroke="rgba(0,229,160,0.2)" stroke-width="0.7"/>
+  <text x="240" y="120" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">friction</text>
+
+  <rect x="278" y="102" width="86" height="28" rx="3" fill="rgba(0,229,160,0.08)" stroke="rgba(0,229,160,0.2)" stroke-width="0.7"/>
+  <text x="321" y="120" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">orchestration</text>
+
+  <rect x="372" y="102" width="66" height="28" rx="3" fill="rgba(0,229,160,0.08)" stroke="rgba(0,229,160,0.2)" stroke-width="0.7"/>
+  <text x="405" y="120" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">isolation</text>
+
+  <rect x="446" y="102" width="72" height="28" rx="3" fill="rgba(0,229,160,0.08)" stroke="rgba(0,229,160,0.2)" stroke-width="0.7"/>
+  <text x="482" y="120" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">tracabilite</text>
+
+  <rect x="56" y="138" width="72" height="28" rx="3" fill="rgba(0,229,160,0.08)" stroke="rgba(0,229,160,0.2)" stroke-width="0.7"/>
+  <text x="92" y="156" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">artefacts</text>
+
+  <rect x="136" y="138" width="66" height="28" rx="3" fill="rgba(0,229,160,0.08)" stroke="rgba(0,229,160,0.2)" stroke-width="0.7"/>
+  <text x="169" y="156" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">instance</text>
+
+  <!-- Annotation: tient sans outil -->
+  <text x="260" y="178" fill="rgba(0,229,160,0.3)" font-size="7">tient sans outil — 7 principes, 6 concepts</text>
+
+  <!-- ════════════════════════════════════════
+       COUCHE 2 — IMPLEMENTATION (milieu)
+  ════════════════════════════════════════ -->
+  <rect x="40" y="200" width="520" height="80" rx="4" fill="rgba(122,174,255,0.05)" stroke="rgba(122,174,255,0.35)" stroke-width="1.2"/>
+  <text x="56" y="220" fill="#7aaeff" font-size="11" font-weight="600">Implementation</text>
+  <text x="200" y="220" fill="rgba(232,240,255,0.3)" font-size="8">— le comment (Claude Code)</text>
+
+  <rect x="56" y="234" width="72" height="28" rx="3" fill="rgba(122,174,255,0.08)" stroke="rgba(122,174,255,0.2)" stroke-width="0.7"/>
+  <text x="92" y="252" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">claude-md</text>
+
+  <rect x="136" y="234" width="66" height="28" rx="3" fill="rgba(122,174,255,0.08)" stroke="rgba(122,174,255,0.2)" stroke-width="0.7"/>
+  <text x="169" y="252" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">memoire</text>
+
+  <rect x="210" y="234" width="66" height="28" rx="3" fill="rgba(122,174,255,0.08)" stroke="rgba(122,174,255,0.2)" stroke-width="0.7"/>
+  <text x="243" y="252" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">sessions</text>
+
+  <rect x="284" y="234" width="54" height="28" rx="3" fill="rgba(122,174,255,0.08)" stroke="rgba(122,174,255,0.2)" stroke-width="0.7"/>
+  <text x="311" y="252" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">hooks</text>
+
+  <!-- Point de variation futur -->
+  <rect x="370" y="234" width="60" height="28" rx="3" fill="rgba(232,240,255,0.02)" stroke="rgba(232,240,255,0.1)" stroke-width="0.7" stroke-dasharray="4,3"/>
+  <text x="400" y="252" text-anchor="middle" fill="rgba(232,240,255,0.25)" font-size="7">mistral/</text>
+
+  <rect x="438" y="234" width="60" height="28" rx="3" fill="rgba(232,240,255,0.02)" stroke="rgba(232,240,255,0.1)" stroke-width="0.7" stroke-dasharray="4,3"/>
+  <text x="468" y="252" text-anchor="middle" fill="rgba(232,240,255,0.25)" font-size="7">gemini/</text>
+
+  <text x="430" y="272" fill="rgba(122,174,255,0.25)" font-size="7">v0.5 — multi-provider</text>
+
+  <!-- ════════════════════════════════════════
+       COUCHE 3 — OUTILLAGE (bas gauche)
+  ════════════════════════════════════════ -->
+  <rect x="40" y="290" width="260" height="150" rx="4" fill="rgba(255,181,71,0.05)" stroke="rgba(255,181,71,0.35)" stroke-width="1.2"/>
+  <text x="56" y="310" fill="#ffb547" font-size="11" font-weight="600">Outillage</text>
+  <text x="150" y="310" fill="rgba(232,240,255,0.3)" font-size="8">— le pret-a-l'emploi</text>
+
+  <text x="56" y="332" fill="rgba(232,240,255,0.5)" font-size="8">Templates (14)</text>
+  <text x="56" y="346" fill="rgba(232,240,255,0.35)" font-size="7">persona · claude-md · session · backlog</text>
+  <text x="56" y="358" fill="rgba(232,240,255,0.35)" font-size="7">roadmap · note · review · feature · adr</text>
+
+  <text x="56" y="378" fill="rgba(232,240,255,0.5)" font-size="8">Archetypes (7)</text>
+  <text x="56" y="392" fill="rgba(232,240,255,0.35)" font-size="7">architecte · dev · ux · stratege</text>
+  <text x="56" y="404" fill="rgba(232,240,255,0.35)" font-size="7">chercheur · redacteur · graphiste</text>
+
+  <text x="56" y="424" fill="rgba(232,240,255,0.5)" font-size="8">Guides</text>
+  <text x="56" y="434" fill="rgba(232,240,255,0.35)" font-size="7">onboarding · lexique</text>
+
+  <!-- ════════════════════════════════════════
+       TERRAIN (bas droite)
+  ════════════════════════════════════════ -->
+  <rect x="310" y="290" width="250" height="150" rx="4" fill="rgba(167,139,250,0.05)" stroke="rgba(167,139,250,0.35)" stroke-width="1.2"/>
+  <text x="326" y="310" fill="#a78bfa" font-size="11" font-weight="600">Terrain</text>
+  <text x="395" y="310" fill="rgba(232,240,255,0.3)" font-size="8">— la preuve</text>
+
+  <text x="326" y="332" fill="rgba(232,240,255,0.5)" font-size="8">Instance Katen</text>
+  <text x="326" y="346" fill="rgba(232,240,255,0.35)" font-size="7">7 personas · 5 produits · 112+ sessions</text>
+  <text x="326" y="360" fill="rgba(232,240,255,0.35)" font-size="7">52 ADR · 100+ artefacts bus</text>
+
+  <text x="326" y="384" fill="rgba(232,240,255,0.5)" font-size="8">Retours d'experience</text>
+  <text x="326" y="398" fill="rgba(232,240,255,0.35)" font-size="7">katen.md — REX global</text>
+  <text x="326" y="410" fill="rgba(232,240,255,0.35)" font-size="7">pieges.md — anti-patterns</text>
+  <text x="326" y="422" fill="rgba(232,240,255,0.35)" font-size="7">cas-adr-051.md — etude de cas friction</text>
+
+  <!-- Fleche terrain → methode (feedback loop) -->
+  <path d="M 540,360 Q 570,360 570,180 Q 570,130 560,130" fill="none" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="5,3"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(167,139,250,0.4)" transform="translate(560,130) rotate(180)"/>
+  <text x="580" y="245" fill="rgba(167,139,250,0.3)" font-size="7" transform="rotate(90,580,245)">valide la methode</text>
+
+  <!-- ════════════════════════════════════════
+       TRIANGLE CONCEPTUEL (droite)
+  ════════════════════════════════════════ -->
+  <rect x="600" y="70" width="270" height="260" rx="4" fill="rgba(232,240,255,0.02)" stroke="rgba(232,240,255,0.1)" stroke-width="0.8"/>
+  <text x="735" y="90" text-anchor="middle" fill="rgba(232,240,255,0.5)" font-size="9" font-weight="500">Modele conceptuel</text>
+
+  <!-- Triangle -->
+  <!-- Persona (haut) -->
+  <circle cx="735" cy="130" r="28" fill="rgba(0,229,160,0.06)" stroke="rgba(0,229,160,0.4)" stroke-width="1"/>
+  <text x="735" y="127" text-anchor="middle" fill="#00e5a0" font-size="9" font-weight="500">Persona</text>
+  <text x="735" y="139" text-anchor="middle" fill="rgba(232,240,255,0.35)" font-size="7">contrainte</text>
+
+  <!-- Artefact (bas gauche) -->
+  <circle cx="670" cy="250" r="28" fill="rgba(122,174,255,0.06)" stroke="rgba(122,174,255,0.4)" stroke-width="1"/>
+  <text x="670" y="247" text-anchor="middle" fill="#7aaeff" font-size="9" font-weight="500">Artefact</text>
+  <text x="670" y="259" text-anchor="middle" fill="rgba(232,240,255,0.35)" font-size="7">protocole</text>
+
+  <!-- Friction (bas droite) -->
+  <circle cx="800" cy="250" r="28" fill="rgba(255,181,71,0.06)" stroke="rgba(255,181,71,0.4)" stroke-width="1"/>
+  <text x="800" y="247" text-anchor="middle" fill="#ffb547" font-size="9" font-weight="500">Friction</text>
+  <text x="800" y="259" text-anchor="middle" fill="rgba(232,240,255,0.35)" font-size="7">signal</text>
+
+  <!-- Arcs du triangle -->
+  <line x1="715" y1="155" x2="685" y2="225" stroke="rgba(232,240,255,0.15)" stroke-width="0.8"/>
+  <line x1="755" y1="155" x2="785" y2="225" stroke="rgba(232,240,255,0.15)" stroke-width="0.8"/>
+  <line x1="698" y1="250" x2="772" y2="250" stroke="rgba(232,240,255,0.15)" stroke-width="0.8"/>
+
+  <!-- PO au centre -->
+  <circle cx="735" cy="200" r="20" fill="rgba(79,138,255,0.08)" stroke="#4f8aff" stroke-width="1.2"/>
+  <text x="735" y="197" text-anchor="middle" fill="#4f8aff" font-size="9" font-weight="500">PO</text>
+  <text x="735" y="208" text-anchor="middle" fill="rgba(232,240,255,0.3)" font-size="6">arbitre</text>
+
+  <!-- Labels relations -->
+  <text x="690" y="178" fill="rgba(232,240,255,0.2)" font-size="6" transform="rotate(-55,690,178)">isole →</text>
+  <text x="770" y="178" fill="rgba(232,240,255,0.2)" font-size="6" transform="rotate(55,770,178)">← genere</text>
+  <text x="735" y="270" text-anchor="middle" fill="rgba(232,240,255,0.2)" font-size="6">materialise</text>
+
+  <!-- ════════════════════════════════════════
+       GRADIENT D'ACTIVATION (droite bas)
+  ════════════════════════════════════════ -->
+  <rect x="600" y="342" width="270" height="148" rx="4" fill="rgba(232,240,255,0.02)" stroke="rgba(232,240,255,0.1)" stroke-width="0.8"/>
+  <text x="735" y="362" text-anchor="middle" fill="rgba(232,240,255,0.5)" font-size="9" font-weight="500">Gradient d'activation</text>
+
+  <!-- Barres -->
+  <rect x="620" y="376" width="50" height="14" rx="2" fill="rgba(0,229,160,0.15)" stroke="rgba(0,229,160,0.3)" stroke-width="0.6"/>
+  <text x="645" y="386" text-anchor="middle" fill="rgba(232,240,255,0.5)" font-size="6">1</text>
+  <text x="680" y="386" fill="rgba(232,240,255,0.35)" font-size="7">CLAUDE.md + sessions/</text>
+
+  <rect x="620" y="396" width="90" height="14" rx="2" fill="rgba(0,229,160,0.12)" stroke="rgba(0,229,160,0.25)" stroke-width="0.6"/>
+  <text x="665" y="406" text-anchor="middle" fill="rgba(232,240,255,0.5)" font-size="6">2+</text>
+  <text x="720" y="406" fill="rgba(232,240,255,0.35)" font-size="7">+ shared/ (bus)</text>
+
+  <rect x="620" y="416" width="130" height="14" rx="2" fill="rgba(122,174,255,0.12)" stroke="rgba(122,174,255,0.25)" stroke-width="0.6"/>
+  <text x="685" y="426" text-anchor="middle" fill="rgba(232,240,255,0.5)" font-size="6">3+</text>
+  <text x="760" y="426" fill="rgba(232,240,255,0.35)" font-size="7">+ backlog.md</text>
+
+  <rect x="620" y="436" width="170" height="14" rx="2" fill="rgba(255,181,71,0.12)" stroke="rgba(255,181,71,0.25)" stroke-width="0.6"/>
+  <text x="705" y="446" text-anchor="middle" fill="rgba(232,240,255,0.5)" font-size="6">4+</text>
+  <text x="800" y="446" fill="rgba(232,240,255,0.35)" font-size="7">+ features/</text>
+
+  <rect x="620" y="456" width="230" height="14" rx="2" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.25)" stroke-width="0.6"/>
+  <text x="735" y="466" text-anchor="middle" fill="rgba(232,240,255,0.5)" font-size="6">5+, 2+ produits</text>
+  <text x="735" y="480" text-anchor="middle" fill="rgba(167,139,250,0.4)" font-size="7">→ Convergence</text>
+
+  <!-- ════════════════════════════════════════
+       INSTANCE TYPE (bas)
+  ════════════════════════════════════════ -->
+  <rect x="40" y="460" width="520" height="150" rx="4" fill="rgba(236,72,153,0.04)" stroke="rgba(236,72,153,0.25)" stroke-width="1"/>
+  <text x="56" y="480" fill="#ec4899" font-size="10" font-weight="500">Instance type</text>
+  <text x="170" y="480" fill="rgba(232,240,255,0.3)" font-size="8">— un projet qui applique la methode</text>
+
+  <!-- voix.md -->
+  <rect x="56" y="494" width="60" height="20" rx="2" fill="rgba(236,72,153,0.1)" stroke="rgba(236,72,153,0.3)" stroke-width="0.6"/>
+  <text x="86" y="508" text-anchor="middle" fill="rgba(232,240,255,0.6)" font-size="7">voix.md</text>
+
+  <!-- Workspaces -->
+  <rect x="126" y="494" width="100" height="40" rx="2" fill="rgba(0,229,160,0.06)" stroke="rgba(0,229,160,0.2)" stroke-width="0.6"/>
+  <text x="176" y="508" text-anchor="middle" fill="rgba(232,240,255,0.5)" font-size="7">{workspace}/</text>
+  <text x="176" y="522" text-anchor="middle" fill="rgba(232,240,255,0.3)" font-size="6">CLAUDE.md · sessions/</text>
+  <text x="176" y="532" text-anchor="middle" fill="rgba(232,240,255,0.3)" font-size="6">backlog.md · doc/</text>
+
+  <!-- x N -->
+  <text x="232" y="508" fill="rgba(232,240,255,0.25)" font-size="7">x N</text>
+
+  <!-- shared/ -->
+  <rect x="260" y="494" width="140" height="56" rx="2" fill="rgba(122,174,255,0.06)" stroke="rgba(122,174,255,0.2)" stroke-width="0.6"/>
+  <text x="330" y="508" text-anchor="middle" fill="rgba(232,240,255,0.5)" font-size="7">shared/</text>
+  <text x="330" y="522" text-anchor="middle" fill="rgba(232,240,255,0.3)" font-size="6">roadmap-*.md (PO)</text>
+  <text x="330" y="534" text-anchor="middle" fill="rgba(232,240,255,0.3)" font-size="6">notes/ · review/ · features/</text>
+  <text x="330" y="546" text-anchor="middle" fill="rgba(232,240,255,0.3)" font-size="6">orga/ (personas, lexique)</text>
+
+  <!-- Fleches workspace ↔ shared -->
+  <line x1="228" y1="514" x2="258" y2="514" stroke="rgba(232,240,255,0.2)" stroke-width="0.8"/>
+  <path d="M-5,-2.5 L0,0 L-5,2.5Z" fill="rgba(232,240,255,0.3)" transform="translate(258,514)"/>
+  <path d="M5,-2.5 L0,0 L5,2.5Z" fill="rgba(232,240,255,0.3)" transform="translate(228,514)"/>
+
+  <!-- PO -->
+  <circle cx="460" cy="520" r="24" fill="rgba(79,138,255,0.08)" stroke="#4f8aff" stroke-width="1"/>
+  <text x="460" y="517" text-anchor="middle" fill="#4f8aff" font-size="9" font-weight="500">PO</text>
+  <text x="460" y="528" text-anchor="middle" fill="rgba(232,240,255,0.3)" font-size="6">humain</text>
+
+  <!-- Fleches PO ↔ workspaces -->
+  <line x1="436" y1="514" x2="402" y2="514" stroke="rgba(79,138,255,0.3)" stroke-width="0.8"/>
+  <path d="M5,-2.5 L0,0 L5,2.5Z" fill="rgba(79,138,255,0.4)" transform="translate(402,514)"/>
+
+  <!-- Fleche PO ↔ shared -->
+  <path d="M 446,538 Q 420,560 330,552" fill="none" stroke="rgba(79,138,255,0.2)" stroke-width="0.8"/>
+
+  <!-- Regle non negociable -->
+  <text x="460" y="556" text-anchor="middle" fill="rgba(79,138,255,0.3)" font-size="6">orchestre · filtre · tranche</text>
+
+  <!-- Legende instance -->
+  <text x="56" y="570" fill="rgba(232,240,255,0.2)" font-size="7">marqueur voix.md → identifie le depot comme instance</text>
+  <text x="56" y="582" fill="rgba(232,240,255,0.2)" font-size="7">chaque workspace = 1 persona = 1 CLAUDE.md = 1 perimetre</text>
+  <text x="56" y="594" fill="rgba(232,240,255,0.2)" font-size="7">shared/ = unique zone de communication entre personas</text>
+
+  <!-- ════════════════════════════════════════
+       CONVERGENCE (lien)
+  ════════════════════════════════════════ -->
+  <rect x="600" y="504" width="270" height="56" rx="4" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.2)" stroke-width="0.8" stroke-dasharray="5,3"/>
+  <text x="735" y="524" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="500">Convergence</text>
+  <text x="735" y="538" text-anchor="middle" fill="rgba(232,240,255,0.3)" font-size="7">produit compagnon — scanne l'instance</text>
+  <text x="735" y="550" text-anchor="middle" fill="rgba(232,240,255,0.3)" font-size="7">quand la charge mentale du PO l'exige</text>
+
+  <!-- Fleche instance → convergence -->
+  <line x1="562" y1="530" x2="596" y2="530" stroke="rgba(167,139,250,0.3)" stroke-width="1" stroke-dasharray="5,3"/>
+  <path d="M-6,-3 L0,0 L-6,3Z" fill="rgba(167,139,250,0.4)" transform="translate(596,530)"/>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <text x="450" y="628" text-anchor="middle" fill="rgba(232,240,255,0.15)" font-size="7">Voix — methode Oxynoe — 30/03/2026</text>
+
+</svg>
