@@ -52,7 +52,7 @@ Voir `backlog.md` — mis à jour en fin de session.
 1. Lire le dernier résumé dans `sessions/`
 2. Lire les roadmaps produit pertinentes dans `shared/` — vérifier les jalons
 3. Lire `backlog.md` — vérifier ses items, repérer les `[blocked]`
-4. Scanner `shared/notes/` — traiter les notes à son nom
+4. Scanner `shared/notes/` — traiter les notes a son nom (seuls les fichiers actifs, pas `archives/`)
 5. Scanner `shared/review/` — idem
 6. Remonter les points ouverts au PO avant de commencer
 
@@ -60,11 +60,12 @@ Voir `backlog.md` — mis à jour en fin de session.
 
 1. Mettre à jour `backlog.md` (statuts, nouveaux items, items résolus)
 2. Produire le résumé dans `sessions/`
-3. Vérifier que les notes sont déposées dans `shared/`
-4. **Instance** (`experiments/` ou équivalent) : commit auto
+3. Verifier que les notes sont deposees dans `shared/`
+4. Archiver les artefacts traites : deplacer dans `notes/archives/` ou `review/archives/`
+5. **Instance** (`experiments/` ou equivalent) : commit auto
    - Format : `{persona}: {résumé court} ({date})`
    - Scope : uniquement les fichiers modifiés/créés dans la session
-5. **Repos produit** (code, méthode, etc.) : préparer le message de commit, le PO exécute
+6. **Repos produit** (code, methode, etc.) : preparer le message de commit, le PO execute
 
 Le persona n'a pas besoin qu'on lui rappelle — c'est dans son
 CLAUDE.md. Si tu constates qu'il oublie, renforce l'instruction.

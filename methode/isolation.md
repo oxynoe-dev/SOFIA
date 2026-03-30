@@ -86,4 +86,45 @@ Le fichier `CLAUDE.md` à la racine de chaque workspace contient :
 4. **Interdit** — ce qui est hors périmètre (lecture ET écriture)
 5. **Comment** — conventions, formats, workflow
 
-Voir `claude-code/claude-md.md` pour l'anatomie détaillée.
+Voir `claude-code/claude-md.md` pour l'anatomie detaillee.
+
+## Multi-instance : le cas du dev
+
+Certains personas travaillent sur **deux repos** — leur workspace
+d'analyse (dans l'instance) et un repo produit separe. C'est le cas
+typique du dev : il planifie dans `instance/dev/` et code dans `produit/`.
+
+### Structure
+
+```
+instance/                       ← repo instance (experiments/)
+├── dev/                        ← workspace dev (sessions, backlog, plans)
+│   ├── CLAUDE.md
+│   ├── sessions/
+│   └── backlog.md
+└── shared/                     ← bus d'echange
+
+produit/                        ← repo produit (katen/)
+├── CLAUDE.md                   ← instructions dev completes
+├── src/
+└── tests/
+```
+
+### Regles
+
+- Le **CLAUDE.md du repo produit** est l'entree principale du dev — c'est
+  la que vivent les conventions de code, l'architecture, le processus de version.
+- Le **workspace dev/ dans l'instance** contient les sessions, le backlog,
+  et les plans — pas du code.
+- Les commits instance = auto (`{persona}: {resume} ({date})`).
+  Les commits produit = PO execute.
+- Le dev lit `shared/notes/` et `shared/review/` au meme titre que
+  les autres personas — c'est dans son workflow d'ouverture.
+
+### Pourquoi separer ?
+
+Le code versionne est un livrable public. Les sessions et plans sont
+de l'outillage interne. Les mettre ensemble :
+- Expose l'historique d'analyse dans le repo public
+- Melange les commits de code et les commits de session
+- Casse l'isolation si le repo produit est ouvert par un autre outil

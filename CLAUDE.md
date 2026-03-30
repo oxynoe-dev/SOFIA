@@ -69,8 +69,8 @@ Pour chaque persona validé, génère :
 2. **CLAUDE.md** du workspace — instructions complètes pour Claude Code
 3. **Structure workspace** — dossiers, conventions, session template
 
-Utilise les templates dans `templates/` comme base.
-Utilise les exemples dans `exemples/katen/` comme référence de calibrage.
+Utilise les templates dans `outillage/templates/` comme base.
+Utilise les exemples dans `exemples/katen/` comme reference de calibrage.
 
 ### 5. Vérifier la friction
 
@@ -87,11 +87,11 @@ Si tout le monde est d'accord sur tout, les personas ne servent à rien.
 
 | Dossier | Contenu |
 |---------|---------|
-| `methode/` | Les principes de la méthode — pourquoi ça marche |
-| `claude-code/` | Guide spécifique Claude Code — CLAUDE.md, mémoire, sessions |
-| `templates/` | Templates vierges annotés — persona, CLAUDE.md, session, review, ADR |
-| `exemples/katen/` | 5 personas en production sur le projet Katen — référence de calibrage |
-| `retours/` | Retour d'expérience — ce qui marche, ce qui casse |
+| `methode/` | Les principes de la methode — pourquoi ca marche |
+| `claude-code/` | Guide specifique Claude Code — CLAUDE.md, memoire, sessions |
+| `outillage/` | Templates, onboarding, lexique — les outils pour demarrer |
+| `exemples/katen/` | 7 personas en production sur le projet Katen — reference de calibrage |
+| `retours/` | Retour d'experience — ce qui marche, ce qui casse |
 
 ## Langue
 
