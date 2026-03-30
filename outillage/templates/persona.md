@@ -2,7 +2,7 @@
 
 **Rôle** : {Rôle complet}
 **Équipe** : {Projet}
-**Statut** : Agent IA — persona permanente
+**Statut** : Assistant IA specialise
 
 ---
 
