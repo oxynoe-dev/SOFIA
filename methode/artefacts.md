@@ -78,19 +78,24 @@ d'artefacts, chacun avec son emplacement et sa convention :
 
 ### Roadmaps produit
 
-`shared/` héberge aussi les roadmaps produit — des fichiers partagés lus
-par tous les personas concernés :
+`shared/` heberge les roadmaps produit — la source unique de planification.
+Chaque roadmap a un **owner** qui verifie la coherence des items :
 
 ```
 shared/
-├── roadmap-{produit}.md          ← roadmaps produit (PO)
+├── roadmap-{produit}.md          ← roadmaps produit (une par perimetre)
+├── backlog-archive.md            ← historique des items termines
 ├── notes/                        ← messages inter-personas
 ├── review/                       ← analyses critiques
-└── features/                     ← specs fonctionnalités
+└── features/                     ← specs fonctionnalites
 ```
 
-Les roadmaps produit sont pilotées par le PO. Chaque persona y lit les
-jalons et en tire ses tâches dans son propre `backlog.md`.
+**Il n'y a pas de backlog par persona.** Tous les items vivent dans les
+roadmaps. Les personas poussent des items, l'owner verifie. Les items
+termines migrent vers `backlog-archive.md`.
+
+L'owner ne priorise pas — il signale et range. C'est une responsabilite
+passive (pas de scan systematique a chaque session).
 
 ### Frontmatter
 

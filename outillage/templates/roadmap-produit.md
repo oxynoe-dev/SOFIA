@@ -3,6 +3,7 @@
 > {Description courte du produit}
 > Repo : {repo}
 > Versionnage : semver (x.y.z)
+> Owner : @{persona} — gardien de la coherence des items
 
 ## Version courante
 

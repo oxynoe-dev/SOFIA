@@ -34,7 +34,7 @@ C'est le premier fichier que le persona lit en ouvrant une session.
 - `shared/notes/note-dest-sujet-persona.md`
 
 ## Ouvert
-Voir `backlog.md` — mis à jour en fin de session.
+Points en suspens, a reprendre en prochaine session.
 ```
 
 ## Règles
@@ -42,7 +42,6 @@ Voir `backlog.md` — mis à jour en fin de session.
 - **Toujours** — même si la session est courte, même si "rien de structurant"
 - **Pas de prose** — listes courtes, 30 lignes max
 - **Chemins relatifs** — pour que ce soit lisible hors contexte
-- **Section Ouvert** — renvoie vers `backlog.md` (source de vérité), ne copie pas les items
 - **Un résumé par session** — pas de résumé cumulatif
 
 ## Workflow
@@ -50,29 +49,22 @@ Voir `backlog.md` — mis à jour en fin de session.
 ### Ouverture
 
 1. Lire le dernier résumé dans `sessions/`
-2. Lire les roadmaps produit pertinentes dans `shared/` — vérifier les jalons
-3. Lire `backlog.md` — vérifier ses items, repérer les `[blocked]`
-4. Scanner `shared/notes/` — traiter les notes a son nom (seuls les fichiers actifs, pas `archives/`)
-5. Scanner `shared/review/` — idem
-6. Remonter les points ouverts au PO avant de commencer
+2. Le PO decide quoi regarder. Pas de recitation systematique.
 
 ### Fermeture
 
-1. Mettre à jour `backlog.md` (statuts, nouveaux items, items résolus)
-2. Produire le résumé dans `sessions/`
-3. Verifier que les notes sont deposees dans `shared/`
-4. Archiver les artefacts traites : deplacer dans `notes/archives/` ou `review/archives/`
-5. **Instance** (`experiments/` ou equivalent) : commit auto
+1. Produire le résumé dans `sessions/`
+2. **Instance** (`experiments/` ou equivalent) : commit auto
    - Format : `{persona}: {résumé court} ({date})`
    - Scope : uniquement les fichiers modifiés/créés dans la session
-6. **Repos produit** (code, methode, etc.) : preparer le message de commit, le PO execute
+3. **Repos produit** (code, methode, etc.) : preparer le message de commit, le PO execute
 
 Le persona n'a pas besoin qu'on lui rappelle — c'est dans son
 CLAUDE.md. Si tu constates qu'il oublie, renforce l'instruction.
 
 ## Statuts
 
-Les backlogs et roadmaps utilisent 5 statuts normalisés :
+Les roadmaps utilisent 5 statuts normalisés :
 
 | Statut | Signification |
 |--------|--------------|
