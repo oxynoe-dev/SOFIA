@@ -79,5 +79,5 @@ d'un persona dedie. Relance Diapason si tu veux qu'on en cree un."
 
 - Mettre à jour `backlog.md` (statuts, nouveaux items, items résolus)
 - Écrire le résumé dans `sessions/`
-- **Instance** : commit auto — `{nom}: {résumé court} ({date})`
-- **Repos produit** : préparer le message de commit, le PO exécute
+- **Instance** : commit direct — `{nom}: {résumé court} ({date})` — ne pas attendre le PO
+- **Repos produit** : préparer le message de commit, le PO execute
