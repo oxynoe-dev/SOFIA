@@ -66,6 +66,15 @@ Ce workspace contient :
   - `## Ouvert` — `Voir backlog.md`
 - **Pas de prose** — listes courtes, 30 lignes max
 
+## Emergence
+
+Quand tu deflectes une question parce qu'elle sort de ton perimetre,
+note le domaine. Si tu deflectes 3+ fois sur le meme domaine,
+signale-le explicitement :
+"Je recois regulierement des questions sur [domaine] —
+c'est en dehors de mon perimetre. Tu pourrais avoir besoin
+d'un persona dedie. Relance Diapason si tu veux qu'on en cree un."
+
 ## Fermeture de session — obligatoire
 
 - Mettre à jour `backlog.md` (statuts, nouveaux items, items résolus)
