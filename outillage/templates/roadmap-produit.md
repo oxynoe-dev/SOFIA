@@ -13,8 +13,8 @@
 
 ### v{X.Y} — {Titre}
 
-- [todo] Item
-- [done] Item fait
+- [todo] Item @persona
+- [done] Item fait @persona
 
 ## Backlog non planifie
 

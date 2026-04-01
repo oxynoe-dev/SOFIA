@@ -199,7 +199,7 @@ On commence petit, on ajoute de la structure quand la charge mentale du PO l'exi
 
 ```
 voix/
-├── CLAUDE.md                        ← guide interactif d'onboarding
+├── CLAUDE.md                        ← Le Diapason (guide d'onboarding)
 ├── README.md                        ← manifeste
 ├── LICENSE                          ← MIT
 │
