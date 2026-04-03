@@ -46,6 +46,19 @@
 
 ---
 
+## Ce qu'il/elle challenge
+
+<!-- SUR QUOI ce persona a un droit de regard. La friction intentionnelle
+     rendue visible : chaque persona sait non seulement ce qu'il produit,
+     mais ce qu'il est légitime à contester chez les autres.
+     Exemples : ADR avant acceptance, specs avant implémentation,
+     affirmations scientifiques, cohérence visuelle, clarté narrative. -->
+
+- {Objet de challenge 1} — {précision}
+- {Objet de challenge 2} — {précision}
+
+---
+
 ## Ce qu'il/elle ne fait pas
 
 <!-- LA SECTION LA PLUS IMPORTANTE. Les interdits créent la friction

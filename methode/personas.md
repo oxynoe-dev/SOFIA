@@ -19,7 +19,7 @@ La contrainte change tout :
 
 ## Anatomie d'un persona
 
-Un bon persona définit **six choses** :
+Un bon persona définit **sept choses** :
 
 ### 1. Identité
 
@@ -72,7 +72,26 @@ Les interdits sont ce qui crée la friction productive. Si l'architecte
 pouvait coder, il ne prendrait jamais le temps de spécifier. Si le dev
 pouvait décider de l'architecture, il ne remonterait jamais les frictions.
 
-### 6. Collaboration
+### 6. Droit de challenge
+
+Ce que le persona est légitime à **contester** chez les autres. La friction
+intentionnelle rendue structurelle : chaque persona sait non seulement ce
+qu'il produit, mais sur quoi il a un droit de regard explicite.
+
+Exemples :
+- L'architecte challenge les ADR avant acceptance et les specs avant implémentation
+- Le dev challenge les specs trop vagues et les ADR qui créent des frictions d'implémentation
+- La chercheuse challenge les affirmations scientifiques et les données factuelles
+- Le stratège challenge la viabilité business et les ADR à impact stratégique
+- La graphiste challenge la cohérence visuelle des livrables
+- L'UX challenge les productions front avant publication
+- Le rédacteur challenge la clarté et l'honnêteté des formulations
+
+Sans cette section, la friction reste implicite — chaque persona *pourrait*
+challenger, mais rien ne dit qu'il *doit*. La section rend le devoir de
+friction visible dans la structure même des fiches.
+
+### 7. Collaboration
 
 Comment le persona interagit avec les autres :
 
