@@ -1,6 +1,6 @@
 # Architecture — Voix
 
-**Date** : 30/03/2026
+**Date** : 04/04/2026
 **Auteur** : Mira — Architecte systeme & solution
 **Statut** : Reference
 
@@ -33,7 +33,8 @@ Le seul prerequis est un LLM capable de suivre des instructions persistantes (CL
 ┌─────────────────────────────────────────────────────────┐
 │                      METHODE                             │
 │  principes · personas · friction · orchestration ·       │
-│  isolation · tracabilite · artefacts                     │
+│  isolation · tracabilite · artefacts · instance ·        │
+│  devoirs                                                 │
 │  → Le pourquoi. Tient sans outil.                        │
 ├─────────────────────────────────────────────────────────┤
 │                   IMPLEMENTATION                         │
@@ -41,20 +42,20 @@ Le seul prerequis est un LLM capable de suivre des instructions persistantes (CL
 │  → Le comment. Specifique Claude Code aujourd'hui.       │
 ├─────────────────────────────────────────────────────────┤
 │                      OUTILLAGE                           │
-│  templates (14) · archetypes (7) · onboarding · lexique  │
+│  templates (17) · archetypes (7) · onboarding · lexique  │
 │  → Le pret-a-l'emploi.                                   │
 └─────────────────────────────────────────────────────────┘
         ↓ alimente par ↓
 ┌─────────────────────────────────────────────────────────┐
 │                      TERRAIN                             │
-│  exemples/katen (7 personas) · retours (3 REX)           │
+│  exemples/katen (7 personas) · retours (9 REX)           │
 │  → La preuve. Le terrain valide la methode.              │
 └─────────────────────────────────────────────────────────┘
 ```
 
 ### Couche Methode (provider-agnostic)
 
-7 documents fondateurs. Aucune dependance a un outil specifique.
+9 documents. Aucune dependance a un outil specifique.
 
 | Document | Concept cle | En une phrase |
 |---|---|---|
@@ -65,6 +66,8 @@ Le seul prerequis est un LLM capable de suivre des instructions persistantes (CL
 | `isolation.md` | Workspace = perimetre | Un persona ne voit que son espace — l'isolation force les echanges formels |
 | `tracabilite.md` | Sessions + ADR + reviews | Si ce n'est pas trace, ca n'existe pas |
 | `artefacts.md` | Fichiers comme protocole | Bus d'echange structure (notes, reviews, features) avec frontmatter |
+| `instance.md` | Structure d'instance | Marqueur voix.md, workspaces, shared/, conventions |
+| `devoirs.md` | Devoirs de l'orchestrateur | 6 obligations que l'humain se donne pour que l'armature tienne |
 
 ### Couche Implementation (Claude Code)
 
@@ -83,14 +86,14 @@ Templates et outils prets a l'emploi pour bootstrapper une instance.
 
 | Categorie | Contenu |
 |---|---|
-| **Templates structurels** | persona, claude-md, workspace, session, backlog, roadmap-produit, voix-instance |
+| **Templates structurels** | persona, claude-md, workspace, session, roadmap-produit, voix-instance, team-orga |
 | **Templates bus** | note, review, feature, adr |
 | **Archetypes personas** | architecte, dev, ux, stratege, chercheur, redacteur, graphiste |
 | **Guides** | onboarding (process d'accueil), lexique (template) |
 
 ### Terrain
 
-L'instance Katen (7 personas, 5 produits) sert de vitrine et de validation. Les retours d'experience documentent les pieges et les succes.
+L'instance Katen (7 personas, 5 produits, 177 sessions, 62 ADR, 167 artefacts bus) sert de vitrine et de validation. 9 retours d'experience documentent les pieges, les patterns et les succes.
 
 ---
 
@@ -211,7 +214,8 @@ voix/
 │   ├── isolation.md
 │   ├── tracabilite.md
 │   ├── artefacts.md
-│   └── instance.md
+│   ├── instance.md
+│   └── devoirs.md
 │
 ├── claude-code/                     ← couche 2 : le comment (4 docs)
 │   ├── claude-md.md
@@ -227,9 +231,9 @@ voix/
 │       ├── persona-{archetype}.md     7 archetypes pre-remplis
 │       ├── claude-md.md
 │       ├── session.md
-│       ├── backlog.md
 │       ├── roadmap-produit.md
 │       ├── voix-instance.md
+│       ├── team-orga.md
 │       ├── note.md
 │       ├── review.md
 │       ├── feature.md
@@ -242,10 +246,16 @@ voix/
 │   ├── nora.md · marc.md
 │   └── sofia.md · winston.md
 │
-├── retours/                         ← terrain : REX
+├── retours/                         ← terrain : 9 REX
 │   ├── katen.md
 │   ├── pieges.md
-│   └── cas-adr-051.md
+│   ├── cas-adr-051.md
+│   ├── calibrage-personas.md
+│   ├── chaine-produit.md
+│   ├── contamination-factuelle.md
+│   ├── isolation-production.md
+│   ├── pattern-challenger.md
+│   └── pattern-editorial.md
 │
 └── doc/                             ← architecture et decisions
     ├── arch-voix.md                   ce document
@@ -313,4 +323,4 @@ Pre-requis : retours utilisateurs v0.3 + i18n v0.4. Ne pas anticiper sans feedba
 
 ---
 
-*Mira — 30/03/2026*
+*Mira — 04/04/2026*
