@@ -61,8 +61,9 @@ calibré pour ton projet.
 
 | | |
 |---|---|
-| `core/` | La methode (9 docs) + templates — pourquoi ca marche |
-| `claude-code/` | Le support — comment ca s'implemente dans Claude Code |
+| `core/` | Les invariants — principes, personas, friction, devoirs + templates |
+| `protocol/` | Le contrat d'interface — artefacts, conventions, tracabilite, isolation, orchestration |
+| `runtime/` | L'implementation concrete — Claude Code aujourd'hui, d'autres demain |
 | `doc/` | Guides, terrain (examples, feedback), architecture, ADR |
 
 ## Origine

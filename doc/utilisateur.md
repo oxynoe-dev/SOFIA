@@ -256,11 +256,11 @@ La prochaine session n'aura pas ton contexte en tete. Les resumes sont sa memoir
 | `core/principes.md` | Les 7 principes en detail |
 | `core/personas.md` | Anatomie d'un persona, calibrage, iteration |
 | `core/friction.md` | La friction intentionnelle comme mecanisme |
-| `core/orchestration.md` | Le role du PO comme message bus |
-| `core/isolation.md` | L'isolation par workspace |
-| `core/tracabilite.md` | Sessions, ADR, reviews |
-| `core/artefacts.md` | Le bus d'echange shared/ |
-| `claude-code/claude-md.md` | Anatomie d'un CLAUDE.md |
-| `claude-code/sessions.md` | Format des resumes de session |
-| `claude-code/memoire.md` | Memoire persistante entre sessions |
+| `protocol/orchestration.md` | Le role du PO comme message bus |
+| `protocol/isolation.md` | L'isolation par workspace |
+| `protocol/tracabilite.md` | Sessions, ADR, reviews |
+| `protocol/artefacts.md` | Le bus d'echange shared/ |
+| `runtime/claude-code/claude-md.md` | Anatomie d'un CLAUDE.md |
+| `runtime/claude-code/sessions.md` | Format des resumes de session |
+| `runtime/claude-code/memoire.md` | Memoire persistante entre sessions |
 | `doc/examples/katen/` | 7 personas en production — reference de calibrage |

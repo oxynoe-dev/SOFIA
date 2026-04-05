@@ -27,48 +27,52 @@ Le seul prerequis est un LLM capable de suivre des instructions persistantes (CL
 
 ![Architecture Voix](figures/arch-voix.svg)
 
-## 2. Architecture — 3 couches + terrain
+## 2. Architecture — Core / Protocol / Runtime + terrain
+
+Trois couches independantes. On peut changer l'une sans toucher les autres.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    core/                                  │
-│  METHODE   principes · personas · friction ·             │
-│            orchestration · isolation · tracabilite ·      │
-│            artefacts · instance · devoirs                 │
-│            → Le pourquoi. Tient sans outil.              │
-│                                                           │
-│  TEMPLATES 17 templates + 7 archetypes personas          │
-│            → Le pret-a-l'emploi. Incarne la methode.     │
+│                    CORE                                    │
+│  core/     principes · personas · friction · devoirs       │
+│            → Les invariants. Ce qui ne change pas          │
+│              quand on change d'outil.                      │
+│                                                            │
+│  TEMPLATES 17 templates + 7 archetypes personas            │
+│            → Le pret-a-l'emploi. Incarne le core.          │
 ├─────────────────────────────────────────────────────────┤
-│                 claude-code/                               │
-│  IMPLEMENTATION  claude-md · memoire · sessions · hooks   │
-│            → Le comment. Specifique Claude Code.          │
+│                    PROTOCOL                                │
+│  protocol/ artefacts · conventions · tracabilite ·         │
+│            isolation · orchestration · instance             │
+│            → Le contrat d'interface. Fichiers, pas API.    │
+│              Git, pas base de donnees. Portable.           │
 ├─────────────────────────────────────────────────────────┤
-│                    doc/                                    │
-│  TERRAIN   examples/katen (7 personas) · feedback (9 REX) │
-│  GUIDES    onboarding · lexique · utilisateur             │
-│  ARCHI     arch-voix, ADR, tests                          │
-│            → La preuve, la doc, les decisions.            │
+│                    RUNTIME                                  │
+│  runtime/claude-code/  claude-md · memoire · sessions ·    │
+│                        hooks                                │
+│            → L'implementation concrete. Remplacable        │
+│              sans toucher au core ni au protocol.          │
+├─────────────────────────────────────────────────────────┤
+│                    doc/                                     │
+│  TERRAIN   examples/katen (7 personas) · feedback (9 REX)  │
+│  GUIDES    onboarding · lexique · utilisateur              │
+│  ARCHI     arch-voix, ADR, tests                           │
+│            → La preuve, la doc, les decisions.             │
 └─────────────────────────────────────────────────────────┘
 ```
 
-### core/ — Methode + outillage (provider-agnostic)
+### Core — les invariants de la methode
 
-9 documents de methode. Aucune dependance a un outil specifique. Les templates incarnent la methode en formats prets a l'emploi.
+Les principes fondamentaux. Ce qui ne change pas quand on change d'outil, de provider, ou de format d'echange. Si demain Claude Code disparait, le core tient.
 
-**Regle de versionnage** : modifier un document methode = minor bump. Modifier un template = patch bump.
+| Document | Couche | Concept cle | En une phrase |
+|---|---|---|---|
+| `principes.md` | Core | 7 principes | La contrainte force la qualite, l'humain arbitre, les fichiers sont le protocole |
+| `personas.md` | Core | Anatomie d'un persona | Identite, posture, perimetre, livrables, interdits, collaboration |
+| `friction.md` | Core | Friction intentionnelle | Les desaccords entre personas sont des signaux, pas des bugs |
+| `devoirs.md` | Core | Devoirs de l'orchestrateur | 6 obligations que l'humain se donne pour que l'armature tienne |
 
-| Document | Concept cle | En une phrase |
-|---|---|---|
-| `principes.md` | 7 principes | La contrainte force la qualite, l'humain arbitre, les fichiers sont le protocole |
-| `personas.md` | Anatomie d'un persona | Identite, posture, perimetre, livrables, interdits, collaboration |
-| `friction.md` | Friction intentionnelle | Les desaccords entre personas sont des signaux, pas des bugs |
-| `orchestration.md` | PO comme message bus | Rien ne circule entre personas sans l'humain |
-| `isolation.md` | Workspace = perimetre | Un persona ne voit que son espace — l'isolation force les echanges formels |
-| `tracabilite.md` | Sessions + ADR + reviews | Si ce n'est pas trace, ca n'existe pas |
-| `artefacts.md` | Fichiers comme protocole | Bus d'echange structure (notes, reviews, features) avec frontmatter |
-| `instance.md` | Structure d'instance | Marqueur voix.md, workspaces, shared/, conventions |
-| `devoirs.md` | Devoirs de l'orchestrateur | 6 obligations que l'humain se donne pour que l'armature tienne |
+**Regle de versionnage** : modifier un document core = minor bump.
 
 | Templates | Contenu |
 |---|---|
@@ -76,9 +80,24 @@ Le seul prerequis est un LLM capable de suivre des instructions persistantes (CL
 | **Bus** | note, review, feature, adr |
 | **Archetypes** | architecte, dev, ux, stratege, chercheur, redacteur, graphiste |
 
-### claude-code/ — Implementation
+Modifier un template = patch bump.
 
-4 documents specifiques a Claude Code. C'est la couche qui change si on porte Voix sur un autre provider.
+### Protocol — le contrat d'interface
+
+Le protocol definit comment les personas echangent, tracent et s'organisent. Fichiers, pas API. Git, pas base de donnees. C'est ce qui rend Voix portable — n'importe quel outil capable de lire et ecrire du markdown peut implementer Voix.
+
+| Document | Couche | Concept cle | En une phrase |
+|---|---|---|---|
+| `artefacts.md` | Protocol | Fichiers comme protocole | Bus d'echange structure (notes, reviews, features) avec frontmatter |
+| `conventions.md` | Protocol | Regles d'instance | Nommage, frontmatter, statuts, archivage |
+| `tracabilite.md` | Protocol | Sessions + ADR + reviews | Si ce n'est pas trace, ca n'existe pas |
+| `isolation.md` | Protocol | Workspace = perimetre | Un persona ne voit que son espace — l'isolation force les echanges formels |
+| `orchestration.md` | Protocol | PO comme message bus | Rien ne circule entre personas sans l'humain |
+| `instance.md` | Protocol | Structure d'instance | Marqueur voix.md, workspaces, shared/, conventions |
+
+### Runtime — l'implementation concrete
+
+4 documents specifiques a Claude Code. C'est la seule couche qui change si on porte Voix sur un autre provider. Remplacable sans toucher au core ni au protocol.
 
 | Document | Role |
 |---|---|
@@ -169,16 +188,16 @@ Le fichier `voix.md` a la racine identifie le depot comme instance et lie a la m
 
 ## 4. Principes d'architecture
 
-### P1 — La methode tient sans outil
+### P1 — Le core tient sans outil
 
-Les 7 principes et le modele conceptuel sont independants de Claude Code. On pourrait appliquer Voix avec des fichiers texte et un editeur. L'implementation Claude Code est un accelerateur, pas un prerequis.
+Les 7 principes et le modele conceptuel sont independants de Claude Code. On pourrait appliquer Voix avec des fichiers texte et un editeur. Le runtime est un accelerateur, pas un prerequis.
 
-### P2 — Separation methode / implementation / outillage
+### P2 — Core / Protocol / Runtime
 
 Trois couches independantes. On peut :
-- Lire la methode sans toucher aux templates
-- Utiliser les templates sans comprendre les hooks Claude Code
-- Porter l'implementation sur un autre provider sans changer la methode
+- Changer le runtime (Claude Code → autre provider) sans toucher au protocol ni au core
+- Faire evoluer le protocol (nouveaux formats d'artefacts) sans changer les principes
+- Lire le core sans connaitre l'outil
 
 ### P3 — Le PO est l'unique point de passage
 
@@ -214,15 +233,10 @@ voix/
 ├── README.md                        ← manifeste
 ├── LICENSE                          ← MIT
 │
-├── core/                            ← couche 1 : la methode
-│   ├── principes.md                   9 documents — le pourquoi
-│   ├── personas.md                    Tient sans outil.
+├── core/                            ← CORE — les invariants
+│   ├── principes.md                   4 documents — ce qui ne change pas
+│   ├── personas.md                    quand on change d'outil.
 │   ├── friction.md
-│   ├── orchestration.md
-│   ├── isolation.md
-│   ├── tracabilite.md
-│   ├── artefacts.md
-│   ├── instance.md
 │   ├── devoirs.md
 │   └── templates/                     le pret-a-l'emploi
 │       ├── persona.md                   template vierge
@@ -237,11 +251,20 @@ voix/
 │       └── workspace/
 │           └── CLAUDE.md
 │
-├── claude-code/                     ← couche 2 : le comment (4 docs)
-│   ├── claude-md.md                   Specifique Claude Code.
-│   ├── memoire.md
-│   ├── sessions.md
-│   └── hooks.md
+├── protocol/                        ← PROTOCOL — le contrat d'interface
+│   ├── artefacts.md                   6 documents — fichiers, pas API.
+│   ├── conventions.md                 Git, pas base de donnees.
+│   ├── tracabilite.md                 Portable.
+│   ├── isolation.md
+│   ├── orchestration.md
+│   └── instance.md
+│
+├── runtime/                         ← RUNTIME — l'implementation concrete
+│   └── claude-code/                   Remplacable sans toucher
+│       ├── claude-md.md               au core ni au protocol.
+│       ├── memoire.md
+│       ├── sessions.md
+│       └── hooks.md
 │
 └── doc/                             ← documentation, terrain, decisions
     ├── arch-voix.md                   ce document
@@ -288,20 +311,31 @@ Voix definit les conventions. Convergence les consomme. Pas de duplication — r
 
 ## 7. Portabilite multi-provider
 
-### Architecture cible (v0.5)
+### Architecture actuelle
 
 ```
 voix/
-├── core/             ← noyau commun (provider-agnostic)
-│   ├── *.md            methode
-│   └── templates/      outillage
-├── claude-code/      ← adaptateur Claude Code
-├── mistral/          ← adaptateur Mistral (futur)
-├── gemini/           ← adaptateur Gemini (futur)
-└── doc/              ← documentation, terrain
+├── core/                ← CORE — invariants (provider-agnostic)
+│   ├── *.md               principes, personas, friction, devoirs
+│   └── templates/         outillage
+├── protocol/            ← PROTOCOL — contrat d'interface (provider-agnostic)
+│   └── *.md               artefacts, conventions, tracabilite, isolation, orchestration, instance
+├── runtime/             ← RUNTIME — implementation concrete
+│   └── claude-code/       adaptateur Claude Code
+│       └── *.md           claude-md, memoire, sessions, hooks
+└── doc/                 ← documentation, terrain
 ```
 
-`core/` (methode + templates) est deja provider-agnostic. La couche implementation (claude-code/) est le seul point de variation. Chaque adaptateur documente les equivalents du provider pour : instructions persistantes, memoire, sessions, automatisations.
+`core/` et `protocol/` sont provider-agnostic. `runtime/` est le seul point de variation. Ajouter un provider = ajouter `runtime/mistral/`, `runtime/gemini/`, etc. Chaque adaptateur documente les equivalents du provider pour : instructions persistantes, memoire, sessions, automatisations.
+
+### Multi-provider (v0.5)
+
+```
+runtime/
+├── claude-code/       ← actuel
+├── mistral/           ← futur
+└── gemini/            ← futur
+```
 
 Pre-requis : retours utilisateurs v0.3 + i18n v0.4. Ne pas anticiper sans feedback.
 

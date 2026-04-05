@@ -14,7 +14,7 @@ Quand un domaine n'est pas couvert par les personas existants et que ce manque g
 
 1. **Manque constate** — un domaine emerge que personne ne couvre, ou deux personas sont en tension recurrente sur un sujet. Le manque est documente, pas suppose
 2. **Definition fiche persona** — role, posture, perimetre, interdits, media preferes. Les interdits sont plus importants que les responsabilites : ce que le persona ne fait pas le definit autant que ce qu'il fait (cf. `core/principes.md`, principe d'isolation)
-3. **Creation workspace** — CLAUDE.md, sessions/, docs de reference. Le workspace suit les conventions de l'instance (cf. `core/instance.md`, `core/isolation.md`)
+3. **Creation workspace** — CLAUDE.md, sessions/, docs de reference. Le workspace suit les conventions de l'instance (cf. `protocol/instance.md`, `protocol/isolation.md`)
 4. **Calibrage** — premiers echanges avec le PO et les personas adjacents. Ajustement de la posture, du vocabulaire, du niveau de detail. Le calibrage prend 2-3 sessions
 5. **Premiere session productive** — le persona produit un artefact reel (review, note, spec) qui est utilise par un autre persona. C'est le critere de validation
 

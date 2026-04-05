@@ -13,7 +13,7 @@ A chaque feature, correction ou refactoring qui touche le code produit. S'appliq
 ### Etapes
 
 1. **PO priorise** — l'item existe dans la roadmap avec un owner explicite
-2. **Archi specifie** — contrat d'interface, contraintes, ADR si decision structurelle (cf. `core/artefacts.md` pour les formats). La spec est le contrat : elle definit le quoi, pas le comment
+2. **Archi specifie** — contrat d'interface, contraintes, ADR si decision structurelle (cf. `protocol/artefacts.md` pour les formats). La spec est le contrat : elle definit le quoi, pas le comment
 3. **Dev planifie en mode plan** — decomposition feature par feature, chaque etape confrontee aux principes et aux ADR existants
 4. **Tests d'abord (TDD)** — ecrire les tests avant le code, selon la couche : moteur/operateurs = TDD strict, CLI/IHM = tests apres implementation
 5. **Code** — implementer en respectant les responsabilites modules et les conventions du projet

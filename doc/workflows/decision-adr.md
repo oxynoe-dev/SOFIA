@@ -13,7 +13,7 @@ Quand une tension structurelle est identifiee — un choix technique, un changem
 ### Etapes
 
 1. **Tension identifiee** — un persona constate un probleme, une incoherence ou un choix a faire. Il formule la tension en une phrase
-2. **Note deposee dans shared/** — le persona depose une note (cf. `core/artefacts.md`) decrivant le contexte, les options identifiees et sa recommandation
+2. **Note deposee dans shared/** — le persona depose une note (cf. `protocol/artefacts.md`) decrivant le contexte, les options identifiees et sa recommandation
 3. **Review multi-personas** — chaque persona concerne produit une review sur son axe : archi (coherence), dev (faisabilite), recherche (rigueur), UX (impact utilisateur), strategie (positionnement)
 4. **Redaction ADR** — l'architecte redige l'ADR au statut **Proposed** : contexte, decision, consequences, alternatives rejetees
 5. **Arbitrage PO** — le PO passe l'ADR a **Accepted** ou **Rejected**. La decision est tracee avec son contexte

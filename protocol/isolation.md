@@ -85,7 +85,7 @@ Le fichier `CLAUDE.md` à la racine de chaque workspace contient :
 4. **Interdit** — ce qui est hors périmètre (lecture ET écriture)
 5. **Comment** — conventions, formats, workflow
 
-Voir `claude-code/claude-md.md` pour l'anatomie detaillee.
+Voir `runtime/claude-code/claude-md.md` pour l'anatomie detaillee.
 
 ## Multi-instance : le cas du dev
 

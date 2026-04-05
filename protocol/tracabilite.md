@@ -67,7 +67,7 @@ relisable, et sert de base à la discussion.
 Claude Code offre un système de mémoire persistante entre les
 conversations. C'est un complément aux fichiers, pas un remplacement.
 
-Voir `claude-code/memoire.md` pour les détails.
+Voir `runtime/claude-code/memoire.md` pour les détails.
 
 Règle simple : si c'est utile uniquement pour la prochaine conversation,
 c'est un résumé de session. Si c'est utile dans 3 mois, c'est une mémoire.

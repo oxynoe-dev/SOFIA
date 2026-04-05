@@ -35,4 +35,4 @@ A chaque fois qu'un document cite une source externe — article, paper, documen
 
 - **Contamination factuelle** — une reference mal contextualisee propage une erreur dans tous les documents qui la citent. C'est l'erreur la plus couteuse : elle est invisible et se multiplie
 - **Citer sans lire** — citer une source sur la base de son titre ou de son abstract. Le contenu reel peut contredire l'usage qu'on en fait
-- **Confondre autorite et pertinence** — une source peut etre fiable (auteur reconnu, journal serieux) sans etre pertinente pour le contexte d'usage. La qualite de la review depend de la question posee, pas seulement de la source (cf. `core/artefacts.md`)
+- **Confondre autorite et pertinence** — une source peut etre fiable (auteur reconnu, journal serieux) sans etre pertinente pour le contexte d'usage. La qualite de la review depend de la question posee, pas seulement de la source (cf. `protocol/artefacts.md`)

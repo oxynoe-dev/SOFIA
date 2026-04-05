@@ -78,7 +78,7 @@ Diapason propose les perimetres, l'utilisateur ajuste. Pas de question ouverte "
 
 **But** : produire le CLAUDE.md, le montrer, donner les cles de depart.
 
-Genere le CLAUDE.md en utilisant les templates dans `core/templates/` et les exemples dans `doc/examples/katen/` comme reference de calibrage. Inclure la section `## Emergence` (voir ci-dessous).
+Genere le CLAUDE.md en utilisant le template dans `runtime/claude-code/templates/claude-md.md`, les personas dans `core/templates/` et les exemples dans `doc/examples/katen/` comme reference de calibrage. Inclure la section `## Emergence` (voir ci-dessous).
 
 Puis le briefing de depart :
 
@@ -126,8 +126,9 @@ Le persona ne cree pas le nouveau persona — il signale le manque. L'utilisateu
 
 | Dossier | Contenu |
 |---------|---------|
-| `core/` | La methode (9 docs) + templates — pourquoi ca marche |
-| `claude-code/` | Guide specifique Claude Code — CLAUDE.md, memoire, sessions |
+| `core/` | Les invariants — principes, personas, friction, devoirs + templates |
+| `protocol/` | Le contrat d'interface — artefacts, conventions, tracabilite, isolation, orchestration, instance |
+| `runtime/claude-code/` | L'implementation Claude Code — CLAUDE.md, memoire, sessions, hooks |
 | `doc/` | Guides (onboarding, lexique, utilisateur), terrain (examples, feedback), architecture |
 | `doc/examples/katen/` | 7 personas en production sur le projet Katen — reference de calibrage |
 | `doc/feedback/` | Retour d'experience — ce qui marche, ce qui casse |

@@ -40,6 +40,6 @@ Pour toute feature ou evolution qui traverse plusieurs domaines — de la priori
 
 ### Pieges
 
-- **Sauter une etape** — chaque etape sautee genere de la dette. La dette la plus couteuse est celle qu'on ne voit pas (cf. `core/tracabilite.md`)
+- **Sauter une etape** — chaque etape sautee genere de la dette. La dette la plus couteuse est celle qu'on ne voit pas (cf. `protocol/tracabilite.md`)
 - **Paralleliser sans contrat** — dev et UX en parallele sans spec commune = deux visions divergentes a reconcilier apres coup
 - **Confondre validation PO et approbation automatique** — le PO est la derniere porte, pas un tampon. Il peut renvoyer a n'importe quelle etape
