@@ -154,21 +154,7 @@ C'est exactement ce qui s'est passe sur le projet Katen : le premier persona (ar
 
 Chaque persona vit dans son propre espace de travail avec son CLAUDE.md, ses sessions, ses fichiers. Il ne peut pas lire ou ecrire partout. L'isolation force le persona a rester dans son role.
 
-```
-projet/
-├── architecture/          <- workspace architecte
-│   ├── CLAUDE.md
-│   ├── sessions/
-│   └── doc/
-├── dev/                   <- workspace dev
-│   ├── CLAUDE.md
-│   ├── sessions/
-│   └── doc/
-└── shared/                <- zone d'echange
-    ├── notes/
-    ├── review/
-    └── roadmap-*.md
-```
+![Structure instance](../doc/figures/fig-structure-instance.svg)
 
 ### La zone partagee — shared/
 

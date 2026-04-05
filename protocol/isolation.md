@@ -41,27 +41,7 @@ réécrire une review de design.
 
 ## Structure type
 
-```
-projet/
-├── architecture/          ← workspace architecte
-│   ├── CLAUDE.md          ← instructions pour ce persona
-│   ├── sessions/          ← résumés de session
-│   └── doc/               ← specs, ADR, audits
-│
-├── dev/                   ← workspace dev
-│   ├── CLAUDE.md
-│   ├── sessions/
-│   └── ...
-│
-├── ux/                    ← workspace UX
-│   ├── CLAUDE.md
-│   ├── sessions/
-│   └── ...
-│
-└── shared/                ← zone d'échange
-    ├── review/            ← reviews croisées
-    └── notes/             ← notes inter-personas
-```
+![Structure type instance](../doc/figures/fig-structure-instance.svg)
 
 ## La zone partagée
 

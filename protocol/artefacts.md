@@ -46,17 +46,7 @@ reste. Il est versionné par git. Il peut être relu dans 6 mois.
 
 ## Flux type
 
-```
-Architecte                    shared/                     Dev
-──────────                    ───────                     ───
-rédige review           ───→  review/review-xyz-mira.md
-                                                    ←───  lit la review
-                                                          rédige réponse
-                         ←──  notes/note-mira-xyz-axel.md
-lit la note
-                              ↓
-                        PO lit les deux, tranche
-```
+![Flux type artefact](../doc/figures/fig-flux-artefact.svg)
 
 ## Conventions
 

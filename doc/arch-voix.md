@@ -31,36 +31,6 @@ Le seul prerequis est un LLM capable de suivre des instructions persistantes (CL
 
 Trois couches independantes. On peut changer l'une sans toucher les autres.
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    CORE                                    │
-│  core/     principes · personas · friction · devoirs       │
-│            → Les invariants. Ce qui ne change pas          │
-│              quand on change d'outil.                      │
-│                                                            │
-│  TEMPLATES 17 templates + 7 archetypes personas            │
-│            → Le pret-a-l'emploi. Incarne le core.          │
-├─────────────────────────────────────────────────────────┤
-│                    PROTOCOL                                │
-│  protocol/ artefacts · conventions · tracabilite ·         │
-│            isolation · orchestration · instance             │
-│            → Le contrat d'interface. Fichiers, pas API.    │
-│              Git, pas base de donnees. Portable.           │
-├─────────────────────────────────────────────────────────┤
-│                    RUNTIME                                  │
-│  runtime/claude-code/  claude-md · memoire · sessions ·    │
-│                        hooks                                │
-│            → L'implementation concrete. Remplacable        │
-│              sans toucher au core ni au protocol.          │
-├─────────────────────────────────────────────────────────┤
-│                    doc/                                     │
-│  TERRAIN   examples/katen (7 personas) · feedback (9 REX)  │
-│  GUIDES    onboarding · lexique · utilisateur              │
-│  ARCHI     arch-voix, ADR, tests                           │
-│            → La preuve, la doc, les decisions.             │
-└─────────────────────────────────────────────────────────┘
-```
-
 ### Core — les invariants de la methode
 
 Les principes fondamentaux. Ce qui ne change pas quand on change d'outil, de provider, ou de format d'echange. Si demain Claude Code disparait, le core tient.
@@ -128,16 +98,7 @@ L'instance Katen (7 personas, 5 produits, 210+ sessions, 62 ADR) sert de vitrine
 
 ### Le triangle Voix
 
-```
-        Persona
-       (contrainte)
-        /       \
-       /  PO     \
-      / (arbitre)  \
-     /               \
-  Artefact ────── Friction
- (protocole)      (signal)
-```
+![Le triangle Voix](figures/fig-triangle-voix.svg)
 
 Trois concepts interdependants :
 - **Persona** — un LLM contraint par un role, un perimetre et des interdits
@@ -148,20 +109,7 @@ Le **PO** (humain) est au centre : il orchestre, filtre, contextualise, tranche.
 
 ### Cycle de vie d'un echange
 
-```
-Persona A          shared/              PO              Persona B
-─────────          ───────              ──              ─────────
-redige artefact →  depose dans bus
-                                    ← lit l'artefact
-                                       filtre
-                                       contextualise
-                                       transmet →
-                                                        lit, reagit
-                                                     ← depose reponse
-                                    ← lit la reponse
-                                       tranche
-                                       trace (ADR/note)
-```
+![Cycle de vie d'un échange](figures/fig-cycle-echange.svg)
 
 Chaque fleche passe par le PO. Pas de raccourci.
 
@@ -169,18 +117,7 @@ Chaque fleche passe par le PO. Pas de raccourci.
 
 Une **instance** est un projet qui applique la methode. Elle contient :
 
-```
-instance/
-├── voix.md                   ← marqueur d'instance
-├── {workspace}/              ← 1 par persona (CLAUDE.md, sessions/, backlog.md)
-├── shared/                   ← bus d'echange
-│   ├── roadmap-*.md            roadmaps produit (PO)
-│   ├── notes/                  messages inter-personas
-│   ├── review/                 analyses critiques
-│   ├── features/               specs fonctionnalites
-│   └── orga/                   personas, figures, lexique
-└── conventions.md            ← regles de l'instance
-```
+![Structure instance Voix](figures/fig-structure-instance.svg)
 
 Le fichier `voix.md` a la racine identifie le depot comme instance et lie a la methode.
 
@@ -227,61 +164,7 @@ On commence petit, on ajoute de la structure quand la charge mentale du PO l'exi
 
 ## 5. Structure du repo
 
-```
-voix/
-├── CLAUDE.md                        ← Le Diapason (guide d'onboarding)
-├── README.md                        ← manifeste
-├── LICENSE                          ← MIT
-│
-├── core/                            ← CORE — les invariants
-│   ├── principes.md                   4 documents — ce qui ne change pas
-│   ├── personas.md                    quand on change d'outil.
-│   ├── friction.md
-│   ├── devoirs.md
-│   └── templates/                     le pret-a-l'emploi
-│       ├── persona.md                   template vierge
-│       ├── persona-{archetype}.md       7 archetypes pre-remplis
-│       ├── claude-md.md
-│       ├── session.md
-│       ├── roadmap-produit.md
-│       ├── voix-instance.md
-│       ├── team-orga.md
-│       ├── note.md · review.md
-│       ├── feature.md · adr.md
-│       └── workspace/
-│           └── CLAUDE.md
-│
-├── protocol/                        ← PROTOCOL — le contrat d'interface
-│   ├── artefacts.md                   6 documents — fichiers, pas API.
-│   ├── conventions.md                 Git, pas base de donnees.
-│   ├── tracabilite.md                 Portable.
-│   ├── isolation.md
-│   ├── orchestration.md
-│   └── instance.md
-│
-├── runtime/                         ← RUNTIME — l'implementation concrete
-│   └── claude-code/                   Remplacable sans toucher
-│       ├── claude-md.md               au core ni au protocol.
-│       ├── memoire.md
-│       ├── sessions.md
-│       └── hooks.md
-│
-└── doc/                             ← documentation, terrain, decisions
-    ├── arch-voix.md                   ce document
-    ├── figures/
-    │   └── arch-voix.svg              vue architecture
-    ├── adr/                           decisions structurantes
-    ├── tests/                         plans de test
-    ├── onboarding.md                  guide de demarrage
-    ├── lexique.md                     termes de la methode
-    ├── utilisateur.md                 guide utilisateur
-    ├── examples/katen/                terrain : 7 fiches personas
-    │   └── mira.md · axel.md · ...
-    └── feedback/                      terrain : 9 REX
-        ├── katen.md · pieges.md
-        ├── contamination-factuelle.md
-        └── ...
-```
+![Structure du repo voix/](figures/fig-structure-repo.svg)
 
 ---
 
@@ -313,20 +196,7 @@ Voix definit les conventions. Convergence les consomme. Pas de duplication — r
 
 ### Architecture actuelle
 
-```
-voix/
-├── core/                ← CORE — invariants (provider-agnostic)
-│   ├── *.md               principes, personas, friction, devoirs
-│   └── templates/         outillage
-├── protocol/            ← PROTOCOL — contrat d'interface (provider-agnostic)
-│   └── *.md               artefacts, conventions, tracabilite, isolation, orchestration, instance
-├── runtime/             ← RUNTIME — implementation concrete
-│   └── claude-code/       adaptateur Claude Code
-│       └── *.md           claude-md, memoire, sessions, hooks
-└── doc/                 ← documentation, terrain
-```
-
-`core/` et `protocol/` sont provider-agnostic. `runtime/` est le seul point de variation. Ajouter un provider = ajouter `runtime/mistral/`, `runtime/gemini/`, etc. Chaque adaptateur documente les equivalents du provider pour : instructions persistantes, memoire, sessions, automatisations.
+`core/` et `protocol/` sont provider-agnostic (voir structure du repo en section 5). `runtime/` est le seul point de variation. Ajouter un provider = ajouter `runtime/mistral/`, `runtime/gemini/`, etc. Chaque adaptateur documente les equivalents du provider pour : instructions persistantes, memoire, sessions, automatisations.
 
 ### Multi-provider (v0.5)
 

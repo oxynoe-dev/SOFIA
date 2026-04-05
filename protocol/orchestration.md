@@ -20,28 +20,7 @@ est pertinent à transmettre.
 
 ## Le flux élémentaire
 
-```
-PO ←→ Persona A                              PO ←→ Persona B
-─────────────────                             ─────────────────
-
-PO ouvre session A
-  "review cet ADR"
-A produit review
-  → review déposée dans shared/
-PO lit la review
-PO discute avec A
-  → lève des points, affine
-PO demande à A
-  "synthétise ça pour B"
-A rédige note
-  → note-B-sujet-A.md
-PO ferme session A
-                                              PO ouvre session B
-                                                "t'as une note de A"
-                                              B lit, réagit
-                                                → corrections, réponses
-                                              PO ferme session B
-```
+![Flux élémentaire](../doc/figures/fig-flux-elementaire.svg)
 
 Chaque flèche passe par le PO. Pas de raccourci.
 
@@ -79,22 +58,7 @@ même s'ils avaient une position différente.
 
 C'est le cas le plus fréquent d'orchestration complexe.
 
-```
-PO → Mira   : "review ADR-042"     → review-adr-042-mira.md
-PO → Léa    : "review ADR-042"     → review-adr-042-lea.md
-PO → Axel   : "review ADR-042"     → review-adr-042-axel.md
-PO → Nora   : "review ADR-042"     → review-adr-042-nora.md
-
-PO lit les 4 reviews
-PO consolide :
-  - Mira et Léa sont d'accord sur le point X → validé
-  - Axel remonte une friction → PO tranche
-  - Nora voit un problème UX → PO demande à Mira d'intégrer
-
-PO → Mira   : "intègre le retour Nora, voici la décision sur
-               la friction Axel"
-Mira met à jour l'ADR → accepted
-```
+![Review multi-personas](../doc/figures/fig-review-multi-personas.svg)
 
 Les 4 reviews sont indépendantes (parallélisables). La consolidation
 est le travail du PO. La mise à jour finale revient au persona
@@ -104,14 +68,7 @@ propriétaire du document.
 
 Parfois l'échange nécessite plusieurs allers-retours :
 
-```
-PO → A : "spec cette API"          → spec déposée
-PO → B : "review la spec de A"     → retours déposés
-PO → A : "intègre les retours"     → spec v2
-PO → B : "re-review"               → ok ou nouveaux retours
-...
-PO tranche quand c'est assez mûr
-```
+![Boucle itérative](../doc/figures/fig-boucle-iterative.svg)
 
 Le PO décide quand l'itération s'arrête. Pas les personas.
 

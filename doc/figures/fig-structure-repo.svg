@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fig. G — Structure du repo voix/ — 05/04/2026 -->
+<svg viewBox="0 0 880 620" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <radialGradient id="bg-grad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0a4858"/>
+      <stop offset="100%" stop-color="#041c24"/>
+    </radialGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,200,220,0.06)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="880" height="620" fill="url(#bg-grad)" rx="6"/>
+  <rect width="880" height="620" fill="url(#grid)" rx="6"/>
+
+  <!-- Spores -->
+  <circle cx="150" cy="100" r="40" fill="#40d8c0" opacity="0.03"/>
+  <circle cx="780" cy="200" r="50" fill="#40d8c0" opacity="0.03"/>
+  <circle cx="100" cy="500" r="35" fill="#40d8c0" opacity="0.03"/>
+  <circle cx="700" cy="550" r="45" fill="#40d8c0" opacity="0.03"/>
+
+  <!-- Caustics -->
+  <ellipse cx="400" cy="80" rx="90" ry="18" fill="#00c8dc" opacity="0.02"/>
+  <ellipse cx="600" cy="450" rx="70" ry="15" fill="#00c8dc" opacity="0.02"/>
+
+  <!-- Particles -->
+  <circle cx="80" cy="180" r="1" fill="#40d8c0" opacity="0.15"/>
+  <circle cx="250" cy="45" r="1.2" fill="#40d8c0" opacity="0.12"/>
+  <circle cx="820" cy="120" r="0.8" fill="#40d8c0" opacity="0.18"/>
+  <circle cx="840" cy="400" r="1.5" fill="#40d8c0" opacity="0.14"/>
+  <circle cx="50" cy="550" r="1" fill="#40d8c0" opacity="0.16"/>
+  <circle cx="450" cy="590" r="1.3" fill="#40d8c0" opacity="0.13"/>
+  <circle cx="700" cy="60" r="0.9" fill="#40d8c0" opacity="0.15"/>
+  <circle cx="300" cy="580" r="1.1" fill="#40d8c0" opacity="0.14"/>
+
+  <!-- ════════════════════════════════════════
+       TITRE
+  ════════════════════════════════════════ -->
+  <text x="440" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="15" font-weight="300" letter-spacing="0.03em">Structure du repository voix/</text>
+
+  <!-- ════════════════════════════════════════
+       ROOT: voix/
+  ════════════════════════════════════════ -->
+  <rect x="40" y="52" width="80" height="24" rx="3" fill="rgba(64,216,192,0.06)" stroke="rgba(64,180,160,0.25)" stroke-width="0.7"/>
+  <text x="52" y="68" fill="rgba(64,216,192,0.7)" font-family="IBM Plex Mono,monospace" font-size="9.5" letter-spacing="0.02em">voix/</text>
+
+  <!-- Root files -->
+  <line x1="80" y1="76" x2="80" y2="94" stroke="rgba(64,180,160,0.15)" stroke-width="0.7"/>
+  <line x1="80" y1="88" x2="100" y2="88" stroke="rgba(64,180,160,0.15)" stroke-width="0.7"/>
+  <rect x="104" y="77" width="92" height="22" rx="3" fill="rgba(64,216,192,0.03)" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
+  <text x="116" y="92" fill="rgba(64,216,192,0.45)" font-family="IBM Plex Mono,monospace" font-size="8.5">CLAUDE.md</text>
+
+  <line x1="80" y1="94" x2="80" y2="112" stroke="rgba(64,180,160,0.15)" stroke-width="0.7"/>
+  <line x1="80" y1="106" x2="100" y2="106" stroke="rgba(64,180,160,0.15)" stroke-width="0.7"/>
+  <rect x="104" y="95" width="92" height="22" rx="3" fill="rgba(64,216,192,0.03)" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
+  <text x="116" y="110" fill="rgba(64,216,192,0.45)" font-family="IBM Plex Mono,monospace" font-size="8.5">README.md</text>
+
+  <!-- Main trunk -->
+  <line x1="80" y1="112" x2="80" y2="540" stroke="rgba(64,180,160,0.15)" stroke-width="0.7"/>
+
+  <!-- ════════════════════════════════════════
+       LAYER 1: core/  — CORE
+       Color: #40d8c0 (cyan bioluminescent)
+  ════════════════════════════════════════ -->
+  <line x1="80" y1="136" x2="100" y2="136" stroke="rgba(64,216,192,0.2)" stroke-width="0.7"/>
+  <rect x="104" y="124" width="100" height="24" rx="3" fill="rgba(64,216,192,0.06)" stroke="rgba(64,216,192,0.25)" stroke-width="0.7"/>
+  <text x="116" y="140" fill="rgba(64,216,192,0.7)" font-family="IBM Plex Mono,monospace" font-size="9.5">core/</text>
+
+  <!-- core children trunk -->
+  <line x1="150" y1="148" x2="150" y2="260" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
+
+  <!-- principes.md -->
+  <line x1="150" y1="162" x2="170" y2="162" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="151" width="100" height="22" rx="3" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.12)" stroke-width="0.5"/>
+  <text x="186" y="166" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">principes.md</text>
+
+  <!-- personas.md -->
+  <line x1="150" y1="184" x2="170" y2="184" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="173" width="100" height="22" rx="3" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.12)" stroke-width="0.5"/>
+  <text x="186" y="188" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">personas.md</text>
+
+  <!-- friction.md -->
+  <line x1="150" y1="206" x2="170" y2="206" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="195" width="92" height="22" rx="3" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.12)" stroke-width="0.5"/>
+  <text x="186" y="210" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">friction.md</text>
+
+  <!-- devoirs.md -->
+  <line x1="150" y1="228" x2="170" y2="228" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="217" width="88" height="22" rx="3" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.12)" stroke-width="0.5"/>
+  <text x="186" y="232" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">devoirs.md</text>
+
+  <!-- templates/ -->
+  <line x1="150" y1="250" x2="170" y2="250" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="239" width="92" height="22" rx="3" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.12)" stroke-width="0.5"/>
+  <text x="186" y="254" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">templates/</text>
+  <text x="276" y="254" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="7">persona + 7 archetypes</text>
+
+  <!-- ════════════════════════════════════════
+       LAYER 2: protocol/  — PROTOCOL
+       Color: #5ec8b8 (teal shifted)
+  ════════════════════════════════════════ -->
+  <line x1="80" y1="280" x2="100" y2="280" stroke="rgba(167,139,250,0.2)" stroke-width="0.7"/>
+  <rect x="104" y="268" width="100" height="24" rx="3" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.25)" stroke-width="0.7"/>
+  <text x="116" y="284" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="9.5">protocol/</text>
+
+  <!-- protocol children trunk -->
+  <line x1="150" y1="292" x2="150" y2="448" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
+
+  <!-- artefacts.md -->
+  <line x1="150" y1="306" x2="170" y2="306" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="295" width="100" height="22" rx="3" fill="rgba(167,139,250,0.03)" stroke="rgba(167,139,250,0.12)" stroke-width="0.5"/>
+  <text x="186" y="310" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">artefacts.md</text>
+
+  <!-- conventions.md -->
+  <line x1="150" y1="328" x2="170" y2="328" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="317" width="110" height="22" rx="3" fill="rgba(167,139,250,0.03)" stroke="rgba(167,139,250,0.12)" stroke-width="0.5"/>
+  <text x="186" y="332" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">conventions.md</text>
+
+  <!-- tracabilite.md -->
+  <line x1="150" y1="350" x2="170" y2="350" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="339" width="110" height="22" rx="3" fill="rgba(167,139,250,0.03)" stroke="rgba(167,139,250,0.12)" stroke-width="0.5"/>
+  <text x="186" y="354" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">tracabilite.md</text>
+
+  <!-- isolation.md -->
+  <line x1="150" y1="372" x2="170" y2="372" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="361" width="96" height="22" rx="3" fill="rgba(167,139,250,0.03)" stroke="rgba(167,139,250,0.12)" stroke-width="0.5"/>
+  <text x="186" y="376" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">isolation.md</text>
+
+  <!-- orchestration.md -->
+  <line x1="150" y1="394" x2="170" y2="394" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="383" width="118" height="22" rx="3" fill="rgba(167,139,250,0.03)" stroke="rgba(167,139,250,0.12)" stroke-width="0.5"/>
+  <text x="186" y="398" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">orchestration.md</text>
+
+  <!-- instance.md -->
+  <line x1="150" y1="416" x2="170" y2="416" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="405" width="96" height="22" rx="3" fill="rgba(167,139,250,0.03)" stroke="rgba(167,139,250,0.12)" stroke-width="0.5"/>
+  <text x="186" y="420" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">instance.md</text>
+
+  <!-- templates/ -->
+  <line x1="150" y1="438" x2="170" y2="438" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="427" width="92" height="22" rx="3" fill="rgba(167,139,250,0.03)" stroke="rgba(167,139,250,0.12)" stroke-width="0.5"/>
+  <text x="186" y="442" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">templates/</text>
+  <text x="276" y="442" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7">8 templates d'artefacts</text>
+
+  <!-- ════════════════════════════════════════
+       LAYER 3: runtime/  — RUNTIME
+       Color: #8aa8d8 (blue idle)
+  ════════════════════════════════════════ -->
+  <line x1="80" y1="468" x2="100" y2="468" stroke="rgba(138,168,216,0.2)" stroke-width="0.7"/>
+  <rect x="104" y="456" width="100" height="24" rx="3" fill="rgba(138,168,216,0.06)" stroke="rgba(138,168,216,0.25)" stroke-width="0.7"/>
+  <text x="116" y="472" fill="rgba(138,168,216,0.7)" font-family="IBM Plex Mono,monospace" font-size="9.5">runtime/</text>
+
+  <!-- runtime trunk -->
+  <line x1="150" y1="480" x2="150" y2="494" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
+
+  <!-- claude-code/ -->
+  <line x1="150" y1="490" x2="170" y2="490" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
+  <rect x="174" y="479" width="108" height="22" rx="3" fill="rgba(138,168,216,0.04)" stroke="rgba(138,168,216,0.15)" stroke-width="0.5"/>
+  <text x="186" y="494" fill="rgba(138,168,216,0.55)" font-family="IBM Plex Mono,monospace" font-size="8.5">claude-code/</text>
+
+  <!-- claude-code children -->
+  <line x1="230" y1="501" x2="230" y2="530" stroke="rgba(138,168,216,0.08)" stroke-width="0.5"/>
+
+  <!-- claude-code files inline -->
+  <line x1="230" y1="512" x2="250" y2="512" stroke="rgba(138,168,216,0.08)" stroke-width="0.5"/>
+  <rect x="254" y="501" width="100" height="22" rx="3" fill="rgba(138,168,216,0.03)" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
+  <text x="266" y="516" fill="rgba(138,168,216,0.45)" font-family="IBM Plex Mono,monospace" font-size="8">claude-md.md</text>
+
+  <rect x="364" y="501" width="88" height="22" rx="3" fill="rgba(138,168,216,0.03)" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
+  <text x="376" y="516" fill="rgba(138,168,216,0.45)" font-family="IBM Plex Mono,monospace" font-size="8">memoire.md</text>
+
+  <rect x="462" y="501" width="88" height="22" rx="3" fill="rgba(138,168,216,0.03)" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
+  <text x="474" y="516" fill="rgba(138,168,216,0.45)" font-family="IBM Plex Mono,monospace" font-size="8">sessions.md</text>
+
+  <!-- second row -->
+  <line x1="230" y1="530" x2="250" y2="530" stroke="rgba(138,168,216,0.08)" stroke-width="0.5"/>
+  <rect x="254" y="523" width="78" height="22" rx="3" fill="rgba(138,168,216,0.03)" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
+  <text x="266" y="538" fill="rgba(138,168,216,0.45)" font-family="IBM Plex Mono,monospace" font-size="8">hooks.md</text>
+
+  <rect x="342" y="523" width="92" height="22" rx="3" fill="rgba(138,168,216,0.03)" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
+  <text x="354" y="538" fill="rgba(138,168,216,0.45)" font-family="IBM Plex Mono,monospace" font-size="8">templates/</text>
+
+  <!-- ════════════════════════════════════════
+       LAYER 4: doc/  — DOCUMENTATION
+       Color: neutral (rgba(200,210,220,...))
+  ════════════════════════════════════════ -->
+  <line x1="80" y1="558" x2="100" y2="558" stroke="rgba(200,210,220,0.15)" stroke-width="0.7"/>
+  <rect x="104" y="546" width="80" height="24" rx="3" fill="rgba(200,210,220,0.04)" stroke="rgba(200,210,220,0.15)" stroke-width="0.7"/>
+  <text x="116" y="562" fill="rgba(200,210,220,0.55)" font-family="IBM Plex Mono,monospace" font-size="9.5">doc/</text>
+
+  <!-- doc children inline -->
+  <line x1="150" y1="570" x2="150" y2="586" stroke="rgba(200,210,220,0.08)" stroke-width="0.5"/>
+  <line x1="150" y1="582" x2="170" y2="582" stroke="rgba(200,210,220,0.08)" stroke-width="0.5"/>
+
+  <rect x="174" y="573" width="100" height="20" rx="3" fill="rgba(200,210,220,0.03)" stroke="rgba(200,210,220,0.1)" stroke-width="0.5"/>
+  <text x="186" y="587" fill="rgba(200,210,220,0.4)" font-family="IBM Plex Mono,monospace" font-size="8">arch-voix.md</text>
+
+  <rect x="284" y="573" width="104" height="20" rx="3" fill="rgba(200,210,220,0.03)" stroke="rgba(200,210,220,0.1)" stroke-width="0.5"/>
+  <text x="296" y="587" fill="rgba(200,210,220,0.4)" font-family="IBM Plex Mono,monospace" font-size="8">utilisateur.md</text>
+
+  <rect x="398" y="573" width="88" height="20" rx="3" fill="rgba(200,210,220,0.03)" stroke="rgba(200,210,220,0.1)" stroke-width="0.5"/>
+  <text x="410" y="587" fill="rgba(200,210,220,0.4)" font-family="IBM Plex Mono,monospace" font-size="8">workflows/</text>
+
+  <rect x="496" y="573" width="80" height="20" rx="3" fill="rgba(200,210,220,0.03)" stroke="rgba(200,210,220,0.1)" stroke-width="0.5"/>
+  <text x="508" y="587" fill="rgba(200,210,220,0.4)" font-family="IBM Plex Mono,monospace" font-size="8">patterns/</text>
+
+  <rect x="586" y="573" width="80" height="20" rx="3" fill="rgba(200,210,220,0.03)" stroke="rgba(200,210,220,0.1)" stroke-width="0.5"/>
+  <text x="598" y="587" fill="rgba(200,210,220,0.4)" font-family="IBM Plex Mono,monospace" font-size="8">feedback/</text>
+
+  <rect x="676" y="573" width="116" height="20" rx="3" fill="rgba(200,210,220,0.03)" stroke="rgba(200,210,220,0.1)" stroke-width="0.5"/>
+  <text x="688" y="587" fill="rgba(200,210,220,0.4)" font-family="IBM Plex Mono,monospace" font-size="8">examples/katen/</text>
+
+  <!-- ════════════════════════════════════════
+       LAYER LABELS — Right side
+  ════════════════════════════════════════ -->
+
+  <!-- CORE label -->
+  <line x1="680" y1="130" x2="680" y2="260" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
+  <line x1="680" y1="130" x2="690" y2="130" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
+  <line x1="680" y1="260" x2="690" y2="260" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
+  <text x="700" y="180" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">CORE</text>
+  <text x="700" y="195" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="7.5">Les invariants.</text>
+  <text x="700" y="207" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="7.5">Principes, personas,</text>
+  <text x="700" y="219" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="7.5">friction, devoirs.</text>
+
+  <!-- PROTOCOL label -->
+  <line x1="680" y1="274" x2="680" y2="448" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
+  <line x1="680" y1="274" x2="690" y2="274" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
+  <line x1="680" y1="448" x2="690" y2="448" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
+  <text x="700" y="340" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">PROTOCOL</text>
+  <text x="700" y="355" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">Contrat d'interface.</text>
+  <text x="700" y="367" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">Artefacts, conventions,</text>
+  <text x="700" y="379" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">tracabilite, isolation.</text>
+
+  <!-- RUNTIME label -->
+  <line x1="680" y1="462" x2="680" y2="545" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
+  <line x1="680" y1="462" x2="690" y2="462" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
+  <line x1="680" y1="545" x2="690" y2="545" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
+  <text x="700" y="490" fill="rgba(138,168,216,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">RUNTIME</text>
+  <text x="700" y="505" fill="rgba(138,168,216,0.3)" font-family="Inter,sans-serif" font-size="7.5">Implementation.</text>
+  <text x="700" y="517" fill="rgba(138,168,216,0.3)" font-family="Inter,sans-serif" font-size="7.5">Specifique Claude Code</text>
+  <text x="700" y="529" fill="rgba(138,168,216,0.3)" font-family="Inter,sans-serif" font-size="7.5">(extensible a d'autres).</text>
+
+  <!-- DOC label -->
+  <text x="810" y="562" fill="rgba(200,210,220,0.35)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.1em">DOC</text>
+
+  <!-- ════════════════════════════════════════
+       LEGENDE
+  ════════════════════════════════════════ -->
+  <rect x="40" y="600" width="10" height="10" rx="2" fill="rgba(64,216,192,0.1)" stroke="rgba(64,216,192,0.3)" stroke-width="0.7"/>
+  <text x="56" y="609" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="7.5">Core</text>
+
+  <rect x="100" y="600" width="10" height="10" rx="2" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.3)" stroke-width="0.7"/>
+  <text x="116" y="609" fill="rgba(167,139,250,0.4)" font-family="Inter,sans-serif" font-size="7.5">Protocol</text>
+
+  <rect x="178" y="600" width="10" height="10" rx="2" fill="rgba(138,168,216,0.1)" stroke="rgba(138,168,216,0.3)" stroke-width="0.7"/>
+  <text x="194" y="609" fill="rgba(138,168,216,0.4)" font-family="Inter,sans-serif" font-size="7.5">Runtime</text>
+
+  <rect x="260" y="600" width="10" height="10" rx="2" fill="rgba(200,210,220,0.08)" stroke="rgba(200,210,220,0.2)" stroke-width="0.7"/>
+  <text x="276" y="609" fill="rgba(200,210,220,0.35)" font-family="Inter,sans-serif" font-size="7.5">Documentation</text>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <line x1="40" y1="612" x2="840" y2="612" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
+
+</svg>
