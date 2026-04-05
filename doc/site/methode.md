@@ -134,7 +134,7 @@ La méthode a été développée et validée sur le projet Katen — un moteur d
 | Personas actifs | 7 (architecte, dev, UX, stratégie, recherche, rédaction, graphisme) |
 | Sessions | 210+ |
 | ADR produits | 62 |
-| Produits livrés | 1 (Katen v0.2) |
+| Produit en cours | Katen (v0.2, 5 semaines) |
 
 → [Voir les fiches personas Katen](/voix/doc/tutoriels)
 → [Lire le livre bleu](/voix/livre-bleu)

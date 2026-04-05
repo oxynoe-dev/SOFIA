@@ -103,9 +103,9 @@ label:  Terrain
 titre:  Teste, pas theorise.
 
 paragraphe 1:
-210+ sessions. 62 ADR documentees. Des echecs traces.
-Un produit livre — Katen, de zero a la production en 18 mois,
-par un humain et sept voix.
+210+ sessions. 62 ADR documentées. Des échecs tracés.
+Un produit en cours — Katen, construit depuis zéro en 5 semaines,
+par un humain et sept voix. Pas livré. En route.
 
 paragraphe 2:
 Ce n'est pas un exercice de pensee. C'est un retour d'experience.
