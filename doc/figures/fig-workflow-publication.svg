@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fig. — Workflow Publication — 05/04/2026 -->
+<svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace">
+
+  <defs>
+    <radialGradient id="bg-grad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0a4858"/>
+      <stop offset="100%" stop-color="#041c24"/>
+    </radialGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,200,220,0.06)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="700" height="220" fill="url(#bg-grad)" rx="6"/>
+  <rect width="700" height="220" fill="url(#grid)" rx="6"/>
+
+  <!-- ════════════════════════════════════════
+       TITRE
+  ════════════════════════════════════════ -->
+  <text x="350" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Workflow — Publication</text>
+
+  <!-- ════════════════════════════════════════
+       ETAPES
+  ════════════════════════════════════════ -->
+
+  <!-- Step 1: Redaction (blue) -->
+  <rect x="18" y="60" width="88" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
+  <text x="62" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Redaction</text>
+  <text x="62" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">production</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="110" y1="82" x2="126" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(132,82) rotate(180)"/>
+
+  <!-- Step 2: Validation fond (green) -->
+  <rect x="136" y="60" width="96" height="44" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
+  <text x="184" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Validation fond</text>
+  <text x="184" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">validation</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="236" y1="82" x2="252" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(258,82) rotate(180)"/>
+
+  <!-- Step 3: Mise en forme (blue) -->
+  <rect x="262" y="60" width="96" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
+  <text x="310" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Mise en forme</text>
+  <text x="310" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">production</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="362" y1="82" x2="378" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(384,82) rotate(180)"/>
+
+  <!-- Step 4: Challenge UX (green) -->
+  <rect x="388" y="60" width="88" height="44" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
+  <text x="432" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Challenge UX</text>
+  <text x="432" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">validation</text>
+
+  <!-- Arrow 4→5 -->
+  <line x1="480" y1="82" x2="496" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(502,82) rotate(180)"/>
+
+  <!-- Step 5: Go PO (amber) -->
+  <rect x="506" y="60" width="68" height="44" rx="3" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="0.7"/>
+  <text x="540" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Go PO</text>
+  <text x="540" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">gate</text>
+
+  <!-- Arrow 5→6 -->
+  <line x1="578" y1="82" x2="594" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(600,82) rotate(180)"/>
+
+  <!-- Step 6: Mise en ligne (blue) -->
+  <rect x="604" y="60" width="82" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
+  <text x="645" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Mise en ligne</text>
+  <text x="645" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">production</text>
+
+  <!-- ════════════════════════════════════════
+       LEGENDE
+  ════════════════════════════════════════ -->
+  <rect x="18" y="155" width="10" height="10" rx="2" fill="rgba(79,138,255,0.15)" stroke="rgba(79,138,255,0.4)" stroke-width="0.7"/>
+  <text x="34" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Production</text>
+  <rect x="95" y="155" width="10" height="10" rx="2" fill="rgba(61,220,132,0.15)" stroke="rgba(61,220,132,0.4)" stroke-width="0.7"/>
+  <text x="111" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Validation</text>
+  <rect x="172" y="155" width="10" height="10" rx="2" fill="rgba(212,160,48,0.15)" stroke="rgba(212,160,48,0.4)" stroke-width="0.7"/>
+  <text x="188" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Gate PO</text>
+
+  <!-- ════════════════════════════════════════
+       SPORES
+  ════════════════════════════════════════ -->
+  <circle cx="670" cy="160" r="1.1" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="300" cy="195" r="1.4" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="520" cy="180" r="0.8" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="80" cy="200" r="1.2" fill="rgba(64,216,192,0.04)"/>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <text x="350" y="208" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">Voix — methode Oxynoe — 05/04/2026</text>
+
+</svg>

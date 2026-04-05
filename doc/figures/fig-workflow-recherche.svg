@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fig. — Workflow Recherche — 05/04/2026 -->
+<svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace">
+
+  <defs>
+    <radialGradient id="bg-grad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0a4858"/>
+      <stop offset="100%" stop-color="#041c24"/>
+    </radialGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,200,220,0.06)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="700" height="220" fill="url(#bg-grad)" rx="6"/>
+  <rect width="700" height="220" fill="url(#grid)" rx="6"/>
+
+  <!-- ════════════════════════════════════════
+       TITRE
+  ════════════════════════════════════════ -->
+  <text x="350" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Workflow — Recherche</text>
+
+  <!-- ════════════════════════════════════════
+       ETAPES
+  ════════════════════════════════════════ -->
+
+  <!-- Step 1: Identification sources (blue) -->
+  <rect x="38" y="60" width="128" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
+  <text x="102" y="80" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Identification</text>
+  <text x="102" y="92" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">sources</text>
+  <text x="102" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">signal</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="170" y1="82" x2="194" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(200,82) rotate(180)"/>
+
+  <!-- Step 2: Relecture complete (blue) -->
+  <rect x="204" y="60" width="128" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
+  <text x="268" y="80" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Relecture</text>
+  <text x="268" y="92" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">complete</text>
+  <text x="268" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">signal</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="336" y1="82" x2="360" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(366,82) rotate(180)"/>
+
+  <!-- Step 3: Contextualisation (blue) -->
+  <rect x="370" y="60" width="128" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
+  <text x="434" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Contextualisation</text>
+  <text x="434" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">signal</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="502" y1="82" x2="526" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(532,82) rotate(180)"/>
+
+  <!-- Step 4: Verification usage vs source (coral — critical) -->
+  <rect x="536" y="60" width="128" height="44" rx="3" fill="rgba(224,80,80,0.05)" stroke="rgba(224,80,80,0.2)" stroke-width="1.2"/>
+  <text x="600" y="80" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Verification</text>
+  <text x="600" y="92" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">usage vs source</text>
+  <text x="600" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">critical</text>
+
+  <!-- ════════════════════════════════════════
+       LEGENDE
+  ════════════════════════════════════════ -->
+  <rect x="38" y="155" width="10" height="10" rx="2" fill="rgba(79,138,255,0.15)" stroke="rgba(79,138,255,0.4)" stroke-width="0.7"/>
+  <text x="54" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Signal</text>
+  <rect x="95" y="155" width="10" height="10" rx="2" fill="rgba(224,80,80,0.15)" stroke="rgba(224,80,80,0.4)" stroke-width="0.7"/>
+  <text x="111" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Critical</text>
+
+  <!-- ════════════════════════════════════════
+       SPORES
+  ════════════════════════════════════════ -->
+  <circle cx="660" cy="170" r="1.2" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="350" cy="195" r="1.0" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="50" cy="185" r="1.4" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="500" cy="155" r="0.9" fill="rgba(64,216,192,0.04)"/>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <text x="350" y="208" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">Voix — methode Oxynoe — 05/04/2026</text>
+
+</svg>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fig. — Pattern Calibrage par le media — 05/04/2026 -->
+<svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace">
+
+  <defs>
+    <radialGradient id="bg-grad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0a4858"/>
+      <stop offset="100%" stop-color="#041c24"/>
+    </radialGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,200,220,0.06)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="500" height="280" fill="url(#bg-grad)" rx="6"/>
+  <rect width="500" height="280" fill="url(#grid)" rx="6"/>
+
+  <!-- ════════════════════════════════════════
+       TITRE
+  ════════════════════════════════════════ -->
+  <text x="250" y="28" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Pattern — Calibrage par le media</text>
+
+  <!-- ════════════════════════════════════════
+       EN-TETES COLONNES
+  ════════════════════════════════════════ -->
+  <text x="130" y="58" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="8">Competence</text>
+  <text x="370" y="58" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="8">Media</text>
+
+  <!-- ════════════════════════════════════════
+       COMPETENCES (green)
+  ════════════════════════════════════════ -->
+  <rect x="50" y="72" width="160" height="34" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
+  <text x="130" y="93" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="9">architecture</text>
+
+  <rect x="50" y="118" width="160" height="34" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
+  <text x="130" y="139" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="9">dev</text>
+
+  <rect x="50" y="164" width="160" height="34" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
+  <text x="130" y="185" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="9">UX</text>
+
+  <!-- ════════════════════════════════════════
+       MEDIAS (blue)
+  ════════════════════════════════════════ -->
+  <rect x="290" y="72" width="160" height="34" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
+  <text x="370" y="93" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="9">specs / ADR</text>
+
+  <rect x="290" y="118" width="160" height="34" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
+  <text x="370" y="139" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="9">code / tests</text>
+
+  <rect x="290" y="164" width="160" height="34" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
+  <text x="370" y="185" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="9">maquettes / reviews</text>
+
+  <!-- ════════════════════════════════════════
+       CONNEXIONS
+  ════════════════════════════════════════ -->
+  <line x1="210" y1="89" x2="290" y2="89" stroke="rgba(64,216,192,0.15)" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="210" y1="135" x2="290" y2="135" stroke="rgba(64,216,192,0.15)" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="210" y1="181" x2="290" y2="181" stroke="rgba(64,216,192,0.15)" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <circle cx="250" cy="89" r="2.5" fill="rgba(64,216,192,0.3)"/>
+  <circle cx="250" cy="135" r="2.5" fill="rgba(64,216,192,0.3)"/>
+  <circle cx="250" cy="181" r="2.5" fill="rgba(64,216,192,0.3)"/>
+
+  <!-- Vertical separator hint -->
+  <line x1="250" y1="68" x2="250" y2="202" stroke="rgba(64,216,192,0.07)" stroke-width="1"/>
+
+  <!-- ════════════════════════════════════════
+       ANNOTATION
+  ════════════════════════════════════════ -->
+  <text x="250" y="235" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="8" font-style="italic">Le media clarifie la frontiere</text>
+
+  <!-- ════════════════════════════════════════
+       SPORES
+  ════════════════════════════════════════ -->
+  <circle cx="30" cy="250" r="1.1" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="470" cy="240" r="1.3" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="380" cy="48" r="0.9" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="80" cy="45" r="1.2" fill="rgba(64,216,192,0.04)"/>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <text x="250" y="268" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">Voix — methode Oxynoe — 05/04/2026</text>
+
+</svg>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fig. — Pattern Escalade par note — 05/04/2026 -->
+<svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace">
+
+  <defs>
+    <radialGradient id="bg-grad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0a4858"/>
+      <stop offset="100%" stop-color="#041c24"/>
+    </radialGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,200,220,0.06)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="250" fill="url(#bg-grad)" rx="6"/>
+  <rect width="600" height="250" fill="url(#grid)" rx="6"/>
+
+  <!-- ════════════════════════════════════════
+       TITRE
+  ════════════════════════════════════════ -->
+  <text x="300" y="28" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Pattern — Escalade par note</text>
+
+  <!-- ════════════════════════════════════════
+       FLOW LABEL
+  ════════════════════════════════════════ -->
+  <text x="300" y="65" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-size="7">probleme detecte                         decision routee                      action</text>
+
+  <!-- ════════════════════════════════════════
+       PERSONA A (blue)
+  ════════════════════════════════════════ -->
+  <rect x="30" y="80" width="100" height="50" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
+  <text x="80" y="109" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="9">Persona A</text>
+  <!-- Coral problem indicator -->
+  <circle cx="118" cy="90" r="5" fill="rgba(224,80,80,0.15)" stroke="#e05050" stroke-width="1"/>
+  <text x="118" y="93" text-anchor="middle" font-size="7" fill="#e05050">!</text>
+
+  <!-- Arrow: A -> shared/notes/ -->
+  <line x1="130" y1="105" x2="182" y2="105" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(188,105) rotate(180)"/>
+  <text x="157" y="97" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">note</text>
+
+  <!-- ════════════════════════════════════════
+       SHARED/NOTES/
+  ════════════════════════════════════════ -->
+  <rect x="188" y="80" width="110" height="50" rx="3" fill="rgba(64,216,192,0.04)" stroke="rgba(64,216,192,0.15)" stroke-width="0.7"/>
+  <text x="243" y="104" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-size="7">shared/notes/</text>
+  <text x="243" y="118" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-size="6">bus asynchrone</text>
+
+  <!-- Arrow: shared/notes/ -> PO -->
+  <line x1="298" y1="105" x2="347" y2="105" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(353,105) rotate(180)"/>
+
+  <!-- ════════════════════════════════════════
+       PO (amber)
+  ════════════════════════════════════════ -->
+  <rect x="353" y="80" width="90" height="50" rx="3" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="0.7"/>
+  <text x="398" y="109" text-anchor="middle" fill="#d4a030" font-size="9">PO</text>
+
+  <!-- Arrow: PO -> Persona B -->
+  <line x1="443" y1="105" x2="473" y2="105" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(479,105) rotate(180)"/>
+  <text x="460" y="97" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">route</text>
+
+  <!-- ════════════════════════════════════════
+       PERSONA B (green)
+  ════════════════════════════════════════ -->
+  <rect x="480" y="80" width="100" height="50" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
+  <text x="530" y="109" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="9">Persona B</text>
+
+  <!-- ════════════════════════════════════════
+       INTERDIT (direct)
+  ════════════════════════════════════════ -->
+  <line x1="80" y1="160" x2="530" y2="160" stroke="rgba(224,80,80,0.2)" stroke-width="1" stroke-dasharray="6,4"/>
+  <line x1="295" y1="153" x2="305" y2="167" stroke="#e05050" stroke-width="1.5" opacity="0.6"/>
+  <line x1="305" y1="153" x2="295" y2="167" stroke="#e05050" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Annotation -->
+  <text x="300" y="185" text-anchor="middle" fill="rgba(224,80,80,0.5)" font-size="7">pas de communication directe entre personas</text>
+
+  <!-- ════════════════════════════════════════
+       SPORES
+  ════════════════════════════════════════ -->
+  <circle cx="560" cy="210" r="1.2" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="40" cy="220" r="1.0" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="300" cy="230" r="1.4" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="480" cy="45" r="0.9" fill="rgba(64,216,192,0.04)"/>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <text x="300" y="238" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">Voix — methode Oxynoe — 05/04/2026</text>
+
+</svg>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fig. — Anti-pattern Contamination factuelle — 05/04/2026 -->
+<svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace">
+
+  <defs>
+    <radialGradient id="bg-grad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0a4858"/>
+      <stop offset="100%" stop-color="#041c24"/>
+    </radialGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,200,220,0.06)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="300" fill="url(#bg-grad)" rx="6"/>
+  <rect width="600" height="300" fill="url(#grid)" rx="6"/>
+
+  <!-- ════════════════════════════════════════
+       TITRE
+  ════════════════════════════════════════ -->
+  <text x="300" y="28" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Anti-pattern — Contamination factuelle</text>
+
+  <!-- ════════════════════════════════════════
+       SOURCE: APPROXIMATION (coral)
+  ════════════════════════════════════════ -->
+  <rect x="30" y="85" width="120" height="60" rx="4" fill="rgba(224,80,80,0.05)" stroke="rgba(224,80,80,0.2)" stroke-width="1.2"/>
+  <text x="90" y="110" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8">Approximation</text>
+  <text x="90" y="130" text-anchor="middle" fill="#e05050" font-size="11" font-weight="600">"15 ans"</text>
+
+  <!-- ════════════════════════════════════════
+       FLECHES DE PROPAGATION
+  ════════════════════════════════════════ -->
+  <line x1="150" y1="95" x2="222" y2="62" stroke="rgba(224,80,80,0.2)" stroke-width="1"/>
+  <line x1="150" y1="105" x2="222" y2="92" stroke="rgba(224,80,80,0.2)" stroke-width="1"/>
+  <line x1="150" y1="115" x2="222" y2="122" stroke="rgba(224,80,80,0.2)" stroke-width="1"/>
+  <line x1="150" y1="125" x2="222" y2="152" stroke="rgba(224,80,80,0.2)" stroke-width="1"/>
+  <line x1="150" y1="135" x2="222" y2="182" stroke="rgba(224,80,80,0.2)" stroke-width="1"/>
+
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(224,80,80,0.3)" transform="translate(225,60) rotate(155)"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(224,80,80,0.3)" transform="translate(225,91) rotate(170)"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(224,80,80,0.3)" transform="translate(225,121) rotate(185)"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(224,80,80,0.3)" transform="translate(225,151) rotate(200)"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(224,80,80,0.3)" transform="translate(225,181) rotate(210)"/>
+
+  <!-- ════════════════════════════════════════
+       DOCS CONTAMINES
+  ════════════════════════════════════════ -->
+  <rect x="228" y="45" width="130" height="30" rx="3" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.1)" stroke-width="0.7"/>
+  <text x="250" y="64" font-size="7" fill="rgba(64,216,192,0.4)">Doc 1</text>
+  <text x="340" y="64" font-size="7" fill="rgba(224,80,80,0.5)">15 ans</text>
+
+  <rect x="228" y="80" width="130" height="30" rx="3" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.1)" stroke-width="0.7"/>
+  <text x="250" y="99" font-size="7" fill="rgba(64,216,192,0.4)">Doc 2</text>
+  <text x="340" y="99" font-size="7" fill="rgba(224,80,80,0.5)">15 ans</text>
+
+  <rect x="228" y="115" width="130" height="30" rx="3" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.1)" stroke-width="0.7"/>
+  <text x="250" y="134" font-size="7" fill="rgba(64,216,192,0.4)">Doc 3</text>
+  <text x="340" y="134" font-size="7" fill="rgba(224,80,80,0.5)">15 ans</text>
+
+  <rect x="228" y="150" width="130" height="30" rx="3" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.1)" stroke-width="0.7"/>
+  <text x="250" y="169" font-size="7" fill="rgba(64,216,192,0.4)">Doc 4</text>
+  <text x="340" y="169" font-size="7" fill="rgba(224,80,80,0.5)">15 ans</text>
+
+  <rect x="228" y="185" width="130" height="30" rx="3" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.1)" stroke-width="0.7"/>
+  <text x="250" y="204" font-size="7" fill="rgba(64,216,192,0.4)">Doc 5</text>
+  <text x="340" y="204" font-size="7" fill="rgba(224,80,80,0.5)">15 ans</text>
+
+  <text x="293" y="232" text-anchor="middle" font-size="9" fill="rgba(64,216,192,0.15)">...</text>
+
+  <!-- ════════════════════════════════════════
+       SECONDE VAGUE
+  ════════════════════════════════════════ -->
+  <line x1="358" y1="60" x2="420" y2="60" stroke="rgba(224,80,80,0.1)" stroke-width="0.5"/>
+  <line x1="358" y1="95" x2="420" y2="78" stroke="rgba(224,80,80,0.1)" stroke-width="0.5"/>
+  <line x1="358" y1="130" x2="420" y2="95" stroke="rgba(224,80,80,0.1)" stroke-width="0.5"/>
+
+  <rect x="422" y="48" width="100" height="24" rx="3" fill="rgba(64,216,192,0.01)" stroke="rgba(64,216,192,0.05)" stroke-width="0.7"/>
+  <text x="472" y="64" text-anchor="middle" font-size="6" fill="rgba(64,216,192,0.15)">cite Doc 1...</text>
+
+  <rect x="422" y="78" width="100" height="24" rx="3" fill="rgba(64,216,192,0.01)" stroke="rgba(64,216,192,0.05)" stroke-width="0.7"/>
+  <text x="472" y="94" text-anchor="middle" font-size="6" fill="rgba(64,216,192,0.15)">cite Doc 2...</text>
+
+  <rect x="422" y="108" width="100" height="24" rx="3" fill="rgba(64,216,192,0.01)" stroke="rgba(64,216,192,0.05)" stroke-width="0.7"/>
+  <text x="472" y="124" text-anchor="middle" font-size="6" fill="rgba(64,216,192,0.15)">cite Doc 3...</text>
+
+  <!-- Proliferation label -->
+  <text x="470" y="155" text-anchor="middle" font-size="7" fill="rgba(64,216,192,0.25)">proliferation</text>
+  <line x1="440" y1="158" x2="500" y2="158" stroke="rgba(64,216,192,0.08)" stroke-width="0.5"/>
+
+  <!-- ════════════════════════════════════════
+       ANNOTATION
+  ════════════════════════════════════════ -->
+  <text x="300" y="270" text-anchor="middle" fill="#e05050" font-size="8" font-style="italic">Plus de documents = erreur plus invisible</text>
+
+  <!-- ════════════════════════════════════════
+       SPORES
+  ════════════════════════════════════════ -->
+  <circle cx="560" cy="270" r="1.2" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="40" cy="280" r="1.0" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="550" cy="40" r="1.4" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="30" cy="50" r="0.8" fill="rgba(64,216,192,0.04)"/>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <text x="300" y="290" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">Voix — methode Oxynoe — 05/04/2026</text>
+
+</svg>
