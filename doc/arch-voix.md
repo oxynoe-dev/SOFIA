@@ -25,37 +25,38 @@ Le seul prerequis est un LLM capable de suivre des instructions persistantes (CL
 
 ---
 
-![Architecture Voix](arch-voix.svg)
+![Architecture Voix](figures/arch-voix.svg)
 
 ## 2. Architecture — 3 couches + terrain
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                      METHODE                             │
-│  principes · personas · friction · orchestration ·       │
-│  isolation · tracabilite · artefacts · instance ·        │
-│  devoirs                                                 │
-│  → Le pourquoi. Tient sans outil.                        │
+│                    core/                                  │
+│  METHODE   principes · personas · friction ·             │
+│            orchestration · isolation · tracabilite ·      │
+│            artefacts · instance · devoirs                 │
+│            → Le pourquoi. Tient sans outil.              │
+│                                                           │
+│  TEMPLATES 17 templates + 7 archetypes personas          │
+│            → Le pret-a-l'emploi. Incarne la methode.     │
 ├─────────────────────────────────────────────────────────┤
-│                   IMPLEMENTATION                         │
-│  claude-md · memoire · sessions · hooks                  │
-│  → Le comment. Specifique Claude Code aujourd'hui.       │
+│                 claude-code/                               │
+│  IMPLEMENTATION  claude-md · memoire · sessions · hooks   │
+│            → Le comment. Specifique Claude Code.          │
 ├─────────────────────────────────────────────────────────┤
-│                      OUTILLAGE                           │
-│  templates (17) · archetypes (7) · onboarding · lexique  │
-│  → Le pret-a-l'emploi.                                   │
-└─────────────────────────────────────────────────────────┘
-        ↓ alimente par ↓
-┌─────────────────────────────────────────────────────────┐
-│                      TERRAIN                             │
-│  exemples/katen (7 personas) · retours (9 REX)           │
-│  → La preuve. Le terrain valide la methode.              │
+│                    doc/                                    │
+│  TERRAIN   examples/katen (7 personas) · feedback (9 REX) │
+│  GUIDES    onboarding · lexique · utilisateur             │
+│  ARCHI     arch-voix, ADR, tests                          │
+│            → La preuve, la doc, les decisions.            │
 └─────────────────────────────────────────────────────────┘
 ```
 
-### Couche Methode (provider-agnostic)
+### core/ — Methode + outillage (provider-agnostic)
 
-9 documents. Aucune dependance a un outil specifique.
+9 documents de methode. Aucune dependance a un outil specifique. Les templates incarnent la methode en formats prets a l'emploi.
+
+**Regle de versionnage** : modifier un document methode = minor bump. Modifier un template = patch bump.
 
 | Document | Concept cle | En une phrase |
 |---|---|---|
@@ -69,7 +70,13 @@ Le seul prerequis est un LLM capable de suivre des instructions persistantes (CL
 | `instance.md` | Structure d'instance | Marqueur voix.md, workspaces, shared/, conventions |
 | `devoirs.md` | Devoirs de l'orchestrateur | 6 obligations que l'humain se donne pour que l'armature tienne |
 
-### Couche Implementation (Claude Code)
+| Templates | Contenu |
+|---|---|
+| **Structurels** | persona, claude-md, workspace, session, roadmap-produit, voix-instance, team-orga |
+| **Bus** | note, review, feature, adr |
+| **Archetypes** | architecte, dev, ux, stratege, chercheur, redacteur, graphiste |
+
+### claude-code/ — Implementation
 
 4 documents specifiques a Claude Code. C'est la couche qui change si on porte Voix sur un autre provider.
 
@@ -80,20 +87,21 @@ Le seul prerequis est un LLM capable de suivre des instructions persistantes (CL
 | `sessions.md` | Protocole ouverture/fermeture, resume obligatoire |
 | `hooks.md` | Automatisations declenchees par des evenements |
 
-### Couche Outillage
+### doc/ — Documentation, terrain, decisions
 
-Templates et outils prets a l'emploi pour bootstrapper une instance.
-
-| Categorie | Contenu |
+| Contenu | Role |
 |---|---|
-| **Templates structurels** | persona, claude-md, workspace, session, roadmap-produit, voix-instance, team-orga |
-| **Templates bus** | note, review, feature, adr |
-| **Archetypes personas** | architecte, dev, ux, stratege, chercheur, redacteur, graphiste |
-| **Guides** | onboarding (process d'accueil), lexique (template) |
+| `examples/katen/` | 7 fiches personas — terrain de validation |
+| `feedback/` | 9 REX — pieges, patterns, succes |
+| `onboarding.md` | Guide de demarrage |
+| `lexique.md` | Termes de la methode |
+| `utilisateur.md` | Guide utilisateur unifie |
+| `arch-voix.md` | Ce document |
+| `figures/` | Visuels SVG |
+| `adr/` | Decisions structurantes |
+| `tests/` | Plans de test |
 
-### Terrain
-
-L'instance Katen (7 personas, 5 produits, 177 sessions, 62 ADR, 167 artefacts bus) sert de vitrine et de validation. 9 retours d'experience documentent les pieges, les patterns et les succes.
+L'instance Katen (7 personas, 5 produits, 210+ sessions, 62 ADR) sert de vitrine et de validation.
 
 ---
 
@@ -206,62 +214,50 @@ voix/
 ├── README.md                        ← manifeste
 ├── LICENSE                          ← MIT
 │
-├── methode/                         ← couche 1 : le pourquoi (7 docs)
-│   ├── principes.md
-│   ├── personas.md
+├── core/                            ← couche 1 : la methode
+│   ├── principes.md                   9 documents — le pourquoi
+│   ├── personas.md                    Tient sans outil.
 │   ├── friction.md
 │   ├── orchestration.md
 │   ├── isolation.md
 │   ├── tracabilite.md
 │   ├── artefacts.md
 │   ├── instance.md
-│   └── devoirs.md
-│
-├── claude-code/                     ← couche 2 : le comment (4 docs)
-│   ├── claude-md.md
-│   ├── memoire.md
-│   ├── sessions.md
-│   └── hooks.md
-│
-├── outillage/                       ← couche 3 : le pret-a-l'emploi
-│   ├── onboarding.md
-│   ├── lexique.md
-│   └── templates/
-│       ├── persona.md                 template vierge
-│       ├── persona-{archetype}.md     7 archetypes pre-remplis
+│   ├── devoirs.md
+│   └── templates/                     le pret-a-l'emploi
+│       ├── persona.md                   template vierge
+│       ├── persona-{archetype}.md       7 archetypes pre-remplis
 │       ├── claude-md.md
 │       ├── session.md
 │       ├── roadmap-produit.md
 │       ├── voix-instance.md
 │       ├── team-orga.md
-│       ├── note.md
-│       ├── review.md
-│       ├── feature.md
-│       ├── adr.md
+│       ├── note.md · review.md
+│       ├── feature.md · adr.md
 │       └── workspace/
 │           └── CLAUDE.md
 │
-├── exemples/katen/                  ← terrain : 7 fiches
-│   ├── mira.md · axel.md · lea.md
-│   ├── nora.md · marc.md
-│   └── sofia.md · winston.md
+├── claude-code/                     ← couche 2 : le comment (4 docs)
+│   ├── claude-md.md                   Specifique Claude Code.
+│   ├── memoire.md
+│   ├── sessions.md
+│   └── hooks.md
 │
-├── retours/                         ← terrain : 9 REX
-│   ├── katen.md
-│   ├── pieges.md
-│   ├── cas-adr-051.md
-│   ├── calibrage-personas.md
-│   ├── chaine-produit.md
-│   ├── contamination-factuelle.md
-│   ├── isolation-production.md
-│   ├── pattern-challenger.md
-│   └── pattern-editorial.md
-│
-└── doc/                             ← architecture et decisions
+└── doc/                             ← documentation, terrain, decisions
     ├── arch-voix.md                   ce document
-    ├── arch-voix.svg                  vue architecture
+    ├── figures/
+    │   └── arch-voix.svg              vue architecture
     ├── adr/                           decisions structurantes
-    └── tests/                         plans de test
+    ├── tests/                         plans de test
+    ├── onboarding.md                  guide de demarrage
+    ├── lexique.md                     termes de la methode
+    ├── utilisateur.md                 guide utilisateur
+    ├── examples/katen/                terrain : 7 fiches personas
+    │   └── mira.md · axel.md · ...
+    └── feedback/                      terrain : 9 REX
+        ├── katen.md · pieges.md
+        ├── contamination-factuelle.md
+        └── ...
 ```
 
 ---
@@ -296,15 +292,16 @@ Voix definit les conventions. Convergence les consomme. Pas de duplication — r
 
 ```
 voix/
-├── methode/          ← noyau commun (provider-agnostic)
-├── outillage/        ← noyau commun
+├── core/             ← noyau commun (provider-agnostic)
+│   ├── *.md            methode
+│   └── templates/      outillage
 ├── claude-code/      ← adaptateur Claude Code
 ├── mistral/          ← adaptateur Mistral (futur)
 ├── gemini/           ← adaptateur Gemini (futur)
-└── ...
+└── doc/              ← documentation, terrain
 ```
 
-La couche methode et outillage sont deja provider-agnostic. La couche implementation (claude-code/) est le seul point de variation. Chaque adaptateur documente les equivalents du provider pour : instructions persistantes, memoire, sessions, automatisations.
+`core/` (methode + templates) est deja provider-agnostic. La couche implementation (claude-code/) est le seul point de variation. Chaque adaptateur documente les equivalents du provider pour : instructions persistantes, memoire, sessions, automatisations.
 
 Pre-requis : retours utilisateurs v0.3 + i18n v0.4. Ne pas anticiper sans feedback.
 

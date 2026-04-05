@@ -61,11 +61,9 @@ calibré pour ton projet.
 
 | | |
 |---|---|
-| `methode/` | Les principes, l'orchestration — pourquoi ça marche |
-| `claude-code/` | Le support — comment ça s'implémente dans Claude Code |
-| `outillage/` | Templates, archetypes, onboarding — pret a l'emploi |
-| `exemples/katen/` | Le terrain — 7 personas en production sur un vrai projet |
-| `retours/` | Le vécu — ce qui marche et ce qui casse |
+| `core/` | La methode (9 docs) + templates — pourquoi ca marche |
+| `claude-code/` | Le support — comment ca s'implemente dans Claude Code |
+| `doc/` | Guides, terrain (examples, feedback), architecture, ADR |
 
 ## Origine
 

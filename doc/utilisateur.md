@@ -253,14 +253,14 @@ La prochaine session n'aura pas ton contexte en tete. Les resumes sont sa memoir
 
 | Document | Contenu |
 |----------|---------|
-| `methode/principes.md` | Les 7 principes en detail |
-| `methode/personas.md` | Anatomie d'un persona, calibrage, iteration |
-| `methode/friction.md` | La friction intentionnelle comme mecanisme |
-| `methode/orchestration.md` | Le role du PO comme message bus |
-| `methode/isolation.md` | L'isolation par workspace |
-| `methode/tracabilite.md` | Sessions, ADR, reviews |
-| `methode/artefacts.md` | Le bus d'echange shared/ |
+| `core/principes.md` | Les 7 principes en detail |
+| `core/personas.md` | Anatomie d'un persona, calibrage, iteration |
+| `core/friction.md` | La friction intentionnelle comme mecanisme |
+| `core/orchestration.md` | Le role du PO comme message bus |
+| `core/isolation.md` | L'isolation par workspace |
+| `core/tracabilite.md` | Sessions, ADR, reviews |
+| `core/artefacts.md` | Le bus d'echange shared/ |
 | `claude-code/claude-md.md` | Anatomie d'un CLAUDE.md |
 | `claude-code/sessions.md` | Format des resumes de session |
 | `claude-code/memoire.md` | Memoire persistante entre sessions |
-| `exemples/katen/` | 7 personas en production — reference de calibrage |
+| `doc/examples/katen/` | 7 personas en production — reference de calibrage |
