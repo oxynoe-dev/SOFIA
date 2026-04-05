@@ -56,6 +56,12 @@ Un producteur, trois challengers. Intensite maximale — c'est le produit cle.
 - **Scalable** — on peut ajouter des challengers sans changer le
   producteur. Le cout est lineaire, pas combinatoire.
 
+## Signal academique
+
+Huang et al. (2025) — *Resilience of Multi-Agent Systems to Untrustworthy Agents* (arXiv:2408.00989) — mesurent la resilience de topologies multi-agents face a des agents non fiables. La **topologie hierarchique** (coordinateur central + agents specialises) ne perd que -5.5% de performance avec des agents defaillants, contre -10% a -24% pour les topologies plates (debat, relais).
+
+**Limite** : l'etude porte sur du multi-agent pur (IA↔IA), sans humain au centre. Le pattern challenger dans Voix est une orchestration humain↔IA — le PO arbitre, pas un agent coordinateur. C'est un **signal convergent** (la topologie hierarchique est resiliente), pas une **validation** de notre methode. Personne n'a mesure ce pattern avec un humain orchestrateur.
+
 ## Pour ton projet
 
 Le pattern challenger emerge naturellement quand un persona commence a
