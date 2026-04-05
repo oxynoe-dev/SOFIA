@@ -1,4 +1,4 @@
-# Retour d'experience — Pattern challenger
+# Retour d'expérience — Pattern challenger
 
 > Un producteur, N challengers. Chacun sur son axe. Chacun avec un droit de bloquant.
 
@@ -6,72 +6,72 @@
 
 ## Le pattern
 
-Un persona produit. D'autres personas interviennent pour verifier la
-qualite sur leur axe d'expertise, sans produire eux-memes. Chaque
+Un persona produit. D'autres personas interviennent pour vérifier la
+qualité sur leur axe d'expertise, sans produire eux-mêmes. Chaque
 challenger a un droit de bloquant sur son axe. Le PO orchestre et tranche.
 
-C'est distinct de la friction entre pairs (deux personas au meme niveau
-qui contestent). Le challenge est **asymetrique** : un qui produit,
-d'autres qui verifient.
+C'est distinct de la friction entre pairs (deux personas au même niveau
+qui contestent). Le challenge est **asymétrique** : un qui produit,
+d'autres qui vérifient.
 
-## Instances observees sur Katen
+## Instances observées sur Katen
 
-### Chaine produit (code)
+### Chaîne produit (code)
 
-| Role | Persona | Axe |
+| Rôle | Persona | Axe |
 |------|---------|-----|
-| Producteur | Axel | Code, implementation |
-| Challenger | Mira | Architecture, coherence ADR |
-| Challenger | Lea | Invariantes formelles, rigueur |
+| Producteur | Axel | Code, implémentation |
+| Challenger | Mira | Architecture, cohérence ADR |
+| Challenger | Léa | Invariantes formelles, rigueur |
 | Challenger | Nora | UX, flux utilisateur |
 
-Un producteur, trois challengers. Intensite maximale — c'est le produit cle.
+Un producteur, trois challengers. Intensité maximale — c'est le produit clé.
 
-### Chaine editoriale (livre blanc)
+### Chaîne éditoriale (livre blanc)
 
-| Role | Persona | Axe |
+| Rôle | Persona | Axe |
 |------|---------|-----|
-| Producteur | Winston | Redaction, narration |
-| Challenger | Mira | Structure, coherence argumentaire |
-| Challenger | Lea | References academiques, faits |
+| Producteur | Winston | Rédaction, narration |
+| Challenger | Mira | Structure, cohérence argumentaire |
+| Challenger | Léa | Références académiques, faits |
 | Challenger | Marc | Positionnement, ton |
-| Challenger | Nora | UX des livrables publies |
+| Challenger | Nora | UX des livrables publiés |
 
-### Chaine production multi-support
+### Chaîne production multi-support
 
-| Role | Persona | Axe |
+| Rôle | Persona | Axe |
 |------|---------|-----|
-| Producteur | Sofia | PDF, PPTX, web, reseaux |
-| Challenger | Nora | UX, accessibilite |
+| Producteur | Sofia | PDF, PPTX, web, réseaux |
+| Challenger | Nora | UX, accessibilité |
 
-## Proprietes
+## Propriétés
 
-- **Asymetrie** — le producteur avance, les challengers interviennent.
+- **Asymétrie** — le producteur avance, les challengers interviennent.
   Pas l'inverse.
-- **Axe unique** — chaque challenger verifie sur son axe d'expertise,
+- **Axe unique** — chaque challenger vérifie sur son axe d'expertise,
   pas sur tout. L'architecte ne challenge pas l'UX. L'UX ne challenge
   pas l'archi.
-- **Droit de bloquant** — un challenger peut bloquer. Le PO decide si
-  le bloquant est leve ou maintenu.
+- **Droit de bloquant** — un challenger peut bloquer. Le PO décide si
+  le bloquant est levé ou maintenu.
 - **Scalable** — on peut ajouter des challengers sans changer le
-  producteur. Le cout est lineaire, pas combinatoire.
+  producteur. Le coût est linéaire, pas combinatoire.
 
-## Signal academique
+## Signal académique
 
-Huang et al. (2025) — *Resilience of Multi-Agent Systems to Untrustworthy Agents* (arXiv:2408.00989) — mesurent la resilience de topologies multi-agents face a des agents non fiables. La **topologie hierarchique** (coordinateur central + agents specialises) ne perd que -5.5% de performance avec des agents defaillants, contre -10% a -24% pour les topologies plates (debat, relais).
+Huang et al. (2025) — *Resilience of Multi-Agent Systems to Untrustworthy Agents* (arXiv:2408.00989) — mesurent la résilience de topologies multi-agents face à des agents non fiables. La **topologie hiérarchique** (coordinateur central + agents spécialisés) ne perd que -5.5% de performance avec des agents défaillants, contre -10% à -24% pour les topologies plates (débat, relais).
 
-**Limite** : l'etude porte sur du multi-agent pur (IA↔IA), sans humain au centre. Le pattern challenger dans Voix est une orchestration humain↔IA — le PO arbitre, pas un agent coordinateur. C'est un **signal convergent** (la topologie hierarchique est resiliente), pas une **validation** de notre methode. Personne n'a mesure ce pattern avec un humain orchestrateur.
+**Limite** : l'étude porte sur du multi-agent pur (IA↔IA), sans humain au centre. Le pattern challenger dans Voix est une orchestration humain↔IA — le PO arbitre, pas un agent coordinateur. C'est un **signal convergent** (la topologie hiérarchique est résiliente), pas une **validation** de notre méthode. Personne n'a mesuré ce pattern avec un humain orchestrateur.
 
 ## Pour ton projet
 
-Le pattern challenger emerge naturellement quand un persona commence a
+Le pattern challenger émerge naturellement quand un persona commence à
 produire des livrables qui impactent plusieurs dimensions. Quelques
-regles :
+règles :
 
-- Identifie le producteur et ses challengers pour chaque chaine
-- Donne a chaque challenger un axe explicite — pas "review en general"
-  mais "verifie la rigueur des references" ou "verifie l'accessibilite"
-- Le droit de bloquant est reel — si un challenger bloque, le PO tranche,
+- Identifie le producteur et ses challengers pour chaque chaîne
+- Donne à chaque challenger un axe explicite — pas "review en général"
+  mais "vérifie la rigueur des références" ou "vérifie l'accessibilité"
+- Le droit de bloquant est réel — si un challenger bloque, le PO tranche,
   mais le producteur ne passe pas en force
 - Documente les droits de challenge dans les fiches personas (section
   "Ce qu'il/elle challenge")

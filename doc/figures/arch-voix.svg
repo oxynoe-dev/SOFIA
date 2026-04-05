@@ -4,45 +4,9 @@
       <stop offset="0%" stop-color="#0a4858"/>
       <stop offset="100%" stop-color="#041c24"/>
     </radialGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-    </filter>
   </defs>
 
   <rect width="900" height="680" fill="url(#bg)"/>
-
-  <!-- Grille -->
-  <g opacity="0.06" stroke="#00c8dc" stroke-width="0.3">
-    <line x1="0" y1="20" x2="900" y2="20"/><line x1="0" y1="40" x2="900" y2="40"/>
-    <line x1="0" y1="60" x2="900" y2="60"/><line x1="0" y1="80" x2="900" y2="80"/>
-    <line x1="0" y1="100" x2="900" y2="100"/><line x1="0" y1="120" x2="900" y2="120"/>
-    <line x1="0" y1="140" x2="900" y2="140"/><line x1="0" y1="160" x2="900" y2="160"/>
-    <line x1="0" y1="180" x2="900" y2="180"/><line x1="0" y1="200" x2="900" y2="200"/>
-    <line x1="0" y1="220" x2="900" y2="220"/><line x1="0" y1="240" x2="900" y2="240"/>
-    <line x1="0" y1="260" x2="900" y2="260"/><line x1="0" y1="280" x2="900" y2="280"/>
-    <line x1="0" y1="300" x2="900" y2="300"/><line x1="0" y1="320" x2="900" y2="320"/>
-    <line x1="0" y1="340" x2="900" y2="340"/><line x1="0" y1="360" x2="900" y2="360"/>
-  </g>
-
-  <!-- Spores -->
-  <circle cx="100" cy="80" r="40" fill="#40d8c0" opacity="0.03"/>
-  <circle cx="780" cy="120" r="50" fill="#40d8c0" opacity="0.03"/>
-  <circle cx="450" cy="620" r="45" fill="#40d8c0" opacity="0.03"/>
-  <circle cx="200" cy="500" r="35" fill="#40d8c0" opacity="0.04"/>
-  <circle cx="820" cy="440" r="30" fill="#40d8c0" opacity="0.03"/>
-
-  <!-- Caustics -->
-  <ellipse cx="350" cy="200" rx="140" ry="40" fill="#00c8dc" opacity="0.015" transform="rotate(-5,350,200)"/>
-  <ellipse cx="650" cy="400" rx="100" ry="30" fill="#00c8dc" opacity="0.02" transform="rotate(4,650,400)"/>
-
-  <!-- Particules -->
-  <circle cx="130" cy="150" r="1" fill="#40d8c0" opacity="0.15"/>
-  <circle cx="750" cy="90" r="1.2" fill="#40d8c0" opacity="0.12"/>
-  <circle cx="400" cy="50" r="0.8" fill="#40d8c0" opacity="0.18"/>
-  <circle cx="70" cy="400" r="1" fill="#40d8c0" opacity="0.14"/>
-  <circle cx="860" cy="560" r="0.9" fill="#40d8c0" opacity="0.16"/>
-  <circle cx="500" cy="340" r="1.1" fill="#40d8c0" opacity="0.13"/>
 
   <!-- Titre -->
   <text x="450" y="34" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(64,216,192,0.5)" letter-spacing="0.12em">ARCHITECTURE VOIX</text>
@@ -146,7 +110,7 @@
   <text x="735" y="92" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(64,216,192,0.45)" letter-spacing="0.08em">MODELE CONCEPTUEL</text>
 
   <!-- Persona (haut) -->
-  <circle cx="735" cy="138" r="28" fill="rgba(64,216,192,0.06)" stroke="rgba(64,216,192,0.35)" stroke-width="0.8" filter="url(#glow)"/>
+  <circle cx="735" cy="138" r="28" fill="rgba(64,216,192,0.06)" stroke="rgba(64,216,192,0.35)" stroke-width="0.8"/>
   <text x="735" y="135" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#f0f8f5" font-weight="300">Persona</text>
   <text x="735" y="148" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="rgba(64,216,192,0.35)">contrainte</text>
 
@@ -166,7 +130,7 @@
   <path d="M 698,255 Q 735,268 772,255" fill="none" stroke="rgba(64,180,160,0.15)" stroke-width="0.6"/>
 
   <!-- PO au centre -->
-  <circle cx="735" cy="205" r="20" fill="rgba(64,216,192,0.05)" stroke="#40d8c0" stroke-width="1" filter="url(#glow)"/>
+  <circle cx="735" cy="205" r="20" fill="rgba(64,216,192,0.05)" stroke="#40d8c0" stroke-width="1"/>
   <text x="735" y="202" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#f0f8f5" font-weight="300">PO</text>
   <text x="735" y="214" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="rgba(64,216,192,0.35)">arbitre</text>
 
@@ -231,7 +195,7 @@
   <path d="M 238,482 Q 254,478 268,482" fill="none" stroke="rgba(64,180,160,0.15)" stroke-width="0.5"/>
 
   <!-- PO -->
-  <circle cx="478" cy="484" r="24" fill="rgba(64,216,192,0.05)" stroke="#40d8c0" stroke-width="0.8" filter="url(#glow)"/>
+  <circle cx="478" cy="484" r="24" fill="rgba(64,216,192,0.05)" stroke="#40d8c0" stroke-width="0.8"/>
   <text x="478" y="481" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#f0f8f5" font-weight="300">PO</text>
   <text x="478" y="494" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="rgba(64,216,192,0.35)">humain</text>
 

@@ -1,14 +1,14 @@
 # Guide utilisateur Voix
 
-> Des roles specialises qui pensent ensemble. Le produit emerge de leur conversation.
+> Des rôles spécialisés qui pensent ensemble. Le produit émerge de leur conversation.
 
 ---
 
 ## En une minute
 
-Voix est une methode pour orchestrer des assistants IA specialises sur un projet. Chaque assistant a un role, un perimetre et des interdits. Ils ne se parlent pas — c'est toi qui portes le contexte entre eux. La friction entre les roles produit de meilleures decisions.
+Voix est une méthode pour orchestrer des assistants IA spécialisés sur un projet. Chaque assistant a un rôle, un périmètre et des interdits. Ils ne se parlent pas — c'est toi qui portes le contexte entre eux. La friction entre les rôles produit de meilleures décisions.
 
-Pour commencer : clone le repo, lance `claude`, et Diapason — le guide integre — te propose ton premier persona.
+Pour commencer : clone le repo, lance `claude`, et Diapason — le guide intégré — te propose ton premier persona.
 
 ```
 git clone https://github.com/oxynoe-dev/voix
@@ -20,63 +20,63 @@ claude
 
 ## 1. Les principes
 
-### Un persona = un role strict
+### Un persona = un rôle strict
 
-Un persona n'est pas un assistant generique. C'est un LLM contraint : un nom, un ton, un perimetre, et surtout des choses qu'il n'a **pas le droit de faire**.
+Un persona n'est pas un assistant générique. C'est un LLM contraint : un nom, un ton, un périmètre, et surtout des choses qu'il n'a **pas le droit de faire**.
 
-La contrainte change tout. Un architecte qui ne code pas est oblige de specifier. Un dev qui ne decide pas de l'architecture est oblige de questionner. Un stratege sans acces au code pense en valeur, pas en implementation.
+La contrainte change tout. Un architecte qui ne code pas est obligé de spécifier. Un dev qui ne décide pas de l'architecture est obligé de questionner. Un stratège sans accès au code pense en valeur, pas en implémentation.
 
-Definis ce que le persona **ne fait pas** avant de definir ce qu'il fait.
+Définis ce que le persona **ne fait pas** avant de définir ce qu'il fait.
 
 ### La friction est productive
 
-Si tous tes personas sont d'accord, ils ne servent a rien. La friction — un architecte qui challenge le dev, un stratege qui remet en question la priorite — c'est le mecanisme qui produit de meilleures decisions.
+Si tous tes personas sont d'accord, ils ne servent à rien. La friction — un architecte qui challenge le dev, un stratège qui remet en question la priorité — c'est le mécanisme qui produit de meilleures décisions.
 
 La friction sans arbitre est du chaos. L'arbitre, c'est toi.
 
 ### L'humain arbitre. Toujours.
 
-Les personas proposent, challengent, produisent. L'humain tranche. Un persona ne valide jamais ses propres propositions. Un persona ne force jamais l'acceptation d'une decision. C'est la regle non negociable de Voix.
+Les personas proposent, challengent, produisent. L'humain tranche. Un persona ne valide jamais ses propres propositions. Un persona ne force jamais l'acceptation d'une décision. C'est la règle non négociable de Voix.
 
 ### Les fichiers sont le protocole
 
-Les personas ne "discutent" pas — ils echangent par **artefacts** : reviews, notes, specs. Ces artefacts sont versionnes, tracables, et lisibles par tous. Un echange par fichier est plus lent qu'un chat. C'est le but. La lenteur force la clarte.
+Les personas ne "discutent" pas — ils échangent par **artefacts** : reviews, notes, specs. Ces artefacts sont versionnés, traçables, et lisibles par tous. Un échange par fichier est plus lent qu'un chat. C'est le but. La lenteur force la clarté.
 
 ### Commence petit, itere
 
-Un persona au demarrage. Deux quand le premier est calibre. Trois quand le besoin est clair. La methode ne se deploie pas en big bang. Elle grandit avec le projet.
+Un persona au démarrage. Deux quand le premier est calibré. Trois quand le besoin est clair. La méthode ne se déploie pas en big bang. Elle grandit avec le projet.
 
 ---
 
-## 2. Demarrage avec Diapason
+## 2. Démarrage avec Diapason
 
-Diapason est le guide integre de Voix. Quand tu lances `claude` dans le repo, il te guide pour creer ton premier persona.
+Diapason est le guide intégré de Voix. Quand tu lances `claude` dans le repo, il te guide pour créer ton premier persona.
 
 ### Le flow
 
 1. **Ton projet** — Diapason te demande ce que tu construis (1-2 tours)
-2. **Premier persona** — il te propose un role structurant adapte a ton contexte. Pas une liste de choix — une proposition directe que tu valides ou ajustes
-3. **Calibrage** — nom, ton, perimetre (ce qu'il fait et ne fait pas). Diapason propose, tu ajustes
-4. **Generation** — Diapason produit le CLAUDE.md et te donne trois cles de depart
+2. **Premier persona** — il te propose un rôle structurant adapté à ton contexte. Pas une liste de choix — une proposition directe que tu valides ou ajustes
+3. **Calibrage** — nom, ton, périmètre (ce qu'il fait et ne fait pas). Diapason propose, tu ajustes
+4. **Génération** — Diapason produit le CLAUDE.md et te donne trois clés de départ
 
 ### L'heuristique du premier persona
 
-| Ton profil | Premier persona propose |
+| Ton profil | Premier persona proposé |
 |------------|------------------------|
-| Solo dev, MVP, code desorganise | Architecte |
-| Equipe, pas de specs | Lead produit |
+| Solo dev, MVP, code désorganisé | Architecte |
+| Équipe, pas de specs | Lead produit |
 | Solo dev, design prioritaire | Design system lead |
 | Data/ML, pipeline flou | Data architect |
 
-Le premier persona est toujours un role structurant — jamais un executant. C'est lui qui va cadrer ta demarche. Les autres viendront apres.
+Le premier persona est toujours un rôle structurant — jamais un exécutant. C'est lui qui va cadrer ta démarche. Les autres viendront après.
 
-### Le briefing de depart
+### Le briefing de départ
 
-Apres avoir genere ton premier CLAUDE.md, Diapason te dit trois choses :
+Après avoir généré ton premier CLAUDE.md, Diapason te dit trois choses :
 
-- **Ton persona va te dire non.** C'est voulu. Quand il refuse une demande parce que c'est hors perimetre, c'est un signal — pas un bug.
-- **Les autres personas viendront.** Pas maintenant. Quand le travail les fera emerger.
-- **Tu peux revenir.** Relance Diapason a tout moment pour ajouter un persona ou ajuster celui-ci.
+- **Ton persona va te dire non.** C'est voulu. Quand il refuse une demande parce que c'est hors périmètre, c'est un signal — pas un bug.
+- **Les autres personas viendront.** Pas maintenant. Quand le travail les fera émerger.
+- **Tu peux revenir.** Relance Diapason à tout moment pour ajouter un persona ou ajuster celui-ci.
 
 ---
 
@@ -86,44 +86,44 @@ Apres avoir genere ton premier CLAUDE.md, Diapason te dit trois choses :
 
 C'est le contrat entre toi et ton persona. Il contient :
 
-- **Qui** — nom, role, posture
-- **Quoi** — perimetre d'intervention, livrables attendus
-- **Ou** — quels fichiers/dossiers sont accessibles
-- **Interdit** — ce qui est hors perimetre (lecture ET ecriture)
+- **Qui** — nom, rôle, posture
+- **Quoi** — périmètre d'intervention, livrables attendus
+- **Où** — quels fichiers/dossiers sont accessibles
+- **Interdit** — ce qui est hors périmètre (lecture ET écriture)
 - **Comment** — conventions, formats, workflow de session
 
-Vise 60-100 lignes. Au-dela, le contexte se dilue.
+Vise 60-100 lignes. Au-delà, le contexte se dilue.
 
 ### Ouverture de session
 
-Le persona lit le dernier resume dans `sessions/`. Le PO decide quoi regarder. Pas de recitation systematique.
+Le persona lit le dernier résumé dans `sessions/`. Le PO décide quoi regarder. Pas de récitation systématique.
 
 ### Fermeture de session
 
-1. Resume dans `sessions/` — Produit, Decisions, Notes deposees, Ouvert
-2. Commit direct dans l'instance — `{persona}: {resume court} ({date})`
-3. Repos produit — preparer le message, le PO execute
+1. Résumé dans `sessions/` — Produit, Décisions, Notes déposées, Ouvert
+2. Commit direct dans l'instance — `{persona}: {résumé court} ({date})`
+3. Repos produit — préparer le message, le PO exécute
 
 Pas de prose. Listes courtes. 30 lignes max.
 
 ### Le test du "non"
 
-Un persona bien calibre dit "non" regulierement :
-- "Ce n'est pas mon role, vois avec [autre persona]"
-- "La spec n'est pas assez precise pour que je code"
-- "Cette decision necessite un ADR avant que j'implemente"
+Un persona bien calibré dit "non" régulièrement :
+- "Ce n'est pas mon rôle, vois avec [autre persona]"
+- "La spec n'est pas assez précise pour que je code"
+- "Cette décision nécessite un ADR avant que j'implémente"
 
-Si ton persona ne dit jamais non, ses contraintes sont trop laches.
+Si ton persona ne dit jamais non, ses contraintes sont trop lâches.
 
 ---
 
-## 4. Emergence — les personas suivants
+## 4. Émergence — les personas suivants
 
-Les personas suivants ne se planifient pas. Ils emergent du travail.
+Les personas suivants ne se planifient pas. Ils émergent du travail.
 
-### Le mecanisme
+### Le mécanisme
 
-Chaque CLAUDE.md genere par Diapason inclut une section **Emergence** :
+Chaque CLAUDE.md généré par Diapason inclut une section **Émergence** :
 
 ```
 ## Emergence
@@ -135,16 +135,16 @@ c'est en dehors de mon perimetre. Tu pourrais avoir besoin
 d'un persona dedie. Relance Diapason si tu veux qu'on en cree un."
 ```
 
-Le persona ne cree pas le nouveau persona — il signale le manque. Tu reviens vers Diapason qui reprend le flow.
+Le persona ne crée pas le nouveau persona — il signale le manque. Tu reviens vers Diapason qui reprend le flow.
 
 ### Exemple concret
 
 Tu travailles avec un architecte. Au bout de quelques sessions :
-- Il te dit 3 fois "je ne code pas, il faudrait quelqu'un pour implementer"
-- Il te signale : "Tu pourrais avoir besoin d'un persona dev dedie"
-- Tu relances Diapason, qui te propose un dev calibre pour ton projet
+- Il te dit 3 fois "je ne code pas, il faudrait quelqu'un pour implémenter"
+- Il te signale : "Tu pourrais avoir besoin d'un persona dev dédié"
+- Tu relances Diapason, qui te propose un dev calibré pour ton projet
 
-C'est exactement ce qui s'est passe sur le projet Katen : le premier persona (architecte) a ete pose. Les 6 autres ont emerge par necessite au fil du travail. Personne ne les avait prevus.
+C'est exactement ce qui s'est passé sur le projet Katen : le premier persona (architecte) a été posé. Les 6 autres ont émergé par nécessité au fil du travail. Personne ne les avait prévus.
 
 ---
 
@@ -152,13 +152,13 @@ C'est exactement ce qui s'est passe sur le projet Katen : le premier persona (ar
 
 ### Un persona = un workspace
 
-Chaque persona vit dans son propre espace de travail avec son CLAUDE.md, ses sessions, ses fichiers. Il ne peut pas lire ou ecrire partout. L'isolation force le persona a rester dans son role.
+Chaque persona vit dans son propre espace de travail avec son CLAUDE.md, ses sessions, ses fichiers. Il ne peut pas lire ou écrire partout. L'isolation force le persona à rester dans son rôle.
 
 ![Structure instance](../doc/figures/fig-structure-instance.svg)
 
-### La zone partagee — shared/
+### La zone partagée — shared/
 
-C'est le seul espace que tous les personas peuvent lire et ecrire. Les echanges passent par des artefacts deposes ici :
+C'est le seul espace que tous les personas peuvent lire et écrire. Les échanges passent par des artefacts déposés ici :
 
 | Type | Convention | Emplacement |
 |------|-----------|-------------|
@@ -166,17 +166,17 @@ C'est le seul espace que tous les personas peuvent lire et ecrire. Les echanges 
 | Reviews | `review-{sujet}-{auteur}.md` | `shared/review/` |
 | Features | `feature-{sujet}.md` | `shared/features/` |
 
-Chaque artefact porte un frontmatter (`de`, `pour`, `type`, `statut`, `date`). Quand il est traite, il migre dans `archives/`.
+Chaque artefact porte un frontmatter (`de`, `pour`, `type`, `statut`, `date`). Quand il est traité, il migre dans `archives/`.
 
 ### Les roadmaps
 
-La planification vit dans `shared/roadmap-{produit}.md`. Chaque roadmap a un **owner** (gardien de la coherence) et chaque item porte un **@owner** (responsable de l'execution).
+La planification vit dans `shared/roadmap-{produit}.md`. Chaque roadmap a un **owner** (gardien de la cohérence) et chaque item porte un **@owner** (responsable de l'exécution).
 
 Il n'y a pas de backlog par persona. Tous les items vivent dans les roadmaps.
 
 ---
 
-## 6. L'orchestration — le role du PO
+## 6. L'orchestration — le rôle du PO
 
 ### Tu es le message bus
 
@@ -189,34 +189,34 @@ Les personas ne se parlent pas. Tu portes le contexte :
 5. Tu transmets le livrable
 6. Tu recueilles la reaction
 
-Chaque transmission est un moment ou tu filtres, reformules, ajoutes du contexte, decides ce qui est pertinent a transmettre.
+Chaque transmission est un moment où tu filtres, reformules, ajoutes du contexte, décides ce qui est pertinent à transmettre.
 
-### Ce que tu ne delegues pas
+### Ce que tu ne délègues pas
 
 - **La priorisation** — quel persona intervient, dans quel ordre
-- **La consolidation** — synthetiser les retours de N personas
-- **La decision** — trancher quand les personas divergent
-- **Le filtrage** — ce qui est pertinent a transmettre ou pas
+- **La consolidation** — synthétiser les retours de N personas
+- **La décision** — trancher quand les personas divergent
+- **Le filtrage** — ce qui est pertinent à transmettre ou pas
 
-### Le cout
+### Le coût
 
-L'orchestration prend du temps. C'est le prix de la qualite. Si l'echange n'en vaut pas le cout, c'est que le sujet ne necessitait pas plusieurs personas.
+L'orchestration prend du temps. C'est le prix de la qualité. Si l'échange n'en vaut pas le coût, c'est que le sujet ne nécessitait pas plusieurs personas.
 
 ---
 
-## 7. La tracabilite
+## 7. La traçabilité
 
-### Trois mecanismes
+### Trois mécanismes
 
-1. **Resumes de session** — chaque session produit un resume. C'est le pont entre les conversations. Format : `sessions/{YYYY-MM-DD}-{HHmm}-{persona}.md`
+1. **Résumés de session** — chaque session produit un résumé. C'est le pont entre les conversations. Format : `sessions/{YYYY-MM-DD}-{HHmm}-{persona}.md`
 
-2. **ADR** — les decisions structurantes sont tracees : contexte, decision, alternatives, consequences, statut. L'ADR est ecrit avant l'implementation.
+2. **ADR** — les décisions structurantes sont tracées : contexte, décision, alternatives, conséquences, statut. L'ADR est écrit avant l'implémentation.
 
-3. **Reviews croisees** — quand un persona intervient sur le travail d'un autre, il produit une review avec des observations factuelles, des recommandations priorisees, et des questions ouvertes.
+3. **Reviews croisées** — quand un persona intervient sur le travail d'un autre, il produit une review avec des observations factuelles, des recommandations priorisées, et des questions ouvertes.
 
-### Si ce n'est pas trace, ca n'existe pas
+### Si ce n'est pas tracé, ça n'existe pas
 
-La prochaine session n'aura pas ton contexte en tete. Les resumes sont sa memoire.
+La prochaine session n'aura pas ton contexte en tête. Les résumés sont sa mémoire.
 
 ---
 
@@ -224,14 +224,14 @@ La prochaine session n'aura pas ton contexte en tete. Les resumes sont sa memoir
 
 | Pattern | Probleme |
 |---------|----------|
-| Le persona generaliste | Fait tout, donc rien de bien |
-| Le persona complaisant | Dit oui a tout, ne challenge jamais |
+| Le persona généraliste | Fait tout, donc rien de bien |
+| Le persona complaisant | Dit oui à tout, ne challenge jamais |
 | La double casquette | "Architecte qui code aussi" — brouille la posture |
-| Trop de personas trop tot | Commence par 1, pas 5 |
-| Le persona fantome | Cree mais jamais utilise — supprime-le |
-| Questions ouvertes au demarrage | L'utilisateur ne sait pas ce dont il a besoin |
-| Pas d'isolation | Sans frontieres, le persona deborde |
-| Pas de tracabilite | Sans resumes, la continuite se perd |
+| Trop de personas trop tôt | Commence par 1, pas 5 |
+| Le persona fantôme | Créé mais jamais utilisé — supprime-le |
+| Questions ouvertes au démarrage | L'utilisateur ne sait pas ce dont il a besoin |
+| Pas d'isolation | Sans frontières, le persona déborde |
+| Pas de traçabilité | Sans résumés, la continuité se perd |
 
 ---
 
@@ -239,14 +239,14 @@ La prochaine session n'aura pas ton contexte en tete. Les resumes sont sa memoir
 
 | Document | Contenu |
 |----------|---------|
-| `core/principes.md` | Les 7 principes en detail |
-| `core/personas.md` | Anatomie d'un persona, calibrage, iteration |
-| `core/friction.md` | La friction intentionnelle comme mecanisme |
-| `protocol/orchestration.md` | Le role du PO comme message bus |
+| `core/principes.md` | Les 7 principes en détail |
+| `core/personas.md` | Anatomie d'un persona, calibrage, itération |
+| `core/friction.md` | La friction intentionnelle comme mécanisme |
+| `protocol/orchestration.md` | Le rôle du PO comme message bus |
 | `protocol/isolation.md` | L'isolation par workspace |
 | `protocol/tracabilite.md` | Sessions, ADR, reviews |
-| `protocol/artefacts.md` | Le bus d'echange shared/ |
+| `protocol/artefacts.md` | Le bus d'échange shared/ |
 | `runtime/claude-code/claude-md.md` | Anatomie d'un CLAUDE.md |
-| `runtime/claude-code/sessions.md` | Format des resumes de session |
-| `runtime/claude-code/memoire.md` | Memoire persistante entre sessions |
-| `doc/examples/katen/` | 7 personas en production — reference de calibrage |
+| `runtime/claude-code/sessions.md` | Format des résumés de session |
+| `runtime/claude-code/memoire.md` | Mémoire persistante entre sessions |
+| `doc/examples/katen/` | 7 personas en production — référence de calibrage |

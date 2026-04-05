@@ -68,24 +68,24 @@ d'artefacts, chacun avec son emplacement et sa convention :
 
 ### Roadmaps produit
 
-`shared/` heberge les roadmaps produit — la source unique de planification.
-Chaque roadmap a un **owner** qui verifie la coherence des items :
+`shared/` héberge les roadmaps produit — la source unique de planification.
+Chaque roadmap a un **owner** qui vérifie la cohérence des items :
 
 ```
 shared/
-├── roadmap-{produit}.md          ← roadmaps produit (une par perimetre)
-├── backlog-archive.md            ← historique des items termines
+├── roadmap-{produit}.md          ← roadmaps produit (une par périmètre)
+├── backlog-archive.md            ← historique des items terminés
 ├── notes/                        ← messages inter-personas
 ├── review/                       ← analyses critiques
-└── features/                     ← specs fonctionnalites
+└── features/                     ← specs fonctionnalités
 ```
 
 **Il n'y a pas de backlog par persona.** Tous les items vivent dans les
-roadmaps. Les personas poussent des items, l'owner verifie. Les items
-termines migrent vers `backlog-archive.md`.
+roadmaps. Les personas poussent des items, l'owner vérifie. Les items
+terminés migrent vers `backlog-archive.md`.
 
-L'owner ne priorise pas — il signale et range. C'est une responsabilite
-passive (pas de scan systematique a chaque session).
+L'owner ne priorise pas — il signale et range. C'est une responsabilité
+passive (pas de scan systématique à chaque session).
 
 ### Frontmatter
 
@@ -108,9 +108,9 @@ destinataire met à jour le statut quand il le lit (`lu`) ou le traite
 
 ### Archivage
 
-Quand un artefact passe `traite`, le deplacer dans `archives/` du dossier
-parent (`notes/archives/`, `review/archives/`). Cela allege le scan
-d'ouverture de session — seuls les fichiers actifs restent a la racine.
+Quand un artefact passe `traite`, le déplacer dans `archives/` du dossier
+parent (`notes/archives/`, `review/archives/`). Cela allège le scan
+d'ouverture de session — seuls les fichiers actifs restent à la racine.
 
 ```
 shared/notes/
@@ -119,15 +119,15 @@ shared/notes/
     └── note-mira-abc-axel.md      ← traite
 ```
 
-### Organisation equipe — `shared/orga/`
+### Organisation équipe — `shared/orga/`
 
 Les fichiers d'organisation (personas, figures, lexique) vivent dans
-`shared/orga/` — separes du bus de messages :
+`shared/orga/` — séparés du bus de messages :
 
 ```
 shared/orga/
 ├── personas/          ← fiches personas
-├── figures/           ← schemas d'organisation
+├── figures/           ← schémas d'organisation
 ├── team-orga.md       ← matrice RACI, flux
 └── lexique.md         ← termes du projet
 ```
@@ -135,7 +135,7 @@ shared/orga/
 ### Features multi-produits
 
 Les features dans `shared/features/` portent un champ `produit:` dans
-leur frontmatter pour identifier le produit concerne :
+leur frontmatter pour identifier le produit concerné :
 
 ```yaml
 ---
@@ -149,8 +149,8 @@ date: 2026-03-17
 
 ### Protocole de circulation
 
-1. L'auteur depose l'artefact dans `shared/{type}/`
-2. Le destinataire le decouvre a l'ouverture de session (scan `shared/`)
-3. Le destinataire met a jour le statut dans le frontmatter
-4. Quand l'artefact est `traite`, le deplacer dans `archives/`
-5. Le PO peut lire `shared/` pour voir l'etat des echanges
+1. L'auteur dépose l'artefact dans `shared/{type}/`
+2. Le destinataire le découvre à l'ouverture de session (scan `shared/`)
+3. Le destinataire met à jour le statut dans le frontmatter
+4. Quand l'artefact est `traite`, le déplacer dans `archives/`
+5. Le PO peut lire `shared/` pour voir l'état des échanges

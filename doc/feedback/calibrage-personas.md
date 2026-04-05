@@ -1,52 +1,52 @@
-# Retour d'experience — Calibrage des personas
+# Retour d'expérience — Calibrage des personas
 
-> Definir par le media, pas seulement par la competence.
+> Définir par le média, pas seulement par la compétence.
 
 ---
 
-## Le probleme
+## Le problème
 
-Les fiches personas initiales definissaient les roles par competence metier :
-"UI Designer", "UX Lead", "Dev full stack". Ca suffit pour la reflexion —
-l'architecte specifie, le dev implemente, le stratege questionne.
+Les fiches personas initiales définissaient les rôles par compétence métier :
+"UI Designer", "UX Lead", "Dev full stack". Ça suffit pour la réflexion —
+l'architecte spécifie, le dev implémente, le stratège questionne.
 
-Ca ne suffit plus quand les personas commencent a **produire**. Quand un
-meme contenu doit exister en markdown, en PDF, en HTML et en visuel pour
-les reseaux — qui est responsable de chaque transformation ? "UI Designer"
+Ça ne suffit plus quand les personas commencent à **produire**. Quand un
+même contenu doit exister en markdown, en PDF, en HTML et en visuel pour
+les réseaux — qui est responsable de chaque transformation ? "UI Designer"
 ne dit rien sur ce point.
 
-## Ce qu'on a observe
+## Ce qu'on a observé
 
 Sur Katen, trois personas produisaient du contenu pour des canaux de
 diffusion, chacun avec ses propres outils, sans contrat clair sur les
-frontieres. Le livre blanc Voix a revele le probleme : Winston le redige,
+frontières. Le livre blanc Voix a révélé le problème : Winston le rédige,
 Sofia le met en forme PDF, mais qui produit la version web ? Les scripts
-de publication de Winston generaient du HTML — ca chevauchait le perimetre
+de publication de Winston généraient du HTML — ça chevauchait le périmètre
 de Nora.
 
 ## L'apprentissage
 
-Definir un persona par le "quoi" (design UI) ne suffit pas. Il faut aussi
-le "pour quel media" :
+Définir un persona par le "quoi" (design UI) ne suffit pas. Il faut aussi
+le "pour quel média" :
 
-- **Winston** : markdown source (redaction)
-- **Sofia** : PDF, PPTX, visuels reseaux, assets web (production multi-support)
+- **Winston** : markdown source (rédaction)
+- **Sofia** : PDF, PPTX, visuels réseaux, assets web (production multi-support)
 - **Nora** : rien — elle challenge, elle ne livre pas
 
-Le media clarifie la frontiere la ou la competence la brouille. Sofia et
-Nora ont toutes les deux des competences en design. C'est le media qui
-les separe : Sofia produit sur tous les canaux, Nora challenge l'output.
+Le média clarifie la frontière là où la compétence la brouille. Sofia et
+Nora ont toutes les deux des compétences en design. C'est le média qui
+les sépare : Sofia produit sur tous les canaux, Nora challenge l'output.
 
 ## Pour ton projet
 
 Quand tu calibres un persona, pose deux questions :
-1. **Quoi** — quelle competence ?
-2. **Sur quel media** — quel format de sortie ?
+1. **Quoi** — quelle compétence ?
+2. **Sur quel média** — quel format de sortie ?
 
-Si deux personas ont la meme competence mais des medias differents, la
-frontiere est claire. Si deux personas ont le meme media, tu as un conflit
-de perimetre a resoudre.
+Si deux personas ont la même compétence mais des médias différents, la
+frontière est claire. Si deux personas ont le même média, tu as un conflit
+de périmètre à résoudre.
 
-Le calibrage n'est pas un exercice de jour 1. Il evolue avec l'usage.
-Prevois de revisiter les fiches personas quand les roles de production
-emergent — et ils emergent toujours.
+Le calibrage n'est pas un exercice de jour 1. Il évolue avec l'usage.
+Prévois de revisiter les fiches personas quand les rôles de production
+émergent — et ils émergent toujours.

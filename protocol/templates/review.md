@@ -1,6 +1,6 @@
 ---
 de: {auteur}
-pour: {destinataire}         # optionnel — omettre si review generale
+pour: {destinataire}         # optionnel — omettre si review générale
 type: review
 statut: nouveau              # nouveau | lu | traite
 date: {YYYY-MM-DD}
@@ -8,7 +8,7 @@ date: {YYYY-MM-DD}
 
 # Review — {Sujet}
 
-**Objet** : {ce qui est reviewe — ADR, spec, implementation, design}
+**Objet** : {ce qui est reviewé — ADR, spec, implémentation, design}
 
 ---
 
@@ -22,16 +22,16 @@ date: {YYYY-MM-DD}
 
 ## Recommandations
 
-<!-- Priorisees. Ce que tu proposes, avec le niveau d'urgence. -->
+<!-- Priorisées. Ce que tu proposes, avec le niveau d'urgence. -->
 
-| # | Recommandation | Priorite |
+| # | Recommandation | Priorité |
 |---|---------------|----------|
 | 1 | {recommandation} | {haute / moyenne / basse} |
 | 2 | {recommandation} | {haute / moyenne / basse} |
 
 ## Questions pour le PO
 
-<!-- Ce qui necessite un arbitrage humain. -->
+<!-- Ce qui nécessite un arbitrage humain. -->
 
 - {Question 1}
 - {Question 2}

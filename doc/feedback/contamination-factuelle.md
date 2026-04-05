@@ -1,85 +1,85 @@
-# Retour d'experience — Contamination factuelle
+# Retour d'expérience — Contamination factuelle
 
-> Le repo n'est pas une source de verite pour les faits. Il l'a jamais ete.
+> Le repo n'est pas une source de vérité pour les faits. Il l'a jamais été.
 
 ---
 
-## Le probleme
+## Le problème
 
-Les LLMs ne comptent pas, ne calculent pas les durees, et privilegient
-la coherence interne sur la verite externe. Une donnee approximative
-entree une fois — parfois par l'humain, parfois hallucinee par l'IA —
-sera propagee dans tous les documents generes ensuite.
+Les LLMs ne comptent pas, ne calculent pas les durées, et privilégient
+la cohérence interne sur la vérité externe. Une donnée approximative
+entrée une fois — parfois par l'humain, parfois hallucinée par l'IA —
+sera propagée dans tous les documents générés ensuite.
 
 Plus le repo grandit, plus l'erreur devient invisible. Elle *ressemble*
-a de la coherence parce que chaque document contamine renforce les autres.
-L'IA ne doute pas d'une donnee qu'elle retrouve dans 10 fichiers du repo.
-Le fait qu'elle l'ait elle-meme ecrite dans ces 10 fichiers n'entre pas
+à de la cohérence parce que chaque document contaminé renforce les autres.
+L'IA ne doute pas d'une donnée qu'elle retrouve dans 10 fichiers du repo.
+Le fait qu'elle l'ait elle-même écrite dans ces 10 fichiers n'entre pas
 dans son raisonnement.
 
-## Cas reel — Katen
+## Cas réel — Katen
 
-Le PO a utilise "15 ans" pour decrire sa duree de reflexion sur le projet.
-C'etait une approximation — la vraie duree est de 18 ans (2008-2026).
-L'IA a repris ce chiffre, l'a propage dans ~30 documents, et l'a stabilise.
+Le PO a utilisé "15 ans" pour décrire sa durée de réflexion sur le projet.
+C'était une approximation — la vraie durée est de 18 ans (2008-2026).
+L'IA a repris ce chiffre, l'a propagé dans ~30 documents, et l'a stabilisé.
 
 Audit :
 - ~30 documents actifs contenaient "14 ans" ou "15 ans" au lieu de "18 ans"
 - ~12 documents dataient le concept original "2010-2012" au lieu de "2008-2012"
 - 2 fichiers dataient l'arXiv "(2010)" au lieu de "(2011)"
 
-L'erreur venait du PO lui-meme. L'IA l'a amplifiee et rendue invisible.
+L'erreur venait du PO lui-même. L'IA l'a amplifiée et rendue invisible.
 
-## Le mecanisme
+## Le mécanisme
 
-1. Une donnee approximative entre dans une session
-2. L'IA la reprend sans verifier, la formule joliment, la propage
-3. Chaque document contamine devient une source pour les sessions suivantes
+1. Une donnée approximative entre dans une session
+2. L'IA la reprend sans vérifier, la formule joliment, la propage
+3. Chaque document contaminé devient une source pour les sessions suivantes
 4. L'erreur se stabilise — elle a l'air correcte parce qu'elle est
-   coherente avec les autres documents contamines
+   cohérente avec les autres documents contaminés
 
-C'est un **effet de renforcement mutuel**. Le meme phenomene existe a
-l'echelle du web (model collapse, Habsburg AI) — mais a l'echelle du
-web, c'est irreversible. Dans un repo Voix, c'est tracable et corrigeable.
-A condition que l'humain verifie.
+C'est un **effet de renforcement mutuel**. Le même phénomène existe à
+l'échelle du web (model collapse, Habsburg AI) — mais à l'échelle du
+web, c'est irréversible. Dans un repo Voix, c'est traçable et corrigeable.
+À condition que l'humain vérifie.
 
-## Ce qui est vulnerable
+## Ce qui est vulnérable
 
-- **Dates et durees** — les LLMs ne calculent pas les ecarts temporels
-- **Chiffres** — compteurs, metriques, quantites
-- **Noms propres** — variations orthographiques, attributions erronees
-- **References bibliographiques** — annees, auteurs, titres, contexte d'usage
+- **Dates et durées** — les LLMs ne calculent pas les écarts temporels
+- **Chiffres** — compteurs, métriques, quantités
+- **Noms propres** — variations orthographiques, attributions erronées
+- **Références bibliographiques** — années, auteurs, titres, contexte d'usage
 
 ## Les gardes-fous
 
-### 1. Verification factuelle en continu
+### 1. Vérification factuelle en continu
 
 Pas en fin de projet — en continu. Chaque session qui manipule des faits
-(dates, chiffres, refs) devrait inclure une passe de verification.
-C'est le devoir 1 de la methode.
+(dates, chiffres, refs) devrait inclure une passe de vérification.
+C'est le devoir 1 de la méthode.
 
-### 2. Passes de decontamination
+### 2. Passes de décontamination
 
-Audits cibles sur les donnees les plus sensibles, a intervalles reguliers.
-Sur Katen, un audit a identifie ~55 occurrences dans ~42 fichiers en une
-session. C'est faisable — a condition de le planifier.
+Audits ciblés sur les données les plus sensibles, à intervalles réguliers.
+Sur Katen, un audit a identifié ~55 occurrences dans ~42 fichiers en une
+session. C'est faisable — à condition de le planifier.
 
-### 3. Source de verite explicite
+### 3. Source de vérité explicite
 
-Les faits critiques du projet doivent etre declares une fois, dans un
-document de reference, et toujours verifies contre cette source. Pas
+Les faits critiques du projet doivent être déclarés une fois, dans un
+document de référence, et toujours vérifiés contre cette source. Pas
 contre le repo — contre la source.
 
 ## Pour ton projet
 
-Ce n'est pas un defaut de la methode. C'est une propriete de la
-technologie sous-jacente. Les erreurs de precision sont normales —
-les LLMs privilegient la vraisemblance sur la verite.
+Ce n'est pas un défaut de la méthode. C'est une propriété de la
+technologie sous-jacente. Les erreurs de précision sont normales —
+les LLMs privilégient la vraisemblance sur la vérité.
 
-L'humain est le seul garde-fou. La methode doit le dire explicitement,
-et l'humain doit l'integrer comme pratique, pas comme principe abstrait.
+L'humain est le seul garde-fou. La méthode doit le dire explicitement,
+et l'humain doit l'intégrer comme pratique, pas comme principe abstrait.
 
-Et c'est un des arguments les plus forts en faveur de la methode Voix :
-dans un monde ou le web se contamine irreversiblement, un repo structure
-avec des reviews croisees est un des rares espaces ou la decontamination
+Et c'est un des arguments les plus forts en faveur de la méthode Voix :
+dans un monde où le web se contamine irréversiblement, un repo structuré
+avec des reviews croisées est un des rares espaces où la décontamination
 reste possible.

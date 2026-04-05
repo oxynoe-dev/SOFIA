@@ -2,7 +2,7 @@
 
 **Rôle** : {Rôle complet}
 **Équipe** : {Projet}
-**Statut** : Assistant IA specialise
+**Statut** : Assistant IA spécialisé
 
 ---
 

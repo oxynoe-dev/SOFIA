@@ -9,13 +9,13 @@ source: shared/notes/note-marc-restructuration-landing-voix-sofia-nora.md
 
 # Contenu landing — voix/
 
-5 sections + CTA. Pas de cartes personas, pas de principes detailles, pas de quotes multiples. Tout ca va dans les sous-pages.
+5 sections + CTA. Pas de cartes personas, pas de principes détaillés, pas de quotes multiples. Tout ça va dans les sous-pages.
 
 ---
 
 ## 1. Hero
 
-Conserve tel quel — deja en place sur voix2.html.
+Conservé tel quel — déjà en place sur voix2.html.
 
 ```
 label:    Methode IA
@@ -30,10 +30,10 @@ CTA:      GitHub →  |  Livre bleu →
 
 ## 2. Illustration prompt
 
-Position : juste apres le hero, visible sans scroll.
+Position : juste après le hero, visible sans scroll.
 Style : bloc terminal/code, palette littoral.
 
-Extrait stylise d'un CLAUDE.md reel — montre ce qu'est une contrainte de persona en une seconde.
+Extrait stylisé d'un CLAUDE.md réel — montre ce qu'est une contrainte de persona en une seconde.
 
 ```
 # Winston — Ecrivain & distillateur
@@ -51,11 +51,11 @@ Ce workspace est la distillerie editoriale du projet.
 - Les echanges avec les autres personas passent par shared/notes/
 ```
 
-**Note Sofia** : c'est un extrait, pas un screenshot. Le visiteur doit lire les mots "posture", "perimetre", "isolation", "ne pas intervenir" — c'est ca qui ancre "methode, pas prompt kit". Style terminal sobre, pas de decorations inutiles.
+**Note Sofia** : c'est un extrait, pas un screenshot. Le visiteur doit lire les mots "posture", "périmètre", "isolation", "ne pas intervenir" — c'est ça qui ancre "méthode, pas prompt kit". Style terminal sobre, pas de décorations inutiles.
 
 ---
 
-## 3. Le probleme
+## 3. Le problème
 
 ```
 label:  Le probleme
@@ -74,23 +74,24 @@ Voix part du principe inverse : c'est la contrainte qui cree la valeur.
 
 ## 4. Comment ca marche
 
-3 blocs visuels. Pas de prose — des mots-cles et une phrase.
+3 blocs visuels. Pas de prose — des mots-clés et une phrase.
 
 ```
 label:  Comment ca marche
 titre:  Trois mecanismes. Un produit.
 
-bloc 1 — Isoler
+bloc 1 — Contraindre
 Chaque voix a son perimetre, ses conventions, ses interdits.
 Le developpeur ne touche pas a la strategie. Le stratege ne code pas.
+C'est la limitation qui rend utile.
 
-bloc 2 — Contraindre
-Les voix ne se parlent pas directement. Elles echangent par artefacts :
-notes, reviews, specs. Le signal circule sans bruit.
+bloc 2 — Eprouver
+Les voix ne se parlent pas — elles s'eprouvent par artefacts :
+notes, reviews, specs. Les desaccords sont des signaux, pas des bugs.
 
-bloc 3 — Converger
-L'humain pose la vision. Les voix challengent depuis leur angle.
-Ce qui emerge n'est pas un compromis — c'est une pensee distribuee.
+bloc 3 — Arbitrer
+L'humain ecoute, questionne, puis tranche. Toujours.
+Ce qui emerge n'est pas un compromis — c'est une decision tracee.
 ```
 
 ---
@@ -128,12 +129,12 @@ CTA 2:  GitHub →        (lien repo)
 
 ## Ce qui sort de la landing → sous-pages
 
-| Contenu retire | Destination |
+| Contenu retiré | Destination |
 |---------------|-------------|
 | Grille 8 cartes personas | voix/personas.html |
-| 7 principes detailles | voix/principes.html |
-| Citations intercalees (x3) | une seule conservee si besoin dans le hero ou supprimees |
-| Sections 01/02/03 en extenso | condensees dans "Comment ca marche" (section 4) |
+| 7 principes détaillés | voix/principes.html |
+| Citations intercalées (x3) | une seule conservée si besoin dans le hero ou supprimées |
+| Sections 01/02/03 en extenso | condensées dans "Comment ça marche" (section 4) |
 
 ---
 
@@ -143,4 +144,4 @@ CTA 2:  GitHub →        (lien repo)
 Voix    Principes    Personas    Livre bleu    GitHub
 ```
 
-Presente sur toutes les pages voix/. Page active marquee visuellement.
+Présente sur toutes les pages voix/. Page active marquée visuellement.

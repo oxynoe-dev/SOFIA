@@ -1,33 +1,33 @@
 # Lexique — template
 
-> Glossaire partage des termes du projet.
+> Glossaire partagé des termes du projet.
 
 ---
 
 ## Pourquoi un lexique ?
 
-Quand 7 personas travaillent sur le meme projet, les mots derivent.
+Quand 7 personas travaillent sur le même projet, les mots dérivent.
 "Composition" peut signifier un fichier .kc, un concept CVM, ou un
-pattern reutilisable selon qui parle.
+pattern réutilisable selon qui parle.
 
-Le lexique fixe les termes. Chaque persona le lit, personne ne reinvente.
+Le lexique fixe les termes. Chaque persona le lit, personne ne réinvente.
 
 ## Format
 
 ```markdown
 ## {Terme}
 
-**Definition** : {une phrase}
-**Contexte** : {ou ce terme s'utilise}
+**Définition** : {une phrase}
+**Contexte** : {où ce terme s'utilise}
 **Ne pas confondre avec** : {termes proches}
-**Decide le** : {date} — {reference ADR ou session}
+**Décidé le** : {date} — {référence ADR ou session}
 ```
 
 ## Conventions
 
-- Un terme = une entree. Pas de synonymes dans la meme entree.
-- Si un terme a change de sens (renommage, evolution), documenter l'historique.
-- Le PO arbitre les conflits de definition.
+- Un terme = une entrée. Pas de synonymes dans la même entrée.
+- Si un terme a changé de sens (renommage, évolution), documenter l'historique.
+- Le PO arbitre les conflits de définition.
 - Le lexique vit dans `shared/orga/lexique.md` au niveau de l'instance.
 
 ## Exemple
@@ -35,8 +35,8 @@ Le lexique fixe les termes. Chaque persona le lit, personne ne reinvente.
 ```markdown
 ## Kata
 
-**Definition** : une composition Katen — un programme visuel executable.
+**Définition** : une composition Katen — un programme visuel exécutable.
 **Contexte** : fichiers .kc, documentation utilisateur, UI.
-**Ne pas confondre avec** : "composition" (concept CVM interne), "pattern" (template reutilisable).
-**Decide le** : 2026-03-22 — ADR-054.
+**Ne pas confondre avec** : "composition" (concept CVM interne), "pattern" (template réutilisable).
+**Décidé le** : 2026-03-22 — ADR-054.
 ```

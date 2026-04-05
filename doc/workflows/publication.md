@@ -2,42 +2,42 @@
 
 ![Workflow — Publication](../figures/fig-workflow-publication.svg)
 
-Workflow de publication : de la redaction a la mise en ligne.
+Workflow de publication : de la rédaction à la mise en ligne.
 
 ---
 
 ### Quand l'utiliser
 
-Pour tout contenu publie — page web, document public, livre blanc/bleu, communication externe. S'applique des qu'un contenu sort du perimetre interne.
+Pour tout contenu publié — page web, document public, livre blanc/bleu, communication externe. S'applique dès qu'un contenu sort du périmètre interne.
 
-### Etapes
+### Étapes
 
-1. **Redaction** — le redacteur ou l'expert produit le contenu brut. Le fond prime sur la forme a ce stade
-2. **Validation fond** — les experts concernes valident chacun sur leur axe (technique, strategique, formel). Chaque axe produit une review
-3. **Mise en forme** — le producteur (graphiste, integrateur) met en forme. La structure et le style suivent les conventions du support cible
-4. **Challenge UX / accessibilite** — l'UX verifie la lisibilite, la navigation, l'accessibilite. Le contenu doit fonctionner pour le public cible
-5. **Go PO** — derniere porte. Le PO verifie l'integrite factuelle : ce qui est publie est vrai, les sources sont correctes, le positionnement est juste
-6. **Mise en ligne** — deploiement effectif. Le PO execute ou autorise
+1. **Rédaction** — le rédacteur ou l'expert produit le contenu brut. Le fond prime sur la forme à ce stade
+2. **Validation fond** — les experts concernés valident chacun sur leur axe (technique, stratégique, formel). Chaque axe produit une review
+3. **Mise en forme** — le producteur (graphiste, intégrateur) met en forme. La structure et le style suivent les conventions du support cible
+4. **Challenge UX / accessibilité** — l'UX vérifie la lisibilité, la navigation, l'accessibilité. Le contenu doit fonctionner pour le public cible
+5. **Go PO** — dernière porte. Le PO vérifie l'intégrité factuelle : ce qui est publié est vrai, les sources sont correctes, le positionnement est juste
+6. **Mise en ligne** — déploiement effectif. Le PO exécute ou autorise
 
-### Roles impliques
+### Rôles impliqués
 
-| Persona | Role |
+| Persona | Rôle |
 |---------|------|
-| Redacteur / Expert | Produit le contenu |
-| Experts (archi, recherche, strategie) | Valident sur leur axe |
+| Rédacteur / Expert | Produit le contenu |
+| Experts (archi, recherche, stratégie) | Valident sur leur axe |
 | Graphiste / Producteur | Mise en forme |
-| UX | Challenge accessibilite et lisibilite |
-| PO | Derniere porte — integrite factuelle, go/no-go |
+| UX | Challenge accessibilité et lisibilité |
+| PO | Dernière porte — intégrité factuelle, go/no-go |
 
 ### Artefacts produits
 
-- Brouillon (dans le workspace du redacteur)
+- Brouillon (dans le workspace du rédacteur)
 - Reviews par axe (dans `shared/review/`)
 - Contenu mis en forme (dans le support cible)
-- Validation PO (implicite : le go est le commit/deploiement)
+- Validation PO (implicite : le go est le commit/déploiement)
 
-### Pieges
+### Pièges
 
-- **Publier sans validation fond** — la mise en forme donne une illusion de qualite. Un document bien presente mais factuellement faux est pire qu'un brouillon correct
-- **Le PO valide la forme, pas le fond** — le role du PO en derniere porte est specifiquement l'integrite factuelle. La forme a ete validee avant
-- **Sources non verifiees** — une reference citee sans avoir ete lue en entier propage des erreurs dans tout ce qui la cite ensuite (cf. `recherche.md`)
+- **Publier sans validation fond** — la mise en forme donne une illusion de qualité. Un document bien présenté mais factuellement faux est pire qu'un brouillon correct
+- **Le PO valide la forme, pas le fond** — le rôle du PO en dernière porte est spécifiquement l'intégrité factuelle. La forme a été validée avant
+- **Sources non vérifiées** — une référence citée sans avoir été lue en entier propage des erreurs dans tout ce qui la cite ensuite (cf. `recherche.md`)

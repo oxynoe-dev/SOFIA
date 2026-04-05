@@ -1,45 +1,45 @@
-## Chaine Produit
+## Chaîne Produit
 
-![Workflow — Chaine produit](../figures/fig-workflow-chaine-produit.svg)
+![Workflow — Chaîne produit](../figures/fig-workflow-chaine-produit.svg)
 
-Chaine complete de production : chaque etape a un gardien, aucun raccourci.
+Chaîne complète de production : chaque étape a un gardien, aucun raccourci.
 
 ---
 
 ### Quand l'utiliser
 
-Pour toute feature ou evolution qui traverse plusieurs domaines — de la priorisation a la livraison. C'est le workflow de reference quand plusieurs personas interviennent.
+Pour toute feature ou évolution qui traverse plusieurs domaines — de la priorisation à la livraison. C'est le workflow de référence quand plusieurs personas interviennent.
 
-### Etapes
+### Étapes
 
 1. **PO priorise** — l'item entre dans la roadmap avec contexte et owner
-2. **Archi specifie** — contrats, contraintes, ADR si besoin. Gardien : coherence avec l'architecture cible et les principes (cf. `core/principes.md`)
-3. **Dev implemente** — mode plan, TDD, code. Gardien : conformite a la spec
-4. **UX challenge** — l'UX verifie l'experience utilisateur, l'accessibilite, la coherence visuelle. Gardien : le produit est utilisable, pas seulement fonctionnel
-5. **Recherche verifie** — verification formelle, sources, rigueur. Gardien : ce qui est affirme est vrai et correctement contextualise
-6. **PO arbitre** — derniere porte. Validation finale, go/no-go
+2. **Archi spécifie** — contrats, contraintes, ADR si besoin. Gardien : cohérence avec l'architecture cible et les principes (cf. `core/principes.md`)
+3. **Dev implémente** — mode plan, TDD, code. Gardien : conformité à la spec
+4. **UX challenge** — l'UX vérifie l'expérience utilisateur, l'accessibilité, la cohérence visuelle. Gardien : le produit est utilisable, pas seulement fonctionnel
+5. **Recherche vérifie** — vérification formelle, sources, rigueur. Gardien : ce qui est affirmé est vrai et correctement contextualisé
+6. **PO arbitre** — dernière porte. Validation finale, go/no-go
 
-### Roles impliques
+### Rôles impliqués
 
-| Persona | Role |
+| Persona | Rôle |
 |---------|------|
-| PO | Priorise (etape 1), arbitre (etape 6) |
-| Architecte | Specifie, garde la coherence structurelle |
-| Dev | Implemente selon la spec |
-| UX | Challenge l'experience et l'accessibilite |
-| Recherche | Verifie formellement les affirmations |
+| PO | Priorise (étape 1), arbitre (étape 6) |
+| Architecte | Spécifie, garde la cohérence structurelle |
+| Dev | Implémente selon la spec |
+| UX | Challenge l'expérience et l'accessibilité |
+| Recherche | Vérifie formellement les affirmations |
 
 ### Artefacts produits
 
-- Roadmap item priorise
+- Roadmap item priorisé
 - Spec / contrat d'interface
 - Code + tests
 - Review UX (note dans `shared/review/`)
 - Validation formelle si applicable
-- Decision PO documentee
+- Décision PO documentée
 
-### Pieges
+### Pièges
 
-- **Sauter une etape** — chaque etape sautee genere de la dette. La dette la plus couteuse est celle qu'on ne voit pas (cf. `protocol/tracabilite.md`)
-- **Paralleliser sans contrat** — dev et UX en parallele sans spec commune = deux visions divergentes a reconcilier apres coup
-- **Confondre validation PO et approbation automatique** — le PO est la derniere porte, pas un tampon. Il peut renvoyer a n'importe quelle etape
+- **Sauter une étape** — chaque étape sautée génère de la dette. La dette la plus coûteuse est celle qu'on ne voit pas (cf. `protocol/tracabilite.md`)
+- **Paralléliser sans contrat** — dev et UX en parallèle sans spec commune = deux visions divergentes à réconcilier après coup
+- **Confondre validation PO et approbation automatique** — le PO est la dernière porte, pas un tampon. Il peut renvoyer à n'importe quelle étape

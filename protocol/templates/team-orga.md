@@ -14,8 +14,8 @@
 | Persona | Rôle | Statut |
 |---------|------|--------|
 | **{Nom PO}** | Product Owner | Humain — décideur |
-| **{Persona 1}** | {Rôle} | Assistant IA specialise |
-| **{Persona 2}** | {Rôle} | Assistant IA specialise |
+| **{Persona 1}** | {Rôle} | Assistant IA spécialisé |
+| **{Persona 2}** | {Rôle} | Assistant IA spécialisé |
 
 ---
 

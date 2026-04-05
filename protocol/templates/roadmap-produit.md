@@ -3,7 +3,7 @@
 > {Description courte du produit}
 > Repo : {repo}
 > Versionnage : semver (x.y.z)
-> Owner : @{persona} — gardien de la coherence des items
+> Owner : @{persona} — gardien de la cohérence des items
 
 ## Version courante
 
@@ -16,10 +16,10 @@
 - [todo] Item @persona
 - [done] Item fait @persona
 
-## Backlog non planifie
+## Backlog non planifié
 
-_(items a positionner dans une version future)_
+_(items à positionner dans une version future)_
 
-## Decisions structurantes
+## Décisions structurantes
 
-- **{Sujet}** — {decision} ({date})
+- **{Sujet}** — {décision} ({date})

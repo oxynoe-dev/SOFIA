@@ -1,117 +1,117 @@
-# Retour d'experience — Chaine produit
+# Retour d'expérience — Chaîne produit
 
-> Specifier, implementer, challenger. Trois roles, un cycle, zero raccourci.
+> Spécifier, implémenter, challenger. Trois rôles, un cycle, zéro raccourci.
 
 ---
 
 ## Le pattern
 
-La chaine produit est le cycle de base de Katen. C'est le pattern le plus
-ancien, le plus rode, et le plus revelateur de la methode Voix en action.
+La chaîne produit est le cycle de base de Katen. C'est le pattern le plus
+ancien, le plus rodé, et le plus révélateur de la méthode Voix en action.
 
 ```
 PO identifie un besoin ou une friction
   → ouvre session architecte
 
-Architecte specifie
+Architecte spécifie
   → ADR, contrats d'interface, specs formelles
   → ne code pas — si la spec est floue, le dev le dira
 
-Dev implemente
+Dev implémente
   → code, tests, retours de frictions
-  → ne reinterprete pas — si la spec est ambigue, il remonte
+  → ne réinterprète pas — si la spec est ambiguë, il remonte
 
 UX challenge
-  → review des flux, etats visuels, accessibilite
-  → ne produit pas le code — elle specifie les comportements
+  → review des flux, états visuels, accessibilité
+  → ne produit pas le code — elle spécifie les comportements
 
-Chercheuse verifie
-  → invariantes formelles, coherence avec le modele Petri-net
-  → ne tranche pas sur l'archi — elle valide la theorie
+Chercheuse vérifie
+  → invariantes formelles, cohérence avec le modèle Petri-net
+  → ne tranche pas sur l'archi — elle valide la théorie
 
 PO arbitre et tranche
-  → quand les personas divergent, l'humain decide
-  → la decision est tracee (ADR, note, session)
+  → quand les personas divergent, l'humain décide
+  → la décision est tracée (ADR, note, session)
 ```
 
-## Ce qu'on a observe sur Katen
+## Ce qu'on a observé sur Katen
 
-### La spec force la clarte
+### La spec force la clarté
 
-Mira ne code pas. C'est la contrainte la plus productive de l'equipe.
-Parce qu'elle ne peut pas "montrer dans le code", elle est obligee de
-specifier clairement — contrats d'interface, etats attendus, cas limites.
-Le resultat : 62 ADR, 24 principes d'architecture. Des specs qu'Axel
-peut implementer sans deviner.
+Mira ne code pas. C'est la contrainte la plus productive de l'équipe.
+Parce qu'elle ne peut pas "montrer dans le code", elle est obligée de
+spécifier clairement — contrats d'interface, états attendus, cas limites.
+Le résultat : 62 ADR, 24 principes d'architecture. Des specs qu'Axel
+peut implémenter sans deviner.
 
 Sans cette contrainte, l'architecte saute directement au pseudo-code.
-La spec reste floue. Le dev interprete. Les bugs sont structurels,
+La spec reste floue. Le dev interprète. Les bugs sont structurels,
 pas techniques.
 
-### La friction d'implementation remonte les vrais problemes
+### La friction d'implémentation remonte les vrais problèmes
 
-Axel ne contourne pas. Quand un contrat d'interface genere une complexite
-inattendue, il le signale plutot que de bricoler. Ces remontees ont change
-des ADR — pas parce que la spec etait mauvaise, mais parce que le terrain
-revele ce que la theorie ne voit pas.
+Axel ne contourne pas. Quand un contrat d'interface génère une complexité
+inattendue, il le signale plutôt que de bricoler. Ces remontées ont changé
+des ADR — pas parce que la spec était mauvaise, mais parce que le terrain
+révèle ce que la théorie ne voit pas.
 
-Cas concret : la parallelisation des operateurs. Mira bloque ("pas
-maintenant, la roadmap a des priorites avant"). Lea confirme par un
-angle orthogonal ("aucun interet pour la recherche"). Deux refus, deux
-raisons independantes. Le sujet est reporte. Trois semaines plus tard,
-le design revient — meilleur qu'il ne l'aurait ete.
+Cas concret : la parallélisation des opérateurs. Mira bloque ("pas
+maintenant, la roadmap a des priorités avant"). Léa confirme par un
+angle orthogonal ("aucun intérêt pour la recherche"). Deux refus, deux
+raisons indépendantes. Le sujet est reporté. Trois semaines plus tard,
+le design revient — meilleur qu'il ne l'aurait été.
 
 ### L'UX challenge ce que le dev ne voit pas
 
-Nora questionne les flux d'onboarding qui satisfont le developpeur mais
-perdent l'utilisateur. Elle ne code pas — elle specifie les comportements
+Nora questionne les flux d'onboarding qui satisfont le développeur mais
+perdent l'utilisateur. Elle ne code pas — elle spécifie les comportements
 attendus. Axel remonte les contraintes techniques. La friction entre les
 deux produit des interfaces qui tiennent techniquement ET humainement.
 
 ### La chercheuse ancre dans le formel
 
-Lea ne tranche pas sur l'architecture. Mais quand une implementation
-touche aux invariantes du modele Petri-net — firing policy, etats des
-connexions, reversibilite — elle verifie. Son "ca ne tient pas" a la
-meme autorite qu'un test qui echoue : on ne passe pas en force.
+Léa ne tranche pas sur l'architecture. Mais quand une implémentation
+touche aux invariantes du modèle Petri-net — firing policy, états des
+connexions, réversibilité — elle vérifie. Son "ça ne tient pas" a la
+même autorité qu'un test qui échoue : on ne passe pas en force.
 
 ### Le PO porte le contexte
 
-Le PO est le seul a voir toutes les sessions. Il filtre, reformule,
-contextualise. Quand Mira depose une review pour Axel, le PO ajoute :
-"on a decide hier avec Marc de decaler la publication — ca change la
-priorite de cette spec." Ce contexte, aucun persona ne l'a seul.
+Le PO est le seul à voir toutes les sessions. Il filtre, reformule,
+contextualise. Quand Mira dépose une review pour Axel, le PO ajoute :
+"on a décidé hier avec Marc de décaler la publication — ça change la
+priorité de cette spec." Ce contexte, aucun persona ne l'a seul.
 
-## Les ADR comme colonne vertebrale
+## Les ADR comme colonne vertébrale
 
-Chaque decision structurante produit un ADR. Le format est standard :
-contexte, decision, consequences, statut. L'ADR n'est pas de la
-bureaucratie — c'est de la memoire.
+Chaque décision structurante produit un ADR. Le format est standard :
+contexte, décision, conséquences, statut. L'ADR n'est pas de la
+bureaucratie — c'est de la mémoire.
 
-Un ADR non ecrit est une decision qui sera remise en question trois
+Un ADR non écrit est une décision qui sera remise en question trois
 sessions plus tard par quelqu'un qui n'en avait pas connaissance.
-Sur 210+ sessions, ca arrive vite.
+Sur 210+ sessions, ça arrive vite.
 
 Les ADR passent potentiellement par 4 challengers :
-- **Mira** — coherence avec l'architecture cible
-- **Axel** — faisabilite d'implementation
-- **Lea** — rigueur formelle (quand le sujet touche au modele)
-- **Marc** — impact strategique (quand le sujet touche au positionnement)
+- **Mira** — cohérence avec l'architecture cible
+- **Axel** — faisabilité d'implémentation
+- **Léa** — rigueur formelle (quand le sujet touche au modèle)
+- **Marc** — impact stratégique (quand le sujet touche au positionnement)
 
-Le PO tranche. L'ADR est accepte, rejete ou reporte. Le statut est trace.
+Le PO tranche. L'ADR est accepté, rejeté ou reporté. Le statut est tracé.
 
 ## Pour ton projet
 
-La chaine produit est le cas d'usage fondamental de Voix. Quelques regles :
+La chaîne produit est le cas d'usage fondamental de Voix. Quelques règles :
 
-- **L'architecte ne code pas.** C'est la contrainte numero un. Si ton
-  architecte peut coder, il ne specifiera jamais clairement.
-- **Le dev ne reinterprete pas.** Si la spec est floue, il remonte. Il
+- **L'architecte ne code pas.** C'est la contrainte numéro un. Si ton
+  architecte peut coder, il ne spécifiera jamais clairement.
+- **Le dev ne réinterprète pas.** Si la spec est floue, il remonte. Il
   ne devine pas. La friction est le signal, pas le bruit.
-- **L'UX ne produit pas le code.** Elle specifie les comportements. Le
-  dev remonte les contraintes. La friction entre les deux est le mecanisme
+- **L'UX ne produit pas le code.** Elle spécifie les comportements. Le
+  dev remonte les contraintes. La friction entre les deux est le mécanisme
   qui produit de bonnes interfaces.
-- **Trace tout.** ADR, sessions, reviews. Si ce n'est pas trace, ca
+- **Trace tout.** ADR, sessions, reviews. Si ce n'est pas tracé, ça
   n'existe pas.
 - **Le PO arbitre.** Quand deux personas divergent, l'humain tranche.
-  Pas le persona le plus eloquent. L'humain.
+  Pas le persona le plus éloquent. L'humain.

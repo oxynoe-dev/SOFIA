@@ -1,19 +1,19 @@
 # Instance Voix
 
-Ce depot est une **instance de la methode Voix**.
+Ce dépôt est une **instance de la méthode Voix**.
 
-- **Methode** : [oxynoe-dev/voix](https://github.com/oxynoe-dev/voix)
-- **Version methode appliquee** : v{X.Y}
+- **Méthode** : [oxynoe-dev/voix](https://github.com/oxynoe-dev/voix)
+- **Version méthode appliquée** : v{X.Y}
 - **Projet** : {nom du projet}
-- **Equipe** : {N} assistants IA specialises + {N} PO humain(s)
+- **Équipe** : {N} assistants IA spécialisés + {N} PO humain(s)
 
 ## Structure instance
 
-| Dossier | Role | Persona |
+| Dossier | Rôle | Persona |
 |---------|------|---------|
 | `{workspace}/` | {description} | {persona} |
-| `shared/` | Bus d'echange inter-personas | Partage |
-| `shared/orga/` | Organisation equipe | Partage |
+| `shared/` | Bus d'échange inter-personas | Partagé |
+| `shared/orga/` | Organisation équipe | Partagé |
 
 ## Conventions
 

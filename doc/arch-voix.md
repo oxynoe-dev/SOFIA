@@ -1,27 +1,27 @@
 # Architecture — Voix
 
 **Date** : 04/04/2026
-**Auteur** : Mira — Architecte systeme & solution
-**Statut** : Reference
+**Auteur** : Mira — Architecte système & solution
+**Statut** : Référence
 
 ---
 
-## 1. Identite
+## 1. Identité
 
 | | |
 |---|---|
 | **Nom** | Voix |
-| **Vocation** | Methode d'orchestration d'assistants IA specialises |
+| **Vocation** | Méthode d'orchestration d'assistants IA spécialisés |
 | **Repo** | `oxynoe-dev/voix` |
 | **Licence** | MIT |
-| **Public** | Developpeurs et equipes utilisant Claude Code (ou LLM comparable) |
-| **Principe fondateur** | La contrainte force la qualite — un LLM sans limites ne produit rien de bon |
+| **Public** | Développeurs et équipes utilisant Claude Code (ou LLM comparable) |
+| **Principe fondateur** | La contrainte force la qualité — un LLM sans limites ne produit rien de bon |
 
 ### Positionnement
 
-Voix n'est pas un framework, pas une librairie, pas un outil. C'est une **methode** : un ensemble de principes, de conventions et de templates pour organiser des assistants IA specialises autour d'un projet.
+Voix n'est pas un framework, pas une librairie, pas un outil. C'est une **méthode** : un ensemble de principes, de conventions et de templates pour organiser des assistants IA spécialisés autour d'un projet.
 
-Le seul prerequis est un LLM capable de suivre des instructions persistantes (CLAUDE.md, system prompts). Claude Code est l'implementation de reference.
+Le seul prérequis est un LLM capable de suivre des instructions persistantes (CLAUDE.md, system prompts). Claude Code est l'implémentation de référence.
 
 ---
 
@@ -29,97 +29,97 @@ Le seul prerequis est un LLM capable de suivre des instructions persistantes (CL
 
 ## 2. Architecture — Core / Protocol / Runtime + terrain
 
-Trois couches independantes. On peut changer l'une sans toucher les autres.
+Trois couches indépendantes. On peut changer l'une sans toucher les autres.
 
-### Core — les invariants de la methode
+### Core — les invariants de la méthode
 
-Les principes fondamentaux. Ce qui ne change pas quand on change d'outil, de provider, ou de format d'echange. Si demain Claude Code disparait, le core tient.
+Les principes fondamentaux. Ce qui ne change pas quand on change d'outil, de provider, ou de format d'échange. Si demain Claude Code disparaît, le core tient.
 
-| Document | Couche | Concept cle | En une phrase |
+| Document | Couche | Concept clé | En une phrase |
 |---|---|---|---|
-| `principes.md` | Core | 7 principes | La contrainte force la qualite, l'humain arbitre, les fichiers sont le protocole |
-| `personas.md` | Core | Anatomie d'un persona | Identite, posture, perimetre, livrables, interdits, collaboration |
-| `friction.md` | Core | Friction intentionnelle | Les desaccords entre personas sont des signaux, pas des bugs |
+| `principes.md` | Core | 7 principes | La contrainte force la qualité, l'humain arbitre, les fichiers sont le protocole |
+| `personas.md` | Core | Anatomie d'un persona | Identité, posture, périmètre, livrables, interdits, collaboration |
+| `friction.md` | Core | Friction intentionnelle | Les désaccords entre personas sont des signaux, pas des bugs |
 | `devoirs.md` | Core | Devoirs de l'orchestrateur | 6 obligations que l'humain se donne pour que l'armature tienne |
 
-**Regle de versionnage** : modifier un document core = minor bump.
+**Règle de versionnage** : modifier un document core = minor bump.
 
 | Templates | Contenu |
 |---|---|
 | **Structurels** | persona, claude-md, workspace, session, roadmap-produit, voix-instance, team-orga |
 | **Bus** | note, review, feature, adr |
-| **Archetypes** | architecte, dev, ux, stratege, chercheur, redacteur, graphiste |
+| **Archétypes** | architecte, dev, ux, stratège, chercheur, rédacteur, graphiste |
 
 Modifier un template = patch bump.
 
 ### Protocol — le contrat d'interface
 
-Le protocol definit comment les personas echangent, tracent et s'organisent. Fichiers, pas API. Git, pas base de donnees. C'est ce qui rend Voix portable — n'importe quel outil capable de lire et ecrire du markdown peut implementer Voix.
+Le protocol définit comment les personas échangent, tracent et s'organisent. Fichiers, pas API. Git, pas base de données. C'est ce qui rend Voix portable — n'importe quel outil capable de lire et écrire du markdown peut implémenter Voix.
 
-| Document | Couche | Concept cle | En une phrase |
+| Document | Couche | Concept clé | En une phrase |
 |---|---|---|---|
-| `artefacts.md` | Protocol | Fichiers comme protocole | Bus d'echange structure (notes, reviews, features) avec frontmatter |
-| `conventions.md` | Protocol | Regles d'instance | Nommage, frontmatter, statuts, archivage |
-| `tracabilite.md` | Protocol | Sessions + ADR + reviews | Si ce n'est pas trace, ca n'existe pas |
-| `isolation.md` | Protocol | Workspace = perimetre | Un persona ne voit que son espace — l'isolation force les echanges formels |
+| `artefacts.md` | Protocol | Fichiers comme protocole | Bus d'échange structuré (notes, reviews, features) avec frontmatter |
+| `conventions.md` | Protocol | Règles d'instance | Nommage, frontmatter, statuts, archivage |
+| `tracabilite.md` | Protocol | Sessions + ADR + reviews | Si ce n'est pas tracé, ça n'existe pas |
+| `isolation.md` | Protocol | Workspace = périmètre | Un persona ne voit que son espace — l'isolation force les échanges formels |
 | `orchestration.md` | Protocol | PO comme message bus | Rien ne circule entre personas sans l'humain |
 | `instance.md` | Protocol | Structure d'instance | Marqueur voix.md, workspaces, shared/, conventions |
 
-### Runtime — l'implementation concrete
+### Runtime — l'implémentation concrète
 
-4 documents specifiques a Claude Code. C'est la seule couche qui change si on porte Voix sur un autre provider. Remplacable sans toucher au core ni au protocol.
+4 documents spécifiques à Claude Code. C'est la seule couche qui change si on porte Voix sur un autre provider. Remplaçable sans toucher au core ni au protocol.
 
-| Document | Role |
+| Document | Rôle |
 |---|---|
 | `claude-md.md` | Anatomie du CLAUDE.md — le gardien du persona |
-| `memoire.md` | Systeme de memoire persistante entre conversations |
-| `sessions.md` | Protocole ouverture/fermeture, resume obligatoire |
-| `hooks.md` | Automatisations declenchees par des evenements |
+| `memoire.md` | Système de mémoire persistante entre conversations |
+| `sessions.md` | Protocole ouverture/fermeture, résumé obligatoire |
+| `hooks.md` | Automatisations déclenchées par des événements |
 
-### doc/ — Documentation, terrain, decisions
+### doc/ — Documentation, terrain, décisions
 
-| Contenu | Role |
+| Contenu | Rôle |
 |---|---|
 | `examples/katen/` | 7 fiches personas — terrain de validation |
-| `feedback/` | 9 REX — pieges, patterns, succes |
-| `onboarding.md` | Guide de demarrage |
-| `lexique.md` | Termes de la methode |
-| `utilisateur.md` | Guide utilisateur unifie |
+| `feedback/` | 9 REX — pièges, patterns, succès |
+| `onboarding.md` | Guide de démarrage |
+| `lexique.md` | Termes de la méthode |
+| `utilisateur.md` | Guide utilisateur unifié |
 | `arch-voix.md` | Ce document |
 | `figures/` | Visuels SVG |
-| `adr/` | Decisions structurantes |
+| `adr/` | Décisions structurantes |
 | `tests/` | Plans de test |
 
 L'instance Katen (7 personas, 5 produits, 210+ sessions, 62 ADR) sert de vitrine et de validation.
 
 ---
 
-## 3. Modele conceptuel
+## 3. Modèle conceptuel
 
 ### Le triangle Voix
 
 ![Le triangle Voix](figures/fig-triangle-voix.svg)
 
-Trois concepts interdependants :
-- **Persona** — un LLM contraint par un role, un perimetre et des interdits
-- **Friction** — les desaccords qui emergent des contraintes entre personas
-- **Artefact** — le fichier structure qui materialise l'echange et la trace
+Trois concepts interdépendants :
+- **Persona** — un LLM contraint par un rôle, un périmètre et des interdits
+- **Friction** — les désaccords qui émergent des contraintes entre personas
+- **Artefact** — le fichier structuré qui matérialise l'échange et la trace
 
 Le **PO** (humain) est au centre : il orchestre, filtre, contextualise, tranche.
 
-### Cycle de vie d'un echange
+### Cycle de vie d'un échange
 
 ![Cycle de vie d'un échange](figures/fig-cycle-echange.svg)
 
-Chaque fleche passe par le PO. Pas de raccourci.
+Chaque flèche passe par le PO. Pas de raccourci.
 
 ### Instance Voix
 
-Une **instance** est un projet qui applique la methode. Elle contient :
+Une **instance** est un projet qui applique la méthode. Elle contient :
 
 ![Structure instance Voix](figures/fig-structure-instance.svg)
 
-Le fichier `voix.md` a la racine identifie le depot comme instance et lie a la methode.
+Le fichier `voix.md` à la racine identifie le dépôt comme instance et lie à la méthode.
 
 ---
 
@@ -127,34 +127,34 @@ Le fichier `voix.md` a la racine identifie le depot comme instance et lie a la m
 
 ### P1 — Le core tient sans outil
 
-Les 7 principes et le modele conceptuel sont independants de Claude Code. On pourrait appliquer Voix avec des fichiers texte et un editeur. Le runtime est un accelerateur, pas un prerequis.
+Les 7 principes et le modèle conceptuel sont indépendants de Claude Code. On pourrait appliquer Voix avec des fichiers texte et un éditeur. Le runtime est un accélérateur, pas un prérequis.
 
 ### P2 — Core / Protocol / Runtime
 
-Trois couches independantes. On peut :
+Trois couches indépendantes. On peut :
 - Changer le runtime (Claude Code → autre provider) sans toucher au protocol ni au core
-- Faire evoluer le protocol (nouveaux formats d'artefacts) sans changer les principes
-- Lire le core sans connaitre l'outil
+- Faire évoluer le protocol (nouveaux formats d'artefacts) sans changer les principes
+- Lire le core sans connaître l'outil
 
 ### P3 — Le PO est l'unique point de passage
 
-Aucun echange direct entre personas. L'humain filtre, reformule, contextualise, tranche. C'est le cout de la qualite.
+Aucun échange direct entre personas. L'humain filtre, reformule, contextualise, tranche. C'est le coût de la qualité.
 
-### P4 — L'isolation cree le besoin d'artefacts
+### P4 — L'isolation crée le besoin d'artefacts
 
-Un persona qui ne voit pas le code est oblige de specifier. Un persona qui ne decide pas de l'architecture est oblige de remonter les frictions. L'isolation n'est pas une limitation — c'est le mecanisme generateur.
+Un persona qui ne voit pas le code est obligé de spécifier. Un persona qui ne décide pas de l'architecture est obligé de remonter les frictions. L'isolation n'est pas une limitation — c'est le mécanisme générateur.
 
-### P5 — Les fichiers sont la source de verite
+### P5 — Les fichiers sont la source de vérité
 
-Pas les conversations, pas la memoire, pas les sessions compressees. Les fichiers versionnes dans git.
+Pas les conversations, pas la mémoire, pas les sessions compressées. Les fichiers versionnés dans git.
 
 ### P6 — Gradient d'activation
 
 | Seuil | Ce qui s'active |
 |---|---|
 | **1 persona** | CLAUDE.md + sessions/ — la base |
-| **2+ personas** | shared/ (notes, reviews) — le bus d'echange |
-| **3+ personas** | backlog.md par workspace — l'etat local |
+| **2+ personas** | shared/ (notes, reviews) — le bus d'échange |
+| **3+ personas** | backlog.md par workspace — l'état local |
 | **4+ personas** | shared/features/ — les specs ne passent plus par notes |
 | **5+ personas, 2+ produits** | Convergence (produit compagnon) — dashboard, inbox, journal |
 
@@ -174,21 +174,21 @@ On commence petit, on ajoute de la structure quand la charge mentale du PO l'exi
 
 | | Voix | Convergence |
 |---|---|---|
-| **Repond a** | Comment organiser mes assistants IA | Comment piloter quand ca scale |
-| **Quand** | Des le premier persona | A partir de 5+ voix et 2+ produits |
-| **Publie** | Methode, implementation, outillage | build.py, dashboard, specs de format |
-| **Formats** | Fournit les templates (backlog, roadmap, note...) | Parse ces memes formats |
+| **Répond à** | Comment organiser mes assistants IA | Comment piloter quand ça scale |
+| **Quand** | Dès le premier persona | À partir de 5+ voix et 2+ produits |
+| **Publié** | Méthode, implémentation, outillage | build.py, dashboard, specs de format |
+| **Formats** | Fournit les templates (backlog, roadmap, note...) | Parse ces mêmes formats |
 
-Voix definit les conventions. Convergence les consomme. Pas de duplication — renvois croises.
+Voix définit les conventions. Convergence les consomme. Pas de duplication — renvois croisés.
 
 ### Produits Oxynoe
 
 | Produit | Lien avec Voix |
 |---|---|
-| **Katen** | Instance de reference (7 personas, terrain de validation) |
+| **Katen** | Instance de référence (7 personas, terrain de validation) |
 | **Convergence** | Compagnon de pilotage (consomme les artefacts Voix) |
-| **Fragments** | Futur — produit editorial, instance distincte |
-| **Regards** | Futur — veille augmentee, instance distincte |
+| **Fragments** | Futur — produit éditorial, instance distincte |
+| **Regards** | Futur — veille augmentée, instance distincte |
 
 ---
 
@@ -196,7 +196,7 @@ Voix definit les conventions. Convergence les consomme. Pas de duplication — r
 
 ### Architecture actuelle
 
-`core/` et `protocol/` sont provider-agnostic (voir structure du repo en section 5). `runtime/` est le seul point de variation. Ajouter un provider = ajouter `runtime/mistral/`, `runtime/gemini/`, etc. Chaque adaptateur documente les equivalents du provider pour : instructions persistantes, memoire, sessions, automatisations.
+`core/` et `protocol/` sont provider-agnostic (voir structure du repo en section 5). `runtime/` est le seul point de variation. Ajouter un provider = ajouter `runtime/mistral/`, `runtime/gemini/`, etc. Chaque adaptateur documente les équivalents du provider pour : instructions persistantes, mémoire, sessions, automatisations.
 
 ### Multi-provider (v0.5)
 
@@ -207,20 +207,20 @@ runtime/
 └── gemini/            ← futur
 ```
 
-Pre-requis : retours utilisateurs v0.3 + i18n v0.4. Ne pas anticiper sans feedback.
+Pré-requis : retours utilisateurs v0.3 + i18n v0.4. Ne pas anticiper sans feedback.
 
 ---
 
-## 8. Decisions
+## 8. Décisions
 
-| Decision | Raison |
+| Décision | Raison |
 |---|---|
-| Methode provider-agnostic, implementation specifique | Portabilite future sans sacrifier la profondeur Claude Code |
-| Le PO ne delegue pas l'arbitrage | C'est la regle non negociable — sans arbitre, la friction est du chaos |
-| Fichiers comme protocole (pas de chat) | La lenteur force la clarte, les fichiers persistent et sont versionnables |
-| Gradient d'activation | La methode ne se deploie pas en big bang — elle grandit avec le projet |
-| Convergence = produit separe | Deux publics differents, deux timelines de publication |
-| Templates + archetypes | Reduire la friction d'adoption sans imposer un modele rigide |
+| Méthode provider-agnostic, implémentation spécifique | Portabilité future sans sacrifier la profondeur Claude Code |
+| Le PO ne délègue pas l'arbitrage | C'est la règle non négociable — sans arbitre, la friction est du chaos |
+| Fichiers comme protocole (pas de chat) | La lenteur force la clarté, les fichiers persistent et sont versionnables |
+| Gradient d'activation | La méthode ne se déploie pas en big bang — elle grandit avec le projet |
+| Convergence = produit séparé | Deux publics différents, deux timelines de publication |
+| Templates + archétypes | Réduire la friction d'adoption sans imposer un modèle rigide |
 
 ---
 

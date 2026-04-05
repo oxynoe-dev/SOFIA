@@ -65,12 +65,12 @@ Le fichier `CLAUDE.md` à la racine de chaque workspace contient :
 4. **Interdit** — ce qui est hors périmètre (lecture ET écriture)
 5. **Comment** — conventions, formats, workflow
 
-Voir `runtime/claude-code/claude-md.md` pour l'anatomie detaillee.
+Voir `runtime/claude-code/claude-md.md` pour l'anatomie détaillée.
 
 ## Multi-instance : le cas du dev
 
 Certains personas travaillent sur **deux repos** — leur workspace
-d'analyse (dans l'instance) et un repo produit separe. C'est le cas
+d'analyse (dans l'instance) et un repo produit séparé. C'est le cas
 typique du dev : il planifie dans `instance/dev/` et code dans `produit/`.
 
 ### Structure
@@ -81,7 +81,7 @@ instance/                       ← repo instance (experiments/)
 │   ├── CLAUDE.md
 │   ├── sessions/
 │   └── backlog.md
-└── shared/                     ← bus d'echange
+└── shared/                     ← bus d'échange
 
 produit/                        ← repo produit (katen/)
 ├── CLAUDE.md                   ← instructions dev completes
@@ -89,21 +89,21 @@ produit/                        ← repo produit (katen/)
 └── tests/
 ```
 
-### Regles
+### Règles
 
-- Le **CLAUDE.md du repo produit** est l'entree principale du dev — c'est
-  la que vivent les conventions de code, l'architecture, le processus de version.
+- Le **CLAUDE.md du repo produit** est l'entrée principale du dev — c'est
+  là que vivent les conventions de code, l'architecture, le processus de version.
 - Le **workspace dev/ dans l'instance** contient les sessions, le backlog,
   et les plans — pas du code.
-- Les commits instance = auto (`{persona}: {resume} ({date})`).
-  Les commits produit = PO execute.
-- Le dev lit `shared/notes/` et `shared/review/` au meme titre que
+- Les commits instance = auto (`{persona}: {résumé} ({date})`).
+  Les commits produit = PO exécute.
+- Le dev lit `shared/notes/` et `shared/review/` au même titre que
   les autres personas — c'est dans son workflow d'ouverture.
 
-### Pourquoi separer ?
+### Pourquoi séparer ?
 
-Le code versionne est un livrable public. Les sessions et plans sont
+Le code versionné est un livrable public. Les sessions et plans sont
 de l'outillage interne. Les mettre ensemble :
 - Expose l'historique d'analyse dans le repo public
-- Melange les commits de code et les commits de session
+- Mélange les commits de code et les commits de session
 - Casse l'isolation si le repo produit est ouvert par un autre outil

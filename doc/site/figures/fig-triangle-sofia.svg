@@ -1,0 +1,26 @@
+<svg width="320" height="220" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Triangle -->
+  <line x1="160" y1="30" x2="50" y2="180" stroke="#40d8c0" stroke-width="1" opacity="0.4"/>
+  <line x1="160" y1="30" x2="270" y2="180" stroke="#40d8c0" stroke-width="1" opacity="0.4"/>
+  <line x1="50" y1="180" x2="270" y2="180" stroke="#40d8c0" stroke-width="1" opacity="0.4"/>
+
+  <!-- Connecting lines to center -->
+  <line x1="160" y1="30" x2="160" y2="120" stroke="#40d8c0" stroke-width="0.6" opacity="0.2" stroke-dasharray="4 3"/>
+  <line x1="50" y1="180" x2="160" y2="120" stroke="#40d8c0" stroke-width="0.6" opacity="0.2" stroke-dasharray="4 3"/>
+  <line x1="270" y1="180" x2="160" y2="120" stroke="#40d8c0" stroke-width="0.6" opacity="0.2" stroke-dasharray="4 3"/>
+
+  <!-- Vertex nodes -->
+  <circle cx="160" cy="30" r="4" fill="#40d8c0" opacity="0.6"/>
+  <circle cx="50" cy="180" r="4" fill="#40d8c0" opacity="0.6"/>
+  <circle cx="270" cy="180" r="4" fill="#40d8c0" opacity="0.6"/>
+
+  <!-- Center node — human -->
+  <circle cx="160" cy="120" r="6" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.8"/>
+  <circle cx="160" cy="120" r="2.5" fill="#a78bfa" opacity="0.6"/>
+
+  <!-- Labels -->
+  <text x="160" y="16" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="400" letter-spacing="0.08em" fill="#f0f8f5" opacity="0.9">PERSONA</text>
+  <text x="20" y="200" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="400" letter-spacing="0.08em" fill="#f0f8f5" opacity="0.9">ARTEFACT</text>
+  <text x="300" y="200" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="400" letter-spacing="0.08em" fill="#f0f8f5" opacity="0.9">FRICTION</text>
+  <text x="160" y="145" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-style="italic" fill="#a78bfa" opacity="0.8">l'humain</text>
+</svg>

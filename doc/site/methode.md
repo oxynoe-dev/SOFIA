@@ -19,7 +19,7 @@ Voix repose sur trois idées. Elles ne fonctionnent pas l'une sans l'autre.
 
 **Contraindre** — Un assistant IA sans limites dit oui à tout et ne produit rien de bon. Voix impose à chaque assistant un rôle strict, un périmètre, et surtout des interdits. C'est la limitation qui le rend utile.
 
-**Frotter** — Si tous les rôles sont d'accord, personne ne pense. La friction entre un architecte qui refuse de coder et un dev qui refuse d'implémenter une spec floue est un signal, pas un bug. Les désaccords forcent la clarté.
+**Éprouver** — Si tous les rôles sont d'accord, personne ne pense. La friction entre un architecte qui refuse de coder et un dev qui refuse d'implémenter une spec floue est un signal, pas un bug. Les désaccords forcent la clarté.
 
 **Arbitrer** — La friction sans arbitre est du chaos. L'humain écoute, questionne, puis tranche. Toujours. Aucun assistant ne valide ses propres propositions. Aucun assistant ne force l'acceptation d'une décision.
 
@@ -40,6 +40,14 @@ Voix repose sur trois idées. Elles ne fonctionnent pas l'une sans l'autre.
 | 7 | Commence petit, itère | Un rôle au démarrage. Les autres émergent du travail |
 
 → [Lire les principes en détail](/voix/doc/principes)
+
+---
+
+## Le modèle
+
+Trois objets interdépendants. Le persona contraint produit des artefacts. Les artefacts créent de la friction quand ils sont éprouvés par d'autres personas. La friction produit de meilleures décisions. L'humain orchestre le cycle.
+
+![Modèle conceptuel — Persona, Artefact, Friction](figures/fig-triangle-sofia.svg)
 
 ---
 
