@@ -53,9 +53,11 @@ cd voix
 claude
 ```
 
-Claude Code ouvre le repo, charge le guide intégré et te pose
+Claude Code ouvre le repo, charge le guide intégré (Diapason) et te pose
 les bonnes questions. En 10 minutes, tu as ton premier persona
 calibré pour ton projet.
+
+> **Alpha preview** — Diapason repose sur le comportement conversationnel de Claude Code. Les résultats peuvent varier selon l'environnement. Si le flow ne se lance pas, le [mode manuel](doc/demarrer-manuel.md) couvre la même chose étape par étape.
 
 ## En savoir plus
 
@@ -64,13 +66,13 @@ calibré pour ton projet.
 | `core/` | Les invariants — principes, personas, friction, devoirs + templates |
 | `protocol/` | Le contrat d'interface — artefacts, conventions, tracabilite, isolation, orchestration |
 | `runtime/` | L'implementation concrete — Claude Code aujourd'hui, d'autres demain |
-| `doc/` | Guides, terrain (examples, feedback), architecture, ADR |
+| `doc/` | Guides, workflows, patterns, retours terrain, architecture, ADR |
 
 ## Origine
 
 Voix est née du projet [Katen](https://katen.run) — un moteur de
 composition visuelle construit avec 7 assistants IA specialises
-(architecte, dev, UX, chercheuse, stratege, graphiste, redacteur) sur 28+ sessions fondatrices.
+(architecte, dev, UX, chercheuse, stratege, graphiste, redacteur) sur 210+ sessions.
 
 La méthode a émergé de la pratique, pas de la théorie. Elle est
 documentée ici pour être partagée.

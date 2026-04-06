@@ -267,4 +267,8 @@ La prochaine session n'aura pas ton contexte en tête. Les résumés sont sa mé
 | `runtime/claude-code/claude-md.md` | Anatomie d'un CLAUDE.md |
 | `runtime/claude-code/sessions.md` | Format des résumés de session |
 | `runtime/claude-code/memoire.md` | Mémoire persistante entre sessions |
+| `doc/workflows/` | 6 processus clés (dev, publication, ADR, recherche...) |
+| `doc/patterns/` | 7 structures récurrentes (challenger, distillerie, escalade...) |
+| `doc/feedback/` | Retours terrain Katen — contexte d'identification des patterns (N=1) |
 | `doc/examples/katen/` | 7 personas en production — référence de calibrage |
+| `doc/demarrer-manuel.md` | Installer Voix sans Diapason, pas à pas |
