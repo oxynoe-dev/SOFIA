@@ -6,8 +6,8 @@
 
 ## Le projet
 
-[Katen](https://katen.run) est un moteur de composition visuelle basé
-sur les réseaux de Petri. Construit en HTML/JS/SVG pur, zéro dépendance.
+[Katen](https://katen.run) est un moteur d'orchestration formellement vérifié
+pour pipelines Data & IA, basé sur les réseaux de Petri. Construit en HTML/JS/SVG pur, zéro dépendance.
 Open source MIT. 18 ans de réflexion (2008-2026) — de la v1 C++/Qt
 à la v2 pur web.
 

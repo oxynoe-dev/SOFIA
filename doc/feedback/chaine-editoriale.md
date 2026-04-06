@@ -1,4 +1,4 @@
-# Retour d'expérience — Pattern éditorial
+# Retour d'expérience — Chaîne éditoriale
 
 > La chaîne éditoriale multi-personas émerge naturellement. Il faut la documenter avant qu'elle ne se casse.
 
@@ -6,7 +6,7 @@
 
 ## Le pattern
 
-Observé sur la production du livre blanc Voix. Reproductible pour tout
+Observé sur la production du livre bleu Voix. Reproductible pour tout
 livrable éditorial : article, fragment, documentation publique.
 
 ```

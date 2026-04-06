@@ -9,7 +9,7 @@
 - Tu veux comprendre chaque pièce avant de l'assembler
 - Tu as déjà une idée précise des rôles dont tu as besoin
 - Tu préfères garder le contrôle sur la structure
-- Tu veux adapter la méthode à un provider autre que Claude Code
+- Tu veux adapter la méthode à un autre provider
 
 Le mode manuel produit exactement le même résultat que Diapason. Il n'y a pas de version "allégée" — juste un chemin différent pour y arriver.
 
@@ -40,7 +40,7 @@ mon-projet/
 
 ## Avant de commencer : instance et projet
 
-Une instance Voix n'est pas ton projet — c'est l'atelier où les personas réfléchissent. Le projet (code, produit) vit dans un repo séparé. Voir la section **L'isolation > Instance et projet** du guide utilisateur pour le détail et les trois configurations possibles.
+Une instance Voix n'est pas ton projet — c'est l'atelier où les personas réfléchissent. Le projet (code, produit) vit dans un repo séparé. Voir la section [L'isolation > Instance et projet](utilisateur.md#instance-et-projet) du guide utilisateur pour le détail et les trois configurations possibles.
 
 ---
 
@@ -66,7 +66,7 @@ Ce dépôt est une **instance de la méthode Voix**.
 - **Méthode** : [oxynoe-dev/voix](https://github.com/oxynoe-dev/voix)
 - **Version méthode appliquée** : v0.2.x
 - **Projet** : {ton projet}
-- **Équipe** : {nombre} assistants IA + 1 PO humain
+- **Équipe** : {nombre} assistants IA + 1 humain orchestrateur
 
 ## Structure instance
 
@@ -107,7 +107,7 @@ Les personas ne se parlent pas. Ils échangent par artefacts déposés dans shar
 
 ## Commits
 - Instance : `{persona}: {résumé court} ({date})`
-- Repos produit : le PO commit
+- Repos produit : l'humain vérifie et commit
 ```
 
 ---

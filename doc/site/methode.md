@@ -77,11 +77,11 @@ Chaque persona vit dans son propre workspace. Il ne voit que ses fichiers. Il ne
 
 L'humain est le message bus. Rien ne circule entre personas sans lui.
 
-![Orchestration — le rôle du PO](figures/fig-methode-orchestration.svg)
+![Orchestration — le rôle de l'humain](figures/fig-methode-orchestration.svg)
 
-Le PO ouvre une session avec un persona, obtient un livrable, ferme la session. Ouvre une session avec un autre persona, transmet le livrable, recueille la réaction. Chaque transmission est un moment de filtrage, de reformulation, d'ajout de contexte.
+L'humain ouvre une session avec un persona, obtient un livrable, ferme la session. Ouvre une session avec un autre persona, transmet le livrable, recueille la réaction. Chaque transmission est un moment de filtrage, de reformulation, d'ajout de contexte.
 
-**Ce que le PO ne délègue pas** :
+**Ce que l'humain ne délègue pas** :
 - La priorisation — quel persona intervient, dans quel ordre
 - La consolidation — synthétiser les retours de plusieurs personas
 - La décision — trancher quand les personas divergent
@@ -119,15 +119,13 @@ La méthode ne se déploie pas en big bang. Elle grandit avec le projet.
 | 2+ personas | shared/ — le bus d'échange (notes, reviews) |
 | 3+ personas | backlogs par workspace |
 | 4+ personas | features/ — les specs formalisées |
-| 5+, multi-produit | Convergence — dashboard de pilotage |
-
-On commence petit. On ajoute de la structure quand la charge mentale du PO l'exige.
+On commence petit. On ajoute de la structure quand la charge mentale de l'humain l'exige.
 
 ---
 
 ## Terrain
 
-La méthode a été développée et validée sur le projet Katen — un moteur de composition multimédia construit avec 7 personas sur 210+ sessions.
+La méthode a été développée et validée sur le projet Katen — un moteur d'orchestration formellement vérifié pour pipelines Data & IA, construit avec 7 personas sur 210+ sessions.
 
 | Indicateur | Valeur |
 |---|---|

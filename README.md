@@ -65,13 +65,13 @@ calibré pour ton projet.
 |---|---|
 | `core/` | Les invariants — principes, personas, friction, devoirs + templates |
 | `protocol/` | Le contrat d'interface — artefacts, conventions, tracabilite, isolation, orchestration |
-| `runtime/` | L'implementation concrete — Claude Code aujourd'hui, d'autres demain |
+| `runtime/` | L'implementation concrete — Claude Code aujourd'hui, Mistral demain, d'autres après |
 | `doc/` | Guides, workflows, patterns, retours terrain, architecture, ADR |
 
 ## Origine
 
 Voix est née du projet [Katen](https://katen.run) — un moteur de
-composition visuelle construit avec 7 assistants IA specialises
+orchestration formellement vérifié pour pipelines Data & IA, construit avec 7 assistants IA specialises
 (architecte, dev, UX, chercheuse, stratege, graphiste, redacteur) sur 210+ sessions.
 
 La méthode a émergé de la pratique, pas de la théorie. Elle est

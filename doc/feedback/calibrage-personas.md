@@ -19,7 +19,7 @@ ne dit rien sur ce point.
 
 Sur Katen, trois personas produisaient du contenu pour des canaux de
 diffusion, chacun avec ses propres outils, sans contrat clair sur les
-frontières. Le livre blanc Voix a révélé le problème : Winston le rédige,
+frontières. Le livre bleu Voix a révélé le problème : Winston le rédige,
 Sofia le met en forme PDF, mais qui produit la version web ? Les scripts
 de publication de Winston généraient du HTML — ça chevauchait le périmètre
 de Nora.

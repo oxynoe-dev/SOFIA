@@ -27,7 +27,7 @@ d'autres qui vérifient.
 
 Un producteur, trois challengers. Intensité maximale — c'est le produit clé.
 
-### Chaîne éditoriale (livre blanc)
+### Chaîne éditoriale (livre bleu)
 
 | Rôle | Persona | Axe |
 |------|---------|-----|

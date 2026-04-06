@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Fig. — Pattern Revue en etoile — 05/04/2026 -->
+<!-- Fig. — Pattern Revue en etoile — 07/04/2026 -->
 <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace">
 
   <defs>
@@ -14,78 +14,54 @@
   <rect width="500" height="400" fill="url(#bg-grad)" rx="6"/>
   <rect width="500" height="400" fill="url(#grid)" rx="6"/>
 
-  <!-- ════════════════════════════════════════
-       TITRE
-  ════════════════════════════════════════ -->
-  <text x="250" y="28" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Pattern — Revue en etoile</text>
+  <!-- TITRE -->
+  <text x="250" y="28" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Pattern — Revue en étoile</text>
 
-  <!-- ════════════════════════════════════════
-       ARTEFACT (center, blue)
-  ════════════════════════════════════════ -->
-  <rect x="190" y="120" width="120" height="50" rx="4" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="1.2"/>
-  <text x="250" y="149" text-anchor="middle" fill="#4f8aff" font-size="9">Artefact</text>
+  <!-- PERSONAS (top) -->
+  <rect x="30" y="55" width="120" height="38" rx="3" fill="rgba(61,220,132,0.10)" stroke="rgba(61,220,132,0.45)" stroke-width="0.8"/>
+  <text x="90" y="77" text-anchor="middle" fill="rgba(64,216,192,0.85)" font-size="9">Persona A</text>
 
-  <!-- ════════════════════════════════════════
-       REVIEWERS (green)
-  ════════════════════════════════════════ -->
+  <rect x="190" y="55" width="120" height="38" rx="3" fill="rgba(61,220,132,0.10)" stroke="rgba(61,220,132,0.45)" stroke-width="0.8"/>
+  <text x="250" y="77" text-anchor="middle" fill="rgba(64,216,192,0.85)" font-size="9">Persona B</text>
 
-  <!-- Reviewer 1 — top left -->
-  <rect x="30" y="50" width="130" height="38" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
-  <text x="95" y="72" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8">Reviewer 1</text>
-  <text x="95" y="82" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">(axe A)</text>
+  <rect x="350" y="55" width="120" height="38" rx="3" fill="rgba(61,220,132,0.10)" stroke="rgba(61,220,132,0.45)" stroke-width="0.8"/>
+  <text x="410" y="77" text-anchor="middle" fill="rgba(64,216,192,0.85)" font-size="9">Persona C</text>
 
-  <!-- Reviewer 2 — top right -->
-  <rect x="340" y="50" width="130" height="38" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
-  <text x="405" y="72" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8">Reviewer 2</text>
-  <text x="405" y="82" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">(axe B)</text>
+  <!-- ARTEFACT (center) -->
+  <rect x="175" y="175" width="150" height="50" rx="4" fill="rgba(79,138,255,0.12)" stroke="rgba(79,138,255,0.5)" stroke-width="1.2"/>
+  <text x="250" y="204" text-anchor="middle" fill="#7ab0ff" font-size="10" font-weight="500">Artefact</text>
 
-  <!-- Reviewer 3 — right -->
-  <rect x="370" y="170" width="110" height="38" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
-  <text x="425" y="192" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8">Reviewer 3</text>
-  <text x="425" y="202" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">(axe C)</text>
+  <!-- FLECHES PERSONAS → ARTEFACT -->
+  <line x1="90" y1="93" x2="195" y2="175" stroke="rgba(61,220,132,0.4)" stroke-width="1"/>
 
-  <!-- ════════════════════════════════════════
-       LIGNES ARTEFACT → REVIEWERS
-  ════════════════════════════════════════ -->
-  <line x1="205" y1="125" x2="130" y2="88" stroke="rgba(61,220,132,0.2)" stroke-width="1"/>
-  <line x1="295" y1="125" x2="370" y2="88" stroke="rgba(61,220,132,0.2)" stroke-width="1"/>
-  <line x1="310" y1="150" x2="370" y2="180" stroke="rgba(61,220,132,0.2)" stroke-width="1"/>
+  <line x1="250" y1="93" x2="250" y2="175" stroke="rgba(61,220,132,0.4)" stroke-width="1"/>
 
-  <!-- ════════════════════════════════════════
-       PO (amber) — bottom center
-  ════════════════════════════════════════ -->
-  <rect x="175" y="290" width="150" height="50" rx="4" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="1.2"/>
-  <text x="250" y="316" text-anchor="middle" fill="#d4a030" font-size="9">PO consolide</text>
-  <text x="250" y="330" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">synthese finale</text>
+  <line x1="410" y1="93" x2="305" y2="175" stroke="rgba(61,220,132,0.4)" stroke-width="1"/>
 
-  <!-- ════════════════════════════════════════
-       FLECHES REVIEWERS → PO
-  ════════════════════════════════════════ -->
-  <line x1="95" y1="88" x2="195" y2="290" stroke="rgba(212,160,48,0.15)" stroke-width="1" stroke-dasharray="4,3"/>
-  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(212,160,48,0.3)" transform="translate(195,290) rotate(-60)"/>
+  <!-- Labels axes -->
+  <text x="130" y="135" text-anchor="middle" fill="rgba(64,216,192,0.45)" font-size="7">review axe A</text>
+  <text x="250" y="135" text-anchor="middle" fill="rgba(64,216,192,0.45)" font-size="7">review axe B</text>
+  <text x="370" y="135" text-anchor="middle" fill="rgba(64,216,192,0.45)" font-size="7">review axe C</text>
 
-  <line x1="405" y1="88" x2="305" y2="290" stroke="rgba(212,160,48,0.15)" stroke-width="1" stroke-dasharray="4,3"/>
-  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(212,160,48,0.3)" transform="translate(305,290) rotate(-120)"/>
+  <!-- HUMAIN (bottom) -->
+  <rect x="175" y="300" width="150" height="50" rx="4" fill="rgba(212,160,48,0.12)" stroke="rgba(212,160,48,0.5)" stroke-width="1.2"/>
+  <text x="250" y="326" text-anchor="middle" fill="#e0b840" font-size="10" font-weight="500">Humain</text>
+  <text x="250" y="340" text-anchor="middle" fill="rgba(212,160,48,0.6)" font-size="7">consolide et tranche</text>
 
-  <line x1="400" y1="208" x2="310" y2="290" stroke="rgba(212,160,48,0.15)" stroke-width="1" stroke-dasharray="4,3"/>
-  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(212,160,48,0.3)" transform="translate(310,290) rotate(-115)"/>
+  <!-- FLECHE ARTEFACT → HUMAIN -->
+  <line x1="250" y1="225" x2="250" y2="300" stroke="rgba(212,160,48,0.4)" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="280" y="265" fill="rgba(212,160,48,0.5)" font-size="7">synthèse</text>
 
-  <!-- ════════════════════════════════════════
-       ANNOTATION
-  ════════════════════════════════════════ -->
-  <text x="250" y="365" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-size="7">chaque reviewer apporte un axe distinct — pas de consensus entre pairs</text>
+  <!-- ANNOTATION -->
+  <text x="250" y="375" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-size="7">chaque persona review sur son axe — pas de consensus entre pairs</text>
 
-  <!-- ════════════════════════════════════════
-       SPORES
-  ════════════════════════════════════════ -->
+  <!-- SPORES -->
   <circle cx="30" cy="370" r="1.2" fill="rgba(64,216,192,0.04)"/>
   <circle cx="470" cy="350" r="1.0" fill="rgba(64,216,192,0.04)"/>
   <circle cx="20" cy="140" r="1.4" fill="rgba(64,216,192,0.04)"/>
   <circle cx="480" cy="130" r="0.9" fill="rgba(64,216,192,0.04)"/>
 
-  <!-- ════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════ -->
-  <text x="250" y="390" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">Voix — methode Oxynoe — 05/04/2026</text>
+  <!-- FOOTER -->
+  <text x="250" y="393" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-size="7">Voix — méthode Oxynoe — 07/04/2026</text>
 
 </svg>

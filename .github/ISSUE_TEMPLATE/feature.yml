@@ -1,0 +1,21 @@
+name: "Feature"
+description: "Proposer une amélioration ou une nouvelle fonctionnalité"
+labels: ["feature"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problème
+      description: Quel problème cette feature résoudrait ?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution proposée
+      description: Comment tu verrais la solution ?
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives envisagées
+      description: As-tu considéré d'autres approches ?

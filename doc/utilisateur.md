@@ -8,7 +8,7 @@
 
 Voix est une méthode pour orchestrer des assistants IA spécialisés sur un projet. Chaque assistant a un rôle, un périmètre et des interdits. Ils ne se parlent pas — c'est toi qui portes le contexte entre eux. La friction entre les rôles produit de meilleures décisions.
 
-Pour commencer : clone le repo, lance `claude`, et Diapason — le guide intégré — te propose ton premier persona. Si le flow ne se lance pas, le mode manuel couvre la même chose étape par étape.
+Pour commencer : clone le repo, lance `claude`, et Diapason — le guide intégré — te propose ton premier persona. Si le flow ne se lance pas, le [mode manuel](demarrer-manuel.md) couvre la même chose étape par étape.
 
 > **Alpha preview** — Diapason repose sur le comportement conversationnel de Claude Code. Les résultats peuvent varier selon l'environnement.
 
@@ -18,9 +18,11 @@ cd voix
 claude
 ```
 
+> Git n'est pas obligatoire pour utiliser Voix, mais il est fortement conseillé. Les résumés de session, les notes et les reviews sont des fichiers — git te donne la traçabilité et la persistence du contexte entre les sessions.
+
 ---
 
-## 1. Les principes
+## 1. L'essentiel
 
 ### Un persona = un rôle strict
 
@@ -50,7 +52,20 @@ Un persona au démarrage. Deux quand le premier est calibré. Trois quand le bes
 
 ---
 
-## 2. Démarrage avec Diapason
+## 2. Ce que tu viens de cloner
+
+Le repo Voix n'est pas ton projet — c'est la **méthode**. Il contient :
+
+- `core/` — les invariants : principes, personas, friction, devoirs
+- `protocol/` — le contrat d'interface : artefacts, conventions, isolation, orchestration
+- `runtime/` — l'implémentation concrète pour Claude Code (d'autres providers suivront)
+- `doc/` — guides, workflows, patterns, retours terrain
+
+Ton projet vivra ailleurs, dans son propre repo. Voix t'aide à organiser les assistants IA qui travaillent dessus. La section [L'isolation](doc/utilisateur.md#instance-et-projet) détaille les configurations possibles.
+
+---
+
+## 3. Démarrage avec Diapason
 
 > **Alpha preview** — Diapason repose sur le CLAUDE.md et le comportement conversationnel de Claude Code. Les résultats peuvent varier selon le provider, la version du modèle et l'environnement. Si le flow ne se lance pas ou dérive, passe en mode manuel (voir section suivante).
 
@@ -84,7 +99,7 @@ Après avoir généré ton premier CLAUDE.md, Diapason te dit trois choses :
 
 ---
 
-## 3. Travailler avec un persona
+## 4. Travailler avec un persona
 
 ### Le CLAUDE.md
 
@@ -100,13 +115,13 @@ Vise 60-100 lignes. Au-delà, le contexte se dilue.
 
 ### Ouverture de session
 
-Le persona lit le dernier résumé dans `sessions/`. Le PO décide quoi regarder. Pas de récitation systématique.
+Le persona lit le dernier résumé dans `sessions/`. L'humain décide quoi regarder. Pas de récitation systématique.
 
 ### Fermeture de session
 
 1. Résumé dans `sessions/` — Produit, Décisions, Notes déposées, Ouvert
 2. Commit direct dans l'instance — `{persona}: {résumé court} ({date})`
-3. Repos produit — préparer le message, le PO exécute
+3. Si le persona a produit des changements pour ton projet (code, site, etc.) — préparer le message de commit, l'humain vérifie et exécute
 
 Pas de prose. Listes courtes. 30 lignes max.
 
@@ -121,7 +136,7 @@ Si ton persona ne dit jamais non, ses contraintes sont trop lâches.
 
 ---
 
-## 4. Émergence — les personas suivants
+## 5. Émergence — les personas suivants
 
 Les personas suivants ne se planifient pas. Ils émergent du travail.
 
@@ -152,7 +167,7 @@ C'est exactement ce qui s'est passé sur le projet Katen : le premier persona (a
 
 ---
 
-## 5. L'isolation
+## 6. L'isolation
 
 ### Instance et projet
 
@@ -160,7 +175,7 @@ Une **instance Voix** n'est pas ton projet. C'est l'espace où tes personas réf
 
 ![Instance et projet](figures/fig-instance-projet.svg)
 
-L'instance pense. Le projet livre. Les personas travaillent dans l'instance et produisent des livrables qui atterrissent dans le projet. Les commits dans l'instance sont automatiques. Les commits dans le projet passent par le PO.
+L'instance pense. Le projet livre. Les personas travaillent dans l'instance et produisent des livrables qui atterrissent dans le projet. Les commits dans l'instance sont automatiques. Les commits dans le projet passent par l'humain.
 
 Trois configurations possibles :
 
@@ -194,11 +209,11 @@ Il n'y a pas de backlog par persona. Tous les items vivent dans les roadmaps.
 
 ---
 
-## 6. L'orchestration — le rôle du PO
+## 7. L'orchestration — le rôle de l'humain
 
 ### Tu es le message bus
 
-Les personas ne se parlent pas. Tu portes le contexte :
+Les personas ne se parlent pas. Tu portes le contexte. Tu peux ouvrir plusieurs terminaux en parallèle — un par persona — pour accélérer les échanges :
 
 1. Tu ouvres une session avec un persona
 2. Il produit un livrable
@@ -222,15 +237,19 @@ L'orchestration prend du temps. C'est le prix de la qualité. Si l'échange n'en
 
 ---
 
-## 7. La traçabilité
+## 8. La traçabilité
 
-### Trois mécanismes
+### Les artefacts de traçabilité
 
 1. **Résumés de session** — chaque session produit un résumé. C'est le pont entre les conversations. Format : `sessions/{YYYY-MM-DD}-{HHmm}-{persona}.md`
 
-2. **ADR** — les décisions structurantes sont tracées : contexte, décision, alternatives, conséquences, statut. L'ADR est écrit avant l'implémentation.
+2. **Notes** — messages inter-personas déposés dans `shared/notes/`. Format : `note-{destinataire}-{sujet}-{auteur}.md`
 
-3. **Reviews croisées** — quand un persona intervient sur le travail d'un autre, il produit une review avec des observations factuelles, des recommandations priorisées, et des questions ouvertes.
+3. **Reviews croisées** — quand un persona intervient sur le travail d'un autre, il produit une review avec des observations factuelles, des recommandations priorisées, et des questions ouvertes. Format : `review-{sujet}-{auteur}.md`
+
+4. **Features** — specs fonctionnelles partagées. Format : `feature-{sujet}.md` dans `shared/features/`
+
+5. **ADR** — les décisions structurantes sont tracées : contexte, décision, alternatives, conséquences, statut. L'ADR est écrit avant l'implémentation.
 
 ### Si ce n'est pas tracé, ça n'existe pas
 
@@ -238,7 +257,7 @@ La prochaine session n'aura pas ton contexte en tête. Les résumés sont sa mé
 
 ---
 
-## 8. Anti-patterns
+## 9. Anti-patterns
 
 | Pattern | Probleme |
 |---------|----------|
@@ -255,20 +274,31 @@ La prochaine session n'aura pas ton contexte en tête. Les résumés sont sa mé
 
 ## Pour aller plus loin
 
-| Document | Contenu |
-|----------|---------|
-| `core/principes.md` | Les 7 principes en détail |
-| `core/personas.md` | Anatomie d'un persona, calibrage, itération |
-| `core/friction.md` | La friction intentionnelle comme mécanisme |
-| `protocol/orchestration.md` | Le rôle du PO comme message bus |
-| `protocol/isolation.md` | L'isolation par workspace |
-| `protocol/tracabilite.md` | Sessions, ADR, reviews |
-| `protocol/artefacts.md` | Le bus d'échange shared/ |
-| `runtime/claude-code/claude-md.md` | Anatomie d'un CLAUDE.md |
-| `runtime/claude-code/sessions.md` | Format des résumés de session |
-| `runtime/claude-code/memoire.md` | Mémoire persistante entre sessions |
-| `doc/workflows/` | 6 processus clés (dev, publication, ADR, recherche...) |
-| `doc/patterns/` | 7 structures récurrentes (challenger, distillerie, escalade...) |
-| `doc/feedback/` | Retours terrain Katen — contexte d'identification des patterns (N=1) |
-| `doc/examples/katen/` | 7 personas en production — référence de calibrage |
-| `doc/demarrer-manuel.md` | Installer Voix sans Diapason, pas à pas |
+### La méthode en profondeur
+
+- [Principes](core/principes.md) — les 7 principes en détail
+- [Personas](core/personas.md) — anatomie d'un persona, calibrage, itération
+- [Friction](core/friction.md) — la friction intentionnelle comme mécanisme
+
+### Le protocole
+
+- [Orchestration](protocol/orchestration.md) — le rôle de l'humain comme message bus
+- [Isolation](protocol/isolation.md) — l'isolation par workspace
+- [Traçabilité](protocol/tracabilite.md) — sessions, ADR, reviews
+- [Artefacts](protocol/artefacts.md) — le bus d'échange shared/
+
+### L'implémentation Claude Code
+
+- [CLAUDE.md](runtime/claude-code/claude-md.md) — anatomie d'un CLAUDE.md
+- [Sessions](runtime/claude-code/sessions.md) — format des résumés de session
+- [Mémoire](runtime/claude-code/memoire.md) — mémoire persistante entre sessions
+
+### Apprendre par l'exemple
+
+> Les exemples ci-dessous viennent du projet Katen. Les livrables mentionnés (ADR, design system, notes de recherche...) sont spécifiques à ce projet — adapte-les à ton contexte. Ce qui est transposable, c'est la structure : rôles contraints, isolation, artefacts tracés.
+
+- [Workflows](doc/workflows/) — 6 processus clés (dev, publication, ADR, recherche...)
+- [Patterns](doc/patterns/) — 7 structures récurrentes (challenger, distillerie, escalade...)
+- [Retours terrain](doc/feedback/) — retours Katen, contexte d'identification des patterns (N=1)
+- [Personas Katen](doc/examples/katen/) — 7 fiches personas en production, référence de calibrage
+- [Mode manuel](doc/demarrer-manuel.md) — installer Voix sans Diapason, pas à pas

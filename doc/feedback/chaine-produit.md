@@ -104,14 +104,8 @@ Le PO tranche. L'ADR est accepté, rejeté ou reporté. Le statut est tracé.
 
 La chaîne produit est le cas d'usage fondamental de Voix. Quelques règles :
 
-- **L'architecte ne code pas.** C'est la contrainte numéro un. Si ton
-  architecte peut coder, il ne spécifiera jamais clairement.
-- **Le dev ne réinterprète pas.** Si la spec est floue, il remonte. Il
-  ne devine pas. La friction est le signal, pas le bruit.
-- **L'UX ne produit pas le code.** Elle spécifie les comportements. Le
-  dev remonte les contraintes. La friction entre les deux est le mécanisme
-  qui produit de bonnes interfaces.
-- **Trace tout.** ADR, sessions, reviews. Si ce n'est pas tracé, ça
-  n'existe pas.
-- **Le PO arbitre.** Quand deux personas divergent, l'humain tranche.
-  Pas le persona le plus éloquent. L'humain.
+- **L'architecte ne code pas.** C'est la contrainte numéro un. Si ton architecte peut coder, il ne spécifiera jamais clairement.
+- **Le dev ne réinterprète pas.** Si la spec est floue, il remonte. Il ne devine pas. La friction est le signal, pas le bruit.
+- **L'UX ne produit pas le code.** Elle spécifie les comportements. Le dev remonte les contraintes. La friction entre les deux produit de bonnes interfaces.
+- **Trace tout.** ADR, sessions, reviews. Si ce n'est pas tracé, ça n'existe pas.
+- **L'humain arbitre.** Quand deux personas divergent, l'humain tranche. Pas le persona le plus éloquent.

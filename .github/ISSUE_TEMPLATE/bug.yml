@@ -1,0 +1,36 @@
+name: "Bug"
+description: "Quelque chose ne fonctionne pas comme attendu"
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Décris le problème rencontré.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Étapes pour reproduire
+      description: Comment reproduire le problème ?
+      placeholder: |
+        1. Ouvrir le repo avec Claude Code
+        2. Suivre le guide…
+        3. …
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportement attendu
+      description: Que devrait-il se passer ?
+  - type: input
+    id: environment
+    attributes:
+      label: Environnement
+      description: "Version Claude Code, OS, etc."
+      placeholder: "Claude Code 1.x, macOS 15"
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexte supplémentaire
+      description: Captures d'écran, logs, ou toute info utile.

@@ -4,7 +4,7 @@
 
 ---
 
-## Pourquoi cette page
+## Pourquoi cette section
 
 Les personas produisent, challengent, documentent. Mais certaines
 responsabilités ne se délèguent pas — parce que la technologie n'en
