@@ -8,7 +8,9 @@
 
 Voix est une méthode pour orchestrer des assistants IA spécialisés sur un projet. Chaque assistant a un rôle, un périmètre et des interdits. Ils ne se parlent pas — c'est toi qui portes le contexte entre eux. La friction entre les rôles produit de meilleures décisions.
 
-Pour commencer : clone le repo, lance `claude`, et Diapason — le guide intégré — te propose ton premier persona.
+Pour commencer : clone le repo, lance `claude`, et Diapason — le guide intégré — te propose ton premier persona. Si le flow ne se lance pas, le mode manuel couvre la même chose étape par étape.
+
+> **Alpha preview** — Diapason repose sur le comportement conversationnel de Claude Code. Les résultats peuvent varier selon l'environnement.
 
 ```
 git clone https://github.com/oxynoe-dev/voix
@@ -49,6 +51,8 @@ Un persona au démarrage. Deux quand le premier est calibré. Trois quand le bes
 ---
 
 ## 2. Démarrage avec Diapason
+
+> **Alpha preview** — Diapason repose sur le CLAUDE.md et le comportement conversationnel de Claude Code. Les résultats peuvent varier selon le provider, la version du modèle et l'environnement. Si le flow ne se lance pas ou dérive, passe en mode manuel (voir section suivante).
 
 Diapason est le guide intégré de Voix. Quand tu lances `claude` dans le repo, il te guide pour créer ton premier persona.
 
@@ -150,11 +154,25 @@ C'est exactement ce qui s'est passé sur le projet Katen : le premier persona (a
 
 ## 5. L'isolation
 
-### Un persona = un workspace
+### Instance et projet
 
-Chaque persona vit dans son propre espace de travail avec son CLAUDE.md, ses sessions, ses fichiers. Il ne peut pas lire ou écrire partout. L'isolation force le persona à rester dans son rôle.
+Une **instance Voix** n'est pas ton projet. C'est l'espace où tes personas réfléchissent, planifient, et échangent. Ton **projet** (le code, le produit, le site) vit ailleurs, dans son propre repo.
 
-![Structure instance](../doc/figures/fig-structure-instance.svg)
+![Instance et projet](figures/fig-instance-projet.svg)
+
+L'instance pense. Le projet livre. Les personas travaillent dans l'instance et produisent des livrables qui atterrissent dans le projet. Les commits dans l'instance sont automatiques. Les commits dans le projet passent par le PO.
+
+Trois configurations possibles :
+
+- **Un seul repo** — l'instance vit dans un sous-dossier du projet. Simple à démarrer, tu sépareras si le besoin se fait sentir.
+- **Un repo instance + un repo projet** — le cas standard. L'historique d'analyse ne pollue pas le repo produit. Si le projet est public, l'outillage interne reste privé.
+- **Un repo instance + plusieurs projets** — les personas ont une vue transverse. Les roadmaps dans `shared/` font le lien. Les CLAUDE.md référencent les repos produit via des chemins absolus.
+
+### Anatomie d'une instance
+
+Une instance contient des **workspaces** (un par persona) et une **zone partagée** (`shared/`). Chaque workspace est isolé — un persona ne peut pas lire ou écrire dans le workspace d'un autre. La seule communication passe par `shared/`.
+
+![Anatomie d'une instance](figures/fig-anatomie-instance.svg)
 
 ### La zone partagée — shared/
 

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fig. — Anatomie d'une instance Voix — 06/04/2026 -->
+<svg viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0a4858"/>
+      <stop offset="100%" stop-color="#041c24"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="340" fill="url(#bg)" rx="6"/>
+
+  <!-- Titre -->
+  <text x="360" y="30" text-anchor="middle"
+        fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300"
+        letter-spacing="0.03em">Anatomie d'une instance</text>
+
+  <!-- ══ CADRE INSTANCE ══ -->
+  <rect x="30" y="48" width="660" height="260" rx="8"
+        fill="none" stroke="rgba(64,180,160,0.15)" stroke-width="0.8" stroke-dasharray="4,3"/>
+
+  <!-- voix.md en haut a gauche -->
+  <rect x="44" y="56" width="72" height="16" rx="3"
+        fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.25)" stroke-width="0.5"/>
+  <text x="80" y="67" text-anchor="middle"
+        fill="rgba(167,139,250,0.55)" font-family="IBM Plex Mono,monospace" font-size="7.5">voix.md</text>
+
+  <!-- ══ WORKSPACES — rangée du haut ══ -->
+
+  <!-- Workspace 1 : architecte -->
+  <rect x="56" y="88" width="140" height="90" rx="6"
+        fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.22)" stroke-width="0.7"/>
+  <text x="126" y="108" text-anchor="middle"
+        fill="rgba(64,216,192,0.65)" font-family="IBM Plex Mono,monospace" font-size="10">architecte/</text>
+  <!-- CLAUDE.md -->
+  <rect x="74" y="118" width="76" height="16" rx="2"
+        fill="rgba(64,216,192,0.06)" stroke="rgba(64,180,160,0.15)" stroke-width="0.4"/>
+  <text x="112" y="129" text-anchor="middle"
+        fill="rgba(64,216,192,0.45)" font-family="IBM Plex Mono,monospace" font-size="7.5">CLAUDE.md</text>
+  <!-- sessions -->
+  <rect x="74" y="140" width="76" height="16" rx="2"
+        fill="rgba(64,216,192,0.06)" stroke="rgba(64,180,160,0.15)" stroke-width="0.4"/>
+  <text x="112" y="151" text-anchor="middle"
+        fill="rgba(64,216,192,0.45)" font-family="IBM Plex Mono,monospace" font-size="7.5">sessions/</text>
+  <!-- Cadenas isolation -->
+  <text x="176" y="106" fill="rgba(64,216,192,0.25)" font-family="sans-serif" font-size="10">&#x1f512;</text>
+
+  <!-- Workspace 2 : dev -->
+  <rect x="216" y="88" width="140" height="90" rx="6"
+        fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.22)" stroke-width="0.7"/>
+  <text x="286" y="108" text-anchor="middle"
+        fill="rgba(64,216,192,0.65)" font-family="IBM Plex Mono,monospace" font-size="10">dev/</text>
+  <rect x="234" y="118" width="76" height="16" rx="2"
+        fill="rgba(64,216,192,0.06)" stroke="rgba(64,180,160,0.15)" stroke-width="0.4"/>
+  <text x="272" y="129" text-anchor="middle"
+        fill="rgba(64,216,192,0.45)" font-family="IBM Plex Mono,monospace" font-size="7.5">CLAUDE.md</text>
+  <rect x="234" y="140" width="76" height="16" rx="2"
+        fill="rgba(64,216,192,0.06)" stroke="rgba(64,180,160,0.15)" stroke-width="0.4"/>
+  <text x="272" y="151" text-anchor="middle"
+        fill="rgba(64,216,192,0.45)" font-family="IBM Plex Mono,monospace" font-size="7.5">sessions/</text>
+  <text x="336" y="106" fill="rgba(64,216,192,0.25)" font-family="sans-serif" font-size="10">&#x1f512;</text>
+
+  <!-- Workspace 3 : ux -->
+  <rect x="376" y="88" width="140" height="90" rx="6"
+        fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.22)" stroke-width="0.7"/>
+  <text x="446" y="108" text-anchor="middle"
+        fill="rgba(64,216,192,0.65)" font-family="IBM Plex Mono,monospace" font-size="10">ux/</text>
+  <rect x="394" y="118" width="76" height="16" rx="2"
+        fill="rgba(64,216,192,0.06)" stroke="rgba(64,180,160,0.15)" stroke-width="0.4"/>
+  <text x="432" y="129" text-anchor="middle"
+        fill="rgba(64,216,192,0.45)" font-family="IBM Plex Mono,monospace" font-size="7.5">CLAUDE.md</text>
+  <rect x="394" y="140" width="76" height="16" rx="2"
+        fill="rgba(64,216,192,0.06)" stroke="rgba(64,180,160,0.15)" stroke-width="0.4"/>
+  <text x="432" y="151" text-anchor="middle"
+        fill="rgba(64,216,192,0.45)" font-family="IBM Plex Mono,monospace" font-size="7.5">sessions/</text>
+  <text x="496" y="106" fill="rgba(64,216,192,0.25)" font-family="sans-serif" font-size="10">&#x1f512;</text>
+
+  <!-- Workspace 4 : ... -->
+  <rect x="536" y="88" width="140" height="90" rx="6"
+        fill="rgba(64,216,192,0.02)" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"
+        stroke-dasharray="3,3"/>
+  <text x="606" y="140" text-anchor="middle"
+        fill="rgba(64,216,192,0.3)" font-family="IBM Plex Mono,monospace" font-size="11">...</text>
+
+  <!-- ══ FLECHES vers shared ══ -->
+  <line x1="126" y1="178" x2="126" y2="210" stroke="rgba(167,139,250,0.2)" stroke-width="0.6"/>
+  <line x1="286" y1="178" x2="286" y2="210" stroke="rgba(167,139,250,0.2)" stroke-width="0.6"/>
+  <line x1="446" y1="178" x2="446" y2="210" stroke="rgba(167,139,250,0.2)" stroke-width="0.6"/>
+
+  <!-- Pointes -->
+  <polygon points="122,210 126,218 130,210" fill="rgba(167,139,250,0.25)"/>
+  <polygon points="282,210 286,218 290,210" fill="rgba(167,139,250,0.25)"/>
+  <polygon points="442,210 446,218 450,210" fill="rgba(167,139,250,0.25)"/>
+
+  <!-- Fleches retour -->
+  <line x1="140" y1="218" x2="140" y2="178" stroke="rgba(167,139,250,0.15)" stroke-width="0.5"/>
+  <polygon points="136,182 140,174 144,182" fill="rgba(167,139,250,0.18)"/>
+  <line x1="300" y1="218" x2="300" y2="178" stroke="rgba(167,139,250,0.15)" stroke-width="0.5"/>
+  <polygon points="296,182 300,174 304,182" fill="rgba(167,139,250,0.18)"/>
+  <line x1="460" y1="218" x2="460" y2="178" stroke="rgba(167,139,250,0.15)" stroke-width="0.5"/>
+  <polygon points="456,182 460,174 464,182" fill="rgba(167,139,250,0.18)"/>
+
+  <!-- ══ SHARED ══ -->
+  <rect x="56" y="220" width="620" height="52" rx="6"
+        fill="rgba(167,139,250,0.05)" stroke="rgba(167,139,250,0.25)" stroke-width="0.7"/>
+
+  <text x="360" y="242" text-anchor="middle"
+        fill="rgba(167,139,250,0.65)" font-family="IBM Plex Mono,monospace" font-size="10">shared/</text>
+  <text x="360" y="260" text-anchor="middle"
+        fill="rgba(167,139,250,0.35)" font-family="Inter,sans-serif" font-size="8.5"
+        font-style="italic">notes &middot; reviews &middot; features &middot; roadmaps &mdash; le seul espace que tous les personas lisent et ecrivent</text>
+
+  <!-- ══ ANNOTATIONS ══ -->
+  <text x="360" y="288" text-anchor="middle"
+        fill="rgba(240,248,245,0.3)" font-family="Inter,sans-serif" font-size="8.5">
+    Chaque workspace est isole. Les personas ne communiquent que par shared/.
+  </text>
+  <text x="360" y="302" text-anchor="middle"
+        fill="rgba(240,248,245,0.2)" font-family="Inter,sans-serif" font-size="8">
+    Le CLAUDE.md definit le contrat : role, perimetre, interdits. Les sessions tracent les decisions.
+  </text>
+
+</svg>
