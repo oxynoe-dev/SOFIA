@@ -9,6 +9,10 @@ source: livre-bleu-voix.md, doc/winston-style.md, cadrage PO
 
 # Histoire
 
+[Olivier Cugnon de Sévricourt](https://www.linkedin.com/in/oliviercds/) — ingénieur de formation (ESIEE Paris 2006), architecte SI de métier. Vingt ans de systèmes complexes — des Petri nets de 2008 aux pipelines LLM de 2026.
+
+---
+
 ## Le problème de départ — le contexte ne tient pas
 
 Début 2026. Je travaille avec un LLM sur un projet logiciel. Ça avance. Mais très vite, un mur : la fenêtre de contexte.

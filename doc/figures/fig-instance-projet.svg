@@ -53,11 +53,11 @@
   <text x="180" y="198" text-anchor="middle"
         fill="rgba(167,139,250,0.6)" font-family="IBM Plex Mono,monospace" font-size="9">shared/</text>
 
-  <!-- voix.md badge -->
+  <!-- sofia.md badge -->
   <rect x="138" y="215" width="84" height="10" rx="3"
         fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.6"/>
   <text x="180" y="223" text-anchor="middle"
-        fill="rgba(167,139,250,0.6)" font-family="IBM Plex Mono,monospace" font-size="8">voix.md</text>
+        fill="rgba(167,139,250,0.6)" font-family="IBM Plex Mono,monospace" font-size="8">sofia.md</text>
 
   <!-- ══ FLECHE ══ -->
   <!-- Ligne -->

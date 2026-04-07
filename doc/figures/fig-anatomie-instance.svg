@@ -21,7 +21,7 @@
   <rect x="30" y="48" width="660" height="260" rx="8"
         fill="none" stroke="rgba(64,180,160,0.15)" stroke-width="0.8" stroke-dasharray="4,3"/>
 
-  <!-- voix.md en haut a gauche -->
+  <!-- sofia.md en haut a gauche -->
   <rect x="44" y="56" width="72" height="16" rx="3"
         fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.25)" stroke-width="0.5"/>
   <text x="80" y="67" text-anchor="middle"

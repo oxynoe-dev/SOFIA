@@ -9,7 +9,7 @@
   <rect width="900" height="680" fill="url(#bg)"/>
 
   <!-- Titre -->
-  <text x="450" y="34" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(64,216,192,0.5)" letter-spacing="0.12em">ARCHITECTURE VOIX</text>
+  <text x="450" y="34" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(64,216,192,0.5)" letter-spacing="0.12em">ARCHITECTURE SOFIA</text>
   <text x="450" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="rgba(64,216,192,0.25)" font-style="italic">methode d'orchestration d'assistants IA specialises</text>
 
   <!-- ════════════════════════════════════════
@@ -174,9 +174,9 @@
   <text x="52" y="444" font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(64,216,192,0.45)" letter-spacing="0.08em">INSTANCE TYPE</text>
   <text x="190" y="444" font-family="Inter, system-ui, sans-serif" font-size="8" fill="rgba(64,216,192,0.25)">— un projet qui applique la methode</text>
 
-  <!-- voix.md -->
+  <!-- sofia.md -->
   <rect x="52" y="460" width="60" height="22" rx="3" fill="rgba(224,80,80,0.05)" stroke="rgba(224,80,80,0.2)" stroke-width="0.5"/>
-  <text x="82" y="475" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(224,80,80,0.5)">voix.md</text>
+  <text x="82" y="475" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(224,80,80,0.5)">sofia.md</text>
 
   <!-- Workspaces -->
   <rect x="126" y="460" width="110" height="44" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,216,192,0.18)" stroke-width="0.5"/>
@@ -203,7 +203,7 @@
   <path d="M 454,484 Q 440,486 432,490" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="0.6"/>
 
   <!-- Annotations instance -->
-  <text x="52" y="540" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(64,216,192,0.2)">marqueur voix.md identifie le depot comme instance</text>
+  <text x="52" y="540" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(64,216,192,0.2)">marqueur sofia.md identifie le depot comme instance</text>
   <text x="52" y="554" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(64,216,192,0.2)">1 persona = 1 workspace = 1 CLAUDE.md = 1 perimetre</text>
   <text x="52" y="568" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(64,216,192,0.2)">shared/ = unique zone de communication</text>
   <text x="478" y="520" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="rgba(64,216,192,0.2)" font-style="italic">orchestre · filtre · tranche</text>
@@ -225,6 +225,6 @@
 
   <!-- Filet footer -->
   <line x1="36" y1="620" x2="864" y2="620" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
-  <text x="450" y="650" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.15)">voix · architecture · 06/04/2026</text>
+  <text x="450" y="650" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.15)">sofia · architecture · 06/04/2026</text>
   <text x="450" y="665" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="rgba(64,216,192,0.12)" font-style="italic">methode oxynoe</text>
 </svg>

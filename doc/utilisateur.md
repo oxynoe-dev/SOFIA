@@ -10,7 +10,7 @@ SOFIA est une méthode pour orchestrer des assistants IA spécialisés sur un pr
 
 Pour commencer : clone le repo, lance `claude`, et Sofia — le guide intégré — te propose ton premier persona. Si le flow ne se lance pas, le [mode manuel](demarrer-manuel.md) couvre la même chose étape par étape.
 
-> **Alpha preview** — Sofia repose sur le comportement conversationnel de Claude Code. Les résultats peuvent varier selon l'environnement.
+> **Alpha preview** — Sofia repose sur le comportement conversationnel du runtime. Les résultats peuvent varier selon l'environnement.
 
 ```
 git clone https://github.com/oxynoe-dev/sofia
@@ -67,7 +67,7 @@ Ton projet vivra ailleurs, dans son propre repo. SOFIA t'aide à organiser les a
 
 ## 3. Démarrage avec Sofia
 
-> **Alpha preview** — Sofia repose sur le CLAUDE.md et le comportement conversationnel de Claude Code. Les résultats peuvent varier selon le provider, la version du modèle et l'environnement. Si le flow ne se lance pas ou dérive, passe en mode manuel (voir section suivante).
+> **Alpha preview** — Sofia repose sur le comportement conversationnel du runtime. Les résultats peuvent varier selon le provider, la version du modèle et l'environnement. Si le flow ne se lance pas ou dérive, passe en mode manuel (voir section suivante).
 
 Sofia est le guide intégré de SOFIA. Quand tu lances `claude` dans le repo, il te guide pour créer ton premier persona.
 

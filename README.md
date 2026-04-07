@@ -57,7 +57,7 @@ Claude Code ouvre le repo, charge le guide intégré (Sofia) et te pose
 les bonnes questions. En 10 minutes, tu as ton premier persona
 calibré pour ton projet.
 
-> **Alpha preview** — Sofia repose sur le comportement conversationnel de Claude Code. Les résultats peuvent varier selon l'environnement. Si le flow ne se lance pas, le [mode manuel](doc/demarrer-manuel.md) couvre la même chose étape par étape.
+> **Alpha preview** — Sofia repose sur le comportement conversationnel du runtime. Les résultats peuvent varier selon l'environnement. Si le flow ne se lance pas, le [mode manuel](doc/demarrer-manuel.md) couvre la même chose étape par étape.
 
 ## En savoir plus
 

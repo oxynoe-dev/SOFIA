@@ -113,6 +113,6 @@
        FOOTER
   ════════════════════════════════════════ -->
   <line x1="40" y1="455" x2="840" y2="455" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
-  <text x="440" y="472" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" letter-spacing="0.05em">voix — cycle complet d'un echange inter-personas</text>
+  <text x="440" y="472" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" letter-spacing="0.05em">sofia — cycle complet d'un echange inter-personas</text>
 
 </svg>

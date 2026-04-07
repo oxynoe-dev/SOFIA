@@ -31,7 +31,7 @@ SOFIA repose sur trois idées. Elles ne fonctionnent pas l'une sans l'autre.
 
 Trois objets interdépendants. Le persona contraint produit des artefacts. Les artefacts créent de la friction quand ils sont éprouvés par d'autres personas. La friction produit de meilleures décisions. L'humain orchestre le cycle.
 
-![Modèle conceptuel — Persona, Artefact, Friction](figures/fig-triangle-luz.svg)
+![Modèle conceptuel — Persona, Artefact, Friction](figures/fig-triangle-sofia.svg)
 
 ### Piliers et concepts
 
