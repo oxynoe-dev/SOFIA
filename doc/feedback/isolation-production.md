@@ -6,7 +6,7 @@
 
 ## Le problème
 
-La méthode Voix documente bien l'isolation des rôles de réflexion :
+La méthode SOFIA documente bien l'isolation des rôles de réflexion :
 l'architecte ne code pas, le stratège ne touche pas au code, le dev ne
 tranche pas sur l'architecture. Ces interdits créent la friction productive.
 

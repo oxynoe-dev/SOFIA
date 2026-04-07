@@ -20,7 +20,7 @@ Conservé tel quel — déjà en place sur voix2.html.
 ```
 label:    Methode IA
 titre:    SOFIA
-sous-titre: Des personas IA contraints qui pensent ensemble.
+sous-titre: Des personas IA contraints qui pensent avec vous.
             Une methode, pas un prompt kit.
 mention:  Agnostique par design. La methode tourne sur le LLM de ton choix.
 CTA:      GitHub →  |  Livre bleu →

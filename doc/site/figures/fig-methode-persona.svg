@@ -19,9 +19,9 @@
 
   <text x="440" y="108" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#f0f8f5" font-weight="300" letter-spacing="0.03em">Persona</text>
 
-  <!-- CLAUDE.md -->
+  <!-- persona.md -->
   <rect x="300" y="124" width="280" height="28" rx="4" fill="rgba(64,216,192,0.06)" stroke="rgba(64,216,192,0.2)" stroke-width="0.6"/>
-  <text x="440" y="143" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(64,216,192,0.6)" letter-spacing="0.06em">CLAUDE.MD — LE CONTRAT</text>
+  <text x="440" y="143" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(64,216,192,0.6)" letter-spacing="0.06em">PERSONA.MD — LE CONTRAT</text>
 
   <!-- 4 composants -->
   <rect x="300" y="162" width="132" height="26" rx="4" fill="rgba(64,216,192,0.03)" stroke="rgba(64,180,160,0.15)" stroke-width="0.5"/>
@@ -36,7 +36,7 @@
   <rect x="442" y="196" width="138" height="26" rx="4" fill="rgba(64,216,192,0.03)" stroke="rgba(64,180,160,0.15)" stroke-width="0.5"/>
   <text x="511" y="213" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.4)">Protocole session</text>
 
-  <text x="440" y="256" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="rgba(64,216,192,0.2)" font-style="italic">1 persona = 1 workspace = 1 CLAUDE.md</text>
+  <text x="440" y="256" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="rgba(64,216,192,0.2)" font-style="italic">1 persona = 1 workspace = 1 persona.md</text>
 
   <!-- ════════════════════════════════════════
        SESSIONS (gauche)

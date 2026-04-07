@@ -117,9 +117,9 @@ Chaque flèche passe par le PO. Pas de raccourci.
 
 Une **instance** est un projet qui applique la méthode. Elle contient :
 
-![Structure instance SOFIA](figures/fig-structure-instance.svg)
+![Anatomie d'une instance](figures/fig-anatomie-instance.svg)
 
-Le fichier `voix.md` à la racine identifie le dépôt comme instance et lie à la méthode.
+Le fichier `sofia.md` à la racine identifie le dépôt comme instance et lie à la méthode.
 
 ---
 

@@ -22,7 +22,16 @@ est pertinent à transmettre.
 
 ![Flux élémentaire](../doc/figures/fig-flux-elementaire.svg)
 
-Chaque flèche passe par le PO. Pas de raccourci.
+1. L'humain **ouvre une session** avec le persona A.
+2. Il **pose sa question**.
+3. A **produit** un livrable (review, spec, note...).
+4. Le livrable **arrive chez l'humain**.
+5. L'humain **inspecte** : lit, vérifie les faits, filtre, contextualise. Décide quoi transmettre.
+6. L'humain **transmet** l'artefact filtré au persona B.
+7. B **réagit** — produit à son tour.
+8. L'humain **inspecte** à nouveau. Le cycle continue.
+
+Chaque flèche qui traverse la lane humaine est un moment d'attention. C'est le prix de la qualité.
 
 ## Pourquoi le PO porte le contexte
 

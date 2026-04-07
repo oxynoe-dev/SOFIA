@@ -1,6 +1,6 @@
 # Test end-to-end — v0.2.2
 
-> Scénario : un dev solo découvre Voix et monte une instance pour son projet.
+> Scénario : un dev solo découvre SOFIA et monte une instance pour son projet.
 
 ## Contexte fictif
 
@@ -12,7 +12,7 @@
 
 - Claude Code installé
 - Accès GitHub
-- Aucune connaissance préalable de Voix
+- Aucune connaissance préalable de SOFIA
 
 ## Étapes
 
@@ -37,7 +37,7 @@
 
 | # | Étape | Vérification | Pass |
 |---|-------|-------------|------|
-| 8 | Le guide génère la structure instance | `shared/`, `sessions/`, `backlog.md`, `voix.md` présent | |
+| 8 | Le guide génère la structure instance | `shared/`, `sessions/`, `backlog.md`, `sofia.md` présent | |
 | 9 | Le guide vérifie la friction | Questions sur contradictions possibles, arbitrage humain | |
 | 10 | Créer `/tmp/luma-instance`, y copier la structure | Fichiers cohérents, chemins corrects | |
 
@@ -56,7 +56,7 @@
 - Les templates générés sont utilisables sans modification manuelle
 - Le protocole de session (ouverture → travail → fermeture → résumé) tourne sans friction
 - La communication inter-personas via `shared/` fonctionne
-- Un utilisateur sans connaissance de Voix peut suivre le parcours en < 1h
+- Un utilisateur sans connaissance de SOFIA peut suivre le parcours en < 1h
 
 ## Frictions à documenter
 

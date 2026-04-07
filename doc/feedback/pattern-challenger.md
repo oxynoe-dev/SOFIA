@@ -60,7 +60,7 @@ Un producteur, trois challengers. Intensité maximale — c'est le produit clé.
 
 Huang et al. (2025) — *Resilience of Multi-Agent Systems to Untrustworthy Agents* (arXiv:2408.00989) — mesurent la résilience de topologies multi-agents face à des agents non fiables. La **topologie hiérarchique** (coordinateur central + agents spécialisés) ne perd que -5.5% de performance avec des agents défaillants, contre -10% à -24% pour les topologies plates (débat, relais).
 
-**Limite** : l'étude porte sur du multi-agent pur (IA↔IA), sans humain au centre. Le pattern challenger dans Voix est une orchestration humain↔IA — le PO arbitre, pas un agent coordinateur. C'est un **signal convergent** (la topologie hiérarchique est résiliente), pas une **validation** de notre méthode. Personne n'a mesuré ce pattern avec un humain orchestrateur.
+**Limite** : l'étude porte sur du multi-agent pur (IA↔IA), sans humain au centre. Le pattern challenger dans SOFIA est une orchestration humain↔IA — le PO arbitre, pas un agent coordinateur. C'est un **signal convergent** (la topologie hiérarchique est résiliente), pas une **validation** de notre méthode. Personne n'a mesuré ce pattern avec un humain orchestrateur.
 
 ## Pour ton projet
 

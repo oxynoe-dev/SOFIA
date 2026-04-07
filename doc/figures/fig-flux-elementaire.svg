@@ -1,146 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Fig. — Flux elementaire d'orchestration — 05/04/2026 -->
-<svg viewBox="0 0 880 520" xmlns="http://www.w3.org/2000/svg">
+<!-- Fig. — Flux elementaire : pattern Inspector (BPMN) — 07/04/2026 -->
+<svg viewBox="0 0 880 580" xmlns="http://www.w3.org/2000/svg">
 
   <defs>
-    <radialGradient id="bg-grad" cx="50%" cy="40%" r="70%">
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
       <stop offset="0%" stop-color="#0a4858"/>
       <stop offset="100%" stop-color="#041c24"/>
     </radialGradient>
-    <marker id="arrow" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
-      <path d="M0,0 L10,3.5 L0,7Z" fill="rgba(64,216,192,0.35)"/>
-    </marker>
-    <marker id="arrow-violet" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
-      <path d="M0,0 L10,3.5 L0,7Z" fill="rgba(167,139,250,0.4)"/>
-    </marker>
   </defs>
 
-  <!-- Background -->
-  <rect width="880" height="520" fill="url(#bg-grad)" rx="6"/>
-  <!-- ════════════════════════════════════════
-       TITLE
-  ════════════════════════════════════════ -->
-  <text x="440" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia, serif" font-size="15" font-weight="300" letter-spacing="0.03em">Flux elementaire — orchestration PO</text>
+  <rect width="880" height="720" fill="url(#bg)" rx="6"/>
+
+  <!-- Titre -->
+  <text x="440" y="30" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Flux elementaire — pattern Inspector</text>
+  <text x="440" y="48" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Georgia,serif" font-size="9" font-style="italic">chaque transmission traverse l'humain</text>
 
   <!-- ════════════════════════════════════════
-       COLUMN HEADERS
+       3 LANES
   ════════════════════════════════════════ -->
-  <!-- Persona A column -->
-  <text x="180" y="62" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="'IBM Plex Mono', monospace" font-size="10" letter-spacing="0.1em" text-transform="uppercase">PERSONA A</text>
 
-  <!-- PO column -->
-  <text x="440" y="62" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="'IBM Plex Mono', monospace" font-size="10" letter-spacing="0.1em">PO</text>
+  <!-- Lane Persona A -->
+  <rect x="40" y="65" width="220" height="500" rx="6" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.15)" stroke-width="0.7"/>
+  <text x="150" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-family="'IBM Plex Mono',monospace" font-size="10" letter-spacing="0.08em">PERSONA A</text>
+  <text x="150" y="100" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="8">architecte, stratege...</text>
 
-  <!-- Persona B column -->
-  <text x="700" y="62" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="'IBM Plex Mono', monospace" font-size="10" letter-spacing="0.1em" text-transform="uppercase">PERSONA B</text>
+  <!-- Lane Humain (centre) -->
+  <rect x="290" y="65" width="300" height="500" rx="6" fill="rgba(64,216,192,0.04)" stroke="#40d8c0" stroke-width="0.9"/>
+  <text x="440" y="86" text-anchor="middle" fill="#40d8c0" font-family="'IBM Plex Mono',monospace" font-size="10" letter-spacing="0.08em">HUMAIN</text>
+  <text x="440" y="100" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-family="Inter,sans-serif" font-size="8">orchestre · inspecte · arbitre</text>
 
-  <!-- Column lines -->
-  <line x1="180" y1="70" x2="180" y2="470" stroke="rgba(64,216,192,0.06)" stroke-width="0.5" stroke-dasharray="4,6"/>
-  <line x1="440" y1="70" x2="440" y2="470" stroke="rgba(167,139,250,0.08)" stroke-width="0.5" stroke-dasharray="4,6"/>
-  <line x1="700" y1="70" x2="700" y2="470" stroke="rgba(64,216,192,0.06)" stroke-width="0.5" stroke-dasharray="4,6"/>
+  <!-- Lane Persona B -->
+  <rect x="620" y="65" width="220" height="500" rx="6" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.15)" stroke-width="0.7"/>
+  <text x="730" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-family="'IBM Plex Mono',monospace" font-size="10" letter-spacing="0.08em">PERSONA B</text>
+  <text x="730" y="100" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="8">dev, UX, recherche...</text>
 
   <!-- ════════════════════════════════════════
-       STEP 1 — PO → A : review cet ADR
+       1 — Humain ouvre session avec A
   ════════════════════════════════════════ -->
-  <!-- PO node -->
-  <circle cx="440" cy="100" r="6" fill="rgba(167,139,250,0.15)" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
+  <rect x="360" y="120" width="160" height="26" rx="4" fill="rgba(64,216,192,0.05)" stroke="rgba(64,216,192,0.2)" stroke-width="0.7"/>
+  <text x="440" y="137" text-anchor="middle" fill="rgba(240,248,245,0.5)" font-family="Inter,sans-serif" font-size="9">ouvre session</text>
 
-  <!-- Arrow PO → A -->
-  <path d="M 428,100 C 350,100 280,100 198,100" fill="none" stroke="rgba(167,139,250,0.3)" stroke-width="1.2" marker-end="url(#arrow-violet)"/>
-  <text x="310" y="93" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter, system-ui, sans-serif" font-size="9">"review cet ADR"</text>
 
-  <!-- A node -->
-  <circle cx="180" cy="100" r="6" fill="rgba(64,216,192,0.12)" stroke="rgba(64,180,160,0.3)" stroke-width="1"/>
+  <line x1="360" y1="133" x2="262" y2="133" stroke="rgba(64,216,192,0.4)" stroke-width="1.2"/>
+  <polygon points="264,133 274,129 274,137" fill="rgba(64,216,192,0.5)"/>
+
+  <circle cx="310" cy="133" r="9" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.25)" stroke-width="0.6"/>
+  <text x="310" y="137" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">1</text>
 
   <!-- ════════════════════════════════════════
-       STEP 2 — A produces review → shared/
+       2 — Humain pose question
   ════════════════════════════════════════ -->
-  <!-- A works -->
-  <rect x="120" y="130" width="120" height="34" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
-  <text x="180" y="150" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="'IBM Plex Mono', monospace" font-size="8" letter-spacing="0.05em">REVIEW-ADR.MD</text>
+  <rect x="360" y="160" width="160" height="26" rx="4" fill="rgba(64,216,192,0.05)" stroke="rgba(64,216,192,0.2)" stroke-width="0.7"/>
+  <text x="440" y="177" text-anchor="middle" fill="rgba(240,248,245,0.5)" font-family="Inter,sans-serif" font-size="9">pose question</text>
 
-  <!-- Arrow down from A to deposit -->
-  <line x1="180" y1="108" x2="180" y2="128" stroke="rgba(64,216,192,0.2)" stroke-width="0.8"/>
+  <line x1="360" y1="173" x2="262" y2="173" stroke="rgba(64,216,192,0.4)" stroke-width="1"/>
+  <polygon points="264,173 274,169 274,177" fill="rgba(64,216,192,0.45)"/>
 
-  <!-- Deposit to shared -->
-  <path d="M 240,147 C 300,147 340,160 380,170" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="1" marker-end="url(#arrow)"/>
-  <text x="330" y="155" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter, system-ui, sans-serif" font-size="7">shared/</text>
+  <circle cx="310" cy="173" r="9" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.25)" stroke-width="0.6"/>
+  <text x="310" y="177" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">2</text>
 
   <!-- ════════════════════════════════════════
-       STEP 3 — PO reads, discusses with A
+       3 — A produit un livrable
   ════════════════════════════════════════ -->
-  <circle cx="440" cy="180" r="5" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.3)" stroke-width="0.8"/>
+  <rect x="75" y="205" width="150" height="40" rx="5" fill="rgba(64,216,192,0.05)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
+  <text x="150" y="223" text-anchor="middle" fill="#f0f8f5" font-family="Inter,sans-serif" font-size="10">produit</text>
+  <text x="150" y="237" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="'IBM Plex Mono',monospace" font-size="8">review-adr-051.md</text>
 
-  <!-- Bidirectional discussion -->
-  <path d="M 428,175 C 350,165 280,170 198,172" fill="none" stroke="rgba(64,216,192,0.15)" stroke-width="0.8" stroke-dasharray="3,3"/>
-  <path d="M 198,180 C 280,185 350,182 428,185" fill="none" stroke="rgba(64,216,192,0.15)" stroke-width="0.8" stroke-dasharray="3,3"/>
-  <text x="310" y="195" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-family="Inter, system-ui, sans-serif" font-size="8">discussion</text>
+  <circle cx="62" cy="225" r="9" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.25)" stroke-width="0.6"/>
+  <text x="62" y="229" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">3</text>
 
   <!-- ════════════════════════════════════════
-       STEP 4 — PO asks A to synthesize → note for B
+       4 — Livrable arrive chez l'humain
   ════════════════════════════════════════ -->
-  <circle cx="440" cy="235" r="5" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.3)" stroke-width="0.8"/>
+  <line x1="225" y1="225" x2="363" y2="225" stroke="rgba(167,139,250,0.45)" stroke-width="1.2"/>
+  <polygon points="361,225 351,221 351,229" fill="rgba(167,139,250,0.55)"/>
 
-  <path d="M 428,235 C 350,235 280,235 198,235" fill="none" stroke="rgba(167,139,250,0.25)" stroke-width="1" marker-end="url(#arrow-violet)"/>
-  <text x="310" y="228" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter, system-ui, sans-serif" font-size="9">"synthetise pour B"</text>
+  <rect x="365" y="212" width="150" height="26" rx="3" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.7"/>
+  <text x="440" y="229" text-anchor="middle" fill="rgba(167,139,250,0.65)" font-family="'IBM Plex Mono',monospace" font-size="8">review-adr-051.md</text>
 
-  <circle cx="180" cy="235" r="5" fill="rgba(64,216,192,0.1)" stroke="rgba(64,180,160,0.25)" stroke-width="0.8"/>
-
-  <!-- Note produced -->
-  <rect x="120" y="260" width="120" height="34" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
-  <text x="180" y="280" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="'IBM Plex Mono', monospace" font-size="8" letter-spacing="0.05em">NOTE-POUR-B.MD</text>
-  <line x1="180" y1="243" x2="180" y2="258" stroke="rgba(64,216,192,0.2)" stroke-width="0.8"/>
+  <circle cx="294" cy="225" r="9" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.25)" stroke-width="0.6"/>
+  <text x="294" y="229" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">4</text>
 
   <!-- ════════════════════════════════════════
-       STEP 5 — PO closes session A
+       5 — Humain inspecte
   ════════════════════════════════════════ -->
-  <line x1="100" y1="316" x2="260" y2="316" stroke="rgba(236,72,153,0.2)" stroke-width="0.8" stroke-dasharray="2,4"/>
-  <text x="180" y="330" text-anchor="middle" fill="rgba(236,72,153,0.4)" font-family="'IBM Plex Mono', monospace" font-size="7" letter-spacing="0.08em">SESSION A FERMEE</text>
+  <line x1="440" y1="238" x2="440" y2="268" stroke="rgba(64,216,192,0.3)" stroke-width="0.8"/>
+  <polygon points="436,266 440,274 444,266" fill="rgba(64,216,192,0.4)"/>
+
+  <rect x="340" y="275" width="200" height="70" rx="5" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
+  <text x="440" y="294" text-anchor="middle" fill="rgba(64,216,192,0.65)" font-family="'IBM Plex Mono',monospace" font-size="8" letter-spacing="0.06em">INSPECTION</text>
+  <text x="440" y="312" text-anchor="middle" fill="rgba(240,248,245,0.5)" font-family="Inter,sans-serif" font-size="9">lit · verifie les faits</text>
+  <text x="440" y="326" text-anchor="middle" fill="rgba(240,248,245,0.5)" font-family="Inter,sans-serif" font-size="9">filtre · contextualise</text>
+  <text x="440" y="340" text-anchor="middle" fill="rgba(236,72,153,0.5)" font-family="Inter,sans-serif" font-size="9" font-weight="500">decide quoi transmettre</text>
+
+  <circle cx="327" cy="310" r="9" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.25)" stroke-width="0.6"/>
+  <text x="327" y="314" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">5</text>
 
   <!-- ════════════════════════════════════════
-       STEP 6 — PO → B : t'as une note de A
+       6 — Humain transmet à B
   ════════════════════════════════════════ -->
-  <circle cx="440" cy="365" r="6" fill="rgba(167,139,250,0.15)" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
+  <line x1="440" y1="345" x2="440" y2="370" stroke="rgba(64,216,192,0.3)" stroke-width="0.8"/>
+  <polygon points="436,368 440,376 444,368" fill="rgba(64,216,192,0.4)"/>
 
-  <path d="M 452,365 C 530,365 600,365 682,365" fill="none" stroke="rgba(167,139,250,0.3)" stroke-width="1.2" marker-end="url(#arrow-violet)"/>
-  <text x="570" y="358" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter, system-ui, sans-serif" font-size="9">"t'as une note de A"</text>
+  <rect x="365" y="378" width="150" height="26" rx="3" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.7"/>
+  <text x="440" y="395" text-anchor="middle" fill="rgba(167,139,250,0.65)" font-family="'IBM Plex Mono',monospace" font-size="8">review-adr-051.md</text>
 
-  <circle cx="700" cy="365" r="6" fill="rgba(64,216,192,0.12)" stroke="rgba(64,180,160,0.3)" stroke-width="1"/>
+  <line x1="515" y1="391" x2="620" y2="391" stroke="rgba(64,216,192,0.45)" stroke-width="1.2"/>
+  <polygon points="618,391 608,387 608,395" fill="rgba(64,216,192,0.5)"/>
 
-  <!-- Note transmitted -->
-  <path d="M 240,285 C 340,310 560,340 690,358" fill="none" stroke="rgba(64,216,192,0.12)" stroke-width="0.8" stroke-dasharray="4,4"/>
-  <text x="460" y="320" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-family="Inter, system-ui, sans-serif" font-size="7">transmission via shared/</text>
+  <circle cx="568" cy="391" r="9" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.25)" stroke-width="0.6"/>
+  <text x="568" y="395" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">6</text>
 
   <!-- ════════════════════════════════════════
-       STEP 7 — B reads, reacts → corrections
+       7 — B réagit
   ════════════════════════════════════════ -->
-  <rect x="640" y="395" width="120" height="34" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
-  <text x="700" y="415" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="'IBM Plex Mono', monospace" font-size="8" letter-spacing="0.05em">CORRECTIONS.MD</text>
-  <line x1="700" y1="373" x2="700" y2="393" stroke="rgba(64,216,192,0.2)" stroke-width="0.8"/>
+  <rect x="655" y="380" width="150" height="40" rx="5" fill="rgba(64,216,192,0.05)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
+  <text x="730" y="398" text-anchor="middle" fill="#f0f8f5" font-family="Inter,sans-serif" font-size="10">reagit</text>
+  <text x="730" y="412" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="'IBM Plex Mono',monospace" font-size="8">note-reponse.md</text>
 
-  <!-- B sends back to PO -->
-  <path d="M 640,420 C 580,430 500,435 452,435" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="1" marker-end="url(#arrow)"/>
-  <circle cx="440" cy="435" r="5" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.3)" stroke-width="0.8"/>
-  <text x="550" y="448" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-family="Inter, system-ui, sans-serif" font-size="8">reaction</text>
+  <circle cx="818" cy="400" r="9" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.25)" stroke-width="0.6"/>
+  <text x="818" y="404" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">7</text>
+
+  <!-- Fleche réaction → Humain -->
+  <!-- Fleche en angle : reagit (milieu) → descend → tourne → inspection -->
+  <path d="M 730,420 L 730,463 L 527,463" fill="none" stroke="rgba(167,139,250,0.45)" stroke-width="1.2"/>
+  <polygon points="529,463 539,459 539,467" fill="rgba(167,139,250,0.55)"/>
 
   <!-- ════════════════════════════════════════
-       STEP LABELS (timeline right margin)
+       8 — Humain inspecte à nouveau
   ════════════════════════════════════════ -->
-  <text x="840" y="103" text-anchor="end" fill="rgba(64,216,192,0.25)" font-family="'IBM Plex Mono', monospace" font-size="7">1</text>
-  <text x="840" y="150" text-anchor="end" fill="rgba(64,216,192,0.25)" font-family="'IBM Plex Mono', monospace" font-size="7">2</text>
-  <text x="840" y="182" text-anchor="end" fill="rgba(64,216,192,0.25)" font-family="'IBM Plex Mono', monospace" font-size="7">3</text>
-  <text x="840" y="237" text-anchor="end" fill="rgba(64,216,192,0.25)" font-family="'IBM Plex Mono', monospace" font-size="7">4</text>
-  <text x="840" y="323" text-anchor="end" fill="rgba(236,72,153,0.3)" font-family="'IBM Plex Mono', monospace" font-size="7">5</text>
-  <text x="840" y="368" text-anchor="end" fill="rgba(64,216,192,0.25)" font-family="'IBM Plex Mono', monospace" font-size="7">6</text>
-  <text x="840" y="418" text-anchor="end" fill="rgba(64,216,192,0.25)" font-family="'IBM Plex Mono', monospace" font-size="7">7</text>
+  <rect x="355" y="445" width="170" height="36" rx="5" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.2)" stroke-width="0.8"/>
+  <text x="440" y="464" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-family="'IBM Plex Mono',monospace" font-size="8" letter-spacing="0.06em">INSPECTION</text>
+  <text x="440" y="477" text-anchor="middle" fill="rgba(240,248,245,0.4)" font-family="Inter,sans-serif" font-size="8">verifie · le cycle continue</text>
 
-  <!-- Timeline line -->
-  <line x1="852" y1="90" x2="852" y2="440" stroke="rgba(64,216,192,0.08)" stroke-width="0.5"/>
+  <line x1="355" y1="463" x2="227" y2="463" stroke="rgba(64,216,192,0.25)" stroke-width="0.8" stroke-dasharray="4,4"/>
+  <polygon points="229,463 239,459 239,467" fill="rgba(64,216,192,0.35)"/>
 
-  <!-- ════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════ -->
-  <line x1="60" y1="490" x2="820" y2="490" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
-  <text x="440" y="506" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-family="Inter, system-ui, sans-serif" font-size="7">Voix — methode Oxynoe — 05/04/2026</text>
+  <rect x="75" y="446" width="150" height="34" rx="5" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.12)" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="150" y="467" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-family="Inter,sans-serif" font-size="9" font-style="italic">session suivante...</text>
+
+  <circle cx="327" cy="463" r="9" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.25)" stroke-width="0.6"/>
+  <text x="327" y="467" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">8</text>
+
 
 </svg>

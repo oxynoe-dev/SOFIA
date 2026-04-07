@@ -99,5 +99,5 @@ ta façon de travailler.
 **Signe** : le persona parle de réseaux de Petri alors que tu fais
 une app mobile.
 **Solution** : utilise les exemples comme **référence de structure**,
-pas comme contenu. Le guide Voix est là pour t'aider à concevoir
+pas comme contenu. Le guide SOFIA est là pour t'aider à concevoir
 les tiens.

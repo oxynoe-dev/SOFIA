@@ -41,7 +41,7 @@ réécrire une review de design.
 
 ## Structure type
 
-![Structure type instance](../doc/figures/fig-structure-instance.svg)
+![Anatomie d'une instance](../doc/figures/fig-anatomie-instance.svg)
 
 ## La zone partagée
 

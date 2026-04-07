@@ -40,7 +40,7 @@ L'erreur venait du PO lui-même. L'IA l'a amplifiée et rendue invisible.
 
 C'est un **effet de renforcement mutuel**. Le même phénomène existe à
 l'échelle du web (model collapse, Habsburg AI) — mais à l'échelle du
-web, c'est irréversible. Dans un repo Voix, c'est traçable et corrigeable.
+web, c'est irréversible. Dans un repo SOFIA, c'est traçable et corrigeable.
 À condition que l'humain vérifie.
 
 ## Ce qui est vulnérable
@@ -79,7 +79,7 @@ les LLMs privilégient la vraisemblance sur la vérité.
 L'humain est le seul garde-fou. La méthode doit le dire explicitement,
 et l'humain doit l'intégrer comme pratique, pas comme principe abstrait.
 
-Et c'est un des arguments les plus forts en faveur de la méthode Voix :
+Et c'est un des arguments les plus forts en faveur de la méthode SOFIA :
 dans un monde où le web se contamine irréversiblement, un repo structuré
 avec des reviews croisées est un des rares espaces où la décontamination
 reste possible.

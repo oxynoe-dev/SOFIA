@@ -67,7 +67,7 @@ le positionnement. Le PO tranche quand un challenger bloque.
 
 Winston rédige, les experts valident le fond, Sofia produit la forme,
 Nora challenge avant publication, le PO valide en dernier. Le livre
-blanc Voix est le premier produit complet de cette chaîne.
+blanc SOFIA est le premier produit complet de cette chaîne.
 
 ## Ce qui a cassé
 

@@ -6,7 +6,7 @@
 
 ## Le pattern
 
-Observé sur la production du livre bleu Voix. Reproductible pour tout
+Observé sur la production du livre bleu SOFIA. Reproductible pour tout
 livrable éditorial : article, fragment, documentation publique.
 
 ```
@@ -51,7 +51,7 @@ la référence est juste.
 
 ## Pour ton projet
 
-Si ton équipe Voix produit du contenu public (articles, documentation,
+Si ton équipe SOFIA produit du contenu public (articles, documentation,
 présentations) :
 - Identifie qui rédige, qui valide le fond, qui produit la forme,
   qui challenge, qui décide du timing

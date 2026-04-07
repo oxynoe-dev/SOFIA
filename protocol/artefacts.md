@@ -46,7 +46,7 @@ reste. Il est versionné par git. Il peut être relu dans 6 mois.
 
 ## Flux type
 
-![Flux type artefact](../doc/figures/fig-flux-artefact.svg)
+Le flux d'un artefact suit le pattern Inspector décrit dans [l'orchestration](orchestration.md) : le persona produit, l'humain inspecte et transmet, le destinataire réagit.
 
 ## Conventions
 

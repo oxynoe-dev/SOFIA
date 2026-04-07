@@ -7,7 +7,7 @@
 ## Le pattern
 
 La chaîne produit est le cycle de base de Katen. C'est le pattern le plus
-ancien, le plus rodé, et le plus révélateur de la méthode Voix en action.
+ancien, le plus rodé, et le plus révélateur de la méthode SOFIA en action.
 
 ```
 PO identifie un besoin ou une friction
@@ -102,7 +102,7 @@ Le PO tranche. L'ADR est accepté, rejeté ou reporté. Le statut est tracé.
 
 ## Pour ton projet
 
-La chaîne produit est le cas d'usage fondamental de Voix. Quelques règles :
+La chaîne produit est le cas d'usage fondamental de SOFIA. Quelques règles :
 
 - **L'architecte ne code pas.** C'est la contrainte numéro un. Si ton architecte peut coder, il ne spécifiera jamais clairement.
 - **Le dev ne réinterprète pas.** Si la spec est floue, il remonte. Il ne devine pas. La friction est le signal, pas le bruit.

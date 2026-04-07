@@ -6,7 +6,7 @@ L'humain intercepte et vérifie avant de transmettre. Pas un persona — une res
 
 Le pattern est complémentaire au Challenger. Le Challenger opère après la production (peer review). L'Inspector opère pendant la circulation — il intercepte les artefacts entre personas, vérifie, corrige si nécessaire, puis transmet.
 
-Dans Voix, l'Inspector c'est l'humain. C'est implicite dans le rôle du PO : il lit tout, filtre, contextualise, corrige avant de transmettre. Trois fonctions cumulées sur une personne : orchestrateur, arbitre, inspecteur.
+Dans SOFIA, l'Inspector c'est l'humain. C'est implicite dans le rôle du PO : il lit tout, filtre, contextualise, corrige avant de transmettre. Trois fonctions cumulées sur une personne : orchestrateur, arbitre, inspecteur.
 
 C'est le mécanisme le plus coûteux en attention — et le premier à lâcher quand la fatigue s'installe.
 
