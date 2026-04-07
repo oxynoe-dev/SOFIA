@@ -28,8 +28,10 @@ La contrainte n'est pas une limite — c'est ce qui force la qualité.
 
 ## Ce que SOFIA est
 
-Une **méthode** pour travailler avec des personas IA spécialisées,
+Une **méthode agnostique** pour travailler avec des personas IA spécialisées,
 en friction intentionnelle, pilotées par un humain qui arbitre.
+Les principes et le protocole ne dépendent d'aucun outil ;
+le `runtime/` fournit une implémentation pour Claude Code, d'autres peuvent suivre.
 
 Concrètement :
 - Des **personas** — des rôles IA avec un nom, une posture, un périmètre, des interdits
@@ -43,7 +45,6 @@ Concrètement :
 
 - Pas un framework — pas de code à installer, pas de dépendance
 - Pas un produit — c'est une méthode, documentée dans un repo
-- Pas agnostique — SOFIA est conçu pour **Claude Code** et exploite ses fonctionnalités (CLAUDE.md, mémoire persistante, workspaces isolés)
 
 ## Quick start
 
