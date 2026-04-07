@@ -1,6 +1,6 @@
-# Contribuer a Voix
+# Contribuer a SOFIA
 
-Voix est en **alpha**. Les contributions sont les bienvenues — retours terrain, corrections, propositions de patterns.
+SOFIA est en **alpha**. Les contributions sont les bienvenues — retours terrain, corrections, propositions de patterns.
 
 Avant de contribuer, lire le guide utilisateur : [`doc/utilisateur.md`](doc/utilisateur.md).
 
@@ -67,8 +67,8 @@ refactor: deplacement des ADR dans doc/architecture/adr/
 - **Bienveillance** — on construit ensemble, on apprend ensemble.
 - **Clarte** — pas de jargon inutile. Si un terme n'est pas evident, l'expliquer.
 - **Honnetete** — dire ce qui ne marche pas est aussi utile que dire ce qui marche.
-- **Respect du perimetre** — Voix est une methode, pas un produit logiciel. Les contributions restent dans ce cadre.
+- **Respect du perimetre** — SOFIA est une methode, pas un produit logiciel. Les contributions restent dans ce cadre.
 
 ## Licence
 
-Voix est sous licence [MIT](LICENSE). Toute contribution est soumise a la meme licence.
+SOFIA est sous licence [MIT](LICENSE). Toute contribution est soumise a la meme licence.

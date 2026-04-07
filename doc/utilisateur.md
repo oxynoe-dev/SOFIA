@@ -1,24 +1,24 @@
-# Guide utilisateur Voix
+# Guide utilisateur SOFIA
 
-> Des rôles spécialisés qui pensent ensemble. Le produit émerge de leur conversation.
+> Des rôles spécialisés qui pensent avec vous. Le produit émerge de leur friction.
 
 ---
 
 ## En une minute
 
-Voix est une méthode pour orchestrer des assistants IA spécialisés sur un projet. Chaque assistant a un rôle, un périmètre et des interdits. Ils ne se parlent pas — c'est toi qui portes le contexte entre eux. La friction entre les rôles produit de meilleures décisions.
+SOFIA est une méthode pour orchestrer des assistants IA spécialisés sur un projet. Chaque assistant a un rôle, un périmètre et des interdits. Ils ne se parlent pas — c'est toi qui portes le contexte entre eux. La friction entre les rôles produit de meilleures décisions.
 
-Pour commencer : clone le repo, lance `claude`, et Diapason — le guide intégré — te propose ton premier persona. Si le flow ne se lance pas, le [mode manuel](demarrer-manuel.md) couvre la même chose étape par étape.
+Pour commencer : clone le repo, lance `claude`, et Sofia — le guide intégré — te propose ton premier persona. Si le flow ne se lance pas, le [mode manuel](demarrer-manuel.md) couvre la même chose étape par étape.
 
-> **Alpha preview** — Diapason repose sur le comportement conversationnel de Claude Code. Les résultats peuvent varier selon l'environnement.
+> **Alpha preview** — Sofia repose sur le comportement conversationnel de Claude Code. Les résultats peuvent varier selon l'environnement.
 
 ```
-git clone https://github.com/oxynoe-dev/voix
-cd voix
+git clone https://github.com/oxynoe-dev/sofia
+cd sofia
 claude
 ```
 
-> Git n'est pas obligatoire pour utiliser Voix, mais il est fortement conseillé. Les résumés de session, les notes et les reviews sont des fichiers — git te donne la traçabilité et la persistence du contexte entre les sessions.
+> Git n'est pas obligatoire pour utiliser SOFIA, mais il est fortement conseillé. Les résumés de session, les notes et les reviews sont des fichiers — git te donne la traçabilité et la persistence du contexte entre les sessions.
 
 ---
 
@@ -40,7 +40,7 @@ La friction sans arbitre est du chaos. L'arbitre, c'est toi.
 
 ### L'humain arbitre. Toujours.
 
-Les personas proposent, challengent, produisent. L'humain tranche. Un persona ne valide jamais ses propres propositions. Un persona ne force jamais l'acceptation d'une décision. C'est la règle non négociable de Voix.
+Les personas proposent, challengent, produisent. L'humain tranche. Un persona ne valide jamais ses propres propositions. Un persona ne force jamais l'acceptation d'une décision. C'est la règle non négociable de SOFIA.
 
 ### Les fichiers sont le protocole
 
@@ -54,29 +54,29 @@ Un persona au démarrage. Deux quand le premier est calibré. Trois quand le bes
 
 ## 2. Ce que tu viens de cloner
 
-Le repo Voix n'est pas ton projet — c'est la **méthode**. Il contient :
+Le repo SOFIA n'est pas ton projet — c'est la **méthode**. Il contient :
 
 - `core/` — les invariants : principes, personas, friction, devoirs
 - `protocol/` — le contrat d'interface : artefacts, conventions, isolation, orchestration
 - `runtime/` — l'implémentation concrète pour Claude Code (d'autres providers suivront)
 - `doc/` — guides, workflows, patterns, retours terrain
 
-Ton projet vivra ailleurs, dans son propre repo. Voix t'aide à organiser les assistants IA qui travaillent dessus. La section [L'isolation](doc/utilisateur.md#instance-et-projet) détaille les configurations possibles.
+Ton projet vivra ailleurs, dans son propre repo. SOFIA t'aide à organiser les assistants IA qui travaillent dessus. La section [L'isolation](doc/utilisateur.md#instance-et-projet) détaille les configurations possibles.
 
 ---
 
-## 3. Démarrage avec Diapason
+## 3. Démarrage avec Sofia
 
-> **Alpha preview** — Diapason repose sur le CLAUDE.md et le comportement conversationnel de Claude Code. Les résultats peuvent varier selon le provider, la version du modèle et l'environnement. Si le flow ne se lance pas ou dérive, passe en mode manuel (voir section suivante).
+> **Alpha preview** — Sofia repose sur le CLAUDE.md et le comportement conversationnel de Claude Code. Les résultats peuvent varier selon le provider, la version du modèle et l'environnement. Si le flow ne se lance pas ou dérive, passe en mode manuel (voir section suivante).
 
-Diapason est le guide intégré de Voix. Quand tu lances `claude` dans le repo, il te guide pour créer ton premier persona.
+Sofia est le guide intégré de SOFIA. Quand tu lances `claude` dans le repo, il te guide pour créer ton premier persona.
 
 ### Le flow
 
-1. **Ton projet** — Diapason te demande ce que tu construis (1-2 tours)
+1. **Ton projet** — Sofia te demande ce que tu construis (1-2 tours)
 2. **Premier persona** — il te propose un rôle structurant adapté à ton contexte. Pas une liste de choix — une proposition directe que tu valides ou ajustes
-3. **Calibrage** — nom, ton, périmètre (ce qu'il fait et ne fait pas). Diapason propose, tu ajustes
-4. **Génération** — Diapason produit le CLAUDE.md et te donne trois clés de départ
+3. **Calibrage** — nom, ton, périmètre (ce qu'il fait et ne fait pas). Sofia propose, tu ajustes
+4. **Génération** — Sofia produit le CLAUDE.md et te donne trois clés de départ
 
 ### L'heuristique du premier persona
 
@@ -91,11 +91,11 @@ Le premier persona est toujours un rôle structurant — jamais un exécutant. C
 
 ### Le briefing de départ
 
-Après avoir généré ton premier CLAUDE.md, Diapason te dit trois choses :
+Après avoir généré ton premier CLAUDE.md, Sofia te dit trois choses :
 
 - **Ton persona va te dire non.** C'est voulu. Quand il refuse une demande parce que c'est hors périmètre, c'est un signal — pas un bug.
 - **Les autres personas viendront.** Pas maintenant. Quand le travail les fera émerger.
-- **Tu peux revenir.** Relance Diapason à tout moment pour ajouter un persona ou ajuster celui-ci.
+- **Tu peux revenir.** Relance Sofia à tout moment pour ajouter un persona ou ajuster celui-ci.
 
 ---
 
@@ -142,7 +142,7 @@ Les personas suivants ne se planifient pas. Ils émergent du travail.
 
 ### Le mécanisme
 
-Chaque CLAUDE.md généré par Diapason inclut une section **Émergence** :
+Chaque CLAUDE.md généré par Sofia inclut une section **Émergence** :
 
 ```
 ## Emergence
@@ -151,17 +151,17 @@ note le domaine. Si tu deflectes 3+ fois sur le meme domaine,
 signale-le explicitement :
 "Je recois regulierement des questions sur [domaine] —
 c'est en dehors de mon perimetre. Tu pourrais avoir besoin
-d'un persona dedie. Relance Diapason si tu veux qu'on en cree un."
+d'un persona dedie. Relance Sofia si tu veux qu'on en cree un."
 ```
 
-Le persona ne crée pas le nouveau persona — il signale le manque. Tu reviens vers Diapason qui reprend le flow.
+Le persona ne crée pas le nouveau persona — il signale le manque. Tu reviens vers Sofia qui reprend le flow.
 
 ### Exemple concret
 
 Tu travailles avec un architecte. Au bout de quelques sessions :
 - Il te dit 3 fois "je ne code pas, il faudrait quelqu'un pour implémenter"
 - Il te signale : "Tu pourrais avoir besoin d'un persona dev dédié"
-- Tu relances Diapason, qui te propose un dev calibré pour ton projet
+- Tu relances Sofia, qui te propose un dev calibré pour ton projet
 
 C'est exactement ce qui s'est passé sur le projet Katen : le premier persona (architecte) a été posé. Les 6 autres ont émergé par nécessité au fil du travail. Personne ne les avait prévus.
 
@@ -171,7 +171,7 @@ C'est exactement ce qui s'est passé sur le projet Katen : le premier persona (a
 
 ### Instance et projet
 
-Une **instance Voix** n'est pas ton projet. C'est l'espace où tes personas réfléchissent, planifient, et échangent. Ton **projet** (le code, le produit, le site) vit ailleurs, dans son propre repo.
+Une **instance SOFIA** n'est pas ton projet. C'est l'espace où tes personas réfléchissent, planifient, et échangent. Ton **projet** (le code, le produit, le site) vit ailleurs, dans son propre repo.
 
 ![Instance et projet](figures/fig-instance-projet.svg)
 
@@ -301,4 +301,4 @@ La prochaine session n'aura pas ton contexte en tête. Les résumés sont sa mé
 - [Patterns](doc/patterns/) — 7 structures récurrentes (challenger, distillerie, escalade...)
 - [Retours terrain](doc/feedback/) — retours Katen, contexte d'identification des patterns (N=1)
 - [Personas Katen](doc/examples/katen/) — 7 fiches personas en production, référence de calibrage
-- [Mode manuel](doc/demarrer-manuel.md) — installer Voix sans Diapason, pas à pas
+- [Mode manuel](doc/demarrer-manuel.md) — installer SOFIA sans Sofia, pas à pas

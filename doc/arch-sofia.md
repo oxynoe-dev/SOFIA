@@ -1,4 +1,4 @@
-# Architecture — Voix
+# Architecture — SOFIA
 
 **Date** : 04/04/2026
 **Auteur** : Mira — Architecte système & solution
@@ -10,22 +10,22 @@
 
 | | |
 |---|---|
-| **Nom** | Voix |
+| **Nom** | SOFIA |
 | **Vocation** | Méthode d'orchestration d'assistants IA spécialisés |
-| **Repo** | `oxynoe-dev/voix` |
+| **Repo** | `oxynoe-dev/sofia` |
 | **Licence** | MIT |
 | **Public** | Développeurs et équipes utilisant Claude Code (ou LLM comparable) |
 | **Principe fondateur** | La contrainte force la qualité — un LLM sans limites ne produit rien de bon |
 
 ### Positionnement
 
-Voix n'est pas un framework, pas une librairie, pas un outil. C'est une **méthode** : un ensemble de principes, de conventions et de templates pour organiser des assistants IA spécialisés autour d'un projet.
+SOFIA n'est pas un framework, pas une librairie, pas un outil. C'est une **méthode** : un ensemble de principes, de conventions et de templates pour organiser des assistants IA spécialisés autour d'un projet.
 
 Le seul prérequis est un LLM capable de suivre des instructions persistantes (CLAUDE.md, system prompts). Claude Code est l'implémentation de référence.
 
 ---
 
-![Architecture Voix](figures/arch-voix.svg)
+![Architecture SOFIA](figures/arch-sofia.svg)
 
 ## 2. Architecture — Core / Protocol / Runtime + terrain
 
@@ -46,7 +46,7 @@ Les principes fondamentaux. Ce qui ne change pas quand on change d'outil, de pro
 
 | Templates | Contenu |
 |---|---|
-| **Structurels** | persona, claude-md, workspace, session, roadmap-produit, voix-instance, team-orga |
+| **Structurels** | persona, claude-md, workspace, session, roadmap-produit, sofia-instance, team-orga |
 | **Bus** | note, review, feature, adr |
 | **Archétypes** | architecte, dev, ux, stratège, chercheur, rédacteur, graphiste |
 
@@ -54,7 +54,7 @@ Modifier un template = patch bump.
 
 ### Protocol — le contrat d'interface
 
-Le protocol définit comment les personas échangent, tracent et s'organisent. Fichiers, pas API. Git, pas base de données. C'est ce qui rend Voix portable — n'importe quel outil capable de lire et écrire du markdown peut implémenter Voix.
+Le protocol définit comment les personas échangent, tracent et s'organisent. Fichiers, pas API. Git, pas base de données. C'est ce qui rend SOFIA portable — n'importe quel outil capable de lire et écrire du markdown peut implémenter SOFIA.
 
 | Document | Couche | Concept clé | En une phrase |
 |---|---|---|---|
@@ -67,7 +67,7 @@ Le protocol définit comment les personas échangent, tracent et s'organisent. F
 
 ### Runtime — l'implémentation concrète
 
-4 documents spécifiques à Claude Code. C'est la seule couche qui change si on porte Voix sur un autre provider. Remplaçable sans toucher au core ni au protocol.
+4 documents spécifiques à Claude Code. C'est la seule couche qui change si on porte SOFIA sur un autre provider. Remplaçable sans toucher au core ni au protocol.
 
 | Document | Rôle |
 |---|---|
@@ -85,7 +85,7 @@ Le protocol définit comment les personas échangent, tracent et s'organisent. F
 | `onboarding.md` | Guide de démarrage |
 | `lexique.md` | Termes de la méthode |
 | `utilisateur.md` | Guide utilisateur unifié |
-| `arch-voix.md` | Ce document |
+| `arch-sofia.md` | Ce document |
 | `figures/` | Visuels SVG |
 | `adr/` | Décisions structurantes |
 | `tests/` | Plans de test |
@@ -96,9 +96,9 @@ L'instance Katen (7 personas, 5 produits, 210+ sessions, 62 ADR) sert de vitrine
 
 ## 3. Modèle conceptuel
 
-### Le triangle Voix
+### Le triangle SOFIA
 
-![Le triangle Voix](figures/fig-triangle-voix.svg)
+![Le triangle SOFIA](figures/fig-triangle-sofia.svg)
 
 Trois concepts interdépendants :
 - **Persona** — un LLM contraint par un rôle, un périmètre et des interdits
@@ -113,11 +113,11 @@ Le **PO** (humain) est au centre : il orchestre, filtre, contextualise, tranche.
 
 Chaque flèche passe par le PO. Pas de raccourci.
 
-### Instance Voix
+### Instance SOFIA
 
 Une **instance** est un projet qui applique la méthode. Elle contient :
 
-![Structure instance Voix](figures/fig-structure-instance.svg)
+![Structure instance SOFIA](figures/fig-structure-instance.svg)
 
 Le fichier `voix.md` à la racine identifie le dépôt comme instance et lie à la méthode.
 
@@ -127,7 +127,7 @@ Le fichier `voix.md` à la racine identifie le dépôt comme instance et lie à 
 
 ### P1 — Le core tient sans outil
 
-Les 7 principes et le modèle conceptuel sont indépendants de Claude Code. On pourrait appliquer Voix avec des fichiers texte et un éditeur. Le runtime est un accélérateur, pas un prérequis.
+Les 7 principes et le modèle conceptuel sont indépendants de Claude Code. On pourrait appliquer SOFIA avec des fichiers texte et un éditeur. Le runtime est un accélérateur, pas un prérequis.
 
 ### P2 — Core / Protocol / Runtime
 
@@ -172,21 +172,21 @@ On commence petit, on ajoute de la structure quand la charge mentale du PO l'exi
 
 ### Convergence
 
-| | Voix | Convergence |
+| | SOFIA | Convergence |
 |---|---|---|
 | **Répond à** | Comment organiser mes assistants IA | Comment piloter quand ça scale |
-| **Quand** | Dès le premier persona | À partir de 5+ voix et 2+ produits |
+| **Quand** | Dès le premier persona | À partir de 5+ personas et 2+ produits |
 | **Publié** | Méthode, implémentation, outillage | build.py, dashboard, specs de format |
 | **Formats** | Fournit les templates (backlog, roadmap, note...) | Parse ces mêmes formats |
 
-Voix définit les conventions. Convergence les consomme. Pas de duplication — renvois croisés.
+SOFIA définit les conventions. Convergence les consomme. Pas de duplication — renvois croisés.
 
 ### Produits Oxynoe
 
-| Produit | Lien avec Voix |
+| Produit | Lien avec SOFIA |
 |---|---|
 | **Katen** | Instance de référence (7 personas, terrain de validation) |
-| **Convergence** | Compagnon de pilotage (consomme les artefacts Voix) |
+| **Convergence** | Compagnon de pilotage (consomme les artefacts SOFIA) |
 | **Fragments** | Futur — produit éditorial, instance distincte |
 | **Regards** | Futur — veille augmentée, instance distincte |
 

@@ -47,7 +47,7 @@ Le PO valide avant toute sortie.
 ## Règles de fonctionnement
 
 <!-- Les invariants de l'équipe. Adapter, mais ces trois règles
-     sont non négociables dans Voix : -->
+     sont non négociables dans SOFIA : -->
 
 - **Le PO est le seul décideur final** — les personas proposent, analysent, challengent. Le PO tranche.
 - **Les frictions remontent** — tout blocage ou incohérence entre personas est signalé explicitement, pas contourné.

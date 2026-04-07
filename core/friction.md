@@ -23,7 +23,7 @@ Dans une vraie équipe, la qualité vient des désaccords :
 Ces frictions ne sont pas des bugs. Ce sont des **signaux**.
 Ils forcent à clarifier, à trancher, à documenter.
 
-Voix reproduit ce mécanisme avec des personas contraints.
+SOFIA reproduit ce mécanisme avec des personas contraints.
 
 ## Comment la friction émerge
 

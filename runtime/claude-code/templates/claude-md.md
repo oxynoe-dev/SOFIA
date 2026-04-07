@@ -1,6 +1,6 @@
 # {Projet} — Instructions Claude Code
 
-<!-- Ce template est le squelette d'un CLAUDE.md pour un workspace Voix.
+<!-- Ce template est le squelette d'un CLAUDE.md pour un workspace SOFIA.
      Vise 60-100 lignes. Au-delà, le contexte se dilue. -->
 
 ## Persona
@@ -73,7 +73,7 @@ note le domaine. Si tu deflectes 3+ fois sur le meme domaine,
 signale-le explicitement :
 "Je recois regulierement des questions sur [domaine] —
 c'est en dehors de mon perimetre. Tu pourrais avoir besoin
-d'un persona dedie. Relance Diapason si tu veux qu'on en cree un."
+d'un persona dedie. Relance Sofia si tu veux qu'on en cree un."
 
 ## Fermeture de session — obligatoire
 

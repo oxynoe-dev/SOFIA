@@ -6,7 +6,7 @@
 
 ## Le principe
 
-Dans Voix, les personas ne "parlent" pas entre eux. Ils déposent
+Dans SOFIA, les personas ne "parlent" pas entre eux. Ils déposent
 des **artefacts** — des fichiers structurés, versionnés, dans des
 emplacements convenus.
 

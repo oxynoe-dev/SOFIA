@@ -1,4 +1,4 @@
-# Démarrer sans Diapason — mode manuel
+# Démarrer sans Sofia — mode manuel
 
 > Installer les personas à la main, fichier par fichier.
 
@@ -11,7 +11,7 @@
 - Tu préfères garder le contrôle sur la structure
 - Tu veux adapter la méthode à un autre provider
 
-Le mode manuel produit exactement le même résultat que Diapason. Il n'y a pas de version "allégée" — juste un chemin différent pour y arriver.
+Le mode manuel produit exactement le même résultat que Sofia. Il n'y a pas de version "allégée" — juste un chemin différent pour y arriver.
 
 ---
 
@@ -40,14 +40,14 @@ mon-projet/
 
 ## Avant de commencer : instance et projet
 
-Une instance Voix n'est pas ton projet — c'est l'atelier où les personas réfléchissent. Le projet (code, produit) vit dans un repo séparé. Voir la section [L'isolation > Instance et projet](utilisateur.md#instance-et-projet) du guide utilisateur pour le détail et les trois configurations possibles.
+Une instance SOFIA n'est pas ton projet — c'est l'atelier où les personas réfléchissent. Le projet (code, produit) vit dans un repo séparé. Voir la section [L'isolation > Instance et projet](utilisateur.md#instance-et-projet) du guide utilisateur pour le détail et les trois configurations possibles.
 
 ---
 
-## Étape 1 — Cloner le repo Voix
+## Étape 1 — Cloner le repo SOFIA
 
 ```bash
-git clone https://github.com/oxynoe-dev/voix
+git clone https://github.com/oxynoe-dev/sofia
 ```
 
 C'est ta référence. Les templates et la documentation sont dedans. Tu n'as pas besoin de le garder dans ton projet — juste de le consulter.
@@ -59,11 +59,11 @@ C'est ta référence. Les templates et la documentation sont dedans. Tu n'as pas
 À la racine de ton projet, crée `voix.md` :
 
 ```markdown
-# Instance Voix
+# Instance SOFIA
 
-Ce dépôt est une **instance de la méthode Voix**.
+Ce dépôt est une **instance de la méthode SOFIA**.
 
-- **Méthode** : [oxynoe-dev/voix](https://github.com/oxynoe-dev/voix)
+- **Méthode** : [oxynoe-dev/sofia](https://github.com/oxynoe-dev/sofia)
 - **Version méthode appliquée** : v0.2.x
 - **Projet** : {ton projet}
 - **Équipe** : {nombre} assistants IA + 1 humain orchestrateur
@@ -129,7 +129,7 @@ Le premier persona est un rôle **structurant** — celui qui va cadrer la déma
 
 ### Créer la fiche persona
 
-Crée `shared/orga/personas/persona-{nom}.md`. Utilise le template `core/templates/persona.md` du repo Voix comme base. Les champs essentiels :
+Crée `shared/orga/personas/persona-{nom}.md`. Utilise le template `core/templates/persona.md` du repo SOFIA comme base. Les champs essentiels :
 
 ```markdown
 # {Nom} — {Rôle}

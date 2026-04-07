@@ -1,6 +1,6 @@
-# Voix
+# SOFIA
 
-> Des rôles spécialisés qui pensent ensemble. Le produit émerge de leur conversation.
+> Des rôles spécialisés qui pensent avec vous. Le produit émerge de leur friction.
 
 ---
 
@@ -26,7 +26,7 @@ obligé de penser en termes de valeur, pas d'implémentation.
 
 La contrainte n'est pas une limite — c'est ce qui force la qualité.
 
-## Ce que Voix est
+## Ce que SOFIA est
 
 Une **méthode** pour travailler avec des personas IA spécialisées,
 en friction intentionnelle, pilotées par un humain qui arbitre.
@@ -39,25 +39,25 @@ Concrètement :
 - De la **traçabilité** — tout est tracé : décisions, sessions, reviews, échanges
 - Des **artefacts** — les personas communiquent par fichiers, pas par chat
 
-## Ce que Voix n'est pas
+## Ce que SOFIA n'est pas
 
 - Pas un framework — pas de code à installer, pas de dépendance
 - Pas un produit — c'est une méthode, documentée dans un repo
-- Pas agnostique — Voix est conçu pour **Claude Code** et exploite ses fonctionnalités (CLAUDE.md, mémoire persistante, workspaces isolés)
+- Pas agnostique — SOFIA est conçu pour **Claude Code** et exploite ses fonctionnalités (CLAUDE.md, mémoire persistante, workspaces isolés)
 
 ## Quick start
 
 ```bash
-git clone https://github.com/oxynoe-dev/voix
-cd voix
+git clone https://github.com/oxynoe-dev/sofia
+cd sofia
 claude
 ```
 
-Claude Code ouvre le repo, charge le guide intégré (Diapason) et te pose
+Claude Code ouvre le repo, charge le guide intégré (Sofia) et te pose
 les bonnes questions. En 10 minutes, tu as ton premier persona
 calibré pour ton projet.
 
-> **Alpha preview** — Diapason repose sur le comportement conversationnel de Claude Code. Les résultats peuvent varier selon l'environnement. Si le flow ne se lance pas, le [mode manuel](doc/demarrer-manuel.md) couvre la même chose étape par étape.
+> **Alpha preview** — Sofia repose sur le comportement conversationnel de Claude Code. Les résultats peuvent varier selon l'environnement. Si le flow ne se lance pas, le [mode manuel](doc/demarrer-manuel.md) couvre la même chose étape par étape.
 
 ## En savoir plus
 
@@ -70,7 +70,7 @@ calibré pour ton projet.
 
 ## Origine
 
-Voix est née du projet [Katen](https://katen.run) — un moteur de
+SOFIA est née du projet [Katen](https://katen.run) — un moteur de
 orchestration formellement vérifié pour pipelines Data & IA, construit avec 7 assistants IA specialises
 (architecte, dev, UX, chercheuse, stratege, graphiste, redacteur) sur 210+ sessions.
 

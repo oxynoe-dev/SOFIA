@@ -1,4 +1,4 @@
-# Principes de Voix
+# Principes de SOFIA
 
 > Les principes de la méthode, pas ceux de ton projet.
 
@@ -19,7 +19,7 @@ Les personas proposent, challengent, produisent. L'humain tranche.
 Toujours. Un persona ne valide jamais ses propres propositions.
 Un persona ne force jamais l'acceptation d'une décision.
 
-C'est la règle non négociable de Voix.
+C'est la règle non négociable de SOFIA.
 
 ## 3. Chaque voix compte
 

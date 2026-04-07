@@ -1,6 +1,6 @@
 # Onboarding d'un nouveau persona
 
-> Comment intégrer un nouveau persona dans une instance Voix existante.
+> Comment intégrer un nouveau persona dans une instance SOFIA existante.
 
 ---
 

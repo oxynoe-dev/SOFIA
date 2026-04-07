@@ -19,7 +19,7 @@ Conservé tel quel — déjà en place sur voix2.html.
 
 ```
 label:    Methode IA
-titre:    Voix
+titre:    SOFIA
 sous-titre: Des personas IA contraints qui pensent ensemble.
             Une methode, pas un prompt kit.
 mention:  Agnostique par design. La methode tourne sur le LLM de ton choix.
@@ -51,7 +51,7 @@ Ce workspace est la distillerie editoriale du projet.
 - Les echanges avec les autres personas passent par shared/notes/
 ```
 
-**Note Sofia** : c'est un extrait, pas un screenshot. Le visiteur doit lire les mots "posture", "périmètre", "isolation", "ne pas intervenir" — c'est ça qui ancre "méthode, pas prompt kit". Style terminal sobre, pas de décorations inutiles.
+**Note Luz** : c'est un extrait, pas un screenshot. Le visiteur doit lire les mots "posture", "périmètre", "isolation", "ne pas intervenir" — c'est ça qui ancre "méthode, pas prompt kit". Style terminal sobre, pas de décorations inutiles.
 
 ---
 
@@ -67,7 +67,7 @@ Sans perimetre, chaque persona derive vers le meme centre mou.
 Sans interdit, la qualite est un accident.
 
 paragraphe 2:
-Voix part du principe inverse : c'est la contrainte qui cree la valeur.
+SOFIA part du principe inverse : c'est la contrainte qui cree la valeur.
 ```
 
 ---
@@ -141,7 +141,7 @@ CTA 2:  GitHub →        (lien repo)
 ## Navigation premier niveau
 
 ```
-Voix    Principes    Personas    Livre bleu    GitHub
+SOFIA    Principes    Personas    Livre bleu    GitHub
 ```
 
 Présente sur toutes les pages voix/. Page active marquée visuellement.

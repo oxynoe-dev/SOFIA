@@ -10,7 +10,7 @@ Claude Code permet de configurer des **hooks** — des commandes shell
 qui s'exécutent en réponse à des événements (avant/après un tool call,
 à la soumission d'un prompt, etc.).
 
-## Hooks utiles pour Voix
+## Hooks utiles pour SOFIA
 
 ### Rappel de résumé de session
 

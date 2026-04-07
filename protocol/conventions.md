@@ -1,11 +1,11 @@
 # Conventions
 
-> Les règles concrètes d'une instance Voix.
+> Les règles concrètes d'une instance SOFIA.
 
 ---
 
 Les principes disent **pourquoi**. Les conventions disent **comment**.
-Ce document est la référence pour toute instance Voix. Il consolide
+Ce document est la référence pour toute instance SOFIA. Il consolide
 les règles dispersées dans les autres documents core/ et les rend
 applicables.
 
@@ -147,6 +147,6 @@ Toute page publiée sur un domaine de l'instance doit porter :
 ## Conventions d'instance
 
 Ce document définit les conventions **méthode** — communes à toute
-instance Voix. Chaque instance peut ajouter ses propres conventions
+instance SOFIA. Chaque instance peut ajouter ses propres conventions
 dans `shared/conventions.md` (structure spécifique, rôles supplémentaires,
 règles de publication, etc.).

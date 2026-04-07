@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.2.6 — Renommage SOFIA (2026-04-07)
+
+- Diapason renomme en **Sofia** — gardienne de la methode SOFIA
+- Sofia (graphiste) renommee en **Luz**
+- Persona Sofia cree (`shared/orga/personas/persona-sofia.md`)
+- CLAUDE.md, README, guide utilisateur, mode manuel mis a jour
+- Exemple Katen : `sofia.md` → `luz.md`
+- fig-triangle-sofia.svg → fig-triangle-luz.svg
+
 ## v0.2.5 — Publication (2026-04-07)
 
 - CONTRIBUTING.md — guide de contribution (branches, commits, PR, code de conduite)

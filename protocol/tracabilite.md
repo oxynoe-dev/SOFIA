@@ -11,7 +11,7 @@ compresse, les sessions se ferment, la mémoire a ses limites.
 
 La seule chose qui persiste de manière fiable, ce sont les **fichiers**.
 
-La traçabilité dans Voix repose sur trois mécanismes :
+La traçabilité dans SOFIA repose sur trois mécanismes :
 
 ## 1. Résumés de session
 

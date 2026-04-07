@@ -6,7 +6,7 @@
 
 ## Le modèle mental
 
-Dans Voix, les personas ne se parlent pas. Ils n'ont pas accès
+Dans SOFIA, les personas ne se parlent pas. Ils n'ont pas accès
 aux sessions des autres. Ils ne savent même pas ce que les autres
 ont dit — sauf si l'humain leur transmet.
 

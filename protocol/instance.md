@@ -1,23 +1,23 @@
 # Marqueur d'instance
 
-> Un fichier `voix.md` à la racine identifie un dépôt comme instance Voix.
+> Un fichier `voix.md` à la racine identifie un dépôt comme instance SOFIA.
 
 ---
 
 ## Le principe
 
-Quand un dépôt suit la méthode Voix, il contient un fichier `voix.md`
+Quand un dépôt suit la méthode SOFIA, il contient un fichier `voix.md`
 à sa racine. Ce fichier est le **marqueur d'instance** — il lie le dépôt
 à la méthode et documente sa structure spécifique.
 
 ## Contenu type
 
 ```markdown
-# Instance Voix
+# Instance SOFIA
 
-Ce dépôt est une **instance de la méthode Voix**.
+Ce dépôt est une **instance de la méthode SOFIA**.
 
-- **Méthode** : [oxynoe-dev/voix](https://github.com/oxynoe-dev/voix)
+- **Méthode** : [oxynoe-dev/sofia](https://github.com/oxynoe-dev/sofia)
 - **Version méthode appliquée** : v0.2.x
 - **Projet** : {nom du projet}
 - **Équipe** : {nombre} assistants IA spécialisés + {nombre} PO humain(s)
@@ -37,8 +37,8 @@ Voir `shared/conventions.md`.
 ## Pourquoi
 
 - **Identification** — en ouvrant un dépôt, on sait immédiatement
-  si c'est une instance Voix et quelle version de la méthode il suit.
-- **Lien vers la source** — le lien vers le repo Voix permet de
+  si c'est une instance SOFIA et quelle version de la méthode il suit.
+- **Lien vers la source** — le lien vers le repo SOFIA permet de
   retrouver la documentation complète.
 - **Cartographie** — la table des workspaces donne la vue d'ensemble
   sans lire tous les CLAUDE.md.

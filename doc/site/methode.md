@@ -3,11 +3,11 @@ de: mira
 pour: sofia, nora
 type: contenu
 date: 2026-04-05
-objet: Page Méthode — vue d'ensemble architecturale de Voix
-source: core/*.md, doc/arch-voix.md
+objet: Page Méthode — vue d'ensemble architecturale de SOFIA
+source: core/*.md, doc/arch-sofia.md
 ---
 
-# La méthode Voix
+# La méthode SOFIA
 
 > Des rôles spécialisés qui pensent ensemble. Le produit émerge de leur friction.
 
@@ -15,15 +15,15 @@ source: core/*.md, doc/arch-voix.md
 
 ## Trois piliers
 
-Voix repose sur trois idées. Elles ne fonctionnent pas l'une sans l'autre.
+SOFIA repose sur trois idées. Elles ne fonctionnent pas l'une sans l'autre.
 
-**Contraindre** — Un assistant IA sans limites dit oui à tout et ne produit rien de bon. Voix impose à chaque assistant un rôle strict, un périmètre, et surtout des interdits. C'est la limitation qui le rend utile.
+**Contraindre** — Un assistant IA sans limites dit oui à tout et ne produit rien de bon. SOFIA impose à chaque assistant un rôle strict, un périmètre, et surtout des interdits. C'est la limitation qui le rend utile.
 
 **Éprouver** — Si tous les rôles sont d'accord, personne ne pense. La friction entre un architecte qui refuse de coder et un dev qui refuse d'implémenter une spec floue est un signal, pas un bug. Les désaccords forcent la clarté.
 
 **Arbitrer** — La friction sans arbitre est du chaos. L'humain écoute, questionne, puis tranche. Toujours. Aucun assistant ne valide ses propres propositions. Aucun assistant ne force l'acceptation d'une décision.
 
-![Les trois piliers de Voix](figures/fig-methode-piliers.svg)
+![Les trois piliers de SOFIA](figures/fig-methode-piliers.svg)
 
 ---
 
@@ -47,7 +47,7 @@ Voix repose sur trois idées. Elles ne fonctionnent pas l'une sans l'autre.
 
 Trois objets interdépendants. Le persona contraint produit des artefacts. Les artefacts créent de la friction quand ils sont éprouvés par d'autres personas. La friction produit de meilleures décisions. L'humain orchestre le cycle.
 
-![Modèle conceptuel — Persona, Artefact, Friction](figures/fig-triangle-sofia.svg)
+![Modèle conceptuel — Persona, Artefact, Friction](figures/fig-triangle-luz.svg)
 
 ---
 
@@ -97,9 +97,9 @@ La méthode se structure en trois couches indépendantes. On peut changer l'une 
 
 **Core** — Les invariants. Principes, personas, friction. Ce qui ne change pas quand on change d'outil. Si demain Claude Code disparaît, le core tient.
 
-**Protocol** — Le contrat d'interface. Artefacts, conventions, traçabilité, instance. Fichiers, pas API. Git, pas base de données. Le protocol est ce qui rend la méthode portable — n'importe quel outil capable de lire et écrire des fichiers markdown peut implémenter Voix.
+**Protocol** — Le contrat d'interface. Artefacts, conventions, traçabilité, instance. Fichiers, pas API. Git, pas base de données. Le protocol est ce qui rend la méthode portable — n'importe quel outil capable de lire et écrire des fichiers markdown peut implémenter SOFIA.
 
-**Runtime** — L'implémentation concrète. CLAUDE.md, Claude Code, hooks, mémoire persistante. Remplaçable sans toucher au core ni au protocol. C'est la seule couche qui change si on porte Voix sur un autre provider.
+**Runtime** — L'implémentation concrète. CLAUDE.md, Claude Code, hooks, mémoire persistante. Remplaçable sans toucher au core ni au protocol. C'est la seule couche qui change si on porte SOFIA sur un autre provider.
 
 | Couche | Contenu | Change quand… |
 |---|---|---|

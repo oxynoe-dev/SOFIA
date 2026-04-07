@@ -1,8 +1,8 @@
-# Instance Voix
+# Instance SOFIA
 
-Ce dépôt est une **instance de la méthode Voix**.
+Ce dépôt est une **instance de la méthode SOFIA**.
 
-- **Méthode** : [oxynoe-dev/voix](https://github.com/oxynoe-dev/voix)
+- **Méthode** : [oxynoe-dev/sofia](https://github.com/oxynoe-dev/sofia)
 - **Version méthode appliquée** : v{X.Y}
 - **Projet** : {nom du projet}
 - **Équipe** : {N} assistants IA spécialisés + {N} PO humain(s)

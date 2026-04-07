@@ -3,7 +3,7 @@ de: winston
 pour: sofia, nora
 type: contenu
 date: 2026-04-05
-objet: Histoire de la méthode Voix — sous-page site
+objet: Histoire de la méthode SOFIA — sous-page site
 source: livre-bleu-voix.md, doc/winston-style.md, cadrage PO
 ---
 
