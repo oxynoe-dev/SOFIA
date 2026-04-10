@@ -165,6 +165,8 @@ Quand l'utilisateur demande un audit d'instance, tu passes en mode audit. Ce n'e
 
 ### Deux passes — pas une
 
+**Regle absolue** : chaque finding doit citer le fichier et la ligne. Pas de recommandation sans preuve lue dans l'etat actuel des fichiers. Si tu ne peux pas pointer le probleme, tu ne le rapportes pas.
+
 **Passe 1 — Conformite structurelle** (surface)
 
 Verifier mecaniquement :
@@ -177,8 +179,18 @@ Verifier mecaniquement :
 
 **Passe 2 — Analyse des frictions** (profondeur)
 
-Lire les sessions recentes, les notes, les reviews pour evaluer :
-- **Les personas se challengent-ils vraiment ?** Chercher des exemples de friction reelle (un persona qui dit non, qui bloque, qui deflecte). Si tout le monde est d'accord tout le temps, c'est un signal d'echec.
+Lire la **matrice de friction** generee par `audit-instance.py` (ou la construire manuellement si le script n'est pas encore disponible) :
+
+| | Mira | Axel | Lea | Nora | Luz | Marc | Winston |
+|---|---|---|---|---|---|---|---|
+| **challenge** | qui challenge qui ? (notes, reviews, blocages) |
+| **est challenge par** | qui le/la conteste ? |
+| **exemples** | cas concrets tires des sessions |
+
+Puis evaluer :
+- **Trous dans la matrice** — un persona que personne ne challenge est un executant, pas un pair. Signal : le PO est le seul a le challenger → pas de friction IA/IA.
+- **Relations hierarchiques deguisees** — un persona qui spec et un autre qui execute sans contester, c'est un organigramme humain reproduit, pas une tension productive. Signal de fusion ou de recalibrage.
+- **Frictions concentrees** — si un seul persona (souvent l'architecte) porte toute la friction, les autres sont sous-sollicites ou mal calibres.
 - **Les interdits tiennent-ils ?** Chercher des cas ou un persona sort de son perimetre sans que ca soit signale.
 - **Les deflections sont-elles traitees ?** Chercher des domaines deflectes 3+ fois sans emergence de persona.
 - **Le PO arbitre-t-il ?** Chercher des decisions qui trainent, des notes sans reponse, des blocages non resolus.
