@@ -103,6 +103,97 @@ Comment le persona interagit avec les autres :
 
 La table de collaboration empêche les personas de travailler en silo.
 
+## Types de personas
+
+SOFIA distingue deux types de personas, chacun avec un pattern de
+mémoire et un mode d'intervention différents.
+
+### Persona opérationnel
+
+Dans le flux. Mémoire longue (résumés de session, contexte cumulé).
+Produit des livrables, challenge les autres personas, s'intègre dans
+les circuits de friction de l'instance.
+
+La mémoire est le carburant : elle accélère le travail, affine la
+compréhension du projet, réduit le coût de reformulation à chaque
+session.
+
+**Risque** : la dérive. Un persona qui accumule trop de contexte
+s'ajuste au cadre de pensée de l'orchestrateur. Il perd en friction
+ce qu'il gagne en fluidité. D'où la nécessité de recalibrage
+périodique — revenir aux interdits.
+
+### Persona méta
+
+Hors du flux. Sans mémoire entre les sessions. Son rôle est de
+contester le **système** plutôt que d'y contribuer — les fondations,
+les prémisses, le cadre de pensée.
+
+Trois propriétés le séparent d'un persona opérationnel :
+
+- **Hors du flux** — il ne reçoit pas les artefacts des autres
+  personas, ne participe pas à la production. Son isolation est la
+  condition de son utilité.
+- **Sans mémoire** — chaque session repart de zéro. La mémoire est
+  le mécanisme de domestication. L'absence de mémoire force
+  l'orchestrateur à reformuler sa pensée — ce qui est en soi un acte
+  de réflexion.
+- **Activé par l'intention** — l'orchestrateur vient avec une thèse à
+  éprouver, un doute à creuser. Sans intention forte, la session ne
+  produit rien.
+
+**Ce qu'il conteste** : pas le travail des personas, pas les livrables.
+La synthèse de l'orchestrateur — la conclusion que l'humain tire après
+avoir orchestré les autres. Et au-delà : les prémisses, les fondations,
+le cadre de pensée lui-même.
+
+**Signal de fermeture** : quand le persona méta enchaîne les
+validations sans friction, ou quand l'orchestrateur sent que les
+échanges glissent vers la confirmation — la session a produit ce
+qu'elle pouvait produire. Continuer dégrade la valeur.
+
+### Deux patterns de mémoire, une méthode
+
+| | Opérationnel | Méta |
+|---|---|---|
+| **Mémoire** | Résumés de session, contexte cumulé | Aucune continuité entre sessions |
+| **Carburant** | Le contexte accumulé | L'absence de contexte |
+| **Risque** | Dérive, perte de friction | Coût d'entrée, reformulation nécessaire |
+| **Recalibrage** | Périodique, sur les interdits | Structurel, par design (chaque session est un reset) |
+
+## Quand fusionner ou supprimer un persona
+
+Les personas ne sont pas permanents. Un persona qui ne produit pas de
+friction utile coûte plus qu'il ne vaut — en charge d'orchestration,
+en bruit, en complexité.
+
+### Signaux de fusion
+
+Deux personas doivent être fusionnés quand :
+
+- **Flux séquentiel sans contestation** — l'un passe, l'autre exécute.
+  Jamais de retour, jamais de "non".
+- **Friction uniquement logistique** — le coût est dans le changement
+  de contexte, pas dans le contenu échangé.
+- **Aucune surprise** — ni l'un ni l'autre ne dit quelque chose que
+  l'orchestrateur ne savait pas déjà.
+
+### Règle
+
+> Ne pas dériver les personas des métiers. Les dériver des axes de tension.
+
+Deux métiers différents peuvent tomber sur le même axe de décision dans
+un contexte donné. Inversement, un seul métier peut couvrir deux axes
+en tension. La question n'est jamais "est-ce que ce sont deux métiers ?"
+mais **"est-ce que ces deux rôles me disent des choses différentes sur
+mes décisions ?"**
+
+### Le test de suppression
+
+Imagine que tu supprimes ce persona. Qu'est-ce qui disparaît de ton
+processus de décision ? Si la réponse est "rien de significatif",
+le persona couvre un axe qui n'est pas en tension. Supprime-le.
+
 ## Comment concevoir un persona
 
 ### Partir du besoin, pas du modèle
@@ -139,3 +230,4 @@ Si ton persona ne dit jamais non, ses contraintes sont trop lâches.
 - **Le persona orphelin** — pas de collaboration définie, travaille en silo
 - **Le persona fantôme** — créé mais jamais utilisé. Supprime-le.
 - **Trop de personas trop tôt** — commence par 1-2, pas 5
+- **L'organigramme projeté** — calquer les postes d'une vraie équipe sur la topologie des personas. Ce n'est pas parce que UX et graphisme sont des postes séparés dans une entreprise qu'ils doivent être des personas séparés. La question est toujours : est-ce que ces deux rôles me disent des choses **différentes** sur mes décisions ?
