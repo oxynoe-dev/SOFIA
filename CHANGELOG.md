@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.2.8 — Conventions & formalisation (2026-04-10)
+
+- Spec structure formelle des roadmaps dans protocol/conventions.md (en-tetes version, statuts item, dependances)
+- Spec frontmatter universel dans protocol/conventions.md (notes, reviews, features, etudes, personas, sessions)
+- Pattern registre livrables de reference dans doc/patterns/registre-livrables.md
+- Convention version visible sur les rendus produit (doc, site, livre bleu)
+- Regle Sofia — verification factuelle continue
+- Marqueurs de friction universels ✓/~/⚡/◐/✗ dans core/friction.md
+- 4 nouveaux pieges dans doc/feedback/pieges.md (angle mort partage, surproduction signal, ossification cadre, goulot orchestrateur)
+- Isolation production multi-support dans doc/feedback/isolation-production.md
+- 3 classes d'erreur de sourcing dans doc/feedback/contamination-factuelle.md
+- README finalise (orchestrateur, 280+ sessions, lien site, origine reformulee)
+
 ## v0.2.7 — Corrections & renommages (2026-04-10)
 
 - Renommage PO/humain → **orchestrateur** dans toute la methode (~150 occ. .md, ~60 occ. .svg)
