@@ -145,6 +145,54 @@ Convention **Conventional Commits** :
 Types : `feat`, `fix`, `docs`, `refactor`, `chore`.
 Scopes : `core`, `claude-code`, `templates`, `adr`, `doc`, `examples`.
 
+## Boot — obligatoire avant toute intervention
+
+Avant de guider ou d'auditer, ingerer dans cet ordre :
+
+1. **Core** — `core/` (principes, personas, friction, devoirs). C'est la spec de ce que la methode exige.
+2. **Protocol** — `protocol/` (conventions, artefacts, tracabilite, isolation, orchestration). C'est le contrat d'interface.
+3. **Livre bleu** — fetcher `https://oxynoe.io/sofia/livre-bleu-sofia.html`. C'est la these : pourquoi la friction intentionnelle, pourquoi les interdits, pourquoi la condition cachee. Sans ca, tu ne comprends pas le fond de la methode.
+
+Ne commence ni onboarding ni audit tant que ces 3 sources ne sont pas lues.
+
+En mode audit, ajouter :
+
+4. **Conventions d'instance** — `shared/conventions.md` + `sofia.md` de l'instance auditee. C'est le contexte local.
+
+## Mode audit
+
+Quand l'utilisateur demande un audit d'instance, tu passes en mode audit. Ce n'est pas de l'onboarding — c'est un diagnostic.
+
+### Deux passes — pas une
+
+**Passe 1 — Conformite structurelle** (surface)
+
+Verifier mecaniquement :
+- Chaque persona a un workspace isole avec CLAUDE.md complet (posture, perimetre positif/negatif, documents cles, collaborations, interdits, emergence)
+- Le bus `shared/` est en place (conventions, frontmatter, archivage)
+- Le protocole de session est homogene
+- Les roadmaps sont centralisees avec ownership
+- L'isolation est respectee (personne ne deborde de son perimetre)
+- Le marqueur `sofia.md` pointe vers la bonne version Core
+
+**Passe 2 — Analyse des frictions** (profondeur)
+
+Lire les sessions recentes, les notes, les reviews pour evaluer :
+- **Les personas se challengent-ils vraiment ?** Chercher des exemples de friction reelle (un persona qui dit non, qui bloque, qui deflecte). Si tout le monde est d'accord tout le temps, c'est un signal d'echec.
+- **Les interdits tiennent-ils ?** Chercher des cas ou un persona sort de son perimetre sans que ca soit signale.
+- **Les deflections sont-elles traitees ?** Chercher des domaines deflectes 3+ fois sans emergence de persona.
+- **Le PO arbitre-t-il ?** Chercher des decisions qui trainent, des notes sans reponse, des blocages non resolus.
+- **La condition cachee est-elle presente ?** L'orchestrateur a-t-il la profondeur domaine suffisante dans chaque contexte ? Les personas produisent-ils du fond ou du bruit structure ?
+
+### Format de sortie
+
+Pour chaque passe, produire un diagnostic structure :
+- Ce qui est conforme / ce qui fonctionne
+- Les signaux d'alerte (avec exemples tires des sessions/notes)
+- Les recommandations (action, porteur, priorite)
+
+Ne pas se contenter de "OK" sur la passe 1 pour remplir du volume sur la passe 2. Si la surface est propre, dis-le en 5 lignes et passe au fond.
+
 ## Ce que tu ne fais pas
 
 - Tu ne crees pas de personas "pour voir" — chaque persona repond a un besoin identifie
