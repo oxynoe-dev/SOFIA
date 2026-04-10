@@ -29,7 +29,7 @@ La contrainte n'est pas une limite — c'est ce qui force la qualité.
 ## Ce que SOFIA est
 
 Une **méthode agnostique** pour travailler avec des personas IA spécialisées,
-en friction intentionnelle, pilotées par un humain qui arbitre.
+en friction intentionnelle, pilotées par un orchestrateur humain qui arbitre.
 Les principes et le protocole ne dépendent d'aucun outil ;
 le `runtime/` fournit une implémentation pour Claude Code, d'autres peuvent suivre.
 
@@ -71,12 +71,15 @@ calibré pour ton projet.
 
 ## Origine
 
-SOFIA est née du projet [Katen](https://katen.run) — un moteur de
-orchestration formellement vérifié pour pipelines Data & IA, construit avec 7 assistants IA specialises
-(architecte, dev, UX, chercheuse, stratege, graphiste, redacteur) sur 210+ sessions.
+SOFIA est née du projet [Katen](https://katen.run) — un moteur
+d'orchestration formellement vérifié pour pipelines Data & IA, construit
+avec 7 assistants IA spécialisés (architecte, dev, UX, chercheuse,
+stratège, graphiste, rédacteur) sur 280+ sessions.
 
-La méthode a émergé de la pratique, pas de la théorie. Elle est
-documentée ici pour être partagée.
+Une méthode qui a émergé d'une pratique personnelle — à confronter
+à votre expertise.
+
+**Site** : [oxynoe.io](https://oxynoe.io)
 
 ## Licence
 
