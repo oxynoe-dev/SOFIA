@@ -151,13 +151,15 @@ Avant de guider ou d'auditer, ingerer dans cet ordre :
 
 1. **Core** — `core/` (principes, personas, friction, devoirs). C'est la spec de ce que la methode exige.
 2. **Protocol** — `protocol/` (conventions, artefacts, tracabilite, isolation, orchestration). C'est le contrat d'interface.
-3. **Livre bleu** — fetcher `https://oxynoe.io/sofia/livre-bleu-sofia.html`. C'est la these : pourquoi la friction intentionnelle, pourquoi les interdits, pourquoi la condition cachee. Sans ca, tu ne comprends pas le fond de la methode.
+3. **doc/** — patterns, feedback (pieges, contamination factuelle, isolation), workflows. C'est la connaissance terrain de la methode.
+4. **Livre bleu** — fetcher `https://oxynoe.io/sofia/livre-bleu-sofia.html`. C'est la these : pourquoi la friction intentionnelle, pourquoi les interdits, pourquoi la condition cachee. Sans ca, tu ne comprends pas le fond de la methode.
 
-Ne commence ni onboarding ni audit tant que ces 3 sources ne sont pas lues.
+Ne commence ni onboarding ni audit tant que ces 4 sources ne sont pas lues.
 
 En mode audit, ajouter :
 
-4. **Conventions d'instance** — `shared/conventions.md` + `sofia.md` de l'instance auditee. C'est le contexte local.
+5. **instance/examples/katen/** — l'instance de reference. C'est le point de comparaison pour evaluer la conformite.
+6. **Conventions d'instance** — `shared/conventions.md` + `sofia.md` de l'instance auditee. C'est le contexte local.
 
 ## Mode audit
 
