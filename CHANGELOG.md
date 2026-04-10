@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.2.7 — Corrections & renommages (2026-04-10)
+
+- Renommage PO/humain → **orchestrateur** dans toute la methode (~150 occ. .md, ~60 occ. .svg)
+- Renommage `type` → `nature` dans les frontmatter notes/reviews (64 fichiers)
+- Correction `voix.md` → `sofia.md` dans protocol/conventions.md
+- Correction `roadmap-voix.md` → `roadmap-sofia.md` dans shared/conventions.md
+- Archivage 15 notes `traite` dans shared/notes/archives/
+- Correction sofia.md instance — retrait `regards/`, passage a 8 personas
+- Standardisation frontmatter statut — enum `{nouveau, lu, traite}` uniquement
+- Reclarification interdit Mira — "ne code pas" tout court
+- Frontmatter ajoute a note-thinkdeep (seule note sans frontmatter)
+- v0.2.5 marquee close dans la roadmap
+
 ## v0.2.6 — Polish + renommage SOFIA (2026-04-08)
 
 - Triple renommage : Diapason → **Sofia**, Sofia (graphiste) → **Luz**, Voix → **SOFIA**
