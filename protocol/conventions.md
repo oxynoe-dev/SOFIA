@@ -50,21 +50,77 @@ Un artefact = un sujet. Pas de fichier fourre-tout.
 
 ## Frontmatter
 
-Chaque artefact dans `shared/` porte un frontmatter :
+**Tout fichier markdown de l'instance porte un frontmatter YAML.** Pas seulement `shared/` — tout : notes, reviews, features, études, specs, sessions, personas. Le frontmatter est le protocole universel de cycle de vie d'un artefact.
 
+Pas d'accents dans les valeurs (`traite`, pas `traité`).
+
+### Frontmatter par type d'artefact
+
+**Notes** (bus shared/) :
 ```yaml
 ---
 de: mira
 pour: lea
-type: signal           # signal | question | demande | reponse
+nature: signal         # signal | question | demande | reponse
 statut: nouveau        # nouveau | lu | traite
-date: 2026-03-30
+date: 2026-04-09
 ---
 ```
 
-Pas d'accents dans les valeurs (`traite`, pas `traité`).
+**Reviews** (bus shared/) :
+```yaml
+---
+de: mira
+pour: axel
+nature: review
+statut: nouveau        # nouveau | lu | traite
+date: 2026-04-09
+objet: adr-051
+---
+```
 
-### Statuts
+**Features** (bus shared/) :
+```yaml
+---
+de: nora
+pour: equipe
+nature: feature
+statut: proposition    # proposition | validee | rejetee | en-cours | livree
+date: 2026-04-09
+produit: convergence
+---
+```
+
+**Études** (workspaces) :
+```yaml
+---
+nature: etude
+de: mira
+statut: proposition    # proposition | validee | rejetee | archivee
+date: 2026-04-09
+produit: sofia
+---
+```
+
+**Personas** (shared/orga/personas/) :
+```yaml
+---
+nom: Mira
+role: Architecte systeme & solution
+workspace: architecture/
+---
+```
+
+**Sessions** (workspaces) :
+```yaml
+---
+nature: session
+persona: mira
+date: 2026-04-09
+---
+```
+
+### Statuts (notes et reviews)
 
 | Statut | Signification |
 |--------|--------------|
@@ -118,10 +174,65 @@ Les personas préparent le message de commit. L'orchestrateur exécute.
 Chaque roadmap a un **owner** — un persona responsable de la cohérence.
 L'owner ne priorise pas, il signale et range.
 
-Chaque item porte un `@owner` — le persona responsable de l'exécution.
-
 Il n'y a pas de backlog par persona. Tous les items vivent dans les
 roadmaps. Les items terminés migrent vers `backlog-archive.md`.
+
+### Structure d'une version
+
+Chaque version dans un fichier roadmap porte un en-tête structuré :
+
+```markdown
+### v0.2.7 — Documentation runtime
+<!-- produit: SOFIA | cible: 2026-04-15 | cloture: | statut: running -->
+
+Description courte de la version (1-2 lignes).
+```
+
+| Champ | Obligatoire | Valeurs | Exemple |
+|-------|-------------|---------|---------|
+| `produit` | oui | nom du produit | `SOFIA` |
+| `cible` | non | date ISO | `2026-04-15` |
+| `cloture` | non | date ISO (rempli quand done) | `2026-04-12` |
+| `statut` | oui | done \| running \| todo \| blocked | `running` |
+
+Le commentaire HTML est invisible au rendu markdown mais parsable par
+les outils d'instance.
+
+### Structure d'un item
+
+```
+- [{statut}] {titre} @{porteur} [cible:{date}] [↔ {dep1}, {dep2}]
+```
+
+| Champ | Obligatoire | Position | Exemple |
+|-------|-------------|----------|---------|
+| `statut` | oui | entre crochets en début | `[running]` |
+| `titre` | oui | texte libre après le statut | `Audit experiments par Sofia` |
+| `@porteur` | oui | après le titre | `@mira` |
+| `cible:{date}` | non | après le porteur | `cible:2026-04-15` |
+| `↔ {deps}` | non | en fin de ligne | `↔ katen, convergence` |
+
+### Statuts item
+
+| Statut | Sémantique |
+|--------|-----------|
+| `done` | Terminé, livré |
+| `running` | En cours de travail actif |
+| `ready` | Prêt à démarrer, pas de blocage |
+| `todo` | Planifié, pas encore prêt |
+| `blocked` | Bloqué — raison après `⊘` |
+
+### Dépendances
+
+Le marqueur `↔` en fin de ligne désigne les produits ou personas dont
+l'item dépend ou qu'il alimente. Pour les dépendances sur une version
+spécifique, utiliser `produit:version` (ex : `↔ katen:v0.23`).
+
+### Version visible
+
+Les rendus produit (documentation, site, livre bleu) affichent le
+numéro de version SOFIA applicable. Le lecteur sait quel état de la
+méthode il consulte.
 
 ## CLAUDE.md — anatomie
 

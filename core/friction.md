@@ -84,3 +84,34 @@ Ce protocole est plus lent qu'un chat. C'est voulu :
 
 Si tu reconnais la deuxième liste, tes personas sont trop complaisants
 ou leurs contraintes trop lâches. Revois les interdits.
+
+## Mesurer la friction
+
+La friction est qualitative — pas mesurable par un compteur. Mais elle
+peut être **signalée** dans les artefacts. Cinq marqueurs qualifient
+la position d'un persona sur une proposition :
+
+| Marqueur | Signification |
+|----------|--------------|
+| **✓ Juste** | Position correcte — arguments additionnels fournis |
+| **~ Contestable** | Position défendable mais pas la seule |
+| **⚡ Simplification** | Le réel est plus complexe que ce qui est présenté |
+| **◐ Angle mort** | Quelque chose que l'auteur ne voit pas ou choisit de ne pas voir |
+| **✗ Faux** | Factuellement incorrect ou logiquement incohérent |
+
+### Usage
+
+Les personas qualifient leurs positions dans les **notes et reviews**
+avec ces marqueurs. Usage optionnel, pas mécanique — ne classifier que
+les affirmations qui le méritent.
+
+### Ce que ça révèle
+
+Un scan des marqueurs sur un artefact donne le niveau de friction :
+- Que des ✓ → friction absente — signal d'alerte
+- Mix ✓/~/⚡ → friction saine
+- Présence de ◐ ou ✗ → tension à traiter
+
+Si un persona ne produit que des ✓ sur une longue période, c'est un
+signal de domestication — il s'est aligné sur le cadre de pensée de
+l'orchestrateur.

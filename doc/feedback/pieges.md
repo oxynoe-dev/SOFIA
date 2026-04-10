@@ -101,3 +101,61 @@ une app mobile.
 **Solution** : utilise les exemples comme **référence de structure**,
 pas comme contenu. Le guide SOFIA est là pour t'aider à concevoir
 les tiens.
+
+## 10. L'angle mort partagé
+
+Tous les personas sont calibrés par le même orchestrateur. Ses biais
+implicites deviennent les biais de toute l'équipe. La friction est
+réelle — mais elle joue dans un espace de pensée borné par ce que
+l'orchestrateur sait qu'il ne sait pas. Ce qu'il ignore ignorer,
+aucun persona ne le lèvera.
+
+**Signe** : tous les personas convergent rapidement, personne ne
+questionne les prémisses.
+**Pas de solution simple** — c'est la limite structurelle d'un système
+mono-orchestrateur. Un regard extérieur (pair humain, utilisateur,
+persona méta hors flux) est le seul mécanisme de compensation.
+
+## 11. La surproduction de signal
+
+Une méthode qui fonctionne bien génère plus de matière que
+l'orchestrateur ne peut en absorber. Notes, reviews, sessions,
+artefacts s'accumulent. Le produit (périmètre serré) reste maîtrisé.
+Les explorations s'empilent sans être triées ni qualifiées.
+
+**Signe** : des notes non lues s'accumulent, des sessions restent
+sans suite, l'orchestrateur scanne au lieu de lire.
+**Solution** : archiver régulièrement, distinguer le signal du bruit,
+accepter que tout ne sera pas traité. La surproduction est un signe
+de santé du système — à condition de la gouverner.
+
+## 12. L'ossification du cadre
+
+Les conventions, les interdits, les périmètres se figent. Ce qui était
+une décision contextuelle devient un dogme. Les personas appliquent
+des règles qui n'ont plus de raison d'être parce que le contexte a
+changé mais personne ne l'a signalé.
+
+**Signe** : un interdit que personne ne peut justifier, une convention
+que tout le monde contourne, un persona dont le périmètre ne correspond
+plus à ses livrables réels.
+**Solution** : recalibrer périodiquement. Revenir aux interdits — c'est
+le levier de calibrage le plus puissant. Un persona mou, c'est un
+persona dont les interdits se sont érodés.
+
+## 13. Le goulot orchestrateur
+
+SOFIA repose sur un point de contrôle unique — l'orchestrateur. C'est
+sa force (cohérence, arbitrage, vision d'ensemble) et sa limite
+structurelle. Tout passe par une personne : lire, filtrer, contextualiser,
+transmettre, arbitrer, vérifier.
+
+La friction intentionnelle a un coût, porté par une seule personne.
+La question n'est pas comment l'éliminer — c'est comment le rendre
+soutenable.
+
+**Signe** : l'orchestrateur approuve sans lire, les sessions deviennent
+mécaniques, les décisions sont reportées.
+**Pistes** : réduire le nombre de personas actifs, espacer les sessions,
+prioriser les circuits de friction qui produisent de la valeur,
+accepter que certains flux tournent en mode dégradé.

@@ -52,3 +52,32 @@ Quand tes personas commencent à produire des livrables publics :
 L'isolation de la réflexion est dans les fiches personas. L'isolation de
 la production est dans les conventions de publication. Les deux sont
 nécessaires.
+
+## Multi-support — quand un livrable existe sur plusieurs canaux
+
+Le problème s'aggrave quand un même contenu doit exister en markdown,
+PDF, HTML et visuels réseaux. La question n'est plus seulement "qui
+publie" mais "qui possède quelle transformation".
+
+### Ce qu'on a observé
+
+Sans contrat clair sur les canaux, les tâches tombent entre les chaises :
+- Le rédacteur modifie le markdown, personne ne rebuild le PDF
+- Le graphiste produit des visuels, personne ne les intègre au site
+- Le build script existe mais personne ne sait qui le déclenche
+
+### La règle
+
+**Un canal = un propriétaire.** Le persona qui produit le livrable
+pour un canal donné est responsable du déclenchement, de la cohérence
+et de la mise à jour. Les autres challengent via review — ils ne
+produisent pas.
+
+| Canal | Propriétaire | Challengers |
+|-------|-------------|-------------|
+| Markdown source | Rédacteur | Architecte (structure), Chercheur (sources) |
+| PDF/HTML généré | Graphiste | UX (accessibilité), Rédacteur (contenu) |
+| Visuels réseaux | Graphiste | Stratège (message), UX (lisibilité) |
+| Site web | Dev ou Graphiste | UX (parcours), Architecte (cohérence) |
+
+L'orchestrateur valide avant toute sortie — quel que soit le canal.

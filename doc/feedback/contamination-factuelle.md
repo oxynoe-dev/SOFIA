@@ -50,6 +50,28 @@ web, c'est irréversible. Dans un repo SOFIA, c'est traçable et corrigeable.
 - **Noms propres** — variations orthographiques, attributions erronées
 - **Références bibliographiques** — années, auteurs, titres, contexte d'usage
 
+## Trois classes d'erreur de sourcing
+
+La contamination ne se limite pas aux faits bruts. Les sources
+elles-mêmes peuvent être problématiques de trois façons :
+
+**Classe 1 — Assertion sans source.** Le texte affirme quelque chose
+comme un fait, aucune source ne le soutient. L'IA a produit une
+assertion vraisemblable à partir de sa distribution, pas d'une donnée.
+
+**Classe 2 — Source qui contredit l'assertion.** La source existe et
+est citée — mais elle dit autre chose que ce que le texte prétend.
+L'IA a "résumé" en déformant, ou a confondu deux sources.
+
+**Classe 3 — Source vraie, usage incohérent.** La source est correcte
+et fidèlement citée — mais elle ne dit pas ce que le contexte d'usage
+requiert. Exemple : citer une étude sur des agents IA pour justifier
+un comportement humain, sans caveat sur le transfert.
+
+La classe 3 est la plus dangereuse : tout a l'air correct, la source
+est vérifiable, le résumé est fidèle. Seul quelqu'un qui comprend le
+contexte d'usage peut détecter l'incohérence.
+
 ## Les gardes-fous
 
 ### 1. Vérification factuelle en continu
