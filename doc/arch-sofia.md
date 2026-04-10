@@ -107,7 +107,7 @@ Sofia monte les deux types depuis le produit. Elle n'a pas de workspace dans les
 | `adr/` | Décisions structurantes |
 | `tests/` | Plans de test |
 
-L'instance Katen (8 personas, 5 produits, 280+ sessions, 62 ADR) sert de vitrine et de validation.
+L'instance Katen (7 personas, 5 produits, 280+ sessions, 62 ADR) sert de vitrine et de validation.
 
 ---
 
