@@ -27,9 +27,9 @@ Le seul prérequis est un LLM capable de suivre des instructions persistantes (C
 
 ![Architecture SOFIA](figures/arch-sofia.svg)
 
-## 2. Architecture — Core / Protocol / Runtime + terrain
+## 2. Architecture — Core / Protocol / Runtime + Instance
 
-Trois couches indépendantes. On peut changer l'une sans toucher les autres.
+Quatre couches conceptuelles. Les trois premières vivent dans le repo produit. La quatrième vit dans chaque instance déployée.
 
 ### Core — les invariants de la méthode
 
@@ -76,6 +76,23 @@ Le protocol définit comment les personas échangent, tracent et s'organisent. F
 | `sessions.md` | Protocole ouverture/fermeture, résumé obligatoire |
 | `hooks.md` | Automatisations déclenchées par des événements |
 
+### Instance — le déploiement concret
+
+La couche Instance n'est pas dans le repo produit — elle est dans chaque instance déployée. Elle contient ce qui est propre à l'orchestrateur et à son projet :
+
+- **Personas concrets** — calibrés pour le projet (Mira, Axel, Marc...), dérivés des archétypes core
+- **Topologie** — circuits de friction, collaborations, rôles spécifiques
+- **Conventions d'instance** — règles locales qui complètent le protocol
+- **Workspaces** — un par persona, avec sessions et production
+
+Le produit fournit les archétypes et les règles. L'instance fournit les personas concrets et la topologie. (ADR-009)
+
+Deux types d'instance existent :
+- **Opérationnelle** — longue durée, mémoire cumulative, produit des livrables métier
+- **D'audit** — éphémère, sans mémoire inter-cycles, challengers miroir 1:1, détruite après synthèse
+
+Sofia monte les deux types depuis le produit. Elle n'a pas de workspace dans les instances — son extériorité est la condition de son objectivité.
+
 ### doc/ — Documentation, terrain, décisions
 
 | Contenu | Rôle |
@@ -90,7 +107,7 @@ Le protocol définit comment les personas échangent, tracent et s'organisent. F
 | `adr/` | Décisions structurantes |
 | `tests/` | Plans de test |
 
-L'instance Katen (7 personas, 5 produits, 210+ sessions, 62 ADR) sert de vitrine et de validation.
+L'instance Katen (8 personas, 5 produits, 280+ sessions, 62 ADR) sert de vitrine et de validation.
 
 ---
 
@@ -129,12 +146,13 @@ Le fichier `sofia.md` à la racine identifie le dépôt comme instance et lie à
 
 Les 7 principes et le modèle conceptuel sont indépendants de Claude Code. On pourrait appliquer SOFIA avec des fichiers texte et un éditeur. Le runtime est un accélérateur, pas un prérequis.
 
-### P2 — Core / Protocol / Runtime
+### P2 — Core / Protocol / Runtime / Instance
 
-Trois couches indépendantes. On peut :
+Quatre couches indépendantes. On peut :
 - Changer le runtime (Claude Code → autre provider) sans toucher au protocol ni au core
 - Faire évoluer le protocol (nouveaux formats d'artefacts) sans changer les principes
 - Lire le core sans connaître l'outil
+- Réorganiser une instance (personas, circuits) sans modifier la méthode
 
 ### P3 — L'orchestrateur est l'unique point de passage
 
