@@ -71,15 +71,15 @@ calibré pour ton projet.
 
 ## Origine
 
-SOFIA est née du projet [Katen](https://katen.run) — un moteur
-d'orchestration formellement vérifié pour pipelines Data & IA, construit
-avec 7 assistants IA spécialisés (architecte, dev, UX, chercheuse,
-stratège, graphiste, rédacteur) sur 280+ sessions.
+SOFIA est née du projet Katen — un moteur d'orchestration formellement
+vérifié pour pipelines Data & IA, construit avec 7 assistants IA
+spécialisés (architecte, dev, UX, chercheuse, stratège, graphiste,
+rédacteur) sur 280+ sessions.
 
 Une méthode qui a émergé d'une pratique personnelle — à confronter
 à votre expertise.
 
-**Site** : [oxynoe.io](https://oxynoe.io)
+**Site** : [oxynoe.io/sofia](https://oxynoe.io/sofia/)
 
 ## Licence
 
