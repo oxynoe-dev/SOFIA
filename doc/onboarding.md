@@ -26,7 +26,7 @@ Avant de nommer le persona, définir :
 
 ### 2. Créer la fiche persona
 
-Utiliser le template `core/templates/persona.md`. Champs clés :
+S'inspirer du format `instance/artefacts/persona.md` et des archétypes dans `instance/archetypes/`. Champs clés :
 - Profil, posture, domaines d'intervention
 - Collaboration (tableau avec/mode)
 - Ce qu'il ne fait pas
@@ -36,8 +36,8 @@ Utiliser le template `core/templates/persona.md`. Champs clés :
 ```
 {instance}/
 └── {workspace}/
-    ├── CLAUDE.md      ← généré depuis core/templates/workspace/CLAUDE.md
-    ├── backlog.md     ← généré depuis core/templates/backlog.md
+    ├── CLAUDE.md      ← s'inspirer de instance/artefacts/claude-md.md
+    ├── backlog.md
     └── sessions/      ← vide, le persona écrira son premier résumé
 ```
 

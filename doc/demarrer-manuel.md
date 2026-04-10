@@ -129,7 +129,7 @@ Le premier persona est un rôle **structurant** — celui qui va cadrer la déma
 
 ### Créer la fiche persona
 
-Crée `shared/orga/personas/persona-{nom}.md`. Utilise le template `core/templates/persona.md` du repo SOFIA comme base. Les champs essentiels :
+Crée `shared/orga/personas/persona-{nom}.md`. S'inspirer du format `instance/artefacts/persona.md` et des archétypes dans `instance/archetypes/`. Les champs essentiels :
 
 ```markdown
 # {Nom} — {Rôle}

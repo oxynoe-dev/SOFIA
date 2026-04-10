@@ -33,7 +33,7 @@ Ce qui ressemblait à un bricolage est devenu un protocole. Les artefacts ne son
 
 ---
 
-## La séparation des dépendances
+## La séparation des responsabilités
 
 Le vrai tournant. Un seul contexte pour tout — architecture, code, stratégie, rédaction, UX — ça ne tient pas. Les sujets se contaminent. Le LLM mélange les niveaux. On parle d'architecture et il glisse vers l'implémentation. On parle de stratégie et il dérive vers le code.
 

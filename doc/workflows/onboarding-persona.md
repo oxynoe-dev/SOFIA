@@ -28,7 +28,7 @@ Quand un domaine n'est pas couvert par les personas existants et que ce manque g
 
 ### Artefacts produits
 
-- Fiche persona (dans `core/templates/` pour le template, dans l'instance pour la fiche réelle)
+- Fiche persona (s'inspirer des archétypes dans `instance/archetypes/` et du format dans `instance/artefacts/persona.md`)
 - Workspace complet (CLAUDE.md, sessions/)
 - Note d'annonce dans `shared/notes/` pour informer les autres personas
 - Premier artefact productif (review, note, spec)

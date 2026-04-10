@@ -78,7 +78,7 @@ Sofia propose les perimetres, l'utilisateur ajuste. Pas de question ouverte "qu'
 
 **But** : produire le CLAUDE.md, le montrer, donner les cles de depart.
 
-Genere le CLAUDE.md en utilisant le template dans `runtime/claude-code/templates/claude-md.md`, les personas dans `core/templates/` et les exemples dans `doc/examples/katen/` comme reference de calibrage. Inclure la section `## Emergence` (voir ci-dessous).
+Genere le CLAUDE.md en s'inspirant du format dans `instance/artefacts/claude-md.md`, des archetypes dans `instance/archetypes/` et de l'exemple Katen dans `instance/examples/katen/` comme reference de calibrage. Inclure la section `## Emergence` (voir ci-dessous).
 
 Puis le briefing de depart :
 
@@ -128,9 +128,9 @@ Le persona ne cree pas le nouveau persona — il signale le manque. L'utilisateu
 |---------|---------|
 | `core/` | Les invariants — principes, personas, friction, devoirs + templates |
 | `protocol/` | Le contrat d'interface — artefacts, conventions, tracabilite, isolation, orchestration |
+| `instance/` | References pour construire une instance — archetypes, artefacts, exemple Katen |
 | `runtime/claude-code/` | L'implementation Claude Code — CLAUDE.md, memoire, sessions, hooks |
-| `doc/` | Guides (onboarding, lexique, utilisateur), terrain (examples, feedback), architecture |
-| `doc/examples/katen/` | 7 personas en production sur le projet Katen — reference de calibrage |
+| `doc/` | Guides (onboarding, lexique, utilisateur), terrain (feedback, patterns), architecture |
 | `doc/feedback/` | Retour d'experience — ce qui marche, ce qui casse |
 
 ## Langue

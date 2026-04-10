@@ -300,5 +300,5 @@ La prochaine session n'aura pas ton contexte en tête. Les résumés sont sa mé
 - [Workflows](doc/workflows/) — 6 processus clés (dev, publication, ADR, recherche...)
 - [Patterns](doc/patterns/) — 7 structures récurrentes (challenger, distillerie, escalade...)
 - [Retours terrain](doc/feedback/) — retours Katen, contexte d'identification des patterns (N=1)
-- [Personas Katen](doc/examples/katen/) — 7 fiches personas en production, référence de calibrage
+- [Exemple Katen](instance/examples/katen/) — snapshot d'instance en production, référence de calibrage
 - [Mode manuel](doc/demarrer-manuel.md) — installer SOFIA sans Sofia, pas à pas
