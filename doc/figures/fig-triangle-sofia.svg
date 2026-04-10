@@ -48,7 +48,7 @@
   <text x="445" y="318" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(224,80,80,0.35)">signal</text>
 
   <!-- ════════════════════════════════════════
-       PO (centre)
+       Orchestrateur (centre)
   ════════════════════════════════════════ -->
   <circle cx="300" cy="235" r="30" fill="rgba(64,216,192,0.06)" stroke="#40d8c0" stroke-width="1.2"/>
   <text x="300" y="230" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#f0f8f5" font-weight="300">Humain</text>
@@ -56,5 +56,5 @@
 
   <!-- Filet footer -->
   <line x1="40" y1="390" x2="560" y2="390" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
-  <text x="300" y="410" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="rgba(64,216,192,0.15)" font-style="italic">trois concepts interdependants — le PO au centre</text>
+  <text x="300" y="410" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="rgba(64,216,192,0.15)" font-style="italic">trois concepts interdependants — l'orchestrateur au centre</text>
 </svg>

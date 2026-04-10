@@ -64,7 +64,7 @@
   <text x="275" y="182" text-anchor="middle" font-size="5" fill="#041c24" font-weight="700">!</text>
 
   <!-- ════════════════════════════════════════
-       FLECHES CHALLENGERS → PO
+       FLECHES CHALLENGERS → Orchestrateur
   ════════════════════════════════════════ -->
   <line x1="357" y1="200" x2="310" y2="248" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(310,248) rotate(-45)"/>
@@ -76,10 +76,10 @@
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(404,248) rotate(-135)"/>
 
   <!-- ════════════════════════════════════════
-       PO
+       Orchestrateur
   ════════════════════════════════════════ -->
   <rect x="270" y="250" width="180" height="42" rx="4" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="1.2"/>
-  <text x="360" y="275" text-anchor="middle" fill="#d4a030" font-size="9">PO</text>
+  <text x="360" y="275" text-anchor="middle" fill="#d4a030" font-size="9">Orchestrateur</text>
   <text x="360" y="286" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">resultat consolide</text>
 
   <!-- ════════════════════════════════════════

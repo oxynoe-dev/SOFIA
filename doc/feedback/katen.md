@@ -23,7 +23,7 @@ Open source MIT. 18 ans de réflexion (2008-2026) — de la v1 C++/Qt
 | **Sofia** | Identité visuelle & Production multi-support | `experiments/graphisme/` |
 | **Winston** | Écrivain & distillateur éditorial | `experiments/maturation/` |
 
-Un humain (le PO/créateur du projet) arbitre.
+Un humain (l'orchestrateur/créateur du projet) arbitre.
 
 ## Ce qui a marché
 
@@ -61,12 +61,12 @@ plus utiles que n'importe quel chat. L'écriture force la clarté.
 Un producteur, N challengers avec droit de bloquant sur leur axe.
 Axel code → Mira challenge l'archi, Léa les invariantes, Nora l'UX.
 Winston rédige → Mira challenge la structure, Léa les refs, Marc
-le positionnement. Le PO tranche quand un challenger bloque.
+le positionnement. L'orchestrateur tranche quand un challenger bloque.
 
 ### La chaîne éditoriale
 
 Winston rédige, les experts valident le fond, Sofia produit la forme,
-Nora challenge avant publication, le PO valide en dernier. Le livre
+Nora challenge avant publication, l'orchestrateur valide en dernier. Le livre
 blanc SOFIA est le premier produit complet de cette chaîne.
 
 ## Ce qui a cassé
@@ -104,7 +104,7 @@ de la posture, réduction du périmètre. Définir par le média
 ### Contamination factuelle
 
 ~30 documents contenaient "15 ans" au lieu de "18 ans" pour la
-durée de réflexion du PO. L'erreur venait du PO lui-même, propagée
+durée de réflexion de l'orchestrateur. L'erreur venait de l'orchestrateur lui-même, propagée
 et stabilisée par l'IA. Détectée par Léa lors d'un audit ciblé.
 
 **Leçon** : le repo n'est pas une source de vérité pour les faits.

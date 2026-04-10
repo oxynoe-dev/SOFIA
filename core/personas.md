@@ -66,7 +66,7 @@ Ce que le persona **produit**. Pas "du texte" — des types précis :
 - Un architecte ne code pas
 - Un dev ne tranche pas sur l'architecture
 - Un stratège ne conçoit pas l'UX
-- Personne ne décide à la place de l'humain
+- Personne ne décide à la place de l'orchestrateur
 
 Les interdits sont ce qui crée la friction productive. Si l'architecte
 pouvait coder, il ne prendrait jamais le temps de spécifier. Si le dev

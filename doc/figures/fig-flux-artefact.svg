@@ -78,15 +78,15 @@
   <text x="140" y="242" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">lit la note</text>
 
   <!-- ════════════════════════════════════════
-       STEP 5 — PO tranche
+       STEP 5 — Orchestrateur tranche
   ════════════════════════════════════════ -->
   <!-- Arrow down from shared/ -->
   <line x1="440" y1="256" x2="440" y2="290" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(440,295) rotate(90)"/>
 
-  <!-- PO box -->
+  <!-- Orchestrateur box -->
   <rect x="370" y="300" width="140" height="40" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
-  <text x="440" y="317" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">PO</text>
+  <text x="440" y="317" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">Orchestrateur</text>
   <text x="440" y="331" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="8">lit les deux, tranche</text>
 
   <!-- ════════════════════════════════════════

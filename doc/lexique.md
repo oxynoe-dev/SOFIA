@@ -27,7 +27,7 @@ Le lexique fixe les termes. Chaque persona le lit, personne ne réinvente.
 
 - Un terme = une entrée. Pas de synonymes dans la même entrée.
 - Si un terme a changé de sens (renommage, évolution), documenter l'historique.
-- Le PO arbitre les conflits de définition.
+- L'orchestrateur arbitre les conflits de définition.
 - Le lexique vit dans `shared/orga/lexique.md` au niveau de l'instance.
 
 ## Exemple

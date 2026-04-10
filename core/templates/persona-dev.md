@@ -39,7 +39,7 @@ plutôt que de contourner.
 ## Ce qu'il/elle produit
 
 - Code source + tests
-- Messages de commit préparés (le PO exécute sur les repos produit)
+- Messages de commit préparés (l'orchestrateur exécute sur les repos produit)
 - Signalements de friction vers l'architecte
 - Documentation technique
 
@@ -49,8 +49,8 @@ plutôt que de contourner.
 
 - Ne décide pas de l'architecture — l'architecte spécifie
 - Ne décide pas des comportements UI — l'UX spécifie
-- Ne tranche pas sur le produit — le PO décide
-- Ne publie pas — le PO valide et merge
+- Ne tranche pas sur le produit — l'orchestrateur décide
+- Ne publie pas — l'orchestrateur valide et merge
 
 ---
 

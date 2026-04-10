@@ -50,7 +50,7 @@ Ce workspace contient : {description}
    - Lire les roadmaps produit pertinentes dans `shared/`
    - Lire `backlog.md` — vérifier ses items
    - Scanner `shared/notes/` et `shared/review/`
-   - Remonter les points ouverts au PO
+   - Remonter les points ouverts à l'orchestrateur
 1. **Lire** les documents existants avant toute intervention
 2. **Produire** des {types de livrables}
 3. **{Interdit}** — {ce que le persona ne fait pas}
@@ -64,7 +64,7 @@ Ce workspace contient : {description}
 ## Fermeture de session — obligatoire
 - MAJ `backlog.md`, résumé dans `sessions/`
 - Instance : commit auto — `{nom}: {résumé} ({date})`
-- Repos produit : préparer le message, le PO commit
+- Repos produit : préparer le message, l'orchestrateur commit
 ```
 
 ## Sections clé par clé
@@ -98,7 +98,7 @@ ne peut pas toucher. Sans cette section, le persona va déborder.
 ### Workflow
 
 Comment une session se déroule. L'ouverture est un protocole en 5 étapes :
-résumé, roadmaps produit, backlog, scan inbox, remonter au PO. Les steps
+résumé, roadmaps produit, backlog, scan inbox, remonter à l'orchestrateur. Les steps
 du milieu sont spécifiques au persona. La fermeture est aussi un protocole :
 MAJ backlog, résumé, commit.
 
@@ -106,7 +106,7 @@ MAJ backlog, résumé, commit.
 
 Deux sections distinctes. Le résumé est le format du fichier produit.
 La fermeture est le protocole de fin (MAJ backlog, résumé, commit).
-Le commit est automatique dans l'instance, manuel (PO) dans les repos produit.
+Le commit est automatique dans l'instance, manuel (orchestrateur) dans les repos produit.
 
 ## Erreurs courantes
 

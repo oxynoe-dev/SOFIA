@@ -9,7 +9,7 @@ Les observations terrain remontent dans la méthode. Les retours d'expérience d
 Le cycle a trois temps :
 
 1. **Observation** : un apprentissage, une friction ou un REX est documenté dans `feedback/` ou dans un résumé de session. C'est du matériau brut, lié à un contexte spécifique.
-2. **Extraction** : le PO ou un persona identifie ce qui est universel dans l'observation — ce qui se répéterait dans un autre contexte.
+2. **Extraction** : l'orchestrateur ou un persona identifie ce qui est universel dans l'observation — ce qui se répéterait dans un autre contexte.
 3. **Intégration** : le pattern extrait est formalisé et intégré dans `core/` ou `doc/`. Il devient une pièce de la méthode, découplé de son contexte d'origine.
 
 La distillerie est ce qui différencie une collection de notes d'une méthode vivante. Sans ce mécanisme, les apprentissages restent éparpillés et non réutilisables.

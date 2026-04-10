@@ -5,7 +5,7 @@ Ce dépôt est une **instance de la méthode SOFIA**.
 - **Méthode** : [oxynoe-dev/sofia](https://github.com/oxynoe-dev/sofia)
 - **Version méthode appliquée** : v{X.Y}
 - **Projet** : {nom du projet}
-- **Équipe** : {N} assistants IA spécialisés + {N} PO humain(s)
+- **Équipe** : {N} assistants IA spécialisés + {N} orchestrateur(s) humain(s)
 
 ## Structure instance
 

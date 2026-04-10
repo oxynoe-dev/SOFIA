@@ -13,7 +13,7 @@
 
   <!-- Titre -->
   <text x="440" y="30" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Flux elementaire — pattern Inspector</text>
-  <text x="440" y="48" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Georgia,serif" font-size="9" font-style="italic">chaque transmission traverse l'humain</text>
+  <text x="440" y="48" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Georgia,serif" font-size="9" font-style="italic">chaque transmission traverse l'orchestrateur</text>
 
   <!-- ════════════════════════════════════════
        3 LANES
@@ -70,7 +70,7 @@
   <text x="62" y="229" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">3</text>
 
   <!-- ════════════════════════════════════════
-       4 — Livrable arrive chez l'humain
+       4 — Livrable arrive chez l'orchestrateur
   ════════════════════════════════════════ -->
   <line x1="225" y1="225" x2="363" y2="225" stroke="rgba(167,139,250,0.45)" stroke-width="1.2"/>
   <polygon points="361,225 351,221 351,229" fill="rgba(167,139,250,0.55)"/>

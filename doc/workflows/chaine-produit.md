@@ -12,18 +12,18 @@ Pour toute feature ou évolution qui traverse plusieurs domaines — de la prior
 
 ### Étapes
 
-1. **PO priorise** — l'item entre dans la roadmap avec contexte et owner
+1. **L'orchestrateur priorise** — l'item entre dans la roadmap avec contexte et owner
 2. **Archi spécifie** — contrats, contraintes, ADR si besoin. Gardien : cohérence avec l'architecture cible et les principes (cf. `core/principes.md`)
 3. **Dev implémente** — mode plan, TDD, code. Gardien : conformité à la spec
 4. **UX challenge** — l'UX vérifie l'expérience utilisateur, l'accessibilité, la cohérence visuelle. Gardien : le produit est utilisable, pas seulement fonctionnel
 5. **Recherche vérifie** — vérification formelle, sources, rigueur. Gardien : ce qui est affirmé est vrai et correctement contextualisé
-6. **PO arbitre** — dernière porte. Validation finale, go/no-go
+6. **L'orchestrateur arbitre** — dernière porte. Validation finale, go/no-go
 
 ### Rôles impliqués
 
 | Persona | Rôle |
 |---------|------|
-| PO | Priorise (étape 1), arbitre (étape 6) |
+| Orchestrateur | Priorise (étape 1), arbitre (étape 6) |
 | Architecte | Spécifie, garde la cohérence structurelle |
 | Dev | Implémente selon la spec |
 | UX | Challenge l'expérience et l'accessibilité |
@@ -36,10 +36,10 @@ Pour toute feature ou évolution qui traverse plusieurs domaines — de la prior
 - Code + tests
 - Review UX (note dans `shared/review/`)
 - Validation formelle si applicable
-- Décision PO documentée
+- Décision orchestrateur documentée
 
 ### Pièges
 
 - **Sauter une étape** — chaque étape sautée génère de la dette. La dette la plus coûteuse est celle qu'on ne voit pas (cf. `protocol/tracabilite.md`)
 - **Paralléliser sans contrat** — dev et UX en parallèle sans spec commune = deux visions divergentes à réconcilier après coup
-- **Confondre validation PO et approbation automatique** — le PO est la dernière porte, pas un tampon. Il peut renvoyer à n'importe quelle étape
+- **Confondre validation orchestrateur et approbation automatique** — l'orchestrateur est la dernière porte, pas un tampon. Il peut renvoyer à n'importe quelle étape

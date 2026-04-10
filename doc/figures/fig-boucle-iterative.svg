@@ -30,9 +30,9 @@
   <text x="200" y="64" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-family="'IBM Plex Mono', monospace" font-size="7">A</text>
   <text x="200" y="82" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="'IBM Plex Mono', monospace" font-size="9" letter-spacing="0.1em">SPEC</text>
 
-  <!-- PO -->
+  <!-- Orchestrateur -->
   <circle cx="440" cy="60" r="10" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.4)" stroke-width="1.2"/>
-  <text x="440" y="64" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="'IBM Plex Mono', monospace" font-size="8" font-weight="600">PO</text>
+  <text x="440" y="64" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="'IBM Plex Mono', monospace" font-size="8" font-weight="600">Orchestrateur</text>
 
   <!-- Persona B -->
   <circle cx="680" cy="60" r="8" fill="rgba(64,216,192,0.08)" stroke="rgba(64,180,160,0.3)" stroke-width="1"/>
@@ -49,7 +49,7 @@
   ════════════════════════════════════════ -->
   <text x="60" y="118" fill="rgba(64,216,192,0.3)" font-family="'IBM Plex Mono', monospace" font-size="8" letter-spacing="0.08em">IT.1</text>
 
-  <!-- PO → A : spec -->
+  <!-- Orchestrateur → A : spec -->
   <path d="M 428,105 C 370,108 290,110 212,112" fill="none" stroke="rgba(167,139,250,0.25)" stroke-width="1" marker-end="url(#arrow-l)"/>
   <text x="320" y="102" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter, system-ui, sans-serif" font-size="8">"redige la spec"</text>
 
@@ -57,11 +57,11 @@
   <rect x="140" y="120" width="120" height="28" rx="3" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
   <text x="200" y="138" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="'IBM Plex Mono', monospace" font-size="7" letter-spacing="0.05em">SPEC-V1.MD</text>
 
-  <!-- PO → B : review -->
+  <!-- Orchestrateur → B : review -->
   <path d="M 452,140 C 510,142 600,144 668,146" fill="none" stroke="rgba(167,139,250,0.25)" stroke-width="1" marker-end="url(#arrow-r)"/>
   <text x="560" y="136" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter, system-ui, sans-serif" font-size="8">"review cette spec"</text>
 
-  <!-- PO relay dot -->
+  <!-- Orchestrateur relay dot -->
   <circle cx="440" cy="140" r="4" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.3)" stroke-width="0.8"/>
 
   <!-- B reviews -->
@@ -76,7 +76,7 @@
   ════════════════════════════════════════ -->
   <text x="60" y="210" fill="rgba(64,216,192,0.3)" font-family="'IBM Plex Mono', monospace" font-size="8" letter-spacing="0.08em">IT.2</text>
 
-  <!-- PO → A : integrate -->
+  <!-- Orchestrateur → A : integrate -->
   <circle cx="440" cy="200" r="4" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.3)" stroke-width="0.8"/>
   <path d="M 428,200 C 370,202 290,205 212,207" fill="none" stroke="rgba(167,139,250,0.25)" stroke-width="1" marker-end="url(#arrow-l)"/>
   <text x="320" y="196" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter, system-ui, sans-serif" font-size="8">"integre les retours"</text>
@@ -85,7 +85,7 @@
   <rect x="140" y="215" width="120" height="28" rx="3" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
   <text x="200" y="233" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="'IBM Plex Mono', monospace" font-size="7" letter-spacing="0.05em">SPEC-V2.MD</text>
 
-  <!-- PO → B : re-review -->
+  <!-- Orchestrateur → B : re-review -->
   <circle cx="440" cy="240" r="4" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.3)" stroke-width="0.8"/>
   <path d="M 452,240 C 510,242 600,244 668,246" fill="none" stroke="rgba(167,139,250,0.25)" stroke-width="1" marker-end="url(#arrow-r)"/>
   <text x="560" y="236" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter, system-ui, sans-serif" font-size="8">"re-review v2"</text>
@@ -105,7 +105,7 @@
   <path d="M 620,168 C 460,190 460,210 620,260" fill="none" stroke="rgba(64,216,192,0.06)" stroke-width="0.5"/>
 
   <!-- ════════════════════════════════════════
-       MATURITY CHECK — PO decides
+       MATURITY CHECK — Orchestrateur decides
   ════════════════════════════════════════ -->
   <text x="60" y="310" fill="rgba(236,72,153,0.4)" font-family="'IBM Plex Mono', monospace" font-size="8" letter-spacing="0.08em">FIN</text>
 
@@ -113,7 +113,7 @@
 
   <!-- Decision box -->
   <rect x="340" y="325" width="200" height="36" rx="5" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
-  <text x="440" y="342" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="'IBM Plex Mono', monospace" font-size="9" letter-spacing="0.08em">PO TRANCHE</text>
+  <text x="440" y="342" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="'IBM Plex Mono', monospace" font-size="9" letter-spacing="0.08em">ORCHESTRATEUR TRANCHE</text>
   <text x="440" y="355" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-family="Inter, system-ui, sans-serif" font-size="7">maturite suffisante</text>
   <line x1="440" y1="316" x2="440" y2="323" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
 

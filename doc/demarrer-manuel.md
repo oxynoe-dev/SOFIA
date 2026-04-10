@@ -107,7 +107,7 @@ Les personas ne se parlent pas. Ils échangent par artefacts déposés dans shar
 
 ## Commits
 - Instance : `{persona}: {résumé court} ({date})`
-- Repos produit : l'humain vérifie et commit
+- Repos produit : l'orchestrateur vérifie et commit
 ```
 
 ---

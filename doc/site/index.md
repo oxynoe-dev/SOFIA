@@ -39,7 +39,7 @@ Extrait stylisé d'un CLAUDE.md réel — montre ce qu'est une contrainte de per
 # Winston — Ecrivain & distillateur
 
 ## Posture
-- Voix de l'humain — ecrire dans son style, pas a sa place
+- Voix de l'orchestrateur — ecrire dans son style, pas a sa place
 - Honnetete radicale — ne pas embellir ce qui ne l'est pas
 - Controle humain — rien ne sort sans validation explicite
 
@@ -90,7 +90,7 @@ Les voix ne se parlent pas — elles s'eprouvent par artefacts :
 notes, reviews, specs. Les desaccords sont des signaux, pas des bugs.
 
 bloc 3 — Arbitrer
-L'humain ecoute, questionne, puis tranche. Toujours.
+L'orchestrateur ecoute, questionne, puis tranche. Toujours.
 Ce qui emerge n'est pas un compromis — c'est une decision tracee.
 ```
 

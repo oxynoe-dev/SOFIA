@@ -9,7 +9,7 @@
 Un persona se justifie quand :
 - Un **domaine** émerge que personne ne couvre correctement
 - Deux personas existants sont en **tension** sur un sujet récurrent
-- Le PO passe du temps à faire un travail qu'un persona pourrait structurer
+- L'orchestrateur passe du temps à faire un travail qu'un persona pourrait structurer
 
 Un persona ne se justifie **pas** quand :
 - C'est une tâche, pas un rôle (utilise une note ou un backlog item)

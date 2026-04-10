@@ -130,13 +130,13 @@
   <path d="M 612,240 Q 625,238 638,252" fill="none" stroke="rgba(236,72,153,0.15)" stroke-width="0.5" stroke-dasharray="3,3"/>
 
   <!-- ════════════════════════════════════════
-       PO (bas)
+       Orchestrateur (bas)
   ════════════════════════════════════════ -->
   <circle cx="440" cy="500" r="28" fill="rgba(64,216,192,0.05)" stroke="#40d8c0" stroke-width="1"/>
-  <text x="440" y="497" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#f0f8f5" font-weight="300">PO</text>
+  <text x="440" y="497" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#f0f8f5" font-weight="300">Orchestrateur</text>
   <text x="440" y="511" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.35)">humain</text>
 
-  <!-- Fleche PO ↔ bus -->
+  <!-- Fleche Orchestrateur ↔ bus -->
   <line x1="440" y1="452" x2="440" y2="472" stroke="rgba(64,216,192,0.2)" stroke-width="0.8"/>
   <polygon points="440,472 436,464 444,464" fill="rgba(64,216,192,0.3)"/>
 

@@ -2,18 +2,18 @@
 
 **Projet** : {Projet}
 **Date** : {date}
-**Auteur** : {persona architecte ou PO}
+**Auteur** : {persona architecte ou orchestrateur}
 
 ---
 
 ## L'équipe
 
-<!-- Liste complète : l'humain (PO) + tous les personas actifs.
+<!-- Liste complète : l'orchestrateur + tous les personas actifs.
      Mettre à jour à chaque ajout/suppression de persona. -->
 
 | Persona | Rôle | Statut |
 |---------|------|--------|
-| **{Nom PO}** | Product Owner | Humain — décideur |
+| **{Nom orchestrateur}** | Orchestrateur | Humain — décideur |
 | **{Persona 1}** | {Rôle} | Assistant IA spécialisé |
 | **{Persona 2}** | {Rôle} | Assistant IA spécialisé |
 
@@ -27,7 +27,7 @@
 
 ### Flux décisionnel
 Le Product Owner initie et valide. {Persona archi} traduit en architecture,
-{persona stratège} en stratégie. Les décisions remontent au PO.
+{persona stratège} en stratégie. Les décisions remontent à l'orchestrateur.
 
 ### Flux technique
 {Persona archi} spécifie les contrats → {persona dev} implémente et remonte
@@ -40,7 +40,7 @@ les frictions → {persona UX} spécifie les comportements UI.
 
 {Persona rédacteur} rédige le contenu. Les experts valident le fond.
 {Persona prod} produit la forme. {Persona UX} challenge avant publication.
-Le PO valide avant toute sortie.
+L'orchestrateur valide avant toute sortie.
 
 ---
 
@@ -49,9 +49,9 @@ Le PO valide avant toute sortie.
 <!-- Les invariants de l'équipe. Adapter, mais ces trois règles
      sont non négociables dans SOFIA : -->
 
-- **Le PO est le seul décideur final** — les personas proposent, analysent, challengent. Le PO tranche.
+- **L'orchestrateur est le seul décideur final** — les personas proposent, analysent, challengent. L'orchestrateur tranche.
 - **Les frictions remontent** — tout blocage ou incohérence entre personas est signalé explicitement, pas contourné.
-- **Rien ne sort sans validation PO** — l'humain relit avant toute publication.
+- **Rien ne sort sans validation orchestrateur** — l'orchestrateur relit avant toute publication.
 
 <!-- Ajouter les règles spécifiques au projet : -->
 
@@ -61,9 +61,9 @@ Le PO valide avant toute sortie.
 
 <!-- Adapter les lignes aux décisions clés du projet.
      R = Responsable · A = Approbateur · C = Consulté
-     Le PO est toujours Approbateur. -->
+     L'orchestrateur est toujours Approbateur. -->
 
-| Décision | PO | {P1} | {P2} | {P3} |
+| Décision | Orchestrateur | {P1} | {P2} | {P3} |
 |---|---|---|---|---|
 | {Décision 1} | A | R | C | — |
 | {Décision 2} | A | C | R | — |

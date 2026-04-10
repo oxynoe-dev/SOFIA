@@ -8,23 +8,23 @@ Workflow de développement : ne jamais coder sans cible validée.
 
 ### Quand l'utiliser
 
-À chaque feature, correction ou refactoring qui touche le code produit. S'applique dès qu'un item est priorisé par le PO.
+À chaque feature, correction ou refactoring qui touche le code produit. S'applique dès qu'un item est priorisé par l'orchestrateur.
 
 ### Étapes
 
-1. **PO priorise** — l'item existe dans la roadmap avec un owner explicite
+1. **L'orchestrateur priorise** — l'item existe dans la roadmap avec un owner explicite
 2. **Archi spécifie** — contrat d'interface, contraintes, ADR si décision structurelle (cf. `protocol/artefacts.md` pour les formats). La spec est le contrat : elle définit le quoi, pas le comment
 3. **Dev planifie en mode plan** — décomposition feature par feature, chaque étape confrontée aux principes et aux ADR existants
 4. **Tests d'abord (TDD)** — écrire les tests avant le code, selon la couche : moteur/opérateurs = TDD strict, CLI/IHM = tests après implémentation
 5. **Code** — implémenter en respectant les responsabilités modules et les conventions du projet
 6. **Review archi** — l'architecte vérifie la cohérence avec la spec et les principes. Écarts documentés, pas ignorés
-7. **Commit** — le dev prépare le message, le PO exécute
+7. **Commit** — le dev prépare le message, l'orchestrateur exécute
 
 ### Rôles impliqués
 
 | Persona | Rôle |
 |---------|------|
-| PO | Priorise, arbitre, commite |
+| Orchestrateur | Priorise, arbitre, commite |
 | Architecte | Spécifie le contrat, review post-implémentation |
 | Dev | Planifie, teste, code |
 

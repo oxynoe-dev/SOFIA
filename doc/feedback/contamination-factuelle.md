@@ -8,7 +8,7 @@
 
 Les LLMs ne comptent pas, ne calculent pas les durées, et privilégient
 la cohérence interne sur la vérité externe. Une donnée approximative
-entrée une fois — parfois par l'humain, parfois hallucinée par l'IA —
+entrée une fois — parfois par l'orchestrateur, parfois hallucinée par l'IA —
 sera propagée dans tous les documents générés ensuite.
 
 Plus le repo grandit, plus l'erreur devient invisible. Elle *ressemble*
@@ -19,7 +19,7 @@ dans son raisonnement.
 
 ## Cas réel — Katen
 
-Le PO a utilisé "15 ans" pour décrire sa durée de réflexion sur le projet.
+L'orchestrateur a utilisé "15 ans" pour décrire sa durée de réflexion sur le projet.
 C'était une approximation — la vraie durée est de 18 ans (2008-2026).
 L'IA a repris ce chiffre, l'a propagé dans ~30 documents, et l'a stabilisé.
 
@@ -28,7 +28,7 @@ Audit :
 - ~12 documents dataient le concept original "2010-2012" au lieu de "2008-2012"
 - 2 fichiers dataient l'arXiv "(2010)" au lieu de "(2011)"
 
-L'erreur venait du PO lui-même. L'IA l'a amplifiée et rendue invisible.
+L'erreur venait de l'orchestrateur lui-même. L'IA l'a amplifiée et rendue invisible.
 
 ## Le mécanisme
 
@@ -41,7 +41,7 @@ L'erreur venait du PO lui-même. L'IA l'a amplifiée et rendue invisible.
 C'est un **effet de renforcement mutuel**. Le même phénomène existe à
 l'échelle du web (model collapse, Habsburg AI) — mais à l'échelle du
 web, c'est irréversible. Dans un repo SOFIA, c'est traçable et corrigeable.
-À condition que l'humain vérifie.
+À condition que l'orchestrateur vérifie.
 
 ## Ce qui est vulnérable
 
@@ -76,8 +76,8 @@ Ce n'est pas un défaut de la méthode. C'est une propriété de la
 technologie sous-jacente. Les erreurs de précision sont normales —
 les LLMs privilégient la vraisemblance sur la vérité.
 
-L'humain est le seul garde-fou. La méthode doit le dire explicitement,
-et l'humain doit l'intégrer comme pratique, pas comme principe abstrait.
+L'orchestrateur est le seul garde-fou. La méthode doit le dire explicitement,
+et l'orchestrateur doit l'intégrer comme pratique, pas comme principe abstrait.
 
 Et c'est un des arguments les plus forts en faveur de la méthode SOFIA :
 dans un monde où le web se contamine irréversiblement, un repo structuré

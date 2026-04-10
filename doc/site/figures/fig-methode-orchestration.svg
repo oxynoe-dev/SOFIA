@@ -10,13 +10,13 @@
 
   <!-- Label section -->
   <text x="440" y="38" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(64,216,192,0.5)" letter-spacing="0.12em">ORCHESTRATION</text>
-  <text x="440" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="rgba(64,216,192,0.25)" font-style="italic">l'humain porte le contexte entre les personas</text>
+  <text x="440" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="rgba(64,216,192,0.25)" font-style="italic">l'orchestrateur porte le contexte entre les personas</text>
 
   <!-- ════════════════════════════════════════
-       PO (centre)
+       Orchestrateur (centre)
   ════════════════════════════════════════ -->
   <circle cx="440" cy="220" r="44" fill="rgba(64,216,192,0.06)" stroke="#40d8c0" stroke-width="1.2"/>
-  <text x="440" y="215" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#f0f8f5" font-weight="300">PO</text>
+  <text x="440" y="215" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#f0f8f5" font-weight="300">Orchestrateur</text>
   <text x="440" y="232" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.4)">humain</text>
 
   <!-- ════════════════════════════════════════
@@ -48,22 +48,22 @@
   <text x="735" y="347" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.35)">ne valide pas la faisabilite</text>
 
   <!-- ════════════════════════════════════════
-       CONNEXIONS PO ↔ Personas (mycélium)
+       CONNEXIONS Orchestrateur ↔ Personas (mycélium)
   ════════════════════════════════════════ -->
 
-  <!-- PO ↔ Architecte -->
+  <!-- Orchestrateur ↔ Architecte -->
   <path d="M 398,185 Q 310,150 232,130" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="0.8"/>
   <polygon points="232,130 240,126 238,134" fill="rgba(64,216,192,0.3)"/>
 
-  <!-- PO ↔ Dev -->
+  <!-- Orchestrateur ↔ Dev -->
   <path d="M 482,185 Q 570,150 648,130" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="0.8"/>
   <polygon points="648,130 642,134 640,126" fill="rgba(64,216,192,0.3)"/>
 
-  <!-- PO ↔ Stratege -->
+  <!-- Orchestrateur ↔ Stratege -->
   <path d="M 398,255 Q 310,290 232,310" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="0.8"/>
   <polygon points="232,310 240,306 238,314" fill="rgba(64,216,192,0.3)"/>
 
-  <!-- PO ↔ UX -->
+  <!-- Orchestrateur ↔ UX -->
   <path d="M 482,255 Q 570,290 648,310" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="0.8"/>
   <polygon points="648,310 642,314 640,306" fill="rgba(64,216,192,0.3)"/>
 
@@ -86,7 +86,7 @@
   <text x="440" y="405" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#a78bfa" font-weight="300">shared/</text>
   <text x="440" y="419" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(167,139,250,0.35)">notes · reviews · features — le bus d'echange</text>
 
-  <!-- Mycélium PO → shared -->
+  <!-- Mycélium Orchestrateur → shared -->
   <path d="M 440,264 Q 442,320 440,383" fill="none" stroke="rgba(167,139,250,0.18)" stroke-width="0.6"/>
   <polygon points="440,383 436,375 444,375" fill="rgba(167,139,250,0.3)"/>
 
@@ -95,5 +95,5 @@
   ════════════════════════════════════════ -->
   <!-- Filet footer -->
   <line x1="40" y1="440" x2="840" y2="440" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
-  <text x="440" y="454" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="rgba(64,216,192,0.18)" font-style="italic">chaque fleche passe par le PO — pas de raccourci</text>
+  <text x="440" y="454" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="rgba(64,216,192,0.18)" font-style="italic">chaque fleche passe par l'orchestrateur — pas de raccourci</text>
 </svg>

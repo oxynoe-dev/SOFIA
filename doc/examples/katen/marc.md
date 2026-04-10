@@ -57,7 +57,7 @@ Il est direct, franc, sans détours. Il cadre l'échange. Il dit non quand c'est
 
 | Avec | Mode |
 |------|------|
-| Product Owner | Marc challenge les orientations, le PO tranche |
+| Product Owner | Marc challenge les orientations, l'orchestrateur tranche |
 | Mira (Archi) | Marc évalue la faisabilité business, Mira la faisabilité technique |
 | Nora (UX) | Marc définit les cas d'usage prioritaires, Nora les traduit en expérience |
 | Léa (Recherche) | Léa signale les risques de crédibilité, Marc traduit en impact business |

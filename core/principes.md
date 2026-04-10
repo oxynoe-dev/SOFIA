@@ -13,9 +13,9 @@ de meilleures décisions.
 
 La friction sans arbitre est du chaos. L'arbitre, c'est toi.
 
-## 2. L'humain arbitre
+## 2. L'orchestrateur arbitre
 
-Les personas proposent, challengent, produisent. L'humain tranche.
+Les personas proposent, challengent, produisent. L'orchestrateur tranche.
 Toujours. Un persona ne valide jamais ses propres propositions.
 Un persona ne force jamais l'acceptation d'une décision.
 

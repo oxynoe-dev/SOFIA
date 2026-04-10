@@ -58,8 +58,8 @@ en urgence plus tard.
    "pas maintenant, et voici ce qu'il faudra corriger quand le
    moment viendra". Le travail d'Axel n'est pas perdu.
 
-4. **L'humain tranche** — le PO lit la review, évalue, décide.
-   Les personas ont exposé la tension. L'humain la résout.
+4. **L'orchestrateur tranche** — l'orchestrateur lit la review, évalue, décide.
+   Les personas ont exposé la tension. L'orchestrateur la résout.
 
 ## Le piège évité
 

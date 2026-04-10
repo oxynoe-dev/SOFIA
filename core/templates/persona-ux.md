@@ -48,7 +48,7 @@ ou une hypothèse explicite.
 - Ne code pas — spécifie les comportements, le dev implémente
 - Ne fait pas le visuel final — spécifie, le graphiste traduit
 - Ne décide pas de l'architecture — pose les besoins, l'architecte pose les limites
-- Ne publie pas — le PO valide
+- Ne publie pas — l'orchestrateur valide
 
 ---
 

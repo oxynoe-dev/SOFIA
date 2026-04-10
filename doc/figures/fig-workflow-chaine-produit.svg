@@ -23,10 +23,10 @@
        ETAPES
   ════════════════════════════════════════ -->
 
-  <!-- Step 1: PO priorise (amber) -->
+  <!-- Step 1: Orchestrateur priorise (amber) -->
   <rect x="22" y="60" width="88" height="44" rx="3" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="0.7"/>
-  <text x="66" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">PO priorise</text>
-  <text x="66" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">PO</text>
+  <text x="66" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Orchestrateur priorise</text>
+  <text x="66" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrateur</text>
 
   <!-- Arrow 1→2 -->
   <line x1="114" y1="82" x2="130" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
@@ -68,10 +68,10 @@
   <line x1="598" y1="82" x2="610" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(616,82) rotate(180)"/>
 
-  <!-- Step 6: PO arbitre (amber) -->
+  <!-- Step 6: Orchestrateur arbitre (amber) -->
   <rect x="620" y="60" width="64" height="44" rx="3" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="0.7"/>
-  <text x="652" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">PO arbitre</text>
-  <text x="652" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">PO</text>
+  <text x="652" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Orchestrateur arbitre</text>
+  <text x="652" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrateur</text>
 
   <!-- ════════════════════════════════════════
        CYCLE

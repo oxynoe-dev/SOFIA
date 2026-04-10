@@ -60,9 +60,9 @@
   <line x1="472" y1="82" x2="484" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(490,82) rotate(180)"/>
 
-  <!-- Step 5: Arbitrage PO (amber) -->
+  <!-- Step 5: Arbitrage orchestrateur (amber) -->
   <rect x="494" y="60" width="88" height="44" rx="3" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="0.7"/>
-  <text x="538" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Arbitrage PO</text>
+  <text x="538" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Arbitrage orchestrateur</text>
   <text x="538" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">decision</text>
 
   <!-- Arrow 5→6 -->

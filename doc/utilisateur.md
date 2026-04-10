@@ -38,9 +38,9 @@ Si tous tes personas sont d'accord, ils ne servent à rien. La friction — un a
 
 La friction sans arbitre est du chaos. L'arbitre, c'est toi.
 
-### L'humain arbitre. Toujours.
+### L'orchestrateur arbitre. Toujours.
 
-Les personas proposent, challengent, produisent. L'humain tranche. Un persona ne valide jamais ses propres propositions. Un persona ne force jamais l'acceptation d'une décision. C'est la règle non négociable de SOFIA.
+Les personas proposent, challengent, produisent. L'orchestrateur tranche. Un persona ne valide jamais ses propres propositions. Un persona ne force jamais l'acceptation d'une décision. C'est la règle non négociable de SOFIA.
 
 ### Les fichiers sont le protocole
 
@@ -115,13 +115,13 @@ Vise 60-100 lignes. Au-delà, le contexte se dilue.
 
 ### Ouverture de session
 
-Le persona lit le dernier résumé dans `sessions/`. L'humain décide quoi regarder. Pas de récitation systématique.
+Le persona lit le dernier résumé dans `sessions/`. L'orchestrateur décide quoi regarder. Pas de récitation systématique.
 
 ### Fermeture de session
 
 1. Résumé dans `sessions/` — Produit, Décisions, Notes déposées, Ouvert
 2. Commit direct dans l'instance — `{persona}: {résumé court} ({date})`
-3. Si le persona a produit des changements pour ton projet (code, site, etc.) — préparer le message de commit, l'humain vérifie et exécute
+3. Si le persona a produit des changements pour ton projet (code, site, etc.) — préparer le message de commit, l'orchestrateur vérifie et exécute
 
 Pas de prose. Listes courtes. 30 lignes max.
 
@@ -175,7 +175,7 @@ Une **instance SOFIA** n'est pas ton projet. C'est l'espace où tes personas ré
 
 ![Instance et projet](figures/fig-instance-projet.svg)
 
-L'instance pense. Le projet livre. Les personas travaillent dans l'instance et produisent des livrables qui atterrissent dans le projet. Les commits dans l'instance sont automatiques. Les commits dans le projet passent par l'humain.
+L'instance pense. Le projet livre. Les personas travaillent dans l'instance et produisent des livrables qui atterrissent dans le projet. Les commits dans l'instance sont automatiques. Les commits dans le projet passent par l'orchestrateur.
 
 Trois configurations possibles :
 
@@ -209,7 +209,7 @@ Il n'y a pas de backlog par persona. Tous les items vivent dans les roadmaps.
 
 ---
 
-## 7. L'orchestration — le rôle de l'humain
+## 7. L'orchestration — le rôle de l'orchestrateur
 
 ### Tu es le message bus
 
@@ -282,7 +282,7 @@ La prochaine session n'aura pas ton contexte en tête. Les résumés sont sa mé
 
 ### Le protocole
 
-- [Orchestration](protocol/orchestration.md) — le rôle de l'humain comme message bus
+- [Orchestration](protocol/orchestration.md) — le rôle de l'orchestrateur comme message bus
 - [Isolation](protocol/isolation.md) — l'isolation par workspace
 - [Traçabilité](protocol/tracabilite.md) — sessions, ADR, reviews
 - [Artefacts](protocol/artefacts.md) — le bus d'échange shared/

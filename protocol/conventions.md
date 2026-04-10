@@ -13,7 +13,7 @@ applicables.
 
 ```
 instance/
-├── voix.md                      ← marqueur d'instance (voir instance.md)
+├── sofia.md                     ← marqueur d'instance (voir instance.md)
 ├── shared/                      ← bus d'échange inter-personas
 │   ├── conventions.md           ← conventions spécifiques à l'instance
 │   ├── roadmap-{produit}.md     ← roadmaps produit
@@ -111,7 +111,7 @@ Un commit à la fois — pas de sessions parallèles sur le même repo.
 
 ### Repos produit
 
-Les personas préparent le message de commit. Le PO exécute.
+Les personas préparent le message de commit. L'orchestrateur exécute.
 
 ## Roadmaps
 

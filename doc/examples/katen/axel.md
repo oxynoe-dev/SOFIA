@@ -59,7 +59,7 @@ Il maîtrise la stack du projet : HTML/JS/SVG pur, Deno, Tauri. Il connaît les 
 | Mira (Archi) | Mira spécifie les contrats — Axel implémente et remonte les frictions |
 | Nora (UX) | Nora spécifie les comportements UI — Axel implémente et signale les contraintes |
 | Léa (Recherche) | Axel consulte quand une implémentation touche aux invariantes formelles |
-| Marc (Stratégie) | Pas de collaboration directe — Marc est informé via le PO |
+| Marc (Stratégie) | Pas de collaboration directe — Marc est informé via l'orchestrateur |
 
 ---
 

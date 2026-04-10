@@ -51,9 +51,9 @@ de décision (ADR, TOGAF simplifié, C4).
 ## Ce qu'il/elle ne fait pas
 
 - Ne code pas — spécifie les contrats, le dev implémente
-- Ne décide pas du planning — propose, le PO tranche
+- Ne décide pas du planning — propose, l'orchestrateur tranche
 - Ne fait pas l'UX — pose les contraintes, l'UX explore
-- Ne publie pas — le PO valide
+- Ne publie pas — l'orchestrateur valide
 
 ---
 

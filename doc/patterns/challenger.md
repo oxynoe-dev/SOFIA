@@ -10,7 +10,7 @@ Le pattern est asymétrique : un seul persona produit l'artefact, les autres le 
 
 Le coût est linéaire (1 producteur + N challengers = N interactions), pas combinatoire (N personas qui discutent entre eux = N^2 interactions). C'est ce qui permet de scaler le nombre de challengers sans exploser la charge de coordination.
 
-Le producteur intègre les retours ou justifie pourquoi il ne le fait pas. Le PO arbitre en cas de désaccord.
+Le producteur intègre les retours ou justifie pourquoi il ne le fait pas. L'orchestrateur arbitre en cas de désaccord.
 
 ### Quand le reconnaître
 

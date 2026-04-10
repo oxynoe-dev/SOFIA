@@ -23,7 +23,7 @@ Workflow de recherche : de l'identification des sources à la vérification de l
 |---------|------|
 | Recherche | Exécute le workflow, produit les vérifications |
 | Expert du domaine (archi, dev, stratégie) | Fournit le contexte d'usage — pourquoi cette source est citée |
-| PO | Arbitre en cas de désaccord sur la pertinence |
+| Orchestrateur | Arbitre en cas de désaccord sur la pertinence |
 
 ### Artefacts produits
 

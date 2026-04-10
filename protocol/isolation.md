@@ -96,7 +96,7 @@ produit/                        ← repo produit (katen/)
 - Le **workspace dev/ dans l'instance** contient les sessions, le backlog,
   et les plans — pas du code.
 - Les commits instance = auto (`{persona}: {résumé} ({date})`).
-  Les commits produit = PO exécute.
+  Les commits produit = l'orchestrateur exécute.
 - Le dev lit `shared/notes/` et `shared/review/` au même titre que
   les autres personas — c'est dans son workflow d'ouverture.
 

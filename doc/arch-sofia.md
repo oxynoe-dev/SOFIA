@@ -37,10 +37,10 @@ Les principes fondamentaux. Ce qui ne change pas quand on change d'outil, de pro
 
 | Document | Couche | Concept clé | En une phrase |
 |---|---|---|---|
-| `principes.md` | Core | 7 principes | La contrainte force la qualité, l'humain arbitre, les fichiers sont le protocole |
+| `principes.md` | Core | 7 principes | La contrainte force la qualité, l'orchestrateur arbitre, les fichiers sont le protocole |
 | `personas.md` | Core | Anatomie d'un persona | Identité, posture, périmètre, livrables, interdits, collaboration |
 | `friction.md` | Core | Friction intentionnelle | Les désaccords entre personas sont des signaux, pas des bugs |
-| `devoirs.md` | Core | Devoirs de l'orchestrateur | 6 obligations que l'humain se donne pour que l'armature tienne |
+| `devoirs.md` | Core | Devoirs de l'orchestrateur | 6 obligations que l'orchestrateur se donne pour que l'armature tienne |
 
 **Règle de versionnage** : modifier un document core = minor bump.
 
@@ -62,7 +62,7 @@ Le protocol définit comment les personas échangent, tracent et s'organisent. F
 | `conventions.md` | Protocol | Règles d'instance | Nommage, frontmatter, statuts, archivage |
 | `tracabilite.md` | Protocol | Sessions + ADR + reviews | Si ce n'est pas tracé, ça n'existe pas |
 | `isolation.md` | Protocol | Workspace = périmètre | Un persona ne voit que son espace — l'isolation force les échanges formels |
-| `orchestration.md` | Protocol | PO comme message bus | Rien ne circule entre personas sans l'humain |
+| `orchestration.md` | Protocol | Orchestrateur comme message bus | Rien ne circule entre personas sans l'orchestrateur |
 | `instance.md` | Protocol | Structure d'instance | Marqueur voix.md, workspaces, shared/, conventions |
 
 ### Runtime — l'implémentation concrète
@@ -105,13 +105,13 @@ Trois concepts interdépendants :
 - **Friction** — les désaccords qui émergent des contraintes entre personas
 - **Artefact** — le fichier structuré qui matérialise l'échange et la trace
 
-Le **PO** (humain) est au centre : il orchestre, filtre, contextualise, tranche.
+L'**orchestrateur** (humain) est au centre : il orchestre, filtre, contextualise, tranche.
 
 ### Cycle de vie d'un échange
 
 ![Cycle de vie d'un échange](figures/fig-cycle-echange.svg)
 
-Chaque flèche passe par le PO. Pas de raccourci.
+Chaque flèche passe par l'orchestrateur. Pas de raccourci.
 
 ### Instance SOFIA
 
@@ -136,9 +136,9 @@ Trois couches indépendantes. On peut :
 - Faire évoluer le protocol (nouveaux formats d'artefacts) sans changer les principes
 - Lire le core sans connaître l'outil
 
-### P3 — Le PO est l'unique point de passage
+### P3 — L'orchestrateur est l'unique point de passage
 
-Aucun échange direct entre personas. L'humain filtre, reformule, contextualise, tranche. C'est le coût de la qualité.
+Aucun échange direct entre personas. L'orchestrateur filtre, reformule, contextualise, tranche. C'est le coût de la qualité.
 
 ### P4 — L'isolation crée le besoin d'artefacts
 
@@ -158,7 +158,7 @@ Pas les conversations, pas la mémoire, pas les sessions compressées. Les fichi
 | **4+ personas** | shared/features/ — les specs ne passent plus par notes |
 | **5+ personas, 2+ produits** | Convergence (produit compagnon) — dashboard, inbox, journal |
 
-On commence petit, on ajoute de la structure quand la charge mentale du PO l'exige.
+On commence petit, on ajoute de la structure quand la charge mentale de l'orchestrateur l'exige.
 
 ---
 
@@ -216,7 +216,7 @@ Pré-requis : retours utilisateurs v0.3 + i18n v0.4. Ne pas anticiper sans feedb
 | Décision | Raison |
 |---|---|
 | Méthode provider-agnostic, implémentation spécifique | Portabilité future sans sacrifier la profondeur Claude Code |
-| Le PO ne délègue pas l'arbitrage | C'est la règle non négociable — sans arbitre, la friction est du chaos |
+| L'orchestrateur ne délègue pas l'arbitrage | C'est la règle non négociable — sans arbitre, la friction est du chaos |
 | Fichiers comme protocole (pas de chat) | La lenteur force la clarté, les fichiers persistent et sont versionnables |
 | Gradient d'activation | La méthode ne se déploie pas en big bang — elle grandit avec le projet |
 | Convergence = produit séparé | Deux publics différents, deux timelines de publication |

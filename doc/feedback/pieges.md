@@ -39,9 +39,9 @@ Le persona ira lire et écrire partout, et la friction disparaît.
 **Solution** : ajoute des frontières explicites. "Ne jamais lire/écrire
 en dehors de X."
 
-## 5. Le PO qui ne tranche pas
+## 5. L'orchestrateur qui ne tranche pas
 
-Les personas exposent des tensions. Si l'humain ne tranche pas,
+Les personas exposent des tensions. Si l'orchestrateur ne tranche pas,
 les tensions s'accumulent et rien n'avance.
 
 **Signe** : les mêmes questions ouvertes reviennent session après session.

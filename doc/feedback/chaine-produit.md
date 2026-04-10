@@ -10,7 +10,7 @@ La chaîne produit est le cycle de base de Katen. C'est le pattern le plus
 ancien, le plus rodé, et le plus révélateur de la méthode SOFIA en action.
 
 ```
-PO identifie un besoin ou une friction
+L'orchestrateur identifie un besoin ou une friction
   → ouvre session architecte
 
 Architecte spécifie
@@ -29,8 +29,8 @@ Chercheuse vérifie
   → invariantes formelles, cohérence avec le modèle Petri-net
   → ne tranche pas sur l'archi — elle valide la théorie
 
-PO arbitre et tranche
-  → quand les personas divergent, l'humain décide
+L'orchestrateur arbitre et tranche
+  → quand les personas divergent, l'orchestrateur décide
   → la décision est tracée (ADR, note, session)
 ```
 
@@ -75,10 +75,10 @@ touche aux invariantes du modèle Petri-net — firing policy, états des
 connexions, réversibilité — elle vérifie. Son "ça ne tient pas" a la
 même autorité qu'un test qui échoue : on ne passe pas en force.
 
-### Le PO porte le contexte
+### L'orchestrateur porte le contexte
 
-Le PO est le seul à voir toutes les sessions. Il filtre, reformule,
-contextualise. Quand Mira dépose une review pour Axel, le PO ajoute :
+L'orchestrateur est le seul à voir toutes les sessions. Il filtre, reformule,
+contextualise. Quand Mira dépose une review pour Axel, l'orchestrateur ajoute :
 "on a décidé hier avec Marc de décaler la publication — ça change la
 priorité de cette spec." Ce contexte, aucun persona ne l'a seul.
 
@@ -98,7 +98,7 @@ Les ADR passent potentiellement par 4 challengers :
 - **Léa** — rigueur formelle (quand le sujet touche au modèle)
 - **Marc** — impact stratégique (quand le sujet touche au positionnement)
 
-Le PO tranche. L'ADR est accepté, rejeté ou reporté. Le statut est tracé.
+L'orchestrateur tranche. L'ADR est accepté, rejeté ou reporté. Le statut est tracé.
 
 ## Pour ton projet
 
@@ -108,4 +108,4 @@ La chaîne produit est le cas d'usage fondamental de SOFIA. Quelques règles :
 - **Le dev ne réinterprète pas.** Si la spec est floue, il remonte. Il ne devine pas. La friction est le signal, pas le bruit.
 - **L'UX ne produit pas le code.** Elle spécifie les comportements. Le dev remonte les contraintes. La friction entre les deux produit de bonnes interfaces.
 - **Trace tout.** ADR, sessions, reviews. Si ce n'est pas tracé, ça n'existe pas.
-- **L'humain arbitre.** Quand deux personas divergent, l'humain tranche. Pas le persona le plus éloquent.
+- **L'orchestrateur arbitre.** Quand deux personas divergent, l'orchestrateur tranche. Pas le persona le plus éloquent.

@@ -42,10 +42,10 @@ des contraintes posées sur les personas :
 La friction sans arbitre est du chaos. Deux personas qui se contredisent
 indéfiniment ne produisent rien.
 
-**L'humain est l'arbitre. Toujours.**
+**L'orchestrateur est l'arbitre. Toujours.**
 
 - Les personas exposent les tensions
-- L'humain écoute, questionne, puis tranche
+- L'orchestrateur écoute, questionne, puis tranche
 - La décision est tracée (ADR, note, session)
 - Les personas appliquent la décision, même s'ils l'ont challengée
 
@@ -70,7 +70,7 @@ Ce protocole est plus lent qu'un chat. C'est voulu :
 
 - Les personas disent "non" ou "pas mon rôle"
 - Des désaccords apparaissent entre personas
-- L'humain doit trancher régulièrement
+- L'orchestrateur doit trancher régulièrement
 - Les specs sont plus précises qu'avant
 - Les décisions sont documentées avec le contexte
 
@@ -79,7 +79,7 @@ Ce protocole est plus lent qu'un chat. C'est voulu :
 - Tous les personas sont d'accord sur tout
 - Personne ne dit non
 - Les specs restent vagues et personne ne le signale
-- L'humain n'a jamais besoin de trancher
+- L'orchestrateur n'a jamais besoin de trancher
 - Pas de trace des décisions
 
 Si tu reconnais la deuxième liste, tes personas sont trop complaisants

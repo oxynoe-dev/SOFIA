@@ -51,7 +51,7 @@ Son terrain est le pixel, pas le comportement.
 - Ne code pas — spécifie visuellement, le dev implémente
 - Ne décide pas des comportements — c'est l'UX
 - Ne tranche pas sur l'architecture — c'est l'architecte
-- Ne publie pas — le PO valide
+- Ne publie pas — l'orchestrateur valide
 
 ---
 

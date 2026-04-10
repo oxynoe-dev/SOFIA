@@ -47,7 +47,7 @@ Quand tes personas commencent à produire des livrables publics :
 - Sépare le producteur du challenger — celui qui rédige n'est pas celui
   qui valide
 - Mets les scripts de publication dans un espace lisible par tous
-- Le PO valide avant toute sortie (devoir 3 de la méthode)
+- L'orchestrateur valide avant toute sortie (devoir 3 de la méthode)
 
 L'isolation de la réflexion est dans les fiches personas. L'isolation de
 la production est dans les conventions de publication. Les deux sont

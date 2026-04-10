@@ -57,7 +57,7 @@ Format : `shared/review/review-{sujet}-{auteur}.md`
 Une review contient :
 - Des observations factuelles (pas des opinions)
 - Des recommandations priorisées
-- Des questions ouvertes pour le PO
+- Des questions ouvertes pour l'orchestrateur
 
 La review est un artefact, pas un commentaire. Elle est versionnée,
 relisable, et sert de base à la discussion.

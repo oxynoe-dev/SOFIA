@@ -129,9 +129,9 @@
   <path d="M 755,162 Q 770,200 785,230" fill="none" stroke="rgba(64,180,160,0.15)" stroke-width="0.6"/>
   <path d="M 698,255 Q 735,268 772,255" fill="none" stroke="rgba(64,180,160,0.15)" stroke-width="0.6"/>
 
-  <!-- PO au centre -->
+  <!-- Orchestrateur au centre -->
   <circle cx="735" cy="205" r="20" fill="rgba(64,216,192,0.05)" stroke="#40d8c0" stroke-width="1"/>
-  <text x="735" y="202" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#f0f8f5" font-weight="300">PO</text>
+  <text x="735" y="202" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#f0f8f5" font-weight="300">Orchestrateur</text>
   <text x="735" y="214" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="rgba(64,216,192,0.35)">arbitre</text>
 
   <!-- Labels relations -->
@@ -187,19 +187,19 @@
   <!-- shared/ -->
   <rect x="270" y="460" width="160" height="60" rx="4" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.18)" stroke-width="0.5"/>
   <text x="350" y="475" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(167,139,250,0.5)">shared/</text>
-  <text x="350" y="490" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="6" fill="rgba(167,139,250,0.25)">roadmap-*.md (PO)</text>
+  <text x="350" y="490" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="6" fill="rgba(167,139,250,0.25)">roadmap-*.md (orchestrateur)</text>
   <text x="350" y="502" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="6" fill="rgba(167,139,250,0.25)">notes/ · review/ · features/</text>
   <text x="350" y="514" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="6" fill="rgba(167,139,250,0.25)">orga/ (personas, lexique)</text>
 
   <!-- Mycélium workspace ↔ shared -->
   <path d="M 238,482 Q 254,478 268,482" fill="none" stroke="rgba(64,180,160,0.15)" stroke-width="0.5"/>
 
-  <!-- PO -->
+  <!-- Orchestrateur -->
   <circle cx="478" cy="484" r="24" fill="rgba(64,216,192,0.05)" stroke="#40d8c0" stroke-width="0.8"/>
-  <text x="478" y="481" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#f0f8f5" font-weight="300">PO</text>
+  <text x="478" y="481" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#f0f8f5" font-weight="300">Orchestrateur</text>
   <text x="478" y="494" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="rgba(64,216,192,0.35)">humain</text>
 
-  <!-- Mycélium PO ↔ shared -->
+  <!-- Mycélium Orchestrateur ↔ shared -->
   <path d="M 454,484 Q 440,486 432,490" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="0.6"/>
 
   <!-- Annotations instance -->
@@ -214,7 +214,7 @@
   <rect x="600" y="524" width="270" height="56" rx="6" fill="rgba(167,139,250,0.03)" stroke="rgba(167,139,250,0.15)" stroke-width="0.6" stroke-dasharray="5,3"/>
   <text x="735" y="546" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#a78bfa" font-weight="300">Convergence</text>
   <text x="735" y="562" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(167,139,250,0.3)">produit compagnon — scanne l'instance</text>
-  <text x="735" y="574" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(167,139,250,0.3)">quand la charge mentale du PO l'exige</text>
+  <text x="735" y="574" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(167,139,250,0.3)">quand la charge mentale de l'orchestrateur l'exige</text>
 
   <!-- Mycélium instance → convergence -->
   <path d="M 568,540 Q 580,540 598,546" fill="none" stroke="rgba(167,139,250,0.2)" stroke-width="0.6" stroke-dasharray="4,3"/>

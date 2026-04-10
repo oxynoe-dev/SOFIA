@@ -35,9 +35,9 @@ le `runtime/` fournit une implémentation pour Claude Code, d'autres peuvent sui
 
 Concrètement :
 - Des **personas** — des rôles IA avec un nom, une posture, un périmètre, des interdits
-- De la **friction** — les personas se challengent, l'humain tranche
+- De la **friction** — les personas se challengent, l'orchestrateur tranche
 - De l'**isolation** — chaque persona a son workspace, ses instructions, ses limites
-- De l'**orchestration** — l'humain est le message bus, il porte le contexte entre les personas
+- De l'**orchestration** — l'orchestrateur est le message bus, il porte le contexte entre les personas
 - De la **traçabilité** — tout est tracé : décisions, sessions, reviews, échanges
 - Des **artefacts** — les personas communiquent par fichiers, pas par chat
 

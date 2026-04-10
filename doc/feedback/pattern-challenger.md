@@ -8,7 +8,7 @@
 
 Un persona produit. D'autres personas interviennent pour vérifier la
 qualité sur leur axe d'expertise, sans produire eux-mêmes. Chaque
-challenger a un droit de bloquant sur son axe. Le PO orchestre et tranche.
+challenger a un droit de bloquant sur son axe. L'orchestrateur orchestre et tranche.
 
 C'est distinct de la friction entre pairs (deux personas au même niveau
 qui contestent). Le challenge est **asymétrique** : un qui produit,
@@ -51,7 +51,7 @@ Un producteur, trois challengers. Intensité maximale — c'est le produit clé.
 - **Axe unique** — chaque challenger vérifie sur son axe d'expertise,
   pas sur tout. L'architecte ne challenge pas l'UX. L'UX ne challenge
   pas l'archi.
-- **Droit de bloquant** — un challenger peut bloquer. Le PO décide si
+- **Droit de bloquant** — un challenger peut bloquer. L'orchestrateur décide si
   le bloquant est levé ou maintenu.
 - **Scalable** — on peut ajouter des challengers sans changer le
   producteur. Le coût est linéaire, pas combinatoire.
@@ -60,7 +60,7 @@ Un producteur, trois challengers. Intensité maximale — c'est le produit clé.
 
 Huang et al. (2025) — *Resilience of Multi-Agent Systems to Untrustworthy Agents* (arXiv:2408.00989) — mesurent la résilience de topologies multi-agents face à des agents non fiables. La **topologie hiérarchique** (coordinateur central + agents spécialisés) ne perd que -5.5% de performance avec des agents défaillants, contre -10% à -24% pour les topologies plates (débat, relais).
 
-**Limite** : l'étude porte sur du multi-agent pur (IA↔IA), sans humain au centre. Le pattern challenger dans SOFIA est une orchestration humain↔IA — le PO arbitre, pas un agent coordinateur. C'est un **signal convergent** (la topologie hiérarchique est résiliente), pas une **validation** de notre méthode. Personne n'a mesuré ce pattern avec un humain orchestrateur.
+**Limite** : l'étude porte sur du multi-agent pur (IA↔IA), sans humain au centre. Le pattern challenger dans SOFIA est une orchestration humain↔IA — l'orchestrateur arbitre, pas un agent coordinateur. C'est un **signal convergent** (la topologie hiérarchique est résiliente), pas une **validation** de notre méthode. Personne n'a mesuré ce pattern avec un humain orchestrateur.
 
 ## Pour ton projet
 
@@ -71,7 +71,7 @@ règles :
 - Identifie le producteur et ses challengers pour chaque chaîne
 - Donne à chaque challenger un axe explicite — pas "review en général"
   mais "vérifie la rigueur des références" ou "vérifie l'accessibilité"
-- Le droit de bloquant est réel — si un challenger bloque, le PO tranche,
+- Le droit de bloquant est réel — si un challenger bloque, l'orchestrateur tranche,
   mais le producteur ne passe pas en force
 - Documente les droits de challenge dans les fiches personas (section
   "Ce qu'il/elle challenge")

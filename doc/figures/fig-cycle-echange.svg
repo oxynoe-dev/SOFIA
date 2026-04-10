@@ -21,7 +21,7 @@
   ════════════════════════════════════════ -->
   <text x="110" y="62" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">PERSONA A</text>
   <text x="330" y="62" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">SHARED/</text>
-  <text x="550" y="62" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">PO</text>
+  <text x="550" y="62" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">Orchestrateur</text>
   <text x="770" y="62" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">PERSONA B</text>
 
   <!-- Column separators -->
@@ -45,27 +45,27 @@
   <rect x="250" y="82" width="160" height="32" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.2)" stroke-width="0.8"/>
   <text x="330" y="102" text-anchor="middle" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8">depose dans bus</text>
 
-  <!-- Arrow 2: shared/ → PO -->
+  <!-- Arrow 2: shared/ → Orchestrateur -->
   <path d="M 410 98 C 430 98, 440 110, 460 130" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.3)" transform="translate(462,134) rotate(60)"/>
 
-  <!-- ── STEP 3: PO lit l'artefact ── -->
+  <!-- ── STEP 3: Orchestrateur lit l'artefact ── -->
   <rect x="470" y="125" width="160" height="32" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.25)" stroke-width="0.8"/>
   <text x="550" y="145" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">lit l'artefact</text>
 
-  <!-- ── STEP 4: PO filtre ── -->
+  <!-- ── STEP 4: Orchestrateur filtre ── -->
   <rect x="470" y="168" width="160" height="28" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.8"/>
   <text x="550" y="186" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">filtre</text>
 
-  <!-- ── STEP 5: PO contextualise ── -->
+  <!-- ── STEP 5: Orchestrateur contextualise ── -->
   <rect x="470" y="205" width="160" height="28" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.8"/>
   <text x="550" y="223" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">contextualise</text>
 
-  <!-- ── STEP 6: PO transmet → Persona B ── -->
+  <!-- ── STEP 6: Orchestrateur transmet → Persona B ── -->
   <path d="M 630 236 C 660 250, 690 258, 710 258" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.3)" transform="translate(715,258) rotate(0)"/>
 
-  <!-- Arrow connector between PO steps -->
+  <!-- Arrow connector between Orchestrateur steps -->
   <line x1="550" y1="157" x2="550" y2="168" stroke="rgba(167,139,250,0.15)" stroke-width="0.7"/>
   <line x1="550" y1="196" x2="550" y2="205" stroke="rgba(167,139,250,0.15)" stroke-width="0.7"/>
   <line x1="550" y1="233" x2="550" y2="240" stroke="rgba(167,139,250,0.15)" stroke-width="0.7"/>
@@ -89,23 +89,23 @@
   <rect x="250" y="296" width="160" height="32" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.2)" stroke-width="0.8"/>
   <text x="330" y="316" text-anchor="middle" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8">reponse dans bus</text>
 
-  <!-- Arrow shared/ → PO (reads response) -->
+  <!-- Arrow shared/ → Orchestrateur (reads response) -->
   <path d="M 410 312 C 430 312, 445 330, 462 345" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.3)" transform="translate(464,349) rotate(60)"/>
 
-  <!-- ── STEP 9: PO lit la réponse ── -->
+  <!-- ── STEP 9: Orchestrateur lit la réponse ── -->
   <rect x="470" y="340" width="160" height="28" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.25)" stroke-width="0.8"/>
   <text x="550" y="358" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">lit la reponse</text>
 
-  <!-- ── STEP 10: PO tranche ── -->
+  <!-- ── STEP 10: Orchestrateur tranche ── -->
   <rect x="470" y="377" width="160" height="28" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
   <text x="550" y="395" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">tranche</text>
 
-  <!-- ── STEP 11: PO trace ── -->
+  <!-- ── STEP 11: Orchestrateur trace ── -->
   <rect x="470" y="414" width="160" height="28" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.8"/>
   <text x="550" y="432" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">trace (ADR / note)</text>
 
-  <!-- Connectors between final PO steps -->
+  <!-- Connectors between final Orchestrateur steps -->
   <line x1="550" y1="368" x2="550" y2="377" stroke="rgba(167,139,250,0.15)" stroke-width="0.7"/>
   <line x1="550" y1="405" x2="550" y2="414" stroke="rgba(167,139,250,0.15)" stroke-width="0.7"/>
 

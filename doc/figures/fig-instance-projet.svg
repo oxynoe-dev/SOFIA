@@ -113,7 +113,7 @@
   <!-- ══ LEGENDE ══ -->
   <text x="360" y="268" text-anchor="middle"
         fill="rgba(240,248,245,0.25)" font-family="Inter,sans-serif" font-size="8">
-    Les personas pensent dans l'instance. Le produit sort dans le projet. Le PO porte le contexte entre les deux.
+    Les personas pensent dans l'instance. Le produit sort dans le projet. L'orchestrateur porte le contexte entre les deux.
   </text>
 
 </svg>

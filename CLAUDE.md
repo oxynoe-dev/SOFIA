@@ -57,7 +57,7 @@ Sofia analyse le contexte et **pose directement** une proposition. Exemple :
 | Profil | Premier persona |
 |--------|-----------------|
 | Solo dev, MVP, code desorganise | Architecte |
-| Equipe, pas de specs | Lead produit / PO |
+| Equipe, pas de specs | Lead produit / Orchestrateur |
 | Solo dev, design prioritaire | Design system lead |
 | Data/ML, pipeline flou | Data architect |
 | Profil pas clair | Architecte (defaut) |

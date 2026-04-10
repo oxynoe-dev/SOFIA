@@ -1,20 +1,20 @@
 ## Inspector
 
-L'humain intercepte et vérifie avant de transmettre. Pas un persona — une responsabilité.
+L'orchestrateur intercepte et vérifie avant de transmettre. Pas un persona — une responsabilité.
 
 ### Structure
 
 Le pattern est complémentaire au Challenger. Le Challenger opère après la production (peer review). L'Inspector opère pendant la circulation — il intercepte les artefacts entre personas, vérifie, corrige si nécessaire, puis transmet.
 
-Dans SOFIA, l'Inspector c'est l'humain. C'est implicite dans le rôle du PO : il lit tout, filtre, contextualise, corrige avant de transmettre. Trois fonctions cumulées sur une personne : orchestrateur, arbitre, inspecteur.
+Dans SOFIA, l'Inspector c'est l'orchestrateur. C'est implicite dans le rôle de l'orchestrateur : il lit tout, filtre, contextualise, corrige avant de transmettre. Trois fonctions cumulées sur une personne : orchestrateur, arbitre, inspecteur.
 
 C'est le mécanisme le plus coûteux en attention — et le premier à lâcher quand la fatigue s'installe.
 
 ### Quand le reconnaître
 
-- L'humain transmet un artefact d'un persona à un autre sans l'avoir relu → l'inspection est absente.
+- L'orchestrateur transmet un artefact d'un persona à un autre sans l'avoir relu → l'inspection est absente.
 - Une erreur factuelle se propage entre 3+ documents sans être détectée → la chaîne d'inspection est rompue.
-- L'humain approuve des sessions sans lire les résumés → le rôle d'inspecteur est abandonné.
+- L'orchestrateur approuve des sessions sans lire les résumés → le rôle d'inspecteur est abandonné.
 
 ### Ce que l'inspecteur vérifie
 
@@ -30,15 +30,15 @@ C'est le mécanisme le plus coûteux en attention — et le premier à lâcher q
 Le Challenger et l'Inspector couvrent deux moments différents :
 
 - **Challenger** → après production, entre pairs. Horizontal.
-- **Inspector** → pendant circulation, par l'humain. Vertical.
+- **Inspector** → pendant circulation, par l'orchestrateur. Vertical.
 
-Combinés, ils récupèrent la grande majorité des erreurs. Séparément, chacun laisse passer ce que l'autre attraperait. L'Inspector attrape les erreurs factuelles que les personas ne peuvent pas vérifier (ils n'ont pas de mémoire fiable). Le Challenger attrape les erreurs de fond que l'humain peut manquer par fatigue.
+Combinés, ils récupèrent la grande majorité des erreurs. Séparément, chacun laisse passer ce que l'autre attraperait. L'Inspector attrape les erreurs factuelles que les personas ne peuvent pas vérifier (ils n'ont pas de mémoire fiable). Le Challenger attrape les erreurs de fond que l'orchestrateur peut manquer par fatigue.
 
 ### Risques
 
-- **Surcharge** : l'humain cumule orchestration + arbitrage + inspection. C'est le facteur principal de décrochage (devoir n°6 : maintenir l'attention).
-- **Faux sentiment de sécurité** : l'inspection existe dans le processus mais n'est pas exécutée — l'humain scanne au lieu de lire.
-- **Pas de relève** : si l'humain décroche, personne ne prend le relais. Les personas continuent à produire avec la même assurance.
+- **Surcharge** : l'orchestrateur cumule orchestration + arbitrage + inspection. C'est le facteur principal de décrochage (devoir n°6 : maintenir l'attention).
+- **Faux sentiment de sécurité** : l'inspection existe dans le processus mais n'est pas exécutée — l'orchestrateur scanne au lieu de lire.
+- **Pas de relève** : si l'orchestrateur décroche, personne ne prend le relais. Les personas continuent à produire avec la même assurance.
 
 ### Mitigation
 

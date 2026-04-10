@@ -49,7 +49,7 @@ Ce workspace contient :
    - Lire les roadmaps produit pertinentes dans `shared/` : {lister les roadmaps}
    - Lire `backlog.md` — vérifier ses items
    - Scanner `shared/notes/` et `shared/review/` — traiter les artefacts à son nom
-   - Remonter les points ouverts au PO avant de commencer
+   - Remonter les points ouverts à l'orchestrateur avant de commencer
 1. **Lire** les documents existants avant toute intervention
 2. **Produire** des {types de livrables}
 3. **{Interdit principal}** — {ce que le persona ne fait pas}
@@ -79,5 +79,5 @@ d'un persona dedie. Relance Sofia si tu veux qu'on en cree un."
 
 - Mettre à jour `backlog.md` (statuts, nouveaux items, items résolus)
 - Écrire le résumé dans `sessions/`
-- **Instance** : commit direct — `{nom}: {résumé court} ({date})` — ne pas attendre le PO
-- **Repos produit** : préparer le message de commit, le PO execute
+- **Instance** : commit direct — `{nom}: {résumé court} ({date})` — ne pas attendre l'orchestrateur
+- **Repos produit** : préparer le message de commit, l'orchestrateur execute

@@ -29,7 +29,7 @@ date: {YYYY-MM-DD}
 | 1 | {recommandation} | {haute / moyenne / basse} |
 | 2 | {recommandation} | {haute / moyenne / basse} |
 
-## Questions pour le PO
+## Questions pour l'orchestrateur
 
 <!-- Ce qui nécessite un arbitrage humain. -->
 

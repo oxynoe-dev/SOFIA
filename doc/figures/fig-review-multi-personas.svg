@@ -23,10 +23,10 @@
   <text x="440" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia, serif" font-size="15" font-weight="300" letter-spacing="0.03em">Review multi-personas — ADR</text>
 
   <!-- ════════════════════════════════════════
-       PO NODE (top center)
+       Orchestrateur NODE (top center)
   ════════════════════════════════════════ -->
   <circle cx="440" cy="75" r="10" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.4)" stroke-width="1.2"/>
-  <text x="440" y="79" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="'IBM Plex Mono', monospace" font-size="8" font-weight="600">PO</text>
+  <text x="440" y="79" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="'IBM Plex Mono', monospace" font-size="8" font-weight="600">Orchestrateur</text>
 
   <!-- Request label -->
   <text x="440" y="103" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter, system-ui, sans-serif" font-size="9">"review ADR-058"</text>
@@ -91,7 +91,7 @@
   <text x="700" y="242" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-family="'IBM Plex Mono', monospace" font-size="7">-NORA.MD</text>
 
   <!-- ════════════════════════════════════════
-       CONVERGENCE ARROWS — reviews → PO
+       CONVERGENCE ARROWS — reviews → Orchestrateur
   ════════════════════════════════════════ -->
   <path d="M 180,252 C 200,290 340,320 430,340" fill="none" stroke="rgba(64,216,192,0.18)" stroke-width="0.8"/>
   <path d="M 360,252 C 370,290 410,320 435,340" fill="none" stroke="rgba(64,216,192,0.18)" stroke-width="0.8"/>
@@ -103,9 +103,9 @@
   ════════════════════════════════════════ -->
   <rect x="300" y="330" width="280" height="70" rx="6" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.15)" stroke-width="1"/>
 
-  <!-- PO consolidation node -->
+  <!-- Orchestrateur consolidation node -->
   <circle cx="440" cy="350" r="8" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
-  <text x="440" y="354" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="600">PO</text>
+  <text x="440" y="354" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="600">Orchestrateur</text>
 
   <text x="440" y="375" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter, system-ui, sans-serif" font-size="9">lit les 4 reviews, consolide</text>
   <text x="440" y="390" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter, system-ui, sans-serif" font-size="8">identifie convergences &amp; divergences</text>
@@ -116,7 +116,7 @@
   <line x1="440" y1="402" x2="440" y2="425" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
 
   <rect x="350" y="425" width="180" height="30" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
-  <text x="440" y="444" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="'IBM Plex Mono', monospace" font-size="9" letter-spacing="0.08em">DECISION PO</text>
+  <text x="440" y="444" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="'IBM Plex Mono', monospace" font-size="9" letter-spacing="0.08em">DECISION ORCHESTRATEUR</text>
 
   <!-- ════════════════════════════════════════
        PARALLEL LABEL

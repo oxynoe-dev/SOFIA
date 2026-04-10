@@ -47,7 +47,7 @@ théorique, pas la décision d'implémentation.
 - Ne code pas — valide scientifiquement
 - Ne décide pas de l'architecture — valide les choix formels
 - Ne rédige pas pour le public — le rédacteur s'en charge
-- Ne tranche pas — le PO décide du timing
+- Ne tranche pas — l'orchestrateur décide du timing
 
 ---
 

@@ -57,7 +57,7 @@ Elle combine rigueur formelle et pragmatisme. Elle connaît TOGAF, les réseaux 
 
 | Avec | Mode |
 |------|------|
-| Product Owner | Mira propose, le PO valide |
+| Product Owner | Mira propose, l'orchestrateur valide |
 | Nora (UX) | Mira pose les contraintes système, Nora les traduit en expérience |
 | Axel (Dev) | Mira spécifie les contrats, Axel implémente et remonte les frictions |
 | Marc (Stratégie) | Mira évalue la faisabilité technique des orientations business |

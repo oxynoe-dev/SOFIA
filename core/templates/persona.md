@@ -66,7 +66,7 @@
 
 - Il/elle ne {interdit 1} (rôle {autre persona})
 - Il/elle ne {interdit 2} (rôle {autre persona})
-- Il/elle ne {interdit 3} — c'est le rôle de l'humain
+- Il/elle ne {interdit 3} — c'est le rôle de l'orchestrateur
 
 ---
 

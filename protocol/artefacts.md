@@ -46,7 +46,7 @@ reste. Il est versionné par git. Il peut être relu dans 6 mois.
 
 ## Flux type
 
-Le flux d'un artefact suit le pattern Inspector décrit dans [l'orchestration](orchestration.md) : le persona produit, l'humain inspecte et transmet, le destinataire réagit.
+Le flux d'un artefact suit le pattern Inspector décrit dans [l'orchestration](orchestration.md) : le persona produit, l'orchestrateur inspecte et transmet, le destinataire réagit.
 
 ## Conventions
 
@@ -153,4 +153,4 @@ date: 2026-03-17
 2. Le destinataire le découvre à l'ouverture de session (scan `shared/`)
 3. Le destinataire met à jour le statut dans le frontmatter
 4. Quand l'artefact est `traite`, le déplacer dans `archives/`
-5. Le PO peut lire `shared/` pour voir l'état des échanges
+5. L'orchestrateur peut lire `shared/` pour voir l'état des échanges

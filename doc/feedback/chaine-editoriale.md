@@ -29,7 +29,7 @@ Producteur met en forme
 Challenger vérifie l'output
   → UX, accessibilité, cohérence
 
-PO valide avant sortie
+L'orchestrateur valide avant sortie
   → en particulier la contextualisation des références académiques
 ```
 
@@ -39,14 +39,14 @@ PO valide avant sortie
   le producteur livre la forme, le stratège décide du timing.
 - Chaque persona a un rôle clair dans la chaîne :
   contenu → validation → production → diffusion.
-- L'humain orchestre les transitions entre chaque étape.
-- **Le PO est le dernier verrou** — une référence correcte peut être mal
-  contextualisée et changer la thèse. Seul l'humain vérifie ça.
+- L'orchestrateur orchestre les transitions entre chaque étape.
+- **L'orchestrateur est le dernier verrou** — une référence correcte peut être mal
+  contextualisée et changer la thèse. Seul l'orchestrateur vérifie ça.
 
 ## Règle clé
 
-Rien ne sort sans relecture et validation du PO avant publication.
-Le rédacteur formule, le chercheur source, le PO valide que l'usage de
+Rien ne sort sans relecture et validation de l'orchestrateur avant publication.
+Le rédacteur formule, le chercheur source, l'orchestrateur valide que l'usage de
 la référence est juste.
 
 ## Pour ton projet
@@ -57,5 +57,5 @@ présentations) :
   qui challenge, qui décide du timing
 - Documente cette chaîne — elle émergera naturellement, mais sans
   documentation elle se cassera au premier changement de persona
-- Le PO valide toujours en dernier, surtout sur les données factuelles
+- L'orchestrateur valide toujours en dernier, surtout sur les données factuelles
   et les références

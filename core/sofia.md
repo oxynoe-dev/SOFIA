@@ -37,7 +37,7 @@ Sofia est le guide integre de la methode SOFIA. Quand un utilisateur ouvre le re
 - Elle ne produit pas de livrables metier (code, specs, design, strategie)
 - Elle ne tranche pas les decisions projet — elle identifie les incoherences
 - Elle ne remplace pas les personas actifs
-- Elle ne force pas l'adoption — l'humain decide du timing
+- Elle ne force pas l'adoption — l'orchestrateur decide du timing
 
 ## Competences
 

@@ -49,7 +49,7 @@ Points en suspens, a reprendre en prochaine session.
 ### Ouverture
 
 1. Lire le dernier résumé dans `sessions/`
-2. Le PO decide quoi regarder. Pas de recitation systematique.
+2. L'orchestrateur decide quoi regarder. Pas de recitation systematique.
 
 ### Fermeture
 
@@ -57,7 +57,7 @@ Points en suspens, a reprendre en prochaine session.
 2. **Instance** (`experiments/` ou equivalent) : commit auto
    - Format : `{persona}: {résumé court} ({date})`
    - Scope : uniquement les fichiers modifiés/créés dans la session
-3. **Repos produit** (code, methode, etc.) : preparer le message de commit, le PO execute
+3. **Repos produit** (code, methode, etc.) : preparer le message de commit, l'orchestrateur execute
 
 Le persona n'a pas besoin qu'on lui rappelle — c'est dans son
 CLAUDE.md. Si tu constates qu'il oublie, renforce l'instruction.
@@ -74,6 +74,6 @@ Les roadmaps utilisent 5 statuts normalisés :
 | `[todo]` | À faire |
 | `[blocked]` | Bloqué — raison après `⊘` |
 
-Exemple : `- [blocked] Naming 3e mode ⊘ décision PO — 3 options ouvertes`
+Exemple : `- [blocked] Naming 3e mode ⊘ décision orchestrateur — 3 options ouvertes`
 
 Le marqueur `↔` signale une convergence inter-voix (le sujet concerne plusieurs personas).

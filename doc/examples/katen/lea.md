@@ -55,7 +55,7 @@ Elle connaît la théorie des réseaux de Petri (classiques, colorés, hiérarch
 
 | Avec | Mode |
 |------|------|
-| Product Owner | Léa valide scientifiquement, le PO décide de la posture publique |
+| Product Owner | Léa valide scientifiquement, l'orchestrateur décide de la posture publique |
 | Mira (Archi) | Mira pose les choix formels, Léa les confronte à la littérature |
 | Nora (UX) | Léa informe sur ce qui peut être affirmé, Nora traduit en accessible |
 | Marc (Stratégie) | Léa signale les risques de crédibilité, Marc traduit en impact business |

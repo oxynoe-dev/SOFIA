@@ -21,7 +21,7 @@ SOFIA repose sur trois idées. Elles ne fonctionnent pas l'une sans l'autre.
 
 **Éprouver** — Si tous les rôles sont d'accord, personne ne pense. La friction entre un architecte qui refuse de coder et un dev qui refuse d'implémenter une spec floue est un signal, pas un bug. Les désaccords forcent la clarté.
 
-**Arbitrer** — La friction sans arbitre est du chaos. L'humain écoute, questionne, puis tranche. Toujours. Aucun assistant ne valide ses propres propositions. Aucun assistant ne force l'acceptation d'une décision.
+**Arbitrer** — La friction sans arbitre est du chaos. L'orchestrateur écoute, questionne, puis tranche. Toujours. Aucun assistant ne valide ses propres propositions. Aucun assistant ne force l'acceptation d'une décision.
 
 ![Les trois piliers de SOFIA](figures/fig-methode-piliers.svg)
 
@@ -29,7 +29,7 @@ SOFIA repose sur trois idées. Elles ne fonctionnent pas l'une sans l'autre.
 
 ## Le modèle
 
-Trois objets interdépendants. Le persona contraint produit des artefacts. Les artefacts créent de la friction quand ils sont éprouvés par d'autres personas. La friction produit de meilleures décisions. L'humain orchestre le cycle.
+Trois objets interdépendants. Le persona contraint produit des artefacts. Les artefacts créent de la friction quand ils sont éprouvés par d'autres personas. La friction produit de meilleures décisions. L'orchestrateur orchestre le cycle.
 
 ![Modèle conceptuel — Persona, Artefact, Friction](figures/fig-triangle-sofia.svg)
 
@@ -41,7 +41,7 @@ Les piliers disent *pourquoi*, les concepts disent *comment*.
 |--------|---------|------|
 | **Contraindre** | Persona | Le persona est le véhicule de la contrainte — rôle strict, périmètre borné, interdits |
 | **Éprouver** | Friction | La friction naît quand des personas contraints se confrontent sur un même sujet |
-| **Arbitrer** | Artefact | L'artefact est le support de l'arbitrage — tracé, versionné, adressable. L'humain tranche sur pièce |
+| **Arbitrer** | Artefact | L'artefact est le support de l'arbitrage — tracé, versionné, adressable. L'orchestrateur tranche sur pièce |
 
 ---
 
@@ -50,7 +50,7 @@ Les piliers disent *pourquoi*, les concepts disent *comment*.
 | # | Principe | En bref |
 |---|----------|---------|
 | 1 | La friction est productive | Les désaccords entre rôles sont des signaux |
-| 2 | L'humain arbitre | Les assistants proposent, l'humain tranche |
+| 2 | L'orchestrateur arbitre | Les assistants proposent, l'orchestrateur tranche |
 | 3 | Chaque voix compte | Un rôle inutilisé est un rôle à supprimer |
 | 4 | La contrainte force la qualité | Définis ce que le rôle ne fait pas avant ce qu'il fait |
 | 5 | Les artefacts sont le protocole | Les échanges passent par des fichiers, pas du chat |
@@ -85,13 +85,13 @@ Chaque persona évolue dans son propre workspace. Il ne voit que ses fichiers. I
 
 ## L'orchestration
 
-L'humain est le message bus. Rien ne circule entre personas sans lui.
+L'orchestrateur est le message bus. Rien ne circule entre personas sans lui.
 
-![Orchestration — le rôle de l'humain](figures/fig-methode-orchestration.svg)
+![Orchestration — le rôle de l'orchestrateur](figures/fig-methode-orchestration.svg)
 
-L'humain ouvre une session avec un persona, obtient un livrable, ferme la session. Ouvre une session avec un autre persona, transmet le livrable, recueille la réaction. Chaque transmission est un moment de filtrage, de reformulation, d'ajout de contexte.
+L'orchestrateur ouvre une session avec un persona, obtient un livrable, ferme la session. Ouvre une session avec un autre persona, transmet le livrable, recueille la réaction. Chaque transmission est un moment de filtrage, de reformulation, d'ajout de contexte.
 
-**Ce que l'humain ne délègue pas** :
+**Ce que l'orchestrateur ne délègue pas** :
 - La priorisation — quel persona intervient, dans quel ordre
 - La consolidation — synthétiser les retours de plusieurs personas
 - La décision — trancher quand les personas divergent
@@ -129,7 +129,7 @@ La méthode ne se déploie pas en big bang. Elle grandit avec le projet.
 | 2+ personas | shared/ — le bus d'échange (notes, reviews) |
 | 3+ personas | backlogs par workspace |
 | 4+ personas | features/ — les specs formalisées |
-On commence petit. On ajoute de la structure quand la charge mentale de l'humain l'exige.
+On commence petit. On ajoute de la structure quand la charge mentale de l'orchestrateur l'exige.
 
 ---
 
@@ -149,7 +149,7 @@ La méthode a été développée et validée sur le projet Katen — un moteur d
 
 ---
 
-## Six devoirs de l'humain
+## Six devoirs de l'orchestrateur
 
 Les personas produisent, challengent, documentent. Mais certaines responsabilités ne se délèguent pas.
 
