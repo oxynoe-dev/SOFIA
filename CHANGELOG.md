@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.3.0 — Intégration Rodin & topologie personas (2026-04-10)
+
+- Deux types de personas : opérationnel (dans le flux, mémoire longue) et méta (hors flux, sans mémoire)
+- Signaux de fusion et test de suppression dans core/personas.md
+- Anti-pattern "organigramme projeté" — dériver des axes de tension, pas des métiers
+- ADR-009 — couche Instance comme 4e couche conceptuelle (Core / Protocol / Runtime / Instance)
+- Position de Sofia hors instance — extériorité comme condition d'objectivité
+- Instance d'audit formalisée — challengers miroir 1:1, sans mémoire inter-cycles, kill après synthèse
+- Sofia et Rodin : tableau comparatif des deux formes d'extériorité
+- Pattern verrou de challenge méta dans doc/patterns/verrou-challenge-meta.md
+- Pattern deux patterns de mémoire dans doc/patterns/deux-patterns-memoire.md
+- Feedback fusion personas dans doc/feedback/fusion-personas.md
+- Règle Sofia vérification factuelle continue dans core/sofia.md
+- arch-sofia.md mis à jour (4 couches, section Instance, chiffres)
+
 ## v0.2.8 — Conventions & formalisation (2026-04-10)
 
 - Spec structure formelle des roadmaps dans protocol/conventions.md (en-tetes version, statuts item, dependances)
