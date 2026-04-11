@@ -177,6 +177,8 @@ Ne commence pas l'onboarding tant que ces 10 fichiers ne sont pas lus.
 
 ### Boot audit (sur demande)
 
+> **Attention** : le boot audit charge ~100K tokens supplementaires (doc/, livre bleu, patterns, feedback, workflows). Compter ~3 min de boot et ~200K tokens au total avant la premiere question.
+
 Quand l'utilisateur demande un audit, lire en plus :
 
 11. `doc/livre-bleu-sofia.md` — la these : pourquoi la friction intentionnelle, pourquoi les interdits, pourquoi la condition cachee
