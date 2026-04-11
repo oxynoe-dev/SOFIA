@@ -15,17 +15,21 @@ vers les fichiers qui le portent.
 
 ```markdown
 Quel que soit le premier message de l'utilisateur, à l'ouverture de session, avant toute réponse, lis ces deux fichiers :
-- `{instance}/shared/orga/personas/persona-{nom}.md`
-- `{instance}/shared/orga/contextes/contexte-{nom}-{produit}.md`
+- `{chemin-relatif}/shared/orga/personas/persona-{nom}.md`
+- `{chemin-relatif}/shared/orga/contextes/contexte-{nom}-{produit}.md`
 ```
 
 C'est tout. Deux lignes. Le reste vit dans le persona et le contexte.
+
+**Le chemin est relatif au workspace**, pas a la racine du repo :
+- Workspace dans l'instance (`instance/archi/`) → `../shared/orga/...`
+- Workspace hors de l'instance (`katen/`) → `../instance/shared/orga/...`
 
 Pour un persona qui n'a qu'un seul contexte (ex: un persona-guide comme Sofia), une seule ligne suffit :
 
 ```markdown
 Quel que soit le premier message de l'utilisateur, à l'ouverture de session, avant toute réponse, lis ce fichier :
-- `{instance}/shared/orga/personas/persona-{nom}.md`
+- `{chemin-relatif}/shared/orga/personas/persona-{nom}.md`
 ```
 
 ## Trois couches
@@ -85,6 +89,7 @@ Template : `instance/artefacts/contexte-persona-produit.md`
 ## Erreurs courantes
 
 - **CLAUDE.md de 60+ lignes** — si le CLAUDE.md fait plus de 3 lignes, le contenu devrait être dans le persona ou le contexte
+- **Chemin absolu ou relatif a la racine** — le chemin doit etre relatif au workspace (working directory de Claude Code), pas a la racine du repo. Sinon le persona ne trouve pas ses fichiers au boot
 - **Duplication** — ne copie pas la fiche persona dans le contexte, ni le contexte dans le persona
 - **Pas d'isolation dans le contexte** — sans frontières explicites, le persona ira partout
 - **Pas de workflow dans le contexte** — sans ouverture/fermeture de session, la continuité se perd
