@@ -170,20 +170,26 @@ Chaque ligne porte un marqueur de friction (ref : `core/friction.md`) :
 
 ```markdown
 ## Friction orchestrateur
-- ~ Positionnement audit-instance — proposé protocol/tools/, orchestrateur a challengé, convergence retenue
-- ◐ Rétro-annotation — angle mort signalé par l'orchestrateur (marqueurs de friction oubliés)
-- ✓ Phase 1 structurelle — orchestrateur a enrichi la spec, alignement immédiat
+- ~ Emplacement audit-instance — [mira] proposé protocol/tools/, orchestrateur a challengé, convergence retenue
+- ✓ Spec audit-instance — [mira] initiative spec complete, orchestrateur a validé
+- ◐ Phase 1 structurelle — [PO] absente de la spec initiale, signalée par orchestrateur
+- ✓ Factorisation CLAUDE.md — [PO] initiative orchestrateur, persona a affiné le design
 ```
 
+Chaque ligne porte un **tag d'initiative** entre crochets :
+- `[persona]` — le persona a pris position, l'orchestrateur a réagi
+- `[PO]` — l'orchestrateur a pris position, le persona a réagi
+
 **Ce que ça révèle** (via le script d'audit) :
+- Quel persona prend des initiatives (vs exécute seulement)
 - Quel persona challenge l'orchestrateur (et vice versa)
 - Quel persona dit toujours oui → signal de domestication
-- Quand l'orchestrateur réoriente une intuition du persona → friction productive
+- Ratio `[persona]` / `[PO]` → qui mène la session
 
 **Règles** :
 - Ne pas forcer — si la session est purement logistique, la section peut être vide ou absente
-- Un item = un sujet, un marqueur. Pas de prose
-- Le marqueur qualifie la **position du persona**, pas celle de l'orchestrateur
+- Un item = un sujet, un marqueur, un tag d'initiative. Pas de prose
+- Le marqueur qualifie la **position exprimée** (pas la personne)
 
 ## Commits
 
