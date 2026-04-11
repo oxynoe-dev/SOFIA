@@ -54,20 +54,13 @@ def strip_accents(s: str) -> str:
 # Frontmatter parser
 # ---------------------------------------------------------------------------
 
-def parse_frontmatter(filepath: Path) -> dict | None:
-    """Parse YAML frontmatter between --- delimiters. Returns None if absent."""
-    try:
-        text = filepath.read_text(encoding="utf-8")
-    except (OSError, UnicodeDecodeError):
-        return None
-
+def parse_frontmatter_from_text(text: str) -> dict | None:
+    """Parse YAML frontmatter from text string. Returns None if absent."""
     if not text.startswith("---"):
         return None
-
     end = text.find("---", 3)
     if end == -1:
         return None
-
     fm = {}
     for line in text[3:end].strip().splitlines():
         line = line.strip()
@@ -75,8 +68,16 @@ def parse_frontmatter(filepath: Path) -> dict | None:
             continue
         key, _, value = line.partition(":")
         fm[key.strip().lower()] = value.strip()
-
     return fm if fm else None
+
+
+def parse_frontmatter(filepath: Path) -> dict | None:
+    """Parse YAML frontmatter from file. Returns None if absent."""
+    try:
+        text = filepath.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
+        return None
+    return parse_frontmatter_from_text(text)
 
 
 def normalize_frontmatter(fm: dict) -> dict:
@@ -121,26 +122,29 @@ def normalize_frontmatter(fm: dict) -> dict:
 # Friction markers parser
 # ---------------------------------------------------------------------------
 
-def count_friction_markers(filepath: Path) -> dict[str, int]:
-    """Count friction markers in the body of a file (after frontmatter)."""
-    try:
-        text = filepath.read_text(encoding="utf-8")
-    except (OSError, UnicodeDecodeError):
-        return {v: 0 for v in FRICTION_MARKERS.values()}
-
-    body = text
+def _extract_body(text: str) -> str:
+    """Return file body after frontmatter."""
     if text.startswith("---"):
         end = text.find("---", 3)
         if end != -1:
-            body = text[end + 3:]
+            return text[end + 3:]
+    return text
 
+
+def _count_tilde(text: str) -> int:
+    """Count ~ as friction marker: at start of line or after list marker."""
+    return len(re.findall(r"(?:^[-*]\s+|^)~", text, re.MULTILINE))
+
+
+def count_friction_markers_from_text(text: str) -> dict[str, int]:
+    """Count friction markers in a file's text (body after frontmatter)."""
+    body = _extract_body(text)
     counts = {v: 0 for v in FRICTION_MARKERS.values()}
     for char, key in FRICTION_MARKERS.items():
         if char == "~":
-            counts[key] = len(re.findall(r"(?:^|(?<=[-*]\s))~", body, re.MULTILINE))
+            counts[key] = _count_tilde(body)
         else:
             counts[key] = body.count(char)
-
     return counts
 
 
@@ -452,7 +456,7 @@ def check_structure(instance: Path) -> list[dict]:
             rm_has_cible = version_cibles > 0
             rm_has_source = False
 
-            for i, line in enumerate(lines_text, 1):
+            for i, line in enumerate(lines_text):
                 stripped = line.strip()
                 if not stripped.startswith("- "):
                     continue
@@ -461,16 +465,17 @@ def check_structure(instance: Path) -> list[dict]:
                     continue
 
                 total_items += 1
+                lineno = i + 1  # 1-based for display
 
                 # R4: status marker
                 has_status = bool(re.search(r"\[(done|running|todo|blocked|ready)\]", stripped))
                 if not has_status:
-                    items_without_status.append(f"{rel}:{i}")
+                    items_without_status.append(f"{rel}:{lineno}")
 
                 # R5: @owner
                 has_owner = bool(re.search(r"@\w+", stripped))
                 if not has_owner:
-                    items_without_owner.append(f"{rel}:{i}")
+                    items_without_owner.append(f"{rel}:{lineno}")
 
                 # convergence marker
                 if "↔" in stripped:
@@ -481,9 +486,8 @@ def check_structure(instance: Path) -> list[dict]:
                 if "cible:" in stripped:
                     total_with_cible += 1
                     rm_has_cible = True
-                elif i < len(lines_text):
-                    # check next indented lines for cible:
-                    for j in range(i, min(i + 3, len(lines_text))):
+                else:
+                    for j in range(i + 1, min(i + 4, len(lines_text))):
                         next_line = lines_text[j].strip()
                         if next_line.startswith("cible:"):
                             total_with_cible += 1
@@ -496,8 +500,8 @@ def check_structure(instance: Path) -> list[dict]:
                 if "source:" in stripped:
                     total_with_source += 1
                     rm_has_source = True
-                elif i < len(lines_text):
-                    for j in range(i, min(i + 3, len(lines_text))):
+                else:
+                    for j in range(i + 1, min(i + 4, len(lines_text))):
                         next_line = lines_text[j].strip()
                         if next_line.startswith("source:"):
                             total_with_source += 1
@@ -571,6 +575,23 @@ def check_structure(instance: Path) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
+# Persona discovery
+# ---------------------------------------------------------------------------
+
+def discover_personas(instance_path: Path) -> set[str]:
+    """Discover real personas from shared/orga/personas/persona-*.md."""
+    personas_dir = instance_path / "shared" / "orga" / "personas"
+    if not personas_dir.is_dir():
+        return set()
+    result = set()
+    for f in personas_dir.glob("persona-*.md"):
+        name = f.stem.removeprefix("persona-")
+        if name:
+            result.add(strip_accents(name.lower()))
+    return result
+
+
+# ---------------------------------------------------------------------------
 # Phase 2 — Exchange & friction scanners
 # ---------------------------------------------------------------------------
 
@@ -591,7 +612,13 @@ def scan_artifacts(instance_path: Path) -> tuple[list[dict], list[str]]:
             continue
 
         for filepath in sorted(base.rglob("*.md")):
-            fm = parse_frontmatter(filepath)
+            try:
+                text = filepath.read_text(encoding="utf-8")
+            except (OSError, UnicodeDecodeError):
+                warnings.append(f"unreadable: {filepath.relative_to(instance_path)}")
+                continue
+
+            fm = parse_frontmatter_from_text(text)
             if fm is None:
                 warnings.append(f"no frontmatter: {filepath.relative_to(instance_path)}")
                 continue
@@ -602,7 +629,7 @@ def scan_artifacts(instance_path: Path) -> tuple[list[dict], list[str]]:
                 continue
 
             nature = normalized.get("nature", default_nature)
-            markers = count_friction_markers(filepath)
+            markers = count_friction_markers_from_text(text)
 
             artifacts.append({
                 "file": str(filepath.relative_to(instance_path)),
@@ -699,13 +726,14 @@ def scan_session_friction(instance_path: Path) -> tuple[dict[str, dict], list[st
             if not stripped.startswith("- "):
                 continue
 
-            # Count markers on this line
+            # Count markers — content after "- "
+            item_text = stripped[2:].strip()
             for char, key in FRICTION_MARKERS.items():
                 if char == "~":
-                    if re.search(r"(?:^- |^-\s+)~", stripped):
+                    if item_text.startswith("~"):
                         by_persona[persona][key] += 1
                         has_friction = True
-                elif char in stripped:
+                elif char in item_text:
                     by_persona[persona][key] += 1
                     has_friction = True
 
@@ -732,12 +760,16 @@ def generate_signals(
     marker_totals: dict,
     po_friction: dict,
     all_personas: list[str],
+    real_personas: set[str] | None = None,
 ) -> list[str]:
     signals = []
 
+    # Only signal on real personas (filter out distribution lists like equipe, all, po, etc.)
+    signalable = [p for p in all_personas if p in real_personas] if real_personas else all_personas
+
     # Friction holes
     no_friction_out = [
-        p for p in all_personas
+        p for p in signalable
         if p not in friction_matrix or sum(friction_matrix[p].values()) == 0
     ]
     if no_friction_out:
@@ -756,14 +788,14 @@ def generate_signals(
 
     # No incoming friction
     no_friction_in = [
-        p for p in all_personas
+        p for p in signalable
         if friction_received.get(p, 0) == 0 and p in exchange_matrix
     ]
     if no_friction_in:
         signals.append(f"Sans friction entrante : {', '.join(no_friction_in)}")
 
     # Domestication inter-personas
-    for p in all_personas:
+    for p in signalable:
         pm = marker_totals.get(p, {})
         total = sum(pm.values())
         if total > 0 and pm.get("juste", 0) == total:
@@ -771,6 +803,8 @@ def generate_signals(
 
     # Domestication orchestrator
     for p, data in po_friction.items():
+        if real_personas and p not in real_personas:
+            continue
         total = data["juste"] + data["contestable"] + data["simplification"] + data["angle_mort"] + data["faux"]
         if total > 0 and data["juste"] == total and data["total_sessions"] >= 10:
             signals.append(f"Domestication orchestrateur (100% juste, {data['total_sessions']} sessions) : {p}")
@@ -902,6 +936,20 @@ def generate_report_md(
         lines.append("```")
         lines.append("")
 
+    # Activity
+    if po_friction:
+        lines.append("### Activite (sessions par persona)")
+        lines.append("")
+        lines.append("```")
+        personas_by_sessions = sorted(po_friction.keys(), key=lambda p: po_friction[p]["total_sessions"], reverse=True)
+        name_w = max((len(p) for p in personas_by_sessions), default=8) + 2
+        for p in personas_by_sessions:
+            lines.append(f"{p.ljust(name_w)}{po_friction[p]['total_sessions']:>6}")
+        total_s = sum(d["total_sessions"] for d in po_friction.values())
+        lines.append(f"{'Total'.ljust(name_w)}{total_s:>6}")
+        lines.append("```")
+        lines.append("")
+
     # Signals
     if signals:
         lines.append("### Signaux")
@@ -925,12 +973,128 @@ def generate_report_md(
 # Main
 # ---------------------------------------------------------------------------
 
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: python audit-instance.py <instance-path>", file=sys.stderr)
-        sys.exit(1)
+def write_json(output_dir: Path, all_data: dict):
+    """Write one JSON file per data key."""
+    for name, data in all_data.items():
+        (output_dir / f"audit-{name}.json").write_text(
+            json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    instance_path = Path(sys.argv[1]).resolve()
+
+def write_csv(output_dir: Path, all_data: dict, all_personas: list[str]):
+    """Write CSV files for matrices."""
+    import csv
+
+    # Exchange matrix
+    with open(output_dir / "audit-echanges.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["de/pour"] + all_personas)
+        matrix = all_data["echanges"]["matrix"]
+        for p in all_personas:
+            row = [p] + [matrix.get(p, {}).get(q, 0) for q in all_personas]
+            w.writerow(row)
+
+    # Friction matrix
+    with open(output_dir / "audit-friction.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["de/pour"] + all_personas)
+        matrix = all_data["friction"]["matrix"]
+        for p in all_personas:
+            row = [p] + [matrix.get(p, {}).get(q, 0) for q in all_personas]
+            w.writerow(row)
+
+    # Markers
+    marker_keys = list(FRICTION_MARKERS.values())
+    with open(output_dir / "audit-marqueurs.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["persona"] + marker_keys)
+        markers = all_data["friction"]["markers"]
+        for p in all_personas:
+            pm = markers.get(p, {})
+            w.writerow([p] + [pm.get(k, 0) for k in marker_keys])
+
+    # Activity
+    with open(output_dir / "audit-activite.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["persona", "sessions"])
+        for p, count in sorted(all_data["activite"]["by_persona"].items(), key=lambda x: -x[1]):
+            w.writerow([p, count])
+
+    # Structure checks
+    with open(output_dir / "audit-structure.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["id", "status", "detail"])
+        for c in all_data["structure"]["checks"]:
+            w.writerow([c["id"], c["status"], c["detail"]])
+
+
+def write_sqlite(output_dir: Path, all_data: dict, all_personas: list[str]):
+    """Write a single SQLite database with all audit data."""
+    import sqlite3
+
+    db_path = output_dir / "audit.db"
+    if db_path.exists():
+        db_path.unlink()
+
+    conn = sqlite3.connect(str(db_path))
+    c = conn.cursor()
+
+    # Meta
+    c.execute("CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT)")
+    meta = all_data["echanges"]["meta"]
+    for k, v in meta.items():
+        c.execute("INSERT INTO meta VALUES (?, ?)", (k, str(v)))
+
+    # Structure checks
+    c.execute("CREATE TABLE checks (id TEXT, status TEXT, detail TEXT)")
+    for check in all_data["structure"]["checks"]:
+        c.execute("INSERT INTO checks VALUES (?, ?, ?)", (check["id"], check["status"], check["detail"]))
+
+    # Exchanges
+    c.execute("CREATE TABLE echanges (de TEXT, pour TEXT, count INTEGER)")
+    for emitter, targets in all_data["echanges"]["matrix"].items():
+        for target, count in targets.items():
+            c.execute("INSERT INTO echanges VALUES (?, ?, ?)", (emitter, target, count))
+
+    # Friction
+    c.execute("CREATE TABLE friction (de TEXT, pour TEXT, count INTEGER)")
+    for emitter, targets in all_data["friction"]["matrix"].items():
+        for target, count in targets.items():
+            c.execute("INSERT INTO friction VALUES (?, ?, ?)", (emitter, target, count))
+
+    # Markers
+    c.execute("CREATE TABLE marqueurs (persona TEXT, juste INT, contestable INT, simplification INT, angle_mort INT, faux INT)")
+    for p in all_personas:
+        pm = all_data["friction"]["markers"].get(p, {})
+        c.execute("INSERT INTO marqueurs VALUES (?, ?, ?, ?, ?, ?)",
+                  (p, pm.get("juste", 0), pm.get("contestable", 0), pm.get("simplification", 0),
+                   pm.get("angle_mort", 0), pm.get("faux", 0)))
+
+    # Activity
+    c.execute("CREATE TABLE activite (persona TEXT, sessions INTEGER)")
+    for p, count in all_data["activite"]["by_persona"].items():
+        c.execute("INSERT INTO activite VALUES (?, ?)", (p, count))
+
+    # PO friction
+    c.execute("CREATE TABLE friction_po (persona TEXT, juste INT, contestable INT, simplification INT, angle_mort INT, faux INT, total_sessions INT, sessions_with_friction INT, initiative_persona INT, initiative_po INT)")
+    for p, d in all_data["friction_po"]["by_persona"].items():
+        c.execute("INSERT INTO friction_po VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                  (p, d["juste"], d["contestable"], d["simplification"], d["angle_mort"], d["faux"],
+                   d["total_sessions"], d["sessions_with_friction"], d["initiative_persona"], d["initiative_po"]))
+
+    conn.commit()
+    conn.close()
+
+
+def main():
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Audit a SOFIA instance")
+    parser.add_argument("instance", help="Path to the SOFIA instance root")
+    parser.add_argument("--format", choices=["md", "json", "csv", "sqlite"], default="md",
+                        help="Output format (default: md)")
+    args = parser.parse_args()
+
+    instance_path = Path(args.instance).resolve()
 
     # Detect instance
     if not (instance_path / "sofia.md").is_file() and not (instance_path / "voix.md").is_file():
@@ -938,6 +1102,7 @@ def main():
         sys.exit(1)
 
     instance_name = instance_path.name
+    fmt = args.format
 
     # Output directory
     output_dir = instance_path / "shared" / "audits"
@@ -956,8 +1121,6 @@ def main():
         "checks": checks,
         "summary": dict(check_summary),
     }
-    (output_dir / "audit-structure.json").write_text(
-        json.dumps(structure_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     # Phase 2 — Exchanges & friction
     artifacts, scan_warnings = scan_artifacts(instance_path)
@@ -987,8 +1150,6 @@ def main():
                  "skipped": len(scan_warnings)},
         "matrix": exchange_matrix,
     }
-    (output_dir / "audit-echanges.json").write_text(
-        json.dumps(echanges_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     friction_data = {
         "meta": {"instance": instance_name, "date": today,
@@ -996,8 +1157,6 @@ def main():
         "matrix": friction_matrix,
         "markers": marker_totals,
     }
-    (output_dir / "audit-friction.json").write_text(
-        json.dumps(friction_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     # Phase 2b — Orchestrator friction
     po_friction, po_warnings = scan_session_friction(instance_path)
@@ -1011,23 +1170,58 @@ def main():
                  "sessions_scanned": total_sessions, "sessions_with_friction": sessions_with},
         "by_persona": po_friction,
     }
-    (output_dir / "audit-friction-po.json").write_text(
-        json.dumps(po_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    # Activity
+    by_persona_sessions = {p: d["total_sessions"] for p, d in po_friction.items()}
+    activite_data = {
+        "meta": {"instance": instance_name, "date": today, "total_sessions": total_sessions},
+        "by_persona": by_persona_sessions,
+    }
+
+    # Discover real personas for signal filtering
+    real_personas = discover_personas(instance_path)
 
     # Signals
-    signals = generate_signals(exchange_matrix, friction_matrix, marker_totals, po_friction, all_personas)
+    signals = generate_signals(exchange_matrix, friction_matrix, marker_totals, po_friction, all_personas, real_personas)
 
-    # Report
+    # Report (always generated for stdout)
     report = generate_report_md(
         instance_name, checks, artifacts, scan_warnings,
         exchange_matrix, friction_matrix, marker_totals,
         po_friction, all_personas, signals)
 
-    (output_dir / "audit-report.md").write_text(report + "\n", encoding="utf-8")
+    # All data for output writers
+    all_data = {
+        "structure": structure_data,
+        "echanges": echanges_data,
+        "friction": friction_data,
+        "friction_po": po_data,
+        "activite": activite_data,
+    }
 
-    # Stdout summary
+    # Write outputs based on format
+    files_written = []
+
+    if fmt == "md":
+        (output_dir / "audit-report.md").write_text(report + "\n", encoding="utf-8")
+        files_written.append("audit-report.md")
+
+    elif fmt == "json":
+        write_json(output_dir, all_data)
+        files_written.extend(f"audit-{k}.json" for k in all_data)
+
+    if fmt == "csv":
+        write_csv(output_dir, all_data, all_personas)
+        files_written.extend(["audit-echanges.csv", "audit-friction.csv", "audit-marqueurs.csv",
+                              "audit-activite.csv", "audit-structure.csv"])
+
+    if fmt == "sqlite":
+        write_sqlite(output_dir, all_data, all_personas)
+        files_written.append("audit.db")
+
+    # Stdout
     print(report)
-    print(f"✓ {output_dir.relative_to(instance_path)}/ : audit-structure.json, audit-echanges.json, audit-friction.json, audit-friction-po.json, audit-report.md")
+    print(f"✓ {output_dir.relative_to(instance_path)}/ : {', '.join(files_written)}")
 
 
 if __name__ == "__main__":
