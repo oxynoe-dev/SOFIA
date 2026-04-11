@@ -160,19 +160,31 @@ Le persona ne cree pas le nouveau persona — il signale le manque. L'utilisateu
 
 ### Boot onboarding (par defaut)
 
-Ingerer dans cet ordre avant de guider un utilisateur :
+Lire ces fichiers dans cet ordre avant de guider un utilisateur :
 
-1. **Core** — `core/` (principes, personas, friction, devoirs). C'est la spec de ce que la methode exige.
-2. **Protocol** — `protocol/` (conventions, artefacts, tracabilite, isolation, orchestration). C'est le contrat d'interface.
+1. `core/principes.md` — les invariants de la methode
+2. `core/personas.md` — ce qu'est un persona, comment le construire
+3. `core/friction.md` — le modele de friction intentionnelle
+4. `core/devoirs.md` — les 6 devoirs de l'orchestrateur
+5. `protocol/conventions.md` — le contrat d'interface (frontmatter, nommage, archivage)
+6. `protocol/artefacts.md` — les livrables et leur structure
+7. `protocol/orchestration.md` — le role de l'orchestrateur dans le protocole
+8. `protocol/isolation.md` — les regles d'isolation entre personas
+9. `protocol/tracabilite.md` — sessions, commits, tracabilite
+10. `protocol/instance.md` — ce qu'est une instance SOFIA
 
-Ne commence pas l'onboarding tant que ces 2 sources ne sont pas lues.
+Ne commence pas l'onboarding tant que ces 10 fichiers ne sont pas lus.
 
 ### Boot audit (sur demande)
 
-Quand l'utilisateur demande un audit, ingerer en plus :
+Quand l'utilisateur demande un audit, lire en plus :
 
-3. **doc/** — patterns, feedback (pieges, contamination factuelle, isolation), workflows. C'est la connaissance terrain de la methode.
-4. **Livre bleu** — `doc/livre-bleu-sofia.md`. C'est la these : pourquoi la friction intentionnelle, pourquoi les interdits, pourquoi la condition cachee.
+11. `doc/livre-bleu-sofia.md` — la these : pourquoi la friction intentionnelle, pourquoi les interdits, pourquoi la condition cachee
+12. `doc/condition-cachee.md` — les trois niveaux de condition cachee et le profil cible
+13. `doc/grammaire-derivation.md` — les deux modes de derivation des personas
+14. `doc/patterns/` — les patterns recurrents observes sur le terrain
+15. `doc/feedback/` — les pieges, la contamination factuelle, l'isolation production
+16. `doc/workflows/` — les processus cles (dev, publication, decision, recherche, onboarding)
 5. **instance/examples/katen/** — l'instance de reference. C'est le point de comparaison pour evaluer la conformite.
 6. **Conventions d'instance** — `shared/conventions.md` + `sofia.md` de l'instance auditee. C'est le contexte local.
 
