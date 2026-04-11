@@ -23,7 +23,9 @@ instance/
 │   ├── review/                  ← analyses critiques
 │   │   └── archives/            ← reviews traitées
 │   ├── features/                ← specs fonctionnalités
-│   ├── orga/                    ← organisation équipe (personas, lexique)
+│   ├── orga/                    ← organisation équipe
+│   │   ├── personas/            ← fiches persona (agnostiques produit)
+│   │   └── contextes/           ← contexte-{persona}-{produit}.md
 │   └── tools/                   ← scripts partagés
 ├── {workspace}/                 ← un par persona
 │   ├── CLAUDE.md                ← instructions du persona
@@ -152,9 +154,36 @@ Chaque session produit un résumé. Sans exception.
 - `## Produit` — fichiers créés ou modifiés, avec chemin
 - `## Décisions` — ce qui a été tranché
 - `## Notes déposées` — fichiers dans shared/
+- `## Friction orchestrateur` — échanges marquants avec l'orchestrateur (voir ci-dessous)
 - `## Ouvert` — ce qui reste à traiter
 
 Pas de prose. Des listes courtes. 30 lignes max.
+
+### Friction orchestrateur
+
+La section `## Friction orchestrateur` capture la dynamique persona↔orchestrateur
+pendant la session. C'est le seul endroit où cette friction est tracée —
+les notes et reviews capturent l'inter-personas, les sessions capturent
+la relation avec l'arbitre.
+
+Chaque ligne porte un marqueur de friction (ref : `core/friction.md`) :
+
+```markdown
+## Friction orchestrateur
+- ~ Positionnement audit-instance — proposé protocol/tools/, orchestrateur a challengé, convergence retenue
+- ◐ Rétro-annotation — angle mort signalé par l'orchestrateur (marqueurs de friction oubliés)
+- ✓ Phase 1 structurelle — orchestrateur a enrichi la spec, alignement immédiat
+```
+
+**Ce que ça révèle** (via le script d'audit) :
+- Quel persona challenge l'orchestrateur (et vice versa)
+- Quel persona dit toujours oui → signal de domestication
+- Quand l'orchestrateur réoriente une intuition du persona → friction productive
+
+**Règles** :
+- Ne pas forcer — si la session est purement logistique, la section peut être vide ou absente
+- Un item = un sujet, un marqueur. Pas de prose
+- Le marqueur qualifie la **position du persona**, pas celle de l'orchestrateur
 
 ## Commits
 
@@ -236,15 +265,40 @@ méthode il consulte.
 
 ## CLAUDE.md — anatomie
 
-Le `CLAUDE.md` de chaque workspace contient :
+Le `CLAUDE.md` est un **aiguillage runtime**, pas un document de contenu.
+Il pointe vers deux fichiers qui portent la substance :
 
-1. **Persona** — qui, quelle posture
-2. **Périmètre** — quoi, quels livrables
-3. **Accès** — où lire, où écrire, où c'est interdit
-4. **Conventions** — formats, workflow
-5. **Protocole de session** — boot, fermeture
+```markdown
+Lis `persona-mira.md`.
+Lis `contexte-mira-katen.md`.
+```
 
-Voir `runtime/claude-code/claude-md.md` pour le détail.
+### Trois couches
+
+| Fichier | Couche | Contenu | Emplacement |
+|---------|--------|---------|-------------|
+| `CLAUDE.md` | Runtime | Aiguillage — 2 lignes | Racine du workspace ou du repo produit |
+| `persona-{nom}.md` | Core | Rôle, posture, contraintes, friction, protocole de session | `shared/orga/personas/` |
+| `contexte-{persona}-{produit}.md` | Instance | Documents clés, périmètre, commandes spécifiques au persona dans ce repo | `shared/orga/contextes/` |
+
+### Pourquoi cette séparation
+
+- **Le persona est agnostique du produit.** Mira est architecte qu'elle travaille
+  sur Katen, SOFIA ou un autre projet. Son rôle, sa posture, ses contraintes
+  ne changent pas.
+- **Le contexte est spécifique.** Mira dans katen/ lit les ADR et les principes.
+  Axel dans katen/ lit le code et les tests. Le même produit, deux vues.
+- **Le CLAUDE.md est un détail runtime.** C'est le format Claude Code. Un autre
+  provider aura un autre mécanisme d'injection. Le contenu (persona + contexte)
+  reste le même.
+
+### Conséquence
+
+Plus de duplication entre le CLAUDE.md du workspace instance et le CLAUDE.md
+du repo produit. Un seul persona.md, un contexte par couple persona×produit,
+des CLAUDE.md de 2 lignes partout.
+
+Voir `runtime/claude-code/claude-md.md` pour le détail runtime.
 
 ## Publication web
 

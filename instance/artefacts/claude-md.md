@@ -63,6 +63,7 @@ Ce workspace contient :
   - `## Produit` — fichiers créés ou modifiés
   - `## Décisions` — ce qui a été tranché
   - `## Notes déposées` — fichiers dans shared/
+  - `## Friction orchestrateur` — échanges marquants avec l'orchestrateur, qualifiés avec les marqueurs de friction (✓/~/⚡/◐/✗). Voir `core/friction.md`.
   - `## Ouvert` — `Voir backlog.md`
 - **Pas de prose** — listes courtes, 30 lignes max
 
