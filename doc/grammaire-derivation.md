@@ -58,7 +58,7 @@ Ce pré-requis n'est pas vérifiable par un test. C'est une honnêteté avec soi
 
 ## Deux modes de dérivation
 
-L'observation du terrain (instance Katen, 8 personas, 280+ sessions) révèle deux modes distincts. Ils ne s'opposent pas — ils se succèdent.
+L'observation du terrain (instance Katen) révèle deux modes distincts. Ils ne s'opposent pas — ils se succèdent.
 
 ### Mode 1 — Bootstrap par projection
 
@@ -77,6 +77,21 @@ Rodin prescrit "un seul". Le terrain montre qu'un orchestrateur expérimenté pe
 
 **Règle B4** — Le bootstrap n'est pas de l'émergence.
 Les personas bootstrappés n'ont pas été "découverts" — ils ont été projetés. Ils devront être recalibrés par le travail. Le bootstrap est un point de départ, pas un résultat.
+
+#### Exemple — Katen (moteur d'orchestration)
+
+L'orchestrateur arrive avec 18 ans de contexte sur un moteur formel. Le 4 mars 2026, il projette l'équipe dont le produit a besoin :
+
+| Axe | Persona | Produit | Interdit principal | Posture |
+|-----|---------|---------|-------------------|---------|
+| Architecture système | Mira | ADR, specs, contrats d'interface | Ne code pas — spécifie les contrats, le dev implémente | Formelle, fail fast |
+| Développement | Axel | Code, tests, implémentation | Ne prend pas de décision d'architecture — il remonte les frictions | Pragmatique, vélocité |
+| Validation scientifique | Léa | Reviews formelles, vérification sources | Ne simplifie pas pour convaincre — elle vérifie ou elle invalide | Rigoureuse, sceptique |
+| Stratégie marché | Marc | Positionnement, go-to-market, timing | Ne valide pas pour faire plaisir — il dit si l'opportunité existe ou non | Directe, sans détours |
+| Expérience utilisateur | Nora | Critiques UX, parcours utilisateur | Ne code pas, ne décide pas de l'architecture — elle challenge l'expérience | Empathie utilisateur |
+| Identité visuelle | Luz | Design, charte, SVG | Ne définit pas la stratégie — elle donne forme à ce qui est décidé | Artisanale, détail |
+
+Six personas, un soir. L'orchestrateur savait de quoi le produit avait besoin parce qu'il le portait depuis 18 ans. Les interdits sont venus naturellement — chaque "ne fait pas" protège l'axe du voisin.
 
 #### Exercice
 
@@ -110,6 +125,18 @@ Le coût d'orchestration est combinatoire, pas linéaire. Au-delà de 5-6 person
 | Winston | On produit du contenu, personne ne l'écrit | Manque constaté (E1) |
 | Sofia | Léa + Marc convergent : la méthode est originale → la méthode devient un produit → besoin d'un gardien | Découverte (E3) |
 | Pédagogie (signal) | Mira produit 5 livrables pédagogiques sans déclencher son signal — le PO détecte | Dernier kilomètre (E2) |
+
+#### Exercice — après 10 sessions
+
+Tu ne peux pas anticiper l'émergence. Mais tu peux la détecter. Après 10 sessions avec tes personas, réponds à ces questions :
+
+| Question | Si oui |
+|----------|--------|
+| Un persona refuse régulièrement des questions dans le même domaine ? | Signal E1 — un axe non couvert se révèle |
+| Tu contournes un persona pour aller plus vite ? | Son interdit gêne. Soit l'interdit est mauvais (recalibre), soit l'axe a besoin d'un deuxième rôle |
+| Un persona produit des livrables que personne ne challenge ? | Il manque un rôle qui conteste ses sorties |
+| Deux personas t'ont dit la même chose indépendamment ? | Convergence — soit c'est une redondance (fusionne), soit c'est une découverte (creuse) |
+| Tu as produit quelque chose toi-même parce qu'"aucun persona ne le fait" ? | Tu viens de faire le travail d'un persona qui n'existe pas encore |
 
 ---
 
@@ -220,7 +247,7 @@ RECALIBRER
 
 ## Limites
 
-Ce document est construit à partir d'une seule instance (Katen, 8 personas, 280+ sessions). Les deux modes de dérivation sont observés, pas prouvés. La semaine de sessions perdues (06-13/03) couvre potentiellement des moments de calibrage initial non documentés.
+Ce document est construit à partir d'une seule instance (Katen). Les deux modes de dérivation sont observés, pas prouvés. La semaine de sessions perdues (06-13/03) couvre potentiellement des moments de calibrage initial non documentés.
 
 La passe pédagogique transformera ce matériau en parcours d'apprentissage. Ce n'est pas le rôle de ce document.
 
