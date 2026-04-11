@@ -35,18 +35,17 @@ S'inspirer du format `instance/artefacts/persona.md` et des archétypes dans `in
 
 ```
 {instance}/
+├── shared/orga/
+│   ├── personas/persona-{nom}.md       ← fiche persona (rôle, posture, interdits)
+│   └── contextes/contexte-{nom}-{produit}.md  ← contexte workspace (docs, isolation, workflow)
 └── {workspace}/
-    ├── CLAUDE.md      ← s'inspirer de instance/artefacts/claude-md.md
-    ├── backlog.md
+    ├── CLAUDE.md      ← aiguillage runtime (2 lignes → persona + contexte)
     └── sessions/      ← vide, le persona écrira son premier résumé
 ```
 
-Le CLAUDE.md doit contenir :
-- Persona + lien vers la fiche
-- Périmètre + documents clés
-- Isolation (lecture/écriture autorisées)
-- Workflow (ouverture/fermeture de session)
-- Conventions du projet
+Le CLAUDE.md est un aiguillage de 2 lignes (voir `runtime/claude-code/claude-md.md`). Le contenu vit dans deux fichiers :
+- **persona-{nom}.md** — rôle, posture, interdits, collaboration (template : `instance/artefacts/persona.md`)
+- **contexte-{nom}-{produit}.md** — périmètre, documents clés, isolation, workflow (template : `instance/artefacts/contexte-persona-produit.md`)
 
 ### 4. Briefer le persona
 

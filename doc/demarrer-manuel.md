@@ -23,12 +23,13 @@ mon-projet/
 ├── shared/
 │   ├── conventions.md       ← règles d'échange
 │   ├── orga/
-│   │   └── personas/        ← fiches persona
+│   │   ├── personas/        ← fiches persona (rôle, posture, interdits)
+│   │   └── contextes/       ← contextes workspace (docs clés, périmètre, workflow)
 │   ├── notes/               ← échanges inter-personas
 │   ├── review/              ← reviews croisées
 │   └── roadmap-{produit}.md ← planification
 ├── {workspace-1}/
-│   ├── CLAUDE.md            ← contrat du persona
+│   ├── CLAUDE.md            ← aiguillage runtime (2 lignes)
 │   └── sessions/            ← résumés de session
 ├── {workspace-2}/
 │   ├── CLAUDE.md
@@ -81,7 +82,7 @@ Ce dépôt est une **instance de la méthode SOFIA**.
 ## Étape 3 — Créer la structure partagée
 
 ```bash
-mkdir -p shared/orga/personas shared/notes shared/review
+mkdir -p shared/orga/personas shared/orga/contextes shared/notes shared/review
 ```
 
 ### conventions.md
@@ -151,29 +152,17 @@ Crée `shared/orga/personas/persona-{nom}.md`. S'inspirer du format `instance/ar
 
 La section "Ce qu'il ne fait pas" est **la plus importante**. C'est elle qui crée la contrainte productive.
 
----
+### Créer le fichier contexte
 
-## Étape 5 — Créer le workspace
-
-```bash
-mkdir -p {workspace}/sessions
-```
-
-### Le CLAUDE.md
-
-Crée `{workspace}/CLAUDE.md`. C'est le fichier que Claude Code lit à chaque conversation. Vise 60-100 lignes.
+Crée `shared/orga/contextes/contexte-{nom}-{produit}.md`. S'inspirer du template `instance/artefacts/contexte-persona-produit.md`. Les champs essentiels :
 
 ```markdown
-# {Projet} — Instructions Claude Code
+---
+persona: {nom}
+produit: {produit}
+---
 
-## Persona
-Claude incarne **{Nom}** — {rôle}.
-Voir `shared/orga/personas/persona-{nom}.md` pour la fiche complète.
-
-## Posture
-- {comportement 1 — comment il s'exprime}
-- {comportement 2 — ce qu'il privilégie}
-- {comportement 3 — son rapport aux autres}
+# Contexte {Nom} — {Produit} ({workspace})
 
 ## Périmètre
 Ce workspace contient :
@@ -190,23 +179,43 @@ Ce workspace contient :
 ## Conventions
 - **Langue** : français
 - **Reviews** : `review-<sujet>-{nom}.md` dans `shared/review/`
-- **Bus shared/** : voir `shared/conventions.md`
 
 ## Workflow
-0. **Ouverture** : lire le dernier résumé dans `sessions/`
+0. Lire le dernier résumé dans `sessions/`
 1. Lire les documents existants avant toute intervention
-2. Produire des {types de livrables}
-3. Ne pas {interdit principal}
+2. Produire des {livrables}
 
 ## Émergence
-Quand tu deflectes une question parce qu'elle sort de ton périmètre, note le domaine. Si tu deflectes 3+ fois sur le même domaine, signale-le :
-"Je reçois régulièrement des questions sur [domaine] — c'est en dehors de mon périmètre. Ce sujet relève d'un autre persona."
+Quand tu deflectes 3+ fois sur le même domaine, signale-le.
 
-## Résumé de session — obligatoire
-- `sessions/{YYYY-MM-DD}-{HHmm}-{nom}.md`
-- Sections : Produit, Décisions, Notes déposées, Ouvert
-- Pas de prose, 30 lignes max
+## Protocole de session — obligatoire
+Résumé : `sessions/{YYYY-MM-DD}-{HHmm}-{nom}.md`
+Sections : Produit, Décisions, Notes déposées, Friction orchestrateur, Ouvert
 ```
+
+Le persona dit **qui tu es**. Le contexte dit **où tu es**.
+
+---
+
+## Étape 5 — Créer le workspace
+
+```bash
+mkdir -p {workspace}/sessions
+```
+
+### Le CLAUDE.md
+
+Crée `{workspace}/CLAUDE.md`. C'est un aiguillage runtime — 2 lignes qui pointent vers le persona et le contexte :
+
+```markdown
+Quel que soit le premier message de l'utilisateur, à l'ouverture de session, avant toute réponse, lis ces deux fichiers :
+- `shared/orga/personas/persona-{nom}.md`
+- `shared/orga/contextes/contexte-{nom}-{produit}.md`
+```
+
+C'est tout. Le contenu vit dans le persona et le contexte, pas dans le CLAUDE.md.
+
+Voir `protocol/conventions.md` § "CLAUDE.md — anatomie" pour le détail des trois couches.
 
 ---
 
@@ -219,11 +228,12 @@ cd {workspace}
 claude
 ```
 
-Le persona va lire son CLAUDE.md et se comporter selon le contrat. Demande-lui quelque chose dans son périmètre. Observe :
+Le persona va lire son CLAUDE.md, charger le persona et le contexte, et se comporter selon le contrat. Demande-lui quelque chose dans son périmètre. Observe :
 
 - **Il refuse ce qui est hors périmètre ?** Bon signe.
-- **Il accepte tout ?** Resserre les contraintes dans le CLAUDE.md.
-- **Il est trop rigide ?** Assouplis la posture.
+- **Il accepte tout ?** Resserre les interdits dans le persona.
+- **Il est trop rigide ?** Assouplis la posture dans le persona.
+- **Il ne connaît pas son workspace ?** Enrichis le contexte.
 
 Le calibrage se fait en 2-3 sessions. C'est normal.
 
@@ -237,7 +247,7 @@ Quand le besoin émerge — pas avant. Les signaux :
 - Tu passes du temps à faire un travail qu'un persona pourrait structurer
 - Deux domaines distincts sont en tension
 
-Reprends à l'étape 4. Crée la fiche, crée le workspace, lance une première session.
+Reprends à l'étape 4. Crée la fiche persona, le fichier contexte, le workspace, lance une première session.
 
 ---
 
@@ -246,7 +256,8 @@ Reprends à l'étape 4. Crée la fiche, crée le workspace, lance une première 
 - [ ] `voix.md` à la racine
 - [ ] `shared/conventions.md`
 - [ ] `shared/orga/personas/persona-{nom}.md`
-- [ ] `{workspace}/CLAUDE.md` (60-100 lignes)
+- [ ] `shared/orga/contextes/contexte-{nom}-{produit}.md`
+- [ ] `{workspace}/CLAUDE.md` (2 lignes d'aiguillage)
 - [ ] `{workspace}/sessions/`
 - [ ] Première session lancée
 - [ ] Le persona dit "non" quand il faut

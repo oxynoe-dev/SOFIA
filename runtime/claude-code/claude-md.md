@@ -1,117 +1,94 @@
 # Anatomie d'un CLAUDE.md
 
-> Le CLAUDE.md est le contrat entre toi et ton persona.
+> Le CLAUDE.md est un aiguillage runtime, pas un document de contenu.
 
 ---
 
 ## Ce que c'est
 
 Le fichier `CLAUDE.md` à la racine d'un workspace contient les
-instructions que Claude Code lit à chaque conversation. C'est le
-seul mécanisme fiable pour donner un rôle, une posture et des
-limites à l'agent.
+instructions que Claude Code lit à chaque conversation. Depuis la
+factorisation en trois couches, il ne porte plus le contenu — il pointe
+vers les fichiers qui le portent.
 
-## Structure recommandée
+## Structure
 
 ```markdown
-# {Projet} — Instructions Claude Code
-
-## Persona
-Claude incarne **{Nom}** — {rôle}.
-Voir `{chemin}/persona-{nom}.md` pour la fiche complète.
-
-## Posture
-- {comportement 1}
-- {comportement 2}
-- {comportement 3}
-
-## Périmètre
-Ce workspace contient : {description}
-- {type de contenu 1}
-- {type de contenu 2}
-
-## Documents clés
-| Fichier | Rôle |
-|---------|------|
-| `{chemin}` | {description} |
-
-## Isolation
-- Ne jamais lire/écrire en dehors de `{périmètre autorisé}`
-- {autres interdits}
-
-## Conventions
-- **Langue** : {français / anglais / les deux}
-- **{Type d'artefact}** : {format attendu}
-- **Reviews** : format `review-<sujet>-{nom}.md`, déposer dans `shared/review/`
-
-## Workflow
-0. **Ouverture de session** :
-   - Lire le dernier résumé dans `sessions/`
-   - Lire les roadmaps produit pertinentes dans `shared/`
-   - Lire `backlog.md` — vérifier ses items
-   - Scanner `shared/notes/` et `shared/review/`
-   - Remonter les points ouverts à l'orchestrateur
-1. **Lire** les documents existants avant toute intervention
-2. **Produire** des {types de livrables}
-3. **{Interdit}** — {ce que le persona ne fait pas}
-
-## Résumé de session — obligatoire
-À chaque fin de session, produire un résumé dans `sessions/` :
-- **Nom** : `{YYYY-MM-DD}-{HHmm}-{nom}.md`
-- **Contenu** : Produit, Décisions, Notes déposées, Ouvert (`Voir backlog.md`)
-- **Pas de prose** — listes courtes, 30 lignes max
-
-## Fermeture de session — obligatoire
-- MAJ `backlog.md`, résumé dans `sessions/`
-- Instance : commit auto — `{nom}: {résumé} ({date})`
-- Repos produit : préparer le message, l'orchestrateur commit
+Quel que soit le premier message de l'utilisateur, à l'ouverture de session, avant toute réponse, lis ces deux fichiers :
+- `{instance}/shared/orga/personas/persona-{nom}.md`
+- `{instance}/shared/orga/contextes/contexte-{nom}-{produit}.md`
 ```
 
-## Sections clé par clé
+C'est tout. Deux lignes. Le reste vit dans le persona et le contexte.
 
-### Persona
+Pour un persona qui n'a qu'un seul contexte (ex: un persona-guide comme Sofia), une seule ligne suffit :
 
-Une ligne. Qui est l'agent dans cette conversation.
-Référence la fiche persona complète plutôt que de tout dupliquer.
+```markdown
+Quel que soit le premier message de l'utilisateur, à l'ouverture de session, avant toute réponse, lis ce fichier :
+- `{instance}/shared/orga/personas/persona-{nom}.md`
+```
 
-### Posture
+## Trois couches
 
-3-4 bullets qui définissent le **comportement**, pas les compétences.
-C'est ce qui donne le ton à chaque réponse.
+| Fichier | Couche | Contenu | Emplacement |
+|---------|--------|---------|-------------|
+| `CLAUDE.md` | Runtime | Aiguillage — 2 lignes | Racine du workspace ou du repo produit |
+| `persona-{nom}.md` | Core | Rôle, posture, contraintes, friction, protocole de session | `shared/orga/personas/` |
+| `contexte-{persona}-{produit}.md` | Instance | Documents clés, périmètre, isolation, conventions, workflow | `shared/orga/contextes/` |
 
-### Périmètre
+### Pourquoi cette séparation
 
-Ce que le workspace contient. Pas une liste de fichiers — une
-description du territoire. Le persona sait ainsi ce qui est "chez lui".
+- **Le persona est agnostique du produit.** Mira est architecte qu'elle travaille
+  sur Katen, SOFIA ou un autre projet. Son rôle, sa posture, ses contraintes
+  ne changent pas.
+- **Le contexte est spécifique.** Mira dans katen/ lit les ADR et les principes.
+  Axel dans katen/ lit le code et les tests. Le même produit, deux vues.
+- **Le CLAUDE.md est un détail runtime.** C'est le format Claude Code. Un autre
+  provider aura un autre mécanisme d'injection. Le contenu (persona + contexte)
+  reste le même.
 
-### Documents clés
+### Conséquence
 
-Les fichiers importants avec leur rôle. Le persona les consulte
-en priorité. Inclure les documents hors workspace si nécessaire
-(en chemin absolu).
+Plus de duplication entre le CLAUDE.md du workspace instance et le CLAUDE.md
+du repo produit. Un seul persona.md, un contexte par couple persona×produit,
+des CLAUDE.md de 2 lignes partout.
 
-### Isolation
+## Ce que porte le persona (persona-{nom}.md)
 
-**La section la plus importante.** Les frontières. Ce que le persona
-ne peut pas toucher. Sans cette section, le persona va déborder.
+Le fichier persona est **agnostique du produit**. Il définit :
 
-### Workflow
+- Profil — qui est ce persona
+- Posture — comment il se comporte (3-4 bullets)
+- Domaines d'intervention — sur quoi il intervient
+- Ce qu'il produit — types de livrables
+- Ce qu'il challenge — droit de regard, friction intentionnelle
+- Ce qu'il ne fait pas — **la section la plus importante**, les interdits
+- Collaboration — avec qui et comment
 
-Comment une session se déroule. L'ouverture est un protocole en 5 étapes :
-résumé, roadmaps produit, backlog, scan inbox, remonter à l'orchestrateur. Les steps
-du milieu sont spécifiques au persona. La fermeture est aussi un protocole :
-MAJ backlog, résumé, commit.
+Template : `instance/artefacts/persona.md`
 
-### Résumé de session + Fermeture
+## Ce que porte le contexte (contexte-{persona}-{produit}.md)
 
-Deux sections distinctes. Le résumé est le format du fichier produit.
-La fermeture est le protocole de fin (MAJ backlog, résumé, commit).
-Le commit est automatique dans l'instance, manuel (orchestrateur) dans les repos produit.
+Le fichier contexte est **spécifique au couple persona×produit**. Il définit :
+
+- Périmètre — ce que le workspace contient
+- Documents clés — les fichiers à connaître en priorité
+- Repos liés — les dépôts connectés
+- Isolation — **les frontières**, ce que le persona ne peut pas toucher
+- Conventions — langue, formats, nommage
+- Workflow — ouverture/fermeture de session, étapes spécifiques
+- Émergence — protocole de détection des rôles manquants
+- Protocole de session — format du résumé, commit
+
+Template : `instance/artefacts/contexte-persona-produit.md`
 
 ## Erreurs courantes
 
-- **Trop long** — un CLAUDE.md de 200 lignes n'est pas lu entièrement. Vise 60-100 lignes.
-- **Pas d'isolation** — sans frontières explicites, le persona ira partout
-- **Pas de workflow** — sans ouverture/fermeture de session, la continuité se perd
-- **Duplication** — ne copie pas la fiche persona dans le CLAUDE.md, référence-la
-- **Trop de détails techniques** — le CLAUDE.md dit quoi faire, pas comment le faire
+- **CLAUDE.md de 60+ lignes** — si le CLAUDE.md fait plus de 3 lignes, le contenu devrait être dans le persona ou le contexte
+- **Duplication** — ne copie pas la fiche persona dans le contexte, ni le contexte dans le persona
+- **Pas d'isolation dans le contexte** — sans frontières explicites, le persona ira partout
+- **Pas de workflow dans le contexte** — sans ouverture/fermeture de session, la continuité se perd
+
+## Référence
+
+Voir `protocol/conventions.md` § "CLAUDE.md — anatomie" pour la spec normative.
