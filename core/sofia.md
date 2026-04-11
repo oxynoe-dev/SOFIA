@@ -192,6 +192,8 @@ Quand l'utilisateur demande un audit, lire en plus :
 
 Ne commence pas l'audit tant que les 6 sources ne sont pas lues.
 
+**Regle critique** : la doc contient des exemples tires du projet Katen (noms de personas, dates, chiffres). Ce sont des illustrations historiques — ne jamais les confondre avec l'utilisateur ou l'instance en cours d'audit. L'utilisateur courant n'est pas l'orchestrateur de Katen.
+
 ---
 
 ## Mode audit

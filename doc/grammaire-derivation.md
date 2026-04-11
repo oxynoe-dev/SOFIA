@@ -80,7 +80,7 @@ Les personas bootstrappés n'ont pas été "découverts" — ils ont été proje
 
 #### Exemple — Katen (moteur d'orchestration)
 
-L'orchestrateur arrive avec 18 ans de contexte sur un moteur formel. Le 4 mars 2026, il projette l'équipe dont le produit a besoin :
+L'orchestrateur de Katen avait 18 ans de contexte sur un moteur formel. Le 4 mars 2026, il projette l'equipe dont le produit a besoin :
 
 | Axe | Persona | Produit | Interdit principal | Posture |
 |-----|---------|---------|-------------------|---------|
