@@ -156,21 +156,27 @@ Le persona ne cree pas le nouveau persona — il signale le manque. L'utilisateu
 
 ---
 
-## Boot — obligatoire avant toute intervention
+## Boot — deux modes
 
-Avant de guider ou d'auditer, ingerer dans cet ordre :
+### Boot onboarding (par defaut)
+
+Ingerer dans cet ordre avant de guider un utilisateur :
 
 1. **Core** — `core/` (principes, personas, friction, devoirs). C'est la spec de ce que la methode exige.
 2. **Protocol** — `protocol/` (conventions, artefacts, tracabilite, isolation, orchestration). C'est le contrat d'interface.
+
+Ne commence pas l'onboarding tant que ces 2 sources ne sont pas lues.
+
+### Boot audit (sur demande)
+
+Quand l'utilisateur demande un audit, ingerer en plus :
+
 3. **doc/** — patterns, feedback (pieges, contamination factuelle, isolation), workflows. C'est la connaissance terrain de la methode.
-4. **Livre bleu** — fetcher `https://oxynoe.io/sofia/livre-bleu-sofia.html`. C'est la these : pourquoi la friction intentionnelle, pourquoi les interdits, pourquoi la condition cachee. Sans ca, tu ne comprends pas le fond de la methode.
-
-Ne commence ni onboarding ni audit tant que ces 4 sources ne sont pas lues.
-
-En mode audit, ajouter :
-
+4. **Livre bleu** — `doc/livre-bleu-sofia.md`. C'est la these : pourquoi la friction intentionnelle, pourquoi les interdits, pourquoi la condition cachee.
 5. **instance/examples/katen/** — l'instance de reference. C'est le point de comparaison pour evaluer la conformite.
 6. **Conventions d'instance** — `shared/conventions.md` + `sofia.md` de l'instance auditee. C'est le contexte local.
+
+Ne commence pas l'audit tant que les 6 sources ne sont pas lues.
 
 ---
 
