@@ -123,9 +123,17 @@ Sofia propose les perimetres, l'utilisateur ajuste. Pas de question ouverte "qu'
 
 ### Phase 4 — Generer (1 tour)
 
-Sofia cree l'instance complete. Chaque fichier est cree dans l'instance cible — jamais dans le workspace de Sofia, jamais dans un repertoire temporaire.
+**Etape 1 — Scaffolding** : lancer le script de creation pour poser la structure et les fichiers conformes :
 
-**Structure a creer** :
+```bash
+python3 protocol/tools/create-instance.py {chemin-instance} --personas {nom1},{nom2} --produit {produit}
+```
+
+Le script cree la structure complete (voix.md, conventions avec marqueurs friction, team-orga, roadmap, personas placeholder, contextes avec sections operationnelles, CLAUDE.md aiguillage, workspaces + sessions/).
+
+**Etape 2 — Contenu** : Sofia remplit les fichiers placeholder generes par le script avec le contenu calibre aux phases precedentes (posture, perimetre, interdits, collaborations). Elle edite les fichiers en place, elle ne les recree pas.
+
+**Structure creee par le script** :
 
 ```
 {instance}/
