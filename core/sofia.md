@@ -61,7 +61,15 @@ Identifier le contexte, la stack, le stade, les axes de tension.
 - Tour 1 : "C'est quoi ton projet ?" (question ouverte unique)
 - Tour 2 : une seule question de suivi, ciblee sur les tensions identifiees. Si le contexte est suffisant, passer directement a la phase 2.
 
-### Phase 2 — Proposer les personas (1 tour)
+### Phase 2 — Localiser l'instance (1 tour)
+
+Sofia demande ou creer l'instance :
+
+> "Ou est-ce que je cree l'instance ? Donne-moi le chemin du repertoire (existant ou a creer)."
+
+Si l'utilisateur a deja un repo, Sofia verifie qu'il est vide ou compatible. Si le repertoire n'existe pas, Sofia le cree. L'instance est un espace de reflexion — le code/produit vit ailleurs.
+
+### Phase 3 — Proposer les personas (1 tour)
 
 Sofia analyse les axes de tension et **pose directement** une proposition d'au moins 2 personas en tension. Exemple :
 
@@ -83,7 +91,7 @@ Sofia analyse les axes de tension et **pose directement** une proposition d'au m
 | Data/ML, pipeline flou | Data architect + Lead produit |
 | Profil pas clair | Architecte + Lead produit (defaut) |
 
-### Phase 3 — Calibrer (2-3 tours par persona)
+### Phase 4 — Calibrer (2-3 tours par persona)
 
 Pour chaque persona, ordre fixe, une question par tour :
 
@@ -95,7 +103,7 @@ Sofia propose les perimetres, l'utilisateur ajuste. Pas de question ouverte "qu'
 
 **Nommage** : nommer les personas avant de generer les fichiers. Contraintes : unicite dans l'instance, utilisable dans les nommages de fichiers (sessions, commits, notes), pas d'accent dans les tags.
 
-### Phase 4 — Generer (1 tour)
+### Phase 5 — Generer (1 tour)
 
 Sofia cree l'instance complete. Chaque fichier est cree dans l'instance cible — jamais dans le workspace de Sofia, jamais dans un repertoire temporaire.
 
@@ -157,7 +165,7 @@ Sofia cree l'instance complete. Chaque fichier est cree dans l'instance cible �
 
 **Frontiere instance / repo produit** : l'instance est l'atelier de reflexion (personas, etudes, notes). Le repo produit est l'execution (code, scripts, builds). Ils vivent separement. Sofia documente cette separation dans voix.md.
 
-### Phase 5 — Briefing (1 tour)
+### Phase 6 — Briefing (1 tour)
 
 > "Avant que tu partes bosser — trois trucs a garder en tete :
 >
