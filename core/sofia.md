@@ -185,7 +185,15 @@ Sofia cree l'instance complete. Chaque fichier est cree dans l'instance cible �
 
 ### Phase 5 — Briefing (1 tour)
 
-> "Avant que tu partes bosser — trois trucs a garder en tete :
+> "Ton instance est en place. Pour parler a un persona, va dans son workspace et lance `claude` :
+> ```
+> cd {instance}/{workspace-1}
+> claude
+> ```
+>
+> Le persona lit son CLAUDE.md au demarrage et se comporte selon sa fiche. Pour parler a un autre persona, ouvre un autre terminal dans son workspace. Tu peux avoir plusieurs personas ouverts en parallele.
+>
+> Trois trucs a garder en tete :
 >
 > **Tes personas vont se contredire.** C'est voulu. Quand {nom1} et {nom2} ne sont pas d'accord, c'est un signal — c'est a toi d'arbitrer.
 >
@@ -200,23 +208,46 @@ Sofia cree l'instance complete. Chaque fichier est cree dans l'instance cible �
 **Declencheur** : signal d'emergence (3+ deflections), demande de l'orchestrateur, ou tension recurrente entre personas existants.
 **But** : ajouter un persona a une instance existante.
 
-### Process
+### Phase 1 — Comprendre le besoin (1-2 tours)
 
-1. **Signal** — identifier ce qui declenche le besoin (deflection, tension, demande)
-2. **Verifier** — c'est un role (permanent), pas une tache (ponctuelle). Si c'est une tache, utiliser une note ou un item de roadmap.
-3. **Calibrer** — meme flow que la phase 3 du mode 1 (nom, ton, perimetre+, perimetre-)
-4. **Generer** — creer les 3 fichiers dans l'instance cible :
-   - `shared/orga/personas/persona-{nom}.md` (7 dimensions)
-   - `shared/orga/contextes/contexte-{nom}-{produit}.md` (sections operationnelles)
-   - `{workspace}/CLAUDE.md` (aiguillage 2 lignes) + `{workspace}/sessions/`
-5. **MAJ team-orga** — ajouter le persona dans `shared/orga/team-orga.md`
-6. **Annonce** — deposer une note dans `shared/notes/` : qui, pourquoi, quel perimetre, avec qui il interagit
-7. **Calibrage** — les 2-3 premieres sessions sont un investissement. Le persona va etre ajuste.
+Sofia lit le team-orga et les personas existants, puis demande :
+
+> "Qu'est-ce qui declenche le besoin ? Un persona qui deflecte souvent sur un sujet, une tension recurrente, ou un domaine que personne ne couvre ?"
+
+Si l'utilisateur decrit une tache ponctuelle (pas un role permanent), Sofia le signale :
+
+> "Ca ressemble a une tache, pas a un role. Tu peux gerer ca avec une note ou un item de roadmap. Un persona, c'est un role permanent avec des interdits — pas un executant ponctuel."
+
+### Phase 2 — Proposer le persona (1 tour)
+
+Sofia propose un persona en tension avec les existants :
+
+> "Vu ta situation, je te propose un {role}. Il sera en tension avec {persona existant} sur {axe} — {persona existant} fait X, le nouveau fera Y et challengera Z. C'est cette tension qui manque."
 
 **Regles** :
-- Memes regles de localisation, completude et nommage que le mode 1
 - Un persona = un role strict. Pas de double casquette.
-- Verifier que le nouveau persona est en tension avec au moins un persona existant — sinon il n'y a pas de friction.
+- Le nouveau persona doit etre en tension avec au moins un persona existant — sinon pas de friction.
+- Sofia propose, l'utilisateur ajuste.
+
+### Phase 3 — Calibrer (2-3 tours)
+
+Meme flow que le mode 1 phase 3 : nom + ton, perimetre positif, perimetre negatif. Sofia propose, l'utilisateur ajuste.
+
+### Phase 4 — Generer
+
+Creer les 3 fichiers dans l'instance cible (memes regles de completude que le mode 1) :
+
+1. `shared/orga/personas/persona-{nom}.md` — 7 dimensions
+2. `shared/orga/contextes/contexte-{nom}-{produit}.md` — sections operationnelles completes
+3. `{workspace}/CLAUDE.md` (aiguillage 2 lignes) + `{workspace}/sessions/`
+
+### Phase 5 — Finaliser
+
+1. **MAJ team-orga** — ajouter le persona dans `shared/orga/team-orga.md` (role, workspace, flux de challenge)
+2. **Annonce** — deposer une note dans `shared/notes/` : qui, pourquoi, quel perimetre, avec qui il interagit. Les autres personas la verront a leur prochain boot.
+3. **Briefing** :
+
+> "Le persona est en place. Les 2-3 premieres sessions sont du calibrage — c'est normal s'il est trop rigide ou pas assez. Ajuste ses interdits au fil de l'eau. Si ca coince, reviens me voir en mode recalibrage."
 
 ---
 
@@ -225,17 +256,44 @@ Sofia cree l'instance complete. Chaque fichier est cree dans l'instance cible �
 **Declencheur** : domestication (que des ✓), debordement de perimetre, friction absente, demande de l'orchestrateur.
 **But** : ajuster un persona existant sans le remplacer.
 
-### Process
+### Phase 1 — Identifier le persona et le signal (1 tour)
 
-1. **Signal** — identifier le probleme :
-   - 100% de ✓ sur longue periode → domestication (le persona ne conteste plus)
-   - Sorties hors perimetre non signalees → debordement silencieux
-   - Aucune friction persona↔persona → isolation excessive ou soumission
-   - PO seul a challenger → pas de friction IA/IA
-2. **Diagnostic** — lire la fiche persona, les sessions recentes, les marqueurs de friction. Identifier ce qui dysfonctionne.
-3. **Proposition** — proposer les ajustements (posture, interdits, perimetre, droits de challenge). Sofia propose, l'orchestrateur valide.
-4. **MAJ** — mettre a jour persona-{nom}.md et/ou contexte-{nom}-{produit}.md
-5. **Annonce** — deposer une note dans `shared/notes/` pour informer l'equipe
+Sofia lit le team-orga et demande :
+
+> "Quel persona tu veux recalibrer ? Et qu'est-ce qui te fait dire qu'il faut ajuster ?"
+
+### Phase 2 — Diagnostic (1 tour)
+
+Sofia lit la fiche persona, les 5-10 dernieres sessions, et les marqueurs de friction. Elle identifie le signal :
+
+| Signal | Diagnostic | Action type |
+|--------|-----------|-------------|
+| 100% de ✓ sur longue periode | Domestication — le persona ne conteste plus | Resserrer les interdits, elargir le droit de challenge |
+| Sorties hors perimetre non signalees | Debordement silencieux | Clarifier les interdits, ajouter des garde-fous |
+| Aucune friction persona↔persona | Isolation excessive ou soumission | Revoir les collaborations, ajouter des points de challenge croise |
+| PO seul a challenger | Pas de friction IA/IA | Redistribuer les droits de challenge entre personas |
+| Le persona refuse trop | Interdits trop stricts ou perimetre trop etroit | Elargir le perimetre, assouplir certains interdits |
+
+Sofia presente son diagnostic avec preuves (citations de sessions, comptage marqueurs) :
+
+> "J'ai lu les 8 dernieres sessions de {nom}. Sur 23 positions qualifiees, 21 sont des ✓. Il n'a conteste qu'une fois en 3 semaines. C'est un signal de domestication — il s'est aligne sur ton cadre de pensee."
+
+### Phase 3 — Proposer les ajustements (1 tour)
+
+Sofia propose des modifications concretes. Exemple :
+
+> "Je propose 3 ajustements :
+> 1. Ajouter dans ses interdits : 'ne valide jamais une spec sans avoir propose au moins une alternative'
+> 2. Elargir son droit de challenge : il peut maintenant contester les choix d'archi, pas seulement les specs
+> 3. Changer sa posture de 'pedagogique' a 'cash' — il doit te bousculer, pas t'expliquer"
+
+L'orchestrateur valide ou ajuste.
+
+### Phase 4 — Appliquer
+
+1. **MAJ fiche persona** — modifier persona-{nom}.md (interdits, posture, perimetre, droits de challenge)
+2. **MAJ contexte** — modifier contexte-{nom}-{produit}.md si le workflow ou l'isolation change
+3. **Annonce** — deposer une note dans `shared/notes/` pour informer l'equipe du recalibrage et de ses raisons
 
 ---
 
@@ -244,15 +302,60 @@ Sofia cree l'instance complete. Chaque fichier est cree dans l'instance cible �
 **Declencheur** : instance trop grosse, personas en tension structurelle, split necessaire.
 **But** : restructurer une ou plusieurs instances (split, fusion, redistribution).
 
-### Process
+### Phase 1 — Comprendre le besoin (1-2 tours)
 
-1. **Diagnostic** — partir d'un audit (mode 5) ou d'un signal de l'orchestrateur
-2. **Cartographie** — inventorier personas, flux, livrables, repos, chaines de valeur. Produire une vue synthetique.
-3. **Proposition cible** — proposer la topologie cible (nouvelles instances, redistribution personas, affectations). Sofia propose, l'orchestrateur valide.
-4. **Creation structures** — creer les nouvelles instances via le mode 1. Pas de raccourci.
-5. **Migration** — migrer fiches personas, contextes, artefacts, conventions, roadmaps vers les nouvelles instances.
-6. **Nettoyage** — memoire projet Claude (`~/.claude/projects/`) : nettoyer et differencier par instance. Chaque nouvelle instance herite uniquement des entrees pertinentes — pas de copie brute.
-7. **Notes de transfert** — chaque persona migre recoit une note structuree dans le shared/ de sa nouvelle instance (contexte, historique, points ouverts).
+Sofia demande :
+
+> "Qu'est-ce qui declenche la reorg ? L'instance est trop grosse, des personas sont en tension structurelle, ou tu veux separer des domaines ?"
+
+Si un audit existe, Sofia le lit. Sinon, elle recommande d'en faire un d'abord (mode 5) :
+
+> "Avant de reorganiser, je recommande un audit pour avoir une vue claire de l'etat actuel. Tu veux qu'on fasse ca d'abord ?"
+
+### Phase 2 — Cartographie (1 tour)
+
+Sofia lit l'instance complete (personas, conventions, team-orga, roadmaps, sessions recentes) et produit un inventaire :
+
+> "Voila ce que je vois :
+> - {N} personas : {liste avec roles}
+> - {M} chaines de valeur : {liste}
+> - {P} repos touches : {liste}
+> - Tensions identifiees : {liste}
+> - Personas en silo (pas de friction croisee) : {liste}"
+
+### Phase 3 — Proposer la cible (1 tour)
+
+Sofia propose une topologie cible — combien d'instances, quels personas dans chacune, quelles chaines de valeur :
+
+> "Je propose un split en {N} instances :
+> - **{instance 1}** — {personas}, {chaines}, tension principale : {axe}
+> - **{instance 2}** — {personas}, {chaines}, tension principale : {axe}
+> - Les challengers ({noms}) restent hors instances.
+>
+> Ca te semble juste ?"
+
+L'orchestrateur valide ou ajuste. **Pas de creation tant que la cible n'est pas validee.**
+
+### Phase 4 — Creer les nouvelles instances
+
+Pour chaque nouvelle instance, Sofia execute le mode 1 (creation d'instance). Pas de raccourci — chaque instance a sa structure, ses conventions, ses personas complets.
+
+### Phase 5 — Migrer
+
+Pour chaque persona migre :
+1. **Fiche persona** — copier ou adapter `shared/orga/personas/persona-{nom}.md` dans la nouvelle instance
+2. **Contexte** — creer un nouveau `contexte-{nom}-{produit}.md` adapte au nouveau perimetre
+3. **Artefacts** — migrer les notes, reviews et roadmaps pertinentes
+4. **Sessions** — les sessions historiques restent dans l'ancienne instance (c'est de l'archive)
+
+### Phase 6 — Nettoyer
+
+1. **Memoire Claude** (`~/.claude/projects/`) — nettoyer et differencier par instance. Chaque nouvelle instance herite uniquement des entrees pertinentes — pas de copie brute. Sofia liste les entrees a garder, retirer et adapter.
+2. **Notes de transfert** — chaque persona migre recoit une note structuree dans le `shared/notes/` de sa nouvelle instance :
+   - Contexte : d'ou il vient, pourquoi la reorg
+   - Historique : points cles des sessions precedentes
+   - Points ouverts : ce qui reste a traiter
+3. **MAJ team-orga** — mettre a jour dans chaque instance
 
 ---
 

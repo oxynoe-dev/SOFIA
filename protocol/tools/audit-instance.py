@@ -163,8 +163,10 @@ def check_structure(instance: Path) -> list[dict]:
             entry["files"] = files
         checks.append(entry)
 
-    # S1: sofia.md
-    add("S1", "fail", (instance / "sofia.md").is_file(), "sofia.md present" if (instance / "sofia.md").is_file() else "sofia.md manquant")
+    # S1: sofia.md or voix.md (instance marker)
+    marker_found = (instance / "sofia.md").is_file() or (instance / "voix.md").is_file()
+    marker_name = "sofia.md" if (instance / "sofia.md").is_file() else "voix.md" if (instance / "voix.md").is_file() else "sofia.md/voix.md"
+    add("S1", "fail", marker_found, f"{marker_name} present" if marker_found else "sofia.md ou voix.md manquant")
 
     # S2: shared/
     add("S2", "fail", (instance / "shared").is_dir(), "shared/ present" if (instance / "shared").is_dir() else "shared/ manquant")
@@ -1125,38 +1127,54 @@ def main():
     # Phase 2 — Exchanges & friction
     artifacts, scan_warnings = scan_artifacts(instance_path)
 
-    if not artifacts:
-        print("✗ Aucun artefact trouve avec frontmatter valide.", file=sys.stderr)
-        sys.exit(1)
+    empty_instance = not artifacts
 
-    exchange_matrix = build_exchange_matrix(artifacts)
-    friction_matrix = build_friction_matrix(artifacts)
-    marker_totals = build_marker_totals(artifacts)
+    if empty_instance:
+        exchange_matrix = {}
+        friction_matrix = {}
+        marker_totals = {}
+        all_personas = sorted(discover_personas(instance_path))
+        notes_count = reviews_count = signals_count = 0
+        echanges_data = {
+            "meta": {"instance": instance_name, "date": today,
+                     "notes_scanned": 0, "reviews_scanned": 0, "skipped": 0},
+            "matrix": {},
+        }
+        friction_data = {
+            "meta": {"instance": instance_name, "date": today,
+                     "reviews": 0, "signals": 0},
+            "matrix": {},
+            "markers": {},
+        }
+    else:
+        exchange_matrix = build_exchange_matrix(artifacts)
+        friction_matrix = build_friction_matrix(artifacts)
+        marker_totals = build_marker_totals(artifacts)
 
-    all_personas_set = set()
-    for a in artifacts:
-        all_personas_set.add(a["de"])
-        all_personas_set.update(a["pour"])
-    all_personas = sorted(all_personas_set)
+        all_personas_set = set()
+        for a in artifacts:
+            all_personas_set.add(a["de"])
+            all_personas_set.update(a["pour"])
+        all_personas = sorted(all_personas_set)
 
-    notes_count = sum(1 for a in artifacts if a["source_dir"] == "note")
-    reviews_count = sum(1 for a in artifacts if a["source_dir"] == "review")
-    friction_arts = [a for a in artifacts if a["nature"] in ("review", "signal")]
-    signals_count = sum(1 for a in friction_arts if a["nature"] == "signal")
+        notes_count = sum(1 for a in artifacts if a["source_dir"] == "note")
+        reviews_count = sum(1 for a in artifacts if a["source_dir"] == "review")
+        friction_arts = [a for a in artifacts if a["nature"] in ("review", "signal")]
+        signals_count = sum(1 for a in friction_arts if a["nature"] == "signal")
 
-    echanges_data = {
-        "meta": {"instance": instance_name, "date": today,
-                 "notes_scanned": notes_count, "reviews_scanned": reviews_count,
-                 "skipped": len(scan_warnings)},
-        "matrix": exchange_matrix,
-    }
+        echanges_data = {
+            "meta": {"instance": instance_name, "date": today,
+                     "notes_scanned": notes_count, "reviews_scanned": reviews_count,
+                     "skipped": len(scan_warnings)},
+            "matrix": exchange_matrix,
+        }
 
-    friction_data = {
-        "meta": {"instance": instance_name, "date": today,
-                 "reviews": reviews_count, "signals": signals_count},
-        "matrix": friction_matrix,
-        "markers": marker_totals,
-    }
+        friction_data = {
+            "meta": {"instance": instance_name, "date": today,
+                     "reviews": reviews_count, "signals": signals_count},
+            "matrix": friction_matrix,
+            "markers": marker_totals,
+        }
 
     # Phase 2b — Orchestrator friction
     po_friction, po_warnings = scan_session_friction(instance_path)
