@@ -1,6 +1,6 @@
 ## Onboarding Persona
 
-![Workflow — Onboarding persona](../figures/fig-workflow-onboarding.svg)
+![Workflow — Onboarding persona](../../doc/figures/fig-workflow-onboarding.svg)
 
 Workflow d'intégration d'un nouveau persona : du manque constaté à la première session productive.
 

@@ -1,6 +1,6 @@
 ## Décision ADR
 
-![Workflow — Décision ADR](../figures/fig-workflow-decision-adr.svg)
+![Workflow — Décision ADR](../../doc/figures/fig-workflow-decision-adr.svg)
 
 Workflow de décision structurelle : de la tension identifiée à la trace dans l'index.
 

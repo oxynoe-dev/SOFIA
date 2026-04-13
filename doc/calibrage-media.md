@@ -1,6 +1,6 @@
 ## Calibrage média
 
-![Pattern — Calibrage par le média](../figures/fig-pattern-calibrage-media.svg)
+![Pattern — Calibrage par le média](figures/fig-pattern-calibrage-media.svg)
 
 Définir un persona par ce qu'il produit (son média), pas seulement par sa compétence.
 

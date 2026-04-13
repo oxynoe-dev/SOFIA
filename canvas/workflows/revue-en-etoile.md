@@ -1,6 +1,6 @@
 ## Revue en étoile
 
-![Pattern — Revue en étoile](../figures/fig-pattern-revue-etoile.svg)
+![Pattern — Revue en étoile](../../doc/figures/fig-pattern-revue-etoile.svg)
 
 Un artefact est soumis à N personas en parallèle, chacun le review sur son axe. L'orchestrateur consolide.
 

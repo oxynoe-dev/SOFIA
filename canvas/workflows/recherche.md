@@ -1,6 +1,6 @@
 ## Recherche
 
-![Workflow — Recherche](../figures/fig-workflow-recherche.svg)
+![Workflow — Recherche](../../doc/figures/fig-workflow-recherche.svg)
 
 Workflow de recherche : de l'identification des sources à la vérification de leur usage.
 

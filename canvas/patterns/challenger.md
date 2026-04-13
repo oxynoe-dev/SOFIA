@@ -1,6 +1,6 @@
 ## Challenger
 
-![Pattern — Challenger](../figures/fig-pattern-challenger.svg)
+![Pattern — Challenger](../../doc/figures/fig-pattern-challenger.svg)
 
 Un producteur avance, N challengers vérifient chacun sur leur axe.
 

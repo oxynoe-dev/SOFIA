@@ -1,6 +1,6 @@
 ## Escalade par note
 
-![Pattern — Escalade par note](../figures/fig-pattern-escalade-note.svg)
+![Pattern — Escalade par note](../../doc/figures/fig-pattern-escalade-note.svg)
 
 Quand un persona rencontre un problème hors de son périmètre, il dépose une note. L'orchestrateur route.
 

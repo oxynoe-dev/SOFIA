@@ -1,6 +1,6 @@
 ## Publication
 
-![Workflow — Publication](../figures/fig-workflow-publication.svg)
+![Workflow — Publication](../../doc/figures/fig-workflow-publication.svg)
 
 Workflow de publication : de la rédaction à la mise en ligne.
 

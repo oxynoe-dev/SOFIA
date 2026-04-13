@@ -1,6 +1,6 @@
 ## Distillerie
 
-![Pattern — Distillerie](../figures/fig-pattern-distillerie.svg)
+![Pattern — Distillerie](../../doc/figures/fig-pattern-distillerie.svg)
 
 Les observations terrain remontent dans la méthode. Les retours d'expérience deviennent des patterns documentés.
 

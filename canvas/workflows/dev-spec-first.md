@@ -1,6 +1,6 @@
 ## Dev Spec-First
 
-![Workflow — Dev spec-first](../figures/fig-workflow-dev.svg)
+![Workflow — Dev spec-first](../../doc/figures/fig-workflow-dev.svg)
 
 Workflow de développement : ne jamais coder sans cible validée.
 

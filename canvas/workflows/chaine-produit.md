@@ -1,6 +1,6 @@
 ## Chaîne Produit
 
-![Workflow — Chaîne produit](../figures/fig-workflow-chaine-produit.svg)
+![Workflow — Chaîne produit](../../doc/figures/fig-workflow-chaine-produit.svg)
 
 Chaîne complète de production : chaque étape a un gardien, aucun raccourci.
 

@@ -40,20 +40,23 @@ Définis ce que le persona **ne fait pas** avant de définir ce qu'il fait.
 
 ## 5. Les artefacts sont le protocole
 
-Les personas ne "discutent" pas — ils échangent par **artefacts** :
-reviews, notes, specs, ADR. Ces artefacts sont versionnés, traçables,
+Les personas ne "discutent" pas — ils echangent par **artefacts** :
+reviews, notes, specs, ADR. Ces artefacts sont traces, adressables,
 et lisibles par tous.
 
-Un échange par artefact est plus lent qu'un chat. C'est le but.
-La lenteur force la clarté.
+Un echange par artefact est plus lent qu'un chat. C'est le but.
+La lenteur force la clarte. Le format et le systeme de persistance
+sont des choix d'implementation — le principe est l'echange par
+artefact, pas le choix de l'outil.
 
-## 6. Tout est tracé
+## 6. Tout est trace
 
-Chaque session produit un résumé. Chaque décision structurante produit
-un ADR. Chaque intervention inter-personas produit une review.
+Chaque session produit une trace identifiable — un resume structure.
+Chaque decision structurante produit un ADR. Chaque intervention
+inter-personas produit une review.
 
-Si ce n'est pas tracé, ça n'existe pas. La prochaine session n'aura pas
-ton contexte en tête — les résumés sont sa mémoire.
+Si ce n'est pas trace, ca n'existe pas. La prochaine session n'aura pas
+ton contexte en tete — les resumes sont sa memoire.
 
 ## 7. Commence petit, itère
 
