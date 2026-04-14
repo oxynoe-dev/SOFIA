@@ -6,7 +6,7 @@
 - Restructuration sofia/ — instance/archetypes/, instance/artefacts/, instance/examples/katen/ (snapshot complet)
 - Archetype persona meta-challenger ajoute
 - Suppression core/templates/, protocol/templates/, runtime/claude-code/templates/, doc/examples/
-- audit-instance.py — script d'audit d'instance SOFIA (protocol/tools/), 30 checks structurels, matrices echanges/friction, activite sessions/persona, signaux, 4 formats de sortie (md/json/csv/sqlite), 29 tests
+- audit-instance.py — script d'audit d'instance SOFIA (implementation/filesystem/), 30 checks structurels, matrices echanges/friction, activite sessions/persona, signaux, 4 formats de sortie (md/json/csv/sqlite), 29 tests
 - Factorisation CLAUDE.md 3 couches — boot 2 lignes (persona + contexte)
 
 ## v0.3.0 — Intégration Rodin & topologie personas (2026-04-10)

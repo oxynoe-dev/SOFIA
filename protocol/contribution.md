@@ -45,7 +45,7 @@ Chaque ligne de contribution porte : tag de direction, type, description courte.
 
 Le comptage par direction et type est optionnel (PEUT).
 
-> **Exemple** (implementation Markdown, voir `implementation.md`) :
+> **Exemple** (implementation Markdown, voir `implementation/implementation.md`) :
 >
 > ```
 > ## Flux

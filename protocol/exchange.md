@@ -4,6 +4,12 @@
 
 ---
 
+## Principe
+
+Tout echange entre l'orchestrateur et un persona est soit une **session** (synchrone), soit un **artefact** (depot asynchrone). Les personas ne communiquent jamais directement — l'orchestrateur est le routeur unique.
+
+Principe source : `core/principes.md` — l'orchestrateur arbitre toutes les decisions ; `core/modele.md` — l'echange est une entite constitutive.
+
 ## Dimensions communes
 
 Tout echange (session ou artefact) porte :
@@ -22,9 +28,13 @@ Tout echange genere 0..* frictions (voir `friction.md`) et 0..* contributions (v
 
 ## Sessions
 
+### Principe
+
+Une session est le mecanisme principal d'interaction humain-assistant. L'orchestrateur initie, le persona produit, l'orchestrateur cloture.
+
 ### Definition
 
-Une session est un echange synchrone entre l'orchestrateur et un persona. C'est le mecanisme principal d'interaction humain-assistant.
+Une session est un echange synchrone entre l'orchestrateur et un persona.
 
 ### Dimensions specifiques
 
@@ -73,7 +83,7 @@ Le persona pre-remplit ces sections. L'orchestrateur PEUT corriger, completer ou
 
 ### Tracabilite
 
-Chaque session DOIT produire une trace identifiable. Le mecanisme de persistance est defini dans `implementation.md`.
+Chaque session DOIT produire une trace identifiable. Le mecanisme de persistance est defini dans `implementation/implementation.md`.
 
 ---
 
@@ -104,6 +114,8 @@ Un artefact PEUT porter des marqueurs de friction (voir `friction.md`). C'est le
 
 Les marqueurs suivent le meme format que dans les sessions : marqueur, description, tag d'initiative. L'emetteur de l'artefact est l'emetteur de la friction.
 
+### Contribution dans les artefacts
+
 Un artefact PEUT porter des contributions (voir `contribution.md`). C'est le cas typique des reviews et des notes qui impliquent un apport des deux parties : l'orchestrateur apporte la matiere source (`[H]`), le persona apporte l'analyse (`[A]`). La direction `[H]`/`[A]` s'applique comme dans les sessions — l'artefact est produit pendant une session.
 
 ### Routage
@@ -118,4 +130,4 @@ L'orchestrateur DOIT etre le routeur de tous les echanges. Un persona NE DOIT PA
 
 ### Archivage
 
-Quand un artefact passe a `statut: traite`, il DEVRAIT etre archive. Le mecanisme d'archivage est defini dans `implementation.md`.
+Quand un artefact passe a `statut: traite`, il DEVRAIT etre archive. Le mecanisme d'archivage est defini dans `implementation/implementation.md`.

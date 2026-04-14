@@ -43,7 +43,7 @@ instance/
 ├── shared/                      ← espace partage (bus d'echange)
 │   ├── conventions.md           ← conventions specifiques a l'instance
 │   ├── roadmap-{produit}.md     ← roadmaps produit
-│   ├── notes/                   ← messages inter-personas
+│   ├── notes/                   ← artefacts inter-personas
 │   │   └── archives/
 │   ├── review/                  ← analyses critiques
 │   │   └── archives/
@@ -73,7 +73,7 @@ instance/
 
 Tout fichier markdown de l'instance porte un frontmatter YAML. Pas d'accents dans les valeurs.
 
-**Messages** (notes, reviews) :
+**Artefacts** (notes, reviews) :
 ```yaml
 ---
 de: persona-emetteur
@@ -169,36 +169,32 @@ H:2 (matiere 1, decision 1) | A:2 (matiere 1, structure 1)
 
 La dimension `session` est implicite : c'est la session courante.
 
-### Declenchement des echanges
+### Operations — implementation filesystem
 
-Le protocole definit les echanges (sessions et artefacts) — cette section decrit comment l'orchestrateur les declenche concretement.
+Mapping des operations H2A (voir `protocol/h2a.md`) sur l'implementation courante.
 
-#### Sessions
+| Operation | Mode | Geste concret |
+|-----------|------|--------------|
+| ouvrirSession() | manuel | L'orchestrateur lance un terminal dans le workspace du persona (ou reprend une session Claude Code existante) |
+| fermerSession() | manuel | L'orchestrateur donne un signal verbal ("on cloture" / "on ferme"). Le persona produit le resume, prepare le commit. L'orchestrateur execute le commit |
+| deposerArtefact() | manuel | L'orchestrateur instruit le persona : "ecris une note a {destinataire}" / "fais une review de {ref}" / "redige la spec de {sujet}". Le persona depose dans `shared/` |
+| routerArtefact() | manuel | L'orchestrateur lit l'artefact dans `shared/`, ouvre une session avec le destinataire, lui presente l'artefact |
+| marquerLu() | manuel | L'orchestrateur met `statut: lu` dans le frontmatter de l'artefact |
+| marquerTraite() | manuel | L'orchestrateur met `statut: traite` dans le frontmatter — l'artefact est ensuite deplace dans `archives/` |
+| qualifierFriction() | automatique | Le persona pre-remplit la section `## Friction orchestrateur` a la fermeture. L'orchestrateur valide ou corrige |
+| qualifierContribution() | automatique | Le persona pre-remplit la section `## Flux` a la fermeture. L'orchestrateur valide ou corrige |
 
-L'orchestrateur ouvre une session en lancant un terminal dans le workspace du persona (ou en reprenant une session Claude Code existante).
+**Manuel** = l'orchestrateur declenche par un geste explicite.
+**Automatique** = le persona produit a la fermeture de session, l'orchestrateur valide.
 
-**Fermeture** — l'orchestrateur donne un signal verbal :
-- "on cloture" / "on ferme"
-- Le persona produit le resume structure (sections protocolaires + observationnelles)
-- Le persona prepare le commit, l'orchestrateur l'execute
-
-Le persona NE DOIT PAS fermer de lui-meme. C'est l'orchestrateur qui decide quand la session est terminee.
-
-#### Artefacts
-
-L'orchestrateur declenche la production d'un artefact par une instruction directe au persona :
-- **Note** : "ecris une note a {destinataire} sur {sujet}" → le persona depose dans `shared/notes/`
-- **Review** : "fais une review du document {ref} de {persona}" → le persona depose dans `shared/review/`
-- **Feature** : "redige la spec de {sujet}" → le persona depose dans `shared/features/`
-
-Le persona choisit le contenu, l'orchestrateur choisit le declencheur, le destinataire et l'emplacement. Le persona NE DOIT PAS deposer d'artefact sans instruction de l'orchestrateur.
+Le persona NE DOIT PAS fermer de lui-meme ni deposer d'artefact sans instruction de l'orchestrateur.
 
 ### Outillage
 
 | Outil | Role |
 |-------|------|
-| `audit-instance.py` | Verifie la conformite d'une instance au protocole |
-| `create-instance.py` | Scaffolde une nouvelle instance |
+| `implementation/filesystem/audit-instance.py` | Verifie la conformite d'une instance au protocole |
+| `implementation/filesystem/create-instance.py` | Scaffolde une nouvelle instance |
 | `sofia.md` | Persona meta — instancie, audite. Operatrice du protocole |
 
 ---
@@ -234,7 +230,7 @@ H2A pourrait etre implemente comme une API REST :
 
 ### Base de donnees
 
-Les resumes de session, messages et marqueurs de friction pourraient vivre dans une base relationnelle ou documentaire. L'historique git serait remplace par un log d'evenements.
+Les resumes de session, artefacts et marqueurs de friction pourraient vivre dans une base relationnelle ou documentaire. L'historique git serait remplace par un log d'evenements.
 
 ### Interoperabilite MCP / A2A
 

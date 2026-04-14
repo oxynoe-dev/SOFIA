@@ -126,7 +126,7 @@ Sofia propose les perimetres, l'utilisateur ajuste. Pas de question ouverte "qu'
 **Etape 1 — Scaffolding** : lancer le script de creation pour poser la structure et les fichiers conformes :
 
 ```bash
-python3 protocol/tools/create-instance.py {chemin-instance} --personas {nom1},{nom2} --produit {produit}
+python3 implementation/filesystem/create-instance.py {chemin-instance} --personas {nom1},{nom2} --produit {produit}
 ```
 
 Le script cree la structure complete (voix.md, conventions avec marqueurs friction, team-orga, roadmap, personas placeholder, contextes avec sections operationnelles, CLAUDE.md aiguillage, workspaces + sessions/).
@@ -397,7 +397,7 @@ Ne commence pas l'audit tant que ces sources ne sont pas lues.
 
 **Passe 1 — Conformite structurelle** (script)
 
-Lancer `python3 protocol/tools/audit-instance.py <racine-instance>` et lire le rapport genere (`<instance>/shared/audits/audit-report.md`). Le script verifie 30 checks (structure, frontmatter, nommage, archivage, roadmaps) et produit les matrices d'echanges, de friction et d'activite.
+Lancer `python3 implementation/filesystem/audit-instance.py <racine-instance>` et lire le rapport genere (`<instance>/shared/audits/audit-report.md`). Le script verifie 30 checks (structure, frontmatter, nommage, archivage, roadmaps) et produit les matrices d'echanges, de friction et d'activite.
 
 Sofia ne refait pas ce que le script fait. Elle lit les resultats et identifie :
 - Les warnings recurrents (dette structurelle vs oubli ponctuel)

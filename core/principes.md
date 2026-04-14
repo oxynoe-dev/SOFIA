@@ -1,66 +1,43 @@
 # Principes de SOFIA
 
-> Les principes de la méthode, pas ceux de ton projet.
+> Les principes invariants de la methode.
 
 ---
 
 ## 1. La friction est productive
 
-Si tous tes personas sont d'accord, ils ne servent à rien.
-La friction — un architecte qui challenge le dev, un stratège qui
-remet en question la priorité — c'est le mécanisme qui produit
-de meilleures décisions.
+La friction est le mecanisme par lequel des positions divergentes produisent de meilleures decisions. Elle n'est pas un defaut a minimiser — elle est une propriete recherchee du systeme.
 
-La friction sans arbitre est du chaos. L'arbitre, c'est toi.
+L'absence de friction est un signal d'alerte. La friction sans arbitrage est du chaos.
 
-## 2. L'orchestrateur arbitre
+## 2. L'orchestrateur est l'unique arbitre
 
-Les personas proposent, challengent, produisent. L'orchestrateur tranche.
-Toujours. Un persona ne valide jamais ses propres propositions.
-Un persona ne force jamais l'acceptation d'une décision.
-
-C'est la règle non négociable de SOFIA.
+Les personas proposent, contestent, produisent. Seul l'orchestrateur tranche. Un persona ne valide pas ses propres propositions et ne force pas l'acceptation d'une decision.
 
 ## 3. Chaque voix compte
 
-Un persona n'est pas un gadget. C'est un rôle avec une responsabilité,
-un périmètre et des contraintes. Si tu le crées, c'est qu'il répond à un
-besoin réel. Si tu ne l'écoutes plus, supprime-le.
+Un persona est un role avec une responsabilite, un perimetre et des contraintes. Il repond a un besoin identifie. Un persona qui n'est plus ecoute n'a plus de raison d'exister.
 
-## 4. La contrainte force la qualité
+## 4. La contrainte force la qualite
 
-Un persona qui peut tout faire ne sert à rien. C'est la **limitation**
-qui le rend utile :
+C'est la limitation qui produit la friction utile. Un persona se definit par ce qu'il **ne fait pas** avant ce qu'il fait :
 
-- Un architecte qui ne code pas est obligé de spécifier
-- Un dev qui ne décide pas de l'architecture est obligé de questionner
-- Un stratège sans accès au code pense en valeur, pas en implémentation
+- Un architecte qui ne code pas est contraint de specifier clairement
+- Un developpeur qui ne decide pas de l'architecture est contraint de questionner
+- Un stratege sans acces au code est contraint de raisonner en valeur
 
-Définis ce que le persona **ne fait pas** avant de définir ce qu'il fait.
+Un persona sans contrainte ne genere pas de friction.
 
 ## 5. Les artefacts sont le protocole
 
-Les personas ne "discutent" pas — ils echangent par **artefacts** :
-reviews, notes, specs, ADR. Ces artefacts sont traces, adressables,
-et lisibles par tous.
+Les personas n'echangent pas directement. Tout passe par des artefacts traces, adressables et lisibles : reviews, notes, specs.
 
-Un echange par artefact est plus lent qu'un chat. C'est le but.
-La lenteur force la clarte. Le format et le systeme de persistance
-sont des choix d'implementation — le principe est l'echange par
-artefact, pas le choix de l'outil.
+L'echange par artefact est plus lent qu'un echange direct. C'est une propriete, pas un defaut — la lenteur force la clarte. Le format et le systeme de persistance sont des choix d'implementation (voir `implementation/implementation.md`).
 
 ## 6. Tout est trace
 
-Chaque session produit une trace identifiable — un resume structure.
-Chaque decision structurante produit un ADR. Chaque intervention
-inter-personas produit une review.
+Chaque session produit une trace identifiable. Chaque echange inter-personas produit un artefact. Ce qui n'est pas trace n'existe pas pour les sessions suivantes.
 
-Si ce n'est pas trace, ca n'existe pas. La prochaine session n'aura pas
-ton contexte en tete — les resumes sont sa memoire.
+## 7. Commence petit, itere
 
-## 7. Commence petit, itère
-
-Un persona au démarrage. Deux quand le premier est calibré. Trois quand
-le besoin est clair. Cinq, peut-être jamais.
-
-La méthode ne se déploie pas en big bang. Elle grandit avec le projet.
+La methode grandit avec le projet. On demarre avec le minimum necessaire. L'ajout d'un persona repond a un besoin constate, pas anticipe.

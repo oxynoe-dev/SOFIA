@@ -6,7 +6,7 @@
 
 ## Definition
 
-La friction est une position epistemique emise par un participant (persona ou orchestrateur) sur une proposition de l'autre. Elle qualifie la nature d'un desaccord ou d'un accord.
+La friction est une prise de position d'un participant (persona ou orchestrateur) sur une proposition de l'autre. Elle qualifie la nature d'un accord ou d'un desaccord.
 
 La friction est un mecanisme productif, pas un defaut. Voir `core/modele.md` pour le pourquoi.
 
@@ -45,7 +45,7 @@ Chaque ligne de friction DOIT porter :
 2. Une description courte
 3. Un tag d'initiative : `[persona]` ou `[PO]`
 
-> **Exemple** (implementation Markdown, voir `implementation.md`) :
+> **Exemple** (implementation Markdown, voir `implementation/implementation.md`) :
 >
 > ```
 > ## Friction

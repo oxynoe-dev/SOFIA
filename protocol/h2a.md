@@ -14,7 +14,7 @@ H2A formalise la couche de coordination entre un humain (orchestrateur) et des a
 | A2A (Google) | Agent ↔ Agent | Technique — communication |
 | **H2A** | **Humain ↔ Assistant** | **Organisationnel — coordination** |
 
-H2A n'est pas un protocole technique — il definit la semantique des interactions, pas leur implementation. Voir `implementation.md` pour les choix d'implementation courants.
+H2A n'est pas un protocole technique — il definit la semantique des interactions, pas leur implementation. Voir `implementation/implementation.md` pour les choix d'implementation courants.
 
 ## Entites
 
@@ -33,6 +33,21 @@ H2A repose sur 7 entites constitutives. Voir `core/modele.md` pour le detail.
 2. **Humain arbitre** — l'orchestrateur DOIT trancher les divergences entre personas. Aucun persona ne tranche pour un autre.
 3. **Isolation** — un persona NE DOIT PAS interagir en dehors de son espace et de l'espace partage. L'orchestrateur est le seul a traverser les frontieres.
 4. **Tracabilite** — tout echange DOIT produire une trace identifiable.
+
+## Operations
+
+Operations implicites derivees des entites et des dimensions. Leur formalisation explicite (signature, wire format) est prevue quand une implementation temps reel le justifiera.
+
+| Operation | Declencheur | Entites impliquees |
+|-----------|-------------|-------------------|
+| ouvrirSession() | orchestrateur | Echange (session), Persona |
+| fermerSession() | orchestrateur | Echange (session), Friction, Contribution |
+| deposerArtefact() | persona (sur instruction orchestrateur) | Echange (artefact) |
+| routerArtefact() | orchestrateur | Echange (artefact) |
+| marquerLu() | orchestrateur | Echange (artefact) |
+| marquerTraite() | orchestrateur | Echange (artefact) — declenche l'archivage |
+| qualifierFriction() | persona (pre-remplit), orchestrateur (valide) | Friction |
+| qualifierContribution() | persona | Contribution |
 
 ## Distinction protocole / observation
 
@@ -68,7 +83,7 @@ La couche protocolaire definit ce que l'audit peut verifier mecaniquement. La co
 |--------|---------------|
 | Absence de friction sur N sessions consecutives | Friction possiblement absente — domestication ? |
 | Que des `[juste]` | Persona en mode validation |
-| Messages non routes depuis N echanges | Echange bloque |
+| Artefacts non routes depuis N echanges | Echange bloque |
 | Persona sans session depuis N jours | Persona inactif |
 
 Ces signaux ne sont pas des violations du protocole — ce sont des indicateurs a l'attention de l'orchestrateur.
