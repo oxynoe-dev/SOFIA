@@ -33,6 +33,7 @@ Un commit par session.
 ```
 {espace}/sessions/{YYYY-MM-DD}-{HHmm}-{persona}.md
 ```
+A chaque fermeture, le persona cree un **nouveau** fichier. Le `HHmm` est l'heure de la cloture (pas du boot). Une session longue avec plusieurs clotures produit plusieurs fichiers.
 
 ### Structure d'une instance
 
@@ -104,6 +105,94 @@ Quand un artefact passe a `statut: traite`, il est deplace dans `archives/` du r
 | `lu` | Lu par le destinataire |
 | `traite` | Le destinataire a fait ce qu'il fallait avec |
 
+### Friction dans les resumes de session
+
+Section `## Friction orchestrateur` (DEVRAIT — voir `exchange.md` §Sessions, couche observationnelle).
+
+Chaque ligne porte les 5 dimensions definies dans `friction.md`, rendues ainsi :
+
+```
+## Friction orchestrateur
+- [marqueur] description — [initiative]
+```
+
+**Marqueurs** : rendus en mots-cles entre crochets + symbole visuel dans les conventions d'instance.
+
+| Protocole (`friction.md`) | Rendu Markdown |
+|--------------------------|----------------|
+| `[juste]` | ✓ ou `[juste]` |
+| `[contestable]` | ~ ou `[contestable]` |
+| `[simplification]` | ⚡ ou `[simplification]` |
+| `[angle-mort]` | ◐ ou `[angle-mort]` |
+| `[faux]` | ✗ ou `[faux]` |
+
+Les symboles visuels (✓/~/⚡/◐/✗) sont une commodite d'instance. Les mots-cles entre crochets font foi pour l'audit.
+
+**Initiative** : `[persona]` ou `[PO]` — qui a initie le sujet de friction.
+
+**Exemple** :
+```
+## Friction orchestrateur
+- ✓ [juste] le mapping Toulmin eclaire sans contraindre — [PO]
+- ~ [contestable] le mapping Toulmin est suggestif, pas acquis — [PO]
+- ◐ [angle-mort] scaffolding absent de la review Böckeler — [aurele]
+```
+
+Les dimensions `echange` et `emetteur` sont implicites : l'echange est la session courante, l'emetteur est le persona auteur du resume.
+
+### Contribution dans les resumes de session
+
+Section `## Flux` (PEUT — voir `exchange.md` §Sessions, couche observationnelle).
+
+Chaque ligne porte les dimensions definies dans `contribution.md`, rendues ainsi :
+
+```
+## Flux
+- {direction}:{type} — description
+```
+
+**Direction** : `H` (humain apporte) ou `A` (assistant apporte).
+**Type** : `matiere`, `structure`, `contestation`, `decision`.
+
+**Comptage** (optionnel) : une ligne de synthese en fin de section.
+
+**Exemple** :
+```
+## Flux
+- H:matiere — article Böckeler, demande d'avis
+- A:matiere — filiation scaffolding absente chez Böckeler
+- A:structure — trois niveaux de complementarite harness/SOFIA
+- H:decision — on garde la notation mots-cles
+
+H:2 (matiere 1, decision 1) | A:2 (matiere 1, structure 1)
+```
+
+La dimension `session` est implicite : c'est la session courante.
+
+### Declenchement des echanges
+
+Le protocole definit les echanges (sessions et artefacts) — cette section decrit comment l'orchestrateur les declenche concretement.
+
+#### Sessions
+
+L'orchestrateur ouvre une session en lancant un terminal dans le workspace du persona (ou en reprenant une session Claude Code existante).
+
+**Fermeture** — l'orchestrateur donne un signal verbal :
+- "on cloture" / "on ferme"
+- Le persona produit le resume structure (sections protocolaires + observationnelles)
+- Le persona prepare le commit, l'orchestrateur l'execute
+
+Le persona NE DOIT PAS fermer de lui-meme. C'est l'orchestrateur qui decide quand la session est terminee.
+
+#### Artefacts
+
+L'orchestrateur declenche la production d'un artefact par une instruction directe au persona :
+- **Note** : "ecris une note a {destinataire} sur {sujet}" → le persona depose dans `shared/notes/`
+- **Review** : "fais une review du document {ref} de {persona}" → le persona depose dans `shared/review/`
+- **Feature** : "redige la spec de {sujet}" → le persona depose dans `shared/features/`
+
+Le persona choisit le contenu, l'orchestrateur choisit le declencheur, le destinataire et l'emplacement. Le persona NE DOIT PAS deposer d'artefact sans instruction de l'orchestrateur.
+
 ### Outillage
 
 | Outil | Role |
@@ -126,6 +215,10 @@ Quand un artefact passe a `statut: traite`, il est deplace dans `archives/` du r
 | "L'espace partage est un dossier shared/" | | ✓ |
 | "L'instance est identifiable" | ✓ | |
 | "L'instance est identifiee par un fichier sofia.md" | | ✓ |
+| "La friction porte 5 dimensions" | ✓ | |
+| "La friction est une ligne Markdown avec symbole + mot-cle + initiative" | | ✓ |
+| "La contribution porte direction et type" | ✓ | |
+| "La contribution est une ligne `{H\|A}:{type} — description`" | | ✓ |
 
 ---
 

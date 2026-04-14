@@ -16,7 +16,7 @@ Tout echange (session ou artefact) porte :
 
 La distinction session / artefact est structurelle — une session est synchrone, un artefact est un depot asynchrone.
 
-Tout echange genere 0..* frictions (voir `friction.md`). Seules les sessions generent des contributions (voir `contribution.md`).
+Tout echange genere 0..* frictions (voir `friction.md`) et 0..* contributions (voir `contribution.md`).
 
 ---
 
@@ -104,7 +104,7 @@ Un artefact PEUT porter des marqueurs de friction (voir `friction.md`). C'est le
 
 Les marqueurs suivent le meme format que dans les sessions : marqueur, description, tag d'initiative. L'emetteur de l'artefact est l'emetteur de la friction.
 
-Les artefacts ne portent pas de contribution — la direction (qui a amene quoi) est implicite : l'emetteur est connu, la nature de l'artefact qualifie l'apport.
+Un artefact PEUT porter des contributions (voir `contribution.md`). C'est le cas typique des reviews et des notes qui impliquent un apport des deux parties : l'orchestrateur apporte la matiere source (`[H]`), le persona apporte l'analyse (`[A]`). La direction `[H]`/`[A]` s'applique comme dans les sessions — l'artefact est produit pendant une session.
 
 ### Routage
 
