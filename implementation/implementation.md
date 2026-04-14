@@ -105,6 +105,24 @@ Quand un artefact passe a `statut: traite`, il est deplace dans `archives/` du r
 | `lu` | Lu par le destinataire |
 | `traite` | Le destinataire a fait ce qu'il fallait avec |
 
+### Resolution des artefacts
+
+Quand un artefact est traite, chaque point DEVRAIT porter un tag de resolution dans le corps du document (pas dans le frontmatter — un artefact contient souvent plusieurs points).
+
+Convention : le destinataire annote chaque point avec `→ ratifie`, `→ conteste`, `→ revise` ou `→ rejete` avant archivage.
+
+**Exemple** (note avec 3 points) :
+```markdown
+## Point 1 — integration des tags PXP
+→ ratifie
+
+## Point 2 — ajout d'un tag differe
+→ rejete (c'est un item Ouvert, pas un geste)
+
+## Point 3 — forme exacte
+→ revise (fleche inline, pas frontmatter)
+```
+
 ### Friction dans les resumes de session
 
 Section `## Friction orchestrateur` (DEVRAIT — voir `exchange.md` §Sessions, couche observationnelle).
@@ -113,7 +131,7 @@ Chaque ligne porte les 5 dimensions definies dans `friction.md`, rendues ainsi :
 
 ```
 ## Friction orchestrateur
-- [marqueur] description — [initiative]
+- [marqueur] description — [initiative] → resolution
 ```
 
 **Marqueurs** : rendus en mots-cles entre crochets + symbole visuel dans les conventions d'instance.
@@ -130,12 +148,23 @@ Les symboles visuels (✓/~/⚡/◐/✗) sont une commodite d'instance. Les mots
 
 **Initiative** : `[persona]` ou `[PO]` — qui a initie le sujet de friction.
 
+**Resolution** : tag de geste epistemique apres la fleche `→`. Voir `protocol/friction.md` §Resolution.
+
+| Protocole (`friction.md`) | Rendu Markdown |
+|--------------------------|----------------|
+| `ratifie` | `→ ratifie` |
+| `conteste` | `→ conteste` |
+| `revise` | `→ revise` |
+| `rejete` | `→ rejete` |
+
+Le tag de resolution est pose par point de friction, pas par section.
+
 **Exemple** :
 ```
 ## Friction orchestrateur
-- ✓ [juste] le mapping Toulmin eclaire sans contraindre — [PO]
-- ~ [contestable] le mapping Toulmin est suggestif, pas acquis — [PO]
-- ◐ [angle-mort] scaffolding absent de la review Böckeler — [aurele]
+- ✓ [juste] le mapping Toulmin eclaire sans contraindre — [PO] → ratifie
+- ~ [contestable] le mapping Toulmin est suggestif, pas acquis — [PO] → revise
+- ◐ [angle-mort] scaffolding absent de la review Böckeler — [aurele] → ratifie
 ```
 
 Les dimensions `echange` et `emetteur` sont implicites : l'echange est la session courante, l'emetteur est le persona auteur du resume.
@@ -215,6 +244,8 @@ Le persona NE DOIT PAS fermer de lui-meme ni deposer d'artefact sans instruction
 | "La friction est une ligne Markdown avec symbole + mot-cle + initiative" | | ✓ |
 | "La contribution porte direction et type" | ✓ | |
 | "La contribution est une ligne `{H\|A}:{type} — description`" | | ✓ |
+| "La friction porte un tag de resolution" | ✓ | |
+| "Le tag de resolution est rendu `→ ratifie` en fin de ligne Markdown" | | ✓ |
 
 ---
 

@@ -76,7 +76,7 @@ Couche observationnelle — contenu inferentiel, soumis a validation humaine.
 
 | Section | Contenu | Statut |
 |---------|---------|--------|
-| Friction | Frictions qualifiees (voir `friction.md`) | DEVRAIT |
+| Friction | Frictions qualifiees avec tag de resolution (voir `friction.md`) | DEVRAIT |
 | Flux | Apports epistemiques (voir `contribution.md`) | PEUT |
 
 Le persona pre-remplit ces sections. L'orchestrateur PEUT corriger, completer ou supprimer le contenu.
@@ -107,6 +107,10 @@ Un artefact est un depot asynchrone dans l'espace partage par un persona, a dest
 | **statut** | `nouveau` → `lu` → `traite` | DOIT |
 
 Le champ `nature` DOIT utiliser l'un des 4 types ci-dessus. Le champ `statut` DOIT suivre le cycle de vie indique.
+
+### Resolution des artefacts
+
+Quand un artefact passe a `statut: traite`, chaque point traite DEVRAIT porter un tag de resolution (voir `friction.md` §Resolution) : `ratifie`, `conteste`, `revise`, `rejete`. Le tag qualifie comment le destinataire a recu chaque point, pas l'artefact dans son ensemble.
 
 ### Friction dans les artefacts
 
