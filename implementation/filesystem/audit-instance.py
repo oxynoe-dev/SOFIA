@@ -34,6 +34,8 @@ FRICTION_MARKERS = {
     "✗": "faux",
 }
 
+RESOLUTION_TAGS = {"ratifie", "conteste", "revise", "rejete"}
+
 EMITTER_KEYS = {"de", "auteur", "emetteur", "from"}
 RECIPIENT_KEYS = {"pour", "destinataire", "destinataires", "to"}
 NATURE_KEYS = {"nature", "type"}
@@ -175,31 +177,31 @@ def check_structure(instance: Path) -> list[dict]:
     add("S3", "warn", (instance / "shared" / "conventions.md").is_file(),
         "shared/conventions.md present" if (instance / "shared" / "conventions.md").is_file() else "shared/conventions.md manquant")
 
-    # S4: shared/notes/ with archives/
+    # S4: shared/notes/ with archives/ (emerge a l'usage — absent = normal)
     notes_dir = instance / "shared" / "notes"
     notes_ok = notes_dir.is_dir()
     notes_archives = (notes_dir / "archives").is_dir() if notes_ok else False
     if notes_ok and notes_archives:
-        add("S4", "warn", True, "shared/notes/ present avec archives/")
+        add("S4", "info", True, "shared/notes/ present avec archives/")
     elif notes_ok:
-        add("S4", "warn", False, "shared/notes/ present mais archives/ manquant")
+        add("S4", "info", False, "shared/notes/ present mais archives/ manquant")
     else:
-        add("S4", "warn", False, "shared/notes/ manquant")
+        add("S4", "info", True, "shared/notes/ absent (emerge a l'usage)")
 
-    # S5: shared/review/ with archives/
+    # S5: shared/review/ with archives/ (emerge a l'usage — absent = normal)
     review_dir = instance / "shared" / "review"
     review_ok = review_dir.is_dir()
     review_archives = (review_dir / "archives").is_dir() if review_ok else False
     if review_ok and review_archives:
-        add("S5", "warn", True, "shared/review/ present avec archives/")
+        add("S5", "info", True, "shared/review/ present avec archives/")
     elif review_ok:
-        add("S5", "warn", False, "shared/review/ present mais archives/ manquant")
+        add("S5", "info", False, "shared/review/ present mais archives/ manquant")
     else:
-        add("S5", "warn", False, "shared/review/ manquant")
+        add("S5", "info", True, "shared/review/ absent (emerge a l'usage)")
 
-    # S6: shared/features/
-    add("S6", "info", (instance / "shared" / "features").is_dir(),
-        "shared/features/ present" if (instance / "shared" / "features").is_dir() else "shared/features/ manquant")
+    # S6: shared/features/ (emerge a l'usage — absent = normal)
+    add("S6", "info", True,
+        "shared/features/ present" if (instance / "shared" / "features").is_dir() else "shared/features/ absent (emerge a l'usage)")
 
     # S7: shared/orga/
     add("S7", "info", (instance / "shared" / "orga").is_dir(),
@@ -217,10 +219,10 @@ def check_structure(instance: Path) -> list[dict]:
     else:
         add("S9", "warn", True, "tous les workspaces ont sessions/")
 
-    # S10: at least 1 roadmap
+    # S10: roadmaps (emerge a l'usage — absent = normal)
     roadmaps = list((instance / "shared").glob("roadmap-*.md")) if (instance / "shared").is_dir() else []
-    add("S10", "warn", len(roadmaps) > 0,
-        f"{len(roadmaps)} roadmaps dans shared/" if roadmaps else "aucune roadmap dans shared/")
+    add("S10", "info", True,
+        f"{len(roadmaps)} roadmaps dans shared/" if roadmaps else "aucune roadmap dans shared/ (emerge a l'usage)")
 
     # F1-F2: frontmatter presence
     for label, rel_dir, fid in [("notes", "shared/notes", "F1"), ("reviews", "shared/review", "F2")]:
@@ -683,6 +685,13 @@ def scan_session_friction(instance_path: Path) -> tuple[dict[str, dict], list[st
         "angle_mort": 0, "faux": 0,
         "total_sessions": 0, "sessions_with_friction": 0,
         "initiative_persona": 0, "initiative_po": 0,
+        "resolution_ratifie": 0, "resolution_conteste": 0,
+        "resolution_revise": 0, "resolution_rejete": 0,
+        "resolution_missing": 0, "ref_count": 0,
+        "signaler_pattern_count": 0,
+        "signaler_pattern_erreur_llm": 0,
+        "signaler_pattern_conviction": 0,
+        "signaler_pattern_resistance": 0,
     })
     warnings = []
 
@@ -746,8 +755,41 @@ def scan_session_friction(instance_path: Path) -> tuple[dict[str, dict], list[st
                 # [persona_name] or no tag = persona initiative
                 by_persona[persona]["initiative_persona"] += 1
 
+            # Resolution tag (→ ratifie/conteste/revise/rejete)
+            resolution_match = re.search(r"→\s*(\w+)", stripped)
+            if resolution_match:
+                tag = strip_accents(resolution_match.group(1).lower())
+                if tag in RESOLUTION_TAGS:
+                    by_persona[persona][f"resolution_{tag}"] += 1
+            else:
+                by_persona[persona]["resolution_missing"] += 1
+
+            # ref: (mutabilite inter-sessions)
+            if "(ref:" in stripped or "ref:" in stripped:
+                by_persona[persona]["ref_count"] += 1
+
         if has_friction:
             by_persona[persona]["sessions_with_friction"] += 1
+
+        # signalerPattern section
+        in_sp = False
+        for line in lines:
+            if line.strip().startswith("## signalerPattern"):
+                in_sp = True
+                by_persona[persona]["signaler_pattern_count"] += 1
+                continue
+            if in_sp and line.strip().startswith("## "):
+                break
+            if in_sp and line.strip().startswith("- Choix"):
+                choix_match = re.search(r"Choix\s*:\s*(.+)", line.strip())
+                if choix_match:
+                    choix = strip_accents(choix_match.group(1).strip().lower())
+                    if "erreur" in choix or "llm" in choix:
+                        by_persona[persona]["signaler_pattern_erreur_llm"] += 1
+                    elif "conviction" in choix:
+                        by_persona[persona]["signaler_pattern_conviction"] += 1
+                    elif "resistance" in choix:
+                        by_persona[persona]["signaler_pattern_resistance"] += 1
 
     return dict(by_persona), warnings
 
@@ -848,8 +890,10 @@ def format_markers_table(markers: dict[str, dict[str, int]], personas: list[str]
 
 def format_po_friction_table(po_friction: dict) -> str:
     marker_keys = list(FRICTION_MARKERS.values())
+    resolution_cols = ["ratifie", "conteste", "revise", "rejete", "no-res"]
     extra_cols = ["sessions", "w/friction", "init.persona", "init.PO"]
-    all_cols = marker_keys + extra_cols
+    sp_cols = ["sp.count"]
+    all_cols = marker_keys + resolution_cols + extra_cols + sp_cols
     col_width = max(len(c) for c in all_cols) + 2
     personas = sorted(po_friction.keys())
     name_width = max((len(p) for p in personas), default=8) + 2
@@ -861,10 +905,14 @@ def format_po_friction_table(po_friction: dict) -> str:
         row = p.ljust(name_width)
         for k in marker_keys:
             row += str(d.get(k, 0)).rjust(col_width)
+        for tag in ["ratifie", "conteste", "revise", "rejete"]:
+            row += str(d.get(f"resolution_{tag}", 0)).rjust(col_width)
+        row += str(d.get("resolution_missing", 0)).rjust(col_width)
         row += str(d["total_sessions"]).rjust(col_width)
         row += str(d["sessions_with_friction"]).rjust(col_width)
         row += str(d["initiative_persona"]).rjust(col_width)
         row += str(d["initiative_po"]).rjust(col_width)
+        row += str(d.get("signaler_pattern_count", 0)).rjust(col_width)
         lines.append(row)
     return "\n".join(lines)
 
@@ -1077,11 +1125,22 @@ def write_sqlite(output_dir: Path, all_data: dict, all_personas: list[str]):
         c.execute("INSERT INTO activite VALUES (?, ?)", (p, count))
 
     # PO friction
-    c.execute("CREATE TABLE friction_po (persona TEXT, juste INT, contestable INT, simplification INT, angle_mort INT, faux INT, total_sessions INT, sessions_with_friction INT, initiative_persona INT, initiative_po INT)")
+    c.execute("""CREATE TABLE friction_po (
+        persona TEXT, juste INT, contestable INT, simplification INT, angle_mort INT, faux INT,
+        resolution_ratifie INT, resolution_conteste INT, resolution_revise INT, resolution_rejete INT, resolution_missing INT,
+        total_sessions INT, sessions_with_friction INT, initiative_persona INT, initiative_po INT,
+        ref_count INT, signaler_pattern_count INT,
+        signaler_pattern_erreur_llm INT, signaler_pattern_conviction INT, signaler_pattern_resistance INT
+    )""")
     for p, d in all_data["friction_po"]["by_persona"].items():
-        c.execute("INSERT INTO friction_po VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        c.execute("INSERT INTO friction_po VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                   (p, d["juste"], d["contestable"], d["simplification"], d["angle_mort"], d["faux"],
-                   d["total_sessions"], d["sessions_with_friction"], d["initiative_persona"], d["initiative_po"]))
+                   d.get("resolution_ratifie", 0), d.get("resolution_conteste", 0),
+                   d.get("resolution_revise", 0), d.get("resolution_rejete", 0), d.get("resolution_missing", 0),
+                   d["total_sessions"], d["sessions_with_friction"], d["initiative_persona"], d["initiative_po"],
+                   d.get("ref_count", 0), d.get("signaler_pattern_count", 0),
+                   d.get("signaler_pattern_erreur_llm", 0), d.get("signaler_pattern_conviction", 0),
+                   d.get("signaler_pattern_resistance", 0)))
 
     conn.commit()
     conn.close()

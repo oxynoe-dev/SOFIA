@@ -29,6 +29,8 @@ H2A repose sur 7 entites constitutives. Voir `core/modele.md` pour le detail.
 
 ## Invariants
 
+Les invariants sont les proprietes constitutives du protocole — ce sans quoi H2A n'est plus H2A. Ils derivent des principes de la methode (voir `core/principes.md`) mais ne les couvrent pas tous : les principes guident la methode entiere (design des personas, iteration, contrainte comme outil), les invariants ne portent que sur le protocole d'echange. L'invariant 5 est d'une nature differente — il formalise une limitation structurelle, pas une capacite.
+
 1. **Friction constitutive** — la friction n'est pas un defaut a corriger mais un signal structurant. Le protocole DOIT la capturer, la qualifier et la conserver.
 2. **Humain arbitre** — l'orchestrateur DOIT trancher les divergences entre personas. Aucun persona ne tranche pour un autre.
 3. **Isolation** — un persona NE DOIT PAS interagir en dehors de son espace et de l'espace partage. L'orchestrateur est le seul a traverser les frontieres.

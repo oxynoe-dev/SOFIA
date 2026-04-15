@@ -4,8 +4,11 @@
 Usage:
     python create-instance.py <instance-path> [--personas alice,bob] [--produit myproject]
 
-Creates the full directory structure with conventions, markers, and
-placeholder files. Sofia fills in the content (personas, contextes).
+Creates the minimal directory structure with conventions and placeholder files.
+Sofia fills in the content (personas, contextes).
+
+Scaffolding minimal: sofia.md, shared/conventions.md, shared/orga/, workspaces.
+Les sous-repertoires de shared/ (notes/, review/, etc.) emergent a l'usage.
 
 Zero external dependency — Python 3.10+ stdlib only.
 """
@@ -21,7 +24,10 @@ from datetime import date
 # Templates
 # ---------------------------------------------------------------------------
 
-def voix_md(instance_name: str, produit: str, personas: list[str]) -> str:
+CONVENTIONS_TEMPLATE = Path(__file__).parent / "conventions.md"
+
+
+def sofia_md(instance_name: str, produit: str, personas: list[str]) -> str:
     rows = ""
     for p in personas:
         rows += f"| `{p}/` | Workspace | {p.capitalize()} |\n"
@@ -48,72 +54,14 @@ Voir `shared/conventions.md`.
 """
 
 
-def conventions_md(instance_name: str) -> str:
-    return f"""# Conventions — {instance_name}
+def load_conventions(instance_name: str) -> str:
+    """Load conventions from template file, or return minimal fallback."""
+    if CONVENTIONS_TEMPLATE.is_file():
+        return CONVENTIONS_TEMPLATE.read_text(encoding="utf-8")
+    # Fallback minimal si le template n'est pas trouve
+    return f"""# Conventions
 
-## Echanges inter-personas
-
-Les personas ne se parlent pas. Ils echangent par artefacts deposes dans shared/.
-
-### Notes
-- Format : `note-{{destinataire}}-{{sujet}}-{{auteur}}.md`
-- Emplacement : `shared/notes/`
-- Quand traitee : deplacer dans `shared/notes/archives/`
-
-### Reviews
-- Format : `review-{{sujet}}-{{auteur}}.md`
-- Emplacement : `shared/review/`
-- Quand traitee : deplacer dans `shared/review/archives/`
-
-### Features
-- Format : `feature-{{sujet}}.md`
-- Emplacement : `shared/features/`
-
-## Frontmatter universel
-
-Chaque artefact dans shared/ porte un frontmatter :
-
-```yaml
----
-de: {{persona}}
-pour: {{destinataire}}
-nature: signal | question | demande | reponse | review | feature
-statut: nouveau | lu | traite
-date: {{YYYY-MM-DD}}
----
-```
-
-## Commits
-
-`{{persona}}: {{resume court}} ({{date}})`
-
-## Marqueurs de friction
-
-Les personas qualifient leurs positions dans les notes et reviews
-avec ces marqueurs. Usage optionnel, pas mecanique.
-
-| Marqueur | Signification |
-|----------|--------------|
-| **✓ Juste** | Position correcte — arguments additionnels fournis |
-| **~ Contestable** | Position defendable mais pas la seule |
-| **⚡ Simplification** | Le reel est plus complexe que ce qui est presente |
-| **◐ Angle mort** | Quelque chose que l'auteur ne voit pas ou choisit de ne pas voir |
-| **✗ Faux** | Factuellement incorrect ou logiquement incoherent |
-
-### Ce que ca revele
-
-- Que des ✓ → friction absente — signal d'alerte
-- Mix ✓/~/⚡ → friction saine
-- Presence de ◐ ou ✗ → tension a traiter
-
-## Archivage
-
-Les artefacts traites sont deplaces dans `archives/` (sous notes/ ou review/).
-
-## Flux inter-instances
-
-Si applicable : une note destinee a une autre instance est deposee
-dans le `shared/notes/` de l'instance destinataire (pas de l'instance source).
+> Conventions de cette instance. Completer selon les besoins du projet.
 """
 
 
@@ -140,19 +88,6 @@ def team_orga_md(instance_name: str, personas: list[str]) -> str:
 ## RACI
 
 *Optionnel — a completer si pertinent.*
-"""
-
-
-def roadmap_md(produit: str) -> str:
-    today = date.today().isoformat()
-    return f"""# Roadmap {produit}
-
-> Owner : @orchestrateur
-
-## v0.1 — A definir
-<!-- produit: {produit} | cible: | cloture: | statut: todo -->
-
-- [todo] Premier item @orchestrateur
 """
 
 
@@ -252,8 +187,6 @@ Ce workspace contient :
 - **Langue** : francais
 - **Bus shared/** : voir `shared/conventions.md`
 - **Roadmaps** : chaque item porte un `@owner`
-- **Reviews** : format `review-<sujet>-{name}.md`, deposer dans `shared/review/`
-- **Notes** : format `note-<destinataire>-<sujet>-{name}.md`, deposer dans `shared/notes/`
 
 ## Workflow
 
@@ -299,30 +232,24 @@ def create_instance(instance_path: Path, personas: list[str], produit: str) -> l
     # Root
     instance_path.mkdir(parents=True, exist_ok=True)
 
-    # voix.md
-    f = instance_path / "voix.md"
-    f.write_text(voix_md(instance_name, produit, personas), encoding="utf-8")
-    created.append("voix.md")
+    # sofia.md
+    f = instance_path / "sofia.md"
+    f.write_text(sofia_md(instance_name, produit, personas), encoding="utf-8")
+    created.append("sofia.md")
 
-    # shared/
-    for d in ["shared/notes/archives", "shared/review/archives", "shared/features",
-              "shared/orga/personas", "shared/orga/contextes"]:
+    # shared/ — scaffolding minimal (pas de notes/, review/, features/)
+    for d in ["shared/orga/personas", "shared/orga/contextes"]:
         (instance_path / d).mkdir(parents=True, exist_ok=True)
 
-    # conventions.md
+    # conventions.md — depuis le template
     f = instance_path / "shared" / "conventions.md"
-    f.write_text(conventions_md(instance_name), encoding="utf-8")
+    f.write_text(load_conventions(instance_name), encoding="utf-8")
     created.append("shared/conventions.md")
 
     # team-orga.md
     f = instance_path / "shared" / "orga" / "team-orga.md"
     f.write_text(team_orga_md(instance_name, personas), encoding="utf-8")
     created.append("shared/orga/team-orga.md")
-
-    # roadmap
-    f = instance_path / "shared" / f"roadmap-{produit.lower().replace(' ', '-')}.md"
-    f.write_text(roadmap_md(produit), encoding="utf-8")
-    created.append(f"shared/roadmap-{produit.lower().replace(' ', '-')}.md")
 
     # Per persona
     for name in personas:
@@ -373,8 +300,8 @@ def main():
         sys.exit(1)
 
     if instance_path.exists() and any(instance_path.iterdir()):
-        if (instance_path / "voix.md").is_file():
-            print(f"✗ Instance deja existante : {instance_path}/voix.md", file=sys.stderr)
+        if (instance_path / "sofia.md").is_file():
+            print(f"✗ Instance deja existante : {instance_path}/sofia.md", file=sys.stderr)
             sys.exit(1)
 
     print(f"Creation instance SOFIA : {instance_path}")
