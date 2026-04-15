@@ -1,4 +1,5 @@
 ---
+implementation: filesystem
 de: {auteur}
 pour: {destinataire}
 type: signal           # signal | question | demande | reponse

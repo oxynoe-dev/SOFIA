@@ -37,43 +37,29 @@ A chaque fermeture, le persona cree un **nouveau** fichier. Le `HHmm` est l'heur
 
 ### Structure d'une instance
 
+Le scaffolding est **minimal** — seuls les elements necessaires au protocole sont crees a l'initialisation. L'organisation interne de `shared/` (sous-repertoires, conventions de nommage des artefacts, archivage) releve des conventions d'instance, pas de l'implementation standard.
+
 ```
-instance/
+instance/                        ← scaffolding (create-instance)
 ├── sofia.md                     ← marqueur d'instance
 ├── shared/                      ← espace partage (bus d'echange)
 │   ├── conventions.md           ← conventions specifiques a l'instance
-│   ├── roadmap-{produit}.md     ← roadmaps produit
-│   ├── notes/                   ← artefacts inter-personas
-│   │   └── archives/
-│   ├── review/                  ← analyses critiques
-│   │   └── archives/
-│   ├── features/                ← specs fonctionnalites
 │   └── orga/                    ← organisation equipe
 │       ├── personas/            ← fiches persona
 │       └── contextes/           ← contextes par persona-produit
 ├── {espace}/                    ← un par persona
 │   ├── CLAUDE.md                ← instructions du persona (runtime)
-│   ├── sessions/                ← resumes de session
-│   └── doc/                     ← production du persona
+│   └── sessions/                ← resumes de session
 └── ...
 ```
 
-### Nommage des artefacts
-
-| Type | Convention | Emplacement |
-|------|-----------|-------------|
-| Note | `note-{destinataire}-{sujet}-{emetteur}.md` | `shared/notes/` |
-| Review | `review-{sujet}-{emetteur}.md` | `shared/review/` |
-| Feature | `feature-{sujet}.md` | `shared/features/` |
-| Resume de session | `{YYYY-MM-DD}-{HHmm}-{persona}.md` | `{espace}/sessions/` |
-| ADR | `adr-{NNN}.md` | Selon le projet |
-| Roadmap | `roadmap-{produit}.md` | `shared/` |
+Le protocole impose `shared/` comme canal unique et les artefacts avec frontmatter. Comment l'instance organise ses artefacts dans `shared/` (sous-repertoires, nommage, archivage) est une decision locale documentee dans `conventions.md`.
 
 ### Frontmatter
 
-Tout fichier markdown de l'instance porte un frontmatter YAML. Pas d'accents dans les valeurs.
+Tout artefact depose dans l'espace partage porte un frontmatter YAML. Pas d'accents dans les valeurs.
 
-**Artefacts** (notes, reviews) :
+**Artefacts** :
 ```yaml
 ---
 de: persona-emetteur
@@ -111,16 +97,16 @@ Quand un artefact est traite, chaque point DEVRAIT porter un tag de resolution d
 
 Convention : le destinataire annote chaque point avec `→ ratifie`, `→ conteste`, `→ revise` ou `→ rejete` avant archivage.
 
-**Exemple** (note avec 3 points) :
+**Exemple** :
 ```markdown
-## Point 1 — integration des tags PXP
+## Proposition A
 → ratifie
 
-## Point 2 — ajout d'un tag differe
-→ rejete (c'est un item Ouvert, pas un geste)
+## Proposition B
+→ rejete (justification courte)
 
-## Point 3 — forme exacte
-→ revise (fleche inline, pas frontmatter)
+## Proposition C
+→ revise (precision sur ce qui change)
 ```
 
 ### Friction dans les resumes de session
@@ -167,7 +153,30 @@ Le tag de resolution est pose par point de friction, pas par section.
 - ◐ [angle-mort] scaffolding absent de la review Böckeler — [aurele] → ratifie
 ```
 
+Quand une friction revise une resolution d'une session anterieure, elle DEVRAIT porter un champ `ref:` :
+
+```
+- ✓ [juste] la distinction protocolaire/observationnelle couvre le cas — [aurele] → ratifie (ref: 2026-04-10-1430-aurele/3)
+```
+
+Le format du champ `ref:` est `{id-session}/{numero-friction}` ou `{id-session}` est le nom du fichier de resume (sans extension).
+
 Les dimensions `echange` et `emetteur` sont implicites : l'echange est la session courante, l'emetteur est le persona auteur du resume.
+
+### signalerPattern dans les resumes de session
+
+Section `## signalerPattern` (PEUT — couche observationnelle pour le constat, protocolaire pour le compteur).
+
+Le persona consigne le declenchement et le choix de l'orchestrateur :
+
+```
+## signalerPattern
+- Theme : [theme] — N frictions rejetees (sessions YYYY-MM-DD, ...)
+- Choix : erreur LLM | conviction | resistance
+- Justification : ...
+```
+
+L'audit compte les declenchements et la distribution des choix (compteur protocolaire).
 
 ### Contribution dans les resumes de session
 
@@ -212,6 +221,7 @@ Mapping des operations H2A (voir `protocol/h2a.md`) sur l'implementation courant
 | marquerTraite() | manuel | L'orchestrateur met `statut: traite` dans le frontmatter — l'artefact est ensuite deplace dans `archives/` |
 | qualifierFriction() | automatique | Le persona pre-remplit la section `## Friction orchestrateur` a la fermeture. L'orchestrateur valide ou corrige |
 | qualifierContribution() | automatique | Le persona pre-remplit la section `## Flux` a la fermeture. L'orchestrateur valide ou corrige |
+| signalerPattern() | automatique | Le persona detecte une convergence thematique de rejets en cours de session. Il interpelle l'orchestrateur avec le constat + 3 hypotheses argumentees. L'orchestrateur repond avec son choix + justification. A la fermeture, le persona consigne dans une section `## signalerPattern` du resume |
 
 **Manuel** = l'orchestrateur declenche par un geste explicite.
 **Automatique** = le persona produit a la fermeture de session, l'orchestrateur valide.
@@ -246,6 +256,11 @@ Le persona NE DOIT PAS fermer de lui-meme ni deposer d'artefact sans instruction
 | "La contribution est une ligne `{H\|A}:{type} — description`" | | ✓ |
 | "La friction porte un tag de resolution" | ✓ | |
 | "Le tag de resolution est rendu `→ ratifie` en fin de ligne Markdown" | | ✓ |
+| "Une resolution peut evoluer entre sessions avec ref:" | ✓ | |
+| "Le ref: est rendu `(ref: id-session/n)` en fin de ligne Markdown" | | ✓ |
+| "signalerPattern() produit un constat + 3 hypotheses + qualification" | ✓ | |
+| "signalerPattern est une section `## signalerPattern` dans le resume" | | ✓ |
+| "Le compteur de choix signalerPattern est auditable" | ✓ | |
 
 ---
 

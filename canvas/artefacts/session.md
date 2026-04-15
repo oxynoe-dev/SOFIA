@@ -1,3 +1,7 @@
+---
+implementation: filesystem
+---
+
 # Session {YYYY-MM-DD} ~{HH}h{mm} — {Persona}
 
 ## Produit
