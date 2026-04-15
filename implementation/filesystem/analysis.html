@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#041c24">
+<title>H2A Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+/* ── Tokens Oxynoe ── */
+:root {
+  --void: #041c24;
+  --deep: #062830;
+  --surface: #083848;
+  --raised: #0a4858;
+  --ice: #f0f8f5;
+  --ice-dim: #c0e8e0;
+  --ice-muted: #a0d0c8;
+  --ice-ghost: rgba(160,208,200,0.12);
+  --ready: #40d8c0;
+  --ready-dim: rgba(64,216,192,0.15);
+  --violet: #a78bfa;
+  --done: #3ddc84;
+  --coral: #e05050;
+  --amber: #d4a030;
+  --border: rgba(64,180,160,0.12);
+  --border-hi: rgba(64,180,160,0.28);
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: Inter, -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: radial-gradient(ellipse 80% 70% at 50% 50%, #0a4858 0%, #083848 40%, #062830 70%, #041c24 100%);
+  background-attachment: fixed;
+  color: var(--ice-dim);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ── Grid ── */
+.grid-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,200,220,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,200,220,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 100%);
+}
+
+/* ── Nav ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 52px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+  background: rgba(4,28,36,.97); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+nav .brand { font-family: var(--font-display); font-weight: 300; color: var(--violet); font-size: 18px; display: flex; align-items: center; gap: .5rem; }
+nav .brand .logo { flex-shrink: 0; }
+nav .brand span { color: var(--ice-muted); font-size: 13px; font-family: var(--font-mono); margin-left: .25rem; letter-spacing: .08em; }
+nav .meta { font-family: var(--font-mono); font-size: 10px; color: var(--ice-muted); letter-spacing: .1em; text-transform: uppercase; }
+
+/* ── Layout ── */
+main {
+  position: relative; z-index: 1;
+  max-width: 1200px; margin: 0 auto;
+  padding: 76px 2rem 80px;
+}
+
+.hero {
+  text-align: center; padding: 3rem 0 2rem;
+}
+.hero h1 {
+  font-family: var(--font-display); font-weight: 300; font-size: clamp(28px, 5vw, 42px);
+  color: var(--ice); margin-bottom: .5rem;
+}
+.hero .subtitle {
+  font-family: var(--font-mono); font-size: 11px; color: var(--ice-muted);
+  letter-spacing: .12em; text-transform: uppercase;
+}
+
+/* ── Filters ── */
+.filters {
+  display: flex; gap: 1rem; align-items: center; justify-content: center;
+  margin: 2rem 0 2.5rem; flex-wrap: wrap;
+}
+.filters label {
+  font-family: var(--font-mono); font-size: 10px; color: var(--ice-muted);
+  letter-spacing: .1em; text-transform: uppercase;
+}
+.filters select {
+  background: var(--deep); color: var(--ice-dim); border: 1px solid var(--border);
+  padding: 6px 12px; border-radius: 3px; font-family: var(--font-mono); font-size: 12px;
+  cursor: pointer; transition: border-color .15s ease;
+}
+.filters select:hover { border-color: var(--border-hi); }
+.filters select:focus { outline: none; border-color: var(--ready); }
+
+/* ── Scores ── */
+.scores {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem; margin-bottom: 2.5rem;
+}
+.score-card {
+  background: var(--deep); border: 1px solid var(--border); border-radius: 4px;
+  padding: 1.25rem 1rem; text-align: center;
+  transition: border-color .15s ease;
+}
+.score-card:hover { border-color: var(--border-hi); }
+.score-card .value {
+  font-family: var(--font-display); font-size: 32px; font-weight: 300;
+  line-height: 1.2;
+}
+.score-card .label {
+  font-family: var(--font-mono); font-size: 9px; color: var(--ice-muted);
+  letter-spacing: .12em; text-transform: uppercase; margin-top: .25rem;
+}
+.score-card.accent .value { color: var(--ready); }
+.score-card.violet .value { color: var(--violet); }
+.score-card.amber .value { color: var(--amber); }
+.score-card.coral .value { color: var(--coral); }
+.score-card.done .value { color: var(--done); }
+
+/* ── Charts ── */
+.charts {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+@media (max-width: 800px) { .charts { grid-template-columns: 1fr; } }
+
+.chart-card {
+  background: var(--deep); border: 1px solid var(--border); border-radius: 4px;
+  padding: 1.5rem;
+}
+.chart-card.full { grid-column: 1 / -1; }
+.chart-card h2 {
+  font-family: var(--font-mono); font-size: 10px; color: var(--ice-muted);
+  letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1rem;
+}
+.chart-card h2::before {
+  content: ''; display: inline-block; width: 12px; height: 1px;
+  background: var(--ready); margin-right: 8px; vertical-align: middle;
+}
+.chart-wrap { position: relative; height: 280px; }
+.chart-card.tall .chart-wrap { height: 360px; }
+
+/* ── Table ── */
+.table-card {
+  background: var(--deep); border: 1px solid var(--border); border-radius: 4px;
+  padding: 1.5rem; margin-bottom: 2.5rem; overflow-x: auto;
+}
+.table-card h2 {
+  font-family: var(--font-mono); font-size: 10px; color: var(--ice-muted);
+  letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1rem;
+}
+.table-card h2::before {
+  content: ''; display: inline-block; width: 12px; height: 1px;
+  background: var(--ready); margin-right: 8px; vertical-align: middle;
+}
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th {
+  font-family: var(--font-mono); font-size: 10px; color: var(--ice-muted);
+  letter-spacing: .08em; text-transform: uppercase; text-align: left;
+  padding: 8px 12px; border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 8px 12px; border-bottom: 1px solid var(--ice-ghost);
+  font-family: var(--font-mono); font-size: 12px;
+}
+td.name { font-family: var(--font-sans); color: var(--ice); font-weight: 500; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr:hover td { background: rgba(64,216,192,0.03); }
+
+/* ── Footer ── */
+footer {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  height: 36px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+  background: rgba(4,28,36,.97); backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono); font-size: 9px; color: var(--ice-muted);
+  letter-spacing: .08em;
+}
+
+/* ── Animations ── */
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise .4s ease both; }
+.rise-1 { animation-delay: .1s; }
+.rise-2 { animation-delay: .2s; }
+.rise-3 { animation-delay: .3s; }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="brand"><svg class="logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64" fill="none"><defs><filter id="rg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="ng" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="32" cy="32" r="17" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="2" filter="url(#rg)"/><circle cx="32" cy="32" r="17" fill="none" stroke="rgba(167,139,250,0.55)" stroke-width="0.6"/><circle cx="32" cy="32" r="12" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="0.3"/><polygon points="32,20 41.4,24.5 43.7,34.2 37.2,42.8 26.8,42.8 20.3,34.2 22.6,24.5" fill="none" stroke="rgba(167,139,250,0.3)" stroke-width="0.4" stroke-linejoin="round"/><circle cx="32" cy="20" r="1.4" fill="#a78bfa" opacity="0.7" filter="url(#ng)"/><circle cx="41.4" cy="24.5" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="43.7" cy="34.2" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="37.2" cy="42.8" r="1.4" fill="#a78bfa" opacity="0.6" filter="url(#ng)"/><circle cx="26.8" cy="42.8" r="1.4" fill="#a78bfa" opacity="0.6" filter="url(#ng)"/><circle cx="20.3" cy="34.2" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="22.6" cy="24.5" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="28" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/><circle cx="32" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/><circle cx="36" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/></svg> H2A <span>analysis</span></div>
+  <div class="meta">instance : methodes &middot; 2026-04-16</div>
+</nav>
+
+<main>
+  <div class="hero rise">
+    <h1>H2A Analysis</h1>
+    <div class="subtitle">Friction &middot; Resolutions &middot; Apports</div>
+  </div>
+
+  <div class="filters rise rise-1">
+    <label>Instance</label>
+    <select id="sel-instance"></select>
+    <label>Persona</label>
+    <select id="sel-persona"></select>
+    <label>Periode</label>
+    <select id="sel-period">
+      <option value="7">7 derniers jours</option>
+      <option value="30" selected>30 derniers jours</option>
+      <option value="all">Tout</option>
+    </select>
+    <label>Granularite</label>
+    <select id="sel-granularity">
+      <option value="week" selected>Semaine</option>
+      <option value="day">Jour</option>
+    </select>
+  </div>
+
+  <!-- Scores -->
+  <div class="scores rise rise-2" id="scores"></div>
+
+  <!-- Grand graphique + direction -->
+  <div class="charts rise rise-3">
+    <div class="chart-card full tall">
+      <h2>Friction par marqueur — evolution</h2>
+      <div class="chart-wrap"><canvas id="chart-friction-time"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h2>Direction — qui conteste qui</h2>
+      <div class="chart-wrap"><canvas id="chart-direction"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h2>Direction — evolution</h2>
+      <div class="chart-wrap"><canvas id="chart-direction-time"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Charts detail -->
+  <div class="charts rise rise-3">
+    <div class="chart-card">
+      <h2>Marqueurs par persona</h2>
+      <div class="chart-wrap"><canvas id="chart-markers-persona"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h2>Resolutions par persona</h2>
+      <div class="chart-wrap"><canvas id="chart-resolutions"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h2>Flux epistemique — H vs A</h2>
+      <div class="chart-wrap"><canvas id="chart-flux"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h2>Frictions par session — evolution</h2>
+      <div class="chart-wrap"><canvas id="chart-ratio"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Table direction -->
+  <div class="table-card rise rise-3">
+    <h2>Matrice directionnelle — friction calculee</h2>
+    <p style="font-size:11px; color:var(--ice-muted); margin-bottom:1rem; font-family:var(--font-sans);">
+      Direction deduite de initiative + marqueur. Corroboration = juste. Contestation = contestable, simplification, angle-mort, faux.
+    </p>
+    <table><thead><tr>
+      <th>Persona</th>
+      <th style="color:var(--ready)">A corrobore H</th>
+      <th style="color:var(--coral)">A conteste H</th>
+      <th style="color:var(--ready)">H corrobore A</th>
+      <th style="color:var(--amber)">H conteste A</th>
+      <th>Ratio A→H / H→A</th>
+    </tr></thead><tbody id="table-direction"></tbody></table>
+    <p style="font-size:10px; color:var(--ice-muted); margin-top:.75rem; font-family:var(--font-mono); letter-spacing:.05em;">
+      Ratio > 2 = le persona conteste plus qu'il n'est conteste — friction saine. Ratio ~ 1 = equilibre. Ratio &lt; 0.5 = domestication potentielle.
+    </p>
+  </div>
+
+  <!-- Table detail -->
+  <div class="table-card rise rise-3">
+    <h2>Detail par persona</h2>
+    <table><thead><tr>
+      <th>Persona</th><th>Sessions</th>
+      <th style="color:var(--done)">Juste</th><th style="color:var(--ice-muted)">Contest.</th>
+      <th style="color:var(--amber)">Simplif.</th><th style="color:var(--coral)">Angle-m.</th><th style="color:var(--coral)">Faux</th>
+      <th style="color:var(--done)">Ratifie</th><th style="color:var(--amber)">Conteste</th>
+      <th style="color:var(--violet)">Revise</th><th style="color:var(--coral)">Rejete</th>
+      <th>H:A</th><th>SP</th>
+    </tr></thead><tbody id="table-detail"></tbody></table>
+  </div>
+
+  <!-- signalerPattern -->
+  <div class="table-card rise rise-3">
+    <h2>signalerPattern — compteur</h2>
+    <table><thead><tr>
+      <th>Persona</th><th>Declenchements</th>
+      <th style="color:var(--ice-muted)">Erreur LLM</th><th style="color:var(--done)">Conviction</th><th style="color:var(--coral)">Resistance</th>
+    </tr></thead><tbody id="table-sp"></tbody></table>
+  </div>
+
+</main>
+
+<footer>
+  <span>SOFIA analysis &middot; implementation/filesystem</span>
+  <span>oxynoe</span>
+</footer>
+
+<script>
+// ── Configuration ──
+const DATA_URL = 'analysis.json';
+
+Chart.defaults.color = '#a0d0c8';
+Chart.defaults.borderColor = 'rgba(64,180,160,0.12)';
+Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+Chart.defaults.font.size = 10;
+
+const C = {
+  juste: '#3ddc84', contestable: '#a0d0c8', simplification: '#d4a030',
+  angle_mort: '#e05050', faux: '#ff4444',
+  ratifie: '#3ddc84', conteste: '#d4a030', revise: '#a78bfa', rejete: '#e05050',
+  humain: '#40d8c0', assistant: '#a78bfa',
+  a_corrobore_h: '#3ddc8480', a_conteste_h: '#e0505080',
+  h_corrobore_a: '#40d8c080', h_conteste_a: '#d4a03080',
+};
+const lineOpts = (color) => ({ borderColor: color, backgroundColor: color + '20', fill: true, tension: .3 });
+const gridY = { beginAtZero: true, grid: { color: 'rgba(64,180,160,0.06)' } };
+const noGridX = { grid: { display: false } };
+const g = (obj, key) => (obj || {})[key] || 0;
+
+let RAW = null;        // full JSON
+let charts = [];       // Chart instances for cleanup
+
+// ── Load ──
+fetch(DATA_URL).then(r => r.json()).then(data => {
+  RAW = data;
+  initFilters();
+  renderCurrent();
+}).catch(() => {
+  document.getElementById('scores').innerHTML =
+    `<div class="score-card" style="grid-column:1/-1"><div class="label" style="color:var(--coral)">Erreur chargement ${DATA_URL} — lancer : python3 analysis.py &lt;instance&gt;</div></div>`;
+});
+
+// ── Filters ──
+function initFilters() {
+  const selInst = document.getElementById('sel-instance');
+  const selPersona = document.getElementById('sel-persona');
+
+  // Instance dropdown
+  const instances = Object.keys(RAW.instances);
+  const hasAll = !!RAW.all;
+  selInst.innerHTML = '';
+  if (hasAll) selInst.innerHTML += `<option value="all">Toutes (${instances.length})</option>`;
+  instances.forEach(name => selInst.innerHTML += `<option value="${name}">${name}</option>`);
+  selInst.value = RAW.default || instances[0];
+
+  selInst.addEventListener('change', () => { populatePersonas(); renderCurrent(); });
+  selPersona.addEventListener('change', renderCurrent);
+  document.getElementById('sel-period').addEventListener('change', renderCurrent);
+  document.getElementById('sel-granularity').addEventListener('change', renderCurrent);
+
+  populatePersonas();
+}
+
+function populatePersonas() {
+  const D = getCurrentData();
+  const selPersona = document.getElementById('sel-persona');
+  const personas = Object.keys(D.personas).sort();
+  selPersona.innerHTML = `<option value="all">Tous</option>`;
+  personas.forEach(p => selPersona.innerHTML += `<option value="${p}">${p}</option>`);
+}
+
+function getCurrentData() {
+  const inst = document.getElementById('sel-instance').value;
+  if (inst === 'all') return RAW.all;
+  return RAW.instances[inst];
+}
+
+function getFilteredPersonas(D) {
+  const sel = document.getElementById('sel-persona').value;
+  if (sel === 'all') return Object.keys(D.personas).sort();
+  return [sel];
+}
+
+// ── Render ──
+function renderCurrent() {
+  // Destroy previous charts
+  charts.forEach(c => c.destroy());
+  charts = [];
+
+  const D = getCurrentData();
+  const t = D.totals, P = D.personas;
+  const personas = getFilteredPersonas(D);
+  const gran = document.getElementById('sel-granularity').value;
+  const periodVal = document.getElementById('sel-period').value;
+  const inst = document.getElementById('sel-instance').value;
+
+  // Filter time series by period
+  const rawTs = D.time_series[gran];
+  const ts = filterByPeriod(rawTs, periodVal);
+  const weeks = ts.labels;
+
+  function filterByPeriod(series, period) {
+    if (period === 'all') return series;
+    const days = parseInt(period);
+    const now = new Date(D.meta.date);
+    const cutoff = new Date(now.getTime() - days * 86400000);
+
+    // Convert label to date for comparison
+    function labelToDate(label) {
+      // YYYY-MM-DD
+      if (/^\d{4}-\d{2}-\d{2}$/.test(label)) return new Date(label);
+      // YYYY-WNN — approximate: week start
+      const m = label.match(/^(\d{4})-W(\d{2})$/);
+      if (m) {
+        const jan4 = new Date(parseInt(m[1]), 0, 4);
+        const weekStart = new Date(jan4.getTime() + (parseInt(m[2]) - 1) * 7 * 86400000);
+        return weekStart;
+      }
+      return new Date(0);
+    }
+
+    const indices = [];
+    series.labels.forEach((l, i) => { if (labelToDate(l) >= cutoff) indices.push(i); });
+
+    if (indices.length === 0) return series; // fallback: show all
+
+    const pick = (arr) => indices.map(i => arr[i]);
+    const pickObj = (obj) => {
+      const r = {};
+      for (const [k, v] of Object.entries(obj)) r[k] = Array.isArray(v) ? pick(v) : v;
+      return r;
+    };
+
+    return {
+      labels: pick(series.labels),
+      markers: pickObj(series.markers),
+      directions: pickObj(series.directions),
+      resolutions: pickObj(series.resolutions),
+      frictions_per_session: pick(series.frictions_per_session),
+      resolutions_per_session: pick(series.resolutions_per_session),
+      flux_h: pick(series.flux_h),
+      flux_a: pick(series.flux_a),
+      sessions: pick(series.sessions || []),
+    };
+  }
+
+  // Meta
+  document.querySelector('.meta').textContent = `instance : ${inst === 'all' ? 'toutes' : inst} · ${D.meta.date}`;
+
+  // Compute totals from filtered time series
+  const mk = ['juste','contestable','simplification','angle_mort','faux'];
+  const rk = ['ratifie','conteste','revise','rejete'];
+  const dk = ['a_corrobore_h','a_conteste_h','h_corrobore_a','h_conteste_a'];
+
+  const sum = arr => arr.reduce((a,b) => a+b, 0);
+  const tsFrictions = mk.reduce((s,k) => s + sum(ts.markers[k] || []), 0);
+  const tsResolved = rk.reduce((s,k) => s + sum(ts.resolutions[k] || []), 0);
+  const tsResolvedPct = tsFrictions > 0 ? Math.round(tsResolved / tsFrictions * 100) : 0;
+  const tsRatifie = sum(ts.resolutions.ratifie || []);
+  const tsConteste = sum(ts.resolutions.conteste || []);
+  // signalerPattern is not in time series — use instance total (persona-level only)
+  const tsSp = periodVal === 'all' ? t.signaler_pattern : t.signaler_pattern; // not filterable by period yet
+  const tsSessions = sum(ts.sessions || []);
+
+  document.getElementById('scores').innerHTML = `
+    <div class="score-card accent"><div class="value">${tsFrictions}</div><div class="label">Frictions</div></div>
+    <div class="score-card violet"><div class="value">${tsResolvedPct}%</div><div class="label">Resolues</div></div>
+    <div class="score-card done"><div class="value">${tsRatifie}</div><div class="label">Ratifiees</div></div>
+    <div class="score-card amber"><div class="value">${tsConteste}</div><div class="label">Contestees</div></div>
+    <div class="score-card coral"><div class="value">${tsSp}</div><div class="label">signalerPattern</div></div>
+    <div class="score-card"><div class="value" style="color:var(--ice)">${tsSessions}</div><div class="label">Sessions</div></div>`;
+
+  // Compute per-persona totals from filtered time series for charts/tables
+  // (when period != all, P[persona] has unfiltered totals — we need filtered ones)
+  // For per-persona charts we still use P since time series aren't broken down by persona
+  // TODO: for full per-persona period filtering, analysis.py would need per-persona time series
+
+  function mkChart(id, cfg) { const c = new Chart(document.getElementById(id), cfg); charts.push(c); }
+
+  // 1. Friction par marqueur — evolution
+  mkChart('chart-friction-time', {
+    type: 'line', data: { labels: weeks, datasets: [
+      { label: 'juste', data: ts.markers.juste, ...lineOpts(C.juste) },
+      { label: 'contestable', data: ts.markers.contestable, ...lineOpts(C.contestable) },
+      { label: 'simplification', data: ts.markers.simplification, ...lineOpts(C.simplification) },
+      { label: 'angle-mort', data: ts.markers.angle_mort, ...lineOpts(C.angle_mort) },
+      { label: 'faux', data: ts.markers.faux, ...lineOpts(C.faux) },
+    ]},
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 15 } } },
+      scales: { y: gridY, x: noGridX } }
+  });
+
+  // 2. Direction — qui conteste qui
+  mkChart('chart-direction', {
+    type: 'bar', data: { labels: personas, datasets: [
+      { label: 'A corrobore H', data: personas.map(p => g(P[p].directions, 'a_corrobore_h')), backgroundColor: C.a_corrobore_h },
+      { label: 'A conteste H', data: personas.map(p => g(P[p].directions, 'a_conteste_h')), backgroundColor: C.a_conteste_h },
+      { label: 'H corrobore A', data: personas.map(p => -g(P[p].directions, 'h_corrobore_a')), backgroundColor: C.h_corrobore_a },
+      { label: 'H conteste A', data: personas.map(p => -g(P[p].directions, 'h_conteste_a')), backgroundColor: C.h_conteste_a },
+    ]},
+    options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+      plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 12 } },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + Math.abs(ctx.raw) } } },
+      scales: { x: { grid: { color: 'rgba(64,180,160,0.06)' }, ticks: { callback: v => Math.abs(v) } },
+                y: { stacked: true, grid: { display: false } } } }
+  });
+
+  // 3. Direction — evolution
+  mkChart('chart-direction-time', {
+    type: 'line', data: { labels: weeks, datasets: [
+      { label: 'A conteste H', data: ts.directions.a_conteste_h, borderColor: '#e05050', backgroundColor: '#e0505020', fill: true, tension: .3 },
+      { label: 'H conteste A', data: ts.directions.h_conteste_a, borderColor: '#d4a030', backgroundColor: '#d4a03020', fill: true, tension: .3 },
+      { label: 'A corrobore H', data: ts.directions.a_corrobore_h, borderColor: '#3ddc84', backgroundColor: '#3ddc8415', fill: true, tension: .3 },
+      { label: 'H corrobore A', data: ts.directions.h_corrobore_a, borderColor: '#40d8c0', backgroundColor: '#40d8c015', fill: true, tension: .3 },
+    ]},
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 12 } } },
+      scales: { y: gridY, x: noGridX } }
+  });
+
+  // 4. Marqueurs par persona
+  mkChart('chart-markers-persona', {
+    type: 'bar', data: { labels: personas, datasets: mk.map(k => ({
+      label: k.replace('_','-'), data: personas.map(p => g(P[p].markers, k)), backgroundColor: C[k]
+    }))},
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { x: { stacked: true, ...noGridX }, y: { stacked: true, ...gridY } } }
+  });
+
+  // 5. Resolutions par persona
+  mkChart('chart-resolutions', {
+    type: 'bar', data: { labels: personas, datasets: rk.map(k => ({
+      label: k, data: personas.map(p => g(P[p].resolutions, k)), backgroundColor: C[k]
+    }))},
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { x: { stacked: true, ...noGridX }, y: { stacked: true, ...gridY } } }
+  });
+
+  // 6. Flux epistemique
+  mkChart('chart-flux', {
+    type: 'bar', data: { labels: personas, datasets: [
+      { label: 'H (humain)', data: personas.map(p => P[p].flux_h_pct), backgroundColor: C.humain },
+      { label: 'A (assistant)', data: personas.map(p => P[p].flux_a_pct), backgroundColor: C.assistant },
+    ]},
+    options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+      plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 15 } } },
+      scales: { x: { stacked: true, beginAtZero: true, max: 100, grid: { color: 'rgba(64,180,160,0.06)' }, ticks: { callback: v => v + '%' } },
+                y: { stacked: true, ...noGridX } } }
+  });
+
+  // 7. Frictions par session — evolution
+  mkChart('chart-ratio', {
+    type: 'line', data: { labels: weeks, datasets: [
+      { label: 'frictions/session', data: ts.frictions_per_session, ...lineOpts(C.humain) },
+      { label: 'resolutions/session', data: ts.resolutions_per_session, ...lineOpts(C.assistant) },
+    ]},
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 15 } } },
+      scales: { y: gridY, x: noGridX } }
+  });
+
+  // Tables
+  const td = (v, cls='num') => `<td class="${cls}">${v}</td>`;
+  const ratioColor = r => r > 2 ? 'var(--ready)' : r < 0.5 ? 'var(--coral)' : 'var(--ice-dim)';
+
+  document.getElementById('table-direction').innerHTML = personas.map(p => {
+    const d = P[p].directions || {};
+    return `<tr><td class="name">${p}</td>${td(g(d,'a_corrobore_h'))}${td(g(d,'a_conteste_h'))}${td(g(d,'h_corrobore_a'))}${td(g(d,'h_conteste_a'))}<td class="num" style="color:${ratioColor(P[p].direction_ratio)}">${P[p].direction_ratio}</td></tr>`;
+  }).join('');
+
+  document.getElementById('table-detail').innerHTML = personas.map(p => {
+    const d = P[p], m = d.markers || {}, r = d.resolutions || {};
+    return `<tr><td class="name">${p}</td>${td(d.sessions)}${td(g(m,'juste'))}${td(g(m,'contestable'))}${td(g(m,'simplification'))}${td(g(m,'angle_mort'))}${td(g(m,'faux'))}${td(g(r,'ratifie'))}${td(g(r,'conteste'))}${td(g(r,'revise'))}${td(g(r,'rejete'))}${td(d.flux_h_pct+':'+d.flux_a_pct)}${td(d.signaler_pattern_count)}</tr>`;
+  }).join('');
+
+  const spPersonas = personas.filter(p => P[p].signaler_pattern_count > 0);
+  document.getElementById('table-sp').innerHTML = spPersonas.length ? spPersonas.map(p => {
+    const d = P[p];
+    return `<tr><td class="name">${p}</td>${td(d.signaler_pattern_count)}${td(d.signaler_pattern_erreur_llm)}${td(d.signaler_pattern_conviction)}${td(d.signaler_pattern_resistance)}</tr>`;
+  }).join('') : '<tr><td colspan="5" style="color:var(--ice-muted)">Aucun declenchement</td></tr>';
+}
+</script>
+</body>
+</html>
