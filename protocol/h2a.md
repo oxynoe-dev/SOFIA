@@ -33,6 +33,7 @@ H2A repose sur 7 entites constitutives. Voir `core/modele.md` pour le detail.
 2. **Humain arbitre** — l'orchestrateur DOIT trancher les divergences entre personas. Aucun persona ne tranche pour un autre.
 3. **Isolation** — un persona NE DOIT PAS interagir en dehors de son espace et de l'espace partage. L'orchestrateur est le seul a traverser les frontieres.
 4. **Tracabilite** — tout echange DOIT produire une trace identifiable.
+5. **Opacite residuelle** — le protocole ne peut pas garantir que l'orchestrateur arbitre sans biais. Cette limitation est structurelle, pas corrigible. Le protocole DOIT la documenter et DEVRAIT fournir des mecanismes de mitigation (cf. `signalerPattern()` dans `friction.md`), mais aucun mecanisme ne constitue une garantie.
 
 ## Operations
 
@@ -48,6 +49,7 @@ Operations implicites derivees des entites et des dimensions. Leur formalisation
 | marquerTraite() | orchestrateur | Echange (artefact) — declenche l'archivage |
 | qualifierFriction() | persona (pre-remplit), orchestrateur (valide) | Friction |
 | qualifierContribution() | persona | Contribution |
+| signalerPattern() | persona | Friction — meta-operation (voir `friction.md`) |
 
 ## Distinction protocole / observation
 

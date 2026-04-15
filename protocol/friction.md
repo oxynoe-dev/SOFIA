@@ -54,6 +54,24 @@ L'ensemble est ferme — une instance NE DOIT PAS ajouter de tags de resolution.
 
 Le tag de resolution est pose par le redacteur du resume (persona pour les sessions, emetteur pour les artefacts). Il reflete la perception du redacteur sur le denouement, pas un verdict objectif. L'orchestrateur PEUT corriger.
 
+### Mutabilite inter-sessions
+
+Une resolution peut evoluer dans une session ulterieure (`conteste` → `revise`, `rejete` → `ratifie`, etc.). La trace de session reste un document historique immutable — c'est la nouvelle session qui porte la revision.
+
+Quand une friction revise une resolution anterieure, elle DEVRAIT porter un champ `ref:` qui pointe vers la friction d'origine :
+
+```
+ref: <id-session>/<id-friction>
+```
+
+> **Exemple** :
+>
+> ```
+> - [juste] la distinction protocolaire/observationnelle couvre bien le cas — [aurele] → ratifie (ref: 2026-04-10-1430-aurele/3)
+> ```
+
+Cette mutabilite est coherente avec le caractere defaisable du raisonnement plausible (Rescher 1976) : ce qui est ratifie aujourd'hui peut etre conteste demain a l'entree de nouvelles donnees.
+
 > **Note theorique.** Ces 4 gestes sont inspires du protocole PXP (Mestha et al. 2025 — RATIFY, REFUTE, REVISE, REJECT). PXP qualifie les gestes dans un echange multi-tour humain-LLM. H2A les applique a la resolution des frictions, pas aux messages individuels. Ce rapprochement est un eclairage, pas une contrainte du protocole.
 
 ## Format
@@ -88,6 +106,44 @@ Chaque ligne de friction DOIT porter :
 La friction est **observationnelle**. Qualifier une position (resistance vs correction, angle-mort vs oubli) requiert un jugement semantique. Le persona pre-remplit, l'orchestrateur valide.
 
 L'audit PEUT verifier la presence de la section et la conformite des marqueurs (computationnel), mais pas la justesse des qualifications (inferentiel).
+
+## signalerPattern()
+
+Meta-operation sur la friction. Mitigation de l'opacite residuelle de l'orchestrateur (invariant 5, voir `h2a.md`).
+
+### Probleme
+
+Face a un rejet repete de friction, trois hypotheses sont phenomenologiquement identiques de l'interieur : erreur du persona (biais LLM), conviction legitime de l'orchestrateur, resistance inconsciente. L'orchestrateur ne peut pas arbitrer sa propre resistance a la friction. Ce probleme est insoluble au sens strict (version appliquee du Münchhausen-Trilemma), mais mitigeable.
+
+### Declenchement
+
+Le persona detecte une **convergence thematique de rejets** — N rejets portant sur le meme axe, la meme hypothese, le meme presuppose non examine. La detection releve de la couche observationnelle : le persona fait l'analyse, pas un comptage mecanique.
+
+### Mecanisme
+
+**Etape 1 — Constat factuel.** Le persona signale le pattern sans jugement. Purement descriptif, verifiable.
+
+**Etape 2 — Trois hypotheses argumentees.** Le persona argumente chacune :
+
+- **Erreur LLM** : pourquoi les frictions pourraient etre mal calibrees (pattern repetitif, manque de contexte, hallucination possible)
+- **Conviction legitime** : pourquoi la position de l'orchestrateur pourrait etre correcte malgre les objections (reconstruction de la coherence)
+- **Resistance** : pourquoi il est possible que l'orchestrateur ait un angle mort (ce que le rejet systematique protege, ce qu'il coute de considerer)
+
+Le persona ne tranche pas — compatible avec l'invariant "humain arbitre".
+
+**Etape 3 — Qualification obligatoire.** L'orchestrateur DOIT qualifier sa reponse en articulant pourquoi il choisit l'hypothese qu'il choisit. Cette justification est tracee.
+
+### Garde-fous
+
+**Asymetrie de charge de preuve.** Si l'orchestrateur choisit "erreur LLM" → charge faible (montrer pourquoi la friction est mal fondee). Si l'orchestrateur choisit "conviction" → charge elevee (steelmanner la position adverse et expliquer pourquoi elle ne suffit pas).
+
+**Compteur visible.** La distribution des choix d'hypothese est maintenue et rendue visible. Ce compteur releve de la couche protocolaire (computationnel, verifiable).
+
+### Couche
+
+La detection de la convergence thematique releve de la couche **observationnelle**. Le compteur de choix releve de la couche **protocolaire**.
+
+---
 
 ## Rendu
 
