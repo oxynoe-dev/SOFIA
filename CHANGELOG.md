@@ -1,5 +1,52 @@
 # Changelog
 
+## v0.3.2 — Protocole H2A, grammaire de derivation & modes operationnels (2026-04-16)
+
+### Protocole H2A
+- Formalisation protocole H2A — 5 invariants, 9 operations, distinction protocole/observation
+- 5e invariant — Opacite residuelle (limitation structurelle de l'arbitrage orchestrateur)
+- signalerPattern() — operation de mitigation, detection convergence rejets, 3 hypotheses, asymetrie charge de preuve
+- Tags de resolution PXP — ratifie/conteste/revise/rejete (6e dimension friction, inspire Mestha et al. 2025)
+- Mutabilite inter-sessions des resolutions — evolution possible avec champ `ref:`
+- Separation exchange.md (artefacts, conventions nommage, flux inter-instances) et contribution.md
+- Extraction implementation/ — protocol/tools/ vers implementation/filesystem/ (prepare futures implementations)
+
+### Grammaire & profil cible
+- Grammaire de derivation v1 — deux modes (bootstrap B1-B4, emergence E1-E4), exemples Katen, references Alexander/Chomsky/Stiny
+- Condition cachee + profil cible — trois niveaux (expertise, intention, trait cognitif), auto-diagnostic
+- Archetype inspecteur-methode (type Sofia) — conformite forme vs fond, deux passes, cite-or-drop
+
+### Modes operationnels Sofia
+- Mode creation d'instance — 5 phases, scaffolding minimal, conventions depuis template
+- Mode ajout persona — 5 phases, generation 3 fichiers, annonce equipe
+- Mode recalibrage — 4 phases, table de signaux (domestication, debordement, isolation, friction absente)
+- Mode audit — 2 passes (script conformite + interpretation frictions)
+- Suppression mode onboarding (absorbe par creation d'instance)
+
+### Outillage
+- analysis.py + analysis.html — analyse multi-instance + dashboard interactif, 7 graphiques, 3 tables, 4 filtres. Charte Oxynoe. **En calibration**
+- audit-instance.py — aligne sur H2A (resolutions PXP, `ref:`, signalerPattern, scaffolding minimal). 60 tests
+- create-instance.py — reecrit (sofia.md, scaffolding minimal, conventions template). 31 tests
+- Tag implementation:filesystem sur 10 canvas artefacts
+
+### Documentation
+- Test e2e — Sofia from scratch, 3 recalibrages CLAUDE.md, audit concluant
+- Tutoriel e2e — instance "laboratoire artistique" (shinoe-lab)
+- Boot Sofia en deux temps — onboarding (~80K) vs audit (~200K tokens)
+- Livre bleu en .md dans sofia/doc/
+- Principes, devoirs et modele coeur restructures
+- Canvas isoles (outils d'inspiration, pas de prescription)
+- Fix chemins CLAUDE.md — relatifs au workspace
+
+### Decisions
+- ADR-010 — Multi-plateforme via couche implementation, in-repo (supersede ADR-004 repos separes)
+- ADR-011 — Protocole H2A formalise (5 invariants, 9 operations, 2 couches)
+- ADR-012 — Extraction couche implementation (semantique vs materialisation)
+- ADR-001 (semver) et ADR-009 (couche Instance) passes en Accepted
+
+### Fixes
+- 11 fixes REX split absorbes par H2A et mode creation d'instance
+
 ## v0.3.1 — Review, restructuration instance & outillage (2026-04-11)
 
 - ADR-009 amende — couche instance/ (archetypes, artefacts, examples/katen), pas un kit de scaffolding
