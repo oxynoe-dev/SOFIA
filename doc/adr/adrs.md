@@ -14,3 +14,4 @@
 | 010 | Multi-plateforme via couche implementation (supersede ADR-004) | Accepted | 2026-04-16 |
 | 011 | Protocole H2A (Human-to-Assistant) | Accepted | 2026-04-16 |
 | 012 | Extraction de la couche implementation | Accepted | 2026-04-16 |
+| 013 | Identifiants techniques en anglais | Accepted | 2026-04-16 |

@@ -1,6 +1,6 @@
 # Retours terrain
 
-Observations issues d'une seule instance (Katen, 7 personas, 210+ sessions). Ce sont des retours d'experience, pas des verites universelles — N=1.
+Observations issues de deux phases : Katen (7 personas, 210+ sessions, instance unique) et le split post-Katen (3 instances). Ce sont des retours d'experience, pas des verites universelles.
 
 ## Ordre de lecture suggere
 
@@ -21,6 +21,7 @@ Observations issues d'une seule instance (Katen, 7 personas, 210+ sessions). Ce 
 | pieges.md | Anti-patterns — pas de pattern associe |
 | cas-adr-051.md | Cas d'ecole friction dev/archi — specifique Katen |
 | katen.md | Post-mortem global |
+| transfert-contexte.md | Split, transfert de contexte + memoire Claude post-reorg |
 
 ## A quoi servent ces retours
 

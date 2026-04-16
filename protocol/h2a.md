@@ -107,6 +107,6 @@ Les mots-cles "DOIT", "NE DOIT PAS", "DEVRAIT", "NE DEVRAIT PAS", "PEUT" sont a 
 | Wood, Bruner & Ross (1976) | Scaffolding — collaboration asymetrique |
 | Elster (1979) | Precommitment — contrainte productive |
 
-## Specification complete
+## Origine
 
-Voir `doc/h2a-proposal.md` pour le document complet (positionnement, discussion, questions ouvertes).
+Ce protocole a ete formalise a partir d'une etude d'architecture (`architecture/doc/h2a-proposal.md`, avril 2026) puis enrichi empiriquement sur 3 instances. Les 4 documents de protocol/ sont la reference — l'etude d'origine reste comme trace historique.

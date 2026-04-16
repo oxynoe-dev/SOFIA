@@ -8,6 +8,7 @@ Accepts one or more instances. Produces a single analysis.json with:
 - Per-instance data (friction, resolutions, flux, direction, signalerPattern)
 - Aggregated totals across all instances
 - Time series per instance and aggregated
+- Artefact friction from shared/ (reviews, notes, any .md with H2A frontmatter)
 
 Outputs analysis.json (consumed by analysis.html).
 
@@ -60,28 +61,24 @@ def date_to_week(d: str) -> str:
 
 
 def parse_friction_lines(text: str) -> list[dict]:
-    """Parse ## Friction orchestrateur lines into structured records."""
-    lines = text.splitlines()
-    in_section = False
+    """Parse friction lines anywhere in the text.
+
+    Scans all list items ('- ...') for friction markers (icon or [bracket])
+    combined with an initiative tag ([PO] or [name]). Same parser for
+    sessions, reviews, notes — a friction marker is a friction marker.
+    """
     records = []
 
-    for line in lines:
-        if line.strip().startswith("## Friction orchestrateur"):
-            in_section = True
-            continue
-        if in_section and line.strip().startswith("## "):
-            break
-        if not in_section:
-            continue
-
+    for line in text.splitlines():
         stripped = line.strip()
-        if not stripped.startswith("- "):
-            continue
-
-        item = stripped[2:].strip()
+        # Accept '- ✓ ...' (list item) or '✓ ...' (bare marker)
+        if stripped.startswith("- "):
+            item = stripped[2:].strip()
+        else:
+            item = stripped
         record = {"marker": None, "initiative": None, "resolution": None, "ref": None}
 
-        # Marker
+        # Marker — icons
         for char, key in FRICTION_MARKERS.items():
             if char == "~":
                 if item.startswith("~"):
@@ -91,18 +88,23 @@ def parse_friction_lines(text: str) -> list[dict]:
                 record["marker"] = key
                 break
 
-        # Also check bracketed markers
+        # Marker — brackets
         if not record["marker"]:
             bracket_match = re.search(r"\[(juste|contestable|simplification|angle-mort|faux)\]", item)
             if bracket_match:
                 tag = bracket_match.group(1).replace("-", "_")
                 record["marker"] = tag
 
-        # Initiative
+        if not record["marker"]:
+            continue
+
+        # Initiative — require [PO] or — [name] to confirm it's a friction line
         if "[PO]" in item or "[po]" in item:
             record["initiative"] = "PO"
-        else:
+        elif re.search(r"—\s*\[(\w+)\]", item):
             record["initiative"] = "persona"
+        else:
+            continue
 
         # Resolution
         res_match = re.search(r"→\s*(\w+)", item)
@@ -116,8 +118,7 @@ def parse_friction_lines(text: str) -> list[dict]:
         if ref_match:
             record["ref"] = ref_match.group(1).strip()
 
-        if record["marker"]:
-            records.append(record)
+        records.append(record)
 
     return records
 
@@ -188,6 +189,53 @@ def parse_signaler_pattern(text: str) -> dict | None:
 
 
 # ---------------------------------------------------------------------------
+# Artefact discovery
+# ---------------------------------------------------------------------------
+
+def find_artefacts(instance_path: Path) -> list[Path]:
+    """Find all .md files in shared/ that could contain friction markers."""
+    shared = instance_path / "shared"
+    if not shared.is_dir():
+        return []
+
+    artefacts = []
+    skip_dirs = {"orga", "audits", "archives"}
+    skip_prefixes = ("conventions", "roadmap", "naming", "inventaire")
+
+    for md in sorted(shared.rglob("*.md")):
+        rel_parts = md.relative_to(shared).parts
+        if any(p in skip_dirs for p in rel_parts):
+            continue
+        if md.name.startswith(skip_prefixes):
+            continue
+        artefacts.append(md)
+
+    return artefacts
+
+
+def parse_artefact_date(filepath: Path) -> str | None:
+    """Extract date from artefact frontmatter or filename."""
+    fm = audit.parse_frontmatter(filepath)
+    if fm and "date" in fm:
+        return fm["date"].strip()
+    # Fallback: date in filename
+    m = re.search(r"(\d{4}-\d{2}-\d{2})", filepath.name)
+    return m.group(1) if m else None
+
+
+def parse_artefact_persona(filepath: Path) -> str | None:
+    """Extract emitting persona from artefact frontmatter or filename."""
+    fm = audit.parse_frontmatter(filepath)
+    if fm and "de" in fm:
+        return fm["de"].strip()
+    # Fallback: last segment of filename before extension (review-xxx-PERSONA.md)
+    parts = filepath.stem.rsplit("-", 1)
+    if len(parts) == 2:
+        return parts[-1]
+    return None
+
+
+# ---------------------------------------------------------------------------
 # Direction computation
 # ---------------------------------------------------------------------------
 
@@ -222,7 +270,8 @@ def analyze_instance(instance_path: Path) -> dict:
         return {
             "markers": defaultdict(int), "resolutions": defaultdict(int),
             "directions": defaultdict(int), "flux_h": 0, "flux_a": 0,
-            "sessions": 0, "frictions": 0,
+            "sessions": 0, "artefacts": 0,
+            "frictions": 0, "frictions_sessions": 0, "frictions_artefacts": 0,
         }
 
     by_week: dict[str, dict] = defaultdict(_new_bucket)
@@ -235,9 +284,14 @@ def analyze_instance(instance_path: Path) -> dict:
         "flux_h": 0, "flux_a": 0,
         "flux_types_h": defaultdict(int),
         "flux_types_a": defaultdict(int),
-        "sessions": 0, "frictions": 0,
+        "sessions": 0, "artefacts": 0,
+        "frictions": 0, "frictions_sessions": 0, "frictions_artefacts": 0,
         "signaler_pattern": [],
     })
+
+    # Per-persona time series buckets
+    by_persona_week: dict[str, dict[str, dict]] = defaultdict(lambda: defaultdict(_new_bucket))
+    by_persona_day: dict[str, dict[str, dict]] = defaultdict(lambda: defaultdict(_new_bucket))
 
     all_weeks = set()
     all_days = set()
@@ -269,6 +323,8 @@ def analyze_instance(instance_path: Path) -> dict:
         by_week[week]["sessions"] += 1
         by_day[day]["sessions"] += 1
         by_persona[persona]["sessions"] += 1
+        by_persona_week[persona][week]["sessions"] += 1
+        by_persona_day[persona][day]["sessions"] += 1
 
         # Friction
         friction_records = parse_friction_lines(text)
@@ -278,15 +334,17 @@ def analyze_instance(instance_path: Path) -> dict:
             resolution = rec["resolution"]
             direction = compute_direction(initiative, marker)
 
-            for bucket in (by_week[week], by_day[day]):
+            for bucket in (by_week[week], by_day[day], by_persona_week[persona][week], by_persona_day[persona][day]):
                 bucket["markers"][marker] += 1
                 bucket["frictions"] += 1
+                bucket["frictions_sessions"] += 1
                 bucket["directions"][direction] += 1
                 if resolution:
                     bucket["resolutions"][resolution] += 1
 
             by_persona[persona]["markers"][marker] += 1
             by_persona[persona]["frictions"] += 1
+            by_persona[persona]["frictions_sessions"] += 1
             by_persona[persona]["directions"][direction] += 1
 
             if resolution:
@@ -300,11 +358,15 @@ def analyze_instance(instance_path: Path) -> dict:
                 by_day[day]["flux_h"] += 1
                 by_persona[persona]["flux_h"] += 1
                 by_persona[persona]["flux_types_h"][rec["type"]] += 1
+                by_persona_week[persona][week]["flux_h"] += 1
+                by_persona_day[persona][day]["flux_h"] += 1
             else:
                 by_week[week]["flux_a"] += 1
                 by_day[day]["flux_a"] += 1
                 by_persona[persona]["flux_a"] += 1
                 by_persona[persona]["flux_types_a"][rec["type"]] += 1
+                by_persona_week[persona][week]["flux_a"] += 1
+                by_persona_day[persona][day]["flux_a"] += 1
 
         # signalerPattern
         sp = parse_signaler_pattern(text)
@@ -312,6 +374,59 @@ def analyze_instance(instance_path: Path) -> dict:
             sp["session"] = filepath.stem
             sp["date"] = session_date
             by_persona[persona]["signaler_pattern"].append(sp)
+
+    # --------------- Artefacts from shared/ ---------------
+    artefact_files = find_artefacts(instance_path)
+
+    for filepath in artefact_files:
+        persona = parse_artefact_persona(filepath)
+        if not persona:
+            continue
+
+        artefact_date = parse_artefact_date(filepath)
+        if not artefact_date:
+            continue
+
+        week = date_to_week(artefact_date)
+        day = artefact_date
+        all_weeks.add(week)
+        all_days.add(day)
+
+        try:
+            text = filepath.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+
+        # Count artefact
+        by_week[week]["artefacts"] += 1
+        by_day[day]["artefacts"] += 1
+        by_persona[persona]["artefacts"] += 1
+        by_persona_week[persona][week]["artefacts"] += 1
+        by_persona_day[persona][day]["artefacts"] += 1
+
+        # Friction from artefacts — same parser as sessions
+        friction_records = parse_friction_lines(text)
+        for rec in friction_records:
+            marker = rec["marker"]
+            initiative = rec["initiative"]
+            resolution = rec["resolution"]
+            direction = compute_direction(initiative, marker)
+
+            for bucket in (by_week[week], by_day[day], by_persona_week[persona][week], by_persona_day[persona][day]):
+                bucket["markers"][marker] += 1
+                bucket["frictions"] += 1
+                bucket["frictions_artefacts"] += 1
+                bucket["directions"][direction] += 1
+                if resolution:
+                    bucket["resolutions"][resolution] += 1
+
+            by_persona[persona]["markers"][marker] += 1
+            by_persona[persona]["frictions"] += 1
+            by_persona[persona]["frictions_artefacts"] += 1
+            by_persona[persona]["directions"][direction] += 1
+
+            if resolution:
+                by_persona[persona]["resolutions"][resolution] += 1
 
     # Sort periods
     sorted_weeks = sorted(all_weeks)
@@ -339,6 +454,9 @@ def analyze_instance(instance_path: Path) -> dict:
             "flux_h": [by_period[p]["flux_h"] for p in sorted_keys],
             "flux_a": [by_period[p]["flux_a"] for p in sorted_keys],
             "sessions": [by_period[p]["sessions"] for p in sorted_keys],
+            "artefacts": [by_period[p]["artefacts"] for p in sorted_keys],
+            "frictions_sessions": [by_period[p]["frictions_sessions"] for p in sorted_keys],
+            "frictions_artefacts": [by_period[p]["frictions_artefacts"] for p in sorted_keys],
         }
 
     time_series = {
@@ -369,7 +487,10 @@ def analyze_instance(instance_path: Path) -> dict:
 
         personas_data[p] = {
             "sessions": d["sessions"],
+            "artefacts": d["artefacts"],
             "frictions": total_frictions,
+            "frictions_sessions": d["frictions_sessions"],
+            "frictions_artefacts": d["frictions_artefacts"],
             "markers": dict(d["markers"]),
             "resolutions": dict(d["resolutions"]),
             "resolved_pct": round(resolved / max(total_frictions, 1) * 100),
@@ -383,12 +504,19 @@ def analyze_instance(instance_path: Path) -> dict:
             "signaler_pattern_erreur_llm": sp_erreur,
             "signaler_pattern_conviction": sp_conviction,
             "signaler_pattern_resistance": sp_resistance,
+            "time_series": {
+                "week": build_series(by_persona_week[p], sorted_weeks),
+                "day": build_series(by_persona_day[p], sorted_days),
+            },
         }
 
     # Totals
     total_frictions = sum(d["frictions"] for d in by_persona.values())
+    total_frictions_sessions = sum(d["frictions_sessions"] for d in by_persona.values())
+    total_frictions_artefacts = sum(d["frictions_artefacts"] for d in by_persona.values())
     total_resolved = sum(sum(d["resolutions"].values()) for d in by_persona.values())
     total_sessions = sum(d["sessions"] for d in by_persona.values())
+    total_artefacts = sum(d["artefacts"] for d in by_persona.values())
     total_sp = sum(len(d["signaler_pattern"]) for d in by_persona.values())
 
     # Resolution totals
@@ -403,12 +531,16 @@ def analyze_instance(instance_path: Path) -> dict:
             "date": date.today().isoformat(),
             "personas": real_personas,
             "sessions_scanned": len(session_files),
+            "artefacts_scanned": len(artefact_files),
         },
         "totals": {
             "frictions": total_frictions,
+            "frictions_sessions": total_frictions_sessions,
+            "frictions_artefacts": total_frictions_artefacts,
             "resolved": total_resolved,
             "resolved_pct": round(total_resolved / max(total_frictions, 1) * 100),
             "sessions": total_sessions,
+            "artefacts": total_artefacts,
             "signaler_pattern": total_sp,
             "resolutions": dict(res_totals),
         },
@@ -442,6 +574,7 @@ def aggregate_instances(instances_data: dict[str, dict]) -> dict:
             "directions": {k: [0]*n for k in direction_keys},
             "resolutions": {k: [0]*n for k in resolution_keys},
             "flux_h": [0]*n, "flux_a": [0]*n, "sessions": [0]*n,
+            "artefacts": [0]*n, "frictions_sessions": [0]*n, "frictions_artefacts": [0]*n,
         }
         sessions_count = [0]*n
         frictions_count = [0]*n
@@ -463,6 +596,9 @@ def aggregate_instances(instances_data: dict[str, dict]) -> dict:
                 if i < len(ts["flux_h"]): agg["flux_h"][idx] += ts["flux_h"][i]
                 if i < len(ts["flux_a"]): agg["flux_a"][idx] += ts["flux_a"][i]
                 if i < len(ts.get("sessions", [])): agg["sessions"][idx] += ts["sessions"][i]
+                if i < len(ts.get("artefacts", [])): agg["artefacts"][idx] += ts["artefacts"][i]
+                if i < len(ts.get("frictions_sessions", [])): agg["frictions_sessions"][idx] += ts["frictions_sessions"][i]
+                if i < len(ts.get("frictions_artefacts", [])): agg["frictions_artefacts"][idx] += ts["frictions_artefacts"][i]
                 # Reconstruct raw counts for per-session ratios
                 frictions_count[idx] += sum(agg["markers"][k][idx] for k in marker_keys) - frictions_count[idx]  # delta
                 fps = ts.get("frictions_per_session", [])
@@ -483,8 +619,11 @@ def aggregate_instances(instances_data: dict[str, dict]) -> dict:
 
     # Aggregate totals
     total_frictions = sum(d["totals"]["frictions"] for d in instances_data.values())
+    total_frictions_sessions = sum(d["totals"]["frictions_sessions"] for d in instances_data.values())
+    total_frictions_artefacts = sum(d["totals"]["frictions_artefacts"] for d in instances_data.values())
     total_resolved = sum(d["totals"]["resolved"] for d in instances_data.values())
     total_sessions = sum(d["totals"]["sessions"] for d in instances_data.values())
+    total_artefacts = sum(d["totals"]["artefacts"] for d in instances_data.values())
     total_sp = sum(d["totals"]["signaler_pattern"] for d in instances_data.values())
 
     res_totals = defaultdict(int)
@@ -504,12 +643,16 @@ def aggregate_instances(instances_data: dict[str, dict]) -> dict:
             "date": date.today().isoformat(),
             "personas": sorted(all_personas.keys()),
             "sessions_scanned": sum(d["meta"]["sessions_scanned"] for d in instances_data.values()),
+            "artefacts_scanned": sum(d["meta"]["artefacts_scanned"] for d in instances_data.values()),
         },
         "totals": {
             "frictions": total_frictions,
+            "frictions_sessions": total_frictions_sessions,
+            "frictions_artefacts": total_frictions_artefacts,
             "resolved": total_resolved,
             "resolved_pct": round(total_resolved / max(total_frictions, 1) * 100),
             "sessions": total_sessions,
+            "artefacts": total_artefacts,
             "signaler_pattern": total_sp,
             "resolutions": dict(res_totals),
         },
@@ -579,9 +722,13 @@ def main():
 
     print(f"\n✓ {output_path}")
     for name, d in instances_data.items():
-        print(f"  {name}: {d['totals']['frictions']} frictions, {d['totals']['sessions']} sessions, {len(d['personas'])} personas")
+        fs = d['totals']['frictions_sessions']
+        fa = d['totals']['frictions_artefacts']
+        print(f"  {name}: {d['totals']['frictions']} frictions ({fs} sessions, {fa} artefacts), {d['totals']['sessions']} sessions, {d['meta']['artefacts_scanned']} artefacts, {len(d['personas'])} personas")
     if aggregated:
-        print(f"  all: {aggregated['totals']['frictions']} frictions, {aggregated['totals']['sessions']} sessions")
+        fs = aggregated['totals']['frictions_sessions']
+        fa = aggregated['totals']['frictions_artefacts']
+        print(f"  all: {aggregated['totals']['frictions']} frictions ({fs} sessions, {fa} artefacts), {aggregated['totals']['sessions']} sessions")
 
 
 if __name__ == "__main__":

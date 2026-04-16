@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" width="900" height="680">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" font-family="IBM Plex Mono, monospace">
   <defs>
     <radialGradient id="bg" cx="50%" cy="40%" r="70%">
       <stop offset="0%" stop-color="#0a4858"/>
@@ -6,225 +6,161 @@
     </radialGradient>
   </defs>
 
-  <rect width="900" height="680" fill="url(#bg)"/>
+  <rect width="960" height="680" fill="url(#bg)"/>
+
+  <!-- Grille subtile -->
+  <g stroke="rgba(0,200,220,0.06)" stroke-width="0.5">
+    <line x1="0" y1="130" x2="960" y2="130"/>
+    <line x1="0" y1="230" x2="960" y2="230"/>
+    <line x1="0" y1="330" x2="960" y2="330"/>
+    <line x1="0" y1="430" x2="960" y2="430"/>
+    <line x1="0" y1="530" x2="960" y2="530"/>
+    <line x1="320" y1="60" x2="320" y2="650"/>
+    <line x1="640" y1="60" x2="640" y2="650"/>
+  </g>
 
   <!-- Titre -->
-  <text x="450" y="34" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(64,216,192,0.5)" letter-spacing="0.12em">ARCHITECTURE SOFIA</text>
-  <text x="450" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="rgba(64,216,192,0.25)" font-style="italic">methode d'orchestration d'assistants IA specialises</text>
+  <text x="480" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="15" font-weight="300" fill="#f0f8f5" letter-spacing="0.03em">Architecture SOFIA — 5 couches + canvas</text>
+  <text x="480" y="50" text-anchor="middle" font-size="8" fill="rgba(167,139,250,0.4)" letter-spacing="0.1em">CORE (pourquoi) · PROTOCOL (quoi tracer) · IMPLEMENTATION (comment) · RUNTIME (avec quoi) · CANVAS (inspiration) · DOC</text>
 
-  <!-- ════════════════════════════════════════
-       COUCHE CORE (haut gauche)
-  ════════════════════════════════════════ -->
-  <rect x="36" y="72" width="530" height="110" rx="6" fill="rgba(64,216,192,0.04)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
+  <!-- ================================================================ -->
+  <!-- CORE -->
+  <!-- ================================================================ -->
+  <rect x="30" y="70" width="900" height="90" rx="8" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.35)" stroke-width="1"/>
+  <text x="50" y="91" font-size="12" font-weight="600" fill="#a78bfa" letter-spacing="0.05em">CORE</text>
+  <text x="100" y="91" font-size="9" fill="rgba(167,139,250,0.5)">— pourquoi SOFIA existe</text>
 
-  <text x="52" y="92" font-family="Georgia, serif" font-size="16" fill="#f0f8f5" font-weight="300">Core</text>
-  <text x="100" y="92" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.35)">— les invariants. Tient sans outil.</text>
+  <rect x="50" y="105" width="155" height="34" rx="5" fill="rgba(167,139,250,0.10)" stroke="rgba(167,139,250,0.25)" stroke-width="0.8"/>
+  <text x="127" y="120" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">principes.md</text>
+  <text x="127" y="132" text-anchor="middle" font-size="7" fill="rgba(167,139,250,0.45)">7 principes</text>
 
-  <!-- 4 docs core -->
-  <rect x="52" y="106" width="76" height="26" rx="4" fill="rgba(64,216,192,0.06)" stroke="rgba(64,216,192,0.18)" stroke-width="0.5"/>
-  <text x="90" y="123" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.5)">principes</text>
+  <rect x="220" y="105" width="155" height="34" rx="5" fill="rgba(167,139,250,0.10)" stroke="rgba(167,139,250,0.25)" stroke-width="0.8"/>
+  <text x="297" y="120" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">modele.md</text>
+  <text x="297" y="132" text-anchor="middle" font-size="7" fill="rgba(167,139,250,0.45)">MCD 7 entites</text>
 
-  <rect x="136" y="106" width="72" height="26" rx="4" fill="rgba(64,216,192,0.06)" stroke="rgba(64,216,192,0.18)" stroke-width="0.5"/>
-  <text x="172" y="123" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.5)">personas</text>
+  <rect x="390" y="105" width="155" height="34" rx="5" fill="rgba(167,139,250,0.10)" stroke="rgba(167,139,250,0.25)" stroke-width="0.8"/>
+  <text x="467" y="120" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">devoirs.md</text>
+  <text x="467" y="132" text-anchor="middle" font-size="7" fill="rgba(167,139,250,0.45)">6 devoirs orchestrateur</text>
 
-  <rect x="216" y="106" width="62" height="26" rx="4" fill="rgba(64,216,192,0.06)" stroke="rgba(64,216,192,0.18)" stroke-width="0.5"/>
-  <text x="247" y="123" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.5)">friction</text>
+  <text x="600" y="128" font-size="7" fill="rgba(240,248,245,0.3)" font-style="italic">Si tu supprimes core/, ce n'est plus SOFIA</text>
 
-  <rect x="286" y="106" width="62" height="26" rx="4" fill="rgba(64,216,192,0.06)" stroke="rgba(64,216,192,0.18)" stroke-width="0.5"/>
-  <text x="317" y="123" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.5)">devoirs</text>
+  <!-- ================================================================ -->
+  <!-- PROTOCOL / H2A -->
+  <!-- ================================================================ -->
+  <rect x="30" y="172" width="900" height="90" rx="8" fill="rgba(0,200,180,0.06)" stroke="rgba(0,200,180,0.35)" stroke-width="1"/>
+  <text x="50" y="193" font-size="12" font-weight="600" fill="#00c8b4" letter-spacing="0.05em">PROTOCOL</text>
+  <text x="145" y="193" font-size="9" fill="rgba(0,200,180,0.5)">— H2A · quoi tracer (contrat d'auditabilite)</text>
 
-  <!-- Templates core -->
-  <text x="380" y="114" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.35)" letter-spacing="0.06em">TEMPLATES</text>
-  <text x="380" y="128" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(64,216,192,0.25)">persona + 7 archetypes</text>
+  <rect x="50" y="207" width="155" height="34" rx="5" fill="rgba(0,200,180,0.10)" stroke="rgba(0,200,180,0.25)" stroke-width="0.8"/>
+  <text x="127" y="222" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">h2a.md</text>
+  <text x="127" y="234" text-anchor="middle" font-size="7" fill="rgba(0,200,180,0.45)">5 invariants, 9 operations</text>
 
-  <text x="52" y="168" font-family="Georgia, serif" font-size="8" fill="rgba(64,216,192,0.2)" font-style="italic">ce qui ne change pas quand on change d'outil</text>
+  <rect x="220" y="207" width="155" height="34" rx="5" fill="rgba(0,200,180,0.10)" stroke="rgba(0,200,180,0.25)" stroke-width="0.8"/>
+  <text x="297" y="222" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">friction.md</text>
+  <text x="297" y="234" text-anchor="middle" font-size="7" fill="rgba(0,200,180,0.45)">5 marqueurs, 4 resolutions PXP</text>
 
-  <!-- ════════════════════════════════════════
-       COUCHE PROTOCOL (milieu gauche)
-  ════════════════════════════════════════ -->
-  <rect x="36" y="194" width="530" height="110" rx="6" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.22)" stroke-width="0.8"/>
+  <rect x="390" y="207" width="155" height="34" rx="5" fill="rgba(0,200,180,0.10)" stroke="rgba(0,200,180,0.25)" stroke-width="0.8"/>
+  <text x="467" y="222" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">exchange.md</text>
+  <text x="467" y="234" text-anchor="middle" font-size="7" fill="rgba(0,200,180,0.45)">sessions + artefacts + routage</text>
 
-  <text x="52" y="214" font-family="Georgia, serif" font-size="16" fill="#a78bfa" font-weight="300">Protocol</text>
-  <text x="130" y="214" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(167,139,250,0.4)">— le contrat d'interface. Fichiers, pas API.</text>
+  <rect x="560" y="207" width="155" height="34" rx="5" fill="rgba(0,200,180,0.10)" stroke="rgba(0,200,180,0.25)" stroke-width="0.8"/>
+  <text x="637" y="222" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">contribution.md</text>
+  <text x="637" y="234" text-anchor="middle" font-size="7" fill="rgba(0,200,180,0.45)">flux epistemique H/A</text>
 
-  <!-- 6 docs protocol -->
-  <rect x="52" y="228" width="76" height="26" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.18)" stroke-width="0.5"/>
-  <text x="90" y="245" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(167,139,250,0.5)">artefacts</text>
+  <text x="750" y="228" font-size="7" fill="rgba(240,248,245,0.3)" font-style="italic">Ce que l'audit lit cross-instance</text>
 
-  <rect x="136" y="228" width="86" height="26" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.18)" stroke-width="0.5"/>
-  <text x="179" y="245" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(167,139,250,0.5)">conventions</text>
+  <!-- ================================================================ -->
+  <!-- IMPLEMENTATION -->
+  <!-- ================================================================ -->
+  <rect x="30" y="274" width="900" height="90" rx="8" fill="rgba(220,120,90,0.06)" stroke="rgba(220,120,90,0.35)" stroke-width="1"/>
+  <text x="50" y="295" font-size="12" font-weight="600" fill="rgba(220,120,90,0.9)" letter-spacing="0.05em">IMPLEMENTATION</text>
+  <text x="200" y="295" font-size="9" fill="rgba(220,120,90,0.5)">— comment ca se materialise</text>
 
-  <rect x="230" y="228" width="78" height="26" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.18)" stroke-width="0.5"/>
-  <text x="269" y="245" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(167,139,250,0.5)">tracabilite</text>
+  <rect x="50" y="309" width="155" height="34" rx="5" fill="rgba(220,120,90,0.10)" stroke="rgba(220,120,90,0.25)" stroke-width="0.8"/>
+  <text x="127" y="324" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">implementation.md</text>
+  <text x="127" y="336" text-anchor="middle" font-size="7" fill="rgba(220,120,90,0.45)">stack + mapping operations</text>
 
-  <rect x="52" y="260" width="66" height="26" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.18)" stroke-width="0.5"/>
-  <text x="85" y="277" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(167,139,250,0.5)">isolation</text>
+  <rect x="220" y="309" width="155" height="34" rx="5" fill="rgba(220,120,90,0.10)" stroke="rgba(220,120,90,0.25)" stroke-width="0.8"/>
+  <text x="297" y="324" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">audit-instance.py</text>
+  <text x="297" y="336" text-anchor="middle" font-size="7" fill="rgba(220,120,90,0.45)">conformite (60 tests)</text>
 
-  <rect x="126" y="260" width="90" height="26" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.18)" stroke-width="0.5"/>
-  <text x="171" y="277" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(167,139,250,0.5)">orchestration</text>
+  <rect x="390" y="309" width="155" height="34" rx="5" fill="rgba(220,120,90,0.10)" stroke="rgba(220,120,90,0.25)" stroke-width="0.8"/>
+  <text x="467" y="324" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">create-instance.py</text>
+  <text x="467" y="336" text-anchor="middle" font-size="7" fill="rgba(220,120,90,0.45)">scaffolding (31 tests)</text>
 
-  <rect x="224" y="260" width="66" height="26" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.18)" stroke-width="0.5"/>
-  <text x="257" y="277" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(167,139,250,0.5)">instance</text>
+  <rect x="560" y="309" width="155" height="34" rx="5" fill="rgba(220,120,90,0.10)" stroke="rgba(220,120,90,0.25)" stroke-width="0.8"/>
+  <text x="637" y="324" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">analysis.py + .html</text>
+  <text x="637" y="336" text-anchor="middle" font-size="7" fill="rgba(220,120,90,0.45)">dashboard multi-instance</text>
 
-  <!-- Templates protocol -->
-  <text x="380" y="240" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(167,139,250,0.35)" letter-spacing="0.06em">TEMPLATES</text>
-  <text x="380" y="254" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(167,139,250,0.25)">note · review · feature · adr</text>
-  <text x="380" y="266" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(167,139,250,0.25)">session · roadmap · team-orga</text>
+  <text x="750" y="328" font-size="7" fill="rgba(240,248,245,0.3)" font-style="italic">Markdown + git + filesystem</text>
 
-  <text x="52" y="292" font-family="Georgia, serif" font-size="8" fill="rgba(167,139,250,0.2)" font-style="italic">git, pas base de donnees — portable</text>
+  <!-- ================================================================ -->
+  <!-- RUNTIME -->
+  <!-- ================================================================ -->
+  <rect x="30" y="376" width="900" height="90" rx="8" fill="rgba(138,168,216,0.06)" stroke="rgba(138,168,216,0.35)" stroke-width="1"/>
+  <text x="50" y="397" font-size="12" font-weight="600" fill="#8aa8d8" letter-spacing="0.05em">RUNTIME</text>
+  <text x="130" y="397" font-size="9" fill="rgba(138,168,216,0.5)">— avec quel outil</text>
 
-  <!-- ════════════════════════════════════════
-       COUCHE RUNTIME (bas gauche)
-  ════════════════════════════════════════ -->
-  <rect x="36" y="316" width="530" height="90" rx="6" fill="rgba(138,168,216,0.04)" stroke="rgba(138,168,216,0.22)" stroke-width="0.8"/>
+  <rect x="50" y="411" width="120" height="34" rx="5" fill="rgba(138,168,216,0.10)" stroke="rgba(138,168,216,0.25)" stroke-width="0.8"/>
+  <text x="110" y="426" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">claude-code/</text>
+  <text x="110" y="438" text-anchor="middle" font-size="7" fill="rgba(138,168,216,0.45)">CLAUDE.md, memoire, hooks</text>
 
-  <text x="52" y="336" font-family="Georgia, serif" font-size="16" fill="#8aa8d8" font-weight="300">Runtime</text>
-  <text x="130" y="336" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(138,168,216,0.4)">— l'implementation concrete. Remplacable.</text>
-
-  <!-- Claude Code -->
-  <rect x="52" y="350" width="80" height="26" rx="4" fill="rgba(138,168,216,0.06)" stroke="rgba(138,168,216,0.18)" stroke-width="0.5"/>
-  <text x="92" y="367" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(138,168,216,0.5)">claude-md</text>
-
-  <rect x="140" y="350" width="70" height="26" rx="4" fill="rgba(138,168,216,0.06)" stroke="rgba(138,168,216,0.18)" stroke-width="0.5"/>
-  <text x="175" y="367" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(138,168,216,0.5)">memoire</text>
-
-  <rect x="218" y="350" width="66" height="26" rx="4" fill="rgba(138,168,216,0.06)" stroke="rgba(138,168,216,0.18)" stroke-width="0.5"/>
-  <text x="251" y="367" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(138,168,216,0.5)">sessions</text>
-
-  <rect x="292" y="350" width="54" height="26" rx="4" fill="rgba(138,168,216,0.06)" stroke="rgba(138,168,216,0.18)" stroke-width="0.5"/>
-  <text x="319" y="367" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(138,168,216,0.5)">hooks</text>
+  <rect x="185" y="411" width="100" height="34" rx="5" fill="rgba(138,168,216,0.10)" stroke="rgba(138,168,216,0.25)" stroke-width="0.8"/>
+  <text x="235" y="426" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">sofia.md</text>
+  <text x="235" y="438" text-anchor="middle" font-size="7" fill="rgba(138,168,216,0.45)">4 modes operationnels</text>
 
   <!-- Futurs providers -->
-  <rect x="380" y="350" width="60" height="26" rx="4" fill="rgba(138,168,216,0.02)" stroke="rgba(138,168,216,0.1)" stroke-width="0.5" stroke-dasharray="4,3"/>
-  <text x="410" y="367" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(138,168,216,0.25)">mistral/</text>
+  <rect x="310" y="411" width="80" height="34" rx="5" fill="rgba(138,168,216,0.03)" stroke="rgba(138,168,216,0.12)" stroke-width="0.5" stroke-dasharray="4,3"/>
+  <text x="350" y="432" text-anchor="middle" font-size="8" fill="rgba(138,168,216,0.25)">mistral/</text>
 
-  <rect x="448" y="350" width="60" height="26" rx="4" fill="rgba(138,168,216,0.02)" stroke="rgba(138,168,216,0.1)" stroke-width="0.5" stroke-dasharray="4,3"/>
-  <text x="478" y="367" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(138,168,216,0.25)">gemini/</text>
+  <rect x="400" y="411" width="80" height="34" rx="5" fill="rgba(138,168,216,0.03)" stroke="rgba(138,168,216,0.12)" stroke-width="0.5" stroke-dasharray="4,3"/>
+  <text x="440" y="432" text-anchor="middle" font-size="8" fill="rgba(138,168,216,0.25)">gemini/</text>
 
-  <text x="52" y="396" font-family="Georgia, serif" font-size="8" fill="rgba(138,168,216,0.2)" font-style="italic">sans toucher au core ni au protocol</text>
+  <text x="510" y="432" font-size="7" fill="rgba(240,248,245,0.3)" font-style="italic">Remplacable sans toucher core/ ni protocol/</text>
 
-  <!-- ════════════════════════════════════════
-       TRIANGLE CONCEPTUEL (droite haut)
-  ════════════════════════════════════════ -->
-  <rect x="600" y="72" width="270" height="250" rx="6" fill="rgba(64,216,192,0.02)" stroke="rgba(64,180,160,0.12)" stroke-width="0.6"/>
-  <text x="735" y="92" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(64,216,192,0.45)" letter-spacing="0.08em">MODELE CONCEPTUEL</text>
+  <!-- ================================================================ -->
+  <!-- CANVAS -->
+  <!-- ================================================================ -->
+  <rect x="30" y="478" width="900" height="90" rx="8" fill="rgba(212,160,48,0.06)" stroke="rgba(212,160,48,0.35)" stroke-width="1"/>
+  <text x="50" y="499" font-size="12" font-weight="600" fill="rgba(212,160,48,0.9)" letter-spacing="0.05em">CANVAS</text>
+  <text x="120" y="499" font-size="9" fill="rgba(212,160,48,0.5)">— a quoi ca ressemble (inspiration, pas prescription)</text>
 
-  <!-- Persona (haut) -->
-  <circle cx="735" cy="138" r="28" fill="rgba(64,216,192,0.06)" stroke="rgba(64,216,192,0.35)" stroke-width="0.8"/>
-  <text x="735" y="135" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#f0f8f5" font-weight="300">Persona</text>
-  <text x="735" y="148" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="rgba(64,216,192,0.35)">contrainte</text>
+  <rect x="50" y="513" width="120" height="34" rx="5" fill="rgba(212,160,48,0.10)" stroke="rgba(212,160,48,0.25)" stroke-width="0.8"/>
+  <text x="110" y="528" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">archetypes/</text>
+  <text x="110" y="540" text-anchor="middle" font-size="7" fill="rgba(212,160,48,0.45)">9 modeles personas</text>
 
-  <!-- Artefact (bas gauche) -->
-  <circle cx="670" cy="255" r="28" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.35)" stroke-width="0.8"/>
-  <text x="670" y="252" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#a78bfa" font-weight="300">Artefact</text>
-  <text x="670" y="264" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="rgba(167,139,250,0.35)">protocole</text>
+  <rect x="185" y="513" width="120" height="34" rx="5" fill="rgba(212,160,48,0.10)" stroke="rgba(212,160,48,0.25)" stroke-width="0.8"/>
+  <text x="245" y="528" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">artefacts/</text>
+  <text x="245" y="540" text-anchor="middle" font-size="7" fill="rgba(212,160,48,0.45)">10 formats reference</text>
 
-  <!-- Friction (bas droite) -->
-  <circle cx="800" cy="255" r="28" fill="rgba(224,80,80,0.05)" stroke="rgba(224,80,80,0.3)" stroke-width="0.8"/>
-  <text x="800" y="252" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="rgba(224,80,80,0.7)" font-weight="300">Friction</text>
-  <text x="800" y="264" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="rgba(224,80,80,0.3)">signal</text>
+  <rect x="320" y="513" width="120" height="34" rx="5" fill="rgba(212,160,48,0.10)" stroke="rgba(212,160,48,0.25)" stroke-width="0.8"/>
+  <text x="380" y="528" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">patterns/</text>
+  <text x="380" y="540" text-anchor="middle" font-size="7" fill="rgba(212,160,48,0.45)">4 structures recurrentes</text>
 
-  <!-- Arcs -->
-  <path d="M 715,162 Q 700,200 685,230" fill="none" stroke="rgba(64,180,160,0.15)" stroke-width="0.6"/>
-  <path d="M 755,162 Q 770,200 785,230" fill="none" stroke="rgba(64,180,160,0.15)" stroke-width="0.6"/>
-  <path d="M 698,255 Q 735,268 772,255" fill="none" stroke="rgba(64,180,160,0.15)" stroke-width="0.6"/>
+  <rect x="455" y="513" width="120" height="34" rx="5" fill="rgba(212,160,48,0.10)" stroke="rgba(212,160,48,0.25)" stroke-width="0.8"/>
+  <text x="515" y="528" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">workflows/</text>
+  <text x="515" y="540" text-anchor="middle" font-size="7" fill="rgba(212,160,48,0.45)">10 processus types</text>
 
-  <!-- Orchestrateur au centre -->
-  <circle cx="735" cy="205" r="20" fill="rgba(64,216,192,0.05)" stroke="#40d8c0" stroke-width="1"/>
-  <text x="735" y="202" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#f0f8f5" font-weight="300">Orchestrateur</text>
-  <text x="735" y="214" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="rgba(64,216,192,0.35)">arbitre</text>
+  <rect x="590" y="513" width="120" height="34" rx="5" fill="rgba(212,160,48,0.10)" stroke="rgba(212,160,48,0.25)" stroke-width="0.8"/>
+  <text x="650" y="528" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">examples/</text>
+  <text x="650" y="540" text-anchor="middle" font-size="7" fill="rgba(212,160,48,0.45)">katen/ (terrain)</text>
 
-  <!-- Labels relations -->
-  <text x="692" y="185" font-family="Inter, system-ui, sans-serif" font-size="6" fill="rgba(64,216,192,0.2)" transform="rotate(-55,692,185)">isole</text>
-  <text x="770" y="185" font-family="Inter, system-ui, sans-serif" font-size="6" fill="rgba(64,216,192,0.2)" transform="rotate(55,770,185)">genere</text>
-  <text x="735" y="278" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="6" fill="rgba(64,216,192,0.2)">materialise</text>
+  <!-- ================================================================ -->
+  <!-- DOC -->
+  <!-- ================================================================ -->
+  <rect x="30" y="580" width="900" height="60" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="50" y="601" font-size="12" font-weight="600" fill="rgba(255,255,255,0.5)" letter-spacing="0.05em">DOC</text>
+  <text x="85" y="601" font-size="9" fill="rgba(255,255,255,0.25)">— comment s'organiser (recommande, pas obligatoire)</text>
 
-  <!-- ════════════════════════════════════════
-       GRADIENT D'ACTIVATION (droite bas)
-  ════════════════════════════════════════ -->
-  <rect x="600" y="336" width="270" height="156" rx="6" fill="rgba(64,216,192,0.02)" stroke="rgba(64,180,160,0.12)" stroke-width="0.6"/>
-  <text x="735" y="356" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(64,216,192,0.45)" letter-spacing="0.08em">GRADIENT D'ACTIVATION</text>
+  <text x="60" y="625" font-size="8" fill="rgba(255,255,255,0.35)">arch-sofia</text>
+  <text x="150" y="625" font-size="8" fill="rgba(255,255,255,0.35)">utilisateur</text>
+  <text x="240" y="625" font-size="8" fill="rgba(255,255,255,0.35)">demarrer</text>
+  <text x="320" y="625" font-size="8" fill="rgba(255,255,255,0.35)">guide-operateur</text>
+  <text x="445" y="625" font-size="8" fill="rgba(255,255,255,0.35)">grammaire</text>
+  <text x="535" y="625" font-size="8" fill="rgba(255,255,255,0.35)">feedback/</text>
+  <text x="610" y="625" font-size="8" fill="rgba(255,255,255,0.35)">adr/</text>
+  <text x="660" y="625" font-size="8" fill="rgba(255,255,255,0.35)">figures/</text>
 
-  <!-- Barres -->
-  <rect x="620" y="372" width="50" height="16" rx="3" fill="rgba(64,216,192,0.1)" stroke="rgba(64,216,192,0.2)" stroke-width="0.5"/>
-  <text x="645" y="384" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.5)">1</text>
-  <text x="680" y="384" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(64,216,192,0.3)">CLAUDE.md + sessions/</text>
+  <text x="50" y="653" font-size="7" fill="rgba(240,248,245,0.2)" font-style="italic">Si tu supprimes doc/, SOFIA tient toujours</text>
 
-  <rect x="620" y="394" width="90" height="16" rx="3" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.18)" stroke-width="0.5"/>
-  <text x="665" y="406" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.5)">2+</text>
-  <text x="720" y="406" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(64,216,192,0.3)">+ shared/ (bus)</text>
-
-  <rect x="620" y="416" width="130" height="16" rx="3" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.18)" stroke-width="0.5"/>
-  <text x="685" y="428" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(167,139,250,0.5)">3+</text>
-  <text x="760" y="428" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(167,139,250,0.3)">+ backlog.md</text>
-
-  <rect x="620" y="438" width="170" height="16" rx="3" fill="rgba(138,168,216,0.08)" stroke="rgba(138,168,216,0.18)" stroke-width="0.5"/>
-  <text x="705" y="450" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(138,168,216,0.5)">4+</text>
-  <text x="800" y="450" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(138,168,216,0.3)">+ features/</text>
-
-  <rect x="620" y="460" width="230" height="16" rx="3" fill="rgba(224,80,80,0.06)" stroke="rgba(224,80,80,0.15)" stroke-width="0.5"/>
-  <text x="735" y="472" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(224,80,80,0.5)">5+, 2+ produits</text>
-  <text x="735" y="486" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="rgba(167,139,250,0.35)" font-style="italic">Convergence</text>
-
-  <!-- ════════════════════════════════════════
-       INSTANCE TYPE (bas)
-  ════════════════════════════════════════ -->
-  <rect x="36" y="424" width="530" height="170" rx="6" fill="rgba(64,216,192,0.02)" stroke="rgba(64,180,160,0.12)" stroke-width="0.6"/>
-
-  <text x="52" y="444" font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(64,216,192,0.45)" letter-spacing="0.08em">INSTANCE TYPE</text>
-  <text x="190" y="444" font-family="Inter, system-ui, sans-serif" font-size="8" fill="rgba(64,216,192,0.25)">— un projet qui applique la methode</text>
-
-  <!-- sofia.md -->
-  <rect x="52" y="460" width="60" height="22" rx="3" fill="rgba(224,80,80,0.05)" stroke="rgba(224,80,80,0.2)" stroke-width="0.5"/>
-  <text x="82" y="475" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(224,80,80,0.5)">sofia.md</text>
-
-  <!-- Workspaces -->
-  <rect x="126" y="460" width="110" height="44" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,216,192,0.18)" stroke-width="0.5"/>
-  <text x="181" y="475" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.5)">{workspace}/</text>
-  <text x="181" y="490" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="6" fill="rgba(64,216,192,0.25)">CLAUDE.md · sessions/ · doc/</text>
-  <text x="242" y="475" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(64,216,192,0.2)">x N</text>
-
-  <!-- shared/ -->
-  <rect x="270" y="460" width="160" height="60" rx="4" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.18)" stroke-width="0.5"/>
-  <text x="350" y="475" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(167,139,250,0.5)">shared/</text>
-  <text x="350" y="490" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="6" fill="rgba(167,139,250,0.25)">roadmap-*.md (orchestrateur)</text>
-  <text x="350" y="502" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="6" fill="rgba(167,139,250,0.25)">notes/ · review/ · features/</text>
-  <text x="350" y="514" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="6" fill="rgba(167,139,250,0.25)">orga/ (personas, lexique)</text>
-
-  <!-- Mycélium workspace ↔ shared -->
-  <path d="M 238,482 Q 254,478 268,482" fill="none" stroke="rgba(64,180,160,0.15)" stroke-width="0.5"/>
-
-  <!-- Orchestrateur -->
-  <circle cx="478" cy="484" r="24" fill="rgba(64,216,192,0.05)" stroke="#40d8c0" stroke-width="0.8"/>
-  <text x="478" y="481" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#f0f8f5" font-weight="300">Orchestrateur</text>
-  <text x="478" y="494" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="rgba(64,216,192,0.35)">humain</text>
-
-  <!-- Mycélium Orchestrateur ↔ shared -->
-  <path d="M 454,484 Q 440,486 432,490" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="0.6"/>
-
-  <!-- Annotations instance -->
-  <text x="52" y="540" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(64,216,192,0.2)">marqueur sofia.md identifie le depot comme instance</text>
-  <text x="52" y="554" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(64,216,192,0.2)">1 persona = 1 workspace = 1 CLAUDE.md = 1 perimetre</text>
-  <text x="52" y="568" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(64,216,192,0.2)">shared/ = unique zone de communication</text>
-  <text x="478" y="520" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="rgba(64,216,192,0.2)" font-style="italic">orchestre · filtre · tranche</text>
-
-  <!-- ════════════════════════════════════════
-       CONVERGENCE (bas droite)
-  ════════════════════════════════════════ -->
-  <rect x="600" y="524" width="270" height="56" rx="6" fill="rgba(167,139,250,0.03)" stroke="rgba(167,139,250,0.15)" stroke-width="0.6" stroke-dasharray="5,3"/>
-  <text x="735" y="546" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#a78bfa" font-weight="300">Convergence</text>
-  <text x="735" y="562" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(167,139,250,0.3)">produit compagnon — scanne l'instance</text>
-  <text x="735" y="574" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="7" fill="rgba(167,139,250,0.3)">quand la charge mentale de l'orchestrateur l'exige</text>
-
-  <!-- Mycélium instance → convergence -->
-  <path d="M 568,540 Q 580,540 598,546" fill="none" stroke="rgba(167,139,250,0.2)" stroke-width="0.6" stroke-dasharray="4,3"/>
-
-  <!-- Fleche terrain → core (feedback loop) -->
-  <path d="M 568,460 Q 580,440 580,300 Q 580,180 566,160" fill="none" stroke="rgba(64,180,160,0.12)" stroke-width="0.6" stroke-dasharray="5,3"/>
-  <text x="588" y="300" font-family="Inter, system-ui, sans-serif" font-size="6" fill="rgba(64,216,192,0.15)" transform="rotate(90,588,300)">valide la methode</text>
-
-  <!-- Filet footer -->
-  <line x1="36" y1="620" x2="864" y2="620" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
-  <text x="450" y="650" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.15)">sofia · architecture · 06/04/2026</text>
-  <text x="450" y="665" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="rgba(64,216,192,0.12)" font-style="italic">methode oxynoe</text>
 </svg>

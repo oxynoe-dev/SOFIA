@@ -102,6 +102,81 @@ main {
 }
 .filters select:hover { border-color: var(--border-hi); }
 .filters select:focus { outline: none; border-color: var(--ready); }
+.filters button {
+  background: var(--deep); color: var(--ready); border: 1px solid var(--ready-dim);
+  padding: 6px 14px; border-radius: 3px; font-family: var(--font-mono); font-size: 12px;
+  cursor: pointer; transition: all .15s ease; margin-left: .5rem;
+}
+.filters button:hover { background: var(--ready-dim); color: var(--ice); }
+.filters button:active { transform: scale(.97); }
+.filters button.running { opacity: .5; pointer-events: none; }
+
+/* ── Nav links (menu items) ── */
+.nav-links { display: flex; gap: 2rem; list-style: none; margin-left: auto; align-items: center; }
+.nav-links a, .nav-links button {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 400;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ice-muted); text-decoration: none; background: none; border: none;
+  cursor: pointer; transition: color .15s; padding: 0; line-height: 52px;
+}
+.nav-links a:hover, .nav-links button:hover, .nav-links .active { color: var(--ice); }
+.nav-links .active { border-bottom: 1px solid var(--ready); padding-bottom: 2px; }
+
+/* ── Sub-menu (audit instances) ── */
+.sub-menu {
+  display: none; justify-content: center; gap: 0;
+  background: rgba(4,28,36,.97); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  position: fixed; top: 52px; left: 0; right: 0; z-index: 98;
+  height: 36px;
+}
+.sub-menu.visible { display: flex; }
+.sub-menu button {
+  background: none; border: none; border-bottom: 2px solid transparent;
+  color: var(--ice-muted); font-family: var(--font-mono); font-size: 10px;
+  padding: 0 20px; cursor: pointer; letter-spacing: .06em;
+  transition: all .15s ease; height: 36px; line-height: 36px;
+}
+.sub-menu button:hover { color: var(--ice-dim); }
+.sub-menu button.active { color: var(--violet); border-bottom-color: var(--violet); }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ── Audit ── */
+.audit-section { margin: 2rem 0; }
+.audit-section h2 { font-family: var(--font-display); font-size: 16px; font-weight: 300; color: var(--ice); margin-bottom: 1rem; }
+.audit-instance { margin-bottom: 2.5rem; }
+.audit-instance h3 {
+  font-family: var(--font-mono); font-size: 13px; color: var(--ready);
+  letter-spacing: .08em; text-transform: uppercase; margin-bottom: .75rem;
+  padding-bottom: .5rem; border-bottom: 1px solid var(--border);
+}
+.checks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: .5rem; margin-bottom: 1.5rem; }
+.check-item {
+  display: flex; align-items: center; gap: 8px; padding: 6px 10px;
+  background: var(--deep); border-radius: 3px; font-family: var(--font-mono); font-size: 11px;
+}
+.check-item .icon { width: 16px; text-align: center; }
+.check-item.pass .icon { color: var(--done); }
+.check-item.warn .icon { color: var(--amber); }
+.check-item.fail .icon { color: var(--coral); }
+.check-item.info .icon { color: var(--ice-muted); }
+.check-item .msg { color: var(--ice-dim); flex: 1; }
+.audit-summary {
+  display: flex; gap: 1.5rem; margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 12px;
+}
+.audit-summary .stat { display: flex; align-items: center; gap: 4px; }
+.audit-summary .stat.pass { color: var(--done); }
+.audit-summary .stat.warn { color: var(--amber); }
+.audit-summary .stat.fail { color: var(--coral); }
+.audit-summary .stat.info { color: var(--ice-muted); }
+.audit-signals { margin-top: 1rem; }
+.audit-signals li {
+  font-family: var(--font-sans); font-size: 12px; color: var(--amber);
+  margin-bottom: 4px; list-style: none; padding-left: 1em; text-indent: -1em;
+}
+.audit-signals li::before { content: "⚠ "; }
 
 /* ── Scores ── */
 .scores {
@@ -201,15 +276,17 @@ footer {
 <div class="grid-bg"></div>
 
 <nav>
-  <div class="brand"><svg class="logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64" fill="none"><defs><filter id="rg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="ng" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="32" cy="32" r="17" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="2" filter="url(#rg)"/><circle cx="32" cy="32" r="17" fill="none" stroke="rgba(167,139,250,0.55)" stroke-width="0.6"/><circle cx="32" cy="32" r="12" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="0.3"/><polygon points="32,20 41.4,24.5 43.7,34.2 37.2,42.8 26.8,42.8 20.3,34.2 22.6,24.5" fill="none" stroke="rgba(167,139,250,0.3)" stroke-width="0.4" stroke-linejoin="round"/><circle cx="32" cy="20" r="1.4" fill="#a78bfa" opacity="0.7" filter="url(#ng)"/><circle cx="41.4" cy="24.5" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="43.7" cy="34.2" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="37.2" cy="42.8" r="1.4" fill="#a78bfa" opacity="0.6" filter="url(#ng)"/><circle cx="26.8" cy="42.8" r="1.4" fill="#a78bfa" opacity="0.6" filter="url(#ng)"/><circle cx="20.3" cy="34.2" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="22.6" cy="24.5" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="28" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/><circle cx="32" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/><circle cx="36" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/></svg> H2A <span>analysis</span></div>
-  <div class="meta">instance : methodes &middot; 2026-04-16</div>
+  <div class="brand"><svg class="logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64" fill="none"><defs><filter id="rg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="ng" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="32" cy="32" r="17" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="2" filter="url(#rg)"/><circle cx="32" cy="32" r="17" fill="none" stroke="rgba(167,139,250,0.55)" stroke-width="0.6"/><circle cx="32" cy="32" r="12" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="0.3"/><polygon points="32,20 41.4,24.5 43.7,34.2 37.2,42.8 26.8,42.8 20.3,34.2 22.6,24.5" fill="none" stroke="rgba(167,139,250,0.3)" stroke-width="0.4" stroke-linejoin="round"/><circle cx="32" cy="20" r="1.4" fill="#a78bfa" opacity="0.7" filter="url(#ng)"/><circle cx="41.4" cy="24.5" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="43.7" cy="34.2" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="37.2" cy="42.8" r="1.4" fill="#a78bfa" opacity="0.6" filter="url(#ng)"/><circle cx="26.8" cy="42.8" r="1.4" fill="#a78bfa" opacity="0.6" filter="url(#ng)"/><circle cx="20.3" cy="34.2" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="22.6" cy="24.5" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="28" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/><circle cx="32" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/><circle cx="36" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/></svg> H2A <span>dashboard</span></div>
+  <ul class="nav-links">
+    <li><button class="active" onclick="switchTab('analysis')">Analysis</button></li>
+    <li><button onclick="switchTab('audit')">Audit</button></li>
+  </ul>
 </nav>
 
+<div class="sub-menu" id="audit-instances-menu"></div>
+
 <main>
-  <div class="hero rise">
-    <h1>H2A Analysis</h1>
-    <div class="subtitle">Friction &middot; Resolutions &middot; Apports</div>
-  </div>
+  <div id="tab-analysis" class="tab-content active">
 
   <div class="filters rise rise-1">
     <label>Instance</label>
@@ -227,6 +304,13 @@ footer {
       <option value="week" selected>Semaine</option>
       <option value="day">Jour</option>
     </select>
+    <label>Source</label>
+    <select id="sel-source">
+      <option value="all" selected>Tout</option>
+      <option value="sessions">Sessions</option>
+      <option value="artefacts">Artefacts</option>
+    </select>
+    <button id="btn-run" onclick="runAnalysis()" title="Relancer analysis.py">&#x27f3; Analyser</button>
   </div>
 
   <!-- Scores -->
@@ -266,6 +350,10 @@ footer {
       <h2>Frictions par session — evolution</h2>
       <div class="chart-wrap"><canvas id="chart-ratio"></canvas></div>
     </div>
+    <div class="chart-card">
+      <h2>Source — sessions vs artefacts</h2>
+      <div class="chart-wrap"><canvas id="chart-source"></canvas></div>
+    </div>
   </div>
 
   <!-- Table direction -->
@@ -291,7 +379,7 @@ footer {
   <div class="table-card rise rise-3">
     <h2>Detail par persona</h2>
     <table><thead><tr>
-      <th>Persona</th><th>Sessions</th>
+      <th>Persona</th><th>Sessions</th><th>Artefacts</th>
       <th style="color:var(--done)">Juste</th><th style="color:var(--ice-muted)">Contest.</th>
       <th style="color:var(--amber)">Simplif.</th><th style="color:var(--coral)">Angle-m.</th><th style="color:var(--coral)">Faux</th>
       <th style="color:var(--done)">Ratifie</th><th style="color:var(--amber)">Conteste</th>
@@ -308,6 +396,16 @@ footer {
       <th style="color:var(--ice-muted)">Erreur LLM</th><th style="color:var(--done)">Conviction</th><th style="color:var(--coral)">Resistance</th>
     </tr></thead><tbody id="table-sp"></tbody></table>
   </div>
+
+  </div><!-- /tab-analysis -->
+
+  <div id="tab-audit" class="tab-content">
+    <div id="audit-content" class="rise">
+      <div class="score-card" style="text-align:center; padding:2rem; color:var(--ice-muted); font-family:var(--font-mono); font-size:12px;">
+        Cliquer sur "Auditer" pour lancer l'audit des instances.
+      </div>
+    </div>
+  </div><!-- /tab-audit -->
 
 </main>
 
@@ -341,6 +439,177 @@ const g = (obj, key) => (obj || {})[key] || 0;
 let RAW = null;        // full JSON
 let charts = [];       // Chart instances for cleanup
 
+// ── Tabs ──
+let AUDIT_DATA = null;
+let currentAuditInstance = null;
+
+function switchTab(tab) {
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.querySelectorAll('.nav-links button').forEach(b => {
+    if (b.getAttribute('onclick') === "switchTab('" + tab + "')") b.classList.add('active');
+  });
+
+  const subMenu = document.getElementById('audit-instances-menu');
+  const main = document.querySelector('main');
+  if (tab === 'audit') {
+    subMenu.classList.add('visible');
+    main.style.paddingTop = '112px';
+    if (!AUDIT_DATA) runAudit();
+  } else {
+    subMenu.classList.remove('visible');
+    main.style.paddingTop = '76px';
+  }
+}
+
+function selectAuditInstance(name) {
+  currentAuditInstance = name;
+  document.querySelectorAll('.sub-menu button').forEach(b => b.classList.remove('active'));
+  const btn = document.querySelector(`.sub-menu button[data-inst="${name}"]`);
+  if (btn) btn.classList.add('active');
+  if (AUDIT_DATA) renderAuditInstance(name, AUDIT_DATA[name]);
+}
+
+// ── Audit ──
+function runAudit() {
+  const subMenu = document.getElementById('audit-instances-menu');
+  subMenu.innerHTML = '<button class="running" disabled>⟳ audit en cours...</button>';
+  fetch('/audit', { method: 'POST' })
+    .then(r => {
+      if (!r.ok) return r.json().then(d => { throw new Error(d.error || r.statusText); });
+      return r.json();
+    })
+    .then(data => {
+      AUDIT_DATA = data;
+      const instances = Object.keys(data);
+      subMenu.innerHTML = instances.map(name =>
+        `<button data-inst="${name}" onclick="selectAuditInstance('${name}')">${name}</button>`
+      ).join('') + `<button onclick="runAudit()" title="Relancer l'audit" style="margin-left:2rem; color:var(--ready); font-size:14px;">⟳ Auditer</button>`;
+      if (instances.length > 0) selectAuditInstance(instances[0]);
+    })
+    .catch(err => {
+      subMenu.innerHTML = `<button style="color:var(--coral)" disabled>Erreur : ${err.message}</button>`;
+    });
+}
+
+function renderAuditInstance(instName, instData) {
+  const container = document.getElementById('audit-content');
+  let html = '';
+
+  if (!instData || instData.error) {
+    container.innerHTML = `<p style="color:var(--coral); text-align:center; padding:2rem">${instData?.error || 'Pas de donnees'}</p>`;
+    return;
+  }
+
+  {
+    const dummy = 0; // keep indentation consistent
+
+    // Structure checks
+    const struct = instData.structure;
+    if (struct && struct.checks) {
+      const checks = struct.checks;
+      let pass = 0, warn = 0, fail = 0, info = 0;
+      const icons = { pass: '✓', warn: '⚠', fail: '✗', info: 'ℹ' };
+
+      html += '<div class="checks-grid">';
+      for (const chk of checks) {
+        const status = chk.status || 'info';
+        if (status === 'pass') pass++;
+        else if (status === 'warn') warn++;
+        else if (status === 'fail') fail++;
+        else info++;
+        html += `<div class="check-item ${status}"><span class="icon">${icons[status] || '?'}</span><span class="msg"><strong>${chk.id}</strong> — ${chk.detail || chk.message || ''}</span></div>`;
+      }
+      html += '</div>';
+
+      html += `<div class="audit-summary">
+        <span class="stat pass">${pass} pass</span>
+        <span class="stat warn">${warn} warn</span>
+        <span class="stat fail">${fail} fail</span>
+        <span class="stat info">${info} info</span>
+      </div>`;
+    }
+
+    // Friction PO table
+    const fpo = instData.friction_po;
+    if (fpo && fpo.by_persona) {
+      html += '<div class="audit-section"><h2>Friction orchestrateur</h2>';
+      html += '<div class="table-card"><table><thead><tr>';
+      html += '<th>Persona</th><th>Sessions</th><th>w/ friction</th>';
+      html += '<th style="color:var(--done)">Juste</th><th>Contest.</th><th style="color:var(--amber)">Simpl.</th><th style="color:var(--coral)">Angle-m.</th><th style="color:var(--coral)">Faux</th>';
+      html += '<th style="color:var(--done)">Ratifie</th><th style="color:var(--amber)">Conteste</th><th style="color:var(--violet)">Revise</th><th style="color:var(--coral)">Rejete</th><th>No-res</th>';
+      html += '<th>Init.P</th><th>Init.PO</th><th>SP</th>';
+      html += '</tr></thead><tbody>';
+      for (const [p, d] of Object.entries(fpo.by_persona).sort()) {
+        html += `<tr>
+          <td>${p}</td><td>${d.total_sessions}</td><td>${d.sessions_with_friction}</td>
+          <td>${d.juste||0}</td><td>${d.contestable||0}</td><td>${d.simplification||0}</td><td>${d.angle_mort||0}</td><td>${d.faux||0}</td>
+          <td>${d.resolution_ratifie||0}</td><td>${d.resolution_conteste||0}</td><td>${d.resolution_revise||0}</td><td>${d.resolution_rejete||0}</td><td>${d.resolution_missing||0}</td>
+          <td>${d.initiative_persona||0}</td><td>${d.initiative_po||0}</td><td>${d.signaler_pattern_count||0}</td>
+        </tr>`;
+      }
+      html += '</tbody></table></div></div>';
+    }
+
+    // Activity
+    const act = instData.activite;
+    if (act && act.by_persona) {
+      html += '<div class="audit-section"><h2>Activite</h2>';
+      html += '<div class="table-card"><table><thead><tr><th>Persona</th><th>Sessions</th></tr></thead><tbody>';
+      const sorted = Object.entries(act.by_persona).sort((a,b) => b[1] - a[1]);
+      for (const [p, count] of sorted) {
+        html += `<tr><td>${p}</td><td>${count}</td></tr>`;
+      }
+      html += `<tr style="border-top:1px solid var(--border-hi)"><td><strong>Total</strong></td><td><strong>${act.meta?.total_sessions || '—'}</strong></td></tr>`;
+      html += '</tbody></table></div></div>';
+    }
+
+    // Exchange matrix (simplified — top flows only)
+    const ech = instData.echanges;
+    if (ech && ech.matrix) {
+      const flows = [];
+      for (const [from, targets] of Object.entries(ech.matrix)) {
+        for (const [to, count] of Object.entries(targets)) {
+          if (count > 0 && from !== to) flows.push({ from, to, count });
+        }
+      }
+      flows.sort((a,b) => b.count - a.count);
+      if (flows.length > 0) {
+        html += '<div class="audit-section"><h2>Flux d\'echanges (top)</h2>';
+        html += '<div class="table-card"><table><thead><tr><th>De</th><th>Pour</th><th>Artefacts</th></tr></thead><tbody>';
+        for (const f of flows.slice(0, 15)) {
+          html += `<tr><td>${f.from}</td><td>${f.to}</td><td>${f.count}</td></tr>`;
+        }
+        html += '</tbody></table></div></div>';
+      }
+    }
+
+  }
+
+  container.innerHTML = html;
+}
+
+// ── Run analysis via server ──
+function runAnalysis() {
+  const btn = document.getElementById('btn-run');
+  if (btn) { btn.classList.add('running'); btn.textContent = '⟳ ...'; }
+  fetch('/run', { method: 'POST' })
+    .then(r => {
+      if (!r.ok) return r.json().then(d => { throw new Error(d.error || r.statusText); });
+      return r.json();
+    })
+    .then(data => {
+      RAW = data;
+      renderCurrent();
+      if (btn) { btn.textContent = '⟳ Analyser'; btn.classList.remove('running'); }
+    })
+    .catch(err => {
+      if (btn) { btn.textContent = '⟳ Analyser'; btn.classList.remove('running'); }
+      console.warn('Erreur analyse :', err.message);
+    });
+}
+
 // ── Load ──
 fetch(DATA_URL).then(r => r.json()).then(data => {
   RAW = data;
@@ -368,6 +637,7 @@ function initFilters() {
   selPersona.addEventListener('change', renderCurrent);
   document.getElementById('sel-period').addEventListener('change', renderCurrent);
   document.getElementById('sel-granularity').addEventListener('change', renderCurrent);
+  document.getElementById('sel-source').addEventListener('change', renderCurrent);
 
   populatePersonas();
 }
@@ -404,9 +674,13 @@ function renderCurrent() {
   const gran = document.getElementById('sel-granularity').value;
   const periodVal = document.getElementById('sel-period').value;
   const inst = document.getElementById('sel-instance').value;
+  const sourceFilter = document.getElementById('sel-source').value;
 
-  // Filter time series by period
-  const rawTs = D.time_series[gran];
+  // Select time series: per-persona if filtered, global otherwise
+  const selPersona = document.getElementById('sel-persona').value;
+  const rawTs = (selPersona !== 'all' && D.personas[selPersona] && D.personas[selPersona].time_series)
+    ? D.personas[selPersona].time_series[gran]
+    : D.time_series[gran];
   const ts = filterByPeriod(rawTs, periodVal);
   const weeks = ts.labels;
 
@@ -447,16 +721,20 @@ function renderCurrent() {
       markers: pickObj(series.markers),
       directions: pickObj(series.directions),
       resolutions: pickObj(series.resolutions),
-      frictions_per_session: pick(series.frictions_per_session),
-      resolutions_per_session: pick(series.resolutions_per_session),
+      frictions_per_session: pick(series.frictions_per_session || []),
+      resolutions_per_session: pick(series.resolutions_per_session || []),
       flux_h: pick(series.flux_h),
       flux_a: pick(series.flux_a),
       sessions: pick(series.sessions || []),
+      artefacts: pick(series.artefacts || []),
+      frictions_sessions: pick(series.frictions_sessions || []),
+      frictions_artefacts: pick(series.frictions_artefacts || []),
     };
   }
 
   // Meta
-  document.querySelector('.meta').textContent = `instance : ${inst === 'all' ? 'toutes' : inst} · ${D.meta.date}`;
+  const metaEl = document.querySelector('.meta');
+  if (metaEl) metaEl.textContent = `instance : ${inst === 'all' ? 'toutes' : inst} · ${D.meta.date}`;
 
   // Compute totals from filtered time series
   const mk = ['juste','contestable','simplification','angle_mort','faux'];
@@ -464,27 +742,33 @@ function renderCurrent() {
   const dk = ['a_corrobore_h','a_conteste_h','h_corrobore_a','h_conteste_a'];
 
   const sum = arr => arr.reduce((a,b) => a+b, 0);
-  const tsFrictions = mk.reduce((s,k) => s + sum(ts.markers[k] || []), 0);
+  const tsFrictionsAll = mk.reduce((s,k) => s + sum(ts.markers[k] || []), 0);
+  const tsFrictionsSess = sum(ts.frictions_sessions || []);
+  const tsFrictionsArt = sum(ts.frictions_artefacts || []);
+  const tsFrictions = sourceFilter === 'sessions' ? tsFrictionsSess : sourceFilter === 'artefacts' ? tsFrictionsArt : tsFrictionsAll;
   const tsResolved = rk.reduce((s,k) => s + sum(ts.resolutions[k] || []), 0);
   const tsResolvedPct = tsFrictions > 0 ? Math.round(tsResolved / tsFrictions * 100) : 0;
   const tsRatifie = sum(ts.resolutions.ratifie || []);
   const tsConteste = sum(ts.resolutions.conteste || []);
-  // signalerPattern is not in time series — use instance total (persona-level only)
-  const tsSp = periodVal === 'all' ? t.signaler_pattern : t.signaler_pattern; // not filterable by period yet
+  const tsSp = t.signaler_pattern;
   const tsSessions = sum(ts.sessions || []);
+  const tsArtefacts = sum(ts.artefacts || []);
+
+  const sourceLabel = sourceFilter === 'all'
+    ? `<span style="font-size:10px;color:var(--ice-muted)">${tsFrictionsSess} sess · ${tsFrictionsArt} art</span>`
+    : '';
 
   document.getElementById('scores').innerHTML = `
-    <div class="score-card accent"><div class="value">${tsFrictions}</div><div class="label">Frictions</div></div>
+    <div class="score-card accent"><div class="value">${tsFrictions}</div><div class="label">Frictions</div>${sourceLabel}</div>
     <div class="score-card violet"><div class="value">${tsResolvedPct}%</div><div class="label">Resolues</div></div>
     <div class="score-card done"><div class="value">${tsRatifie}</div><div class="label">Ratifiees</div></div>
     <div class="score-card amber"><div class="value">${tsConteste}</div><div class="label">Contestees</div></div>
     <div class="score-card coral"><div class="value">${tsSp}</div><div class="label">signalerPattern</div></div>
-    <div class="score-card"><div class="value" style="color:var(--ice)">${tsSessions}</div><div class="label">Sessions</div></div>`;
+    <div class="score-card"><div class="value" style="color:var(--ice)">${tsSessions}</div><div class="label">Sessions</div></div>
+    <div class="score-card"><div class="value" style="color:var(--violet)">${tsArtefacts}</div><div class="label">Artefacts</div></div>`;
 
-  // Compute per-persona totals from filtered time series for charts/tables
-  // (when period != all, P[persona] has unfiltered totals — we need filtered ones)
-  // For per-persona charts we still use P since time series aren't broken down by persona
-  // TODO: for full per-persona period filtering, analysis.py would need per-persona time series
+  // Per-persona time series are now available in D.personas[p].time_series
+  // When a persona is selected, rawTs above already points to per-persona series
 
   function mkChart(id, cfg) { const c = new Chart(document.getElementById(id), cfg); charts.push(c); }
 
@@ -573,6 +857,17 @@ function renderCurrent() {
       scales: { y: gridY, x: noGridX } }
   });
 
+  // 8. Source — sessions vs artefacts
+  mkChart('chart-source', {
+    type: 'bar', data: { labels: weeks, datasets: [
+      { label: 'Sessions', data: ts.frictions_sessions || [], backgroundColor: C.humain + '80' },
+      { label: 'Artefacts', data: ts.frictions_artefacts || [], backgroundColor: C.assistant + '80' },
+    ]},
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 15 } } },
+      scales: { x: { stacked: true, ...noGridX }, y: { stacked: true, ...gridY } } }
+  });
+
   // Tables
   const td = (v, cls='num') => `<td class="${cls}">${v}</td>`;
   const ratioColor = r => r > 2 ? 'var(--ready)' : r < 0.5 ? 'var(--coral)' : 'var(--ice-dim)';
@@ -584,7 +879,8 @@ function renderCurrent() {
 
   document.getElementById('table-detail').innerHTML = personas.map(p => {
     const d = P[p], m = d.markers || {}, r = d.resolutions || {};
-    return `<tr><td class="name">${p}</td>${td(d.sessions)}${td(g(m,'juste'))}${td(g(m,'contestable'))}${td(g(m,'simplification'))}${td(g(m,'angle_mort'))}${td(g(m,'faux'))}${td(g(r,'ratifie'))}${td(g(r,'conteste'))}${td(g(r,'revise'))}${td(g(r,'rejete'))}${td(d.flux_h_pct+':'+d.flux_a_pct)}${td(d.signaler_pattern_count)}</tr>`;
+    const artCount = d.artefacts || 0;
+    return `<tr><td class="name">${p}</td>${td(d.sessions)}${td(artCount)}${td(g(m,'juste'))}${td(g(m,'contestable'))}${td(g(m,'simplification'))}${td(g(m,'angle_mort'))}${td(g(m,'faux'))}${td(g(r,'ratifie'))}${td(g(r,'conteste'))}${td(g(r,'revise'))}${td(g(r,'rejete'))}${td(d.flux_h_pct+':'+d.flux_a_pct)}${td(d.signaler_pattern_count)}</tr>`;
   }).join('');
 
   const spPersonas = personas.filter(p => P[p].signaler_pattern_count > 0);
