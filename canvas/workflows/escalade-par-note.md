@@ -1,36 +1,36 @@
-## Escalade par note
+## Escalation by note
 
-![Pattern — Escalade par note](../../doc/figures/fig-pattern-escalade-note.svg)
+![Pattern — Escalation by note](../../doc/figures/fig-pattern-escalade-note.svg)
 
-Quand un persona rencontre un problème hors de son périmètre, il dépose une note. L'orchestrateur route.
+When a persona encounters a problem outside their scope, they deposit a note. The orchestrator routes.
 
 ### Structure
 
-1. Un persona identifie un problème qui ne relève pas de son axe.
-2. Il rédige une note factuelle dans `shared/notes/` avec le format `note-{destinataire}-{sujet}-{auteur}.md`.
-3. Il ne tente pas de résoudre le problème lui-même.
-4. L'orchestrateur lit la note, ajoute le contexte nécessaire, et la transmet au persona compétent.
-5. Le destinataire traite et répond via le même mécanisme si besoin.
+1. A persona identifies a problem that doesn't fall under their axis.
+2. They write a factual note in `shared/notes/` with the format `note-{recipient}-{subject}-{author}.md`.
+3. They don't attempt to resolve the problem themselves.
+4. The orchestrator reads the note, adds the necessary context, and forwards it to the competent persona.
+5. The recipient handles it and responds via the same mechanism if needed.
 
-Il n'y a pas de communication directe inter-personas. L'orchestrateur est le seul routeur. Cela préserve l'isolation des contextes et évite les boucles de coordination non supervisées.
+There is no direct inter-persona communication. The orchestrator is the sole router. This preserves context isolation and prevents unsupervised coordination loops.
 
-### Quand le reconnaître
+### When to recognize it
 
-- Un persona bute sur une question qui sort de son périmètre.
-- Deux personas auraient besoin de se coordonner sur un sujet transverse.
-- Un problème détecté dans un workspace concerne un autre workspace.
+- A persona hits a question outside their scope.
+- Two personas would need to coordinate on a cross-cutting subject.
+- A problem detected in one workspace concerns another workspace.
 
-### Exemple
+### Example
 
-Axel identifie une incohérence dans la spec CVM pendant l'implémentation. Il dépose `note-mira-incoherence-spec-cvm-axel.md` dans `shared/notes/`. L'orchestrateur lit, confirme le contexte, et ouvre une session avec Mira pour traiter le point. Mira corrige la spec ou justifie le choix existant.
+Axel identifies an inconsistency in the CVM spec during implementation. He deposits `note-mira-inconsistency-spec-cvm-axel.md` in `shared/notes/`. The orchestrator reads, confirms the context, and opens a session with Mira to address the point. Mira corrects the spec or justifies the existing choice.
 
-### Variantes
+### Variants
 
-- **Note informative** : pas de problème à résoudre, juste un signal (ex. "j'ai observé que..."). L'orchestrateur décide s'il y a suite.
-- **Note urgente** : le persona signale un bloquant dans le titre. L'orchestrateur priorise.
+- **Informational note**: no problem to solve, just a signal (e.g. "I observed that..."). The orchestrator decides whether there's a follow-up.
+- **Urgent note**: the persona signals a blocker in the title. The orchestrator prioritizes.
 
-### Risques
+### Risks
 
-- **Engorgement orchestrateur** : trop de notes non traitées s'accumulent. L'orchestrateur doit trier régulièrement.
-- **Sur-formalisme** : déposer une note pour un détail trivial que le persona pourrait ignorer.
-- **Perte de contexte** : la note est trop courte et l'orchestrateur ne peut pas router correctement.
+- **Orchestrator congestion**: too many unprocessed notes accumulate. The orchestrator must sort regularly.
+- **Over-formalism**: depositing a note for a trivial detail the persona could ignore.
+- **Context loss**: the note is too short and the orchestrator can't route correctly.

@@ -2,39 +2,39 @@
 implementation: filesystem
 ---
 
-# ADR-{NNN} — {Titre}
+# ADR-{NNN} — {Title}
 
-**Date** : {YYYY-MM-DD}
-**Statut** : Proposed | Accepted | Superseded by ADR-{NNN}
-**Auteur** : {Persona}
+**Date**: {YYYY-MM-DD}
+**Status**: Proposed | Accepted | Superseded by ADR-{NNN}
+**Author**: {Persona}
 
 ---
 
-## Contexte
+## Context
 
-<!-- Pourquoi la question se pose. Quel problème, quelle contrainte,
-     quel événement déclenche cette décision. -->
+<!-- Why the question arises. What problem, what constraint,
+     what event triggers this decision. -->
 
-{Contexte}
+{Context}
 
-## Décision
+## Decision
 
-<!-- Ce qu'on a choisi. Une phrase claire. -->
+<!-- What was chosen. One clear sentence. -->
 
-{Décision}
+{Decision}
 
-## Alternatives envisagées
+## Alternatives considered
 
-<!-- Ce qu'on a considéré et pourquoi on ne l'a pas retenu. -->
+<!-- What was considered and why it was not retained. -->
 
-| Option | Avantage | Inconvénient | Verdict |
-|--------|----------|-------------|---------|
-| {Option A} | {avantage} | {inconvénient} | Retenue / Rejetée |
-| {Option B} | {avantage} | {inconvénient} | Retenue / Rejetée |
+| Option | Advantage | Disadvantage | Verdict |
+|--------|-----------|-------------|---------|
+| {Option A} | {advantage} | {disadvantage} | Retained / Rejected |
+| {Option B} | {advantage} | {disadvantage} | Retained / Rejected |
 
-## Conséquences
+## Consequences
 
-<!-- Ce que cette décision implique. Positif et négatif. -->
+<!-- What this decision implies. Positive and negative. -->
 
-- {Conséquence 1}
-- {Conséquence 2}
+- {Consequence 1}
+- {Consequence 2}

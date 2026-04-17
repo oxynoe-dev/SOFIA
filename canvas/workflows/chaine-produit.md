@@ -1,45 +1,45 @@
-## Chaîne Produit
+## Product Chain
 
-![Workflow — Chaîne produit](../../doc/figures/fig-workflow-chaine-produit.svg)
+![Workflow — Product chain](../../doc/figures/fig-workflow-chaine-produit.svg)
 
-Chaîne complète de production : chaque étape a un gardien, aucun raccourci.
+Complete production chain: every step has a guardian, no shortcuts.
 
 ---
 
-### Quand l'utiliser
+### When to use it
 
-Pour toute feature ou évolution qui traverse plusieurs domaines — de la priorisation à la livraison. C'est le workflow de référence quand plusieurs personas interviennent.
+For any feature or evolution that crosses multiple domains — from prioritization to delivery. This is the reference workflow when multiple personas are involved.
 
-### Étapes
+### Steps
 
-1. **L'orchestrateur priorise** — l'item entre dans la roadmap avec contexte et owner
-2. **Archi spécifie** — contrats, contraintes, ADR si besoin. Gardien : cohérence avec l'architecture cible et les principes (cf. `core/principes.md`)
-3. **Dev implémente** — mode plan, TDD, code. Gardien : conformité à la spec
-4. **UX challenge** — l'UX vérifie l'expérience utilisateur, l'accessibilité, la cohérence visuelle. Gardien : le produit est utilisable, pas seulement fonctionnel
-5. **Recherche vérifie** — vérification formelle, sources, rigueur. Gardien : ce qui est affirmé est vrai et correctement contextualisé
-6. **L'orchestrateur arbitre** — dernière porte. Validation finale, go/no-go
+1. **The orchestrator prioritizes** — the item enters the roadmap with context and owner
+2. **Architect specifies** — contracts, constraints, ADR if needed. Guardian: consistency with target architecture and principles (cf. `core/principles.md`)
+3. **Dev implements** — plan mode, TDD, code. Guardian: conformity to the spec
+4. **UX challenges** — UX verifies user experience, accessibility, visual consistency. Guardian: the product is usable, not just functional
+5. **Research verifies** — formal verification, sources, rigor. Guardian: what is claimed is true and correctly contextualized
+6. **The orchestrator arbitrates** — last gate. Final validation, go/no-go
 
-### Rôles impliqués
+### Roles involved
 
-| Persona | Rôle |
+| Persona | Role |
 |---------|------|
-| Orchestrateur | Priorise (étape 1), arbitre (étape 6) |
-| Architecte | Spécifie, garde la cohérence structurelle |
-| Dev | Implémente selon la spec |
-| UX | Challenge l'expérience et l'accessibilité |
-| Recherche | Vérifie formellement les affirmations |
+| Orchestrator | Prioritizes (step 1), arbitrates (step 6) |
+| Architect | Specifies, guards structural consistency |
+| Dev | Implements according to spec |
+| UX | Challenges experience and accessibility |
+| Research | Formally verifies claims |
 
-### Artefacts produits
+### Artifacts produced
 
-- Roadmap item priorisé
-- Spec / contrat d'interface
+- Prioritized roadmap item
+- Spec / interface contract
 - Code + tests
-- Review UX (note dans `shared/review/`)
-- Validation formelle si applicable
-- Décision orchestrateur documentée
+- UX review (note in `shared/review/`)
+- Formal validation if applicable
+- Documented orchestrator decision
 
-### Pièges
+### Pitfalls
 
-- **Sauter une étape** — chaque étape sautée génère de la dette. La dette la plus coûteuse est celle qu'on ne voit pas (cf. `protocol/tracabilite.md`)
-- **Paralléliser sans contrat** — dev et UX en parallèle sans spec commune = deux visions divergentes à réconcilier après coup
-- **Confondre validation orchestrateur et approbation automatique** — l'orchestrateur est la dernière porte, pas un tampon. Il peut renvoyer à n'importe quelle étape
+- **Skipping a step** — every skipped step generates debt. The most costly debt is the one you don't see (cf. `protocol/traceability.md`)
+- **Parallelizing without a contract** — dev and UX in parallel without a shared spec = two divergent visions to reconcile after the fact
+- **Confusing orchestrator validation with automatic approval** — the orchestrator is the last gate, not a rubber stamp. They can send back to any step

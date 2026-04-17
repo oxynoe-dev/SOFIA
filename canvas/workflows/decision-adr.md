@@ -1,42 +1,42 @@
-## Décision ADR
+## ADR Decision
 
-![Workflow — Décision ADR](../../doc/figures/fig-workflow-decision-adr.svg)
+![Workflow — ADR Decision](../../doc/figures/fig-workflow-decision-adr.svg)
 
-Workflow de décision structurelle : de la tension identifiée à la trace dans l'index.
+Structural decision workflow: from identified tension to trace in the index.
 
 ---
 
-### Quand l'utiliser
+### When to use it
 
-Quand une tension structurelle est identifiée — un choix technique, un changement d'architecture, un arbitrage entre deux approches incompatibles. N'importe quel persona peut initier le processus.
+When a structural tension is identified — a technical choice, an architecture change, an arbitration between two incompatible approaches. Any persona can initiate the process.
 
-### Étapes
+### Steps
 
-1. **Tension identifiée** — un persona constate un problème, une incohérence ou un choix à faire. Il formule la tension en une phrase
-2. **Note déposée dans shared/** — le persona dépose une note (cf. `protocol/artefacts.md`) décrivant le contexte, les options identifiées et sa recommandation
-3. **Review multi-personas** — chaque persona concerné produit une review sur son axe : archi (cohérence), dev (faisabilité), recherche (rigueur), UX (impact utilisateur), stratégie (positionnement)
-4. **Rédaction ADR** — l'architecte rédige l'ADR au statut **Proposed** : contexte, décision, conséquences, alternatives rejetées
-5. **Arbitrage orchestrateur** — l'orchestrateur passe l'ADR à **Accepted** ou **Rejected**. La décision est tracée avec son contexte
-6. **Trace dans l'index** — l'ADR est ajouté à l'index avec statut, résumé et date
+1. **Tension identified** — a persona observes a problem, an inconsistency, or a choice to make. They formulate the tension in one sentence
+2. **Note deposited in shared/** — the persona deposits a note (cf. `protocol/exchange.md`) describing the context, identified options, and their recommendation
+3. **Multi-persona review** — each concerned persona produces a review on their axis: architecture (consistency), dev (feasibility), research (rigor), UX (user impact), strategy (positioning)
+4. **ADR drafting** — the architect drafts the ADR with **Proposed** status: context, decision, consequences, rejected alternatives
+5. **Orchestrator arbitration** — the orchestrator moves the ADR to **Accepted** or **Rejected**. The decision is traced with its context
+6. **Trace in the index** — the ADR is added to the index with status, summary, and date
 
-### Rôles impliqués
+### Roles involved
 
-| Persona | Rôle |
+| Persona | Role |
 |---------|------|
-| N'importe quel persona | Identifie la tension, dépose la note |
-| Personas concernés | Review sur leur axe |
-| Architecte | Rédige l'ADR (Proposed) |
-| Orchestrateur | Arbitre (Accepted / Rejected) |
+| Any persona | Identifies the tension, deposits the note |
+| Concerned personas | Review on their axis |
+| Architect | Drafts the ADR (Proposed) |
+| Orchestrator | Arbitrates (Accepted / Rejected) |
 
-### Artefacts produits
+### Artifacts produced
 
-- Note initiale (dans `shared/notes/`)
-- Reviews par axe (dans `shared/review/`)
-- ADR au format standard : Contexte, Décision, Conséquences, Status
-- Entrée dans l'index ADR
+- Initial note (in `shared/notes/`)
+- Reviews by axis (in `shared/review/`)
+- ADR in standard format: Context, Decision, Consequences, Status
+- Entry in the ADR index
 
-### Pièges
+### Pitfalls
 
-- **Coder sur un ADR Proposed** — un ADR Proposed n'est pas une autorisation. Seul le statut Accepted autorise l'implémentation. Coder avant l'arbitrage orchestrateur, c'est investir du temps sur une décision qui peut être rejetée
-- **ADR sans alternatives** — un ADR qui ne liste pas les alternatives rejetées n'est pas un ADR, c'est une annonce. Le contexte des alternatives est ce qui rend la décision compréhensible dans 6 mois
-- **Confondre tension et préférence** — une tension est un problème objectif (incohérence, blocage, choix incompatible). Une préférence est subjective. Les ADR traitent des tensions, pas des préférences
+- **Coding on a Proposed ADR** — a Proposed ADR is not an authorization. Only the Accepted status authorizes implementation. Coding before orchestrator arbitration means investing time on a decision that may be rejected
+- **ADR without alternatives** — an ADR that doesn't list rejected alternatives is not an ADR, it's an announcement. The context of alternatives is what makes the decision understandable in 6 months
+- **Confusing tension and preference** — a tension is an objective problem (inconsistency, blockage, incompatible choice). A preference is subjective. ADRs address tensions, not preferences

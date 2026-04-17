@@ -4,16 +4,16 @@ implementation: filesystem
 
 # Session {YYYY-MM-DD} ~{HH}h{mm} — {Persona}
 
-## Produit
-- `{chemin/fichier}` — créé : {description courte}
-- `{chemin/fichier}` — modifié : {ce qui a changé}
+## Produced
+- `{path/file}` — created: {short description}
+- `{path/file}` — modified: {what changed}
 
-## Décisions
-- **{Sujet}** — {ce qui a été tranché}
+## Decisions
+- **{Subject}** — {what was decided}
 
-## Notes déposées
-- `shared/review/{fichier}`
-- `shared/notes/{fichier}`
+## Notes deposited
+- `shared/review/{file}`
+- `shared/notes/{file}`
 
-## Ouvert
-- **{Sujet}** — {ce qui reste à traiter}
+## Open
+- **{Subject}** — {what remains to be handled}

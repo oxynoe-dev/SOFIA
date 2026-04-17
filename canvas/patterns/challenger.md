@@ -2,34 +2,34 @@
 
 ![Pattern — Challenger](../../doc/figures/fig-pattern-challenger.svg)
 
-Un producteur avance, N challengers vérifient chacun sur leur axe.
+One producer advances, N challengers verify each on their own axis.
 
 ### Structure
 
-Le pattern est asymétrique : un seul persona produit l'artefact, les autres le challengent sans le modifier. Chaque challenger a un droit de bloquant sur son axe uniquement — pas sur l'ensemble.
+The pattern is asymmetric: a single persona produces the artifact, the others challenge it without modifying it. Each challenger has blocking authority on their axis only — not on the whole.
 
-Le coût est linéaire (1 producteur + N challengers = N interactions), pas combinatoire (N personas qui discutent entre eux = N^2 interactions). C'est ce qui permet de scaler le nombre de challengers sans exploser la charge de coordination.
+The cost is linear (1 producer + N challengers = N interactions), not combinatorial (N personas discussing among themselves = N^2 interactions). This is what allows scaling the number of challengers without exploding coordination overhead.
 
-Le producteur intègre les retours ou justifie pourquoi il ne le fait pas. L'orchestrateur arbitre en cas de désaccord.
+The producer integrates the feedback or justifies why they don't. The orchestrator arbitrates in case of disagreement.
 
-### Quand le reconnaître
+### When to recognize it
 
-- Un persona produit un livrable (code, spec, document) qui touche plusieurs axes de qualité.
-- Il faut valider sans créer de comité ou de réunion.
-- Les axes de vérification sont indépendants les uns des autres.
+- A persona produces a deliverable (code, spec, document) that touches multiple quality axes.
+- Validation is needed without creating a committee or meeting.
+- The verification axes are independent from each other.
 
-### Exemple
+### Example
 
-Axel code une feature du moteur Katen. Mira challenge sur la cohérence architecturale, Léa sur le formalisme (contrats, invariants), Nora sur l'ergonomie de l'API. Chacun produit un retour sur son axe. Axel intègre.
+Axel codes a feature for the Katen engine. Mira challenges on architectural consistency, Léa on formalism (contracts, invariants), Nora on API ergonomics. Each produces feedback on their axis. Axel integrates.
 
-### Variantes
+### Variants
 
-- **Challenger unique** : un seul axe suffit (ex. Mira review un ADR d'Axel sur l'archi seule).
-- **Challenger tournant** : le producteur change selon la nature du livrable, mais le mécanisme reste le même.
-- **Challenge croisé** : deux personas se challengent mutuellement sur des livrables distincts (chacun est producteur de l'un, challenger de l'autre).
+- **Single challenger**: only one axis is needed (e.g. Mira reviews an ADR from Axel on architecture alone).
+- **Rotating challenger**: the producer changes depending on the nature of the deliverable, but the mechanism stays the same.
+- **Cross-challenge**: two personas challenge each other on distinct deliverables (each is producer of one, challenger of the other).
 
-### Risques
+### Risks
 
-- **Dilution** : trop de challengers ralentit le producteur sans gain proportionnel.
-- **Bloquant abusif** : un challenger bloque sur un détail hors de son axe.
-- **Passivité** : le challenger valide sans vraiment vérifier — le pattern perd sa valeur.
+- **Dilution**: too many challengers slows the producer without proportional gain.
+- **Abusive blocking**: a challenger blocks on a detail outside their axis.
+- **Passivity**: the challenger validates without truly verifying — the pattern loses its value.

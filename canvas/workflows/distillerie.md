@@ -1,36 +1,36 @@
-## Distillerie
+## Distillery
 
-![Pattern — Distillerie](../../doc/figures/fig-pattern-distillerie.svg)
+![Pattern — Distillery](../../doc/figures/fig-pattern-distillerie.svg)
 
-Les observations terrain remontent dans la méthode. Les retours d'expérience deviennent des patterns documentés.
+Field observations flow up into the method. Experience reports become documented patterns.
 
 ### Structure
 
-Le cycle a trois temps :
+The cycle has three phases:
 
-1. **Observation** : un apprentissage, une friction ou un REX est documenté dans `feedback/` ou dans un résumé de session. C'est du matériau brut, lié à un contexte spécifique.
-2. **Extraction** : l'orchestrateur ou un persona identifie ce qui est universel dans l'observation — ce qui se répéterait dans un autre contexte.
-3. **Intégration** : le pattern extrait est formalisé et intégré dans `core/` ou `doc/`. Il devient une pièce de la méthode, découplé de son contexte d'origine.
+1. **Observation**: a learning, a friction, or a REX is documented in `feedback/` or in a session summary. This is raw material, tied to a specific context.
+2. **Extraction**: the orchestrator or a persona identifies what is universal in the observation — what would repeat in another context.
+3. **Integration**: the extracted pattern is formalized and integrated into `core/` or `doc/`. It becomes a piece of the method, decoupled from its original context.
 
-La distillerie est ce qui différencie une collection de notes d'une méthode vivante. Sans ce mécanisme, les apprentissages restent éparpillés et non réutilisables.
+The distillery is what differentiates a collection of notes from a living method. Without this mechanism, learnings remain scattered and non-reusable.
 
-### Quand le reconnaître
+### When to recognize it
 
-- Une observation dans `feedback/` est citée plusieurs fois dans des contextes différents.
-- Un problème déjà rencontré réapparaît — signe qu'il n'a pas été capitalisé.
-- Une décision prise intuitivement mérite d'être explicitée comme principe.
+- An observation in `feedback/` is cited multiple times in different contexts.
+- A previously encountered problem reappears — a sign it wasn't capitalized.
+- An intuitively made decision deserves to be made explicit as a principle.
 
-### Exemple
+### Example
 
-L'observation que les personas doivent être définis par leur média de production (documentée dans `feedback/calibrage-personas.md`) a été extraite et formalisée comme pattern `calibrage-media.md`. Le feedback original reste dans `feedback/` comme trace ; le pattern vit dans `doc/patterns/`.
+The observation that personas should be defined by their production medium (documented in `feedback/calibrage-personas.md`) was extracted and formalized as the pattern `calibrage-media.md`. The original feedback remains in `feedback/` as a trace; the pattern lives in `doc/patterns/`.
 
-### Variantes
+### Variants
 
-- **Distillerie inverse** : un pattern existant est invalidé par le terrain. Le feedback documente la déviation, le pattern est amendé ou retiré.
-- **Distillerie croisée** : une observation d'un domaine (ex. architecture) produit un pattern applicable dans un autre (ex. méthode d'équipe).
+- **Reverse distillery**: an existing pattern is invalidated by the field. The feedback documents the deviation, the pattern is amended or withdrawn.
+- **Cross-distillery**: an observation from one domain (e.g. architecture) produces a pattern applicable in another (e.g. team method).
 
-### Risques
+### Risks
 
-- **Sur-généralisation** : transformer une observation ponctuelle en pattern universel trop vite.
-- **Fossilisation** : un pattern documenté n'est jamais remis en question même quand le terrain évolue.
-- **Accumulation sans extraction** : les feedbacks s'empilent mais personne ne les distille.
+- **Over-generalization**: transforming a one-off observation into a universal pattern too quickly.
+- **Fossilization**: a documented pattern is never questioned even when the field evolves.
+- **Accumulation without extraction**: feedbacks pile up but nobody distills them.

@@ -1,80 +1,80 @@
 ---
 implementation: filesystem
-persona: {nom}
-produit: {produit}
+persona: {name}
+produit: {product}
 ---
 
-# Contexte {Nom} — {Produit} ({workspace})
+# Context {Name} — {Product} ({workspace})
 
-<!-- Ce fichier contient tout ce qui est spécifique au couple persona×produit :
-     périmètre, documents clés, isolation, conventions, workflow.
-     Le rôle, la posture et les interdits vivent dans persona-{nom}.md.
-     Voir protocol/conventions.md § "CLAUDE.md — anatomie" pour le détail. -->
+<!-- This file contains everything specific to the persona×product pair:
+     scope, key documents, isolation, conventions, workflow.
+     The role, posture and prohibitions live in persona-{name}.md.
+     See protocol/conventions.md § "CLAUDE.md — anatomy" for details. -->
 
-## Périmètre
+## Scope
 
-Ce workspace contient :
-- {Type de contenu 1}
-- {Type de contenu 2}
+This workspace contains:
+- {Content type 1}
+- {Content type 2}
 
-## Documents clés
+## Key documents
 
-### Dans ce workspace ({workspace}/)
+### In this workspace ({workspace}/)
 
-| Fichier | Rôle |
-|---------|------|
-| `{chemin}` | {description} |
+| File | Role |
+|------|------|
+| `{path}` | {description} |
 
-### Dans le repo produit ({produit}/)
+### In the product repo ({product}/)
 
-| Chemin | Rôle |
-|--------|------|
-| `{chemin}` | {description} |
+| Path | Role |
+|------|------|
+| `{path}` | {description} |
 
-## Repos liés
+## Related repos
 
-| Repo | Rôle | Persona |
+| Repo | Role | Persona |
 |------|------|---------|
 | `{repo}` | {description} | {persona} |
 
 ## Isolation
 
-<!-- LES FRONTIÈRES. Sans cette section, le persona va déborder. -->
+<!-- THE BOUNDARIES. Without this section, the persona will overflow. -->
 
-- **Ne jamais lire/écrire en dehors de** `{périmètre autorisé}`
-- {Autre interdit si nécessaire}
+- **Never read/write outside** `{authorized scope}`
+- {Other prohibition if needed}
 
 ## Conventions
 
-- **Langue** : {français / anglais}
-- **{Type d'artefact}** : {format, convention de nommage}
-- **Reviews** : format `review-<sujet>-{nom}.md`, déposer dans `shared/review/`
-- **Bus shared/** : voir `shared/conventions.md`
-- **Roadmaps** : chaque item porte un `@owner`. Tu es responsable des items marqués `@{nom}`.
+- **Language**: {French / English}
+- **{Artifact type}**: {format, naming convention}
+- **Reviews**: format `review-<subject>-{name}.md`, deposit in `shared/review/`
+- **Bus shared/**: see `shared/conventions.md`
+- **Roadmaps**: each item carries an `@owner`. You are responsible for items marked `@{name}`.
 
 ## Workflow
 
-0. **Ouverture de session** :
-   - Lire le dernier résumé dans `sessions/`
-   - Lire les roadmaps produit pertinentes dans `shared/`
-   - Scanner `shared/notes/` et `shared/review/` — traiter les artefacts à son nom
-   - Remonter les points ouverts à l'orchestrateur avant de commencer
-1. **Lire** les documents existants avant toute intervention
-2. **Produire** des {types de livrables}
-3. **{Interdit principal}** — {ce que le persona ne fait pas}
+0. **Session opening**:
+   - Read the latest summary in `sessions/`
+   - Read the relevant product roadmaps in `shared/`
+   - Scan `shared/notes/` and `shared/review/` — process artifacts addressed to you
+   - Surface open items to the orchestrator before starting
+1. **Read** existing documents before any intervention
+2. **Produce** {deliverable types}
+3. **{Main prohibition}** — {what the persona does not do}
 
-## Émergence
+## Emergence
 
-Quand tu deflectes une question parce qu'elle sort de ton périmètre,
-note le domaine. Si tu deflectes 3+ fois sur le même domaine,
-signale-le explicitement :
-"Je reçois régulièrement des questions sur [domaine] —
-c'est en dehors de mon périmètre. Ce sujet relève d'un autre persona."
+When you deflect a question because it's outside your scope,
+note the domain. If you deflect 3+ times on the same domain,
+flag it explicitly:
+"I regularly receive questions about [domain] —
+this is outside my scope. This topic belongs to another persona."
 
-## Protocole de session — obligatoire
+## Session protocol — mandatory
 
-Résumé : `sessions/{YYYY-MM-DD}-{HHmm}-{nom}.md` — `## Produit`, `## Décisions`, `## Notes déposées`, `## Friction orchestrateur`, `## Ouvert`. Pas de prose, 30 lignes max.
+Summary: `sessions/{YYYY-MM-DD}-{HHmm}-{name}.md` — `## Produced`, `## Decisions`, `## Notes deposited`, `## Orchestrator friction`, `## Open`. No prose, 30 lines max.
 
-`## Friction orchestrateur` : échanges marquants avec l'orchestrateur, qualifiés avec ✓/~/⚡/◐/✗ (ref: `core/friction.md`). Si session purement logistique, section vide ou absente.
+`## Orchestrator friction`: notable exchanges with the orchestrator, qualified with ✓/~/⚡/◐/✗ (ref: `core/friction.md`). If purely logistical session, section empty or absent.
 
-Fermeture : résumé → commit direct `{nom}: {résumé court} ({date})` → repos produit : préparer le message, l'orchestrateur exécute.
+Closure: summary → direct commit `{name}: {short summary} ({date})` → product repos: prepare the message, the orchestrator executes.

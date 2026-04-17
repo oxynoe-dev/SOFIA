@@ -1,22 +1,22 @@
 ---
 implementation: filesystem
-de: {auteur}
-produit: {produit}
+de: {author}
+produit: {product}
 type: feature
 statut: nouveau        # nouveau | lu | traite
 date: {YYYY-MM-DD}
 ---
 
-# {Titre}
+# {Title}
 
-## Besoin
+## Need
 
-{Description du besoin}
+{Description of the need}
 
-## Proposition
+## Proposal
 
-{Description de la solution}
+{Description of the solution}
 
-## Contraintes
+## Constraints
 
-{Contraintes connues}
+{Known constraints}

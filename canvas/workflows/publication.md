@@ -2,42 +2,42 @@
 
 ![Workflow — Publication](../../doc/figures/fig-workflow-publication.svg)
 
-Workflow de publication : de la rédaction à la mise en ligne.
+Publication workflow: from writing to going live.
 
 ---
 
-### Quand l'utiliser
+### When to use it
 
-Pour tout contenu publié — page web, document public, livre blanc/bleu, communication externe. S'applique dès qu'un contenu sort du périmètre interne.
+For any published content — web page, public document, white/blue book, external communication. Applies as soon as content leaves the internal scope.
 
-### Étapes
+### Steps
 
-1. **Rédaction** — le rédacteur ou l'expert produit le contenu brut. Le fond prime sur la forme à ce stade
-2. **Validation fond** — les experts concernés valident chacun sur leur axe (technique, stratégique, formel). Chaque axe produit une review
-3. **Mise en forme** — le producteur (graphiste, intégrateur) met en forme. La structure et le style suivent les conventions du support cible
-4. **Challenge UX / accessibilité** — l'UX vérifie la lisibilité, la navigation, l'accessibilité. Le contenu doit fonctionner pour le public cible
-5. **Go orchestrateur** — dernière porte. L'orchestrateur vérifie l'intégrité factuelle : ce qui est publié est vrai, les sources sont correctes, le positionnement est juste
-6. **Mise en ligne** — déploiement effectif. L'orchestrateur exécute ou autorise
+1. **Writing** — the writer or expert produces the raw content. Substance takes priority over form at this stage
+2. **Substance validation** — concerned experts validate each on their axis (technical, strategic, formal). Each axis produces a review
+3. **Formatting** — the producer (designer, integrator) formats. Structure and style follow the target medium's conventions
+4. **UX / accessibility challenge** — UX verifies readability, navigation, accessibility. The content must work for the target audience
+5. **Orchestrator go** — last gate. The orchestrator verifies factual integrity: what is published is true, sources are correct, positioning is right
+6. **Going live** — effective deployment. The orchestrator executes or authorizes
 
-### Rôles impliqués
+### Roles involved
 
-| Persona | Rôle |
+| Persona | Role |
 |---------|------|
-| Rédacteur / Expert | Produit le contenu |
-| Experts (archi, recherche, stratégie) | Valident sur leur axe |
-| Graphiste / Producteur | Mise en forme |
-| UX | Challenge accessibilité et lisibilité |
-| Orchestrateur | Dernière porte — intégrité factuelle, go/no-go |
+| Writer / Expert | Produces the content |
+| Experts (architect, research, strategy) | Validate on their axis |
+| Designer / Producer | Formatting |
+| UX | Challenges accessibility and readability |
+| Orchestrator | Last gate — factual integrity, go/no-go |
 
-### Artefacts produits
+### Artifacts produced
 
-- Brouillon (dans le workspace du rédacteur)
-- Reviews par axe (dans `shared/review/`)
-- Contenu mis en forme (dans le support cible)
-- Validation orchestrateur (implicite : le go est le commit/déploiement)
+- Draft (in the writer's workspace)
+- Reviews by axis (in `shared/review/`)
+- Formatted content (in the target medium)
+- Orchestrator validation (implicit: the go is the commit/deployment)
 
-### Pièges
+### Pitfalls
 
-- **Publier sans validation fond** — la mise en forme donne une illusion de qualité. Un document bien présenté mais factuellement faux est pire qu'un brouillon correct
-- **L'orchestrateur valide la forme, pas le fond** — le rôle de l'orchestrateur en dernière porte est spécifiquement l'intégrité factuelle. La forme a été validée avant
-- **Sources non vérifiées** — une référence citée sans avoir été lue en entier propage des erreurs dans tout ce qui la cite ensuite (cf. `recherche.md`)
+- **Publishing without substance validation** — formatting gives an illusion of quality. A well-presented but factually wrong document is worse than a correct draft
+- **The orchestrator validates form, not substance** — the orchestrator's role at the last gate is specifically factual integrity. Form was validated before
+- **Unverified sources** — a reference cited without having been fully read propagates errors in everything that cites it afterwards (cf. `recherche.md`)

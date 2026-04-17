@@ -1,38 +1,38 @@
-## Recherche
+## Research
 
-![Workflow — Recherche](../../doc/figures/fig-workflow-recherche.svg)
+![Workflow — Research](../../doc/figures/fig-workflow-recherche.svg)
 
-Workflow de recherche : de l'identification des sources à la vérification de leur usage.
+Research workflow: from source identification to usage verification.
 
 ---
 
-### Quand l'utiliser
+### When to use it
 
-À chaque fois qu'un document cite une source externe — article, paper, documentation, spécification. S'applique aussi quand un persona affirme un fait qui nécessite une référence.
+Every time a document cites an external source — article, paper, documentation, specification. Also applies when a persona states a fact that requires a reference.
 
-### Étapes
+### Steps
 
-1. **Identification des sources** — repérer les sources pertinentes pour le sujet. Privilégier les sources primaires (paper original, spec officielle) aux sources secondaires (articles de blog, tutoriels)
-2. **Relecture complète de la source** — lire la source en entier, pas seulement l'abstract ou la section citée. Une source partiellement lue est une source mal comprise
-3. **Contextualisation** — formuler explicitement pourquoi cette source est pertinente pour ce sujet. Quel est le lien entre ce que la source dit et ce qu'on veut montrer
-4. **Vérification contexte d'usage** — la question critique : la source dit-elle vraiment ce qu'on lui fait dire ? Vérifier que le contexte original de la source correspond à l'usage qu'on en fait
+1. **Source identification** — spot relevant sources for the subject. Favor primary sources (original paper, official spec) over secondary sources (blog posts, tutorials)
+2. **Complete source reading** — read the source in full, not just the abstract or cited section. A partially read source is a misunderstood source
+3. **Contextualization** — explicitly formulate why this source is relevant to this subject. What is the link between what the source says and what we want to show
+4. **Usage context verification** — the critical question: does the source actually say what we make it say? Verify that the source's original context matches the usage we make of it
 
-### Rôles impliqués
+### Roles involved
 
-| Persona | Rôle |
+| Persona | Role |
 |---------|------|
-| Recherche | Exécute le workflow, produit les vérifications |
-| Expert du domaine (archi, dev, stratégie) | Fournit le contexte d'usage — pourquoi cette source est citée |
-| Orchestrateur | Arbitre en cas de désaccord sur la pertinence |
+| Research | Executes the workflow, produces verifications |
+| Domain expert (architect, dev, strategy) | Provides usage context — why this source is cited |
+| Orchestrator | Arbitrates in case of disagreement on relevance |
 
-### Artefacts produits
+### Artifacts produced
 
-- Review de sources (dans `shared/review/`, format `review-sources-{sujet}-{auteur}.md`)
-- Notes de contextualisation si nécessaire
-- Corrections dans les documents citants si une source est mal utilisée
+- Source review (in `shared/review/`, format `review-sources-{subject}-{author}.md`)
+- Contextualization notes if necessary
+- Corrections in citing documents if a source is misused
 
-### Pièges
+### Pitfalls
 
-- **Contamination factuelle** — une référence mal contextualisée propage une erreur dans tous les documents qui la citent. C'est l'erreur la plus coûteuse : elle est invisible et se multiplie
-- **Citer sans lire** — citer une source sur la base de son titre ou de son abstract. Le contenu réel peut contredire l'usage qu'on en fait
-- **Confondre autorité et pertinence** — une source peut être fiable (auteur reconnu, journal sérieux) sans être pertinente pour le contexte d'usage. La qualité de la review dépend de la question posée, pas seulement de la source (cf. `protocol/artefacts.md`)
+- **Factual contamination** — a poorly contextualized reference propagates an error in all documents that cite it. This is the most costly error: it is invisible and multiplies
+- **Citing without reading** — citing a source based on its title or abstract. The actual content may contradict the usage being made
+- **Confusing authority and relevance** — a source can be reliable (recognized author, serious journal) without being relevant to the usage context. The review quality depends on the question asked, not just the source (cf. `protocol/exchange.md`)

@@ -1,51 +1,51 @@
 ## Inspector
 
-L'orchestrateur intercepte et vérifie avant de transmettre. Pas un persona — une responsabilité.
+The orchestrator intercepts and verifies before forwarding. Not a persona — a responsibility.
 
 ### Structure
 
-Le pattern est complémentaire au Challenger. Le Challenger opère après la production (peer review). L'Inspector opère pendant la circulation — il intercepte les artefacts entre personas, vérifie, corrige si nécessaire, puis transmet.
+The pattern is complementary to the Challenger. The Challenger operates after production (peer review). The Inspector operates during circulation — they intercept artifacts between personas, verify, correct if necessary, then forward.
 
-Dans SOFIA, l'Inspector c'est l'orchestrateur. C'est implicite dans le rôle de l'orchestrateur : il lit tout, filtre, contextualise, corrige avant de transmettre. Trois fonctions cumulées sur une personne : orchestrateur, arbitre, inspecteur.
+In SOFIA, the Inspector is the orchestrator. It's implicit in the orchestrator's role: they read everything, filter, contextualize, correct before forwarding. Three functions combined in one person: orchestrator, arbiter, inspector.
 
-C'est le mécanisme le plus coûteux en attention — et le premier à lâcher quand la fatigue s'installe.
+This is the most attention-costly mechanism — and the first to fail when fatigue sets in.
 
-### Quand le reconnaître
+### When to recognize it
 
-- L'orchestrateur transmet un artefact d'un persona à un autre sans l'avoir relu → l'inspection est absente.
-- Une erreur factuelle se propage entre 3+ documents sans être détectée → la chaîne d'inspection est rompue.
-- L'orchestrateur approuve des sessions sans lire les résumés → le rôle d'inspecteur est abandonné.
+- The orchestrator forwards an artifact from one persona to another without having reread it → inspection is absent.
+- A factual error propagates across 3+ documents without being detected → the inspection chain is broken.
+- The orchestrator approves sessions without reading the summaries → the inspector role has been abandoned.
 
-### Ce que l'inspecteur vérifie
+### What the inspector verifies
 
-| Moment | Vérification |
+| Moment | Verification |
 |--------|-------------|
-| Avant transmission | L'artefact dit-il ce que le producteur pense qu'il dit ? |
-| Avant transmission | Le contexte est-il suffisant pour le destinataire ? |
-| Après réception | La réponse traite-t-elle la question posée ? |
-| En continu | Les faits (dates, chiffres, références) sont-ils corrects ? |
+| Before forwarding | Does the artifact say what the producer thinks it says? |
+| Before forwarding | Is the context sufficient for the recipient? |
+| After reception | Does the response address the question asked? |
+| Continuously | Are the facts (dates, numbers, references) correct? |
 
-### Relation avec le Challenger
+### Relationship with the Challenger
 
-Le Challenger et l'Inspector couvrent deux moments différents :
+The Challenger and the Inspector cover two different moments:
 
-- **Challenger** → après production, entre pairs. Horizontal.
-- **Inspector** → pendant circulation, par l'orchestrateur. Vertical.
+- **Challenger** → after production, between peers. Horizontal.
+- **Inspector** → during circulation, by the orchestrator. Vertical.
 
-Combinés, ils récupèrent la grande majorité des erreurs. Séparément, chacun laisse passer ce que l'autre attraperait. L'Inspector attrape les erreurs factuelles que les personas ne peuvent pas vérifier (ils n'ont pas de mémoire fiable). Le Challenger attrape les erreurs de fond que l'orchestrateur peut manquer par fatigue.
+Combined, they catch the vast majority of errors. Separately, each lets through what the other would catch. The Inspector catches factual errors that personas cannot verify (they have no reliable memory). The Challenger catches substantive errors that the orchestrator may miss due to fatigue.
 
-### Risques
+### Risks
 
-- **Surcharge** : l'orchestrateur cumule orchestration + arbitrage + inspection. C'est le facteur principal de décrochage (devoir n°6 : maintenir l'attention).
-- **Faux sentiment de sécurité** : l'inspection existe dans le processus mais n'est pas exécutée — l'orchestrateur scanne au lieu de lire.
-- **Pas de relève** : si l'orchestrateur décroche, personne ne prend le relais. Les personas continuent à produire avec la même assurance.
+- **Overload**: the orchestrator combines orchestration + arbitration + inspection. This is the primary dropout factor (duty #6: maintain attention).
+- **False sense of security**: inspection exists in the process but is not executed — the orchestrator scans instead of reading.
+- **No backup**: if the orchestrator drops out, no one takes over. Personas continue producing with the same confidence.
 
 ### Mitigation
 
-- Réduire la surface d'inspection : moins de personas actifs en parallèle = moins d'artefacts à inspecter.
-- Expliciter les moments d'inspection dans le protocole de session (devoir n°3 : relire ce qui sort).
-- Tracer les inspections manquées : quand un artefact est transmis sans relecture, le noter. La trace rend le manque visible.
+- Reduce the inspection surface: fewer active personas in parallel = fewer artifacts to inspect.
+- Make inspection moments explicit in the session protocol (duty #3: reread what goes out).
+- Track missed inspections: when an artifact is forwarded without rereading, note it. The trace makes the gap visible.
 
-### Référence
+### Reference
 
 Huang, J.-T. et al. (2025). "On the Resilience of LLM-Based Multi-Agent Collaboration with Faulty Agents." *ICML 2025*. https://arxiv.org/abs/2408.00989

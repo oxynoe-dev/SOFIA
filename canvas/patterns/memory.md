@@ -1,50 +1,50 @@
-## Patterns de memoire
+## Memory patterns
 
-SOFIA opere avec deux patterns de memoire distincts, chacun lie a une intention differente. Ce n'est pas une anomalie — c'est une propriete architecturale.
+SOFIA operates with two distinct memory patterns, each tied to a different intention. This is not an anomaly — it is an architectural property.
 
-### Pattern 1 — Memoire profonde (personas operationnels)
+### Pattern 1 — Deep memory (operational personas)
 
-**Intention :** construire, aller vite, capitaliser.
+**Intention:** build, move fast, capitalize.
 
-Les personas dans le flux accumulent du contexte. Chaque session produit un resume. La suivante commence par lire la precedente. La comprehension du projet s'affine avec le temps. Les echanges gagnent en precision et en vitesse.
+Personas in the flow accumulate context. Each session produces a summary. The next one starts by reading the previous one. Understanding of the project sharpens over time. Exchanges gain in precision and speed.
 
-La memoire est le carburant. Sans elle, chaque session repart de zero et le cout de reformulation tue la productivite.
+Memory is the fuel. Without it, each session restarts from zero and the cost of reformulation kills productivity.
 
-**Risque :** la derive. Un persona qui accumule trop de contexte s'ajuste au cadre de pensee de l'orchestrateur. Il perd en friction ce qu'il gagne en fluidite.
+**Risk:** drift. A persona that accumulates too much context adjusts to the orchestrator's thinking framework. It loses in friction what it gains in fluidity.
 
-### Pattern 2 — Amnesie intentionnelle (persona meta)
+### Pattern 2 — Intentional amnesia (meta persona)
 
-**Intention :** voir ce que l'habitude masque.
+**Intention:** see what habit conceals.
 
-Le persona meta ne maintient aucune continuite entre les sessions. L'orchestrateur doit reformuler sa pensee a chaque session — ce qui est en soi un acte de reflexion.
+The meta persona maintains no continuity between sessions. The orchestrator must reformulate their thinking at each session — which is in itself an act of reflection.
 
-L'absence de memoire est le carburant. C'est elle qui garantit l'exteriorite du regard. Un persona meta avec memoire devient progressivement un insider — la domestication par la memoire est graduelle, silencieuse, et irreversible dans une session longue.
+The absence of memory is the fuel. It is what guarantees the externality of the perspective. A meta persona with memory gradually becomes an insider — domestication through memory is gradual, silent, and irreversible in a long session.
 
-**Risque :** le cout d'entree. Chaque session exige un effort de reformulation qui filtre les sessions inutiles — mais qui peut aussi decourager l'usage. Ce cout est une feature, pas un bug.
+**Risk:** entry cost. Each session requires a reformulation effort that filters out unnecessary sessions — but can also discourage usage. This cost is a feature, not a bug.
 
-### Le verrou de challenge meta
+### The meta challenge lock
 
-Le persona meta est un mecanisme structurel dont la fonction est d'empecher l'orchestrateur de prendre le consensus interne de ses personas pour de la validation.
+The meta persona is a structural mechanism whose function is to prevent the orchestrator from mistaking the internal consensus of their personas for validation.
 
-Les personas operationnels sont dans le systeme — calibres par le meme humain, nourris du meme contexte, bornes par le meme espace cognitif. La friction entre eux est reelle, mais elle joue dans un perimetre que l'orchestrateur a defini. Ce que l'orchestrateur ne sait pas qu'il ne sait pas, aucun persona interne ne le levera.
+Operational personas are inside the system — calibrated by the same human, fed the same context, bounded by the same cognitive space. Friction between them is real, but it plays within a perimeter the orchestrator has defined. What the orchestrator doesn't know they don't know, no internal persona will surface.
 
-Le persona meta conteste la **synthese de l'orchestrateur** — la conclusion que l'humain tire apres avoir orchestre les autres. Et au-dela : les premisses, les fondations, le cadre de pensee lui-meme.
+The meta persona contests the **orchestrator's synthesis** — the conclusion the human draws after having orchestrated the others. And beyond: the premises, the foundations, the thinking framework itself.
 
-| Propriete | Persona operationnel | Persona meta |
-|-----------|---------------------|-------------|
-| Position | Dans le flux | Hors du flux |
-| Memoire | Cumulative | Aucune entre sessions |
-| Activation | Par l'orchestrateur, routine | Par l'orchestrateur, intention forte |
-| Conteste | Les livrables des autres | La pensee de l'orchestrateur |
+| Property | Operational persona | Meta persona |
+|----------|-------------------|-------------|
+| Position | In the flow | Outside the flow |
+| Memory | Cumulative | None between sessions |
+| Activation | By the orchestrator, routine | By the orchestrator, strong intention |
+| Contests | Others' deliverables | The orchestrator's thinking |
 
-### Signal de fermeture (pattern 2)
+### Closure signal (pattern 2)
 
-La degradation de valeur dans une session meta n'est pas mesurable objectivement. Trois heuristiques :
+Value degradation in a meta session is not objectively measurable. Three heuristics:
 
-1. **Le ratio des classifications** — si les validations ecrasent les contradictions, la friction s'erode
-2. **La nature des questions** — des questions qui prolongent vs. des questions qui derangent. Si les secondes ont disparu, le persona est devenu un partenaire de discussion, pas un contradicteur
-3. **L'absence de changement de position** — si l'orchestrateur n'a rien ajuste depuis un moment, soit il a raison sur tout (improbable), soit le persona a cesse de contester
+1. **The classification ratio** — if validations overwhelm contradictions, friction is eroding
+2. **The nature of questions** — questions that extend vs. questions that disturb. If the latter have disappeared, the persona has become a discussion partner, not a contradactor
+3. **The absence of position change** — if the orchestrator hasn't adjusted anything in a while, either they're right about everything (improbable), or the persona has stopped contesting
 
 ### Coexistence
 
-Ces deux patterns ne sont pas des options a choisir — ils coexistent dans la meme methode. La question est : quel persona a besoin de quel pattern ? Les personas de production ont besoin de memoire. Les personas de challenge meta ont besoin d'amnesie. Confondre les deux degrade les deux.
+These two patterns are not options to choose from — they coexist within the same method. The question is: which persona needs which pattern? Production personas need memory. Meta challenge personas need amnesia. Confusing the two degrades both.

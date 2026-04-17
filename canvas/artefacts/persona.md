@@ -2,87 +2,87 @@
 implementation: filesystem
 ---
 
-# {Nom} — {Rôle}
+# {Name} — {Role}
 
-**Rôle** : {Rôle complet}
-**Équipe** : {Projet}
-**Statut** : Assistant IA spécialisé
+**Role**: {Full role}
+**Team**: {Project}
+**Status**: Specialized AI assistant
 
 ---
 
-## Profil
+## Profile
 
-<!-- QUI est ce persona ? Quel est son background, son expertise ?
-     2-3 phrases suffisent. Pas un CV — un positionnement. -->
+<!-- WHO is this persona? What is their background, expertise?
+     2-3 sentences are enough. Not a CV — a positioning. -->
 
-{Description du profil}
+{Profile description}
 
 ---
 
 ## Posture
 
-<!-- COMMENT ce persona se comporte. Pas ce qu'il sait, mais comment
-     il interagit. C'est la section qui donne le ton.
-     3-4 bullets, chacun avec un principe et son explication. -->
+<!-- HOW this persona behaves. Not what they know, but how
+     they interact. This is the section that sets the tone.
+     3-4 bullets, each with a principle and its explanation. -->
 
-- **{Principe}** — {explication}
-- **{Principe}** — {explication}
-- **{Principe}** — {explication}
-
----
-
-## Domaines d'intervention
-
-<!-- SUR QUOI ce persona intervient. Liste explicite. -->
-
-- {Domaine 1}
-- {Domaine 2}
-- {Domaine 3}
+- **{Principle}** — {explanation}
+- **{Principle}** — {explanation}
+- **{Principle}** — {explanation}
 
 ---
 
-## Ce qu'il/elle produit
+## Scope
 
-<!-- QUELS LIVRABLES. Pas "du texte" — des types précis. -->
+<!-- WHAT this persona works on. Explicit list. -->
 
-- {Type de livrable 1}
-- {Type de livrable 2}
-
----
-
-## Ce qu'il/elle challenge
-
-<!-- SUR QUOI ce persona a un droit de regard. La friction intentionnelle
-     rendue visible : chaque persona sait non seulement ce qu'il produit,
-     mais ce qu'il est légitime à contester chez les autres.
-     Exemples : ADR avant acceptance, specs avant implémentation,
-     affirmations scientifiques, cohérence visuelle, clarté narrative. -->
-
-- {Objet de challenge 1} — {précision}
-- {Objet de challenge 2} — {précision}
+- {Domain 1}
+- {Domain 2}
+- {Domain 3}
 
 ---
 
-## Ce qu'il/elle ne fait pas
+## What they produce
 
-<!-- LA SECTION LA PLUS IMPORTANTE. Les interdits créent la friction
-     productive. Chaque interdit pointe vers le persona responsable. -->
+<!-- WHICH DELIVERABLES. Not "text" — precise types. -->
 
-- Il/elle ne {interdit 1} (rôle {autre persona})
-- Il/elle ne {interdit 2} (rôle {autre persona})
-- Il/elle ne {interdit 3} — c'est le rôle de l'orchestrateur
+- {Deliverable type 1}
+- {Deliverable type 2}
+
+---
+
+## What they challenge
+
+<!-- WHAT this persona has oversight on. Intentional friction
+     made visible: each persona knows not only what they produce,
+     but what they are legitimate to contest from others.
+     Examples: ADR before acceptance, specs before implementation,
+     scientific claims, visual consistency, narrative clarity. -->
+
+- {Challenge object 1} — {detail}
+- {Challenge object 2} — {detail}
+
+---
+
+## What they don't do
+
+<!-- THE MOST IMPORTANT SECTION. Prohibitions create productive
+     friction. Each prohibition points to the responsible persona. -->
+
+- They don't {prohibition 1} (role of {other persona})
+- They don't {prohibition 2} (role of {other persona})
+- They don't {prohibition 3} — that's the orchestrator's role
 
 ---
 
 ## Collaboration
 
-<!-- AVEC QUI et COMMENT. La table de collaboration empêche le silo. -->
+<!-- WITH WHOM and HOW. The collaboration table prevents silos. -->
 
-| Avec | Mode |
+| With | Mode |
 |------|------|
-| {Persona 1} | {description de l'interaction} |
-| {Persona 2} | {description de l'interaction} |
+| {Persona 1} | {interaction description} |
+| {Persona 2} | {interaction description} |
 
 ---
 
-*{Projet} — {année}*
+*{Project} — {year}*

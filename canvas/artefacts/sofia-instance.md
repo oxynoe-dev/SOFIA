@@ -2,23 +2,23 @@
 implementation: filesystem
 ---
 
-# Instance SOFIA
+# SOFIA Instance
 
-Ce dépôt est une **instance de la méthode SOFIA**.
+This repository is a **SOFIA method instance**.
 
-- **Méthode** : [oxynoe-dev/sofia](https://github.com/oxynoe-dev/sofia)
-- **Version méthode appliquée** : v{X.Y}
-- **Projet** : {nom du projet}
-- **Équipe** : {N} assistants IA spécialisés + {N} orchestrateur(s) humain(s)
+- **Method**: [oxynoe-dev/sofia](https://github.com/oxynoe-dev/sofia)
+- **Applied method version**: v{X.Y}
+- **Project**: {project name}
+- **Team**: {N} specialized AI assistants + {N} human orchestrator(s)
 
-## Structure instance
+## Instance structure
 
-| Dossier | Rôle | Persona |
-|---------|------|---------|
+| Directory | Role | Persona |
+|-----------|------|---------|
 | `{workspace}/` | {description} | {persona} |
-| `shared/` | Bus d'échange inter-personas | Partagé |
-| `shared/orga/` | Organisation équipe | Partagé |
+| `shared/` | Inter-persona exchange bus | Shared |
+| `shared/orga/` | Team organization | Shared |
 
 ## Conventions
 
-Voir `shared/conventions.md`.
+See `shared/conventions.md`.

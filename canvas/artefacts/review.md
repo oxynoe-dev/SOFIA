@@ -1,38 +1,38 @@
 ---
 implementation: filesystem
-de: {auteur}
-pour: {destinataire}         # optionnel — omettre si review générale
+de: {author}
+pour: {recipient}         # optional — omit if general review
 type: review
 statut: nouveau              # nouveau | lu | traite
 date: {YYYY-MM-DD}
 ---
 
-# Review — {Sujet}
+# Review — {Subject}
 
-**Objet** : {ce qui est reviewé — ADR, spec, implémentation, design}
+**Object**: {what is being reviewed — ADR, spec, implementation, design}
 
 ---
 
 ## Observations
 
-<!-- Factuelles. Ce que tu constates, pas ce que tu penses. -->
+<!-- Factual. What you observe, not what you think. -->
 
 1. {Observation 1}
 2. {Observation 2}
 3. {Observation 3}
 
-## Recommandations
+## Recommendations
 
-<!-- Priorisées. Ce que tu proposes, avec le niveau d'urgence. -->
+<!-- Prioritized. What you propose, with urgency level. -->
 
-| # | Recommandation | Priorité |
+| # | Recommendation | Priority |
 |---|---------------|----------|
-| 1 | {recommandation} | {haute / moyenne / basse} |
-| 2 | {recommandation} | {haute / moyenne / basse} |
+| 1 | {recommendation} | {high / medium / low} |
+| 2 | {recommendation} | {high / medium / low} |
 
-## Questions pour l'orchestrateur
+## Questions for the orchestrator
 
-<!-- Ce qui nécessite un arbitrage humain. -->
+<!-- What requires human arbitration. -->
 
 - {Question 1}
 - {Question 2}

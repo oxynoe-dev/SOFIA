@@ -1,35 +1,35 @@
-## Revue en étoile
+## Star Review
 
-![Pattern — Revue en étoile](../../doc/figures/fig-pattern-revue-etoile.svg)
+![Pattern — Star review](../../doc/figures/fig-pattern-revue-etoile.svg)
 
-Un artefact est soumis à N personas en parallèle, chacun le review sur son axe. L'orchestrateur consolide.
+An artifact is submitted to N personas in parallel, each reviews it on their axis. The orchestrator consolidates.
 
 ### Structure
 
-1. L'orchestrateur identifie un artefact qui nécessite une validation multi-angle.
-2. Il le soumet simultanément à N personas, chacun avec une consigne de review sur son axe propre.
-3. Les personas produisent leurs reviews en parallèle, sans se lire mutuellement.
-4. L'orchestrateur collecte les reviews, identifie les convergences et les contradictions, et consolide une décision.
+1. The orchestrator identifies an artifact that requires multi-angle validation.
+2. They submit it simultaneously to N personas, each with a review instruction on their own axis.
+3. Personas produce their reviews in parallel, without reading each other.
+4. The orchestrator collects the reviews, identifies convergences and contradictions, and consolidates a decision.
 
-La différence avec le pattern challenger : le challenger s'insère dans un flux de production séquentiel (le producteur intègre les retours). La revue en étoile est un mécanisme ponctuel de validation — les reviewers ne modifient pas l'artefact, l'orchestrateur tranche.
+The difference with the challenger pattern: the challenger fits into a sequential production flow (the producer integrates the feedback). The star review is a one-off validation mechanism — reviewers don't modify the artifact, the orchestrator decides.
 
-### Quand le reconnaître
+### When to recognize it
 
-- Un document structurant (ADR, spec, plan) doit être validé avant adoption.
-- Plusieurs axes de qualité sont en jeu et aucun persona ne les couvre tous.
-- On veut des regards indépendants, pas contaminés par les avis des autres.
+- A structural document (ADR, spec, plan) must be validated before adoption.
+- Multiple quality axes are at stake and no persona covers them all.
+- Independent perspectives are wanted, not contaminated by others' opinions.
 
-### Exemple
+### Example
 
-L'orchestrateur soumet un ADR à Mira (cohérence avec l'architecture cible), Léa (rigueur formelle, références), et Marc (alignement stratégique). Chacun produit une review indépendante dans `shared/review/`. L'orchestrateur lit les trois, identifie un point de tension entre cohérence archi et stratégie, et tranche.
+The orchestrator submits an ADR to Mira (consistency with target architecture), Léa (formal rigor, references), and Marc (strategic alignment). Each produces an independent review in `shared/review/`. The orchestrator reads all three, identifies a tension point between architectural consistency and strategy, and decides.
 
-### Variantes
+### Variants
 
-- **Étoile partielle** : seuls 2 axes sur N sont sollicités, selon la nature de l'artefact.
-- **Étoile itérative** : après consolidation, l'artefact est amendé et resoumis pour un second tour.
+- **Partial star**: only 2 of N axes are solicited, depending on the artifact's nature.
+- **Iterative star**: after consolidation, the artifact is amended and resubmitted for a second round.
 
-### Risques
+### Risks
 
-- **Redondance** : les reviewers couvrent involontairement le même terrain — perte de temps.
-- **Paralysie** : les reviews divergent et l'orchestrateur n'arrive pas à trancher.
-- **Faux parallèle** : les reviews sont lancées "en parallèle" mais en réalité séquentielles (un persona lit la review d'un autre avant de produire la sienne).
+- **Redundancy**: reviewers inadvertently cover the same ground — wasted time.
+- **Paralysis**: reviews diverge and the orchestrator can't decide.
+- **False parallel**: reviews are launched "in parallel" but are actually sequential (one persona reads another's review before producing their own).

@@ -2,28 +2,28 @@
 implementation: filesystem
 ---
 
-# Roadmap {Produit} — {type}
+# Roadmap {Product} — {type}
 
-> {Description courte du produit}
-> Repo : {repo}
-> Versionnage : semver (x.y.z)
-> Owner : @{persona} — gardien de la cohérence des items
+> {Short product description}
+> Repo: {repo}
+> Versioning: semver (x.y.z)
+> Owner: @{persona} — consistency guardian for items
 
-## Version courante
+## Current version
 
-**v{X.Y.Z}** — {description courte}
+**v{X.Y.Z}** — {short description}
 
 ## Versions
 
-### v{X.Y} — {Titre}
+### v{X.Y} — {Title}
 
 - [todo] Item @persona
-- [done] Item fait @persona
+- [done] Completed item @persona
 
-## Backlog non planifié
+## Unplanned backlog
 
-_(items à positionner dans une version future)_
+_(items to position in a future version)_
 
-## Décisions structurantes
+## Structural decisions
 
-- **{Sujet}** — {décision} ({date})
+- **{Subject}** — {decision} ({date})

@@ -2,94 +2,94 @@
 implementation: filesystem
 ---
 
-# Organisation de l'équipe {Projet}
+# Team organization {Project}
 
-**Projet** : {Projet}
-**Date** : {date}
-**Auteur** : {persona architecte ou orchestrateur}
+**Project**: {Project}
+**Date**: {date}
+**Author**: {architect persona or orchestrator}
 
 ---
 
-## L'équipe
+## The team
 
-<!-- Liste complète : l'orchestrateur + tous les personas actifs.
-     Mettre à jour à chaque ajout/suppression de persona. -->
+<!-- Complete list: the orchestrator + all active personas.
+     Update on each persona addition/removal. -->
 
-| Persona | Rôle | Statut |
+| Persona | Role | Status |
 |---------|------|--------|
-| **{Nom orchestrateur}** | Orchestrateur | Humain — décideur |
-| **{Persona 1}** | {Rôle} | Assistant IA spécialisé |
-| **{Persona 2}** | {Rôle} | Assistant IA spécialisé |
+| **{Orchestrator name}** | Orchestrator | Human — decision maker |
+| **{Persona 1}** | {Role} | Specialized AI assistant |
+| **{Persona 2}** | {Role} | Specialized AI assistant |
 
 ---
 
-## Flux de collaboration
+## Collaboration flows
 
-<!-- Les flux principaux entre personas. Adapter selon l'équipe.
-     Nommer les flux, décrire la direction, indiquer qui déclenche quoi.
-     Les flux typiques : décisionnel, technique, scientifique, éditorial. -->
+<!-- Main flows between personas. Adapt to the team.
+     Name the flows, describe the direction, indicate who triggers what.
+     Typical flows: decisional, technical, scientific, editorial. -->
 
-### Flux décisionnel
-Le Product Owner initie et valide. {Persona archi} traduit en architecture,
-{persona stratège} en stratégie. Les décisions remontent à l'orchestrateur.
+### Decisional flow
+The Product Owner initiates and validates. {Architect persona} translates into architecture,
+{strategist persona} into strategy. Decisions go up to the orchestrator.
 
-### Flux technique
-{Persona archi} spécifie les contrats → {persona dev} implémente et remonte
-les frictions → {persona UX} spécifie les comportements UI.
+### Technical flow
+{Architect persona} specifies contracts → {dev persona} implements and surfaces
+frictions → {UX persona} specifies UI behaviors.
 
-### Flux éditorial
-<!-- Si l'équipe a un rédacteur et une chaîne de publication.
-     Préciser : qui rédige, qui valide le fond, qui produit la forme,
-     qui challenge avant publication, qui déclenche les scripts. -->
+### Editorial flow
+<!-- If the team has a writer and a publication pipeline.
+     Specify: who writes, who validates substance, who produces form,
+     who challenges before publication, who triggers scripts. -->
 
-{Persona rédacteur} rédige le contenu. Les experts valident le fond.
-{Persona prod} produit la forme. {Persona UX} challenge avant publication.
-L'orchestrateur valide avant toute sortie.
-
----
-
-## Règles de fonctionnement
-
-<!-- Les invariants de l'équipe. Adapter, mais ces trois règles
-     sont non négociables dans SOFIA : -->
-
-- **L'orchestrateur est le seul décideur final** — les personas proposent, analysent, challengent. L'orchestrateur tranche.
-- **Les frictions remontent** — tout blocage ou incohérence entre personas est signalé explicitement, pas contourné.
-- **Rien ne sort sans validation orchestrateur** — l'orchestrateur relit avant toute publication.
-
-<!-- Ajouter les règles spécifiques au projet : -->
+{Writer persona} writes the content. Experts validate substance.
+{Prod persona} produces form. {UX persona} challenges before publication.
+The orchestrator validates before any output.
 
 ---
 
-## Périmètres — matrice RACI simplifiée
+## Operating rules
 
-<!-- Adapter les lignes aux décisions clés du projet.
-     R = Responsable · A = Approbateur · C = Consulté
-     L'orchestrateur est toujours Approbateur. -->
+<!-- Team invariants. Adapt, but these three rules
+     are non-negotiable in SOFIA: -->
 
-| Décision | Orchestrateur | {P1} | {P2} | {P3} |
+- **The orchestrator is the sole final decision maker** — personas propose, analyze, challenge. The orchestrator decides.
+- **Frictions surface** — any blockage or inconsistency between personas is flagged explicitly, not worked around.
+- **Nothing goes out without orchestrator validation** — the orchestrator rereads before any publication.
+
+<!-- Add project-specific rules: -->
+
+---
+
+## Scopes — simplified RACI matrix
+
+<!-- Adapt rows to the project's key decisions.
+     R = Responsible · A = Approver · C = Consulted
+     The orchestrator is always Approver. -->
+
+| Decision | Orchestrator | {P1} | {P2} | {P3} |
 |---|---|---|---|---|
-| {Décision 1} | A | R | C | — |
-| {Décision 2} | A | C | R | — |
-| {Décision 3} | A | — | C | R |
-| Publication (tous canaux) | A | C | C | C |
+| {Decision 1} | A | R | C | — |
+| {Decision 2} | A | C | R | — |
+| {Decision 3} | A | — | C | R |
+| Publication (all channels) | A | C | C | C |
 
-*R = Responsable · A = Approbateur · C = Consulté*
+*R = Responsible · A = Approver · C = Consulted*
 
 ---
 
-## Droits de challenge
+## Challenge rights
 
-<!-- Chaque persona a un droit de regard explicite sur certains livrables
-     des autres. La friction ne repose pas sur la bonne volonté — elle est
-     structurelle. Remplir pour chaque persona actif. -->
+<!-- Each persona has explicit oversight on certain deliverables
+     from others. Friction does not rely on goodwill — it is
+     structural. Fill in for each active persona. -->
 
 | Persona | Challenge |
 |---------|-----------|
-| **{Persona 1}** | {sur quoi il/elle a un droit de regard} |
-| **{Persona 2}** | {sur quoi il/elle a un droit de regard} |
-| **{Persona 3}** | {sur quoi il/elle a un droit de regard} |
+| **{Persona 1}** | {what they have oversight on} |
+| **{Persona 2}** | {what they have oversight on} |
+| **{Persona 3}** | {what they have oversight on} |
 
 ---
 
-*{Projet} — {date}*
+*{Project} — {date}*

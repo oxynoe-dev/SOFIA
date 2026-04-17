@@ -2,41 +2,41 @@
 
 ![Workflow — Dev spec-first](../../doc/figures/fig-workflow-dev.svg)
 
-Workflow de développement : ne jamais coder sans cible validée.
+Development workflow: never code without a validated target.
 
 ---
 
-### Quand l'utiliser
+### When to use it
 
-À chaque feature, correction ou refactoring qui touche le code produit. S'applique dès qu'un item est priorisé par l'orchestrateur.
+For every feature, fix, or refactoring that touches product code. Applies as soon as an item is prioritized by the orchestrator.
 
-### Étapes
+### Steps
 
-1. **L'orchestrateur priorise** — l'item existe dans la roadmap avec un owner explicite
-2. **Archi spécifie** — contrat d'interface, contraintes, ADR si décision structurelle (cf. `protocol/artefacts.md` pour les formats). La spec est le contrat : elle définit le quoi, pas le comment
-3. **Dev planifie en mode plan** — décomposition feature par feature, chaque étape confrontée aux principes et aux ADR existants
-4. **Tests d'abord (TDD)** — écrire les tests avant le code, selon la couche : moteur/opérateurs = TDD strict, CLI/IHM = tests après implémentation
-5. **Code** — implémenter en respectant les responsabilités modules et les conventions du projet
-6. **Review archi** — l'architecte vérifie la cohérence avec la spec et les principes. Écarts documentés, pas ignorés
-7. **Commit** — le dev prépare le message, l'orchestrateur exécute
+1. **The orchestrator prioritizes** — the item exists in the roadmap with an explicit owner
+2. **Architect specifies** — interface contract, constraints, ADR if structural decision (cf. `protocol/exchange.md` for formats). The spec is the contract: it defines the what, not the how
+3. **Dev plans in plan mode** — feature-by-feature decomposition, each step confronted with principles and existing ADRs
+4. **Tests first (TDD)** — write tests before code, by layer: engine/operators = strict TDD, CLI/UI = tests after implementation
+5. **Code** — implement following module responsibilities and project conventions
+6. **Architecture review** — the architect verifies consistency with the spec and principles. Gaps documented, not ignored
+7. **Commit** — the dev prepares the message, the orchestrator executes
 
-### Rôles impliqués
+### Roles involved
 
-| Persona | Rôle |
+| Persona | Role |
 |---------|------|
-| Orchestrateur | Priorise, arbitre, commite |
-| Architecte | Spécifie le contrat, review post-implémentation |
-| Dev | Planifie, teste, code |
+| Orchestrator | Prioritizes, arbitrates, commits |
+| Architect | Specifies the contract, post-implementation review |
+| Dev | Plans, tests, codes |
 
-### Artefacts produits
+### Artifacts produced
 
-- Spec ou contrat d'interface (dans le workspace archi)
-- ADR si décision structurelle (cf. `decision-adr.md`)
-- Tests unitaires / intégration
+- Spec or interface contract (in the architect's workspace)
+- ADR if structural decision (cf. `decision-adr.md`)
+- Unit / integration tests
 - Code + commit
 
-### Pièges
+### Pitfalls
 
-- **Coder avant la spec** — "je sais ce qu'il faut faire" mène à du refactoring évitable. La spec force à poser les contraintes avant de toucher au code
-- **Confondre plan et spec** — un plan décompose des étapes, une spec définit un contrat. Le plan sans spec produit du code sans cible
-- **Skipper la review archi** — la review n'est pas une formalité. Elle détecte les écarts entre spec et implémentation avant qu'ils ne se propagent
+- **Coding before the spec** — "I know what needs to be done" leads to avoidable refactoring. The spec forces laying out constraints before touching code
+- **Confusing plan and spec** — a plan decomposes steps, a spec defines a contract. A plan without a spec produces code without a target
+- **Skipping the architecture review** — the review is not a formality. It detects gaps between spec and implementation before they propagate
