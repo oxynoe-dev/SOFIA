@@ -146,6 +146,18 @@ Un artefact PEUT porter des contributions (voir `contribution.md`). C'est le cas
 
 L'orchestrateur DOIT etre le routeur de tous les echanges. Un persona NE DOIT PAS consulter directement un artefact qui ne lui est pas destine.
 
+### Echanges cross-instance
+
+Quand l'orchestrateur route un artefact entre deux instances, l'artefact DOIT etre depose dans l'espace partage de l'instance du destinataire — pas dans celui de l'emetteur.
+
+1. L'orchestrateur instruit Persona A (instance X) de produire un artefact pour Persona B (instance Y)
+2. Persona A produit l'artefact pendant sa session
+3. L'orchestrateur depose l'artefact dans `shared/` de l'instance Y (`status: new`)
+4. L'orchestrateur ouvre une session avec Persona B (instance Y) et lui presente l'artefact
+5. Le cycle de vie (routage, resolution, archivage) suit les regles de l'instance Y
+
+Le persona emetteur n'a pas besoin de connaitre l'instance du destinataire. C'est l'orchestrateur qui traverse les frontieres d'instance — les personas restent isoles.
+
 ### Archivage
 
 Quand un artefact passe a `status: done`, il DEVRAIT etre archive. Le mecanisme d'archivage est defini dans `implementation/implementation.md`.

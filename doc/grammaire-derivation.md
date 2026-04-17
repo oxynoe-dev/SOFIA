@@ -255,7 +255,7 @@ La passe pédagogique transformera ce matériau en parcours d'apprentissage. Ce 
 
 ## Provenance
 
-- Draft d'origine : `projets/rodin/grammaire-derivation-personas-sofia.md` (Rodin, 09/04)
-- Analyse références : `shared/notes/note-mira-grammaire-derivation-lea.md` (Léa, 11/04)
-- Étude émergence : `architecture/doc/etudes/sofia/etude-emergence-personas-katen.md` (Mira, 11/04)
-- Condition cachée : `projets/rodin/note-condition-cachee-trait-cognitif.md` (Rodin, 09/04)
+- Draft d'origine : grammaire de derivation (Rodin, 09/04) — document d'instance
+- Analyse références : note grammaire derivation (Léa, 11/04) — document d'instance
+- Étude émergence : etude emergence personas Katen (Mira, 11/04) — document d'instance
+- Condition cachée : note condition cachee (Rodin, 09/04) — document d'instance

@@ -251,6 +251,7 @@ Tout le reste. Recommande, pas obligatoire.
 | Echange | Friction | genere | 1 → 0..* |
 | Echange | Contribution | genere | 1 → 0..* |
 | Persona | Persona | challenge | * → * |
+| Friction | Friction | amende (antecedent) | 0..1 → 0..1 |
 
 ### Couches de formalisation
 
@@ -261,6 +262,7 @@ La distinction protocolaire/observationnelle traverse le MCD :
 | Instance, Espace, Echange | Protocolaire | Computationnelle — l'audit verifie mecaniquement |
 | Friction (marqueur, initiative) | Observationnelle | Inferentielle — le persona pre-remplit, l'orchestrateur valide |
 | Friction (resolution) | Observationnelle | Inferentielle — DEVRAIT, pas DOIT |
+| Friction (antecedent/lignage) | Protocolaire | Computationnelle — ref: verifiable, chaine de frictions |
 | Contribution | Observationnelle | Inferentielle — PEUT, optionnelle |
 
 ### Flux des echanges

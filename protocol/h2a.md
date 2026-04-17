@@ -109,6 +109,17 @@ Les mots-cles "DOIT", "NE DOIT PAS", "DEVRAIT", "NE DEVRAIT PAS", "PEUT" sont a 
 | Wood, Bruner & Ross (1976) | Scaffolding — collaboration asymetrique |
 | Elster (1979) | Precommitment — contrainte productive |
 
+## Limitations structurelles
+
+Le protocole documente ce qu'il ne peut pas garantir. Ces limitations sont inherentes au modele, pas des bugs a corriger.
+
+| Limitation | Nature | Mitigation |
+|------------|--------|-----------|
+| **Opacite residuelle** (invariant 5) | L'orchestrateur ne peut pas arbitrer sa propre resistance a la friction. Indecidabilite locale. | reportPattern() — mitigation, pas garantie |
+| **Friction non instrumentee** | Un participant peut exprimer des positions en texte libre sans marqueur. Le signal est perdu pour le protocole. | Template friction dans les contextes. Depend de la discipline du participant. |
+| **Lignage silencieux** | Si le champ `antecedent` est omis, la chaine de frictions est cassee sans signal. Le protocole ne peut pas deviner qu'une friction en resout une autre. | Bloc de validation avant commit. Hooks (v0.4). |
+| **Echanges cross-instance** | Le routage cross-instance depend entierement de l'orchestrateur. Pas de mecanisme automatique de decouverte ou de routage entre instances. | Formalise dans `exchange.md` §Echanges cross-instance. L'artefact DOIT etre depose dans le shared du destinataire. |
+
 ## Origine
 
-Ce protocole a ete formalise a partir d'une etude d'architecture (`architecture/doc/h2a-proposal.md`, avril 2026) puis enrichi empiriquement sur 3 instances. Les 4 documents de protocol/ sont la reference — l'etude d'origine reste comme trace historique.
+Ce protocole a ete formalise empiriquement sur 3 instances (avril 2026). Les 4 documents de protocol/ sont la reference.
