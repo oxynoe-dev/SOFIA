@@ -1,200 +1,200 @@
 # Changelog
 
-## v0.3.2 — Protocole H2A, grammaire de derivation & modes operationnels (2026-04-16)
+## v0.3.2 — H2A Protocol, derivation grammar & operational modes (2026-04-16)
 
-### Protocole H2A
-- Formalisation protocole H2A — 5 invariants, 9 operations, distinction protocole/observation
-- 5e invariant — Opacite residuelle (limitation structurelle de l'arbitrage orchestrateur)
-- signalerPattern() — operation de mitigation, detection convergence rejets, 3 hypotheses, asymetrie charge de preuve
-- Tags de resolution PXP — ratifie/conteste/revise/rejete (6e dimension friction, inspire Mestha et al. 2025)
-- Mutabilite inter-sessions des resolutions — evolution possible avec champ `ref:`
-- Separation exchange.md (artefacts, conventions nommage, flux inter-instances) et contribution.md
-- Extraction implementation/ — protocol/tools/ vers implementation/filesystem/ (prepare futures implementations)
+### H2A Protocol
+- Formalization of H2A protocol — 5 invariants, 9 operations, protocol/observation distinction
+- 5th invariant — Residual opacity (structural limitation of orchestrator arbitration)
+- signalerPattern() — mitigation operation, rejection convergence detection, 3 hypotheses, burden-of-proof asymmetry
+- PXP resolution tags — ratified/contested/revised/rejected (6th friction dimension, inspired by Mestha et al. 2025)
+- Inter-session mutability of resolutions — possible evolution with `ref:` field
+- Separation of exchange.md (artifacts, naming conventions, inter-instance flows) and contribution.md
+- Extraction of implementation/ — protocol/tools/ to implementation/filesystem/ (prepares future implementations)
 
-### Grammaire & profil cible
-- Grammaire de derivation v1 — deux modes (bootstrap B1-B4, emergence E1-E4), exemples Katen, references Alexander/Chomsky/Stiny
-- Condition cachee + profil cible — trois niveaux (expertise, intention, trait cognitif), auto-diagnostic
-- Archetype inspecteur-methode (type Sofia) — conformite forme vs fond, deux passes, cite-or-drop
+### Grammar & target profile
+- Derivation grammar v1 — two modes (bootstrap B1-B4, emergence E1-E4), Katen examples, Alexander/Chomsky/Stiny references
+- Hidden condition + target profile — three levels (expertise, intention, cognitive trait), self-diagnosis
+- Method-inspector archetype (Sofia type) — form vs substance conformity, two passes, cite-or-drop
 
-### Modes operationnels Sofia
-- Mode creation d'instance — 5 phases, scaffolding minimal, conventions depuis template
-- Mode ajout persona — 5 phases, generation 3 fichiers, annonce equipe
-- Mode recalibrage — 4 phases, table de signaux (domestication, debordement, isolation, friction absente)
-- Mode audit — 2 passes (script conformite + interpretation frictions)
-- Suppression mode onboarding (absorbe par creation d'instance)
+### Sofia operational modes
+- Instance creation mode — 5 phases, minimal scaffolding, conventions from template
+- Persona addition mode — 5 phases, generation of 3 files, team announcement
+- Recalibration mode — 4 phases, signal table (domestication, overflow, isolation, absent friction)
+- Audit mode — 2 passes (conformity script + friction interpretation)
+- Removal of onboarding mode (absorbed by instance creation)
 
-### Outillage
-- analysis.py + analysis.html — analyse multi-instance + dashboard interactif, 7 graphiques, 3 tables, 4 filtres. Charte Oxynoe. **En calibration**
-- audit-instance.py — aligne sur H2A (resolutions PXP, `ref:`, signalerPattern, scaffolding minimal). 60 tests
-- create-instance.py — reecrit (sofia.md, scaffolding minimal, conventions template). 31 tests
-- Tag implementation:filesystem sur 10 canvas artefacts
+### Tooling
+- analysis.py + analysis.html — multi-instance analysis + interactive dashboard, 7 charts, 3 tables, 4 filters. Oxynoe palette. **Under calibration**
+- audit-instance.py — aligned with H2A (PXP resolutions, `ref:`, signalerPattern, minimal scaffolding). 60 tests
+- create-instance.py — rewritten (sofia.md, minimal scaffolding, template conventions). 31 tests
+- Tag implementation:filesystem on 10 artifact canvas files
 
 ### Documentation
-- Test e2e — Sofia from scratch, 3 recalibrages CLAUDE.md, audit concluant
-- Tutoriel e2e — instance "laboratoire artistique" (shinoe-lab)
-- Boot Sofia en deux temps — onboarding (~80K) vs audit (~200K tokens)
-- Livre bleu en .md dans sofia/doc/
-- Principes, devoirs et modele coeur restructures
-- Canvas isoles (outils d'inspiration, pas de prescription)
-- Fix chemins CLAUDE.md — relatifs au workspace
+- End-to-end test — Sofia from scratch, 3 CLAUDE.md recalibrations, successful audit
+- End-to-end tutorial — "artistic laboratory" instance (shinoe-lab)
+- Two-step Sofia boot — onboarding (~80K) vs audit (~200K tokens)
+- Blue book in .md format in sofia/doc/
+- Principles, duties and core model restructured
+- Canvas isolated (inspiration tools, not prescriptions)
+- Fix CLAUDE.md paths — relative to workspace
 
 ### Decisions
-- ADR-010 — Multi-plateforme via couche implementation, in-repo (supersede ADR-004 repos separes)
-- ADR-011 — Protocole H2A formalise (5 invariants, 9 operations, 2 couches)
-- ADR-012 — Extraction couche implementation (semantique vs materialisation)
-- ADR-001 (semver) et ADR-009 (couche Instance) passes en Accepted
+- ADR-010 — Multi-platform via implementation layer, in-repo (supersedes ADR-004 separate repos)
+- ADR-011 — Formalized H2A protocol (5 invariants, 9 operations, 2 layers)
+- ADR-012 — Implementation layer extraction (semantics vs materialization)
+- ADR-001 (semver) and ADR-009 (Instance layer) moved to Accepted
 
 ### Fixes
-- 11 fixes REX split absorbes par H2A et mode creation d'instance
+- 11 REX split fixes absorbed by H2A and instance creation mode
 
-## v0.3.1 — Review, restructuration instance & outillage (2026-04-11)
+## v0.3.1 — Review, instance restructuring & tooling (2026-04-11)
 
-- ADR-009 amende — couche instance/ (archetypes, artefacts, examples/katen), pas un kit de scaffolding
-- Restructuration sofia/ — instance/archetypes/, instance/artefacts/, instance/examples/katen/ (snapshot complet)
-- Archetype persona meta-challenger ajoute
-- Suppression core/templates/, protocol/templates/, runtime/claude-code/templates/, doc/examples/
-- audit-instance.py — script d'audit d'instance SOFIA (implementation/filesystem/), 30 checks structurels, matrices echanges/friction, activite sessions/persona, signaux, 4 formats de sortie (md/json/csv/sqlite), 29 tests
-- Factorisation CLAUDE.md 3 couches — boot 2 lignes (persona + contexte)
+- ADR-009 amended — instance/ layer (archetypes, artifacts, examples/katen), not a scaffolding kit
+- Restructuring of sofia/ — instance/archetypes/, instance/artefacts/, instance/examples/katen/ (full snapshot)
+- Meta-challenger persona archetype added
+- Removal of core/templates/, protocol/templates/, runtime/claude-code/templates/, doc/examples/
+- audit-instance.py — SOFIA instance audit script (implementation/filesystem/), 30 structural checks, exchange/friction matrices, session/persona activity, signals, 4 output formats (md/json/csv/sqlite), 29 tests
+- CLAUDE.md factored into 3 layers — 2-line boot (persona + context)
 
-## v0.3.0 — Intégration Rodin & topologie personas (2026-04-10)
+## v0.3.0 — Rodin integration & persona topology (2026-04-10)
 
-- Deux types de personas : opérationnel (dans le flux, mémoire longue) et méta (hors flux, sans mémoire)
-- Signaux de fusion et test de suppression dans core/personas.md
-- Anti-pattern "organigramme projeté" — dériver des axes de tension, pas des métiers
-- ADR-009 — couche Instance comme 4e couche conceptuelle (Core / Protocol / Runtime / Instance)
-- Position de Sofia hors instance — extériorité comme condition d'objectivité
-- Instance d'audit formalisée — challengers miroir 1:1, sans mémoire inter-cycles, kill après synthèse
-- Sofia et Rodin : tableau comparatif des deux formes d'extériorité
-- Pattern verrou de challenge méta dans doc/patterns/verrou-challenge-meta.md
-- Pattern deux patterns de mémoire dans doc/patterns/deux-patterns-memoire.md
-- Feedback fusion personas dans doc/feedback/fusion-personas.md
-- Règle Sofia vérification factuelle continue dans core/sofia.md
-- arch-sofia.md mis à jour (4 couches, section Instance, chiffres)
+- Two types of personas: operational (in the flow, long-term memory) and meta (out of flow, no memory)
+- Fusion signals and suppression test in core/personas.md
+- Anti-pattern "projected org chart" — derive from axes of tension, not job titles
+- ADR-009 — Instance layer as 4th conceptual layer (Core / Protocol / Runtime / Instance)
+- Sofia positioned outside the instance — exteriority as a condition of objectivity
+- Formalized audit instance — 1:1 mirror challengers, no inter-cycle memory, kill after synthesis
+- Sofia and Rodin: comparative table of two forms of exteriority
+- Meta challenge lock pattern in doc/patterns/verrou-challenge-meta.md
+- Two memory patterns in doc/patterns/deux-patterns-memoire.md
+- Persona fusion feedback in doc/feedback/fusion-personas.md
+- Sofia continuous factual verification rule in core/sofia.md
+- arch-sofia.md updated (4 layers, Instance section, figures)
 
-## v0.2.8 — Conventions & formalisation (2026-04-10)
+## v0.2.8 — Conventions & formalization (2026-04-10)
 
-- Spec structure formelle des roadmaps dans protocol/conventions.md (en-tetes version, statuts item, dependances)
-- Spec frontmatter universel dans protocol/conventions.md (notes, reviews, features, etudes, personas, sessions)
-- Pattern registre livrables de reference dans doc/patterns/registre-livrables.md
-- Convention version visible sur les rendus produit (doc, site, livre bleu)
-- Regle Sofia — verification factuelle continue
-- Marqueurs de friction universels ✓/~/⚡/◐/✗ dans core/friction.md
-- 4 nouveaux pieges dans doc/feedback/pieges.md (angle mort partage, surproduction signal, ossification cadre, goulot orchestrateur)
-- Isolation production multi-support dans doc/feedback/isolation-production.md
-- 3 classes d'erreur de sourcing dans doc/feedback/contamination-factuelle.md
-- README finalise (orchestrateur, 280+ sessions, lien site, origine reformulee)
+- Formal roadmap structure spec in protocol/conventions.md (version headers, item statuses, dependencies)
+- Universal frontmatter spec in protocol/conventions.md (notes, reviews, features, studies, personas, sessions)
+- Reference deliverables registry pattern in doc/patterns/registre-livrables.md
+- Visible version convention on product deliverables (doc, site, blue book)
+- Sofia rule — continuous factual verification
+- Universal friction markers ✓/~/⚡/◐/✗ in core/friction.md
+- 4 new pitfalls in doc/feedback/pieges.md (shared blind spot, signal overproduction, framework ossification, orchestrator bottleneck)
+- Multi-support production isolation in doc/feedback/isolation-production.md
+- 3 sourcing error classes in doc/feedback/contamination-factuelle.md
+- README finalized (orchestrator, 280+ sessions, site link, reformulated origin)
 
-## v0.2.7 — Corrections & renommages (2026-04-10)
+## v0.2.7 — Fixes & renames (2026-04-10)
 
-- Renommage PO/humain → **orchestrateur** dans toute la methode (~150 occ. .md, ~60 occ. .svg)
-- Correction `voix.md` → `sofia.md` dans protocol/conventions.md
+- Renaming PO/human → **orchestrator** across the entire method (~150 occ. .md, ~60 occ. .svg)
+- Fix `voix.md` → `sofia.md` in protocol/conventions.md
 
-## v0.2.6 — Polish + renommage SOFIA (2026-04-08)
+## v0.2.6 — Polish + SOFIA rename (2026-04-08)
 
-- Triple renommage : Diapason → **Sofia**, Sofia (graphiste) → **Luz**, Voix → **SOFIA**
-- Persona `core/sofia.md` — gardienne de la methode, dissociee du runtime
-- Schemas SVG refaits (flux elementaire, anatomie instance, structure repo)
+- Triple rename: Diapason → **Sofia**, Sofia (graphic designer) → **Luz**, Voix → **SOFIA**
+- Persona `core/sofia.md` — method guardian, decoupled from runtime
+- SVG diagrams remade (elementary flow, instance anatomy, repo structure)
 - `arch-voix.md` → `arch-sofia.md`, `fig-triangle-voix.svg` → `fig-triangle-sofia.svg`
-- README — SOFIA presente comme agnostique, `runtime/` = une implementation parmi d'autres
-- Disclaimer runtime dans doc (utilisateur.md, orchestration.md)
-- Corrections review OCDS : "comportement conversationnel de Claude Code" → "du runtime"
-- Exemple Katen : `sofia.md` → `luz.md`
+- README — SOFIA presented as agnostic, `runtime/` = one implementation among others
+- Runtime disclaimer in doc (user-guide.md, orchestration.md)
+- OCDS review fixes: "Claude Code conversational behavior" → "runtime behavior"
+- Katen example: `sofia.md` → `luz.md`
 
 ## v0.2.5 — Publication (2026-04-07)
 
-- CONTRIBUTING.md — guide de contribution (branches, commits, PR, code de conduite)
-- Templates GitHub — issues (bug, feature), PR template, blank issues désactivées
-- Corrections textuelles review OCDS : PO → l'humain, livre blanc → livre bleu, descriptions Katen, rôle stratège
-- Guide utilisateur restructuré : §2 "Ce que tu viens de cloner", renumérotation 1→9
-- "Pour aller plus loin" reformulé avec liens inter-pages
-- Lien mode manuel et isolation cliquables dans le guide
-- Note git conseillé mais pas obligatoire
-- Note "livrables Katen = exemples, adapter à son contexte"
-- SVG revue en étoile refait (personas haut, humain bas, contraste augmenté)
-- feedback/pattern-editorial.md renommé chaine-editoriale.md
-- Page Architecture retirée du site (première release)
-- README.md : description runtime + Mistral
+- CONTRIBUTING.md — contribution guide (branches, commits, PRs, code of conduct)
+- GitHub templates — issues (bug, feature), PR template, blank issues disabled
+- OCDS textual review fixes: PO → the human, white paper → blue book, Katen descriptions, strategist role
+- User guide restructured: §2 "What you just cloned", renumbered 1→9
+- "Going further" reformulated with inter-page links
+- Manual mode and isolation links made clickable in the guide
+- Note: git recommended but not required
+- Note "Katen deliverables = examples, adapt to your context"
+- Star review SVG remade (personas top, human bottom, increased contrast)
+- feedback/pattern-editorial.md renamed to chaine-editoriale.md
+- Architecture page removed from site (first release)
+- README.md: runtime description + Mistral
 
-## v0.2.4 — Restructuration Core / Protocol / Runtime (2026-04-06)
+## v0.2.4 — Core / Protocol / Runtime restructuring (2026-04-06)
 
-- Isolation core/ (principes, personas, friction, devoirs, templates)
-- Séparation protocol/ (artefacts, conventions, tracabilité, isolation, orchestration, instance)
-- Séparation runtime/ (claude-code/)
+- Isolation of core/ (principles, personas, friction, duties, templates)
+- Separation of protocol/ (artifacts, conventions, traceability, isolation, orchestration, instance)
+- Separation of runtime/ (claude-code/)
 - Split templates (core/, protocol/, runtime/)
-- ADR-008 — décision Core/Protocol/Runtime
-- conventions.md consolidé dans protocol/
-- Distillation retours → doc/patterns/ + doc/feedback/
-- Workflows documentés (dev, publication, ADR, recherche, onboarding, chaîne produit)
-- Patterns documentés (challenger, calibrage, escalade, distillerie, revue en étoile, contamination)
-- Mode manuel (demarrer-manuel.md)
-- Documentation structurée (doc/ publiable)
-- README.md finalisé (disclaimer alpha, mode manuel)
+- ADR-008 — Core/Protocol/Runtime decision
+- conventions.md consolidated in protocol/
+- Feedback distillation → doc/patterns/ + doc/feedback/
+- Workflows documented (dev, publication, ADR, research, onboarding, product chain)
+- Patterns documented (challenger, calibration, escalation, distillery, star review, contamination)
+- Manual mode (demarrer-manuel.md)
+- Structured documentation (doc/ publishable)
+- README.md finalized (alpha disclaimer, manual mode)
 
-## v0.2.3 — Documentation & tests du Diapason (2026-04-04)
+## v0.2.3 — Diapason documentation & testing (2026-04-04)
 
-- Nom du guide : Le Diapason
-- devoirs.md — 6 devoirs de l'humain orchestrateur
-- Template persona — section "Ce qu'il/elle challenge"
-- personas.md — 7e dimension persona (droit de challenge)
-- Template team-orga — RACI, flux, droits de challenge
-- 5 REX terrain remontés (calibrage, isolation, éditorial, challenger, contamination)
-- utilisateur.md — guide unifié
-- Convention @owner sur chaque item de roadmap
-- Fix Diapason (accroche, double casquette, surcharge questions)
-- Design onboarding Diapason (flow directif 5 phases)
-- Feature émergence dans template CLAUDE.md
+- Guide name: Le Diapason
+- devoirs.md — 6 duties of the human orchestrator
+- Persona template — "What they challenge" section
+- personas.md — 7th persona dimension (challenge right)
+- team-orga template — RACI, flows, challenge rights
+- 5 field REX reported (calibration, isolation, editorial, challenger, contamination)
+- user-guide.md — unified guide
+- @owner convention on each roadmap item
+- Diapason fixes (hook, dual role, question overload)
+- Diapason onboarding design (directive 5-phase flow)
+- Emergence feature in CLAUDE.md template
 
-## v0.2.2 — Refonte planification (2026-04-01)
+## v0.2.2 — Planning overhaul (2026-04-01)
 
-- Remplacement des 7 backlogs persona par 7 roadmaps produit avec ownership
-- Nouvelles roadmaps : Recherche, Editorial (Regards + Fragments), Site Oxynoe
-- Suppression de `roadmap-katen.md` dans shared/ (doublon de `katen/doc/roadmap.md`)
-- Boot minimal : lire le dernier resume session, rien d'autre
-- Fermeture minimale : resume + commit
-- `backlog-archive.md` pour l'historique des items termines
-- MAJ conventions.md (roles, ownership, protocole session)
-- MAJ 7 CLAUDE.md (boot/fermeture simplifies)
-- MAJ methode/artefacts.md (roadmaps par produit, plus de backlog)
+- Replacement of 7 persona backlogs by 7 product roadmaps with ownership
+- New roadmaps: Research, Editorial (Regards + Fragments), Oxynoe Site
+- Removal of `roadmap-katen.md` in shared/ (duplicate of `katen/doc/roadmap.md`)
+- Minimal boot: read the latest session summary, nothing else
+- Minimal closing: summary + commit
+- `backlog-archive.md` for completed item history
+- Updated conventions.md (roles, ownership, session protocol)
+- Updated 7 CLAUDE.md files (simplified boot/closing)
+- Updated methode/artefacts.md (roadmaps per product, no more backlog)
 
-## v0.2.1 — Archetypes personas (2026-03-31)
+## v0.2.1 — Persona archetypes (2026-03-31)
 
-- 7 templates pre-remplis par role : architecte, dev, ux, stratege, redacteur, chercheur, graphiste
-- MAJ persona.md template vierge ("Assistant IA specialise")
+- 7 pre-filled templates by role: architect, dev, ux, strategist, writer, researcher, graphic designer
+- Updated persona.md blank template ("Specialized AI assistant")
 
-## v0.2.0 — Produit Voix enrichi (2026-03-31)
+## v0.2.0 — Enriched Voix product (2026-03-31)
 
-- Templates : backlog.md, roadmap-produit.md, note.md, feature.md, voix-instance.md
-- Enrichissement methode/artefacts.md — archivage, shared/orga/, features multi-produits
-- Exemples Sofia + Winston dans exemples/katen/
-- Marqueur voix.md documente (methode/instance.md)
-- "Agent IA" → "Assistant IA specialise" dans tous les exemples
-- Restructuration templates/ → outillage/templates/
+- Templates: backlog.md, roadmap-produit.md, note.md, feature.md, voix-instance.md
+- Enriched methode/artefacts.md — archiving, shared/orga/, multi-product features
+- Sofia + Winston examples in exemples/katen/
+- voix.md marker documented (methode/instance.md)
+- "AI Agent" → "Specialized AI assistant" in all examples
+- Restructuring templates/ → outillage/templates/
 - outillage/onboarding.md, outillage/lexique.md
 - methode/isolation.md — multi-instance
-- claude-code/sessions.md — archivage en fermeture
+- claude-code/sessions.md — archiving at closing
 
 ## v0.1.5 — Structure (2026-03-31)
 
-- Archivage notes/archives/ et review/archives/ (convention + rollup 103 fichiers)
-- shared/orga/ (personas, figures, lexique, team-orga)
-- Regards features → shared/features/ avec frontmatter
-- voix.md marqueur d'instance
+- Archiving notes/archives/ and review/archives/ (convention + rollup of 103 files)
+- shared/orga/ (personas, figures, lexicon, team-orga)
+- Regards features → shared/features/ with frontmatter
+- voix.md instance marker
 
 ## v0.1.4 — Backlogs & personas (2026-03-30)
 
-- 7/7 backlogs crees, fiches personas a jour, CLAUDE.md a jour
+- 7/7 backlogs created, persona files up to date, CLAUDE.md up to date
 
-## v0.1.3 — Donnees (2026-03-30)
+## v0.1.3 — Data (2026-03-30)
 
-- Frontmatter normalise sur 114 fichiers shared/
-- Roadmaps produit : katen, voix, si-oxynoe, convergence
+- Frontmatter normalized on 114 shared/ files
+- Product roadmaps: katen, voix, si-oxynoe, convergence
 
-## v0.1.2 — Migration structure (2026-03-30)
+## v0.1.2 — Structure migration (2026-03-30)
 
-- Aplatir experiments/katen/ → workspaces a la racine
-- Absorber team/ dans experiments/ (shared/, personas/)
+- Flatten experiments/katen/ → root-level workspaces
+- Absorb team/ into experiments/ (shared/, personas/)
 
-## v0.1.1 — Protocole de session (2026-03-30)
+## v0.1.1 — Session protocol (2026-03-30)
 
-- Alignement protocole ouverture/fermeture session dans 7 CLAUDE.md
-- Creation conventions.md (frontmatter, statuts, commits)
+- Session open/close protocol alignment across 7 CLAUDE.md files
+- Creation of conventions.md (frontmatter, statuses, commits)

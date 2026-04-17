@@ -1,74 +1,74 @@
-# Contribuer a SOFIA
+# Contributing to SOFIA
 
-SOFIA est en **alpha**. Les contributions sont les bienvenues — retours terrain, corrections, propositions de patterns.
+SOFIA is in **alpha**. Contributions are welcome — field feedback, corrections, pattern proposals.
 
-Avant de contribuer, lire le guide utilisateur : [`doc/utilisateur.md`](doc/utilisateur.md).
+Before contributing, read the user guide: [`doc/user-guide.md`](doc/user-guide.md).
 
-## Comment contribuer
+## How to contribute
 
-1. **Ouvrir une issue d'abord** — bug, question, proposition de feature. Cela permet de discuter avant de coder.
-2. **Si pertinent, proposer une PR** — une issue validee peut deboucher sur une pull request.
-3. **Les retours d'experience comptent** — un rapport de friction, un pattern qui marche, une limite rencontree : tout est utile.
+1. **Open an issue first** — bug, question, feature proposal. This allows discussion before coding.
+2. **If relevant, propose a PR** — a validated issue can lead to a pull request.
+3. **Field experience matters** — a friction report, a pattern that works, a limitation encountered: everything is useful.
 
-## Structure du repo
+## Repo structure
 
-| Dossier | Role | Stabilite |
-|---------|------|-----------|
-| `core/` | Invariants (principes, personas, friction, devoirs) | Stable — modifications rares et deliberees |
-| `protocol/` | Contrat d'interface (artefacts, conventions, tracabilite, isolation, orchestration) | Semi-stable — evolue avec les retours |
-| `runtime/` | Implementation concrete (Claude Code aujourd'hui, autres demain) | Volatile — adapte aux outils |
-| `doc/` | Guides, workflows, patterns, feedback, architecture, ADR | Ouvert aux contributions |
+| Directory | Role | Stability |
+|-----------|------|-----------|
+| `core/` | Invariants (principles, model, friction, duties) | Stable — rare and deliberate changes |
+| `protocol/` | Interface contract (H2A, exchange, friction, contribution) | Semi-stable — evolves with feedback |
+| `runtime/` | Concrete implementation (Claude Code today, others tomorrow) | Volatile — adapts to tools |
+| `doc/` | Guides, workflows, patterns, feedback, architecture, ADR | Open to contributions |
 
 ## Conventions
 
-- **Langue source** : francais. Les documents techniques peuvent contenir des termes anglais quand ils sont etablis (runtime, pattern, workflow).
-- **Nommage fichiers** : kebab-case, pas d'accents dans les noms de fichiers. Ex : `guide-installation.md`.
-- **Format** : Markdown. Pas de HTML inline sauf necessite.
+- **Source language**: English.
+- **File naming**: kebab-case, no accents in filenames. E.g., `getting-started.md`.
+- **Format**: Markdown. No inline HTML unless necessary.
 
 ## Branches
 
-- `main` — branche protegee, pas de push direct.
-- `feature/{sujet}` — nouvelle fonctionnalite ou contenu.
-- `fix/{sujet}` — correction.
+- `main` — protected branch, no direct push.
+- `feature/{subject}` — new feature or content.
+- `fix/{subject}` — correction.
 
-Toute contribution passe par une PR contre `main`.
+All contributions go through a PR against `main`.
 
 ## Commits
 
-Messages en francais, format :
+Messages in English, format:
 
 ```
-{type}: {description courte}
+{type}: {short description}
 ```
 
-Types :
-- `feat` — nouveau contenu ou fonctionnalite
+Types:
+- `feat` — new content or feature
 - `fix` — correction
-- `doc` — documentation, guides, exemples
-- `refactor` — reorganisation sans changement de sens
+- `doc` — documentation, guides, examples
+- `refactor` — reorganization without meaning change
 
-Exemples :
+Examples:
 ```
-feat: ajout pattern delegation inter-personas
-fix: correction lien casse dans guide utilisateur
-doc: clarification du protocole d'isolation
-refactor: deplacement des ADR dans doc/architecture/adr/
+feat: add inter-persona delegation pattern
+fix: broken link in user guide
+doc: clarify isolation protocol
+refactor: move ADR to doc/adr/
 ```
 
 ## Pull requests
 
-- Une PR = un sujet. Garder les PR focalisees.
-- Decrire le contexte et la motivation dans la description.
-- Review requise avant merge.
-- Si la PR touche `core/` ou `protocol/`, expliquer pourquoi l'invariant ou le contrat doit evoluer.
+- One PR = one subject. Keep PRs focused.
+- Describe context and motivation in the description.
+- Review required before merge.
+- If the PR touches `core/` or `protocol/`, explain why the invariant or contract needs to evolve.
 
-## Code de conduite
+## Code of conduct
 
-- **Bienveillance** — on construit ensemble, on apprend ensemble.
-- **Clarte** — pas de jargon inutile. Si un terme n'est pas evident, l'expliquer.
-- **Honnetete** — dire ce qui ne marche pas est aussi utile que dire ce qui marche.
-- **Respect du perimetre** — SOFIA est une methode, pas un produit logiciel. Les contributions restent dans ce cadre.
+- **Kindness** — we build together, we learn together.
+- **Clarity** — no unnecessary jargon. If a term isn't obvious, explain it.
+- **Honesty** — saying what doesn't work is as useful as saying what does.
+- **Scope respect** — SOFIA is a method, not a software product. Contributions stay within this frame.
 
-## Licence
+## License
 
-SOFIA est sous licence [MIT](LICENSE). Toute contribution est soumise a la meme licence.
+SOFIA is under [MIT](LICENSE) license. All contributions are subject to the same license.
