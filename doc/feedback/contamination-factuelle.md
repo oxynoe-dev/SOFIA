@@ -1,107 +1,108 @@
-# Retour d'expérience — Contamination factuelle
+# Field experience report — Factual contamination
 
-> Le repo n'est pas une source de vérité pour les faits. Il l'a jamais été.
+> The repo is not a source of truth for facts. It never was.
 
 ---
 
-## Le problème
+## The problem
 
-Les LLMs ne comptent pas, ne calculent pas les durées, et privilégient
-la cohérence interne sur la vérité externe. Une donnée approximative
-entrée une fois — parfois par l'orchestrateur, parfois hallucinée par l'IA —
-sera propagée dans tous les documents générés ensuite.
+LLMs don't count, don't calculate durations, and favor internal
+coherence over external truth. An approximate data point entered
+once — sometimes by the orchestrator, sometimes hallucinated by the AI —
+will be propagated into every document generated afterwards.
 
-Plus le repo grandit, plus l'erreur devient invisible. Elle *ressemble*
-à de la cohérence parce que chaque document contaminé renforce les autres.
-L'IA ne doute pas d'une donnée qu'elle retrouve dans 10 fichiers du repo.
-Le fait qu'elle l'ait elle-même écrite dans ces 10 fichiers n'entre pas
-dans son raisonnement.
+The larger the repo grows, the more invisible the error becomes. It
+*looks like* coherence because each contaminated document reinforces
+the others. The AI doesn't doubt a data point it finds in 10 repo files.
+The fact that it wrote it in those 10 files itself doesn't enter its
+reasoning.
 
-## Cas réel — Katen
+## Real case — Katen
 
-L'orchestrateur a utilisé "15 ans" pour décrire sa durée de réflexion sur le projet.
-C'était une approximation — la vraie durée est de 18 ans (2008-2026).
-L'IA a repris ce chiffre, l'a propagé dans ~30 documents, et l'a stabilisé.
+The orchestrator used "15 years" to describe his duration of reflection on the project.
+It was an approximation — the real duration is 18 years (2008-2026).
+The AI picked up the figure, propagated it across ~30 documents, and stabilized it.
 
-Audit :
-- ~30 documents actifs contenaient "14 ans" ou "15 ans" au lieu de "18 ans"
-- ~12 documents dataient le concept original "2010-2012" au lieu de "2008-2012"
-- 2 fichiers dataient l'arXiv "(2010)" au lieu de "(2011)"
+Audit:
+- ~30 active documents contained "14 years" or "15 years" instead of "18 years"
+- ~12 documents dated the original concept "2010-2012" instead of "2008-2012"
+- 2 files dated the arXiv "(2010)" instead of "(2011)"
 
-L'erreur venait de l'orchestrateur lui-même. L'IA l'a amplifiée et rendue invisible.
+The error came from the orchestrator himself. The AI amplified it and made it invisible.
 
-## Le mécanisme
+## The mechanism
 
-1. Une donnée approximative entre dans une session
-2. L'IA la reprend sans vérifier, la formule joliment, la propage
-3. Chaque document contaminé devient une source pour les sessions suivantes
-4. L'erreur se stabilise — elle a l'air correcte parce qu'elle est
-   cohérente avec les autres documents contaminés
+1. An approximate data point enters a session
+2. The AI picks it up without checking, phrases it nicely, propagates it
+3. Each contaminated document becomes a source for subsequent sessions
+4. The error stabilizes — it looks correct because it's consistent
+   with the other contaminated documents
 
-C'est un **effet de renforcement mutuel**. Le même phénomène existe à
-l'échelle du web (model collapse, Habsburg AI) — mais à l'échelle du
-web, c'est irréversible. Dans un repo SOFIA, c'est traçable et corrigeable.
-À condition que l'orchestrateur vérifie.
+This is a **mutual reinforcement effect**. The same phenomenon exists at
+web scale (model collapse, Habsburg AI) — but at web scale, it's
+irreversible. In a SOFIA repo, it's traceable and fixable. Provided the
+orchestrator checks.
 
-## Ce qui est vulnérable
+## What is vulnerable
 
-- **Dates et durées** — les LLMs ne calculent pas les écarts temporels
-- **Chiffres** — compteurs, métriques, quantités
-- **Noms propres** — variations orthographiques, attributions erronées
-- **Références bibliographiques** — années, auteurs, titres, contexte d'usage
+- **Dates and durations** — LLMs don't calculate time spans
+- **Numbers** — counters, metrics, quantities
+- **Proper nouns** — spelling variations, wrong attributions
+- **Bibliographic references** — years, authors, titles, usage context
 
-## Trois classes d'erreur de sourcing
+## Three classes of sourcing errors
 
-La contamination ne se limite pas aux faits bruts. Les sources
-elles-mêmes peuvent être problématiques de trois façons :
+Contamination isn't limited to raw facts. Sources themselves can be
+problematic in three ways:
 
-**Classe 1 — Assertion sans source.** Le texte affirme quelque chose
-comme un fait, aucune source ne le soutient. L'IA a produit une
-assertion vraisemblable à partir de sa distribution, pas d'une donnée.
+**Class 1 — Assertion without source.** The text states something as
+fact, no source supports it. The AI produced a plausible assertion
+from its distribution, not from data.
 
-**Classe 2 — Source qui contredit l'assertion.** La source existe et
-est citée — mais elle dit autre chose que ce que le texte prétend.
-L'IA a "résumé" en déformant, ou a confondu deux sources.
+**Class 2 — Source contradicts the assertion.** The source exists and
+is cited — but it says something different from what the text claims.
+The AI "summarized" with distortion, or confused two sources.
 
-**Classe 3 — Source vraie, usage incohérent.** La source est correcte
-et fidèlement citée — mais elle ne dit pas ce que le contexte d'usage
-requiert. Exemple : citer une étude sur des agents IA pour justifier
-un comportement humain, sans caveat sur le transfert.
+**Class 3 — Correct source, incoherent usage.** The source is correct
+and faithfully cited — but it doesn't say what the usage context
+requires. Example: citing a study on AI agents to justify human
+behavior, without a caveat about the transfer.
 
-La classe 3 est la plus dangereuse : tout a l'air correct, la source
-est vérifiable, le résumé est fidèle. Seul quelqu'un qui comprend le
-contexte d'usage peut détecter l'incohérence.
+Class 3 is the most dangerous: everything looks correct, the source
+is verifiable, the summary is faithful. Only someone who understands
+the usage context can detect the incoherence.
 
-## Les gardes-fous
+## Safeguards
 
-### 1. Vérification factuelle en continu
+### 1. Continuous factual verification
 
-Pas en fin de projet — en continu. Chaque session qui manipule des faits
-(dates, chiffres, refs) devrait inclure une passe de vérification.
-C'est le devoir 1 de la méthode.
+Not at the end of the project — continuously. Every session that handles
+facts (dates, numbers, refs) should include a verification pass.
+That's duty 1 of the method.
 
-### 2. Passes de décontamination
+### 2. Decontamination passes
 
-Audits ciblés sur les données les plus sensibles, à intervalles réguliers.
-Sur Katen, un audit a identifié ~55 occurrences dans ~42 fichiers en une
-session. C'est faisable — à condition de le planifier.
+Targeted audits on the most sensitive data, at regular intervals. On
+Katen, an audit identified ~55 occurrences across ~42 files in a single
+session. It's doable — provided you plan for it.
 
-### 3. Source de vérité explicite
+### 3. Explicit source of truth
 
-Les faits critiques du projet doivent être déclarés une fois, dans un
-document de référence, et toujours vérifiés contre cette source. Pas
-contre le repo — contre la source.
+Critical project facts must be declared once, in a reference document,
+and always verified against that source. Not against the repo — against
+the source.
 
-## Pour ton projet
+## For your project
 
-Ce n'est pas un défaut de la méthode. C'est une propriété de la
-technologie sous-jacente. Les erreurs de précision sont normales —
-les LLMs privilégient la vraisemblance sur la vérité.
+This is not a flaw of the method. It's a property of the underlying
+technology. Precision errors are normal — LLMs favor plausibility
+over truth.
 
-L'orchestrateur est le seul garde-fou. La méthode doit le dire explicitement,
-et l'orchestrateur doit l'intégrer comme pratique, pas comme principe abstrait.
+The orchestrator is the only safeguard. The method must state this
+explicitly, and the orchestrator must integrate it as practice, not
+as an abstract principle.
 
-Et c'est un des arguments les plus forts en faveur de la méthode SOFIA :
-dans un monde où le web se contamine irréversiblement, un repo structuré
-avec des reviews croisées est un des rares espaces où la décontamination
-reste possible.
+And it's one of the strongest arguments in favor of the SOFIA method:
+in a world where the web contaminates itself irreversibly, a structured
+repo with cross-reviews is one of the rare spaces where decontamination
+remains possible.

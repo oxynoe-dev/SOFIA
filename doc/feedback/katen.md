@@ -1,122 +1,117 @@
-# Retour d'expérience — Katen
+# Field experience report — Katen
 
-> 7 personas, 210+ sessions, un projet réel.
+> 7 personas, 210+ sessions, a real project.
 
 ---
 
-## Le projet
+## The project
 
-[Katen](https://katen.run) est un moteur d'orchestration formellement vérifié
-pour pipelines Data & IA, basé sur les réseaux de Petri. Construit en HTML/JS/SVG pur, zéro dépendance.
-Open source MIT. 18 ans de réflexion (2008-2026) — de la v1 C++/Qt
-à la v2 pur web.
+[Katen](https://katen.run) is a formally verified orchestration engine
+for Data & AI pipelines, based on Petri nets. Built in pure HTML/JS/SVG, zero dependencies.
+Open source MIT. 18 years of reflection (2008-2026) — from the v1 C++/Qt
+to v2 pure web.
 
-## L'équipe
+## The team
 
-| Persona | Rôle | Workspace |
+| Persona | Role | Workspace |
 |---------|------|-----------|
-| **Mira** | Architecte système & solution | `experiments/architecture/` |
-| **Axel** | Développeur full stack | `katen/` (repo produit) |
-| **Léa** | Chercheuse & validation scientifique | `experiments/recherche/` |
+| **Mira** | System & solution architect | `experiments/architecture/` |
+| **Axel** | Full stack developer | `katen/` (product repo) |
+| **Léa** | Researcher & scientific validation | `experiments/recherche/` |
 | **Nora** | Product Design & UX | `experiments/ux/` |
-| **Marc** | Conseil stratégique | `experiments/strategie/` |
-| **Sofia** | Identité visuelle & Production multi-support | `experiments/graphisme/` |
-| **Winston** | Écrivain & distillateur éditorial | `experiments/maturation/` |
+| **Marc** | Strategic advisor | `experiments/strategie/` |
+| **Sofia** | Visual identity & Multi-format production | `experiments/graphisme/` |
+| **Winston** | Writer & editorial distiller | `experiments/maturation/` |
 
-Un humain (l'orchestrateur/créateur du projet) arbitre.
+One human (the orchestrator/project creator) arbitrates.
 
-## Ce qui a marché
+## What worked
 
-### La friction produit de meilleures décisions
+### Friction produces better decisions
 
-Mira qui challenge une implémentation d'Axel. Léa qui signale
-qu'une affirmation ne tient pas à l'examen de la littérature.
-Marc qui demande "qui va payer pour ça ?". Sofia qui refuse un
-thème visuel qui plaît mais qui ne porte pas l'identité du projet.
-Ces frictions ont évité des erreurs réelles.
+Mira challenging an Axel implementation. Léa flagging that a claim
+doesn't hold up to the literature. Marc asking "who's going to pay
+for this?". Sofia refusing a visual theme that looks good but doesn't
+carry the project identity. These frictions prevented real mistakes.
 
-### L'isolation force la rigueur
+### Isolation forces rigor
 
-Mira ne code pas → elle est obligée de spécifier clairement.
-Axel ne décide pas de l'architecture → il remonte les frictions
-au lieu de contourner. Sofia produit, Nora challenge — celle qui
-décide de la forme est celle qui la livre, celle qui challenge ne
-produit pas. Le résultat : 62 ADR, 24 principes d'architecture,
-des specs exploitables.
+Mira doesn't code → she's forced to specify clearly. Axel doesn't
+decide on architecture → he escalates frictions instead of working
+around them. Sofia produces, Nora challenges — the one who decides
+the form is the one who delivers it, the one who challenges doesn't
+produce. The result: 62 ADRs, 24 architecture principles, usable specs.
 
-### Les sessions structurent la continuité
+### Sessions structure continuity
 
-Le résumé de session est le pont entre les conversations.
-Sans lui, chaque session repart de zéro. Avec lui, le persona
-reprend exactement où il s'est arrêté.
+The session summary is the bridge between conversations. Without it,
+each session starts from zero. With it, the persona picks up exactly
+where they left off.
 
-### Les artefacts comme protocole
+### Artifacts as protocol
 
-Les reviews croisées (Mira review un ADR, Léa review une
-affirmation publique, Nora challenge un livrable de Sofia) sont
-plus utiles que n'importe quel chat. L'écriture force la clarté.
+Cross-reviews (Mira reviews an ADR, Léa reviews a public claim,
+Nora challenges a Sofia deliverable) are more useful than any chat.
+Writing forces clarity.
 
-### Le pattern challenger
+### The challenger pattern
 
-Un producteur, N challengers avec droit de bloquant sur leur axe.
-Axel code → Mira challenge l'archi, Léa les invariantes, Nora l'UX.
-Winston rédige → Mira challenge la structure, Léa les refs, Marc
-le positionnement. L'orchestrateur tranche quand un challenger bloque.
+One producer, N challengers with blocking rights on their axis.
+Axel codes → Mira challenges architecture, Léa the invariants, Nora the UX.
+Winston writes → Mira challenges structure, Léa the refs, Marc
+the positioning. The orchestrator decides when a challenger blocks.
 
-### La chaîne éditoriale
+### The editorial chain
 
-Winston rédige, les experts valident le fond, Sofia produit la forme,
-Nora challenge avant publication, l'orchestrateur valide en dernier. Le livre
-blanc SOFIA est le premier produit complet de cette chaîne.
+Winston writes, experts validate substance, Sofia produces format,
+Nora challenges before publication, the orchestrator validates last. The
+SOFIA blue book is the first complete product of this chain.
 
-## Ce qui a cassé
+## What broke
 
-### Session perdue
+### Lost session
 
-Une semaine de travail (6-7 sessions) a été perdue suite à un
-crash de l'app Claude. Le contexte a été reconstitué partiellement
-à partir des fichiers produits, mais les décisions intermédiaires
-non tracées ont été perdues.
+A week of work (6-7 sessions) was lost following a Claude app crash.
+Context was partially reconstructed from produced files, but untraced
+intermediate decisions were lost.
 
-**Leçon** : les résumés de session ne sont pas optionnels. Les
-fichiers produits sont la seule source de vérité qui survit.
+**Lesson**: session summaries are not optional. Produced files are the
+only source of truth that survives.
 
-### Dérive de scope
+### Scope drift
 
-Certains personas ont parfois débordé de leur périmètre — l'architecte
-qui commence à écrire du pseudo-code, le stratège qui donne des avis
-techniques. L'isolation dans le CLAUDE.md fonctionne, mais il faut
-la maintenir activement.
+Some personas occasionally overstepped their scope — the architect
+starting to write pseudo-code, the strategist giving technical opinions.
+Isolation in the CLAUDE.md works, but it must be actively maintained.
 
-**Leçon** : la section "Ce qu'il/elle ne fait pas" est la plus
-importante de la fiche persona. Revois-la régulièrement. La section
-"Ce qu'il/elle challenge" rend la friction structurelle.
+**Lesson**: the "What they don't do" section is the most important
+in the persona sheet. Review it regularly. The "What they challenge"
+section makes friction structural.
 
-### Calibrage initial trop large
+### Initial calibration too broad
 
-Les premiers personas étaient trop généralistes. C'est en les
-utilisant qu'on les a resserrés — ajout d'interdits, précision
-de la posture, réduction du périmètre. Définir par le média
-(spec, code, review, PDF) est plus fiable que par la compétence.
+The first personas were too generalist. It was by using them that we
+narrowed them down — adding constraints, sharpening posture, reducing
+scope. Defining by medium (spec, code, review, PDF) is more reliable
+than by skill.
 
-**Leçon** : le premier draft est toujours trop large. Itère.
+**Lesson**: the first draft is always too broad. Iterate.
 
-### Contamination factuelle
+### Factual contamination
 
-~30 documents contenaient "15 ans" au lieu de "18 ans" pour la
-durée de réflexion de l'orchestrateur. L'erreur venait de l'orchestrateur lui-même, propagée
-et stabilisée par l'IA. Détectée par Léa lors d'un audit ciblé.
+~30 documents contained "15 years" instead of "18 years" for the
+orchestrator's duration of reflection. The error came from the orchestrator himself,
+propagated and stabilized by the AI. Detected by Léa during a targeted audit.
 
-**Leçon** : le repo n'est pas une source de vérité pour les faits.
-Vérification humaine en continu — pas en fin de projet.
+**Lesson**: the repo is not a source of truth for facts. Continuous
+human verification — not at the end of the project.
 
-### Frontières de production floues
+### Blurry production boundaries
 
-Quand les personas ont commencé à produire (pas juste spécifier),
-les frontières de périmètre sont devenues floues. Qui publie quoi
-sur quel canal ? Résolu en séparant producteur et challenger, et
-en centralisant les scripts dans `shared/tools/`.
+When personas started producing (not just specifying), scope boundaries
+became blurry. Who publishes what on which channel? Resolved by
+separating producer and challenger, and centralizing scripts in
+`shared/tools/`.
 
-**Leçon** : l'isolation de la réflexion est dans les fiches personas.
-L'isolation de la production est dans les conventions de publication.
-Les deux sont nécessaires.
+**Lesson**: thinking isolation is in the persona sheets. Production
+isolation is in the publication conventions. Both are necessary.

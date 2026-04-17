@@ -1,28 +1,28 @@
-# Retours terrain
+# Field experience reports
 
-Observations issues de deux phases : Katen (7 personas, 210+ sessions, instance unique) et le split post-Katen (3 instances). Ce sont des retours d'experience, pas des verites universelles.
+Observations from two phases: Katen (7 personas, 210+ sessions, single instance) and the post-Katen split (3 instances). These are field experience reports, not universal truths.
 
-## Ordre de lecture suggere
+## Suggested reading order
 
-1. **pieges.md** — les erreurs classiques, a lire en premier
-2. **katen.md** — vue d'ensemble du projet qui a produit ces retours
-3. Les retours individuels, dans l'ordre qui t'interesse
+1. **pieges.md** — classic mistakes, read first
+2. **katen.md** — overview of the project that produced these reports
+3. Individual reports, in whatever order interests you
 
-## Correspondance avec les patterns
+## Mapping to patterns
 
-| Retour | Pattern ou workflow associe |
-|--------|----------------------------|
+| Report | Associated pattern or workflow |
+|--------|-------------------------------|
 | contamination-factuelle.md | `patterns/contamination-factuelle.md` |
 | pattern-challenger.md | `patterns/challenger.md` |
 | calibrage-personas.md | `patterns/calibrage-media.md` |
-| isolation-production.md | `patterns/calibrage-media.md` (partiel) |
+| isolation-production.md | `patterns/calibrage-media.md` (partial) |
 | pattern-editorial.md | `workflows/publication.md` |
-| chaine-produit.md | `workflows/chaine-produit.md` + plusieurs patterns |
-| pieges.md | Anti-patterns — pas de pattern associe |
-| cas-adr-051.md | Cas d'ecole friction dev/archi — specifique Katen |
-| katen.md | Post-mortem global |
-| transfert-contexte.md | Split, transfert de contexte + memoire Claude post-reorg |
+| chaine-produit.md | `workflows/chaine-produit.md` + several patterns |
+| pieges.md | Anti-patterns — no associated pattern |
+| cas-adr-051.md | Textbook case of dev/architect friction — Katen-specific |
+| katen.md | Global post-mortem |
+| transfert-contexte.md | Split, context transfer + Claude memory post-reorg |
 
-## A quoi servent ces retours
+## What these reports are for
 
-Les patterns disent **quoi faire**. Les retours disent **pourquoi on a decouvert ca**. Ensemble ils forment : histoire → principe → regle. Supprimer les retours rendrait les patterns abstraits.
+Patterns tell you **what to do**. Reports tell you **why we discovered it**. Together they form: story → principle → rule. Removing the reports would make the patterns abstract.

@@ -1,52 +1,50 @@
-# Retour d'expérience — Calibrage des personas
+# Field experience report — Persona calibration
 
-> Définir par le média, pas seulement par la compétence.
+> Define by medium, not just by skill.
 
 ---
 
-## Le problème
+## The problem
 
-Les fiches personas initiales définissaient les rôles par compétence métier :
-"UI Designer", "UX Lead", "Dev full stack". Ça suffit pour la réflexion —
-l'architecte spécifie, le dev implémente, le stratège questionne.
+The initial persona sheets defined roles by professional skill:
+"UI Designer", "UX Lead", "Full stack Dev". That's enough for thinking —
+the architect specifies, the dev implements, the strategist questions.
 
-Ça ne suffit plus quand les personas commencent à **produire**. Quand un
-même contenu doit exister en markdown, en PDF, en HTML et en visuel pour
-les réseaux — qui est responsable de chaque transformation ? "UI Designer"
-ne dit rien sur ce point.
+It's no longer enough when personas start **producing**. When the
+same content must exist in markdown, PDF, HTML, and social media visuals —
+who is responsible for each transformation? "UI Designer" says nothing
+about that.
 
-## Ce qu'on a observé
+## What we observed
 
-Sur Katen, trois personas produisaient du contenu pour des canaux de
-diffusion, chacun avec ses propres outils, sans contrat clair sur les
-frontières. Le livre bleu SOFIA a révélé le problème : Winston le rédige,
-Sofia le met en forme PDF, mais qui produit la version web ? Les scripts
-de publication de Winston généraient du HTML — ça chevauchait le périmètre
-de Nora.
+On Katen, three personas produced content for distribution channels,
+each with their own tools, with no clear contract on boundaries. The
+SOFIA blue book revealed the problem: Winston writes it, Sofia formats
+the PDF, but who produces the web version? Winston's publication scripts
+generated HTML — that overlapped with Nora's scope.
 
-## L'apprentissage
+## The learning
 
-Définir un persona par le "quoi" (design UI) ne suffit pas. Il faut aussi
-le "pour quel média" :
+Defining a persona by the "what" (UI design) isn't enough. You also need
+the "for which medium":
 
-- **Winston** : markdown source (rédaction)
-- **Sofia** : PDF, PPTX, visuels réseaux, assets web (production multi-support)
-- **Nora** : rien — elle challenge, elle ne livre pas
+- **Winston**: source markdown (writing)
+- **Sofia**: PDF, PPTX, social media visuals, web assets (multi-format production)
+- **Nora**: nothing — she challenges, she doesn't deliver
 
-Le média clarifie la frontière là où la compétence la brouille. Sofia et
-Nora ont toutes les deux des compétences en design. C'est le média qui
-les sépare : Sofia produit sur tous les canaux, Nora challenge l'output.
+The medium clarifies the boundary where skill blurs it. Sofia and
+Nora both have design skills. It's the medium that separates them:
+Sofia produces across all channels, Nora challenges the output.
 
-## Pour ton projet
+## For your project
 
-Quand tu calibres un persona, pose deux questions :
-1. **Quoi** — quelle compétence ?
-2. **Sur quel média** — quel format de sortie ?
+When you calibrate a persona, ask two questions:
+1. **What** — which skill?
+2. **On which medium** — which output format?
 
-Si deux personas ont la même compétence mais des médias différents, la
-frontière est claire. Si deux personas ont le même média, tu as un conflit
-de périmètre à résoudre.
+If two personas share the same skill but different media, the boundary
+is clear. If two personas share the same medium, you have a scope
+conflict to resolve.
 
-Le calibrage n'est pas un exercice de jour 1. Il évolue avec l'usage.
-Prévois de revisiter les fiches personas quand les rôles de production
-émergent — et ils émergent toujours.
+Calibration isn't a day-one exercise. It evolves with use. Plan to
+revisit persona sheets when production roles emerge — and they always do.

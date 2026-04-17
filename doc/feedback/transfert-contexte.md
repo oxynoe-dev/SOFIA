@@ -1,43 +1,43 @@
-# Transfert de contexte post-reorganisation
+# Context transfer post-reorganization
 
-> Creer les personas ne suffit pas. Il faut transferer ce qu'ils doivent savoir.
+> Creating personas isn't enough. You need to transfer what they need to know.
 
 ---
 
-## Le cas
+## The case
 
-Split d'une instance de 7 personas en 3 instances. Le diagnostic : le probleme n'etait pas le bus qui sature — c'etait la granularite des personas (deux metiers dans le meme contexte). Le split regle la granularite. Mais les 6 nouveaux personas demarrent sans contexte — pas d'historique des decisions, des etudes, des echecs.
+Split of a 7-persona instance into 3 instances. The diagnosis: the problem wasn't the bus saturating — it was persona granularity (two professions in the same context). The split fixes granularity. But the 6 new personas start without context — no history of decisions, studies, or failures.
 
-C'est exactement le probleme de l'onboarding humain dans une equipe existante.
+This is exactly the onboarding problem for a human joining an existing team.
 
-## Ce qu'on a observe
+## What we observed
 
-1. **Le premier transfert a fonctionne.** Mira a produit une note structuree (9 etudes + figures, avec quoi/ou/pourquoi/priorites). Aurele a pu demarrer immediatement.
+1. **The first transfer worked.** Mira produced a structured note (9 studies + figures, with what/where/why/priorities). Aurele was able to start immediately.
 
-2. **Le transfert n'etait pas prevu dans le plan de migration.** L'etude cible decrivait la topologie, les personas, les scripts. Pas le transfert de contexte. On l'a decouvert apres coup.
+2. **The transfer wasn't planned in the migration plan.** The target study described the topology, personas, scripts. Not the context transfer. We discovered it after the fact.
 
-3. **Le mapping n'est pas 1:1.** Un emetteur peut alimenter plusieurs destinataires (Mira → Aurele + Emile + Livia). L'orchestrateur a identifie un transfert manquant que l'architecte n'avait pas vu.
+3. **The mapping isn't 1:1.** One sender can feed multiple recipients (Mira → Aurele + Emile + Livia). The orchestrator identified a missing transfer that the architect hadn't seen.
 
-4. **L'auto-transfert est un cas particulier.** Quand un persona change d'instance mais garde son nom (Marc), il doit documenter lui-meme ce qui change dans son perimetre. Pas de note externe — travail reflexif.
+4. **Self-transfer is a special case.** When a persona changes instance but keeps their name (Marc), they must document what changes in their scope themselves. No external note — reflective work.
 
-## Protocole de transfert
+## Transfer protocol
 
-Quand un perimetre change de main :
+When a scope changes hands:
 
-1. **L'ancien owner produit une note structuree** — quoi, ou, pourquoi, ce qui reste chez lui. Format libre, contenu obligatoire.
-2. **L'orchestrateur verifie la completude** — tous les flux de connaissance sont-ils couverts ? Le mapping emetteur/destinataire n'est pas evident.
-3. **Distinguer contexte operationnel et historique** — les fichiers se transferent. Le "pourquoi on a fait ce choix" est plus dur a capturer. Les sessions contiennent ce contexte mais ne sont pas structurees pour le transfert.
+1. **The former owner produces a structured note** — what, where, why, what stays with them. Free format, mandatory content.
+2. **The orchestrator checks completeness** — are all knowledge flows covered? The sender/recipient mapping isn't obvious.
+3. **Distinguish operational context from history** — files transfer. The "why we made this choice" is harder to capture. Sessions contain this context but aren't structured for transfer.
 
-## Memoire Claude
+## Claude memory
 
-La memoire projet Claude (`~/.claude/projects/`) ne se transfere pas automatiquement lors d'un split. Apres une reorg :
+Claude project memory (`~/.claude/projects/`) doesn't transfer automatically during a split. After a reorg:
 
-- **Nettoyer** — retirer les memories qui concernent l'ancien perimetre
-- **Differencier** — chaque nouvelle instance a sa propre memoire, meme si le persona garde le meme nom
-- **Ne pas copier en bloc** — la memoire de l'ancienne instance melange les domaines qu'on vient de separer
+- **Clean up** — remove memories that concern the former scope
+- **Differentiate** — each new instance has its own memory, even if the persona keeps the same name
+- **Don't copy in bulk** — the old instance's memory mixes the domains you just separated
 
-**Signe** : un persona qui "se souvient" de decisions prises dans un perimetre qui n'est plus le sien. La memoire est devenue du bruit.
+**Sign**: a persona who "remembers" decisions made in a scope that's no longer theirs. The memory has become noise.
 
-## La regle
+## The rule
 
-**Le transfert de contexte est une etape explicite de toute reorganisation**, au meme titre que la creation des personas et des conventions. Ne pas le planifier = laisser les nouveaux personas naviguer a l'aveugle.
+**Context transfer is an explicit step in any reorganization**, on par with creating personas and conventions. Not planning for it = letting new personas navigate blind.

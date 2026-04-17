@@ -1,77 +1,74 @@
-# Retour d'expérience — Pattern challenger
+# Field experience report — Challenger pattern
 
-> Un producteur, N challengers. Chacun sur son axe. Chacun avec un droit de bloquant.
+> One producer, N challengers. Each on their axis. Each with blocking rights.
 
 ---
 
-## Le pattern
+## The pattern
 
-Un persona produit. D'autres personas interviennent pour vérifier la
-qualité sur leur axe d'expertise, sans produire eux-mêmes. Chaque
-challenger a un droit de bloquant sur son axe. L'orchestrateur orchestre et tranche.
+One persona produces. Other personas intervene to verify quality on their
+axis of expertise, without producing themselves. Each challenger has
+blocking rights on their axis. The orchestrator orchestrates and decides.
 
-C'est distinct de la friction entre pairs (deux personas au même niveau
-qui contestent). Le challenge est **asymétrique** : un qui produit,
-d'autres qui vérifient.
+This is distinct from peer friction (two personas at the same level who
+contest). The challenge is **asymmetric**: one produces, others verify.
 
-## Instances observées sur Katen
+## Instances observed on Katen
 
-### Chaîne produit (code)
+### Product chain (code)
 
-| Rôle | Persona | Axe |
-|------|---------|-----|
-| Producteur | Axel | Code, implémentation |
-| Challenger | Mira | Architecture, cohérence ADR |
-| Challenger | Léa | Invariantes formelles, rigueur |
-| Challenger | Nora | UX, flux utilisateur |
+| Role | Persona | Axis |
+|------|---------|------|
+| Producer | Axel | Code, implementation |
+| Challenger | Mira | Architecture, ADR coherence |
+| Challenger | Léa | Formal invariants, rigor |
+| Challenger | Nora | UX, user flows |
 
-Un producteur, trois challengers. Intensité maximale — c'est le produit clé.
+One producer, three challengers. Maximum intensity — it's the key product.
 
-### Chaîne éditoriale (livre bleu)
+### Editorial chain (blue book)
 
-| Rôle | Persona | Axe |
-|------|---------|-----|
-| Producteur | Winston | Rédaction, narration |
-| Challenger | Mira | Structure, cohérence argumentaire |
-| Challenger | Léa | Références académiques, faits |
-| Challenger | Marc | Positionnement, ton |
-| Challenger | Nora | UX des livrables publiés |
+| Role | Persona | Axis |
+|------|---------|------|
+| Producer | Winston | Writing, narrative |
+| Challenger | Mira | Structure, argumentative coherence |
+| Challenger | Léa | Academic references, facts |
+| Challenger | Marc | Positioning, tone |
+| Challenger | Nora | UX of published deliverables |
 
-### Chaîne production multi-support
+### Multi-format production chain
 
-| Rôle | Persona | Axe |
-|------|---------|-----|
-| Producteur | Sofia | PDF, PPTX, web, réseaux |
-| Challenger | Nora | UX, accessibilité |
+| Role | Persona | Axis |
+|------|---------|------|
+| Producer | Sofia | PDF, PPTX, web, social media |
+| Challenger | Nora | UX, accessibility |
 
-## Propriétés
+## Properties
 
-- **Asymétrie** — le producteur avance, les challengers interviennent.
-  Pas l'inverse.
-- **Axe unique** — chaque challenger vérifie sur son axe d'expertise,
-  pas sur tout. L'architecte ne challenge pas l'UX. L'UX ne challenge
-  pas l'archi.
-- **Droit de bloquant** — un challenger peut bloquer. L'orchestrateur décide si
-  le bloquant est levé ou maintenu.
-- **Scalable** — on peut ajouter des challengers sans changer le
-  producteur. Le coût est linéaire, pas combinatoire.
+- **Asymmetry** — the producer moves forward, challengers intervene.
+  Not the other way around.
+- **Single axis** — each challenger verifies on their axis of expertise,
+  not on everything. The architect doesn't challenge UX. UX doesn't
+  challenge architecture.
+- **Blocking rights** — a challenger can block. The orchestrator decides
+  whether the block is lifted or maintained.
+- **Scalable** — you can add challengers without changing the producer.
+  The cost is linear, not combinatorial.
 
-## Signal académique
+## Academic signal
 
-Huang et al. (2025) — *Resilience of Multi-Agent Systems to Untrustworthy Agents* (arXiv:2408.00989) — mesurent la résilience de topologies multi-agents face à des agents non fiables. La **topologie hiérarchique** (coordinateur central + agents spécialisés) ne perd que -5.5% de performance avec des agents défaillants, contre -10% à -24% pour les topologies plates (débat, relais).
+Huang et al. (2025) — *Resilience of Multi-Agent Systems to Untrustworthy Agents* (arXiv:2408.00989) — measure the resilience of multi-agent topologies against untrustworthy agents. The **hierarchical topology** (central coordinator + specialized agents) loses only -5.5% performance with failing agents, versus -10% to -24% for flat topologies (debate, relay).
 
-**Limite** : l'étude porte sur du multi-agent pur (IA↔IA), sans humain au centre. Le pattern challenger dans SOFIA est une orchestration humain↔IA — l'orchestrateur arbitre, pas un agent coordinateur. C'est un **signal convergent** (la topologie hiérarchique est résiliente), pas une **validation** de notre méthode. Personne n'a mesuré ce pattern avec un humain orchestrateur.
+**Limitation**: the study is about pure multi-agent (AI↔AI), without a human at the center. The challenger pattern in SOFIA is human↔AI orchestration — the orchestrator arbitrates, not a coordinator agent. This is a **convergent signal** (hierarchical topology is resilient), not a **validation** of our method. Nobody has measured this pattern with a human orchestrator.
 
-## Pour ton projet
+## For your project
 
-Le pattern challenger émerge naturellement quand un persona commence à
-produire des livrables qui impactent plusieurs dimensions. Quelques
-règles :
+The challenger pattern emerges naturally when a persona starts producing
+deliverables that impact multiple dimensions. A few rules:
 
-- Identifie le producteur et ses challengers pour chaque chaîne
-- Donne à chaque challenger un axe explicite — pas "review en général"
-  mais "vérifie la rigueur des références" ou "vérifie l'accessibilité"
-- Le droit de bloquant est réel — si un challenger bloque, l'orchestrateur tranche,
-  mais le producteur ne passe pas en force
-- Documente les droits de challenge dans les fiches personas (section
-  "Ce qu'il/elle challenge")
+- Identify the producer and their challengers for each chain
+- Give each challenger an explicit axis — not "general review" but
+  "verify reference rigor" or "verify accessibility"
+- Blocking rights are real — if a challenger blocks, the orchestrator
+  decides, but the producer doesn't push through
+- Document challenge rights in persona sheets (section "What they challenge")

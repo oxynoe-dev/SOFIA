@@ -1,83 +1,80 @@
-# Retour d'expérience — Isolation des rôles de production
+# Field experience report — Production role isolation
 
-> Quand les personas commencent à produire, les frontières bougent.
+> When personas start producing, boundaries shift.
 
 ---
 
-## Le problème
+## The problem
 
-La méthode SOFIA documente bien l'isolation des rôles de réflexion :
-l'architecte ne code pas, le stratège ne touche pas au code, le dev ne
-tranche pas sur l'architecture. Ces interdits créent la friction productive.
+The SOFIA method documents thinking role isolation well: the architect
+doesn't code, the strategist doesn't touch code, the dev doesn't decide
+on architecture. These constraints create productive friction.
 
-Mais quand les personas passent de la réflexion à la **production** —
-rédiger un livre blanc, générer un PDF, publier sur les réseaux — les
-frontières de périmètre deviennent floues. Qui publie quoi sur quel canal ?
-Qui maintient les scripts de build ? Qui valide avant la sortie ?
+But when personas move from thinking to **production** — writing a white
+paper, generating a PDF, publishing on social media — scope boundaries
+become blurry. Who publishes what on which channel? Who maintains the
+build scripts? Who validates before release?
 
-## Ce qu'on a observé
+## What we observed
 
-Sur Katen, les scripts de publication étaient dispersés dans les workspaces
-individuels : `maturation/bin/publish-*.py` chez Winston,
-`graphisme/tools/build_pptx.py` chez Sofia. Résultat :
+On Katen, publication scripts were scattered across individual workspaces:
+`maturation/bin/publish-*.py` under Winston,
+`graphisme/tools/build_pptx.py` under Sofia. Result:
 
-- L'architecte ne pouvait pas auditer les scripts sans sortir de son périmètre
-- Le dev ne pouvait pas vérifier la qualité du code
-- Personne n'avait de vue d'ensemble sur la chaîne de publication
+- The architect couldn't audit scripts without leaving their scope
+- The dev couldn't check code quality
+- Nobody had an overview of the publication chain
 
-## La solution
+## The solution
 
-Deux décisions :
+Two decisions:
 
-**1. Séparer réflexion et production dans les rôles.** Un persona qui
-réfléchit ET produit le livrable final est juge et partie. La friction
-disparaît. Sur Katen : Sofia produit (tous canaux), Nora challenge
-(UX, accessibilité). Celle qui décide de la forme est celle qui la livre.
-Celle qui challenge ne produit pas.
+**1. Separate thinking and production in roles.** A persona who thinks
+AND produces the final deliverable is judge and jury. Friction disappears.
+On Katen: Sofia produces (all channels), Nora challenges (UX,
+accessibility). The one who decides the form is the one who delivers it.
+The one who challenges doesn't produce.
 
-**2. Centraliser les scripts dans `shared/tools/`.** Chaque persona
-déclenche ses scripts, mais le code vit dans un espace visible par tous.
-L'architecte audite la cohérence, le dev audite la qualité, l'UX audite
-l'output.
+**2. Centralize scripts in `shared/tools/`.** Each persona triggers
+their scripts, but the code lives in a space visible to all. The
+architect audits coherence, the dev audits quality, UX audits the output.
 
-## Pour ton projet
+## For your project
 
-Quand tes personas commencent à produire des livrables publics :
-- Pose la question "qui publie quoi sur quel canal" explicitement
-- Sépare le producteur du challenger — celui qui rédige n'est pas celui
-  qui valide
-- Mets les scripts de publication dans un espace lisible par tous
-- L'orchestrateur valide avant toute sortie (devoir 3 de la méthode)
+When your personas start producing public deliverables:
+- Ask "who publishes what on which channel" explicitly
+- Separate the producer from the challenger — the one who writes is not
+  the one who validates
+- Put publication scripts in a space readable by all
+- The orchestrator validates before any release (method duty 3)
 
-L'isolation de la réflexion est dans les fiches personas. L'isolation de
-la production est dans les conventions de publication. Les deux sont
-nécessaires.
+Thinking isolation is in the persona sheets. Production isolation is in
+the publication conventions. Both are necessary.
 
-## Multi-support — quand un livrable existe sur plusieurs canaux
+## Multi-format — when a deliverable exists on multiple channels
 
-Le problème s'aggrave quand un même contenu doit exister en markdown,
-PDF, HTML et visuels réseaux. La question n'est plus seulement "qui
-publie" mais "qui possède quelle transformation".
+The problem worsens when the same content must exist in markdown, PDF,
+HTML, and social media visuals. The question is no longer just "who
+publishes" but "who owns which transformation".
 
-### Ce qu'on a observé
+### What we observed
 
-Sans contrat clair sur les canaux, les tâches tombent entre les chaises :
-- Le rédacteur modifie le markdown, personne ne rebuild le PDF
-- Le graphiste produit des visuels, personne ne les intègre au site
-- Le build script existe mais personne ne sait qui le déclenche
+Without a clear contract on channels, tasks fall through the cracks:
+- The writer modifies the markdown, nobody rebuilds the PDF
+- The graphic designer produces visuals, nobody integrates them into the site
+- The build script exists but nobody knows who triggers it
 
-### La règle
+### The rule
 
-**Un canal = un propriétaire.** Le persona qui produit le livrable
-pour un canal donné est responsable du déclenchement, de la cohérence
-et de la mise à jour. Les autres challengent via review — ils ne
-produisent pas.
+**One channel = one owner.** The persona who produces the deliverable
+for a given channel is responsible for triggering, coherence, and
+updates. Others challenge via review — they don't produce.
 
-| Canal | Propriétaire | Challengers |
-|-------|-------------|-------------|
-| Markdown source | Rédacteur | Architecte (structure), Chercheur (sources) |
-| PDF/HTML généré | Graphiste | UX (accessibilité), Rédacteur (contenu) |
-| Visuels réseaux | Graphiste | Stratège (message), UX (lisibilité) |
-| Site web | Dev ou Graphiste | UX (parcours), Architecte (cohérence) |
+| Channel | Owner | Challengers |
+|---------|-------|-------------|
+| Markdown source | Writer | Architect (structure), Researcher (sources) |
+| Generated PDF/HTML | Graphic designer | UX (accessibility), Writer (content) |
+| Social media visuals | Graphic designer | Strategist (message), UX (readability) |
+| Website | Dev or Graphic designer | UX (user journey), Architect (coherence) |
 
-L'orchestrateur valide avant toute sortie — quel que soit le canal.
+The orchestrator validates before any release — regardless of channel.

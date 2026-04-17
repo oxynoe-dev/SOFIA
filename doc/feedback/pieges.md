@@ -1,161 +1,154 @@
-# Pièges et erreurs classiques
+# Pitfalls and classic mistakes
 
-> Ce qui ne marche pas, pour que tu ne le découvres pas toi-même.
+> What doesn't work, so you don't have to find out yourself.
 
 ---
 
-## 1. Trop de personas trop tôt
+## 1. Too many personas too early
 
-Tu n'as pas besoin de 5 personas au jour 1. Commence par 1.
-Calibre-le. Ajoute le deuxième quand le besoin est clair.
+You don't need 5 personas on day 1. Start with 1. Calibrate it.
+Add the second when the need is clear.
 
-**Signe** : tu as des personas que tu n'utilises jamais.
-**Solution** : supprime les personas inutilisés. Sans remords.
+**Sign**: you have personas you never use.
+**Solution**: delete unused personas. No regrets.
 
-## 2. Le persona complaisant
+## 2. The compliant persona
 
-Un persona qui dit toujours oui ne sert à rien. C'est un assistant
-avec un prénom.
+A persona that always says yes is useless. It's an assistant with
+a first name.
 
-**Signe** : le persona ne dit jamais "non", "ce n'est pas mon rôle",
-ou "la spec est trop floue".
-**Solution** : renforce les interdits dans la fiche persona et le CLAUDE.md.
+**Sign**: the persona never says "no", "that's not my role", or
+"the spec is too vague".
+**Solution**: strengthen the constraints in the persona sheet and the CLAUDE.md.
 
-## 3. Oublier les résumés de session
+## 3. Forgetting session summaries
 
-La prochaine session n'a aucun contexte sans résumé. Tu perdras
-du temps à réexpliquer, ou pire, le persona partira dans une
-direction incohérente avec la session précédente.
+The next session has no context without a summary. You'll waste time
+re-explaining, or worse, the persona will head in a direction
+inconsistent with the previous session.
 
-**Signe** : tu commences chaque session par 10 minutes d'explication.
-**Solution** : le résumé est obligatoire dans le CLAUDE.md. Pas optionnel.
+**Sign**: you start each session with 10 minutes of explanation.
+**Solution**: the summary is mandatory in the CLAUDE.md. Not optional.
 
-## 4. L'isolation molle
+## 4. Soft isolation
 
-Un CLAUDE.md sans section Isolation est un CLAUDE.md cassé.
-Le persona ira lire et écrire partout, et la friction disparaît.
+A CLAUDE.md without an Isolation section is a broken CLAUDE.md.
+The persona will read and write everywhere, and friction disappears.
 
-**Signe** : l'architecte modifie du code, le dev réécrit des specs.
-**Solution** : ajoute des frontières explicites. "Ne jamais lire/écrire
-en dehors de X."
+**Sign**: the architect modifies code, the dev rewrites specs.
+**Solution**: add explicit boundaries. "Never read/write outside of X."
 
-## 5. L'orchestrateur qui ne tranche pas
+## 5. The orchestrator who doesn't decide
 
-Les personas exposent des tensions. Si l'orchestrateur ne tranche pas,
-les tensions s'accumulent et rien n'avance.
+Personas expose tensions. If the orchestrator doesn't decide, tensions
+accumulate and nothing moves forward.
 
-**Signe** : les mêmes questions ouvertes reviennent session après session.
-**Solution** : tranche. Même si c'est imparfait. Un ADR "Accepted" vaut
-mieux qu'un ADR "Proposed" éternel.
+**Sign**: the same open questions come back session after session.
+**Solution**: decide. Even if it's imperfect. An "Accepted" ADR is
+better than an eternally "Proposed" ADR.
 
-## 6. Confondre persona et assistant
+## 6. Confusing persona and assistant
 
-Un persona n'est pas un assistant plus poli. C'est un rôle avec
-des contraintes qui le forcent à penser différemment. Si tu retires
-les contraintes, tu retrouves un assistant généraliste.
+A persona is not a politer assistant. It's a role with constraints
+that force it to think differently. If you remove the constraints,
+you're back to a generalist assistant.
 
-**Signe** : tu donnes les mêmes instructions à tous tes personas.
-**Solution** : chaque persona a une posture, des interdits, un
-périmètre **différents**. C'est la différence qui crée la valeur.
+**Sign**: you give the same instructions to all your personas.
+**Solution**: each persona has a posture, constraints, and scope
+that are **different**. The difference is what creates value.
 
-## 7. La session perdue
+## 7. The lost session
 
-Claude Code peut crasher. L'app peut planter. Le contexte peut
-se corrompre. Ça arrivera.
+Claude Code can crash. The app can freeze. Context can get corrupted.
+It will happen.
 
-**Signe** : tu as perdu une semaine de travail.
-**Solution** : les fichiers sont la seule source de vérité. Produis
-des artefacts (ADR, specs, reviews) en permanence. Le résumé de
-session est le minimum vital. Les fichiers survivent aux crashs.
+**Sign**: you've lost a week of work.
+**Solution**: files are the only source of truth. Produce artifacts
+(ADRs, specs, reviews) continuously. The session summary is the bare
+minimum. Files survive crashes.
 
-## 8. Le dev qui ne flush jamais
+## 8. The dev who never flushes
 
-Le persona développeur est différent des autres. Il code, il est
-dans le flow, il a une session longue qui tourne en continu. Couper
-pour un résumé de session casse le rythme.
+The developer persona is different from the others. They code, they're
+in the flow, they have a long-running session going continuously.
+Stopping for a session summary breaks the rhythm.
 
-Résultat : pas de résumé, pas de trace des décisions intermédiaires.
-Le code est dans git, mais le **pourquoi** des choix d'implémentation
-disparaît si la session crash.
+Result: no summary, no trace of intermediate decisions. The code is in
+git, but the **why** behind implementation choices disappears if the
+session crashes.
 
-**Signe** : ta session dev ne se ferme jamais et n'a aucun résumé.
-**Pas de solution miracle** — c'est un compromis. Quelques pistes :
-- Demander au dev de flush un résumé rapide à des points naturels
-  (fin d'une feature, avant un refactoring)
-- Accepter que le commit message et le code **sont** la trace du dev
-- Compenser par des reviews plus fréquentes des autres personas
+**Sign**: your dev session never closes and has no summary.
+**No silver bullet** — it's a trade-off. A few approaches:
+- Ask the dev to flush a quick summary at natural breakpoints
+  (end of a feature, before a refactoring)
+- Accept that the commit message and the code **are** the dev's trace
+- Compensate with more frequent reviews from other personas
 
-Les personas "penseurs" (architecte, stratège, chercheur) ont des
-sessions courtes avec des livrables fichier. Le persona "faiseur"
-a une session longue avec des livrables code. Ce n'est pas le même
-rythme et ce n'est pas grave — mais il faut le savoir.
+"Thinking" personas (architect, strategist, researcher) have short
+sessions with file deliverables. The "doing" persona has a long session
+with code deliverables. It's not the same rhythm and that's fine — but
+you need to know it.
 
-## 9. Copier les personas d'un autre projet
+## 9. Copying personas from another project
 
-Les personas Katen sont calibrés pour Katen. Si tu les copies
-sans les adapter, ils ne correspondront ni à ton projet, ni à
-ta façon de travailler.
+Katen personas are calibrated for Katen. If you copy them without
+adapting, they won't match your project or your way of working.
 
-**Signe** : le persona parle de réseaux de Petri alors que tu fais
-une app mobile.
-**Solution** : utilise les exemples comme **référence de structure**,
-pas comme contenu. Le guide SOFIA est là pour t'aider à concevoir
-les tiens.
+**Sign**: the persona talks about Petri nets when you're building
+a mobile app.
+**Solution**: use the examples as **structural reference**, not as
+content. The SOFIA guide is there to help you design your own.
 
-## 10. L'angle mort partagé
+## 10. The shared blind spot
 
-Tous les personas sont calibrés par le même orchestrateur. Ses biais
-implicites deviennent les biais de toute l'équipe. La friction est
-réelle — mais elle joue dans un espace de pensée borné par ce que
-l'orchestrateur sait qu'il ne sait pas. Ce qu'il ignore ignorer,
-aucun persona ne le lèvera.
+All personas are calibrated by the same orchestrator. Their implicit
+biases become the biases of the entire team. Friction is real — but
+it plays within a thinking space bounded by what the orchestrator knows
+they don't know. What they don't know they don't know, no persona will
+surface.
 
-**Signe** : tous les personas convergent rapidement, personne ne
-questionne les prémisses.
-**Pas de solution simple** — c'est la limite structurelle d'un système
-mono-orchestrateur. Un regard extérieur (pair humain, utilisateur,
-persona méta hors flux) est le seul mécanisme de compensation.
+**Sign**: all personas converge quickly, nobody questions the premises.
+**No simple solution** — this is the structural limit of a single-orchestrator
+system. An outside perspective (human peer, user, meta persona outside
+the flow) is the only compensation mechanism.
 
-## 11. La surproduction de signal
+## 11. Signal overproduction
 
-Une méthode qui fonctionne bien génère plus de matière que
-l'orchestrateur ne peut en absorber. Notes, reviews, sessions,
-artefacts s'accumulent. Le produit (périmètre serré) reste maîtrisé.
-Les explorations s'empilent sans être triées ni qualifiées.
+A well-functioning method generates more material than the orchestrator
+can absorb. Notes, reviews, sessions, artifacts accumulate. The product
+(tight scope) stays under control. Explorations pile up without being
+sorted or qualified.
 
-**Signe** : des notes non lues s'accumulent, des sessions restent
-sans suite, l'orchestrateur scanne au lieu de lire.
-**Solution** : archiver régulièrement, distinguer le signal du bruit,
-accepter que tout ne sera pas traité. La surproduction est un signe
-de santé du système — à condition de la gouverner.
+**Sign**: unread notes accumulate, sessions go without follow-up,
+the orchestrator skims instead of reading.
+**Solution**: archive regularly, distinguish signal from noise, accept
+that not everything will be processed. Overproduction is a sign of
+system health — provided you govern it.
 
-## 12. L'ossification du cadre
+## 12. Framework ossification
 
-Les conventions, les interdits, les périmètres se figent. Ce qui était
-une décision contextuelle devient un dogme. Les personas appliquent
-des règles qui n'ont plus de raison d'être parce que le contexte a
-changé mais personne ne l'a signalé.
+Conventions, constraints, scopes freeze. What was a contextual decision
+becomes dogma. Personas apply rules that no longer have a reason to exist
+because the context changed but nobody flagged it.
 
-**Signe** : un interdit que personne ne peut justifier, une convention
-que tout le monde contourne, un persona dont le périmètre ne correspond
-plus à ses livrables réels.
-**Solution** : recalibrer périodiquement. Revenir aux interdits — c'est
-le levier de calibrage le plus puissant. Un persona mou, c'est un
-persona dont les interdits se sont érodés.
+**Sign**: a constraint nobody can justify, a convention everyone works
+around, a persona whose scope no longer matches their actual deliverables.
+**Solution**: recalibrate periodically. Revisit the constraints — they're
+the most powerful calibration lever. A soft persona is a persona whose
+constraints have eroded.
 
-## 13. Le goulot orchestrateur
+## 13. The orchestrator bottleneck
 
-SOFIA repose sur un point de contrôle unique — l'orchestrateur. C'est
-sa force (cohérence, arbitrage, vision d'ensemble) et sa limite
-structurelle. Tout passe par une personne : lire, filtrer, contextualiser,
-transmettre, arbitrer, vérifier.
+SOFIA relies on a single control point — the orchestrator. That's its
+strength (coherence, arbitration, big picture) and its structural limit.
+Everything goes through one person: reading, filtering, contextualizing,
+transmitting, arbitrating, verifying.
 
-La friction intentionnelle a un coût, porté par une seule personne.
-La question n'est pas comment l'éliminer — c'est comment le rendre
-soutenable.
+Intentional friction has a cost, borne by a single person. The question
+isn't how to eliminate it — it's how to make it sustainable.
 
-**Signe** : l'orchestrateur approuve sans lire, les sessions deviennent
-mécaniques, les décisions sont reportées.
-**Pistes** : réduire le nombre de personas actifs, espacer les sessions,
-prioriser les circuits de friction qui produisent de la valeur,
-accepter que certains flux tournent en mode dégradé.
+**Sign**: the orchestrator approves without reading, sessions become
+mechanical, decisions are deferred.
+**Approaches**: reduce the number of active personas, space out sessions,
+prioritize friction circuits that produce value, accept that some flows
+run in degraded mode.

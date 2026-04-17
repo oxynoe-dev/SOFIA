@@ -1,111 +1,112 @@
-# Retour d'expérience — Chaîne produit
+# Field experience report — Product chain
 
-> Spécifier, implémenter, challenger. Trois rôles, un cycle, zéro raccourci.
+> Specify, implement, challenge. Three roles, one cycle, zero shortcuts.
 
 ---
 
-## Le pattern
+## The pattern
 
-La chaîne produit est le cycle de base de Katen. C'est le pattern le plus
-ancien, le plus rodé, et le plus révélateur de la méthode SOFIA en action.
+The product chain is Katen's core cycle. It's the oldest, most battle-tested
+pattern, and the most revealing of the SOFIA method in action.
 
 ```
-L'orchestrateur identifie un besoin ou une friction
-  → ouvre session architecte
+The orchestrator identifies a need or friction
+  → opens architect session
 
-Architecte spécifie
-  → ADR, contrats d'interface, specs formelles
-  → ne code pas — si la spec est floue, le dev le dira
+Architect specifies
+  → ADR, interface contracts, formal specs
+  → doesn't code — if the spec is vague, the dev will say so
 
-Dev implémente
-  → code, tests, retours de frictions
-  → ne réinterprète pas — si la spec est ambiguë, il remonte
+Dev implements
+  → code, tests, friction reports
+  → doesn't reinterpret — if the spec is ambiguous, they escalate
 
-UX challenge
-  → review des flux, états visuels, accessibilité
-  → ne produit pas le code — elle spécifie les comportements
+UX challenges
+  → review of flows, visual states, accessibility
+  → doesn't produce the code — she specifies expected behaviors
 
-Chercheuse vérifie
-  → invariantes formelles, cohérence avec le modèle Petri-net
-  → ne tranche pas sur l'archi — elle valide la théorie
+Researcher verifies
+  → formal invariants, consistency with the Petri-net model
+  → doesn't decide on architecture — she validates the theory
 
-L'orchestrateur arbitre et tranche
-  → quand les personas divergent, l'orchestrateur décide
-  → la décision est tracée (ADR, note, session)
+The orchestrator arbitrates and decides
+  → when personas diverge, the orchestrator decides
+  → the decision is traced (ADR, note, session)
 ```
 
-## Ce qu'on a observé sur Katen
+## What we observed on Katen
 
-### La spec force la clarté
+### The spec forces clarity
 
-Mira ne code pas. C'est la contrainte la plus productive de l'équipe.
-Parce qu'elle ne peut pas "montrer dans le code", elle est obligée de
-spécifier clairement — contrats d'interface, états attendus, cas limites.
-Le résultat : 62 ADR, 24 principes d'architecture. Des specs qu'Axel
-peut implémenter sans deviner.
+Mira doesn't code. That's the most productive constraint on the team.
+Because she can't "show it in the code", she's forced to specify
+clearly — interface contracts, expected states, edge cases. The result:
+62 ADRs, 24 architecture principles. Specs that Axel can implement
+without guessing.
 
-Sans cette contrainte, l'architecte saute directement au pseudo-code.
-La spec reste floue. Le dev interprète. Les bugs sont structurels,
-pas techniques.
+Without that constraint, the architect jumps straight to pseudo-code.
+The spec stays vague. The dev interprets. Bugs are structural,
+not technical.
 
-### La friction d'implémentation remonte les vrais problèmes
+### Implementation friction surfaces the real problems
 
-Axel ne contourne pas. Quand un contrat d'interface génère une complexité
-inattendue, il le signale plutôt que de bricoler. Ces remontées ont changé
-des ADR — pas parce que la spec était mauvaise, mais parce que le terrain
-révèle ce que la théorie ne voit pas.
+Axel doesn't work around issues. When an interface contract generates
+unexpected complexity, he flags it rather than patching. These escalations
+changed ADRs — not because the spec was bad, but because the field
+reveals what theory can't see.
 
-Cas concret : la parallélisation des opérateurs. Mira bloque ("pas
-maintenant, la roadmap a des priorités avant"). Léa confirme par un
-angle orthogonal ("aucun intérêt pour la recherche"). Deux refus, deux
-raisons indépendantes. Le sujet est reporté. Trois semaines plus tard,
-le design revient — meilleur qu'il ne l'aurait été.
+Concrete case: operator parallelization. Mira blocks ("not now, the
+roadmap has higher priorities"). Léa confirms from an orthogonal angle
+("no research interest"). Two refusals, two independent reasons. The
+topic is deferred. Three weeks later, the design comes back — better
+than it would have been.
 
-### L'UX challenge ce que le dev ne voit pas
+### UX challenges what the dev doesn't see
 
-Nora questionne les flux d'onboarding qui satisfont le développeur mais
-perdent l'utilisateur. Elle ne code pas — elle spécifie les comportements
-attendus. Axel remonte les contraintes techniques. La friction entre les
-deux produit des interfaces qui tiennent techniquement ET humainement.
+Nora questions onboarding flows that satisfy the developer but lose
+the user. She doesn't code — she specifies expected behaviors. Axel
+escalates technical constraints. The friction between them produces
+interfaces that hold up both technically AND humanly.
 
-### La chercheuse ancre dans le formel
+### The researcher anchors in the formal
 
-Léa ne tranche pas sur l'architecture. Mais quand une implémentation
-touche aux invariantes du modèle Petri-net — firing policy, états des
-connexions, réversibilité — elle vérifie. Son "ça ne tient pas" a la
-même autorité qu'un test qui échoue : on ne passe pas en force.
+Léa doesn't decide on architecture. But when an implementation touches
+the Petri-net model's invariants — firing policy, connection states,
+reversibility — she verifies. Her "that doesn't hold" carries the same
+authority as a failing test: you don't push through.
 
-### L'orchestrateur porte le contexte
+### The orchestrator carries the context
 
-L'orchestrateur est le seul à voir toutes les sessions. Il filtre, reformule,
-contextualise. Quand Mira dépose une review pour Axel, l'orchestrateur ajoute :
-"on a décidé hier avec Marc de décaler la publication — ça change la
-priorité de cette spec." Ce contexte, aucun persona ne l'a seul.
+The orchestrator is the only one who sees all sessions. They filter,
+reformulate, contextualize. When Mira deposits a review for Axel,
+the orchestrator adds: "we decided yesterday with Marc to delay
+publication — that changes the priority of this spec." No persona
+has that context alone.
 
-## Les ADR comme colonne vertébrale
+## ADRs as the backbone
 
-Chaque décision structurante produit un ADR. Le format est standard :
-contexte, décision, conséquences, statut. L'ADR n'est pas de la
-bureaucratie — c'est de la mémoire.
+Every structural decision produces an ADR. The format is standard:
+context, decision, consequences, status. The ADR isn't bureaucracy
+— it's memory.
 
-Un ADR non écrit est une décision qui sera remise en question trois
-sessions plus tard par quelqu'un qui n'en avait pas connaissance.
-Sur 210+ sessions, ça arrive vite.
+An unwritten ADR is a decision that will be questioned three sessions
+later by someone who didn't know about it. Over 210+ sessions, that
+happens fast.
 
-Les ADR passent potentiellement par 4 challengers :
-- **Mira** — cohérence avec l'architecture cible
-- **Axel** — faisabilité d'implémentation
-- **Léa** — rigueur formelle (quand le sujet touche au modèle)
-- **Marc** — impact stratégique (quand le sujet touche au positionnement)
+ADRs potentially go through 4 challengers:
+- **Mira** — consistency with target architecture
+- **Axel** — implementation feasibility
+- **Léa** — formal rigor (when the topic touches the model)
+- **Marc** — strategic impact (when the topic touches positioning)
 
-L'orchestrateur tranche. L'ADR est accepté, rejeté ou reporté. Le statut est tracé.
+The orchestrator decides. The ADR is accepted, rejected, or deferred. Status is traced.
 
-## Pour ton projet
+## For your project
 
-La chaîne produit est le cas d'usage fondamental de SOFIA. Quelques règles :
+The product chain is SOFIA's fundamental use case. A few rules:
 
-- **L'architecte ne code pas.** C'est la contrainte numéro un. Si ton architecte peut coder, il ne spécifiera jamais clairement.
-- **Le dev ne réinterprète pas.** Si la spec est floue, il remonte. Il ne devine pas. La friction est le signal, pas le bruit.
-- **L'UX ne produit pas le code.** Elle spécifie les comportements. Le dev remonte les contraintes. La friction entre les deux produit de bonnes interfaces.
-- **Trace tout.** ADR, sessions, reviews. Si ce n'est pas tracé, ça n'existe pas.
-- **L'orchestrateur arbitre.** Quand deux personas divergent, l'orchestrateur tranche. Pas le persona le plus éloquent.
+- **The architect doesn't code.** That's constraint number one. If your architect can code, they'll never specify clearly.
+- **The dev doesn't reinterpret.** If the spec is vague, they escalate. They don't guess. Friction is the signal, not noise.
+- **UX doesn't produce the code.** She specifies behaviors. The dev escalates constraints. The friction between them produces good interfaces.
+- **Trace everything.** ADRs, sessions, reviews. If it's not traced, it doesn't exist.
+- **The orchestrator arbitrates.** When two personas diverge, the orchestrator decides. Not the most eloquent persona.

@@ -1,61 +1,61 @@
-# Retour d'expérience — Chaîne éditoriale
+# Field experience report — Editorial chain
 
-> La chaîne éditoriale multi-personas émerge naturellement. Il faut la documenter avant qu'elle ne se casse.
+> The multi-persona editorial chain emerges naturally. You need to document it before it breaks.
 
 ---
 
-## Le pattern
+## The pattern
 
-Observé sur la production du livre bleu SOFIA. Reproductible pour tout
-livrable éditorial : article, fragment, documentation publique.
+Observed during the production of the SOFIA blue book. Reproducible for any
+editorial deliverable: article, fragment, public documentation.
 
 ```
-Équipe réfléchit
-  → fragments, échanges, frictions inter-personas
-  → la matière brute s'accumule
+Team thinks
+  → fragments, exchanges, inter-persona friction
+  → raw material accumulates
 
-Rédacteur rédige
-  → distille les échanges en texte structuré
-  → échange avec les experts pour calibrer le fond
+Writer drafts
+  → distills exchanges into structured text
+  → exchanges with experts to calibrate substance
 
-Experts valident le fond
-  → architecte : structure, cohérence argumentaire
-  → chercheur : références, rigueur factuelle
-  → stratège : positionnement, ton
+Experts validate substance
+  → architect: structure, argumentative coherence
+  → researcher: references, factual rigor
+  → strategist: positioning, tone
 
-Producteur met en forme
-  → mise en page, déclinaison multi-support (PDF, web, réseaux)
+Producer formats
+  → layout, multi-format adaptation (PDF, web, social media)
 
-Challenger vérifie l'output
-  → UX, accessibilité, cohérence
+Challenger verifies the output
+  → UX, accessibility, coherence
 
-L'orchestrateur valide avant sortie
-  → en particulier la contextualisation des références académiques
+The orchestrator validates before release
+  → especially the contextualization of academic references
 ```
 
-## Ce qu'on a appris
+## What we learned
 
-- Le rédacteur ne publie pas seul. Il rédige, les experts valident le fond,
-  le producteur livre la forme, le stratège décide du timing.
-- Chaque persona a un rôle clair dans la chaîne :
-  contenu → validation → production → diffusion.
-- L'orchestrateur orchestre les transitions entre chaque étape.
-- **L'orchestrateur est le dernier verrou** — une référence correcte peut être mal
-  contextualisée et changer la thèse. Seul l'orchestrateur vérifie ça.
+- The writer doesn't publish alone. They draft, experts validate substance,
+  the producer delivers format, the strategist decides timing.
+- Each persona has a clear role in the chain:
+  content → validation → production → distribution.
+- The orchestrator orchestrates transitions between each stage.
+- **The orchestrator is the last gate** — a correct reference can be
+  miscontextualized and change the thesis. Only the orchestrator checks that.
 
-## Règle clé
+## Key rule
 
-Rien ne sort sans relecture et validation de l'orchestrateur avant publication.
-Le rédacteur formule, le chercheur source, l'orchestrateur valide que l'usage de
-la référence est juste.
+Nothing goes out without the orchestrator's review and validation before publication.
+The writer formulates, the researcher sources, the orchestrator validates that the
+use of the reference is sound.
 
-## Pour ton projet
+## For your project
 
-Si ton équipe SOFIA produit du contenu public (articles, documentation,
-présentations) :
-- Identifie qui rédige, qui valide le fond, qui produit la forme,
-  qui challenge, qui décide du timing
-- Documente cette chaîne — elle émergera naturellement, mais sans
-  documentation elle se cassera au premier changement de persona
-- L'orchestrateur valide toujours en dernier, surtout sur les données factuelles
-  et les références
+If your SOFIA team produces public content (articles, documentation,
+presentations):
+- Identify who drafts, who validates substance, who produces format,
+  who challenges, who decides timing
+- Document this chain — it will emerge naturally, but without
+  documentation it will break at the first persona change
+- The orchestrator always validates last, especially on factual data
+  and references
