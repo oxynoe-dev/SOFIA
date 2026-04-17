@@ -571,9 +571,11 @@ def analyze_instance(instance_path: Path) -> dict:
         "day": build_series(by_day, sorted_days),
     }
 
-    # Build persona summary
+    # Build persona summary — only real personas (declared in shared/orga/personas/)
     personas_data = {}
     for p in sorted(by_persona.keys()):
+        if p not in real_personas:
+            continue
         d = by_persona[p]
         total_flux = d["flux_h"] + d["flux_a"]
         flux_h_pct = round(d["flux_h"] / max(total_flux, 1) * 100)
@@ -654,6 +656,86 @@ def analyze_instance(instance_path: Path) -> dict:
         "time_series": time_series,
         "personas": personas_data,
         "friction_records": resolve_lineage(sorted(all_friction_records, key=lambda r: r.get("date", ""))),
+        "map": extract_map_data(instance_path, personas_data, all_friction_records),
+    }
+
+
+# ---------------------------------------------------------------------------
+# Map data extraction
+# ---------------------------------------------------------------------------
+
+def extract_map_data(instance_path: Path, personas_data: dict, friction_records: list) -> dict:
+    """Extract map data: instance info, persona roles, inter-persona links."""
+    # Instance description from sofia.md
+    description = ""
+    for marker_file in ["sofia.md", "voix.md"]:
+        mf = instance_path / marker_file
+        if mf.is_file():
+            try:
+                lines = mf.read_text(encoding="utf-8").splitlines()
+                # First non-empty, non-frontmatter, non-heading line
+                in_fm = False
+                for line in lines:
+                    if line.strip() == "---":
+                        in_fm = not in_fm
+                        continue
+                    if in_fm:
+                        continue
+                    stripped = line.strip()
+                    if stripped and not stripped.startswith("#"):
+                        description = stripped[:120]
+                        break
+            except (OSError, UnicodeDecodeError):
+                pass
+            break
+
+    # Persona roles from persona files
+    persona_roles = {}
+    personas_dir = instance_path / "shared" / "orga" / "personas"
+    if personas_dir.is_dir():
+        for f in personas_dir.glob("persona-*.md"):
+            name = audit.strip_accents(f.stem.removeprefix("persona-").lower())
+            role = ""
+            try:
+                for line in f.read_text(encoding="utf-8").splitlines():
+                    if line.startswith("# "):
+                        h1 = line[2:].strip()
+                        if "—" in h1:
+                            parts = h1.split("—")
+                            # Take the part that is NOT the persona name
+                            role = parts[0].strip() if audit.strip_accents(parts[-1].strip().lower()) == name else parts[-1].strip()
+                        else:
+                            role = h1
+                        role = role[:60]
+                        break
+            except (OSError, UnicodeDecodeError):
+                pass
+            persona_roles[name] = role
+
+    # Inter-persona friction links (persona → orchestrator, volume + direction)
+    links = []
+    for p, pdata in personas_data.items():
+        dirs = pdata.get("directions", {})
+        a_to_h = dirs.get("a_corroborates_h", 0) + dirs.get("a_contests_h", 0)
+        h_to_a = dirs.get("h_corroborates_a", 0) + dirs.get("h_contests_a", 0)
+        if a_to_h + h_to_a > 0:
+            links.append({
+                "persona": p,
+                "a_to_h": a_to_h,
+                "h_to_a": h_to_a,
+                "total": a_to_h + h_to_a,
+                "dominant": "a→h" if a_to_h > h_to_a else "h→a" if h_to_a > a_to_h else "balanced",
+            })
+
+    # Context sizes
+    ctx_sizes = audit.measure_context_sizes(instance_path)
+
+    return {
+        "instance": instance_path.name,
+        "description": description,
+        "persona_roles": persona_roles,
+        "links": sorted(links, key=lambda x: -x["total"]),
+        "context_sizes": {k: {"total_lines": v["total_lines"], "status": v["status"]} for k, v in ctx_sizes.items()},
     }
 
 
@@ -797,6 +879,9 @@ def aggregate_instances(instances_data: dict[str, dict]) -> dict:
             [r for d in instances_data.values() for r in d.get("friction_records", [])],
             key=lambda r: r.get("date", ""),
         ),
+        "map": {
+            "instances": {name: d.get("map", {}) for name, d in instances_data.items()},
+        },
     }
 
 
