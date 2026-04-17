@@ -55,6 +55,31 @@ instance/                        ← scaffolding (create-instance)
 
 Le protocole impose `shared/` comme canal unique et les artefacts avec frontmatter. Comment l'instance organise ses artefacts dans `shared/` (sous-repertoires, nommage, archivage) est une decision locale documentee dans `conventions.md`.
 
+### Installation du protocole sur un persona
+
+Le protocole H2A est installe via le **contexte** (`shared/orga/contextes/contexte-{persona}-{produit}.md`), pas via la fiche persona. La fiche persona definit le role (agnostique de l'instance). Le contexte installe les regles de l'instance.
+
+Chaque contexte DOIT contenir une section `## Protocole H2A` qui :
+- Pointe vers `shared/conventions.md` (a lire au premier boot, relire avant chaque artefact et fermeture)
+- Rappelle les sections obligatoires du resume de session (Produit, Decisions, Notes deposees, Ouvert)
+- Rappelle les sections observationnelles (Friction orchestrateur DEVRAIT, Flux PEUT)
+- Rappelle la convention de commit
+- Contient le **template friction inline** — le format exact attendu, directement visible dans le contexte
+
+Sans cette section, le persona ne tracera pas la friction — c'est le cas d'usage le plus frequent d'ecart prescription/usage.
+
+**Template friction inline** (a inclure dans chaque contexte) :
+
+```
+Format friction : {symbole} [{marqueur}] {description} — [{initiative}] → {resolution}
+Marqueurs : ✓ [sound], ~ [contestable], ⚡ [simplification], ◐ [blind_spot], ✗ [refuted]
+Initiative : [persona] ou [PO]
+Resolution (DEVRAIT) : → ratified, → contested, → revised, → rejected
+Lignage : si amende une friction anterieure, ajouter (ref: {id-source}/{index})
+```
+
+Le template est un filet de securite — le persona a le format sous les yeux au moment de produire, sans relire un fichier externe.
+
 ### Frontmatter
 
 Tout artefact depose dans l'espace partage porte un frontmatter YAML. Pas d'accents dans les valeurs.
@@ -62,10 +87,10 @@ Tout artefact depose dans l'espace partage porte un frontmatter YAML. Pas d'acce
 **Artefacts** :
 ```yaml
 ---
-de: persona-emetteur
-pour: persona-destinataire
+from: persona-emetteur
+to: persona-destinataire
 nature: signal           # signal | question | demande | reponse
-statut: nouveau          # nouveau | lu | traite
+status: new              # new | read | done
 date: YYYY-MM-DD
 ---
 ```
@@ -81,33 +106,37 @@ session: "HHmm"
 
 ### Archivage
 
-Quand un artefact passe a `statut: traite`, il est deplace dans `archives/` du repertoire parent.
+Quand un artefact passe a `status: done`, il est deplace dans `archives/` du repertoire parent.
 
 ### Statut du cycle de vie
 
-| Statut | Signification |
+| Status | Signification |
 |--------|--------------|
-| `nouveau` | Depose, pas encore lu par le destinataire |
-| `lu` | Lu par le destinataire |
-| `traite` | Le destinataire a fait ce qu'il fallait avec |
+| `new` | Depose, pas encore lu par le destinataire |
+| `read` | Lu par le destinataire |
+| `done` | Le destinataire a fait ce qu'il fallait avec |
+
+> **Retrocompat** : le parser accepte aussi les valeurs FR (`nouveau`, `lu`, `traite`).
 
 ### Resolution des artefacts
 
 Quand un artefact est traite, chaque point DEVRAIT porter un tag de resolution dans le corps du document (pas dans le frontmatter — un artefact contient souvent plusieurs points).
 
-Convention : le destinataire annote chaque point avec `→ ratifie`, `→ conteste`, `→ revise` ou `→ rejete` avant archivage.
+Convention : le destinataire annote chaque point avec `→ ratified`, `→ contested`, `→ revised` ou `→ rejected` avant archivage.
 
 **Exemple** :
 ```markdown
 ## Proposition A
-→ ratifie
+→ ratified
 
 ## Proposition B
-→ rejete (justification courte)
+→ rejected (justification courte)
 
 ## Proposition C
-→ revise (precision sur ce qui change)
+→ revised (precision sur ce qui change)
 ```
+
+> **Retrocompat** : le parser accepte aussi les tags FR (`ratifie`, `conteste`, `revise`, `rejete`).
 
 ### Friction dans les resumes de session
 
@@ -124,11 +153,13 @@ Chaque ligne porte les 5 dimensions definies dans `friction.md`, rendues ainsi :
 
 | Protocole (`friction.md`) | Rendu Markdown |
 |--------------------------|----------------|
-| `[juste]` | ✓ ou `[juste]` |
+| `[sound]` | ✓ ou `[sound]` |
 | `[contestable]` | ~ ou `[contestable]` |
 | `[simplification]` | ⚡ ou `[simplification]` |
-| `[angle-mort]` | ◐ ou `[angle-mort]` |
-| `[faux]` | ✗ ou `[faux]` |
+| `[blind_spot]` | ◐ ou `[blind_spot]` |
+| `[refuted]` | ✗ ou `[refuted]` |
+
+> **Retrocompat** : le parser accepte aussi les brackets FR (`[juste]`, `[angle-mort]`, `[faux]`).
 
 Les symboles visuels (✓/~/⚡/◐/✗) sont une commodite d'instance. Les mots-cles entre crochets font foi pour l'audit.
 
@@ -138,39 +169,48 @@ Les symboles visuels (✓/~/⚡/◐/✗) sont une commodite d'instance. Les mots
 
 | Protocole (`friction.md`) | Rendu Markdown |
 |--------------------------|----------------|
-| `ratifie` | `→ ratifie` |
-| `conteste` | `→ conteste` |
-| `revise` | `→ revise` |
-| `rejete` | `→ rejete` |
+| `ratified` | `→ ratified` |
+| `contested` | `→ contested` |
+| `revised` | `→ revised` |
+| `rejected` | `→ rejected` |
 
 Le tag de resolution est pose par point de friction, pas par section.
 
 **Exemple** :
 ```
 ## Friction orchestrateur
-- ✓ [juste] le mapping Toulmin eclaire sans contraindre — [PO] → ratifie
-- ~ [contestable] le mapping Toulmin est suggestif, pas acquis — [PO] → revise
-- ◐ [angle-mort] scaffolding absent de la review Böckeler — [aurele] → ratifie
+- ✓ [sound] le mapping Toulmin eclaire sans contraindre — [PO] → ratified
+- ~ [contestable] le mapping Toulmin est suggestif, pas acquis — [PO] → revised
+- ◐ [blind_spot] scaffolding absent de la review Böckeler — [aurele] → ratified
 ```
 
-Quand une friction revise une resolution d'une session anterieure, elle DEVRAIT porter un champ `ref:` :
+### Lignage (dimension `antecedent`)
+
+Quand une friction amende une friction anterieure (voir `protocol/friction.md` §Lignage), la dimension `antecedent` est materialisee par un champ `ref:` en fin de ligne :
 
 ```
-- ✓ [juste] la distinction protocolaire/observationnelle couvre le cas — [aurele] → ratifie (ref: 2026-04-10-1430-aurele/3)
+- ✓ [sound] la distinction protocolaire/observationnelle couvre le cas — [aurele] → ratified (ref: 2026-04-10-1430-aurele/3)
 ```
 
-Le format du champ `ref:` est `{id-session}/{numero-friction}` ou `{id-session}` est le nom du fichier de resume (sans extension).
+**Format** : `ref: {id-source}/{index}` ou :
+- `{id-source}` = nom du fichier (sans extension) — resume de session ou artefact
+- `{index}` = position de la friction dans le fichier source (1-based, ordre d'apparition)
+
+**Regles d'implementation** :
+- Le parser DOIT suivre les `ref:` et propager la resolution du dernier maillon vers la friction source.
+- Une friction referencee par un `ref:` n'apparait pas dans la liste des frictions ouvertes si le maillon qui la reference porte une resolution.
+- Les compteurs comptent la friction logique une seule fois, avec le marqueur d'origine et la resolution finale.
 
 Les dimensions `echange` et `emetteur` sont implicites : l'echange est la session courante, l'emetteur est le persona auteur du resume.
 
-### signalerPattern dans les resumes de session
+### reportPattern dans les resumes de session
 
-Section `## signalerPattern` (PEUT — couche observationnelle pour le constat, protocolaire pour le compteur).
+Section `## reportPattern` (PEUT — couche observationnelle pour le constat, protocolaire pour le compteur).
 
 Le persona consigne le declenchement et le choix de l'orchestrateur :
 
 ```
-## signalerPattern
+## reportPattern
 - Theme : [theme] — N frictions rejetees (sessions YYYY-MM-DD, ...)
 - Choix : erreur LLM | conviction | resistance
 - Justification : ...
@@ -190,19 +230,19 @@ Chaque ligne porte les dimensions definies dans `contribution.md`, rendues ainsi
 ```
 
 **Direction** : `H` (humain apporte) ou `A` (assistant apporte).
-**Type** : `matiere`, `structure`, `contestation`, `decision`.
+**Type** : `substance`, `structure`, `contestation`, `decision`.
 
 **Comptage** (optionnel) : une ligne de synthese en fin de section.
 
 **Exemple** :
 ```
 ## Flux
-- H:matiere — article Böckeler, demande d'avis
-- A:matiere — filiation scaffolding absente chez Böckeler
+- H:substance — article Böckeler, demande d'avis
+- A:substance — filiation scaffolding absente chez Böckeler
 - A:structure — trois niveaux de complementarite harness/SOFIA
 - H:decision — on garde la notation mots-cles
 
-H:2 (matiere 1, decision 1) | A:2 (matiere 1, structure 1)
+H:2 (substance 1, decision 1) | A:2 (substance 1, structure 1)
 ```
 
 La dimension `session` est implicite : c'est la session courante.
@@ -213,15 +253,15 @@ Mapping des operations H2A (voir `protocol/h2a.md`) sur l'implementation courant
 
 | Operation | Mode | Geste concret |
 |-----------|------|--------------|
-| ouvrirSession() | manuel | L'orchestrateur lance un terminal dans le workspace du persona (ou reprend une session Claude Code existante) |
-| fermerSession() | manuel | L'orchestrateur donne un signal verbal ("on cloture" / "on ferme"). Le persona produit le resume, prepare le commit. L'orchestrateur execute le commit |
-| deposerArtefact() | manuel | L'orchestrateur instruit le persona : "ecris une note a {destinataire}" / "fais une review de {ref}" / "redige la spec de {sujet}". Le persona depose dans `shared/` |
-| routerArtefact() | manuel | L'orchestrateur lit l'artefact dans `shared/`, ouvre une session avec le destinataire, lui presente l'artefact |
-| marquerLu() | manuel | L'orchestrateur met `statut: lu` dans le frontmatter de l'artefact |
-| marquerTraite() | manuel | L'orchestrateur met `statut: traite` dans le frontmatter — l'artefact est ensuite deplace dans `archives/` |
-| qualifierFriction() | automatique | Le persona pre-remplit la section `## Friction orchestrateur` a la fermeture. L'orchestrateur valide ou corrige |
-| qualifierContribution() | automatique | Le persona pre-remplit la section `## Flux` a la fermeture. L'orchestrateur valide ou corrige |
-| signalerPattern() | automatique | Le persona detecte une convergence thematique de rejets en cours de session. Il interpelle l'orchestrateur avec le constat + 3 hypotheses argumentees. L'orchestrateur repond avec son choix + justification. A la fermeture, le persona consigne dans une section `## signalerPattern` du resume |
+| openSession() | manuel | L'orchestrateur lance un terminal dans le workspace du persona (ou reprend une session Claude Code existante) |
+| closeSession() | manuel | L'orchestrateur donne le signal. Le persona **relit `shared/conventions.md`**, puis produit le resume, prepare le commit. L'orchestrateur execute le commit |
+| depositArtefact() | manuel | L'orchestrateur instruit le persona. Le persona **relit `shared/conventions.md`**, puis produit l'artefact (note, review, feature) et depose dans `shared/` |
+| routeArtefact() | manuel | L'orchestrateur lit l'artefact dans `shared/`, ouvre une session avec le destinataire, lui presente l'artefact |
+| markRead() | manuel | L'orchestrateur met `status: read` dans le frontmatter de l'artefact |
+| markDone() | manuel | L'orchestrateur met `status: done` dans le frontmatter — l'artefact est ensuite deplace dans `archives/` |
+| qualifyFriction() | automatique | Le persona pre-remplit la section `## Friction orchestrateur` a la fermeture. L'orchestrateur valide ou corrige |
+| qualifyContribution() | automatique | Le persona pre-remplit la section `## Flux` a la fermeture. L'orchestrateur valide ou corrige |
+| reportPattern() | automatique | Le persona detecte une convergence thematique de rejets en cours de session. Il interpelle l'orchestrateur avec le constat + 3 hypotheses argumentees. L'orchestrateur repond avec son choix + justification. A la fermeture, le persona consigne dans une section `## reportPattern` du resume |
 
 **Manuel** = l'orchestrateur declenche par un geste explicite.
 **Automatique** = le persona produit a la fermeture de session, l'orchestrateur valide.
@@ -244,7 +284,7 @@ Le persona NE DOIT PAS fermer de lui-meme ni deposer d'artefact sans instruction
 |---------|--------------------|-----------------------|
 | "Chaque session produit une trace" | ✓ | |
 | "La trace est un fichier .md commite dans git" | | ✓ |
-| "Les marqueurs sont [juste] [contestable] etc." | ✓ | |
+| "Les marqueurs sont [sound] [contestable] etc." | ✓ | |
 | "Les marqueurs sont dans un fichier Markdown" | | ✓ |
 | "L'espace partage est le seul canal" | ✓ | |
 | "L'espace partage est un dossier shared/" | | ✓ |
@@ -255,12 +295,12 @@ Le persona NE DOIT PAS fermer de lui-meme ni deposer d'artefact sans instruction
 | "La contribution porte direction et type" | ✓ | |
 | "La contribution est une ligne `{H\|A}:{type} — description`" | | ✓ |
 | "La friction porte un tag de resolution" | ✓ | |
-| "Le tag de resolution est rendu `→ ratifie` en fin de ligne Markdown" | | ✓ |
+| "Le tag de resolution est rendu `→ ratified` en fin de ligne Markdown" | | ✓ |
 | "Une resolution peut evoluer entre sessions avec ref:" | ✓ | |
 | "Le ref: est rendu `(ref: id-session/n)` en fin de ligne Markdown" | | ✓ |
-| "signalerPattern() produit un constat + 3 hypotheses + qualification" | ✓ | |
-| "signalerPattern est une section `## signalerPattern` dans le resume" | | ✓ |
-| "Le compteur de choix signalerPattern est auditable" | ✓ | |
+| "reportPattern() produit un constat + 3 hypotheses + qualification" | ✓ | |
+| "reportPattern est une section `## reportPattern` dans le resume" | | ✓ |
+| "Le compteur de choix reportPattern est auditable" | ✓ | |
 
 ---
 
@@ -271,7 +311,7 @@ Le persona NE DOIT PAS fermer de lui-meme ni deposer d'artefact sans instruction
 H2A pourrait etre implemente comme une API REST :
 - Chaque entite (Instance, Espace, Persona, Echange, Friction, Contribution) devient une ressource
 - Les frontmatter YAML deviennent des schemas JSON
-- Les statuts (`nouveau` → `lu` → `traite`) deviennent des transitions d'etat
+- Les statuts (`new` → `read` → `done`) deviennent des transitions d'etat
 - L'audit devient un endpoint de verification
 
 ### Base de donnees

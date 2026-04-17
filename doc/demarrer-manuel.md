@@ -97,12 +97,12 @@ Crée `shared/conventions.md`. C'est le contrat d'échange entre personas. Au mi
 Les personas ne se parlent pas. Ils échangent par artefacts déposés dans shared/.
 
 ### Notes
-- Format : `note-{destinataire}-{sujet}-{auteur}.md`
+- Format : `note-{to}-{subject}-{from}.md`
 - Emplacement : `shared/notes/`
 - Quand traitée : déplacer dans `shared/notes/archives/`
 
 ### Reviews
-- Format : `review-{sujet}-{auteur}.md`
+- Format : `review-{subject}-{from}.md`
 - Emplacement : `shared/review/`
 - Quand traitée : déplacer dans `shared/review/archives/`
 
