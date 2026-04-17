@@ -42,6 +42,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 /* ── Grid ── */
@@ -69,11 +70,16 @@ nav .meta { font-family: var(--font-mono); font-size: 10px; color: var(--ice-mut
 
 /* ── Layout ── */
 main {
-  position: relative; z-index: 1;
-  max-width: 1200px; margin: 0 auto;
-  padding: 76px 2rem 80px 220px;
+  position: fixed; top: 52px; bottom: 36px; left: 0; right: 0;
+  z-index: 1; overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: rgba(64,180,160,0.2) transparent;
 }
-@media (max-width: 900px) { main { padding-left: 2rem; } }
+main::-webkit-scrollbar { width: 6px; }
+main::-webkit-scrollbar-track { background: transparent; }
+main::-webkit-scrollbar-thumb { background: rgba(64,180,160,0.2); border-radius: 3px; }
+main::-webkit-scrollbar-thumb:hover { background: rgba(64,180,160,0.35); }
+main > .tab-content { max-width: 1200px; margin: 0 auto; padding: 24px 2rem 80px 220px; }
+@media (max-width: 900px) { main > .tab-content { padding-left: 2rem; } }
 
 .hero {
   text-align: center; padding: 3rem 0 2rem;
@@ -196,9 +202,8 @@ main {
   gap: 1rem; margin-bottom: 2.5rem;
 }
 .score-card {
-  background: var(--deep); border: 1px solid var(--border); border-radius: 4px;
-  padding: 1.25rem 1rem; text-align: center;
-  transition: border-color .15s ease;
+  background: rgba(64,216,192,0.04); border: 0.8px solid rgba(64,216,192,0.15);
+  border-radius: 8px; padding: 6px; text-align: center;
 }
 .score-card:hover { border-color: var(--border-hi); }
 .score-card .value {
@@ -222,14 +227,24 @@ main {
 }
 @media (max-width: 800px) { .charts { grid-template-columns: 1fr; } }
 
+/* ── Figure frame (site Oxynoe style) ── */
+.fig-frame {
+  background: rgba(64,216,192,0.04); border: 0.8px solid rgba(64,216,192,0.15);
+  border-radius: 8px; padding: 10px;
+}
+.fig-inner {
+  background: var(--deep); border-radius: 6px; padding: 1.5rem;
+}
+
 .chart-card {
-  background: var(--deep); border: 1px solid var(--border); border-radius: 4px;
-  padding: 1.5rem;
+  background: rgba(64,216,192,0.04); border: 0.8px solid rgba(64,216,192,0.15);
+  border-radius: 8px; padding: 10px;
 }
 .chart-card.full { grid-column: 1 / -1; }
 .chart-card h2 {
   font-family: var(--font-mono); font-size: 10px; color: var(--ice-muted);
   letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: .5rem;
 }
 .chart-card h2::before {
   content: ''; display: inline-block; width: 12px; height: 1px;
@@ -240,8 +255,8 @@ main {
 
 /* ── Table ── */
 .table-card {
-  background: var(--deep); border: 1px solid var(--border); border-radius: 4px;
-  padding: 1.5rem; margin-bottom: 2.5rem; overflow-x: auto;
+  background: rgba(64,216,192,0.04); border: 0.8px solid rgba(64,216,192,0.15);
+  border-radius: 8px; padding: 10px; margin-bottom: 2.5rem;
 }
 .table-card h2 {
   font-family: var(--font-mono); font-size: 10px; color: var(--ice-muted);
@@ -276,6 +291,107 @@ footer {
   letter-spacing: .08em;
 }
 
+/* ── Info icon ── */
+.info-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--ice-muted); font-size: 10px; font-style: normal;
+  cursor: help; flex-shrink: 0; position: relative;
+  font-family: Georgia, serif;
+}
+.info-icon:hover { border-color: var(--ready); color: var(--ready); }
+.info-icon .info-tip {
+  display: none; position: absolute; left: 24px; top: -8px;
+  background: var(--void); border: 1px solid var(--border-hi); border-radius: 4px;
+  padding: 8px 12px; font-family: var(--font-sans); font-size: 11px;
+  color: var(--ice-dim); letter-spacing: 0; text-transform: none;
+  line-height: 1.5; width: 280px; z-index: 200; white-space: normal;
+}
+.info-icon:hover .info-tip { display: block; }
+
+/* ── Context menu ── */
+.ctx-overlay {
+  display: none; position: fixed; inset: 0; z-index: 299;
+}
+.ctx-overlay.visible { display: block; }
+.ctx-menu {
+  display: none; position: fixed; z-index: 300;
+  background: var(--void); border: 1px solid var(--border-hi); border-radius: 4px;
+  padding: 4px 0; min-width: 140px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+.ctx-menu.visible { display: block; }
+.ctx-menu button {
+  display: block; width: 100%; text-align: left; background: none; border: none;
+  color: var(--ice-dim); font-family: var(--font-mono); font-size: 11px;
+  padding: 6px 14px; cursor: pointer; letter-spacing: .04em;
+}
+.ctx-menu button:hover { background: var(--ready-dim); color: var(--ice); }
+.ctx-menu .ctx-label {
+  font-size: 9px; color: var(--ice-muted); padding: 4px 14px 2px;
+  letter-spacing: .08em; text-transform: uppercase; font-family: var(--font-mono);
+}
+
+/* ── Map ── */
+.instance-card {
+  background: rgba(64,216,192,0.04); border: 0.8px solid rgba(64,216,192,0.15);
+  border-radius: 8px; padding: 10px; min-width: 200px; flex: 1;
+  transition: border-color .15s;
+}
+.instance-card:hover { border-color: var(--border-hi); }
+.instance-card .inst-header {
+  display: flex; align-items: center; gap: .5rem; margin-bottom: .75rem;
+}
+.instance-card .inst-name {
+  font-family: var(--font-mono); font-size: 13px; color: var(--ice);
+  letter-spacing: .06em; font-weight: 500;
+}
+.instance-card .health-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.instance-card .inst-desc {
+  font-size: 11px; color: var(--ice-muted); margin-bottom: .75rem;
+  line-height: 1.4; font-family: var(--font-sans);
+}
+.instance-card .persona-list { list-style: none; }
+.instance-card .persona-list li {
+  font-family: var(--font-mono); font-size: 11px; padding: 3px 0;
+  display: flex; align-items: center; gap: 6px;
+  color: var(--ice-dim); cursor: pointer;
+}
+.instance-card .persona-list li:hover { color: var(--ice); }
+.instance-card .persona-list li .p-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.instance-card .persona-list li .p-role {
+  font-family: var(--font-sans); font-size: 10px; color: var(--ice-muted);
+  margin-left: auto;
+}
+.instance-card .persona-list li.no-friction { opacity: .4; }
+
+/* ── Persona mini cards ── */
+.persona-mini {
+  background: rgba(64,216,192,0.04); border: 0.8px solid rgba(64,216,192,0.15);
+  border-radius: 8px; padding: 6px; flex: 1; min-width: 140px; max-width: 200px;
+  cursor: pointer; transition: border-color .15s;
+}
+.persona-mini:hover { border-color: var(--border-hi); }
+.persona-mini .pm-name {
+  font-family: var(--font-mono); font-size: 11px; color: var(--ice);
+  font-weight: 500; margin-bottom: .25rem;
+}
+.persona-mini .pm-role {
+  font-family: var(--font-sans); font-size: 9px; color: var(--ice-muted);
+  margin-bottom: .5rem;
+}
+.persona-mini .pm-stats {
+  display: flex; gap: .5rem; font-family: var(--font-mono); font-size: 9px;
+}
+.persona-mini .pm-stat { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.persona-mini .pm-val { font-size: 13px; font-weight: 300; }
+.persona-mini .pm-label { font-size: 7px; color: var(--ice-muted); letter-spacing: .06em; text-transform: uppercase; }
+
 /* ── Mirror ── */
 .radar-card {
   width: 240px; text-align: center;
@@ -288,12 +404,12 @@ footer {
 .radar-card .diagnostic {
   font-family: var(--font-mono); font-size: 9px; margin-top: .25rem; letter-spacing: .06em;
 }
-.diagnostic.sain { color: var(--done); }
-.diagnostic.domestication { color: var(--coral); }
-.diagnostic.complaisant { color: var(--amber); }
+.diagnostic.healthy { color: var(--done); }
+.diagnostic.domesticated { color: var(--coral); }
+.diagnostic.complacent { color: var(--amber); }
 .diagnostic.servile { color: var(--amber); }
 td.zero { color: var(--coral); font-weight: 600; }
-td.diag-sain { color: var(--done); }
+td.diag-healthy { color: var(--done); }
 td.diag-warn { color: var(--amber); }
 td.diag-danger { color: var(--coral); }
 
@@ -307,12 +423,15 @@ td.diag-danger { color: var(--coral); }
 </head>
 <body>
 <div class="grid-bg"></div>
+<div class="ctx-overlay" id="ctx-overlay" onclick="hideCtxMenu()"></div>
+<div class="ctx-menu" id="ctx-menu"></div>
 
 <nav>
   <div class="brand"><svg class="logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64" fill="none"><defs><filter id="rg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="ng" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="32" cy="32" r="17" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="2" filter="url(#rg)"/><circle cx="32" cy="32" r="17" fill="none" stroke="rgba(167,139,250,0.55)" stroke-width="0.6"/><circle cx="32" cy="32" r="12" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="0.3"/><polygon points="32,20 41.4,24.5 43.7,34.2 37.2,42.8 26.8,42.8 20.3,34.2 22.6,24.5" fill="none" stroke="rgba(167,139,250,0.3)" stroke-width="0.4" stroke-linejoin="round"/><circle cx="32" cy="20" r="1.4" fill="#a78bfa" opacity="0.7" filter="url(#ng)"/><circle cx="41.4" cy="24.5" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="43.7" cy="34.2" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="37.2" cy="42.8" r="1.4" fill="#a78bfa" opacity="0.6" filter="url(#ng)"/><circle cx="26.8" cy="42.8" r="1.4" fill="#a78bfa" opacity="0.6" filter="url(#ng)"/><circle cx="20.3" cy="34.2" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="22.6" cy="24.5" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="28" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/><circle cx="32" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/><circle cx="36" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/></svg> H2A <span>dashboard</span></div>
   <ul class="nav-links">
+    <li><button class="active" onclick="switchTab('map')">Map</button></li>
     <li><button onclick="switchTab('mirror')">Mirror</button></li>
-    <li><button class="active" onclick="switchTab('lens')">Lens</button></li>
+    <li><button onclick="switchTab('lens')">Lens</button></li>
     <li><button onclick="switchTab('probe')">Probe</button></li>
   </ul>
 </nav>
@@ -339,7 +458,41 @@ td.diag-danger { color: var(--coral); }
 </div>
 
 <main>
-  <div id="tab-lens" class="tab-content active">
+  <div id="tab-map" class="tab-content active">
+
+    <!-- Intro -->
+    <div class="rise rise-1" style="margin:0 0 2rem; padding:12px 16px; background:rgba(167,139,250,0.06); border:1px solid rgba(167,139,250,0.2); border-radius:6px;">
+      <h2 style="font-family:var(--font-display); font-size:18px; font-weight:300; color:var(--ice); margin-bottom:.5rem;"><strong style="color:rgba(167,139,250,0.7);">H2A</strong> Dashboard</h2>
+      <p style="font-family:var(--font-sans); font-size:12px; color:var(--ice-dim); line-height:1.7; margin-bottom:.75rem;">
+        Instrumentation dashboard for the <strong style="color:var(--ice)">H2A protocol</strong> (Human-to-Assistant). Monitors friction, resolutions, and epistemic flow across all SOFIA instances. Each friction is a qualified epistemic position — the protocol captures, qualifies, and preserves them as structured data.
+      </p>
+      <p style="font-family:var(--font-mono); font-size:10px; color:var(--ice-muted); letter-spacing:.06em;">
+        <strong>Mirror</strong> = health diagnostics · <strong>Lens</strong> = time series · <strong>Probe</strong> = conformity audit · Right-click any element to navigate.
+      </p>
+    </div>
+
+    <!-- Topology cards on one row -->
+    <div class="rise rise-1" style="margin-bottom:1.5rem;">
+      <div id="map-topology" style="display:flex; flex-wrap:wrap; gap:1rem;"></div>
+    </div>
+
+
+    <!-- Trajectory — test style figure -->
+    <div class="rise rise-2" style="margin-bottom:2rem; background:rgba(64,216,192,0.04); border:0.8px solid rgba(64,216,192,0.15); border-radius:8px; padding:10px;">
+      <div style="background:var(--deep); border-radius:6px; padding:1.5rem;">
+        <h2 style="font-family:var(--font-mono); font-size:10px; color:var(--ice-muted); letter-spacing:.12em; text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:.5rem;">Trajectory — challenge % <i class="info-icon">i<span class="info-tip">Challenge % per window of N frictions. A descending line = instance going silent. Each window covers a variable time span. Hover for date range.</span></i></h2>
+        <div class="chart-wrap"><canvas id="map-trajectory"></canvas></div>
+      </div>
+    </div>
+
+    <!-- Persona cards -->
+    <div class="rise rise-3" style="margin-top:1.5rem;">
+      <div id="map-persona-cards" style="display:flex; flex-wrap:wrap; gap:.75rem;"></div>
+    </div>
+
+  </div><!-- /tab-map -->
+
+  <div id="tab-lens" class="tab-content">
 
   <!-- Scores -->
   <div class="scores rise rise-2" id="scores"></div>
@@ -347,15 +500,15 @@ td.diag-danger { color: var(--coral); }
   <!-- Grand graphique + direction -->
   <div class="charts rise rise-3">
     <div class="chart-card full tall">
-      <h2>Friction by marker — timeline</h2>
+      <h2>Friction by marker — timeline <i class="info-icon">i<span class="info-tip">Distribution of the 5 epistemic markers over time. A line going up = more frictions of that type. A flat line at zero = marker never used.</span></i></h2>
       <div class="chart-wrap"><canvas id="chart-friction-time"></canvas></div>
     </div>
     <div class="chart-card">
-      <h2>Direction — who contests whom</h2>
+      <h2>Direction — who contests whom <i class="info-icon">i<span class="info-tip">Horizontal bars: right = persona positions (A), left = orchestrator positions (H). Corroboration = agreement. Contestation = disagreement.</span></i></h2>
       <div class="chart-wrap"><canvas id="chart-direction"></canvas></div>
     </div>
     <div class="chart-card">
-      <h2>Direction — timeline</h2>
+      <h2>Direction — timeline <i class="info-icon">i<span class="info-tip">Evolution of contestation and corroboration over time. A→H rising = personas push back more. H→A rising = orchestrator challenges more.</span></i></h2>
       <div class="chart-wrap"><canvas id="chart-direction-time"></canvas></div>
     </div>
   </div>
@@ -363,19 +516,19 @@ td.diag-danger { color: var(--coral); }
   <!-- Charts detail -->
   <div class="charts rise rise-3">
     <div class="chart-card">
-      <h2>Markers by persona</h2>
+      <h2>Markers by persona <i class="info-icon">i<span class="info-tip">Stacked bar: total friction per persona, broken down by marker type. Monochrome = domestication (only sound).</span></i></h2>
       <div class="chart-wrap"><canvas id="chart-markers-persona"></canvas></div>
     </div>
     <div class="chart-card">
-      <h2>Resolutions by persona</h2>
+      <h2>Resolutions by persona <i class="info-icon">i<span class="info-tip">How frictions are resolved per persona. All ratified = no real arbitration. Mix of ratified/revised/rejected = healthy.</span></i></h2>
       <div class="chart-wrap"><canvas id="chart-resolutions"></canvas></div>
     </div>
     <div class="chart-card">
-      <h2>Epistemic flow — H vs A</h2>
+      <h2>Epistemic flow — H vs A <i class="info-icon">i<span class="info-tip">Who brings substance to the exchange. H >> A = orchestrator drives. A >> H = persona drives. Balanced = co-construction.</span></i></h2>
       <div class="chart-wrap"><canvas id="chart-flux"></canvas></div>
     </div>
     <div class="chart-card">
-      <h2>Frictions per session — timeline</h2>
+      <h2>Frictions per session — timeline <i class="info-icon">i<span class="info-tip">Average number of frictions and resolutions per session over time. Rising = more friction per session. Falling = sessions produce less signal.</span></i></h2>
       <div class="chart-wrap"><canvas id="chart-ratio"></canvas></div>
     </div>
   </div>
@@ -431,11 +584,11 @@ td.diag-danger { color: var(--coral); }
     <!-- Vue 0 — Trajectoire instance -->
     <div class="charts rise">
       <div class="chart-card">
-        <h2>Trajectory — challenge %</h2>
+        <h2>Trajectory — challenge % <i class="info-icon">i<span class="info-tip">Challenge % per window of N frictions. A descending line = instance going silent. Each window covers a variable time span.</span></i></h2>
         <div class="chart-wrap"><canvas id="chart-trajectory-line"></canvas></div>
       </div>
       <div class="chart-card">
-        <h2>Trajectory — marker distribution</h2>
+        <h2>Trajectory — marker distribution <i class="info-icon">i<span class="info-tip">Marker breakdown per window. A bar becoming monochrome (all sound) = domestication visible. Diverse colors = healthy friction.</span></i></h2>
         <div class="chart-wrap"><canvas id="chart-trajectory-bar"></canvas></div>
       </div>
     </div>
@@ -443,7 +596,7 @@ td.diag-danger { color: var(--coral); }
     <!-- Vue 1a — Radar instance agrege -->
     <div class="charts rise">
       <div class="chart-card full">
-        <h2>Instance profile — baseline vs recent</h2>
+        <h2>Instance profile — baseline vs recent <i class="info-icon">i<span class="info-tip">Aggregate radar for the whole instance. Grey = baseline (first N frictions). Color = recent (last N). A shrinking contour = the instance is going silent.</span></i></h2>
         <p style="font-size:10px; color:var(--ice-muted); margin-bottom:.5rem; font-family:var(--font-mono); line-height:1.8;">
           Challenge % = non-sound frictions · A→H % = persona contests orchestrator · H→A % = orchestrator contests persona · Resolved % = arbitrated frictions · Diversity % = variety of resolutions (0 = monotone, 1 = balanced)
         </p>
@@ -456,7 +609,7 @@ td.diag-danger { color: var(--coral); }
     <!-- Vue 1b — Radars persona individuels -->
     <div class="charts rise">
       <div class="chart-card full">
-        <h2>Persona profiles — baseline vs recent</h2>
+        <h2>Persona profiles — baseline vs recent <i class="info-icon">i<span class="info-tip">One radar per persona. Grey = baseline (first N frictions). Violet = recent (last N). A persona whose contour shrinks is being domesticated — it contests less than before.</span></i></h2>
         <p style="font-size:10px; color:var(--ice-muted); margin-bottom:.5rem; font-family:var(--font-mono);">
           Grey = baseline (first N frictions) · Color = recent (last N frictions) · Shrinking contour = deterioration
         </p>
@@ -511,8 +664,11 @@ td.diag-danger { color: var(--coral); }
 </main>
 
 <footer>
-  <span>SOFIA analysis &middot; implementation/filesystem</span>
-  <span>oxynoe</span>
+  <span>SOFIA &middot; H2A protocol &middot; <a href="https://github.com/oxynoe-dev/sofia" style="color:var(--ice-muted); text-decoration:none;">method</a></span>
+  <a href="https://github.com/oxynoe-dev/sofia" target="_blank" rel="noopener" style="color:var(--ice-muted); text-decoration:none; display:flex; align-items:center; gap:4px;">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    oxynoe-dev/sofia
+  </a>
 </footer>
 
 <script>
@@ -545,6 +701,7 @@ let PROBE_DATA = null;
 let currentProbeInstance = null;
 
 function switchTab(tab) {
+  document.querySelector('main').scrollTop = 0;
   document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
@@ -553,26 +710,28 @@ function switchTab(tab) {
   });
 
   const subMenu = document.getElementById('probe-instances-menu');
-  const main = document.querySelector('main');
   const filtersPanel = document.getElementById('filters-panel');
-  if (tab === 'probe') {
-    subMenu.classList.add('visible');
-    main.style.paddingTop = '112px';
-    main.style.paddingLeft = '2rem';
-    filtersPanel.style.display = 'none';
-    if (!PROBE_DATA) runProbe();
-  } else if (tab === 'mirror') {
-    subMenu.classList.remove('visible');
-    main.style.paddingTop = '76px';
-    main.style.paddingLeft = '220px';
-    filtersPanel.style.display = '';
-    if (RAW) renderMirror();
-  } else {
-    subMenu.classList.remove('visible');
-    main.style.paddingTop = '76px';
-    main.style.paddingLeft = '220px';
-    filtersPanel.style.display = '';
+  const noSidebar = (tab === 'probe' || tab === 'map');
+
+  subMenu.classList.toggle('visible', tab === 'probe');
+  filtersPanel.style.display = noSidebar ? 'none' : '';
+
+  // Adjust tab-content padding based on sidebar visibility
+  document.querySelectorAll('.tab-content').forEach(t => {
+    t.style.paddingLeft = noSidebar ? '2rem' : '220px';
+    if (tab === 'probe') t.style.paddingTop = '36px';
+    else t.style.paddingTop = '';
+  });
+
+  if (tab === 'probe' && !PROBE_DATA) runProbe();
+  if (tab === 'map') {
+    const selInst = document.getElementById('sel-instance');
+    const selPersona = document.getElementById('sel-persona');
+    if (selInst && selInst.querySelector('option[value="all"]')) selInst.value = 'all';
+    if (selPersona) selPersona.value = 'all';
+    if (RAW) renderMap();
   }
+  if (tab === 'mirror' && RAW) renderMirror();
 }
 
 function selectProbeInstance(name) {
@@ -620,7 +779,7 @@ function renderProbeInstance(instName, instData) {
     // Context sizes
     const ctxSizes = instData.context_sizes;
     if (ctxSizes && Object.keys(ctxSizes).length > 0) {
-      html += '<div class="audit-section"><h2>Context size — persona + context</h2>';
+      html += '<div class="audit-section"><h2>Context size — persona + context <i class=\"info-icon\">i<span class=\"info-tip\">Total lines of persona.md + contexte.md loaded at boot. Green &lt;150L, yellow 150-250L, red &gt;250L. Large contexts get compressed in long sessions — the persona loses instructions.</span></i></h2>';
       const sorted = Object.entries(ctxSizes).sort((a,b) => b[1].total_lines - a[1].total_lines);
       const maxLines = Math.max(...sorted.map(([,d]) => d.total_lines), 1);
       html += '<div style="display:flex; flex-direction:column; gap:6px; margin-bottom:1.5rem;">';
@@ -647,6 +806,7 @@ function renderProbeInstance(instName, instData) {
       let pass = 0, warn = 0, fail = 0, info = 0;
       const icons = { pass: '✓', warn: '⚠', fail: '✗', info: 'ℹ' };
 
+      html += '<div class="audit-section"><h2>Structure checks <i class=\"info-icon\">i<span class=\"info-tip\">Protocol conformity checks: sofia.md marker, shared/ structure, session frontmatter, artefact frontmatter, isolation. Pass = conformant, warn = minor issue, fail = violation.</span></i></h2></div>';
       html += '<div class="checks-grid">';
       for (const chk of checks) {
         const status = chk.status || 'info';
@@ -669,7 +829,7 @@ function renderProbeInstance(instName, instData) {
     // Friction PO table
     const fpo = instData.friction_po;
     if (fpo && fpo.by_persona) {
-      html += '<div class="audit-section"><h2>Orchestrator friction</h2>';
+      html += '<div class="audit-section"><h2>Orchestrator friction <i class=\"info-icon\">i<span class=\"info-tip\">Friction markers from session summaries. Breakdown by persona: markers, resolutions, initiative (persona vs PO), reportPattern triggers.</span></i></h2>';
       html += '<div class="table-card"><table><thead><tr>';
       html += '<th>Persona</th><th>Sessions</th><th>w/ friction</th>';
       html += '<th style="color:var(--done)">Sound</th><th>Contest.</th><th style="color:var(--amber)">Simpl.</th><th style="color:var(--coral)">Blind sp.</th><th style="color:var(--coral)">Refuted</th>';
@@ -690,7 +850,7 @@ function renderProbeInstance(instName, instData) {
     // Activity
     const act = instData.activite;
     if (act && act.by_persona) {
-      html += '<div class="audit-section"><h2>Activity</h2>';
+      html += '<div class="audit-section"><h2>Activity <i class=\"info-icon\">i<span class=\"info-tip\">Number of sessions per persona. A persona with zero sessions is inactive.</span></i></h2>';
       html += '<div class="table-card"><table><thead><tr><th>Persona</th><th>Sessions</th></tr></thead><tbody>';
       const sorted = Object.entries(act.by_persona).sort((a,b) => b[1] - a[1]);
       for (const [p, count] of sorted) {
@@ -711,7 +871,7 @@ function renderProbeInstance(instName, instData) {
       }
       flows.sort((a,b) => b.count - a.count);
       if (flows.length > 0) {
-        html += '<div class="audit-section"><h2>Exchange flow (top)</h2>';
+        html += '<div class="audit-section"><h2>Exchange flow (top) <i class=\"info-icon\">i<span class=\"info-tip\">Top artefact flows between personas — who sends to whom, ranked by volume.</span></i></h2>';
         html += '<div class="table-card"><table><thead><tr><th>De</th><th>Pour</th><th>Artefacts</th></tr></thead><tbody>';
         for (const f of flows.slice(0, 15)) {
           html += `<tr><td>${f.from}</td><td>${f.to}</td><td>${f.count}</td></tr>`;
@@ -746,9 +906,21 @@ function runAnalysis() {
 }
 
 // ── Load ──
+// Wrap all cards content in fig-inner (dark background inside transparent frame)
+document.querySelectorAll('.chart-card, .table-card, .score-card, .instance-card, .persona-mini').forEach(card => {
+  const inner = document.createElement('div');
+  inner.className = 'fig-inner';
+  while (card.firstChild) inner.appendChild(card.firstChild);
+  card.appendChild(inner);
+});
+
 fetch(DATA_URL).then(r => r.json()).then(data => {
   RAW = data;
   initFilters();
+  // Map is default — hide sidebar, render
+  document.getElementById('filters-panel').style.display = 'none';
+  document.querySelectorAll('.tab-content').forEach(t => t.style.paddingLeft = '2rem');
+  renderMap();
   renderCurrent();
 }).catch(() => {
   document.getElementById('scores').innerHTML =
@@ -779,7 +951,7 @@ function initFilters() {
 function populatePersonas() {
   const D = getCurrentData();
   const selPersona = document.getElementById('sel-persona');
-  const personas = Object.keys(D.personas).sort();
+  const personas = (D.meta.personas || Object.keys(D.personas)).sort();
   selPersona.innerHTML = `<option value="all">All</option>`;
   personas.forEach(p => selPersona.innerHTML += `<option value="${p}">${p}</option>`);
 }
@@ -792,7 +964,7 @@ function getCurrentData() {
 
 function getFilteredPersonas(D) {
   const sel = document.getElementById('sel-persona').value;
-  if (sel === 'all') return Object.keys(D.personas).sort();
+  if (sel === 'all') return (D.meta.personas || Object.keys(D.personas)).sort();
   return [sel];
 }
 
@@ -889,19 +1061,21 @@ function renderCurrent() {
   const tsSessions = sum(ts.sessions || []);
 
   document.getElementById('scores').innerHTML = `
-    <div class="score-card accent"><div class="value">${tsFrictions}</div><div class="label">Frictions</div></div>
-    <div class="score-card violet"><div class="value">${tsResolvedPct}%</div><div class="label">Resolved</div></div>
-    <div class="score-card done"><div class="value">${tsRatifie}</div><div class="label">Ratified</div></div>
-    <div class="score-card amber"><div class="value">${tsConteste}</div><div class="label">Contested</div></div>
-    <div class="score-card coral"><div class="value">${tsSp}</div><div class="label">reportPattern</div></div>
-    <div class="score-card"><div class="value" style="color:var(--ice)">${tsSessions}</div><div class="label">Sessions</div></div>`;
+    <div class="score-card accent" title="Total friction markers detected in the selected period."><div class="value">${tsFrictions}</div><div class="label">Frictions</div></div>
+    <div class="score-card violet" title="Percentage of frictions that received a resolution (ratified, contested, revised, rejected)."><div class="value">${tsResolvedPct}%</div><div class="label">Resolved</div></div>
+    <div class="score-card done" title="Frictions where the position was accepted by the other party."><div class="value">${tsRatifie}</div><div class="label">Ratified</div></div>
+    <div class="score-card amber" title="Frictions where disagreement was maintained — no change of position."><div class="value">${tsConteste}</div><div class="label">Contested</div></div>
+    <div class="score-card coral" title="Number of reportPattern triggers — convergence of rejections detected by a persona."><div class="value">${tsSp}</div><div class="label">reportPattern</div></div>`;
 
   // Per-persona time series are now available in D.personas[p].time_series
   // When a persona is selected, rawTs above already points to per-persona series
 
   function mkChart(id, cfg) { const c = new Chart(document.getElementById(id), cfg); charts.push(c); }
 
-  // 1. Friction par marqueur — evolution
+  // Axis label helper
+  const axisTitle = (text) => ({ display: true, text, font: { size: 9, family: "'IBM Plex Mono'" }, color: 'rgba(160,208,200,0.4)' });
+
+  // 1. Friction by marker — timeline
   mkChart('chart-friction-time', {
     type: 'line', data: { labels: weeks, datasets: [
       { label: 'sound', data: ts.markers.sound, ...lineOpts(C.sound) },
@@ -912,10 +1086,10 @@ function renderCurrent() {
     ]},
     options: { responsive: true, maintainAspectRatio: false,
       plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 15 } } },
-      scales: { y: gridY, x: noGridX } }
+      scales: { y: { ...gridY, title: axisTitle('count') }, x: { ...noGridX, title: axisTitle('period') } } }
   });
 
-  // 2. Direction — qui conteste qui
+  // 2. Direction — who contests whom
   mkChart('chart-direction', {
     type: 'bar', data: { labels: personas, datasets: [
       { label: 'A corroborates H', data: personas.map(p => g(P[p].directions, 'a_corroborates_h')), backgroundColor: C.a_corroborates_h },
@@ -926,11 +1100,11 @@ function renderCurrent() {
     options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y',
       plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 12 } },
         tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + Math.abs(ctx.raw) } } },
-      scales: { x: { grid: { color: 'rgba(64,180,160,0.06)' }, ticks: { callback: v => Math.abs(v) } },
+      scales: { x: { grid: { color: 'rgba(64,180,160,0.06)' }, ticks: { callback: v => Math.abs(v) }, title: axisTitle('← H positions · A positions →') },
                 y: { stacked: true, grid: { display: false } } } }
   });
 
-  // 3. Direction — evolution
+  // 3. Direction — timeline
   mkChart('chart-direction-time', {
     type: 'line', data: { labels: weeks, datasets: [
       { label: 'A contests H', data: ts.directions.a_contests_h, borderColor: '#e05050', backgroundColor: '#e0505020', fill: true, tension: .3 },
@@ -940,7 +1114,7 @@ function renderCurrent() {
     ]},
     options: { responsive: true, maintainAspectRatio: false,
       plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 12 } } },
-      scales: { y: gridY, x: noGridX } }
+      scales: { y: { ...gridY, title: axisTitle('count') }, x: { ...noGridX, title: axisTitle('period') } } }
   });
 
   // 4. Marqueurs par persona
@@ -950,32 +1124,32 @@ function renderCurrent() {
     }))},
     options: { responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false } },
-      scales: { x: { stacked: true, ...noGridX }, y: { stacked: true, ...gridY } } }
+      scales: { x: { stacked: true, ...noGridX }, y: { stacked: true, ...gridY, title: axisTitle('count') } } }
   });
 
-  // 5. Resolutions par persona
+  // 5. Resolutions by persona
   mkChart('chart-resolutions', {
     type: 'bar', data: { labels: personas, datasets: rk.map(k => ({
       label: k, data: personas.map(p => g(P[p].resolutions, k)), backgroundColor: C[k]
     }))},
     options: { responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false } },
-      scales: { x: { stacked: true, ...noGridX }, y: { stacked: true, ...gridY } } }
+      scales: { x: { stacked: true, ...noGridX }, y: { stacked: true, ...gridY, title: axisTitle('count') } } }
   });
 
-  // 6. Flux epistemique
+  // 6. Epistemic flow
   mkChart('chart-flux', {
     type: 'bar', data: { labels: personas, datasets: [
-      { label: 'H (humain)', data: personas.map(p => P[p].flux_h_pct), backgroundColor: C.humain },
+      { label: 'H (human)', data: personas.map(p => P[p].flux_h_pct), backgroundColor: C.humain },
       { label: 'A (assistant)', data: personas.map(p => P[p].flux_a_pct), backgroundColor: C.assistant },
     ]},
     options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y',
       plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 15 } } },
-      scales: { x: { stacked: true, beginAtZero: true, max: 100, grid: { color: 'rgba(64,180,160,0.06)' }, ticks: { callback: v => v + '%' } },
+      scales: { x: { stacked: true, beginAtZero: true, max: 100, grid: { color: 'rgba(64,180,160,0.06)' }, ticks: { callback: v => v + '%' }, title: axisTitle('contribution %') },
                 y: { stacked: true, ...noGridX } } }
   });
 
-  // 7. Frictions par session — evolution
+  // 7. Frictions per session — timeline
   mkChart('chart-ratio', {
     type: 'line', data: { labels: weeks, datasets: [
       { label: 'frictions/session', data: ts.frictions_per_session, ...lineOpts(C.humain) },
@@ -983,7 +1157,7 @@ function renderCurrent() {
     ]},
     options: { responsive: true, maintainAspectRatio: false,
       plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 15 } } },
-      scales: { y: gridY, x: noGridX } }
+      scales: { y: { ...gridY, title: axisTitle('avg per session') }, x: { ...noGridX, title: axisTitle('period') } } }
   });
 
   // 8. Source — sessions vs artefacts
@@ -1026,24 +1200,25 @@ function renderMirror() {
   function mkChart2(id, cfg) { const c = new Chart(document.getElementById(id), cfg); mirrorCharts.push(c); }
 
   // ── Bandeau KPI ──
-  const nonAmendments = records.filter(r => !r.is_amendment);
+  const nonAmendments = records.filter(r => !r.is_amendment && personas.includes(r.persona));
   const recentN = nonAmendments.slice(-N);
   const allOpen = nonAmendments.filter(r => !r.resolution);
   const recentChallenge = recentN.length > 0 ? Math.round(recentN.filter(r => r.marker !== 'sound').length / recentN.length * 100) : 0;
   const hContestsA = recentN.filter(r => r.direction === 'h_contests_a').length;
   const openCount = allOpen.length;
   const complaisant = hContestsA === 0 && openCount > 10;
-  const personasWithFriction = new Set(nonAmendments.map(r => r.persona)).size;
-  const totalPersonas = Object.keys(D.personas).length;
+  const realPersonas = D.meta.personas || personas;
+  const personasWithFriction = new Set(nonAmendments.filter(r => realPersonas.includes(r.persona)).map(r => r.persona)).size;
+  const totalPersonas = realPersonas.length;
   const coverage = totalPersonas > 0 ? Math.round(personasWithFriction / totalPersonas * 100) : 0;
 
-  const complaisantLabel = complaisant ? 'complaisant' : 'sain';
+  const complaisantLabel = complaisant ? 'complacent' : 'healthy';
   const complaisantClass = complaisant ? 'coral' : 'done';
   const healthClass = recentChallenge > 20 ? 'done' : recentChallenge > 10 ? 'amber' : 'coral';
   const coverageClass = coverage > 80 ? 'done' : coverage > 50 ? 'amber' : 'coral';
 
   document.getElementById('mirror-kpi').innerHTML = `
-    <div class="score-card ${complaisantClass}" title="The orchestrator no longer contests personas AND does not arbitrate submitted frictions. Both conditions together signal complacency."><div class="value">${complaisantLabel}</div><div class="label">Orchestrator</div></div>
+    <div class="score-card ${complaisantClass}" title="${complaisant ? 'The orchestrator no longer contests personas AND does not arbitrate submitted frictions. Both conditions together signal complacency.' : 'The orchestrator actively contests and arbitrates. No complacency signal detected.'}"><div class="value">${complaisantLabel}</div><div class="label">Orchestrator</div></div>
     <div class="score-card ${healthClass}" title="Share of recent frictions that contest, flag a simplification or a blind spot. Low challenge % = personas validate without resistance."><div class="value">${recentChallenge}%</div><div class="label">Recent challenge</div></div>
     <div class="score-card accent" title="Frictions without resolution — piloting debt. The orchestrator sees the list, arbitrates in the next session, the friction leaves the list."><div class="value">${openCount}</div><div class="label">Open frictions</div></div>
     <div class="score-card ${coverageClass}" title="A persona with no friction is invisible to the protocol. 100% coverage = all personas participate in the friction cycle."><div class="value">${coverage}%</div><div class="label">Coverage (${personasWithFriction}/${totalPersonas})</div></div>
@@ -1151,10 +1326,10 @@ function renderMirror() {
     const recent = computeProfile(pRecs.slice(-N));
 
     let diag = 'healthy';
-    let diagClass = 'sain';
-    if (recent.challenge < baseline.challenge * 0.5 && baseline.challenge > 10) { diag = 'domesticated'; diagClass = 'domestication'; }
+    let diagClass = 'healthy';
+    if (recent.challenge < baseline.challenge * 0.5 && baseline.challenge > 10) { diag = 'domesticated'; diagClass = 'domesticated'; }
     else if (recent.aContestsH === 0 && baseline.aContestsH > 5) { diag = 'servile'; diagClass = 'servile'; }
-    else if (recent.resolved === 100 && recent.challenge < 5) { diag = 'complacent'; diagClass = 'complaisant'; }
+    else if (recent.resolved === 100 && recent.challenge < 5) { diag = 'complacent'; diagClass = 'complacent'; }
 
     personaProfiles[p] = { baseline, recent, diag, diagClass };
 
@@ -1219,7 +1394,7 @@ function renderMirror() {
 
   // ── Tableau delta ──
   document.getElementById('table-delta').innerHTML = deltaRows.map(d =>
-    `<tr><td class="name">${d.p}</td><td class="num">${d.baseline.challenge}%</td><td class="num">${d.recent.challenge}%</td><td class="num">${d.arrow}</td><td class="num">${d.baseline.aContestsH}%</td><td class="num">${d.recent.aContestsH}%</td><td class="diag-${d.diagClass === 'sain' ? 'sain' : d.diagClass === 'domestication' ? 'danger' : 'warn'}">${d.diag}</td></tr>`
+    `<tr><td class="name">${d.p}</td><td class="num">${d.baseline.challenge}%</td><td class="num">${d.recent.challenge}%</td><td class="num">${d.arrow}</td><td class="num">${d.baseline.aContestsH}%</td><td class="num">${d.recent.aContestsH}%</td><td class="diag-${d.diagClass === 'healthy' ? 'healthy' : d.diagClass === 'domesticated' ? 'danger' : 'warn'}">${d.diag}</td></tr>`
   ).join('');
 
   // ── Vue 2: Open frictions ──
@@ -1234,7 +1409,7 @@ function renderMirror() {
     : '<tr><td colspan="6" style="color:var(--done)">No open frictions</td></tr>';
 
   // ── Vue 3: Carte du silence ──
-  const silencePersonas = personas.filter(p => byPersona[p]);
+  const silencePersonas = personas;
   const headerRow = document.getElementById('silence-header');
   headerRow.innerHTML = '<th>Persona</th>' + mk.map(m => `<th>${m.replace('_',' ')}</th>`).join('') + '<th>Total</th>';
 
@@ -1246,6 +1421,687 @@ function renderMirror() {
     return `<tr><td class="name">${p}</td>${mk.map(m => `<td class="num ${counts[m] === 0 ? 'zero' : ''}">${counts[m]}</td>`).join('')}<td class="num">${total}</td></tr>`;
   }).join('');
 }
+
+// ── Map ──
+const instanceColors = ['#40d8c0', '#a78bfa', '#d4a030', '#e05050', '#3ddc84', '#8aa8d8'];
+
+function svgOxynoeBackground(svgEl) {
+  const ns = 'http://www.w3.org/2000/svg';
+  const defs = document.createElementNS(ns, 'defs');
+  const grad = document.createElementNS(ns, 'radialGradient');
+  grad.setAttribute('id', 'svgBg-' + svgEl.id); grad.setAttribute('cx', '50%'); grad.setAttribute('cy', '40%'); grad.setAttribute('r', '70%');
+  const s1 = document.createElementNS(ns, 'stop'); s1.setAttribute('offset', '0%'); s1.setAttribute('stop-color', '#0a4858');
+  const s2 = document.createElementNS(ns, 'stop'); s2.setAttribute('offset', '100%'); s2.setAttribute('stop-color', '#041c24');
+  grad.appendChild(s1); grad.appendChild(s2); defs.appendChild(grad); svgEl.appendChild(defs);
+  const rect = document.createElementNS(ns, 'rect');
+  rect.setAttribute('width', '100%'); rect.setAttribute('height', '100%');
+  rect.setAttribute('fill', `url(#svgBg-${svgEl.id})`); rect.setAttribute('rx', '6');
+  svgEl.appendChild(rect);
+  // Subtle grid
+  const grid = document.createElementNS(ns, 'g'); grid.setAttribute('stroke', 'rgba(0,200,220,0.04)'); grid.setAttribute('stroke-width', '0.5');
+  const vb = svgEl.getAttribute('viewBox')?.split(' ') || [0,0,800,500];
+  const w = parseInt(vb[2]) || 800, h = parseInt(vb[3]) || 500;
+  for (let y = 0; y < h; y += 40) { const l = document.createElementNS(ns, 'line'); l.setAttribute('x1',0); l.setAttribute('x2',w); l.setAttribute('y1',y); l.setAttribute('y2',y); grid.appendChild(l); }
+  for (let x = 0; x < w; x += 40) { const l = document.createElementNS(ns, 'line'); l.setAttribute('x1',x); l.setAttribute('x2',x); l.setAttribute('y1',0); l.setAttribute('y2',h); grid.appendChild(l); }
+  svgEl.appendChild(grid);
+}
+
+function renderMap() {
+  // Map always uses aggregated data, ignoring filters
+  const D = RAW.all || RAW.instances[Object.keys(RAW.instances)[0]];
+  if (!D || !D.map) return;
+
+  const mapData = D.map.instances || (D.map.instance ? { [D.meta.instance]: D.map } : {});
+  const allRecords = D.friction_records || [];
+
+  // ── Vue 1: Topology cards ──
+  const topoDiv = document.getElementById('map-topology');
+  topoDiv.innerHTML = '';
+
+  // Compute per-instance stats
+  const instNames = Object.keys(mapData);
+  const instStats = {};
+  instNames.forEach(instName => {
+    const md = mapData[instName];
+    const personaNames = Object.keys(md.persona_roles || {});
+    const links = md.links || [];
+    const totalFrictions = links.reduce((s, l) => s + l.total, 0);
+    const personasWithFriction = new Set(links.map(l => l.persona));
+    const healthPct = personaNames.length > 0 ? Math.round(personasWithFriction.size / personaNames.length * 100) : 0;
+    instStats[instName] = { personaNames, links, totalFrictions, personasWithFriction, healthPct };
+  });
+
+  const topoCards = [];
+  instNames.forEach((instName, instIdx) => {
+    const md = mapData[instName];
+    const st = instStats[instName];
+    const color = instanceColors[instIdx % instanceColors.length];
+    const healthColor = st.healthPct > 75 ? '#3ddc84' : st.healthPct > 50 ? '#d4a030' : '#e05050';
+    const borderExtra = st.healthPct < 50 ? 'border-color: #e05050;' : '';
+
+    let card = '<div class="instance-card" style="border-left: 3px solid ' + color + '; ' + borderExtra + '" oncontextmenu="showCtxMenu(event,\'' + instName + '\',\'\')" title="' + st.personaNames.length + ' personas, ' + st.totalFrictions + ' frictions, health ' + st.healthPct + '%">';
+    card += '<div class="inst-header"><span class="health-dot" style="background:' + healthColor + '"></span><span class="inst-name">' + instName + '</span><span style="margin-left:auto; font-family:var(--font-mono); font-size:9px; color:var(--ice-muted);">' + st.totalFrictions + ' frictions</span></div>';
+    if (md.description) card += '<div class="inst-desc">' + md.description.substring(0, 100).replace(/</g, '&lt;') + '</div>';
+    card += '<ul class="persona-list">';
+    st.personaNames.forEach(p => {
+      const role = (md.persona_roles[p] || '').replace(/'/g, '&#39;');
+      const hasFriction = st.personasWithFriction.has(p);
+      const link = st.links.find(l => l.persona === p);
+      const fCount = link ? link.total : 0;
+      const dotBg = hasFriction ? color : 'var(--ice-muted)';
+      card += '<li class="' + (hasFriction ? '' : 'no-friction') + '" oncontextmenu="showCtxMenu(event,\'' + instName + '\',\'' + p + '\')" title="' + role + ' - ' + fCount + ' frictions"><span class="p-dot" style="background:' + dotBg + '"></span>' + p + '<span class="p-role">' + role + '</span></li>';
+    });
+    card += '</ul></div>';
+    topoCards.push(card);
+  });
+  topoDiv.innerHTML = topoCards.join('');
+
+  // ── Trajectory — challenge % (same as Mirror vue 0 but on all data) ──
+  const trajCanvas = document.getElementById('map-trajectory');
+  if (!trajCanvas || !allRecords.length) return;
+
+  const mk = ['sound','contestable','simplification','blind_spot','refuted'];
+  const trajW = 15;
+  const filteredRecs = allRecords.filter(r => !r.is_amendment);
+
+  const windows = [];
+  for (let i = 0; i < filteredRecs.length; i += trajW) {
+    const slice = filteredRecs.slice(i, i + trajW);
+    if (slice.length < 3) break;
+    const total = slice.length;
+    const challenge = slice.filter(r => r.marker !== 'sound').length;
+    const challengePct = Math.round(challenge / total * 100);
+    const dateRange = slice[0].date + ' → ' + slice[slice.length-1].date;
+    windows.push({ label: 'w' + (windows.length + 1), challengePct, dateRange, n: total });
+  }
+
+  if (windows.length > 0) {
+    // Destroy previous map chart if any
+    if (window._mapTrajectoryChart) window._mapTrajectoryChart.destroy();
+    window._mapTrajectoryChart = new Chart(trajCanvas, {
+      type: 'line',
+      data: { labels: windows.map(w => w.label), datasets: [{
+        label: 'Challenge %',
+        data: windows.map(w => w.challengePct),
+        borderColor: '#40d8c0', backgroundColor: 'rgba(64,216,192,0.1)',
+        fill: true, tension: .3, borderWidth: 2, pointRadius: 3,
+      }]},
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { afterLabel: ctx => windows[ctx.dataIndex].dateRange + ' (n=' + windows[ctx.dataIndex].n + ')' } }
+        },
+        scales: {
+          y: { beginAtZero: true, max: 100, grid: { color: 'rgba(64,180,160,0.06)' }, ticks: { callback: v => v + '%' }, title: { display: true, text: 'challenge %', font: { size: 9, family: "'IBM Plex Mono'" }, color: 'rgba(160,208,200,0.4)' } },
+          x: { grid: { display: false }, title: { display: true, text: 'friction windows', font: { size: 9, family: "'IBM Plex Mono'" }, color: 'rgba(160,208,200,0.4)' } }
+        }
+      }
+    });
+  }
+
+  // ── Persona mini cards ──
+  const cardsDiv = document.getElementById('map-persona-cards');
+  if (cardsDiv) {
+    const cards = [];
+    instNames.forEach((instName, instIdx) => {
+      const md = mapData[instName];
+      const color = instanceColors[instIdx % instanceColors.length];
+      const personaNames = Object.keys(md.persona_roles || {});
+      const links = md.links || [];
+
+      const ctxSizes = md.context_sizes || {};
+
+      personaNames.forEach(p => {
+        const role = (md.persona_roles[p] || '').replace(/'/g, '&#39;');
+        const link = links.find(l => l.persona === p);
+        const frictions = link ? link.total : 0;
+        const ctx = ctxSizes[p];
+        const ctxLines = ctx ? ctx.total_lines : '—';
+        const ctxColor = ctx ? (ctx.status === 'ok' ? '#3ddc84' : ctx.status === 'warn' ? '#d4a030' : '#e05050') : 'var(--ice-muted)';
+        const healthColor = frictions > 0 ? '#3ddc84' : '#e05050';
+
+        cards.push('<div class="persona-mini" style="border-left:3px solid ' + color + '" oncontextmenu="showCtxMenu(event,\'' + instName + '\',\'' + p + '\')" title="' + role + ' · ' + instName + '">' +
+          '<div class="pm-name">' + p + '</div>' +
+          '<div class="pm-role">' + role + '</div>' +
+          '<div class="pm-stats">' +
+            '<div class="pm-stat"><span class="pm-val" style="color:' + healthColor + '">' + frictions + '</span><span class="pm-label">frictions</span></div>' +
+            '<div class="pm-stat"><span class="pm-val" style="color:' + ctxColor + '">' + ctxLines + '</span><span class="pm-label">ctx lines</span></div>' +
+          '</div>' +
+        '</div>');
+      });
+    });
+    cardsDiv.innerHTML = cards.join('');
+  }
+}
+
+// dead code placeholder
+function _placeholder() {
+  const defs = document.createElementNS(ns, 'defs');
+
+  // Background
+  const bgGrad = document.createElementNS(ns, 'radialGradient');
+  bgGrad.setAttribute('id', 'fgBg'); bgGrad.setAttribute('cx', '50%'); bgGrad.setAttribute('cy', '45%'); bgGrad.setAttribute('r', '70%');
+  const s1 = document.createElementNS(ns, 'stop'); s1.setAttribute('offset', '0%'); s1.setAttribute('stop-color', '#0a1030');
+  const s2 = document.createElementNS(ns, 'stop'); s2.setAttribute('offset', '100%'); s2.setAttribute('stop-color', '#040810');
+  bgGrad.appendChild(s1); bgGrad.appendChild(s2); defs.appendChild(bgGrad);
+
+  // Glow filters
+  ['fg-glow','fg-glow-big'].forEach((id, i) => {
+    const f = document.createElementNS(ns, 'filter');
+    f.setAttribute('id', id); f.setAttribute('x', '-80%'); f.setAttribute('y', '-80%'); f.setAttribute('width', '260%'); f.setAttribute('height', '260%');
+    const blur = document.createElementNS(ns, 'feGaussianBlur');
+    blur.setAttribute('stdDeviation', i === 0 ? '8' : '18'); blur.setAttribute('result', 'b');
+    const merge = document.createElementNS(ns, 'feMerge');
+    const mn1 = document.createElementNS(ns, 'feMergeNode'); mn1.setAttribute('in', 'b');
+    const mn2 = document.createElementNS(ns, 'feMergeNode'); mn2.setAttribute('in', 'SourceGraphic');
+    merge.appendChild(mn1); merge.appendChild(mn2); f.appendChild(blur); f.appendChild(merge); defs.appendChild(f);
+  });
+
+  // Line glow
+  const fcon = document.createElementNS(ns, 'filter');
+  fcon.setAttribute('id', 'fg-line'); fcon.setAttribute('x', '-20%'); fcon.setAttribute('y', '-20%'); fcon.setAttribute('width', '140%'); fcon.setAttribute('height', '140%');
+  const blurL = document.createElementNS(ns, 'feGaussianBlur'); blurL.setAttribute('stdDeviation', '2'); blurL.setAttribute('result', 'b');
+  const mergeL = document.createElementNS(ns, 'feMerge');
+  mergeL.appendChild(Object.assign(document.createElementNS(ns, 'feMergeNode'), {}).cloneNode()); // in=b
+  const mn1L = document.createElementNS(ns, 'feMergeNode'); mn1L.setAttribute('in', 'b');
+  const mn2L = document.createElementNS(ns, 'feMergeNode'); mn2L.setAttribute('in', 'SourceGraphic');
+  mergeL.appendChild(mn1L); mergeL.appendChild(mn2L); fcon.appendChild(blurL); fcon.appendChild(mergeL); defs.appendChild(fcon);
+
+  svg.appendChild(defs);
+
+  // Background rect
+  const bgRect = document.createElementNS(ns, 'rect');
+  bgRect.setAttribute('width', W); bgRect.setAttribute('height', H); bgRect.setAttribute('fill', 'url(#fgBg)'); bgRect.setAttribute('rx', '6');
+  svg.appendChild(bgRect);
+
+  // Build nodes per instance — positioned in clusters
+  const nodes = [];
+  const instCenters = {};
+
+  instNames.forEach((instName, instIdx) => {
+    const md = mapData[instName];
+    const color = instanceColors[instIdx % instanceColors.length];
+    const personaNames = Object.keys(md.persona_roles || {});
+    // Instance center position
+    const angle = (instIdx / instNames.length) * Math.PI * 2 - Math.PI/2;
+    const cx = W/2 + Math.cos(angle) * (instNames.length > 1 ? 200 : 0);
+    const cy = H/2 + Math.sin(angle) * (instNames.length > 1 ? 150 : 0);
+    instCenters[instName] = { cx, cy, color, personaCount: personaNames.length };
+
+    personaNames.forEach((p, pi) => {
+      const link = (md.links || []).find(l => l.persona === p);
+      const total = link ? link.total : 0;
+      const role = md.persona_roles[p] || '';
+      const pAngle = (pi / personaNames.length) * Math.PI * 2 - Math.PI/2;
+      const pDist = 50 + personaNames.length * 12;
+      nodes.push({
+        id: instName + ':' + p, label: p, role, instance: instName,
+        x: cx + Math.cos(pAngle) * pDist,
+        y: cy + Math.sin(pAngle) * pDist,
+        r: Math.max(12, Math.min(28, 12 + total * 0.3)),
+        color, frictions: total,
+      });
+    });
+  });
+
+  // Force simulation — repulsion between all nodes, attraction to instance center
+  for (let iter = 0; iter < 60; iter++) {
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        let dx = nodes[j].x - nodes[i].x;
+        let dy = nodes[j].y - nodes[i].y;
+        let dist = Math.sqrt(dx*dx + dy*dy) || 1;
+        let force = 600 / (dist * dist);
+        nodes[i].x -= dx / dist * force; nodes[i].y -= dy / dist * force;
+        nodes[j].x += dx / dist * force; nodes[j].y += dy / dist * force;
+      }
+    }
+    // Attract to instance center
+    for (const n of nodes) {
+      const ic = instCenters[n.instance];
+      n.x += (ic.cx - n.x) * 0.03;
+      n.y += (ic.cy - n.y) * 0.03;
+    }
+    // Boundary
+    for (const n of nodes) {
+      n.x = Math.max(60, Math.min(W-60, n.x));
+      n.y = Math.max(60, Math.min(H-60, n.y));
+    }
+  }
+
+  // Render instance parois (profondeur style — blue walls)
+  const wallsGroup = document.createElementNS(ns, 'g');
+  instNames.forEach((instName, instIdx) => {
+    const ic = instCenters[instName];
+    // Compute bounding radius from nodes
+    const instNodes = nodes.filter(n => n.instance === instName);
+    let maxDist = 0;
+    instNodes.forEach(n => {
+      const d = Math.sqrt((n.x - ic.cx) ** 2 + (n.y - ic.cy) ** 2) + n.r * 1.5;
+      if (d > maxDist) maxDist = d;
+    });
+    const wallR = maxDist + 30;
+
+    // Outer glow
+    const glow = document.createElementNS(ns, 'circle');
+    glow.setAttribute('cx', ic.cx); glow.setAttribute('cy', ic.cy); glow.setAttribute('r', wallR);
+    glow.setAttribute('fill', 'none'); glow.setAttribute('stroke', ic.color);
+    glow.setAttribute('stroke-opacity', '0.06'); glow.setAttribute('stroke-width', '20');
+    glow.setAttribute('filter', 'url(#fg-glow)');
+    wallsGroup.appendChild(glow);
+
+    // Wall stroke
+    const wall = document.createElementNS(ns, 'circle');
+    wall.setAttribute('cx', ic.cx); wall.setAttribute('cy', ic.cy); wall.setAttribute('r', wallR);
+    wall.setAttribute('fill', 'none'); wall.setAttribute('stroke', ic.color);
+    wall.setAttribute('stroke-opacity', '0.15'); wall.setAttribute('stroke-width', '1.5');
+    wallsGroup.appendChild(wall);
+
+    // Instance label
+    const label = document.createElementNS(ns, 'text');
+    label.setAttribute('x', ic.cx); label.setAttribute('y', ic.cy - wallR - 8);
+    label.setAttribute('text-anchor', 'middle'); label.setAttribute('fill', ic.color);
+    label.setAttribute('fill-opacity', '0.3'); label.setAttribute('font-size', '11');
+    label.setAttribute('font-family', "'IBM Plex Mono', monospace"); label.setAttribute('letter-spacing', '0.1em');
+    label.textContent = instName.toUpperCase();
+    wallsGroup.appendChild(label);
+  });
+  svg.appendChild(wallsGroup);
+
+  // Render nodes — operator style (shadow + glow ring + core + inner ring)
+  const nodesGroup = document.createElementNS(ns, 'g');
+  for (let ni = 0; ni < nodes.length; ni++) {
+    const n = nodes[ni];
+    const g = document.createElementNS(ns, 'g');
+    g.style.cursor = 'pointer';
+    g.dataset.nodeIdx = ni;
+    g.addEventListener('contextmenu', (e) => showCtxMenu(e, n.instance, n.label));
+
+    const opacity = n.frictions > 0 ? 1 : 0.25;
+    const opColor = 'rgba(61,220,132,'; // operator green
+
+    // Shadow
+    const shadow = document.createElementNS(ns, 'circle');
+    shadow.setAttribute('cx', n.x); shadow.setAttribute('cy', n.y); shadow.setAttribute('r', n.r);
+    shadow.setAttribute('fill', 'rgba(0,0,0,0.4)');
+    shadow.setAttribute('filter', 'url(#fg-glow)');
+    g.appendChild(shadow);
+
+    // Glow ring
+    const glowRing = document.createElementNS(ns, 'circle');
+    glowRing.setAttribute('cx', n.x); glowRing.setAttribute('cy', n.y); glowRing.setAttribute('r', n.r + 4);
+    glowRing.setAttribute('fill', 'none'); glowRing.setAttribute('stroke', opColor + (0.08 * opacity) + ')');
+    glowRing.setAttribute('stroke-width', '6'); glowRing.setAttribute('filter', 'url(#fg-glow)');
+    g.appendChild(glowRing);
+
+    // Core — gradient-like with instance color tint
+    const core = document.createElementNS(ns, 'circle');
+    core.setAttribute('cx', n.x); core.setAttribute('cy', n.y); core.setAttribute('r', n.r);
+    core.setAttribute('fill', opColor + (0.15 * opacity) + ')');
+    core.setAttribute('stroke', opColor + (0.3 * opacity) + ')'); core.setAttribute('stroke-width', '1.5');
+    g.appendChild(core);
+
+    // Inner ring
+    const inner = document.createElementNS(ns, 'circle');
+    inner.setAttribute('cx', n.x); inner.setAttribute('cy', n.y); inner.setAttribute('r', n.r * 0.75);
+    inner.setAttribute('fill', 'none'); inner.setAttribute('stroke', opColor + (0.04 * opacity) + ')');
+    inner.setAttribute('stroke-width', '0.8');
+    g.appendChild(inner);
+
+    // Name inside
+    const text = document.createElementNS(ns, 'text');
+    text.setAttribute('x', n.x); text.setAttribute('y', n.y + 3);
+    text.setAttribute('text-anchor', 'middle'); text.setAttribute('fill', 'rgba(200,215,240,' + (0.7 * opacity) + ')');
+    text.setAttribute('font-size', Math.max(8, n.r * 0.55)); text.setAttribute('font-family', "'IBM Plex Mono', monospace");
+    text.setAttribute('font-weight', '300');
+    text.textContent = n.label;
+    g.appendChild(text);
+
+    // Tooltip
+    const title = document.createElementNS(ns, 'title');
+    title.textContent = n.label + ' · ' + n.role + ' · ' + n.instance + ' · ' + n.frictions + ' frictions';
+    g.appendChild(title);
+
+    nodesGroup.appendChild(g);
+  }
+  svg.appendChild(nodesGroup);
+
+  // ── Drag & drop ──
+  let dragNode = null, dragOffset = { x: 0, y: 0 };
+  const svgPt = svg.createSVGPoint();
+  function svgCoords(e) {
+    svgPt.x = e.clientX; svgPt.y = e.clientY;
+    return svgPt.matrixTransform(svg.getScreenCTM().inverse());
+  }
+
+  svg.addEventListener('mousedown', (e) => {
+    const g = e.target.closest('g[data-node-idx]');
+    if (!g) return;
+    dragNode = parseInt(g.dataset.nodeIdx);
+    const pt = svgCoords(e);
+    dragOffset.x = nodes[dragNode].x - pt.x;
+    dragOffset.y = nodes[dragNode].y - pt.y;
+    e.preventDefault();
+  });
+
+  svg.addEventListener('mousemove', (e) => {
+    if (dragNode === null) return;
+    const pt = svgCoords(e);
+    const n = nodes[dragNode];
+    n.x = pt.x + dragOffset.x;
+    n.y = pt.y + dragOffset.y;
+
+    // Update node visuals
+    const g = nodesGroup.querySelector('[data-node-idx="' + dragNode + '"]');
+    if (g) {
+      g.querySelectorAll('circle').forEach(c => { c.setAttribute('cx', n.x); c.setAttribute('cy', n.y); });
+      const txts = g.querySelectorAll('text');
+      txts.forEach(t => { t.setAttribute('x', n.x); t.setAttribute('y', n.y + 3); });
+    }
+    e.preventDefault();
+  });
+
+  svg.addEventListener('mouseup', () => { dragNode = null; });
+  svg.addEventListener('mouseleave', () => { dragNode = null; });
+}
+  tlSvg.setAttribute('viewBox', '0 0 900 360');
+
+function _removed() { /* timeline, heatmap, sankey removed */
+  const _unused = 0;
+  // Date range
+  const allDates = allRecords.filter(r => !r.is_amendment).map(r => r.date).filter(Boolean);
+  const minDate = allDates.length ? new Date(allDates.sort()[0]) : new Date();
+  const maxDate = allDates.length ? new Date(allDates.sort().slice(-1)[0]) : new Date();
+  const daySpan = Math.max(1, (maxDate - minDate) / 86400000 + 1);
+
+  const tlMargin = { left: 90, top: 25, right: 20, bottom: 35 };
+  const bandH = 22;
+  const tlW = 900;
+  const tlH = allRealPersonas.length * bandH + tlMargin.top + tlMargin.bottom;
+  tlSvg.setAttribute('viewBox', `0 0 ${tlW} ${Math.max(200, tlH)}`);
+
+  const dateToX = (d) => tlMargin.left + ((new Date(d) - minDate) / 86400000) / daySpan * (tlW - tlMargin.left - tlMargin.right);
+
+  // Instance separators & persona bands
+  let currentInst = '';
+  allRealPersonas.forEach((rp, i) => {
+    const y = tlMargin.top + i * bandH;
+    if (rp.instance !== currentInst) {
+      currentInst = rp.instance;
+      const instColor = instanceColors[instNames.indexOf(rp.instance) % instanceColors.length];
+      const sep = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      sep.setAttribute('x1', 0); sep.setAttribute('x2', tlW); sep.setAttribute('y1', y - 1); sep.setAttribute('y2', y - 1);
+      sep.setAttribute('stroke', instColor); sep.setAttribute('stroke-opacity', '0.3'); sep.setAttribute('stroke-width', '0.5');
+      tlSvg.appendChild(sep);
+    }
+
+    // Persona label
+    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    label.setAttribute('x', tlMargin.left - 6); label.setAttribute('y', y + bandH / 2 + 3);
+    label.setAttribute('text-anchor', 'end'); label.setAttribute('fill', '#a0d0c8');
+    label.setAttribute('font-size', '9'); label.setAttribute('font-family', "'IBM Plex Mono', monospace");
+    label.textContent = rp.persona;
+    tlSvg.appendChild(label);
+
+    // Dots
+    const sessions = sessionsByPersona[rp.persona] || {};
+    for (const [date, recs] of Object.entries(sessions)) {
+      const x = dateToX(date);
+      const markerCounts = {};
+      recs.forEach(r => markerCounts[r.marker] = (markerCounts[r.marker] || 0) + 1);
+      const dominant = Object.entries(markerCounts).sort((a,b) => b[1] - a[1])[0];
+      const dotColor = dominant ? (markerColors[dominant[0]] || '#888') : '#888';
+      const dotR = Math.max(2.5, Math.min(6, recs.length * 1.2));
+
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('cx', x); circle.setAttribute('cy', y + bandH / 2);
+      circle.setAttribute('r', dotR); circle.setAttribute('fill', dotColor); circle.setAttribute('fill-opacity', '0.8');
+      circle.setAttribute('stroke', dotColor); circle.setAttribute('stroke-opacity', '0.3'); circle.setAttribute('stroke-width', '2');
+      const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+      title.textContent = `${rp.persona} · ${date} · ${recs.length} frictions · dominant: ${dominant ? dominant[0] : 'none'}`;
+      circle.appendChild(title);
+      tlSvg.appendChild(circle);
+    }
+  });
+
+  // X axis (dates)
+  const tickCount = Math.min(15, daySpan);
+  for (let i = 0; i <= tickCount; i++) {
+    const d = new Date(minDate.getTime() + (i / tickCount) * (maxDate - minDate));
+    const x = dateToX(d.toISOString().slice(0, 10));
+    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    label.setAttribute('x', x); label.setAttribute('y', tlH - 5);
+    label.setAttribute('text-anchor', 'middle'); label.setAttribute('fill', 'rgba(160,208,200,0.4)');
+    label.setAttribute('font-size', '8'); label.setAttribute('font-family', "'IBM Plex Mono', monospace");
+    label.textContent = d.toISOString().slice(5, 10);
+    tlSvg.appendChild(label);
+  }
+
+  // ── Vue 4: Heatmap ──
+  const hmDiv = document.getElementById('map-heatmap');
+  // Collect all unique personas across instances
+  const allPersonaNames = [...new Set(instNames.flatMap(inst => Object.keys(mapData[inst].persona_roles || {})))].sort();
+
+  let hmHtml = '<table style="width:auto;"><thead><tr><th></th>';
+  allPersonaNames.forEach(p => hmHtml += `<th style="font-size:9px; padding:4px 8px; writing-mode:vertical-lr; transform:rotate(180deg);">${p}</th>`);
+  hmHtml += '</tr></thead><tbody>';
+
+  instNames.forEach((inst, instIdx) => {
+    const md = mapData[inst];
+    const personaRoles = md.persona_roles || {};
+    const links = md.links || [];
+    hmHtml += `<tr><td class="name" style="font-size:11px;">${inst}</td>`;
+    allPersonaNames.forEach(p => {
+      const present = p in personaRoles;
+      if (!present) {
+        hmHtml += '<td style="background:var(--surface); text-align:center; font-size:9px; color:var(--ice-muted); padding:4px 8px;">—</td>';
+        return;
+      }
+      const link = links.find(l => l.persona === p);
+      const total = link ? link.total : 0;
+      const challenge = total > 0 ? Math.round((link.a_to_h + link.h_to_a - (link ? link.a_to_h : 0) * 0) / total * 100) : 0;
+      // Simple: use total as proxy. Zero = red, low = light, high = dark blue
+      if (total === 0) {
+        hmHtml += `<td style="background:rgba(224,80,80,0.2); text-align:center; font-size:9px; color:var(--coral); padding:4px 8px; cursor:pointer;" title="${p} · ${inst} · 0 frictions · present but silent" onclick="navigateTo('mirror','${inst}','${p}')">0</td>`;
+      } else {
+        const intensity = Math.min(1, total / 40);
+        const bg = `rgba(64,216,192,${0.08 + intensity * 0.5})`;
+        hmHtml += `<td style="background:${bg}; text-align:center; font-size:9px; color:var(--ice); padding:4px 8px; cursor:pointer;" title="${p} · ${inst} · ${total} frictions" onclick="navigateTo('mirror','${inst}','${p}')">${total}</td>`;
+      }
+    });
+    hmHtml += '</tr>';
+  });
+  hmHtml += '</tbody></table>';
+  hmDiv.innerHTML = hmHtml;
+
+  // ── Vue 5: Sankey ──
+  const skSvg = document.getElementById('map-sankey');
+  skSvg.innerHTML = '';
+  svgOxynoeBackground(skSvg);
+  const skW = 700, skH = 500;
+  const colX = [70, 340, 600]; // 3 columns: persona, marker, resolution
+  const mkNames = ['sound', 'contestable', 'simplification', 'blind_spot', 'refuted'];
+  const resNames = ['ratified', 'contested', 'revised', 'rejected', 'open'];
+  const mkColors = { sound: '#3ddc84', contestable: '#a0d0c8', simplification: '#d4a030', blind_spot: '#e05050', refuted: '#ff4444' };
+  const resColors = { ratified: '#3ddc84', contested: '#d4a030', revised: '#a78bfa', rejected: '#e05050', open: '#888' };
+
+  // Aggregate: persona → marker counts, marker → resolution counts
+  const p2m = {}; // persona → {marker: count}
+  const m2r = {}; // marker → {resolution: count}
+  mkNames.forEach(m => m2r[m] = {});
+  resNames.forEach(r => mkNames.forEach(m => m2r[m][r] = 0));
+
+  const realPersonaNames = [...new Set(instNames.flatMap(inst => Object.keys(mapData[inst].persona_roles || {})))].sort();
+  realPersonaNames.forEach(p => p2m[p] = {});
+  mkNames.forEach(m => realPersonaNames.forEach(p => p2m[p][m] = 0));
+
+  for (const r of allRecords) {
+    if (r.is_amendment) continue;
+    if (!realPersonaNames.includes(r.persona)) continue;
+    if (!mkNames.includes(r.marker)) continue;
+    p2m[r.persona][r.marker]++;
+    const res = r.resolution || 'open';
+    if (resNames.includes(res)) m2r[r.marker][res]++;
+  }
+
+  // Layout nodes vertically
+  const personaTotal = realPersonaNames.map(p => Object.values(p2m[p]).reduce((a,b) => a+b, 0));
+  const markerTotal = mkNames.map(m => realPersonaNames.reduce((s, p) => s + p2m[p][m], 0));
+  const resTotal = resNames.map(r => mkNames.reduce((s, m) => s + m2r[m][r], 0));
+  const maxFlow = Math.max(...personaTotal, 1);
+
+  function layoutNodes(names, totals, colIdx) {
+    const gap = 8;
+    const available = skH - 60;
+    const totalFlow = totals.reduce((a,b) => a+b, 0) || 1;
+    let y = 30;
+    return names.map((name, i) => {
+      const h = Math.max(8, (totals[i] / totalFlow) * available);
+      const node = { name, x: colX[colIdx], y, h, total: totals[i] };
+      y += h + gap;
+      return node;
+    });
+  }
+
+  const pNodes = layoutNodes(realPersonaNames, personaTotal, 0);
+  const mNodes = layoutNodes(mkNames, markerTotal, 1);
+  const rNodes = layoutNodes(resNames, resTotal, 2);
+
+  // Draw flows: persona → marker
+  pNodes.forEach((pn, pi) => {
+    let pyOff = 0;
+    mNodes.forEach((mn, mi) => {
+      const flow = p2m[pn.name][mn.name];
+      if (flow === 0) return;
+      const flowH = Math.max(1, (flow / maxFlow) * 60);
+      const instIdx = instNames.findIndex(inst => (mapData[inst].persona_roles || {})[pn.name]);
+      const flowColor = mkColors[mn.name] || '#888';
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const x1 = pn.x + 50, y1 = pn.y + pyOff + flowH/2;
+      const x2 = mn.x - 50, y2 = mn.y + (mn._usedIn || 0) + flowH/2;
+      mn._usedIn = (mn._usedIn || 0) + flowH;
+      path.setAttribute('d', `M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`);
+      path.setAttribute('stroke', flowColor); path.setAttribute('stroke-opacity', '0.25');
+      path.setAttribute('stroke-width', flowH); path.setAttribute('fill', 'none');
+      path.setAttribute('stroke-linecap', 'round');
+      const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+      title.textContent = `${pn.name} → ${mn.name}: ${flow}`;
+      path.appendChild(title);
+      skSvg.appendChild(path);
+      pyOff += flowH;
+    });
+  });
+
+  // Draw flows: marker → resolution
+  mNodes.forEach((mn, mi) => {
+    let myOff = 0;
+    rNodes.forEach((rn, ri) => {
+      const flow = m2r[mn.name][rn.name];
+      if (flow === 0) return;
+      const flowH = Math.max(1, (flow / maxFlow) * 60);
+      const flowColor = resColors[rn.name] || '#888';
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const x1 = mn.x + 50, y1 = mn.y + myOff + flowH/2;
+      const x2 = rn.x - 50, y2 = rn.y + (rn._usedIn || 0) + flowH/2;
+      rn._usedIn = (rn._usedIn || 0) + flowH;
+      path.setAttribute('d', `M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`);
+      path.setAttribute('stroke', flowColor); path.setAttribute('stroke-opacity', '0.25');
+      path.setAttribute('stroke-width', flowH); path.setAttribute('fill', 'none');
+      path.setAttribute('stroke-linecap', 'round');
+      const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+      title.textContent = `${mn.name} → ${rn.name}: ${flow}`;
+      path.appendChild(title);
+      skSvg.appendChild(path);
+      myOff += flowH;
+    });
+  });
+
+  // Draw node labels
+  function drawNodes(nodeList, colors, col) {
+    nodeList.forEach(n => {
+      const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      const c = colors[n.name] || (col === 0 ? instanceColors[instNames.findIndex(inst => (mapData[inst].persona_roles || {})[n.name]) % instanceColors.length] : '#888');
+      rect.setAttribute('x', n.x - 50); rect.setAttribute('y', n.y);
+      rect.setAttribute('width', 100); rect.setAttribute('height', Math.max(8, n.h));
+      rect.setAttribute('rx', 4); rect.setAttribute('fill', c); rect.setAttribute('fill-opacity', '0.5');
+      rect.setAttribute('stroke', c); rect.setAttribute('stroke-opacity', '0.3'); rect.setAttribute('stroke-width', '0.5');
+      if (col === 0) rect.style.cursor = 'pointer';
+      if (col === 0) rect.addEventListener('contextmenu', (e) => {
+        const inst = instNames.find(i => (mapData[i].persona_roles || {})[n.name]);
+        if (inst) showCtxMenu(e, inst, n.name);
+      });
+      skSvg.appendChild(rect);
+
+      const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text.setAttribute('x', n.x); text.setAttribute('y', n.y + Math.max(8, n.h)/2 + 3);
+      text.setAttribute('text-anchor', 'middle'); text.setAttribute('fill', '#f0f8f5');
+      text.setAttribute('font-size', '9'); text.setAttribute('font-family', "'IBM Plex Mono', monospace");
+      text.textContent = `${n.name} (${n.total})`;
+      skSvg.appendChild(text);
+    });
+  }
+  drawNodes(pNodes, {}, 0);
+  drawNodes(mNodes, mkColors, 1);
+  drawNodes(rNodes, resColors, 2);
+
+  // Column headers
+  ['Personas', 'Markers', 'Resolutions'].forEach((label, i) => {
+    const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    t.setAttribute('x', colX[i]); t.setAttribute('y', 16);
+    t.setAttribute('text-anchor', 'middle'); t.setAttribute('fill', 'rgba(160,208,200,0.4)');
+    t.setAttribute('font-size', '10'); t.setAttribute('font-family', "'IBM Plex Mono', monospace");
+    t.setAttribute('letter-spacing', '0.08em');
+    t.textContent = label;
+    skSvg.appendChild(t);
+  });
+}
+
+function navigateTo(tab, instance, persona) {
+  hideCtxMenu();
+  const selInst = document.getElementById('sel-instance');
+  const selPersona = document.getElementById('sel-persona');
+  if (selInst) {
+    for (const opt of selInst.options) {
+      if (opt.value === instance) { selInst.value = instance; break; }
+    }
+  }
+  populatePersonas();
+  if (selPersona && persona) {
+    setTimeout(() => {
+      for (const opt of selPersona.options) {
+        if (opt.value === persona) { selPersona.value = persona; break; }
+      }
+      renderCurrent();
+    }, 50);
+  }
+  switchTab(tab);
+}
+
+// ── Context menu ──
+function showCtxMenu(e, instance, persona) {
+  e.preventDefault();
+  e.stopPropagation();
+  document.getElementById('ctx-overlay').classList.add('visible');
+  const menu = document.getElementById('ctx-menu');
+  const label = persona ? `${persona} (${instance})` : instance;
+  let html = `<div class="ctx-label">${label}</div>`;
+  html += `<button onclick="navigateTo('mirror','${instance}','${persona || ''}')">→ Mirror</button>`;
+  html += `<button onclick="navigateTo('lens','${instance}','${persona || ''}')">→ Lens</button>`;
+  html += `<button onclick="navigateTo('probe','${instance}','')">→ Probe</button>`;
+  menu.innerHTML = html;
+  menu.style.left = e.clientX + 'px';
+  menu.style.top = e.clientY + 'px';
+  menu.classList.add('visible');
+}
+
+function hideCtxMenu() {
+  document.getElementById('ctx-menu').classList.remove('visible');
+  document.getElementById('ctx-overlay').classList.remove('visible');
+}
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideCtxMenu(); });
+window.addEventListener('blur', hideCtxMenu);
 </script>
 </body>
 </html>
