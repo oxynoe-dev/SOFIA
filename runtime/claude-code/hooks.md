@@ -1,46 +1,46 @@
 # Hooks
 
-> Automatiser ce qui doit l'être, pas plus.
+> Automate what needs to be automated, nothing more.
 
 ---
 
-## Ce que c'est
+## What it is
 
-Claude Code permet de configurer des **hooks** — des commandes shell
-qui s'exécutent en réponse à des événements (avant/après un tool call,
-à la soumission d'un prompt, etc.).
+Claude Code allows configuring **hooks** — shell commands
+that execute in response to events (before/after a tool call,
+on prompt submission, etc.).
 
-## Hooks utiles pour SOFIA
+## Useful hooks for SOFIA
 
-### Rappel de résumé de session
+### Session summary reminder
 
-Un hook qui rappelle au persona de produire un résumé quand la
-conversation dépasse un certain nombre d'échanges. En pratique,
-l'instruction dans le CLAUDE.md suffit généralement.
+A hook that reminds the persona to produce a summary when the
+conversation exceeds a certain number of exchanges. In practice,
+the instruction in the CLAUDE.md is usually sufficient.
 
-### Vérification d'isolation
+### Isolation check
 
-Un hook pre-edit qui vérifie que le persona n'écrit pas en dehors
-de son périmètre autorisé. Utile si le persona a tendance à déborder.
+A pre-edit hook that verifies the persona is not writing outside
+its authorized scope. Useful if the persona tends to overstep.
 
-### Format de commit
+### Commit format
 
-Un hook pre-commit qui vérifie le format du message de commit
-selon les conventions du projet.
+A pre-commit hook that verifies the commit message format
+according to project conventions.
 
-## Quand ne PAS utiliser de hooks
+## When NOT to use hooks
 
-- Pour reproduire un comportement que le CLAUDE.md gère déjà
-- Pour des vérifications que le persona peut faire lui-même
-- Pour des automatisations complexes qui obscurcissent le workflow
+- To reproduce behavior the CLAUDE.md already handles
+- For checks the persona can perform itself
+- For complex automations that obscure the workflow
 
-Les hooks sont un filet de sécurité, pas un mécanisme principal.
-Si tu as besoin de beaucoup de hooks, tes instructions CLAUDE.md
-ne sont probablement pas assez claires.
+Hooks are a safety net, not a primary mechanism.
+If you need many hooks, your CLAUDE.md instructions
+are probably not clear enough.
 
 ## Configuration
 
-Les hooks se configurent dans `settings.json` :
+Hooks are configured in `settings.json`:
 
 ```json
 {
@@ -55,4 +55,4 @@ Les hooks se configurent dans `settings.json` :
 }
 ```
 
-Voir la documentation Claude Code pour les détails.
+See the Claude Code documentation for details.

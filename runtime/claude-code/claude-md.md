@@ -1,15 +1,15 @@
-# Anatomie d'un CLAUDE.md
+# Anatomy of a CLAUDE.md
 
-> Le CLAUDE.md est un aiguillage runtime, pas un document de contenu.
+> The CLAUDE.md is a runtime routing file, not a content document.
 
 ---
 
-## Ce que c'est
+## What it is
 
-Le fichier `CLAUDE.md` à la racine d'un workspace contient les
-instructions que Claude Code lit à chaque conversation. Depuis la
-factorisation en trois couches, il ne porte plus le contenu — il pointe
-vers les fichiers qui le portent.
+The `CLAUDE.md` file at the root of a workspace contains the
+instructions that Claude Code reads at the start of every conversation. Since the
+factoring into three layers, it no longer carries the content — it points
+to the files that carry it.
 
 ## Structure
 
@@ -19,81 +19,81 @@ Quel que soit le premier message de l'utilisateur, à l'ouverture de session, av
 - `{chemin-relatif}/shared/orga/contextes/contexte-{nom}-{produit}.md`
 ```
 
-C'est tout. Deux lignes. Le reste vit dans le persona et le contexte.
+That's it. Two lines. The rest lives in the persona and the context.
 
-**Le chemin est relatif au workspace**, pas a la racine du repo :
-- Workspace dans l'instance (`instance/archi/`) → `../shared/orga/...`
-- Workspace hors de l'instance (`katen/`) → `../instance/shared/orga/...`
+**The path is relative to the workspace**, not to the repo root:
+- Workspace inside the instance (`instance/archi/`) → `../shared/orga/...`
+- Workspace outside the instance (`katen/`) → `../instance/shared/orga/...`
 
-Pour un persona qui n'a qu'un seul contexte (ex: un persona-guide comme Sofia), une seule ligne suffit :
+For a persona that has only one context (e.g., a guide-persona like Sofia), a single line is enough:
 
 ```markdown
 Quel que soit le premier message de l'utilisateur, à l'ouverture de session, avant toute réponse, lis ce fichier :
 - `{chemin-relatif}/shared/orga/personas/persona-{nom}.md`
 ```
 
-## Trois couches
+## Three layers
 
-| Fichier | Couche | Contenu | Emplacement |
-|---------|--------|---------|-------------|
-| `CLAUDE.md` | Runtime | Aiguillage — 2 lignes | Racine du workspace ou du repo produit |
-| `persona-{nom}.md` | Core | Rôle, posture, contraintes, friction, protocole de session | `shared/orga/personas/` |
-| `contexte-{persona}-{produit}.md` | Instance | Documents clés, périmètre, isolation, conventions, workflow | `shared/orga/contextes/` |
+| File | Layer | Content | Location |
+|------|-------|---------|----------|
+| `CLAUDE.md` | Runtime | Routing — 2 lines | Root of workspace or product repo |
+| `persona-{nom}.md` | Core | Role, stance, constraints, friction, session protocol | `shared/orga/personas/` |
+| `contexte-{persona}-{produit}.md` | Instance | Key documents, scope, isolation, conventions, workflow | `shared/orga/contextes/` |
 
-### Pourquoi cette séparation
+### Why this separation
 
-- **Le persona est agnostique du produit.** Mira est architecte qu'elle travaille
-  sur Katen, SOFIA ou un autre projet. Son rôle, sa posture, ses contraintes
-  ne changent pas.
-- **Le contexte est spécifique.** Mira dans katen/ lit les ADR et les principes.
-  Axel dans katen/ lit le code et les tests. Le même produit, deux vues.
-- **Le CLAUDE.md est un détail runtime.** C'est le format Claude Code. Un autre
-  provider aura un autre mécanisme d'injection. Le contenu (persona + contexte)
-  reste le même.
+- **The persona is product-agnostic.** Mira is an architect whether she works
+  on Katen, SOFIA, or another project. Her role, her stance, her constraints
+  do not change.
+- **The context is specific.** Mira in katen/ reads the ADRs and the principles.
+  Axel in katen/ reads the code and the tests. Same product, two views.
+- **The CLAUDE.md is a runtime detail.** It is the Claude Code format. Another
+  provider will have a different injection mechanism. The content (persona + context)
+  stays the same.
 
-### Conséquence
+### Consequence
 
-Plus de duplication entre le CLAUDE.md du workspace instance et le CLAUDE.md
-du repo produit. Un seul persona.md, un contexte par couple persona×produit,
-des CLAUDE.md de 2 lignes partout.
+No more duplication between the instance workspace CLAUDE.md and the product
+repo CLAUDE.md. One single persona.md, one context per persona×product pair,
+2-line CLAUDE.md files everywhere.
 
-## Ce que porte le persona (persona-{nom}.md)
+## What the persona carries (persona-{nom}.md)
 
-Le fichier persona est **agnostique du produit**. Il définit :
+The persona file is **product-agnostic**. It defines:
 
-- Profil — qui est ce persona
-- Posture — comment il se comporte (3-4 bullets)
-- Domaines d'intervention — sur quoi il intervient
-- Ce qu'il produit — types de livrables
-- Ce qu'il challenge — droit de regard, friction intentionnelle
-- Ce qu'il ne fait pas — **la section la plus importante**, les interdits
-- Collaboration — avec qui et comment
+- Profile — who this persona is
+- Stance — how they behave (3-4 bullets)
+- Areas of intervention — what they work on
+- What they produce — types of deliverables
+- What they challenge — review rights, intentional friction
+- What they do NOT do — **the most important section**, the prohibitions
+- Collaboration — with whom and how
 
-Template : `instance/artefacts/persona.md`
+Template: `instance/artefacts/persona.md`
 
-## Ce que porte le contexte (contexte-{persona}-{produit}.md)
+## What the context carries (contexte-{persona}-{produit}.md)
 
-Le fichier contexte est **spécifique au couple persona×produit**. Il définit :
+The context file is **specific to the persona×product pair**. It defines:
 
-- Périmètre — ce que le workspace contient
-- Documents clés — les fichiers à connaître en priorité
-- Repos liés — les dépôts connectés
-- Isolation — **les frontières**, ce que le persona ne peut pas toucher
-- Conventions — langue, formats, nommage
-- Workflow — ouverture/fermeture de session, étapes spécifiques
-- Émergence — protocole de détection des rôles manquants
-- Protocole de session — format du résumé, commit
+- Scope — what the workspace contains
+- Key documents — the files to know first
+- Related repos — connected repositories
+- Isolation — **the boundaries**, what the persona cannot touch
+- Conventions — language, formats, naming
+- Workflow — session opening/closing, specific steps
+- Emergence — protocol for detecting missing roles
+- Session protocol — summary format, commit
 
-Template : `instance/artefacts/contexte-persona-produit.md`
+Template: `instance/artefacts/contexte-persona-produit.md`
 
-## Erreurs courantes
+## Common mistakes
 
-- **CLAUDE.md de 60+ lignes** — si le CLAUDE.md fait plus de 3 lignes, le contenu devrait être dans le persona ou le contexte
-- **Chemin absolu ou relatif a la racine** — le chemin doit etre relatif au workspace (working directory de Claude Code), pas a la racine du repo. Sinon le persona ne trouve pas ses fichiers au boot
-- **Duplication** — ne copie pas la fiche persona dans le contexte, ni le contexte dans le persona
-- **Pas d'isolation dans le contexte** — sans frontières explicites, le persona ira partout
-- **Pas de workflow dans le contexte** — sans ouverture/fermeture de session, la continuité se perd
+- **CLAUDE.md of 60+ lines** — if the CLAUDE.md is more than 3 lines, the content should be in the persona or the context
+- **Absolute or root-relative path** — the path must be relative to the workspace (Claude Code working directory), not to the repo root. Otherwise the persona cannot find its files at boot
+- **Duplication** — do not copy the persona sheet into the context, nor the context into the persona
+- **No isolation in the context** — without explicit boundaries, the persona will go everywhere
+- **No workflow in the context** — without session opening/closing, continuity is lost
 
-## Référence
+## Reference
 
-Voir `protocol/conventions.md` § "CLAUDE.md — anatomie" pour la spec normative.
+See `protocol/conventions.md` § "CLAUDE.md — anatomie" for the normative spec.

@@ -1,23 +1,23 @@
-# Résumés de session
+# Session summaries
 
-> La prochaine session n'aura pas ton contexte. Le résumé est sa seule mémoire.
+> The next session will not have your context. The summary is its only memory.
 
 ---
 
-## Pourquoi c'est obligatoire
+## Why it is mandatory
 
-Claude Code compresse les messages anciens quand la conversation
-s'allonge. Le contexte du début de session disparaît. Et entre deux
-conversations, tout est perdu sauf la mémoire persistante.
+Claude Code compresses older messages when the conversation
+grows long. The context from the beginning of the session disappears. And between two
+conversations, everything is lost except persistent memory.
 
-Le résumé de session est le **pont** entre les conversations.
-C'est le premier fichier que le persona lit en ouvrant une session.
+The session summary is the **bridge** between conversations.
+It is the first file the persona reads when opening a session.
 
 ## Format
 
-**Nom** : `{YYYY-MM-DD}-{HHmm}-{persona}.md`
+**Name**: `{YYYY-MM-DD}-{HHmm}-{persona}.md`
 
-**Contenu** :
+**Content**:
 
 ```markdown
 # Session {YYYY-MM-DD} ~{HH}h{mm} — {Persona}
@@ -37,43 +37,43 @@ C'est le premier fichier que le persona lit en ouvrant une session.
 Points en suspens, a reprendre en prochaine session.
 ```
 
-## Règles
+## Rules
 
-- **Toujours** — même si la session est courte, même si "rien de structurant"
-- **Pas de prose** — listes courtes, 30 lignes max
-- **Chemins relatifs** — pour que ce soit lisible hors contexte
-- **Un résumé par session** — pas de résumé cumulatif
+- **Always** — even if the session is short, even if "nothing structural"
+- **No prose** — short lists, 30 lines max
+- **Relative paths** — so it is readable out of context
+- **One summary per session** — no cumulative summary
 
 ## Workflow
 
-### Ouverture
+### Opening
 
-1. Lire le dernier résumé dans `sessions/`
-2. L'orchestrateur decide quoi regarder. Pas de recitation systematique.
+1. Read the latest summary in `sessions/`
+2. The orchestrator decides what to look at. No systematic recitation.
 
-### Fermeture
+### Closing
 
-1. Produire le résumé dans `sessions/`
-2. **Instance** (`experiments/` ou equivalent) : commit auto
-   - Format : `{persona}: {résumé court} ({date})`
-   - Scope : uniquement les fichiers modifiés/créés dans la session
-3. **Repos produit** (code, methode, etc.) : preparer le message de commit, l'orchestrateur execute
+1. Produce the summary in `sessions/`
+2. **Instance** (`experiments/` or equivalent): auto commit
+   - Format: `{persona}: {short summary} ({date})`
+   - Scope: only files modified/created during the session
+3. **Product repos** (code, method, etc.): prepare the commit message, the orchestrator executes
 
-Le persona n'a pas besoin qu'on lui rappelle — c'est dans son
-CLAUDE.md. Si tu constates qu'il oublie, renforce l'instruction.
+The persona does not need to be reminded — it is in its
+CLAUDE.md. If you notice it forgets, reinforce the instruction.
 
-## Statuts
+## Statuses
 
-Les roadmaps utilisent 5 statuts normalisés :
+Roadmaps use 5 normalized statuses:
 
-| Statut | Signification |
-|--------|--------------|
-| `[done]` | Terminé |
-| `[running]` | En cours |
-| `[ready]` | Prêt à démarrer |
-| `[todo]` | À faire |
-| `[blocked]` | Bloqué — raison après `⊘` |
+| Status | Meaning |
+|--------|---------|
+| `[done]` | Completed |
+| `[running]` | In progress |
+| `[ready]` | Ready to start |
+| `[todo]` | To do |
+| `[blocked]` | Blocked — reason after `⊘` |
 
-Exemple : `- [blocked] Naming 3e mode ⊘ décision orchestrateur — 3 options ouvertes`
+Example: `- [blocked] Naming 3e mode ⊘ décision orchestrateur — 3 options ouvertes`
 
-Le marqueur `↔` signale une convergence inter-voix (le sujet concerne plusieurs personas).
+The `↔` marker signals a cross-voice convergence (the topic concerns multiple personas).

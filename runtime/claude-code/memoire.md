@@ -1,63 +1,63 @@
-# Mémoire persistante
+# Persistent memory
 
-> La mémoire est un complément aux fichiers, pas un remplacement.
+> Memory is a supplement to files, not a replacement.
 
 ---
 
-## Ce que c'est
+## What it is
 
-Claude Code offre un système de mémoire persistante (`MEMORY.md` +
-fichiers mémoire) qui survit entre les conversations. Le persona
-peut y stocker des informations utiles pour les sessions futures.
+Claude Code offers a persistent memory system (`MEMORY.md` +
+memory files) that survives between conversations. The persona
+can store information useful for future sessions.
 
-## Types de mémoire
+## Memory types
 
-| Type | Contenu | Exemple |
+| Type | Content | Example |
 |------|---------|---------|
-| **user** | Profil de l'utilisateur — rôle, préférences, connaissances | "Expert Go, nouveau sur React" |
-| **feedback** | Corrections et validations de l'utilisateur | "Ne pas mocker la BDD dans les tests" |
-| **project** | Contexte projet non dérivable du code | "Freeze des merges jeudi pour release mobile" |
-| **reference** | Pointeurs vers des ressources externes | "Bugs trackés dans Linear projet INGEST" |
+| **user** | User profile — role, preferences, knowledge | "Go expert, new to React" |
+| **feedback** | User corrections and validations | "Don't mock the DB in tests" |
+| **project** | Project context not derivable from code | "Merge freeze Thursday for mobile release" |
+| **reference** | Pointers to external resources | "Bugs tracked in Linear project INGEST" |
 
-## Quoi stocker, quoi pas
+## What to store, what not to
 
-### Stocker
+### Store
 
-- Ce que l'utilisateur préfère et pourquoi
-- Les corrections reçues (pour ne pas refaire la même erreur)
-- Le contexte projet qui n'est pas dans le code
-- Les liens vers les ressources externes
+- What the user prefers and why
+- Corrections received (to avoid repeating the same mistake)
+- Project context that is not in the code
+- Links to external resources
 
-### Ne PAS stocker
+### Do NOT store
 
-- Les patterns de code, conventions, architecture → lisibles dans le code
-- L'historique git → `git log` est la source de vérité
-- Les solutions de debug → le fix est dans le code
-- Ce qui est dans le CLAUDE.md → déjà chargé à chaque session
-- Les détails de la session en cours → c'est un résumé de session, pas une mémoire
+- Code patterns, conventions, architecture → readable in the code
+- Git history → `git log` is the source of truth
+- Debug solutions → the fix is in the code
+- What is in the CLAUDE.md → already loaded at each session
+- Details of the current session → that is a session summary, not a memory
 
 ## Structure
 
 ```
 .claude/projects/{projet}/memory/
-├── MEMORY.md                 ← index (pointeurs, pas contenu)
-├── user_profile.md           ← profil utilisateur
-├── feedback_testing.md       ← feedback sur les tests
-├── project_deadline.md       ← contexte projet
-└── reference_monitoring.md   ← lien vers dashboard
+├── MEMORY.md                 ← index (pointers, not content)
+├── user_profile.md           ← user profile
+├── feedback_testing.md       ← feedback on tests
+├── project_deadline.md       ← project context
+└── reference_monitoring.md   ← link to dashboard
 ```
 
-`MEMORY.md` est un index — il contient des liens vers les fichiers
-mémoire, pas le contenu lui-même. Le garder court (< 200 lignes).
+`MEMORY.md` is an index — it contains links to memory files,
+not the content itself. Keep it short (< 200 lines).
 
-## Mémoire vs résumé de session
+## Memory vs session summary
 
-| | Mémoire | Résumé de session |
-|---|---------|-------------------|
-| **Durée de vie** | Mois | Jours |
-| **Scope** | Cross-session | Une session |
-| **Contenu** | Ce qui est vrai durablement | Ce qui s'est passé aujourd'hui |
-| **Exemple** | "L'utilisateur préfère un seul PR pour les refactors" | "Créé ADR-058, review déposée, 3 points ouverts" |
+| | Memory | Session summary |
+|---|--------|-----------------|
+| **Lifespan** | Months | Days |
+| **Scope** | Cross-session | One session |
+| **Content** | What is durably true | What happened today |
+| **Example** | "The user prefers a single PR for refactors" | "Created ADR-058, review deposited, 3 open items" |
 
-Règle simple : si c'est utile dans 3 mois, c'est une mémoire.
-Si c'est utile demain, c'est un résumé de session.
+Simple rule: if it is useful in 3 months, it is a memory.
+If it is useful tomorrow, it is a session summary.
