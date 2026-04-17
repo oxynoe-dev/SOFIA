@@ -71,8 +71,9 @@ nav .meta { font-family: var(--font-mono); font-size: 10px; color: var(--ice-mut
 main {
   position: relative; z-index: 1;
   max-width: 1200px; margin: 0 auto;
-  padding: 76px 2rem 80px;
+  padding: 76px 2rem 80px 220px;
 }
+@media (max-width: 900px) { main { padding-left: 2rem; } }
 
 .hero {
   text-align: center; padding: 3rem 0 2rem;
@@ -86,30 +87,41 @@ main {
   letter-spacing: .12em; text-transform: uppercase;
 }
 
-/* ── Filters ── */
+/* ── Filters sidebar ── */
 .filters {
-  display: flex; gap: 1rem; align-items: center; justify-content: center;
-  margin: 2rem 0 2.5rem; flex-wrap: wrap;
+  position: fixed; left: 0; top: 52px; bottom: 36px;
+  width: 200px; z-index: 50;
+  display: flex; flex-direction: column; gap: .75rem;
+  padding: 1.5rem 1rem;
+  background: rgba(4,28,36,.97); backdrop-filter: blur(20px);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
 }
 .filters label {
-  font-family: var(--font-mono); font-size: 10px; color: var(--ice-muted);
-  letter-spacing: .1em; text-transform: uppercase;
+  font-family: var(--font-mono); font-size: 9px; color: var(--ice-muted);
+  letter-spacing: .1em; text-transform: uppercase; margin-top: .25rem;
 }
+.filters label:first-child { margin-top: 0; }
 .filters select {
   background: var(--deep); color: var(--ice-dim); border: 1px solid var(--border);
-  padding: 6px 12px; border-radius: 3px; font-family: var(--font-mono); font-size: 12px;
-  cursor: pointer; transition: border-color .15s ease;
+  padding: 6px 8px; border-radius: 3px; font-family: var(--font-mono); font-size: 11px;
+  cursor: pointer; transition: border-color .15s ease; width: 100%;
 }
 .filters select:hover { border-color: var(--border-hi); }
 .filters select:focus { outline: none; border-color: var(--ready); }
 .filters button {
   background: var(--deep); color: var(--ready); border: 1px solid var(--ready-dim);
-  padding: 6px 14px; border-radius: 3px; font-family: var(--font-mono); font-size: 12px;
-  cursor: pointer; transition: all .15s ease; margin-left: .5rem;
+  padding: 6px 14px; border-radius: 3px; font-family: var(--font-mono); font-size: 11px;
+  cursor: pointer; transition: all .15s ease; width: 100%; margin-top: .5rem;
 }
 .filters button:hover { background: var(--ready-dim); color: var(--ice); }
 .filters button:active { transform: scale(.97); }
 .filters button.running { opacity: .5; pointer-events: none; }
+@media (max-width: 900px) {
+  .filters { position: static; width: auto; flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid var(--border); }
+  .filters select { width: auto; }
+  .filters button { width: auto; }
+}
 
 /* ── Nav links (menu items) ── */
 .nav-links { display: flex; gap: 2rem; list-style: none; margin-left: auto; align-items: center; }
@@ -143,7 +155,7 @@ main {
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
-/* ── Audit ── */
+/* ── Probe ── */
 .audit-section { margin: 2rem 0; }
 .audit-section h2 { font-family: var(--font-display); font-size: 16px; font-weight: 300; color: var(--ice); margin-bottom: 1rem; }
 .audit-instance { margin-bottom: 2.5rem; }
@@ -264,6 +276,27 @@ footer {
   letter-spacing: .08em;
 }
 
+/* ── Mirror ── */
+.radar-card {
+  width: 240px; text-align: center;
+}
+.radar-card canvas { width: 240px !important; height: 240px !important; }
+.radar-card .persona-name {
+  font-family: var(--font-mono); font-size: 11px; color: var(--ice);
+  letter-spacing: .06em; margin-bottom: .25rem;
+}
+.radar-card .diagnostic {
+  font-family: var(--font-mono); font-size: 9px; margin-top: .25rem; letter-spacing: .06em;
+}
+.diagnostic.sain { color: var(--done); }
+.diagnostic.domestication { color: var(--coral); }
+.diagnostic.complaisant { color: var(--amber); }
+.diagnostic.servile { color: var(--amber); }
+td.zero { color: var(--coral); font-weight: 600; }
+td.diag-sain { color: var(--done); }
+td.diag-warn { color: var(--amber); }
+td.diag-danger { color: var(--coral); }
+
 /* ── Animations ── */
 @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 .rise { animation: rise .4s ease both; }
@@ -278,40 +311,35 @@ footer {
 <nav>
   <div class="brand"><svg class="logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64" fill="none"><defs><filter id="rg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="ng" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="32" cy="32" r="17" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="2" filter="url(#rg)"/><circle cx="32" cy="32" r="17" fill="none" stroke="rgba(167,139,250,0.55)" stroke-width="0.6"/><circle cx="32" cy="32" r="12" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="0.3"/><polygon points="32,20 41.4,24.5 43.7,34.2 37.2,42.8 26.8,42.8 20.3,34.2 22.6,24.5" fill="none" stroke="rgba(167,139,250,0.3)" stroke-width="0.4" stroke-linejoin="round"/><circle cx="32" cy="20" r="1.4" fill="#a78bfa" opacity="0.7" filter="url(#ng)"/><circle cx="41.4" cy="24.5" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="43.7" cy="34.2" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="37.2" cy="42.8" r="1.4" fill="#a78bfa" opacity="0.6" filter="url(#ng)"/><circle cx="26.8" cy="42.8" r="1.4" fill="#a78bfa" opacity="0.6" filter="url(#ng)"/><circle cx="20.3" cy="34.2" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="22.6" cy="24.5" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="28" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/><circle cx="32" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/><circle cx="36" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/></svg> H2A <span>dashboard</span></div>
   <ul class="nav-links">
-    <li><button class="active" onclick="switchTab('analysis')">Analysis</button></li>
-    <li><button onclick="switchTab('audit')">Audit</button></li>
+    <li><button onclick="switchTab('mirror')">Mirror</button></li>
+    <li><button class="active" onclick="switchTab('lens')">Lens</button></li>
+    <li><button onclick="switchTab('probe')">Probe</button></li>
   </ul>
 </nav>
 
-<div class="sub-menu" id="audit-instances-menu"></div>
+<div class="sub-menu" id="probe-instances-menu"></div>
+
+<div class="filters" id="filters-panel">
+  <label>Instance</label>
+  <select id="sel-instance"></select>
+  <label>Persona</label>
+  <select id="sel-persona"></select>
+  <label>Period</label>
+  <select id="sel-period">
+    <option value="7">7 days</option>
+    <option value="30" selected>30 days</option>
+    <option value="all">All</option>
+  </select>
+  <label>Granularity</label>
+  <select id="sel-granularity">
+    <option value="week" selected>Week</option>
+    <option value="day">Day</option>
+  </select>
+  <button id="btn-run" onclick="runAnalysis()" title="Run analysis.py">&#x27f3; Analyze</button>
+</div>
 
 <main>
-  <div id="tab-analysis" class="tab-content active">
-
-  <div class="filters rise rise-1">
-    <label>Instance</label>
-    <select id="sel-instance"></select>
-    <label>Persona</label>
-    <select id="sel-persona"></select>
-    <label>Periode</label>
-    <select id="sel-period">
-      <option value="7">7 derniers jours</option>
-      <option value="30" selected>30 derniers jours</option>
-      <option value="all">Tout</option>
-    </select>
-    <label>Granularite</label>
-    <select id="sel-granularity">
-      <option value="week" selected>Semaine</option>
-      <option value="day">Jour</option>
-    </select>
-    <label>Source</label>
-    <select id="sel-source">
-      <option value="all" selected>Tout</option>
-      <option value="sessions">Sessions</option>
-      <option value="artefacts">Artefacts</option>
-    </select>
-    <button id="btn-run" onclick="runAnalysis()" title="Relancer analysis.py">&#x27f3; Analyser</button>
-  </div>
+  <div id="tab-lens" class="tab-content active">
 
   <!-- Scores -->
   <div class="scores rise rise-2" id="scores"></div>
@@ -319,15 +347,15 @@ footer {
   <!-- Grand graphique + direction -->
   <div class="charts rise rise-3">
     <div class="chart-card full tall">
-      <h2>Friction par marqueur — evolution</h2>
+      <h2>Friction by marker — timeline</h2>
       <div class="chart-wrap"><canvas id="chart-friction-time"></canvas></div>
     </div>
     <div class="chart-card">
-      <h2>Direction — qui conteste qui</h2>
+      <h2>Direction — who contests whom</h2>
       <div class="chart-wrap"><canvas id="chart-direction"></canvas></div>
     </div>
     <div class="chart-card">
-      <h2>Direction — evolution</h2>
+      <h2>Direction — timeline</h2>
       <div class="chart-wrap"><canvas id="chart-direction-time"></canvas></div>
     </div>
   </div>
@@ -335,77 +363,150 @@ footer {
   <!-- Charts detail -->
   <div class="charts rise rise-3">
     <div class="chart-card">
-      <h2>Marqueurs par persona</h2>
+      <h2>Markers by persona</h2>
       <div class="chart-wrap"><canvas id="chart-markers-persona"></canvas></div>
     </div>
     <div class="chart-card">
-      <h2>Resolutions par persona</h2>
+      <h2>Resolutions by persona</h2>
       <div class="chart-wrap"><canvas id="chart-resolutions"></canvas></div>
     </div>
     <div class="chart-card">
-      <h2>Flux epistemique — H vs A</h2>
+      <h2>Epistemic flow — H vs A</h2>
       <div class="chart-wrap"><canvas id="chart-flux"></canvas></div>
     </div>
     <div class="chart-card">
-      <h2>Frictions par session — evolution</h2>
+      <h2>Frictions per session — timeline</h2>
       <div class="chart-wrap"><canvas id="chart-ratio"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <h2>Source — sessions vs artefacts</h2>
-      <div class="chart-wrap"><canvas id="chart-source"></canvas></div>
     </div>
   </div>
 
   <!-- Table direction -->
   <div class="table-card rise rise-3">
-    <h2>Matrice directionnelle — friction calculee</h2>
+    <h2>Directional matrix — computed friction</h2>
     <p style="font-size:11px; color:var(--ice-muted); margin-bottom:1rem; font-family:var(--font-sans);">
-      Direction deduite de initiative + marqueur. Corroboration = juste. Contestation = contestable, simplification, angle-mort, faux.
+      Direction from initiative + marker. Corroboration = sound. Contestation = contestable, simplification, blind_spot, refuted.
     </p>
     <table><thead><tr>
       <th>Persona</th>
-      <th style="color:var(--ready)">A corrobore H</th>
-      <th style="color:var(--coral)">A conteste H</th>
-      <th style="color:var(--ready)">H corrobore A</th>
-      <th style="color:var(--amber)">H conteste A</th>
+      <th style="color:var(--ready)">A corroborates H</th>
+      <th style="color:var(--coral)">A contests H</th>
+      <th style="color:var(--ready)">H corroborates A</th>
+      <th style="color:var(--amber)">H contests A</th>
       <th>Ratio A→H / H→A</th>
     </tr></thead><tbody id="table-direction"></tbody></table>
     <p style="font-size:10px; color:var(--ice-muted); margin-top:.75rem; font-family:var(--font-mono); letter-spacing:.05em;">
-      Ratio > 2 = le persona conteste plus qu'il n'est conteste — friction saine. Ratio ~ 1 = equilibre. Ratio &lt; 0.5 = domestication potentielle.
+      Ratio > 2 = persona contests more than contested — healthy friction. Ratio ~ 1 = balanced. Ratio &lt; 0.5 = potential domestication.
     </p>
   </div>
 
   <!-- Table detail -->
   <div class="table-card rise rise-3">
-    <h2>Detail par persona</h2>
+    <h2>Detail by persona</h2>
     <table><thead><tr>
-      <th>Persona</th><th>Sessions</th><th>Artefacts</th>
-      <th style="color:var(--done)">Juste</th><th style="color:var(--ice-muted)">Contest.</th>
-      <th style="color:var(--amber)">Simplif.</th><th style="color:var(--coral)">Angle-m.</th><th style="color:var(--coral)">Faux</th>
-      <th style="color:var(--done)">Ratifie</th><th style="color:var(--amber)">Conteste</th>
-      <th style="color:var(--violet)">Revise</th><th style="color:var(--coral)">Rejete</th>
+      <th>Persona</th><th>Sessions</th>
+      <th style="color:var(--done)">Sound</th><th style="color:var(--ice-muted)">Contest.</th>
+      <th style="color:var(--amber)">Simplif.</th><th style="color:var(--coral)">Blind sp.</th><th style="color:var(--coral)">Refuted</th>
+      <th style="color:var(--done)">Ratified</th><th style="color:var(--amber)">Contested</th>
+      <th style="color:var(--violet)">Revised</th><th style="color:var(--coral)">Rejected</th>
       <th>H:A</th><th>SP</th>
     </tr></thead><tbody id="table-detail"></tbody></table>
   </div>
 
   <!-- signalerPattern -->
   <div class="table-card rise rise-3">
-    <h2>signalerPattern — compteur</h2>
+    <h2>reportPattern — counter</h2>
     <table><thead><tr>
-      <th>Persona</th><th>Declenchements</th>
+      <th>Persona</th><th>Triggers</th>
       <th style="color:var(--ice-muted)">Erreur LLM</th><th style="color:var(--done)">Conviction</th><th style="color:var(--coral)">Resistance</th>
     </tr></thead><tbody id="table-sp"></tbody></table>
   </div>
 
-  </div><!-- /tab-analysis -->
+  </div><!-- /tab-lens -->
 
-  <div id="tab-audit" class="tab-content">
-    <div id="audit-content" class="rise">
-      <div class="score-card" style="text-align:center; padding:2rem; color:var(--ice-muted); font-family:var(--font-mono); font-size:12px;">
-        Cliquer sur "Auditer" pour lancer l'audit des instances.
+  <div id="tab-mirror" class="tab-content">
+
+    <!-- Bandeau KPI -->
+    <div class="scores rise" id="mirror-kpi"></div>
+
+    <!-- Vue 0 — Trajectoire instance -->
+    <div class="charts rise">
+      <div class="chart-card">
+        <h2>Trajectory — challenge %</h2>
+        <div class="chart-wrap"><canvas id="chart-trajectory-line"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h2>Trajectory — marker distribution</h2>
+        <div class="chart-wrap"><canvas id="chart-trajectory-bar"></canvas></div>
       </div>
     </div>
-  </div><!-- /tab-audit -->
+
+    <!-- Vue 1a — Radar instance agrege -->
+    <div class="charts rise">
+      <div class="chart-card full">
+        <h2>Instance profile — baseline vs recent</h2>
+        <p style="font-size:10px; color:var(--ice-muted); margin-bottom:.5rem; font-family:var(--font-mono); line-height:1.8;">
+          Challenge % = non-sound frictions · A→H % = persona contests orchestrator · H→A % = orchestrator contests persona · Resolved % = arbitrated frictions · Diversity % = variety of resolutions (0 = monotone, 1 = balanced)
+        </p>
+        <div style="display:flex; justify-content:center;">
+          <div style="width:400px; height:400px;"><canvas id="radar-instance"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vue 1b — Radars persona individuels -->
+    <div class="charts rise">
+      <div class="chart-card full">
+        <h2>Persona profiles — baseline vs recent</h2>
+        <p style="font-size:10px; color:var(--ice-muted); margin-bottom:.5rem; font-family:var(--font-mono);">
+          Grey = baseline (first N frictions) · Color = recent (last N frictions) · Shrinking contour = deterioration
+        </p>
+        <div id="mirror-radars" style="display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center;"></div>
+      </div>
+    </div>
+
+    <!-- Tableau delta -->
+    <div class="table-card rise">
+      <h2>Delta table — instance diagnostic</h2>
+      <table><thead><tr>
+        <th>Persona</th>
+        <th>Baseline challenge %</th>
+        <th>Recent challenge %</th>
+        <th>Delta</th>
+        <th>Baseline A→H</th>
+        <th>Recent A→H</th>
+        <th>Diagnostic</th>
+      </tr></thead><tbody id="table-delta"></tbody></table>
+    </div>
+
+    <!-- Vue 2 — Open frictions -->
+    <div class="table-card rise">
+      <h2>Open frictions — unresolved</h2>
+      <p style="font-size:11px; color:var(--ice-muted); margin-bottom:1rem; font-family:var(--font-sans);">
+        Sorted oldest first. Orchestrator arbitrates, friction leaves the list.
+      </p>
+      <table><thead><tr>
+        <th>Date</th><th>Source</th><th>Persona</th><th>Marker</th><th>Direction</th><th>Description</th>
+      </tr></thead><tbody id="table-open-frictions"></tbody></table>
+    </div>
+
+    <!-- Vue 3 — Carte du silence -->
+    <div class="table-card rise">
+      <h2>Silence map — zero-friction zones</h2>
+      <p style="font-size:11px; color:var(--ice-muted); margin-bottom:1rem; font-family:var(--font-sans);">
+        Zero cells in red. Persona with no friction = invisible to the protocol.
+      </p>
+      <table><thead><tr id="silence-header"></tr></thead><tbody id="table-silence"></tbody></table>
+    </div>
+
+  </div><!-- /tab-mirror -->
+
+  <div id="tab-probe" class="tab-content">
+    <div id="probe-content" class="rise">
+      <div class="score-card" style="text-align:center; padding:2rem; color:var(--ice-muted); font-family:var(--font-mono); font-size:12px;">
+        Click "Probe" to run instance audit.
+      </div>
+    </div>
+  </div><!-- /tab-probe -->
 
 </main>
 
@@ -424,12 +525,12 @@ Chart.defaults.font.family = "'IBM Plex Mono', monospace";
 Chart.defaults.font.size = 10;
 
 const C = {
-  juste: '#3ddc84', contestable: '#a0d0c8', simplification: '#d4a030',
-  angle_mort: '#e05050', faux: '#ff4444',
-  ratifie: '#3ddc84', conteste: '#d4a030', revise: '#a78bfa', rejete: '#e05050',
+  sound: '#3ddc84', contestable: '#a0d0c8', simplification: '#d4a030',
+  blind_spot: '#e05050', refuted: '#ff4444',
+  ratified: '#3ddc84', contested: '#d4a030', revised: '#a78bfa', rejected: '#e05050',
   humain: '#40d8c0', assistant: '#a78bfa',
-  a_corrobore_h: '#3ddc8480', a_conteste_h: '#e0505080',
-  h_corrobore_a: '#40d8c080', h_conteste_a: '#d4a03080',
+  a_corroborates_h: '#3ddc8480', a_contests_h: '#e0505080',
+  h_corroborates_a: '#40d8c080', h_contests_a: '#d4a03080',
 };
 const lineOpts = (color) => ({ borderColor: color, backgroundColor: color + '20', fill: true, tension: .3 });
 const gridY = { beginAtZero: true, grid: { color: 'rgba(64,180,160,0.06)' } };
@@ -440,8 +541,8 @@ let RAW = null;        // full JSON
 let charts = [];       // Chart instances for cleanup
 
 // ── Tabs ──
-let AUDIT_DATA = null;
-let currentAuditInstance = null;
+let PROBE_DATA = null;
+let currentProbeInstance = null;
 
 function switchTab(tab) {
   document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
@@ -451,59 +552,93 @@ function switchTab(tab) {
     if (b.getAttribute('onclick') === "switchTab('" + tab + "')") b.classList.add('active');
   });
 
-  const subMenu = document.getElementById('audit-instances-menu');
+  const subMenu = document.getElementById('probe-instances-menu');
   const main = document.querySelector('main');
-  if (tab === 'audit') {
+  const filtersPanel = document.getElementById('filters-panel');
+  if (tab === 'probe') {
     subMenu.classList.add('visible');
     main.style.paddingTop = '112px';
-    if (!AUDIT_DATA) runAudit();
+    main.style.paddingLeft = '2rem';
+    filtersPanel.style.display = 'none';
+    if (!PROBE_DATA) runProbe();
+  } else if (tab === 'mirror') {
+    subMenu.classList.remove('visible');
+    main.style.paddingTop = '76px';
+    main.style.paddingLeft = '220px';
+    filtersPanel.style.display = '';
+    if (RAW) renderMirror();
   } else {
     subMenu.classList.remove('visible');
     main.style.paddingTop = '76px';
+    main.style.paddingLeft = '220px';
+    filtersPanel.style.display = '';
   }
 }
 
-function selectAuditInstance(name) {
-  currentAuditInstance = name;
+function selectProbeInstance(name) {
+  currentProbeInstance = name;
   document.querySelectorAll('.sub-menu button').forEach(b => b.classList.remove('active'));
   const btn = document.querySelector(`.sub-menu button[data-inst="${name}"]`);
   if (btn) btn.classList.add('active');
-  if (AUDIT_DATA) renderAuditInstance(name, AUDIT_DATA[name]);
+  if (PROBE_DATA) renderProbeInstance(name, PROBE_DATA[name]);
 }
 
 // ── Audit ──
-function runAudit() {
-  const subMenu = document.getElementById('audit-instances-menu');
-  subMenu.innerHTML = '<button class="running" disabled>⟳ audit en cours...</button>';
+function runProbe() {
+  const subMenu = document.getElementById('probe-instances-menu');
+  subMenu.innerHTML = '<button class="running" disabled>⟳ probing...</button>';
   fetch('/audit', { method: 'POST' })
     .then(r => {
       if (!r.ok) return r.json().then(d => { throw new Error(d.error || r.statusText); });
       return r.json();
     })
     .then(data => {
-      AUDIT_DATA = data;
+      PROBE_DATA = data;
       const instances = Object.keys(data);
       subMenu.innerHTML = instances.map(name =>
-        `<button data-inst="${name}" onclick="selectAuditInstance('${name}')">${name}</button>`
-      ).join('') + `<button onclick="runAudit()" title="Relancer l'audit" style="margin-left:2rem; color:var(--ready); font-size:14px;">⟳ Auditer</button>`;
-      if (instances.length > 0) selectAuditInstance(instances[0]);
+        `<button data-inst="${name}" onclick="selectProbeInstance('${name}')">${name}</button>`
+      ).join('') + `<button onclick="runProbe()" title="Relancer l'audit" style="margin-left:2rem; color:var(--ready); font-size:14px;">⟳ Probe</button>`;
+      if (instances.length > 0) selectProbeInstance(instances[0]);
     })
     .catch(err => {
       subMenu.innerHTML = `<button style="color:var(--coral)" disabled>Erreur : ${err.message}</button>`;
     });
 }
 
-function renderAuditInstance(instName, instData) {
-  const container = document.getElementById('audit-content');
+function renderProbeInstance(instName, instData) {
+  const container = document.getElementById('probe-content');
   let html = '';
 
   if (!instData || instData.error) {
-    container.innerHTML = `<p style="color:var(--coral); text-align:center; padding:2rem">${instData?.error || 'Pas de donnees'}</p>`;
+    container.innerHTML = `<p style="color:var(--coral); text-align:center; padding:2rem">${instData?.error || 'No data'}</p>`;
     return;
   }
 
   {
     const dummy = 0; // keep indentation consistent
+
+    // Context sizes
+    const ctxSizes = instData.context_sizes;
+    if (ctxSizes && Object.keys(ctxSizes).length > 0) {
+      html += '<div class="audit-section"><h2>Context size — persona + context</h2>';
+      const sorted = Object.entries(ctxSizes).sort((a,b) => b[1].total_lines - a[1].total_lines);
+      const maxLines = Math.max(...sorted.map(([,d]) => d.total_lines), 1);
+      html += '<div style="display:flex; flex-direction:column; gap:6px; margin-bottom:1.5rem;">';
+      for (const [p, d] of sorted) {
+        const pct = Math.round(d.total_lines / 400 * 100); // 400L = max bar
+        const color = d.status === 'ok' ? 'var(--done)' : d.status === 'warn' ? 'var(--amber)' : 'var(--coral)';
+        const icon = d.status === 'ok' ? '✓' : d.status === 'warn' ? '⚠' : '✗';
+        html += `<div style="display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:11px;">
+          <span style="width:120px; color:var(--ice)">${p}</span>
+          <div style="flex:1; height:16px; background:var(--deep); border-radius:3px; overflow:hidden; border:1px solid var(--border);">
+            <div style="width:${Math.min(pct,100)}%; height:100%; background:${color}; opacity:0.6;"></div>
+          </div>
+          <span style="width:50px; text-align:right; color:${color}">${d.total_lines}L</span>
+          <span style="width:16px; color:${color}">${icon}</span>
+        </div>`;
+      }
+      html += '</div></div>';
+    }
 
     // Structure checks
     const struct = instData.structure;
@@ -534,18 +669,18 @@ function renderAuditInstance(instName, instData) {
     // Friction PO table
     const fpo = instData.friction_po;
     if (fpo && fpo.by_persona) {
-      html += '<div class="audit-section"><h2>Friction orchestrateur</h2>';
+      html += '<div class="audit-section"><h2>Orchestrator friction</h2>';
       html += '<div class="table-card"><table><thead><tr>';
       html += '<th>Persona</th><th>Sessions</th><th>w/ friction</th>';
-      html += '<th style="color:var(--done)">Juste</th><th>Contest.</th><th style="color:var(--amber)">Simpl.</th><th style="color:var(--coral)">Angle-m.</th><th style="color:var(--coral)">Faux</th>';
-      html += '<th style="color:var(--done)">Ratifie</th><th style="color:var(--amber)">Conteste</th><th style="color:var(--violet)">Revise</th><th style="color:var(--coral)">Rejete</th><th>No-res</th>';
+      html += '<th style="color:var(--done)">Sound</th><th>Contest.</th><th style="color:var(--amber)">Simpl.</th><th style="color:var(--coral)">Blind sp.</th><th style="color:var(--coral)">Refuted</th>';
+      html += '<th style="color:var(--done)">Ratified</th><th style="color:var(--amber)">Contested</th><th style="color:var(--violet)">Revised</th><th style="color:var(--coral)">Rejected</th><th>No-res</th>';
       html += '<th>Init.P</th><th>Init.PO</th><th>SP</th>';
       html += '</tr></thead><tbody>';
       for (const [p, d] of Object.entries(fpo.by_persona).sort()) {
         html += `<tr>
           <td>${p}</td><td>${d.total_sessions}</td><td>${d.sessions_with_friction}</td>
-          <td>${d.juste||0}</td><td>${d.contestable||0}</td><td>${d.simplification||0}</td><td>${d.angle_mort||0}</td><td>${d.faux||0}</td>
-          <td>${d.resolution_ratifie||0}</td><td>${d.resolution_conteste||0}</td><td>${d.resolution_revise||0}</td><td>${d.resolution_rejete||0}</td><td>${d.resolution_missing||0}</td>
+          <td>${d.sound||0}</td><td>${d.contestable||0}</td><td>${d.simplification||0}</td><td>${d.blind_spot||0}</td><td>${d.refuted||0}</td>
+          <td>${d.resolution_ratified||0}</td><td>${d.resolution_contested||0}</td><td>${d.resolution_revised||0}</td><td>${d.resolution_rejected||0}</td><td>${d.resolution_missing||0}</td>
           <td>${d.initiative_persona||0}</td><td>${d.initiative_po||0}</td><td>${d.signaler_pattern_count||0}</td>
         </tr>`;
       }
@@ -555,7 +690,7 @@ function renderAuditInstance(instName, instData) {
     // Activity
     const act = instData.activite;
     if (act && act.by_persona) {
-      html += '<div class="audit-section"><h2>Activite</h2>';
+      html += '<div class="audit-section"><h2>Activity</h2>';
       html += '<div class="table-card"><table><thead><tr><th>Persona</th><th>Sessions</th></tr></thead><tbody>';
       const sorted = Object.entries(act.by_persona).sort((a,b) => b[1] - a[1]);
       for (const [p, count] of sorted) {
@@ -576,7 +711,7 @@ function renderAuditInstance(instName, instData) {
       }
       flows.sort((a,b) => b.count - a.count);
       if (flows.length > 0) {
-        html += '<div class="audit-section"><h2>Flux d\'echanges (top)</h2>';
+        html += '<div class="audit-section"><h2>Exchange flow (top)</h2>';
         html += '<div class="table-card"><table><thead><tr><th>De</th><th>Pour</th><th>Artefacts</th></tr></thead><tbody>';
         for (const f of flows.slice(0, 15)) {
           html += `<tr><td>${f.from}</td><td>${f.to}</td><td>${f.count}</td></tr>`;
@@ -606,7 +741,7 @@ function runAnalysis() {
     })
     .catch(err => {
       if (btn) { btn.textContent = '⟳ Analyser'; btn.classList.remove('running'); }
-      console.warn('Erreur analyse :', err.message);
+      console.warn('Analysis error:', err.message);
     });
 }
 
@@ -617,7 +752,7 @@ fetch(DATA_URL).then(r => r.json()).then(data => {
   renderCurrent();
 }).catch(() => {
   document.getElementById('scores').innerHTML =
-    `<div class="score-card" style="grid-column:1/-1"><div class="label" style="color:var(--coral)">Erreur chargement ${DATA_URL} — lancer : python3 analysis.py &lt;instance&gt;</div></div>`;
+    `<div class="score-card" style="grid-column:1/-1"><div class="label" style="color:var(--coral)">Loading error ${DATA_URL} — run: python3 analysis.py &lt;instance&gt;</div></div>`;
 });
 
 // ── Filters ──
@@ -629,7 +764,7 @@ function initFilters() {
   const instances = Object.keys(RAW.instances);
   const hasAll = !!RAW.all;
   selInst.innerHTML = '';
-  if (hasAll) selInst.innerHTML += `<option value="all">Toutes (${instances.length})</option>`;
+  if (hasAll) selInst.innerHTML += `<option value="all">All (${instances.length})</option>`;
   instances.forEach(name => selInst.innerHTML += `<option value="${name}">${name}</option>`);
   selInst.value = RAW.default || instances[0];
 
@@ -637,7 +772,6 @@ function initFilters() {
   selPersona.addEventListener('change', renderCurrent);
   document.getElementById('sel-period').addEventListener('change', renderCurrent);
   document.getElementById('sel-granularity').addEventListener('change', renderCurrent);
-  document.getElementById('sel-source').addEventListener('change', renderCurrent);
 
   populatePersonas();
 }
@@ -646,7 +780,7 @@ function populatePersonas() {
   const D = getCurrentData();
   const selPersona = document.getElementById('sel-persona');
   const personas = Object.keys(D.personas).sort();
-  selPersona.innerHTML = `<option value="all">Tous</option>`;
+  selPersona.innerHTML = `<option value="all">All</option>`;
   personas.forEach(p => selPersona.innerHTML += `<option value="${p}">${p}</option>`);
 }
 
@@ -668,13 +802,17 @@ function renderCurrent() {
   charts.forEach(c => c.destroy());
   charts = [];
 
+  // Also re-render pilotage if that tab is active
+  if (document.getElementById('tab-mirror').classList.contains('active')) {
+    renderMirror();
+  }
+
   const D = getCurrentData();
   const t = D.totals, P = D.personas;
   const personas = getFilteredPersonas(D);
   const gran = document.getElementById('sel-granularity').value;
   const periodVal = document.getElementById('sel-period').value;
   const inst = document.getElementById('sel-instance').value;
-  const sourceFilter = document.getElementById('sel-source').value;
 
   // Select time series: per-persona if filtered, global otherwise
   const selPersona = document.getElementById('sel-persona').value;
@@ -734,38 +872,29 @@ function renderCurrent() {
 
   // Meta
   const metaEl = document.querySelector('.meta');
-  if (metaEl) metaEl.textContent = `instance : ${inst === 'all' ? 'toutes' : inst} · ${D.meta.date}`;
+  if (metaEl) metaEl.textContent = `instance: ${inst === 'all' ? 'all' : inst} · ${D.meta.date}`;
 
   // Compute totals from filtered time series
-  const mk = ['juste','contestable','simplification','angle_mort','faux'];
-  const rk = ['ratifie','conteste','revise','rejete'];
-  const dk = ['a_corrobore_h','a_conteste_h','h_corrobore_a','h_conteste_a'];
+  const mk = ['sound','contestable','simplification','blind_spot','refuted'];
+  const rk = ['ratified','contested','revised','rejected'];
+  const dk = ['a_corroborates_h','a_contests_h','h_corroborates_a','h_contests_a'];
 
   const sum = arr => arr.reduce((a,b) => a+b, 0);
-  const tsFrictionsAll = mk.reduce((s,k) => s + sum(ts.markers[k] || []), 0);
-  const tsFrictionsSess = sum(ts.frictions_sessions || []);
-  const tsFrictionsArt = sum(ts.frictions_artefacts || []);
-  const tsFrictions = sourceFilter === 'sessions' ? tsFrictionsSess : sourceFilter === 'artefacts' ? tsFrictionsArt : tsFrictionsAll;
+  const tsFrictions = mk.reduce((s,k) => s + sum(ts.markers[k] || []), 0);
   const tsResolved = rk.reduce((s,k) => s + sum(ts.resolutions[k] || []), 0);
   const tsResolvedPct = tsFrictions > 0 ? Math.round(tsResolved / tsFrictions * 100) : 0;
-  const tsRatifie = sum(ts.resolutions.ratifie || []);
-  const tsConteste = sum(ts.resolutions.conteste || []);
+  const tsRatifie = sum(ts.resolutions.ratified || []);
+  const tsConteste = sum(ts.resolutions.contested || []);
   const tsSp = t.signaler_pattern;
   const tsSessions = sum(ts.sessions || []);
-  const tsArtefacts = sum(ts.artefacts || []);
-
-  const sourceLabel = sourceFilter === 'all'
-    ? `<span style="font-size:10px;color:var(--ice-muted)">${tsFrictionsSess} sess · ${tsFrictionsArt} art</span>`
-    : '';
 
   document.getElementById('scores').innerHTML = `
-    <div class="score-card accent"><div class="value">${tsFrictions}</div><div class="label">Frictions</div>${sourceLabel}</div>
-    <div class="score-card violet"><div class="value">${tsResolvedPct}%</div><div class="label">Resolues</div></div>
-    <div class="score-card done"><div class="value">${tsRatifie}</div><div class="label">Ratifiees</div></div>
-    <div class="score-card amber"><div class="value">${tsConteste}</div><div class="label">Contestees</div></div>
-    <div class="score-card coral"><div class="value">${tsSp}</div><div class="label">signalerPattern</div></div>
-    <div class="score-card"><div class="value" style="color:var(--ice)">${tsSessions}</div><div class="label">Sessions</div></div>
-    <div class="score-card"><div class="value" style="color:var(--violet)">${tsArtefacts}</div><div class="label">Artefacts</div></div>`;
+    <div class="score-card accent"><div class="value">${tsFrictions}</div><div class="label">Frictions</div></div>
+    <div class="score-card violet"><div class="value">${tsResolvedPct}%</div><div class="label">Resolved</div></div>
+    <div class="score-card done"><div class="value">${tsRatifie}</div><div class="label">Ratified</div></div>
+    <div class="score-card amber"><div class="value">${tsConteste}</div><div class="label">Contested</div></div>
+    <div class="score-card coral"><div class="value">${tsSp}</div><div class="label">reportPattern</div></div>
+    <div class="score-card"><div class="value" style="color:var(--ice)">${tsSessions}</div><div class="label">Sessions</div></div>`;
 
   // Per-persona time series are now available in D.personas[p].time_series
   // When a persona is selected, rawTs above already points to per-persona series
@@ -775,11 +904,11 @@ function renderCurrent() {
   // 1. Friction par marqueur — evolution
   mkChart('chart-friction-time', {
     type: 'line', data: { labels: weeks, datasets: [
-      { label: 'juste', data: ts.markers.juste, ...lineOpts(C.juste) },
+      { label: 'sound', data: ts.markers.sound, ...lineOpts(C.sound) },
       { label: 'contestable', data: ts.markers.contestable, ...lineOpts(C.contestable) },
       { label: 'simplification', data: ts.markers.simplification, ...lineOpts(C.simplification) },
-      { label: 'angle-mort', data: ts.markers.angle_mort, ...lineOpts(C.angle_mort) },
-      { label: 'faux', data: ts.markers.faux, ...lineOpts(C.faux) },
+      { label: 'blind spot', data: ts.markers.blind_spot, ...lineOpts(C.blind_spot) },
+      { label: 'refuted', data: ts.markers.refuted, ...lineOpts(C.refuted) },
     ]},
     options: { responsive: true, maintainAspectRatio: false,
       plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 15 } } },
@@ -789,10 +918,10 @@ function renderCurrent() {
   // 2. Direction — qui conteste qui
   mkChart('chart-direction', {
     type: 'bar', data: { labels: personas, datasets: [
-      { label: 'A corrobore H', data: personas.map(p => g(P[p].directions, 'a_corrobore_h')), backgroundColor: C.a_corrobore_h },
-      { label: 'A conteste H', data: personas.map(p => g(P[p].directions, 'a_conteste_h')), backgroundColor: C.a_conteste_h },
-      { label: 'H corrobore A', data: personas.map(p => -g(P[p].directions, 'h_corrobore_a')), backgroundColor: C.h_corrobore_a },
-      { label: 'H conteste A', data: personas.map(p => -g(P[p].directions, 'h_conteste_a')), backgroundColor: C.h_conteste_a },
+      { label: 'A corroborates H', data: personas.map(p => g(P[p].directions, 'a_corroborates_h')), backgroundColor: C.a_corroborates_h },
+      { label: 'A contests H', data: personas.map(p => g(P[p].directions, 'a_contests_h')), backgroundColor: C.a_contests_h },
+      { label: 'H corroborates A', data: personas.map(p => -g(P[p].directions, 'h_corroborates_a')), backgroundColor: C.h_corroborates_a },
+      { label: 'H contests A', data: personas.map(p => -g(P[p].directions, 'h_contests_a')), backgroundColor: C.h_contests_a },
     ]},
     options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y',
       plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 12 } },
@@ -804,10 +933,10 @@ function renderCurrent() {
   // 3. Direction — evolution
   mkChart('chart-direction-time', {
     type: 'line', data: { labels: weeks, datasets: [
-      { label: 'A conteste H', data: ts.directions.a_conteste_h, borderColor: '#e05050', backgroundColor: '#e0505020', fill: true, tension: .3 },
-      { label: 'H conteste A', data: ts.directions.h_conteste_a, borderColor: '#d4a030', backgroundColor: '#d4a03020', fill: true, tension: .3 },
-      { label: 'A corrobore H', data: ts.directions.a_corrobore_h, borderColor: '#3ddc84', backgroundColor: '#3ddc8415', fill: true, tension: .3 },
-      { label: 'H corrobore A', data: ts.directions.h_corrobore_a, borderColor: '#40d8c0', backgroundColor: '#40d8c015', fill: true, tension: .3 },
+      { label: 'A contests H', data: ts.directions.a_contests_h, borderColor: '#e05050', backgroundColor: '#e0505020', fill: true, tension: .3 },
+      { label: 'H contests A', data: ts.directions.h_contests_a, borderColor: '#d4a030', backgroundColor: '#d4a03020', fill: true, tension: .3 },
+      { label: 'A corroborates H', data: ts.directions.a_corroborates_h, borderColor: '#3ddc84', backgroundColor: '#3ddc8415', fill: true, tension: .3 },
+      { label: 'H corroborates A', data: ts.directions.h_corroborates_a, borderColor: '#40d8c0', backgroundColor: '#40d8c015', fill: true, tension: .3 },
     ]},
     options: { responsive: true, maintainAspectRatio: false,
       plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 12 } } },
@@ -858,36 +987,264 @@ function renderCurrent() {
   });
 
   // 8. Source — sessions vs artefacts
-  mkChart('chart-source', {
-    type: 'bar', data: { labels: weeks, datasets: [
-      { label: 'Sessions', data: ts.frictions_sessions || [], backgroundColor: C.humain + '80' },
-      { label: 'Artefacts', data: ts.frictions_artefacts || [], backgroundColor: C.assistant + '80' },
-    ]},
-    options: { responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 15 } } },
-      scales: { x: { stacked: true, ...noGridX }, y: { stacked: true, ...gridY } } }
-  });
-
   // Tables
   const td = (v, cls='num') => `<td class="${cls}">${v}</td>`;
   const ratioColor = r => r > 2 ? 'var(--ready)' : r < 0.5 ? 'var(--coral)' : 'var(--ice-dim)';
 
   document.getElementById('table-direction').innerHTML = personas.map(p => {
     const d = P[p].directions || {};
-    return `<tr><td class="name">${p}</td>${td(g(d,'a_corrobore_h'))}${td(g(d,'a_conteste_h'))}${td(g(d,'h_corrobore_a'))}${td(g(d,'h_conteste_a'))}<td class="num" style="color:${ratioColor(P[p].direction_ratio)}">${P[p].direction_ratio}</td></tr>`;
+    return `<tr><td class="name">${p}</td>${td(g(d,'a_corroborates_h'))}${td(g(d,'a_contests_h'))}${td(g(d,'h_corroborates_a'))}${td(g(d,'h_contests_a'))}<td class="num" style="color:${ratioColor(P[p].direction_ratio)}">${P[p].direction_ratio}</td></tr>`;
   }).join('');
 
   document.getElementById('table-detail').innerHTML = personas.map(p => {
     const d = P[p], m = d.markers || {}, r = d.resolutions || {};
-    const artCount = d.artefacts || 0;
-    return `<tr><td class="name">${p}</td>${td(d.sessions)}${td(artCount)}${td(g(m,'juste'))}${td(g(m,'contestable'))}${td(g(m,'simplification'))}${td(g(m,'angle_mort'))}${td(g(m,'faux'))}${td(g(r,'ratifie'))}${td(g(r,'conteste'))}${td(g(r,'revise'))}${td(g(r,'rejete'))}${td(d.flux_h_pct+':'+d.flux_a_pct)}${td(d.signaler_pattern_count)}</tr>`;
+    return `<tr><td class="name">${p}</td>${td(d.sessions)}${td(g(m,'sound'))}${td(g(m,'contestable'))}${td(g(m,'simplification'))}${td(g(m,'blind_spot'))}${td(g(m,'refuted'))}${td(g(r,'ratified'))}${td(g(r,'contested'))}${td(g(r,'revised'))}${td(g(r,'rejected'))}${td(d.flux_h_pct+':'+d.flux_a_pct)}${td(d.signaler_pattern_count)}</tr>`;
   }).join('');
 
   const spPersonas = personas.filter(p => P[p].signaler_pattern_count > 0);
   document.getElementById('table-sp').innerHTML = spPersonas.length ? spPersonas.map(p => {
     const d = P[p];
     return `<tr><td class="name">${p}</td>${td(d.signaler_pattern_count)}${td(d.signaler_pattern_erreur_llm)}${td(d.signaler_pattern_conviction)}${td(d.signaler_pattern_resistance)}</tr>`;
-  }).join('') : '<tr><td colspan="5" style="color:var(--ice-muted)">Aucun declenchement</td></tr>';
+  }).join('') : '<tr><td colspan="5" style="color:var(--ice-muted)">No triggers</td></tr>';
+}
+
+// ── Mirror ──
+let mirrorCharts = [];
+
+function renderMirror() {
+  mirrorCharts.forEach(c => c.destroy());
+  mirrorCharts = [];
+
+  const D = getCurrentData();
+  const personas = getFilteredPersonas(D);
+  const records = D.friction_records || [];
+  const N = 25; // window size for baseline/recent
+
+  const mk = ['sound','contestable','simplification','blind_spot','refuted'];
+  const W = 15; // window size for trajectory
+
+  function mkChart2(id, cfg) { const c = new Chart(document.getElementById(id), cfg); mirrorCharts.push(c); }
+
+  // ── Bandeau KPI ──
+  const nonAmendments = records.filter(r => !r.is_amendment);
+  const recentN = nonAmendments.slice(-N);
+  const allOpen = nonAmendments.filter(r => !r.resolution);
+  const recentChallenge = recentN.length > 0 ? Math.round(recentN.filter(r => r.marker !== 'sound').length / recentN.length * 100) : 0;
+  const hContestsA = recentN.filter(r => r.direction === 'h_contests_a').length;
+  const openCount = allOpen.length;
+  const complaisant = hContestsA === 0 && openCount > 10;
+  const personasWithFriction = new Set(nonAmendments.map(r => r.persona)).size;
+  const totalPersonas = Object.keys(D.personas).length;
+  const coverage = totalPersonas > 0 ? Math.round(personasWithFriction / totalPersonas * 100) : 0;
+
+  const complaisantLabel = complaisant ? 'complaisant' : 'sain';
+  const complaisantClass = complaisant ? 'coral' : 'done';
+  const healthClass = recentChallenge > 20 ? 'done' : recentChallenge > 10 ? 'amber' : 'coral';
+  const coverageClass = coverage > 80 ? 'done' : coverage > 50 ? 'amber' : 'coral';
+
+  document.getElementById('mirror-kpi').innerHTML = `
+    <div class="score-card ${complaisantClass}" title="The orchestrator no longer contests personas AND does not arbitrate submitted frictions. Both conditions together signal complacency."><div class="value">${complaisantLabel}</div><div class="label">Orchestrator</div></div>
+    <div class="score-card ${healthClass}" title="Share of recent frictions that contest, flag a simplification or a blind spot. Low challenge % = personas validate without resistance."><div class="value">${recentChallenge}%</div><div class="label">Recent challenge</div></div>
+    <div class="score-card accent" title="Frictions without resolution — piloting debt. The orchestrator sees the list, arbitrates in the next session, the friction leaves the list."><div class="value">${openCount}</div><div class="label">Open frictions</div></div>
+    <div class="score-card ${coverageClass}" title="A persona with no friction is invisible to the protocol. 100% coverage = all personas participate in the friction cycle."><div class="value">${coverage}%</div><div class="label">Coverage (${personasWithFriction}/${totalPersonas})</div></div>
+  `;
+
+  // ── Vue 0: Trajectoire instance ──
+  // Filter records for selected personas, exclude amendments
+  const filteredRecords = records.filter(r => personas.includes(r.persona) && !r.is_amendment);
+
+  // Build windows of W frictions
+  const windows = [];
+  for (let i = 0; i < filteredRecords.length; i += W) {
+    const slice = filteredRecords.slice(i, i + W);
+    if (slice.length < 3) break; // skip tiny trailing windows
+    const total = slice.length;
+    const challenge = slice.filter(r => r.marker !== 'sound').length;
+    const challengePct = Math.round(challenge / total * 100);
+    const markerCounts = {};
+    mk.forEach(m => markerCounts[m] = slice.filter(r => r.marker === m).length);
+    const dateRange = `${slice[0].date} → ${slice[slice.length-1].date}`;
+    windows.push({ label: `w${windows.length + 1}`, challengePct, markerCounts, dateRange, n: total });
+  }
+
+  if (windows.length > 0) {
+    const wLabels = windows.map(w => w.label);
+
+    // Left — Challenge % line
+    mkChart2('chart-trajectory-line', {
+      type: 'line',
+      data: { labels: wLabels, datasets: [{
+        label: 'Challenge %',
+        data: windows.map(w => w.challengePct),
+        borderColor: '#40d8c0', backgroundColor: 'rgba(64,216,192,0.1)',
+        fill: true, tension: .3, borderWidth: 2, pointRadius: 3,
+      }]},
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { afterLabel: ctx => windows[ctx.dataIndex].dateRange + ` (n=${windows[ctx.dataIndex].n})` } }
+        },
+        scales: { y: { beginAtZero: true, max: 100, grid: { color: 'rgba(64,180,160,0.06)' }, ticks: { callback: v => v + '%' } }, x: { grid: { display: false } } }
+      }
+    });
+
+    // Right — Stacked bar distribution
+    mkChart2('chart-trajectory-bar', {
+      type: 'bar',
+      data: { labels: wLabels, datasets: mk.map(m => ({
+        label: m.replace('_', ' '), data: windows.map(w => w.markerCounts[m]), backgroundColor: C[m],
+      }))},
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { boxWidth: 10, padding: 10 } },
+          tooltip: { callbacks: { afterTitle: ctx => windows[ctx[0].dataIndex].dateRange } }
+        },
+        scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, beginAtZero: true, grid: { color: 'rgba(64,180,160,0.06)' } } }
+      }
+    });
+  }
+
+  // ── Per-persona friction records ──
+  const byPersona = {};
+  for (const r of records) {
+    if (!byPersona[r.persona]) byPersona[r.persona] = [];
+    byPersona[r.persona].push(r);
+  }
+
+  // ── Helper: compute profile from a set of records (5 axes) ──
+  const radarLabels = ['Challenge %', 'A→H %', 'H→A %', 'Resolved %', 'Diversity %'];
+  const radarColors = [
+    '#40d8c0', '#a78bfa', '#e05050', '#d4a030', '#3ddc84',
+    '#8aa8d8', '#ff9966', '#66cccc', '#cc99ff', '#ff6699',
+  ];
+
+  function computeProfile(recs) {
+    if (!recs.length) return { challenge: 0, aContestsH: 0, hContestsA: 0, resolved: 0, diversity: 0 };
+    const total = recs.length;
+    const challenge = recs.filter(r => r.marker !== 'sound').length / total;
+    const aContH = recs.filter(r => r.direction === 'a_contests_h').length / total;
+    const hContA = recs.filter(r => r.direction === 'h_contests_a').length / total;
+    const resolved = recs.filter(r => r.resolution).length / total;
+    const resCounts = {};
+    recs.forEach(r => { if (r.resolution) resCounts[r.resolution] = (resCounts[r.resolution] || 0) + 1; });
+    const resTotal = Object.values(resCounts).reduce((a,b) => a+b, 0) || 1;
+    const maxRes = Math.max(...Object.values(resCounts), 0) / resTotal;
+    const diversity = 1 - maxRes;
+    return {
+      challenge: Math.round(challenge * 100),
+      aContestsH: Math.round(aContH * 100),
+      hContestsA: Math.round(hContA * 100),
+      resolved: Math.round(resolved * 100),
+      diversity: Math.round(diversity * 100),
+    };
+  }
+  function profileToArray(p) { return [p.challenge, p.aContestsH, p.hContestsA, p.resolved, p.diversity]; }
+
+  // ── Compute all profiles ──
+  const deltaRows = [];
+  const personaProfiles = {};
+
+  for (const p of personas) {
+    const pRecs = byPersona[p] || [];
+    if (!pRecs.length) continue;
+    const baseline = computeProfile(pRecs.slice(0, N));
+    const recent = computeProfile(pRecs.slice(-N));
+
+    let diag = 'healthy';
+    let diagClass = 'sain';
+    if (recent.challenge < baseline.challenge * 0.5 && baseline.challenge > 10) { diag = 'domesticated'; diagClass = 'domestication'; }
+    else if (recent.aContestsH === 0 && baseline.aContestsH > 5) { diag = 'servile'; diagClass = 'servile'; }
+    else if (recent.resolved === 100 && recent.challenge < 5) { diag = 'complacent'; diagClass = 'complaisant'; }
+
+    personaProfiles[p] = { baseline, recent, diag, diagClass };
+
+    const deltaChall = recent.challenge - baseline.challenge;
+    const arrow = deltaChall > 5 ? '↑' : deltaChall < -5 ? '↓' : '=';
+    deltaRows.push({ p, baseline, recent, deltaChall, arrow, diag, diagClass });
+  }
+
+  // ── Vue 1a: Radar instance agrege (baseline vs recent, toutes frictions) ──
+  const instanceRadarEl = document.getElementById('radar-instance');
+  if (instanceRadarEl && filteredRecords.length > 0) {
+    const instanceBaseline = computeProfile(filteredRecords.slice(0, N));
+    const instanceRecent = computeProfile(filteredRecords.slice(-N));
+    mkChart2('radar-instance', {
+      type: 'radar',
+      data: { labels: radarLabels, datasets: [
+        { label: 'Baseline', data: profileToArray(instanceBaseline),
+          borderColor: 'rgba(160,208,200,0.5)', backgroundColor: 'rgba(160,208,200,0.08)', borderWidth: 1.5, pointRadius: 3 },
+        { label: 'Recent', data: profileToArray(instanceRecent),
+          borderColor: '#40d8c0', backgroundColor: 'rgba(64,216,192,0.12)', borderWidth: 2, pointRadius: 4 },
+      ]},
+      options: {
+        responsive: true, maintainAspectRatio: true,
+        scales: { r: { beginAtZero: true, max: 100, grid: { color: 'rgba(64,180,160,0.08)' }, ticks: { display: false }, pointLabels: { font: { size: 11 } } } },
+        plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 10, font: { size: 11 } } } }
+      }
+    });
+  }
+
+  // ── Vue 1b: Radars persona individuels ──
+  const radarsDiv = document.getElementById('mirror-radars');
+  radarsDiv.innerHTML = '';
+
+  for (const p of personas) {
+    const prof = personaProfiles[p];
+    if (!prof) continue;
+
+    const card = document.createElement('div');
+    card.className = 'radar-card';
+    card.innerHTML = `<div class="persona-name">${p}</div><canvas id="radar-${p}" width="240" height="240"></canvas><div class="diagnostic ${prof.diagClass}">${prof.diag}</div>`;
+    radarsDiv.appendChild(card);
+
+    const chart = new Chart(document.getElementById('radar-' + p), {
+      type: 'radar',
+      data: {
+        labels: radarLabels,
+        datasets: [
+          { label: 'Baseline', data: profileToArray(prof.baseline),
+            borderColor: 'rgba(160,208,200,0.4)', backgroundColor: 'rgba(160,208,200,0.08)', borderWidth: 1, pointRadius: 2 },
+          { label: 'Recent', data: profileToArray(prof.recent),
+            borderColor: '#a78bfa', backgroundColor: 'rgba(167,139,250,0.12)', borderWidth: 1.5, pointRadius: 3 },
+        ]
+      },
+      options: {
+        responsive: false, maintainAspectRatio: true,
+        scales: { r: { beginAtZero: true, max: 100, grid: { color: 'rgba(64,180,160,0.08)' }, ticks: { display: false }, pointLabels: { font: { size: 8 } } } },
+        plugins: { legend: { display: false } }
+      }
+    });
+    mirrorCharts.push(chart);
+  }
+
+  // ── Tableau delta ──
+  document.getElementById('table-delta').innerHTML = deltaRows.map(d =>
+    `<tr><td class="name">${d.p}</td><td class="num">${d.baseline.challenge}%</td><td class="num">${d.recent.challenge}%</td><td class="num">${d.arrow}</td><td class="num">${d.baseline.aContestsH}%</td><td class="num">${d.recent.aContestsH}%</td><td class="diag-${d.diagClass === 'sain' ? 'sain' : d.diagClass === 'domestication' ? 'danger' : 'warn'}">${d.diag}</td></tr>`
+  ).join('');
+
+  // ── Vue 2: Open frictions ──
+  const openRecs = records.filter(r => !r.resolution);
+  const filteredOpen = personas.length === Object.keys(D.personas).length
+    ? openRecs : openRecs.filter(r => personas.includes(r.persona));
+
+  document.getElementById('table-open-frictions').innerHTML = filteredOpen.length
+    ? filteredOpen.map(r =>
+        `<tr><td class="num">${r.date}</td><td style="font-size:10px;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.source}</td><td class="name">${r.persona}</td><td>${r.marker}</td><td style="font-size:10px">${r.direction}</td><td style="font-size:11px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.description || ''}</td></tr>`
+      ).join('')
+    : '<tr><td colspan="6" style="color:var(--done)">No open frictions</td></tr>';
+
+  // ── Vue 3: Carte du silence ──
+  const silencePersonas = personas.filter(p => byPersona[p]);
+  const headerRow = document.getElementById('silence-header');
+  headerRow.innerHTML = '<th>Persona</th>' + mk.map(m => `<th>${m.replace('_',' ')}</th>`).join('') + '<th>Total</th>';
+
+  document.getElementById('table-silence').innerHTML = silencePersonas.map(p => {
+    const pRecs = byPersona[p] || [];
+    const counts = {};
+    mk.forEach(m => counts[m] = pRecs.filter(r => r.marker === m).length);
+    const total = pRecs.length;
+    return `<tr><td class="name">${p}</td>${mk.map(m => `<td class="num ${counts[m] === 0 ? 'zero' : ''}">${counts[m]}</td>`).join('')}<td class="num">${total}</td></tr>`;
+  }).join('');
 }
 </script>
 </body>
