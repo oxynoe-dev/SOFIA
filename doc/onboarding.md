@@ -1,87 +1,87 @@
-# Onboarding d'un nouveau persona
+# Onboarding a new persona
 
-> Comment intégrer un nouveau persona dans une instance SOFIA existante.
+> How to integrate a new persona into an existing SOFIA instance.
 
 ---
 
-## Quand ajouter un persona ?
+## When to add a persona?
 
-Un persona se justifie quand :
-- Un **domaine** émerge que personne ne couvre correctement
-- Deux personas existants sont en **tension** sur un sujet récurrent
-- L'orchestrateur passe du temps à faire un travail qu'un persona pourrait structurer
+A persona is justified when:
+- A **domain** emerges that nobody covers correctly
+- Two existing personas are in **tension** on a recurring subject
+- The orchestrator spends time doing work a persona could structure
 
-Un persona ne se justifie **pas** quand :
-- C'est une tâche, pas un rôle (utilise une note ou un backlog item)
-- Le domaine est couvert mais "pas assez bien" (améliore le persona existant)
+A persona is **not** justified when:
+- It's a task, not a role (use a note or backlog item)
+- The domain is covered but "not well enough" (improve the existing persona)
 
-## Étapes
+## Steps
 
-### 1. Définir le rôle
+### 1. Define the role
 
-Avant de nommer le persona, définir :
-- **Quoi** — quels types de livrables il produit
-- **Pas quoi** — ce qu'il ne fait explicitement pas (le plus important)
-- **Avec qui** — ses interactions principales
+Before naming the persona, define:
+- **What** — what types of deliverables it produces
+- **Not what** — what it explicitly does not do (the most important)
+- **With whom** — its main interactions
 
-### 2. Créer la fiche persona
+### 2. Create the persona file
 
-S'inspirer du format `instance/artefacts/persona.md` et des archétypes dans `instance/archetypes/`. Champs clés :
-- Profil, posture, domaines d'intervention
-- Collaboration (tableau avec/mode)
-- Ce qu'il ne fait pas
+Draw from the format in `canvas/artefacts/persona.md` and archetypes in `canvas/archetypes/`. Key fields:
+- Profile, posture, scope
+- Collaboration (with/mode table)
+- What it does not do
 
-### 3. Créer le workspace
+### 3. Create the workspace
 
 ```
 {instance}/
 ├── shared/orga/
-│   ├── personas/persona-{nom}.md       ← fiche persona (rôle, posture, interdits)
-│   └── contextes/contexte-{nom}-{produit}.md  ← contexte workspace (docs, isolation, workflow)
+│   ├── personas/persona-{name}.md       ← persona file (role, posture, prohibitions)
+│   └── contextes/contexte-{name}-{product}.md  ← workspace context (docs, isolation, workflow)
 └── {workspace}/
-    ├── CLAUDE.md      ← aiguillage runtime (2 lignes → persona + contexte)
-    └── sessions/      ← vide, le persona écrira son premier résumé
+    ├── CLAUDE.md      ← runtime routing (2 lines → persona + context)
+    └── sessions/      ← empty, the persona will write its first summary
 ```
 
-Le CLAUDE.md est un aiguillage de 2 lignes (voir `runtime/claude-code/claude-md.md`). Le contenu vit dans deux fichiers :
-- **persona-{nom}.md** — rôle, posture, interdits, collaboration (template : `instance/artefacts/persona.md`)
-- **contexte-{nom}-{produit}.md** — périmètre, documents clés, isolation, workflow (template : `instance/artefacts/contexte-persona-produit.md`)
+The CLAUDE.md is a 2-line routing (see `runtime/claude-code/claude-md.md`). Content lives in two files:
+- **persona-{name}.md** — role, posture, prohibitions, collaboration (template: `canvas/artefacts/persona.md`)
+- **contexte-{name}-{product}.md** — scope, key documents, isolation, workflow (template: `canvas/artefacts/contexte-persona-produit.md`)
 
-### 4. Briefer le persona
+### 4. Brief the persona
 
-À la première session, le persona doit :
-1. Lire sa fiche persona
-2. Lire les documents clés de son domaine
-3. Scanner `shared/notes/` pour d'éventuels messages
-4. Déposer un premier résumé de session
+At the first session, the persona must:
+1. Read its persona file
+2. Read key documents in its domain
+3. Scan `shared/notes/` for any messages
+4. Deposit a first session summary
 
-### 5. Présenter au reste de l'équipe
+### 5. Introduce to the rest of the team
 
-Déposer une note dans `shared/notes/` :
+Deposit a note in `shared/notes/`:
 
 ```
-note-equipe-nouveau-persona-{auteur}.md
+note-team-new-persona-{author}.md
 ```
 
-Contenu : qui, pourquoi, quel périmètre, avec qui il interagit.
-Les autres personas le découvriront à leur prochaine ouverture de session.
+Content: who, why, what scope, who it interacts with.
+Other personas will discover it at their next session opening.
 
-## Exemple : onboarding Sofia (Katen, mars 2026)
+## Example: onboarding Sofia (Katen, March 2026)
 
-Sofia a été onboardée par Nora (UX) :
-1. Fiche persona définie avec posture "le détail fait le produit"
-2. Workspace `graphisme/` créé avec CLAUDE.md spécifique
-3. Brief : liste de lecture ciblée (design-principles, design-system, feature-v022)
-4. Première session : exploration visuelle, planche de référence v1
+Sofia was onboarded by Nora (UX):
+1. Persona file defined with posture "the detail makes the product"
+2. `graphisme/` workspace created with specific CLAUDE.md
+3. Brief: targeted reading list (design-principles, design-system, feature-v022)
+4. First session: visual exploration, reference board v1
 
-Le brief était un document dédié (`onboarding-sofia.md`) — court, ordonné,
-avec des renvois vers les docs existants plutôt que du contenu dupliqué.
+The brief was a dedicated document (`onboarding-sofia.md`) — short, ordered,
+with references to existing docs rather than duplicated content.
 
 ## Anti-patterns
 
-- **Le persona fourre-tout** — "il fait un peu de tout". Si tu ne peux pas
-  dire ce qu'il ne fait pas, il n'est pas calibré.
-- **Le persona orphelin** — aucune interaction avec les autres. Un persona
-  isolé ne génère pas de friction utile.
-- **Le persona miroir** — il fait la même chose qu'un autre avec un nom
-  différent. Fusionne plutôt que de dédoubler.
+- **The catch-all persona** — "it does a bit of everything". If you can't
+  say what it doesn't do, it's not calibrated.
+- **The orphan persona** — no interaction with others. An isolated persona
+  generates no useful friction.
+- **The mirror persona** — it does the same thing as another with a different
+  name. Merge rather than duplicate.

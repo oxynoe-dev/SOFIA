@@ -1,42 +1,42 @@
-# Lexique — template
+# Glossary — template
 
-> Glossaire partagé des termes du projet.
+> Shared glossary of project terms.
 
 ---
 
-## Pourquoi un lexique ?
+## Why a glossary?
 
-Quand 7 personas travaillent sur le même projet, les mots dérivent.
-"Composition" peut signifier un fichier .kc, un concept CVM, ou un
-pattern réutilisable selon qui parle.
+When 7 personas work on the same project, words drift.
+"Composition" can mean a .kc file, a CVM concept, or a
+reusable pattern depending on who's talking.
 
-Le lexique fixe les termes. Chaque persona le lit, personne ne réinvente.
+The glossary fixes terms. Every persona reads it, nobody reinvents.
 
 ## Format
 
 ```markdown
-## {Terme}
+## {Term}
 
-**Définition** : {une phrase}
-**Contexte** : {où ce terme s'utilise}
-**Ne pas confondre avec** : {termes proches}
-**Décidé le** : {date} — {référence ADR ou session}
+**Definition**: {one sentence}
+**Context**: {where this term is used}
+**Not to be confused with**: {related terms}
+**Decided on**: {date} — {ADR or session reference}
 ```
 
 ## Conventions
 
-- Un terme = une entrée. Pas de synonymes dans la même entrée.
-- Si un terme a changé de sens (renommage, évolution), documenter l'historique.
-- L'orchestrateur arbitre les conflits de définition.
-- Le lexique vit dans `shared/orga/lexique.md` au niveau de l'instance.
+- One term = one entry. No synonyms in the same entry.
+- If a term changed meaning (rename, evolution), document the history.
+- The orchestrator arbitrates definition conflicts.
+- The glossary lives in `shared/orga/lexique.md` at the instance level.
 
-## Exemple
+## Example
 
 ```markdown
 ## Kata
 
-**Définition** : une composition Katen — un programme visuel exécutable.
-**Contexte** : fichiers .kc, documentation utilisateur, UI.
-**Ne pas confondre avec** : "composition" (concept CVM interne), "pattern" (template réutilisable).
-**Décidé le** : 2026-03-22 — ADR-054.
+**Definition**: a Katen composition — an executable visual program.
+**Context**: .kc files, user documentation, UI.
+**Not to be confused with**: "composition" (internal CVM concept), "pattern" (reusable template).
+**Decided on**: 2026-03-22 — ADR-054.
 ```

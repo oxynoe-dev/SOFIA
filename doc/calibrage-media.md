@@ -1,32 +1,32 @@
-## Calibrage média
+## Media calibration
 
-![Pattern — Calibrage par le média](figures/fig-pattern-calibrage-media.svg)
+![Pattern — Media calibration](figures/fig-pattern-calibrage-media.svg)
 
-Définir un persona par ce qu'il produit (son média), pas seulement par sa compétence.
+Define a persona by what it produces (its medium), not only by its competence.
 
 ### Structure
 
-Chaque persona a un média de sortie explicite : le type d'artefact qu'il est le seul à produire. Ce média délimite son périmètre de production mieux qu'une description de compétences, parce qu'il est observable et non ambigu.
+Each persona has an explicit output medium: the type of artefact only it produces. This medium delimits its production scope better than a competence description, because it is observable and unambiguous.
 
-Un persona qui ne produit pas d'artefact propre est un challenger, pas un producteur. Cette distinction évite les chevauchements et les conflits de territoire.
+A persona that produces no artefact of its own is a challenger, not a producer. This distinction avoids overlaps and territory conflicts.
 
-### Quand le reconnaître
+### When to recognize it
 
-- Deux personas semblent couvrir le même sujet et on ne sait pas qui produit quoi.
-- Un nouveau rôle émerge et il faut le positionner par rapport aux existants.
-- Un persona "challenge" mais on le confond avec un producteur.
+- Two personas seem to cover the same subject and it's unclear who produces what.
+- A new role emerges and needs positioning relative to existing ones.
+- A persona "challenges" but is confused with a producer.
 
-### Exemple
+### Example
 
-Sofia produit des PDF, PPTX et visuels pour les réseaux sociaux. Winston produit du markdown source (livre bleu, contenus éditoriaux). Nora challenge l'UX mais ne produit pas de livrable autonome — elle annote les livrables des autres. Le média clarifie instantanément qui fait quoi.
+Sofia produces PDFs, PPTXs, and social media visuals. Winston produces markdown source (blue book, editorial content). Nora challenges UX but doesn't produce standalone deliverables — she annotates others' deliverables. The medium instantly clarifies who does what.
 
-### Variantes
+### Variants
 
-- **Média partagé** : deux personas produisent du markdown, mais sur des périmètres disjoints (ex. Winston sur le contenu éditorial, Mira sur les specs). Le média seul ne suffit pas — il faut croiser avec le périmètre.
-- **Média composite** : un persona produit plusieurs formats (ex. Sofia : PDF + visuels). Le point commun est le canal de sortie (publication externe), pas le format.
+- **Shared medium**: two personas produce markdown, but on disjoint scopes (e.g., Winston on editorial content, Mira on specs). The medium alone isn't enough — cross-reference with scope.
+- **Composite medium**: a persona produces multiple formats (e.g., Sofia: PDF + visuals). The common thread is the output channel (external publication), not the format.
 
-### Risques
+### Risks
 
-- **Rigidité** : figer le média trop tôt empêche un persona d'évoluer.
-- **Média sans valeur** : définir un média pour le principe, alors que le persona n'a pas de production propre utile.
-- **Confusion format/rôle** : le média est un indicateur, pas une identité. Un persona qui ne produit que du markdown n'est pas "le persona markdown".
+- **Rigidity**: freezing the medium too early prevents a persona from evolving.
+- **Valueless medium**: defining a medium for the sake of it, when the persona has no useful standalone production.
+- **Format/role confusion**: the medium is an indicator, not an identity. A persona that only produces markdown is not "the markdown persona".

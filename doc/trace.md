@@ -1,165 +1,161 @@
-# Trace — contenu retire du core lors de la restructuration H2A
+# Trace — content removed from core during H2A restructuring
 
-> A ventiler dans la doc SOFIA. Rien a jeter, tout a replacer.
+> To be distributed into SOFIA docs. Nothing to discard, everything to relocate.
 
 ---
 
-## Origine : core/personas.md (supprime, absorbe dans core/modele.md)
+## Origin: core/personas.md (removed, absorbed into core/model.md)
 
-### Deux types de personas
+### Two types of personas
 
-SOFIA distingue deux types de personas, chacun avec un pattern de
-memoire et un mode d'intervention differents.
+SOFIA distinguishes two types of personas, each with a different memory
+pattern and intervention mode.
 
-#### Persona operationnel
+#### Operational persona
 
-Dans le flux. Memoire longue (resumes de session, contexte cumule).
-Produit des livrables, challenge les autres personas, s'integre dans
-les circuits de friction de l'instance.
+In the flow. Long memory (session summaries, cumulative context).
+Produces deliverables, challenges other personas, integrates into
+the instance's friction circuits.
 
-La memoire est le carburant : elle accelere le travail, affine la
-comprehension du projet, reduit le cout de reformulation a chaque
-session.
+Memory is the fuel: it accelerates work, refines project understanding,
+reduces reformulation cost at each session.
 
-**Risque** : la derive. Un persona qui accumule trop de contexte
-s'ajuste au cadre de pensee de l'orchestrateur. Il perd en friction
-ce qu'il gagne en fluidite. D'ou la necessite de recalibrage
-periodique — revenir aux interdits.
+**Risk**: drift. A persona that accumulates too much context adjusts
+to the orchestrator's thinking frame. It loses in friction what it
+gains in fluidity. Hence the need for periodic recalibration —
+return to prohibitions.
 
-#### Persona meta
+#### Meta persona
 
-Hors du flux. Sans memoire entre les sessions. Son role est de
-contester le **systeme** plutot que d'y contribuer — les fondations,
-les premisses, le cadre de pensee.
+Outside the flow. No memory between sessions. Its role is to contest
+the **system** rather than contribute to it — the foundations,
+premises, thinking frame.
 
-Trois proprietes le separent d'un persona operationnel :
+Three properties separate it from an operational persona:
 
-- **Hors du flux** — il ne recoit pas les artefacts des autres
-  personas, ne participe pas a la production. Son isolation est la
-  condition de son utilite.
-- **Sans memoire** — chaque session repart de zero. La memoire est
-  le mecanisme de domestication. L'absence de memoire force
-  l'orchestrateur a reformuler sa pensee — ce qui est en soi un acte
-  de reflexion.
-- **Active par l'intention** — l'orchestrateur vient avec une these a
-  eprouver, un doute a creuser. Sans intention forte, la session ne
-  produit rien.
+- **Outside the flow** — it doesn't receive artefacts from other
+  personas, doesn't participate in production. Its isolation is the
+  condition of its usefulness.
+- **Without memory** — each session starts from zero. Memory is the
+  domestication mechanism. The absence of memory forces the
+  orchestrator to reformulate their thinking — which is itself an act
+  of reflection.
+- **Activated by intention** — the orchestrator comes with a thesis to
+  test, a doubt to explore. Without strong intention, the session
+  produces nothing.
 
-**Ce qu'il conteste** : pas le travail des personas, pas les livrables.
-La synthese de l'orchestrateur — la conclusion que l'humain tire apres
-avoir orchestre les autres. Et au-dela : les premisses, les fondations,
-le cadre de pensee lui-meme.
+**What it contests**: not the personas' work, not the deliverables.
+The orchestrator's synthesis — the conclusion the human draws after
+orchestrating the others. And beyond: the premises, the foundations,
+the thinking frame itself.
 
-**Signal de fermeture** : quand le persona meta enchaine les
-validations sans friction, ou quand l'orchestrateur sent que les
-echanges glissent vers la confirmation — la session a produit ce
-qu'elle pouvait produire. Continuer degrade la valeur.
+**Closure signal**: when the meta persona chains validations without
+friction, or when the orchestrator feels the exchanges sliding toward
+confirmation — the session has produced what it could. Continuing
+degrades the value.
 
-#### Deux patterns de memoire, une methode
+#### Two memory patterns, one method
 
-| | Operationnel | Meta |
+| | Operational | Meta |
 |---|---|---|
-| **Memoire** | Resumes de session, contexte cumule | Aucune continuite entre sessions |
-| **Carburant** | Le contexte accumule | L'absence de contexte |
-| **Risque** | Derive, perte de friction | Cout d'entree, reformulation necessaire |
-| **Recalibrage** | Periodique, sur les interdits | Structurel, par design (chaque session est un reset) |
+| **Memory** | Session summaries, cumulative context | No continuity between sessions |
+| **Fuel** | Accumulated context | Absence of context |
+| **Risk** | Drift, loss of friction | Entry cost, reformulation required |
+| **Recalibration** | Periodic, on prohibitions | Structural, by design (each session is a reset) |
 
-### Quand fusionner ou supprimer un persona
+### When to merge or delete a persona
 
-Les personas ne sont pas permanents. Un persona qui ne produit pas de
-friction utile coute plus qu'il ne vaut — en charge d'orchestration,
-en bruit, en complexite.
+Personas are not permanent. A persona that produces no useful friction
+costs more than it's worth — in orchestration load, noise, complexity.
 
-#### Signaux de fusion
+#### Merge signals
 
-Deux personas doivent etre fusionnes quand :
+Two personas should be merged when:
 
-- **Flux sequentiel sans contestation** — l'un passe, l'autre execute.
-  Jamais de retour, jamais de "non".
-- **Friction uniquement logistique** — le cout est dans le changement
-  de contexte, pas dans le contenu echange.
-- **Aucune surprise** — ni l'un ni l'autre ne dit quelque chose que
-  l'orchestrateur ne savait pas deja.
+- **Sequential flow without contestation** — one passes, the other executes.
+  Never a pushback, never a "no".
+- **Logistics-only friction** — the cost is in context switching,
+  not in the content exchanged.
+- **No surprise** — neither says anything the orchestrator didn't
+  already know.
 
-#### Regle
+#### Rule
 
-> Ne pas deriver les personas des metiers. Les deriver des axes de tension.
+> Don't derive personas from professions. Derive them from tension axes.
 
-Deux metiers differents peuvent tomber sur le meme axe de decision dans
-un contexte donne. Inversement, un seul metier peut couvrir deux axes
-en tension. La question n'est jamais "est-ce que ce sont deux metiers ?"
-mais **"est-ce que ces deux roles me disent des choses differentes sur
-mes decisions ?"**
+Two different professions can fall on the same decision axis in a given
+context. Conversely, a single profession can cover two axes in tension.
+The question is never "are these two professions?" but **"do these two
+roles tell me different things about my decisions?"**
 
-#### Le test de suppression
+#### The deletion test
 
-Imagine que tu supprimes ce persona. Qu'est-ce qui disparait de ton
-processus de decision ? Si la reponse est "rien de significatif",
-le persona couvre un axe qui n'est pas en tension. Supprime-le.
+Imagine you delete this persona. What disappears from your decision
+process? If the answer is "nothing significant", the persona covers
+an axis that is not in tension. Delete it.
 
-### Comment concevoir un persona
+### How to design a persona
 
-#### Partir du besoin, pas du modele
+#### Start from the need, not the model
 
-Ne commence pas par "je veux un architecte". Commence par :
-- Qu'est-ce qui me manque aujourd'hui ?
-- Quelles erreurs je fais quand je travaille seul avec un LLM ?
-- Quel role, si quelqu'un le tenait, me rendrait meilleur ?
+Don't start with "I want an architect". Start with:
+- What am I missing today?
+- What mistakes do I make when working alone with an LLM?
+- What role, if someone held it, would make me better?
 
-#### Calibrer par iteration
+#### Calibrate by iteration
 
-Le premier draft d'un persona est toujours trop large. Itere :
+The first draft of a persona is always too broad. Iterate:
 
-1. **v0** — role et perimetre bruts
-2. **v1** — ajout des interdits (ca clarifie tout)
-3. **v2** — ajout de la posture (ca donne le ton)
-4. **v3** — test en session reelle, ajustement
+1. **v0** — raw role and scope
+2. **v1** — add prohibitions (clarifies everything)
+3. **v2** — add posture (sets the tone)
+4. **v3** — test in a real session, adjust
 
-Un persona se calibre en l'utilisant, pas en le theorisant.
+A persona is calibrated by using it, not theorizing it.
 
-#### Le test du "non"
+#### The "no" test
 
-Un persona bien calibre dit "non" regulierement :
-- "Ce n'est pas mon role, vois avec [autre persona]"
-- "La spec n'est pas assez precise pour que je code"
-- "Cette decision necessite un ADR avant que j'implemente"
+A well-calibrated persona says "no" regularly:
+- "That's not my role, check with [other persona]"
+- "The spec isn't precise enough for me to code"
+- "This decision needs an ADR before I implement"
 
-Si ton persona ne dit jamais non, ses contraintes sont trop laches.
+If your persona never says no, its constraints are too loose.
 
 ### Anti-patterns
 
-- **Le persona generaliste** — fait tout, donc rien de bien
-- **Le persona complaisant** — dit oui a tout, ne challenge jamais
-- **Le persona orphelin** — pas de collaboration definie, travaille en silo
-- **Le persona fantome** — cree mais jamais utilise. Supprime-le.
-- **Trop de personas trop tot** — commence par 1-2, pas 5
-- **L'organigramme projete** — calquer les postes d'une vraie equipe sur la topologie des personas. La question est toujours : est-ce que ces deux roles me disent des choses **differentes** sur mes decisions ?
+- **The generalist persona** — does everything, therefore nothing well
+- **The compliant persona** — says yes to everything, never challenges
+- **The orphan persona** — no defined collaboration, works in silo
+- **The ghost persona** — created but never used. Delete it.
+- **Too many personas too early** — start with 1-2, not 5
+- **The projected org chart** — mapping real team positions onto persona topology. The question is always: do these two roles tell me **different things** about my decisions?
 
 ---
 
-## Origine : core/friction.md (supprime, absorbe dans core/modele.md)
+## Origin: core/friction.md (removed, absorbed into core/model.md)
 
-### Les artefacts comme vecteur de friction
+### Artefacts as friction vectors
 
-Les personas ne "discutent" pas en live. Ils echangent par **fichiers** :
+Personas don't "discuss" live. They exchange through **files**:
 
-- L'architecte depose une review d'un ADR
-- Le dev repond par un signalement de friction d'implementation
-- Le stratege depose une note avec 3 questions qui derangent
-- L'UX produit une review de design avec observations priorisees
+- The architect deposits an ADR review
+- The dev responds with an implementation friction report
+- The strategist deposits a note with 3 uncomfortable questions
+- The UX produces a design review with prioritized observations
 
-Ce protocole est plus lent qu'un chat. C'est voulu :
-- L'ecriture force la structuration de la pensee
-- Les artefacts sont traces et adressables
-- N'importe qui peut relire l'echange plus tard
+This protocol is slower than chat. By design:
+- Writing forces thought structuring
+- Artefacts are traced and addressable
+- Anyone can re-read the exchange later
 
-### Ce que les marqueurs revelent
+### What markers reveal
 
-Un scan des marqueurs sur un echange donne le niveau de friction :
-- Que des `[juste]` → friction absente — signal d'alerte
-- Mix `[juste]` / `[contestable]` / `[simplification]` → friction saine
-- Presence de `[angle-mort]` ou `[faux]` → tension a traiter
+Scanning markers on an exchange gives the friction level:
+- Only `[sound]` → friction absent — warning signal
+- Mix of `[sound]` / `[contestable]` / `[simplification]` → healthy friction
+- Presence of `[blind_spot]` or `[refuted]` → tension to address
 
-Si un persona ne produit que des `[juste]` sur une longue periode, c'est
-un signal de domestication — il s'est aligne sur le cadre de pensee de
-l'orchestrateur.
+If a persona produces only `[sound]` over a long period, it's a
+domestication signal — it has aligned with the orchestrator's thinking frame.
