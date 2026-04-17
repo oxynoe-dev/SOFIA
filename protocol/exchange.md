@@ -1,163 +1,163 @@
 # Exchange
 
-> Sessions et artefacts — tout passe par l'orchestrateur.
+> Sessions and artefacts — everything goes through the orchestrator.
 
 ---
 
-## Principe
+## Principle
 
-Tout echange entre l'orchestrateur et un persona est soit une **session** (synchrone), soit un **artefact** (depot asynchrone). Les personas ne communiquent jamais directement — l'orchestrateur est le routeur unique.
+Every exchange between the orchestrator and a persona is either a **session** (synchronous) or an **artefact** (asynchronous deposit). Personas never communicate directly — the orchestrator is the sole router.
 
-Principe source : `core/principes.md` — l'orchestrateur arbitre toutes les decisions ; `core/modele.md` — l'echange est une entite constitutive.
+Source principle: `core/principles.md` — the orchestrator arbitrates all decisions; `core/model.md` — exchange is a constitutive entity.
 
-## Dimensions communes
+## Common dimensions
 
-Tout echange (session ou artefact) porte :
+Every exchange (session or artefact) carries:
 
-| Dimension | Valeurs | Obligatoire |
-|-----------|---------|-------------|
-| **instance** | Reference a l'instance | DOIT |
-| **espace** | Espace du persona concerne | DOIT |
-| **date_heure** | Date et heure de l'echange | DOIT |
+| Dimension | Values | Required |
+|-----------|--------|----------|
+| **instance** | Reference to the instance | MUST |
+| **space** | Space of the concerned persona | MUST |
+| **datetime** | Date and time of the exchange | MUST |
 
-La distinction session / artefact est structurelle — une session est synchrone, un artefact est un depot asynchrone.
+The session / artefact distinction is structural — a session is synchronous, an artefact is an asynchronous deposit.
 
-Tout echange genere 0..* frictions (voir `friction.md`) et 0..* contributions (voir `contribution.md`).
+Every exchange generates 0..* frictions (see `friction.md`) and 0..* contributions (see `contribution.md`).
 
 ---
 
 ## Sessions
 
-### Principe
+### Principle
 
-Une session est le mecanisme principal d'interaction humain-assistant. L'orchestrateur initie, le persona produit, l'orchestrateur cloture.
+A session is the primary mechanism for human-assistant interaction. The orchestrator initiates, the persona produces, the orchestrator closes.
 
 ### Definition
 
-Une session est un echange synchrone entre l'orchestrateur et un persona.
+A session is a synchronous exchange between the orchestrator and one persona.
 
-### Dimensions specifiques
+### Specific dimensions
 
-| Dimension | Valeurs | Obligatoire |
-|-----------|---------|-------------|
-| **persona** | Identifiant du persona | DOIT |
-| **identifiant** | Unique | DOIT |
+| Dimension | Values | Required |
+|-----------|--------|----------|
+| **persona** | Persona identifier | MUST |
+| **identifier** | Unique | MUST |
 
-### Cycle de vie
+### Lifecycle
 
-1. **Ouverture** — l'orchestrateur initie la session. Le persona DOIT consulter la derniere trace de session de son espace avant toute intervention.
-2. **Echange** — dialogue libre. L'orchestrateur apporte du contexte, des directives, des artefacts d'autres personas. Le persona produit dans son perimetre.
-3. **Fermeture** — le persona DOIT produire un resume structure avant cloture.
+1. **Opening** — the orchestrator initiates the session. The persona MUST consult the latest session trace in its space before any intervention.
+2. **Exchange** — free dialogue. The orchestrator brings context, directives, artefacts from other personas. The persona produces within its scope.
+3. **Closing** — the persona MUST produce a structured summary before closure.
 
-### Resume de session
+### Session summary
 
-Chaque session DOIT produire une trace identifiable portant les dimensions ci-dessus.
+Each session MUST produce an identifiable trace carrying the dimensions above.
 
-#### Sections protocolaires (DOIT)
+#### Protocol sections (MUST)
 
-Couche protocolaire — contenu deterministe et verifiable.
+Protocol layer — deterministic and verifiable content.
 
-| Section | Contenu |
+| Section | Content |
 |---------|---------|
-| Produit | Liste des artefacts crees ou modifies |
-| Decisions | Choix retenus pendant la session |
-| Notes deposees | Artefacts deposes dans l'espace partage |
-| Ouvert | Questions non resolues, items en attente |
+| Produit | List of artefacts created or modified |
+| Decisions | Choices made during the session |
+| Notes deposees | Artefacts deposited in the shared space |
+| Ouvert | Unresolved questions, pending items |
 
-Chaque section DOIT etre presente. Si rien a reporter : "Aucun".
+Each section MUST be present. If nothing to report: "None".
 
-Contraintes :
-- Pas de prose — listes courtes uniquement.
-- 30 lignes max pour l'ensemble du resume.
+Constraints:
+- No prose — short lists only.
+- 30 lines max for the entire summary.
 
-#### Sections observationnelles (DEVRAIT / PEUT)
+#### Observational sections (SHOULD / MAY)
 
-Couche observationnelle — contenu inferentiel, soumis a validation humaine.
+Observational layer — inferential content, subject to human validation.
 
-| Section | Contenu | Statut |
+| Section | Content | Status |
 |---------|---------|--------|
-| Friction | Frictions qualifiees avec tag de resolution (voir `friction.md`) | DEVRAIT |
-| Flux | Apports epistemiques (voir `contribution.md`) | PEUT |
+| Friction | Qualified frictions with resolution tag (see `friction.md`) | SHOULD |
+| Flux | Epistemic contributions (see `contribution.md`) | MAY |
 
-Le persona pre-remplit ces sections. L'orchestrateur PEUT corriger, completer ou supprimer le contenu.
+The persona pre-fills these sections. The orchestrator MAY correct, complete, or remove content.
 
-### Tracabilite
+### Rereading exchange rules
 
-Chaque session DOIT produire une trace identifiable. Le mecanisme de persistance est defini dans `implementation/implementation.md`.
+The persona MUST reread the instance's exchange rules before:
+- any artefact production (note, review, feature)
+- any session closure (summary)
+
+This rereading ensures that friction markers, resolution tags, frontmatter, and naming are compliant. Without rereading, the persona drifts — especially in long sessions where initial context is compressed. The rereading mechanism (conventions file, hook, runtime injection) is an implementation choice.
+
+### Traceability
+
+Each session MUST produce an identifiable trace. The persistence mechanism is defined in `implementation/implementation.md`.
 
 ---
 
 ## Artefacts
 
-### Principe
+### Principle
 
-Les personas ne communiquent jamais directement. Tout echange inter-personas transite par l'orchestrateur via l'espace partage.
+Personas never communicate directly. All inter-persona exchanges transit through the orchestrator via the shared space.
 
 ### Definition
 
-Un artefact est un depot asynchrone dans l'espace partage par un persona, a destination d'un autre persona ou de l'equipe.
+An artefact is an asynchronous deposit in the shared space by a persona, destined for another persona or the team.
 
-### Dimensions specifiques
+### Specific dimensions
 
-| Dimension | Valeurs | Obligatoire |
-|-----------|---------|-------------|
-| **from** | Persona qui depose l'artefact | DOIT |
-| **to** | Persona ou `equipe` | DOIT |
-| **nature** | `signal`, `question`, `demande`, `reponse` | DOIT |
-| **status** | `new` → `read` → `done` | DOIT |
+| Dimension | Values | Required |
+|-----------|--------|----------|
+| **from** | Persona depositing the artefact | MUST |
+| **to** | Persona or `team` | MUST |
+| **nature** | `signal`, `question`, `request`, `response` | MUST |
+| **status** | `new` → `read` → `done` | MUST |
 
-> **FR retrocompat.** Le parser accepte aussi les champs et valeurs FR : `de`/`pour`/`statut` (champs), `nouveau`/`lu`/`traite` (statuts), `ratifie`/`conteste`/`revise`/`rejete` (resolutions).
+> **FR retrocompat.** The parser also accepts FR fields and values: `de`/`pour`/`statut` (fields), `nouveau`/`lu`/`traite` (statuses), `ratifie`/`conteste`/`revise`/`rejete` (resolutions).
 
-Le champ `nature` DOIT utiliser l'un des 4 types ci-dessus. Le champ `status` DOIT suivre le cycle de vie indique.
+The `nature` field MUST use one of the 4 types above. The `status` field MUST follow the indicated lifecycle.
 
-### Relecture des regles d'echange
+### Artefact resolution
 
-Le persona DOIT relire les regles d'echange de l'instance avant :
-- toute production d'artefact (note, review, feature)
-- toute fermeture de session (resume)
+The resolution MUST live in the artefact that carries the friction — not in a separate artefact (return note, response). The orchestrator annotates each friction point with its resolution tag (`→ ratified`, `→ contested`, `→ revised`, `→ rejected`) directly in the source file, then sets status to `done`.
 
-Cette relecture garantit que les marqueurs de friction, les tags de resolution, le frontmatter et le nommage sont conformes. Sans relecture, le persona derive — surtout en session longue ou le contexte initial est compresse. Le mecanisme de relecture (fichier de conventions, hook, injection runtime) releve de l'implementation.
+This rule ensures that a friction line carries the complete cycle (marker + initiative + resolution) in a single file. The parser does not need to join multiple artefacts to reconstruct the cycle.
 
-### Resolution des artefacts
+A return note (response to a review) MAY accompany the resolution to communicate decision context, but it MUST NOT carry friction markers or resolution tags — otherwise the parser would count duplicates.
 
-La resolution DOIT vivre dans l'artefact qui porte la friction — pas dans un artefact separe (note de retour, reponse). C'est l'orchestrateur qui annote chaque point de friction avec son tag de resolution (`→ ratified`, `→ contested`, `→ revised`, `→ rejected`) directement dans le fichier source, puis passe le statut a `done`.
+### Friction in artefacts
 
-Cette regle garantit qu'une ligne de friction porte le cycle complet (marqueur + initiative + resolution) dans un seul fichier. Le parser n'a pas besoin de joindre plusieurs artefacts pour reconstituer le cycle.
+An artefact MAY carry friction markers (see `friction.md`). This is typical of reviews and notes that take a position on another persona's work.
 
-Une note de retour (reponse a une review) PEUT accompagner la resolution pour communiquer le contexte de la decision, mais elle NE DOIT PAS porter de marqueurs de friction ni de tags de resolution — sinon le parser compterait des doublons.
+Markers follow the same format as in sessions: marker, description, initiative tag. The artefact emitter is the friction emitter.
 
-### Friction dans les artefacts
+### Contribution in artefacts
 
-Un artefact PEUT porter des marqueurs de friction (voir `friction.md`). C'est le cas typique des reviews et des notes qui prennent position sur le travail d'un autre persona.
+An artefact MAY carry contributions (see `contribution.md`). This is typical of reviews and notes involving input from both parties: the orchestrator brings source material (`[H]`), the persona brings analysis (`[A]`). The `[H]`/`[A]` direction applies as in sessions — the artefact is produced during a session.
 
-Les marqueurs suivent le meme format que dans les sessions : marqueur, description, tag d'initiative. L'emetteur de l'artefact est l'emetteur de la friction.
+### Routing
 
-### Contribution dans les artefacts
+1. Persona A deposits an artefact in the shared space (`status: new`)
+2. The orchestrator reads the artefact and decides to route it
+3. The orchestrator opens a session with Persona B and presents the artefact (`status: read`)
+4. Persona B processes and MAY deposit a response (`nature: response`)
+5. The original artefact moves to `status: done`
 
-Un artefact PEUT porter des contributions (voir `contribution.md`). C'est le cas typique des reviews et des notes qui impliquent un apport des deux parties : l'orchestrateur apporte la matiere source (`[H]`), le persona apporte l'analyse (`[A]`). La direction `[H]`/`[A]` s'applique comme dans les sessions — l'artefact est produit pendant une session.
+The orchestrator MUST be the router of all exchanges. A persona MUST NOT directly consult an artefact not intended for them.
 
-### Routage
+### Cross-instance exchanges
 
-1. Persona A depose un artefact dans l'espace partage (`status: new`)
-2. L'orchestrateur lit l'artefact et decide de le router
-3. L'orchestrateur ouvre une session avec Persona B et lui presente l'artefact (`status: read`)
-4. Persona B traite et PEUT deposer une reponse (`nature: reponse`)
-5. L'artefact original passe a `status: done`
+When the orchestrator routes an artefact between two instances, the artefact MUST be deposited in the shared space of the recipient's instance — not the emitter's.
 
-L'orchestrateur DOIT etre le routeur de tous les echanges. Un persona NE DOIT PAS consulter directement un artefact qui ne lui est pas destine.
+1. The orchestrator instructs Persona A (instance X) to produce an artefact for Persona B (instance Y)
+2. Persona A produces the artefact during its session
+3. The orchestrator deposits the artefact in `shared/` of instance Y (`status: new`)
+4. The orchestrator opens a session with Persona B (instance Y) and presents the artefact
+5. The lifecycle (routing, resolution, archiving) follows instance Y's rules
 
-### Echanges cross-instance
+The emitting persona does not need to know the recipient's instance. The orchestrator crosses instance boundaries — personas remain isolated.
 
-Quand l'orchestrateur route un artefact entre deux instances, l'artefact DOIT etre depose dans l'espace partage de l'instance du destinataire — pas dans celui de l'emetteur.
+### Archiving
 
-1. L'orchestrateur instruit Persona A (instance X) de produire un artefact pour Persona B (instance Y)
-2. Persona A produit l'artefact pendant sa session
-3. L'orchestrateur depose l'artefact dans `shared/` de l'instance Y (`status: new`)
-4. L'orchestrateur ouvre une session avec Persona B (instance Y) et lui presente l'artefact
-5. Le cycle de vie (routage, resolution, archivage) suit les regles de l'instance Y
-
-Le persona emetteur n'a pas besoin de connaitre l'instance du destinataire. C'est l'orchestrateur qui traverse les frontieres d'instance — les personas restent isoles.
-
-### Archivage
-
-Quand un artefact passe a `status: done`, il DEVRAIT etre archive. Le mecanisme d'archivage est defini dans `implementation/implementation.md`.
+When an artefact moves to `status: done`, it SHOULD be archived. The archiving mechanism is defined in `implementation/implementation.md`.

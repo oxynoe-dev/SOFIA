@@ -1,79 +1,79 @@
 # Contribution
 
-> Qui a amene quoi.
+> Who brought what.
 
 ---
 
 ## Definition
 
-La contribution capture la direction et la nature des apports pendant une session : qui a nourri quoi. C'est le flux epistemique de l'echange synchrone humain-assistant.
+Contribution captures the direction and nature of inputs during a session: who fed what. It is the epistemic flow of the synchronous human-assistant exchange.
 
 ## Dimensions
 
-| Dimension | Valeurs | Obligatoire |
-|-----------|---------|-------------|
-| **echange** | Reference a l'echange (session ou artefact) qui a genere la contribution | DOIT |
-| **direction** | `[H]` (humain apporte) ou `[A]` (assistant apporte) | DOIT |
-| **type** | `substance`, `structure`, `contestation`, `decision` | DOIT |
-| **description** | Resume court de l'apport | DOIT |
+| Dimension | Values | Required |
+|-----------|--------|----------|
+| **exchange** | Reference to the exchange (session or artefact) that generated the contribution | MUST |
+| **direction** | `[H]` (human brings) or `[A]` (assistant brings) | MUST |
+| **type** | `substance`, `structure`, `contestation`, `decision` | MUST |
+| **description** | Short summary of the input | MUST |
 
-> **FR retrocompat.** Le parser accepte aussi `matiere` comme alias de `substance`.
+> **FR retrocompat.** The parser also accepts `matiere` as an alias for `substance`.
 
-**Portee** : une contribution est rattachee a un echange (session ou artefact), lui-meme rattache a un espace dans une instance.
+**Scope**: a contribution is attached to an exchange (session or artefact), itself attached to a space within an instance.
 
-## Couche
+## Layer
 
-La contribution est entierement **observationnelle**. La distinction entre types d'apport (substance vs structure vs contestation) est semantique et non-deterministe. La section `## Flux` est optionnelle (PEUT).
+Contribution is entirely **observational**. The distinction between input types (substance vs structure vs contestation) is semantic and non-deterministic. The `## Flux` section is optional (MAY).
 
-## Tags de direction
+## Direction tags
 
-| Tag | Signification |
-|-----|---------------|
-| `[H]` | L'humain apporte |
-| `[A]` | L'assistant apporte |
+| Tag | Meaning |
+|-----|---------|
+| `[H]` | The human brings |
+| `[A]` | The assistant brings |
 
-## Types d'apport
+## Input types
 
 | Type | Definition |
 |------|-----------|
-| `substance` | Information nouvelle — fait, donnee, reference, insight |
-| `structure` | Mise en forme, categorisation, synthese |
-| `contestation` | Remise en question, contre-exemple, recadrage |
-| `decision` | Arbitrage, choix retenu |
+| `substance` | New information — fact, data, reference, insight |
+| `structure` | Organization, categorization, synthesis |
+| `contestation` | Challenge, counter-example, reframing |
+| `decision` | Arbitration, choice retained |
 
 ## Format
 
-Chaque ligne de contribution porte : tag de direction, type, description courte.
+Each contribution line carries: direction tag, type, short description.
 
-Le comptage par direction et type est optionnel (PEUT).
+Counting by direction and type is optional (MAY).
 
-> **Exemple** (implementation Markdown, voir `implementation/implementation.md`) :
+> **Example** (Markdown implementation, see `implementation/implementation.md`):
 >
 > ```
 > ## Flux
-> - H:substance — article Böckeler, demande d'avis
-> - A:substance — filiation scaffolding absente chez Böckeler
-> - A:structure — trois niveaux de complementarite harness/SOFIA
-> - H:decision — on garde la notation mots-cles
+> - H:substance — Böckeler article, request for opinion
+> - A:substance — scaffolding lineage absent from Böckeler
+> - A:structure — three levels of harness/SOFIA complementarity
+> - H:decision — keep keyword notation
 >
 > H:2 (substance 1, decision 1) | A:2 (substance 1, structure 1)
 > ```
 
-## Distinction contribution / friction
+## Contribution / friction distinction
 
-Un meme echange PEUT apparaitre dans `## Flux` et dans `## Friction` :
+The same exchange MAY appear in both `## Flux` and `## Friction`:
 
-- **Contribution** capture l'apport (qui a amene quoi)
-- **Friction** capture la tension (positions qui s'opposent, resistance)
+- **Contribution** captures input (who brought what)
+- **Friction** captures tension (opposing positions, resistance)
 
-Critere : une correction acceptee sans resistance = `H:contestation` dans le flux, pas de friction. Si l'assistant resiste ou si la resolution demande plusieurs echanges, c'est aussi une friction.
+Criterion: a correction accepted without resistance = `H:contestation` in the flux, not a friction. If the assistant resists or resolution requires multiple exchanges, it is also a friction.
 
-## Lecture
+## Reading
 
 | Pattern | Interpretation |
 |---------|---------------|
-| H >> A sur substance | L'assistant structure/scaffolde, l'humain apporte le fond |
-| A >> H sur substance | L'humain pilote, l'assistant apporte le fond |
-| H ≈ A | Co-construction equilibree |
+| H >> A on substance | The assistant structures/scaffolds, the human brings the substance |
+| A >> H on substance | The human steers, the assistant brings the substance |
+| H ≈ A | Balanced co-construction |
 
-Ce n'est pas un jugement de valeur — c'est un signal sur le mode de collaboration actif.
+This is not a value judgment — it is a signal about the active collaboration mode.

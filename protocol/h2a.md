@@ -1,125 +1,125 @@
 # H2A — Human-to-Assistant Protocol
 
-> Le protocole de coordination entre l'humain et ses assistants.
+> The coordination protocol between a human and their assistants.
 
 ---
 
-## Positionnement
+## Positioning
 
-H2A formalise la couche de coordination entre un humain (orchestrateur) et des assistants contraints (personas) dans une instance de travail. Il ne remplace ni les guardrails techniques ni les interfaces : il structure la collaboration elle-meme.
+H2A formalizes the coordination layer between a human (orchestrator) and constrained assistants (personas) in a work instance. It replaces neither technical guardrails nor interfaces: it structures the collaboration itself.
 
-| Protocole | Couche | Nature |
-|-----------|--------|--------|
-| MCP (Anthropic) | Agent ↔ Outils | Technique — wire protocol |
-| A2A (Google) | Agent ↔ Agent | Technique — communication |
-| **H2A** | **Humain ↔ Assistant** | **Organisationnel — coordination** |
+| Protocol | Layer | Nature |
+|----------|-------|--------|
+| MCP (Anthropic) | Agent ↔ Tools | Technical — wire protocol |
+| A2A (Google) | Agent ↔ Agent | Technical — communication |
+| **H2A** | **Human ↔ Assistant** | **Organizational — coordination** |
 
-H2A n'est pas un protocole technique — il definit la semantique des interactions, pas leur implementation. Voir `implementation/implementation.md` pour les choix d'implementation courants.
+H2A is not a technical protocol — it defines the semantics of interactions, not their implementation. See `implementation/implementation.md` for current implementation choices.
 
-## Entites
+## Entities
 
-H2A repose sur 7 entites constitutives. Voir `core/modele.md` pour le detail.
+H2A relies on 7 constitutive entities. See `core/model.md` for details.
 
-| Entite | Doc protocol/ |
-|--------|---------------|
-| Instance, Espace, Persona, Orchestrateur | ce document |
-| Echange | `exchange.md` |
+| Entity | Protocol doc |
+|--------|-------------|
+| Instance, Space, Persona, Orchestrator | this document |
+| Exchange | `exchange.md` |
 | Friction | `friction.md` |
 | Contribution | `contribution.md` |
 
 ## Invariants
 
-Les invariants sont les proprietes constitutives du protocole — ce sans quoi H2A n'est plus H2A. Ils derivent des principes de la methode (voir `core/principes.md`) mais ne les couvrent pas tous : les principes guident la methode entiere (design des personas, iteration, contrainte comme outil), les invariants ne portent que sur le protocole d'echange. L'invariant 5 est d'une nature differente — il formalise une limitation structurelle, pas une capacite.
+Invariants are the constitutive properties of the protocol — without which H2A is no longer H2A. They derive from the method's principles (see `core/principles.md`) but do not cover all of them: principles guide the entire method (persona design, iteration, constraint as tool), invariants cover only the exchange protocol. Invariant 5 is of a different nature — it formalizes a structural limitation, not a capability.
 
-1. **Friction constitutive** — la friction n'est pas un defaut a corriger mais un signal structurant. Le protocole DOIT la capturer, la qualifier et la conserver.
-2. **Humain arbitre** — l'orchestrateur DOIT trancher les divergences entre personas. Aucun persona ne tranche pour un autre.
-3. **Isolation** — un persona NE DOIT PAS interagir en dehors de son espace et de l'espace partage. L'orchestrateur est le seul a traverser les frontieres.
-4. **Tracabilite** — tout echange DOIT produire une trace identifiable.
-5. **Opacite residuelle** — le protocole ne peut pas garantir que l'orchestrateur arbitre sans biais. Cette limitation est structurelle, pas corrigible. Le protocole DOIT la documenter et DEVRAIT fournir des mecanismes de mitigation (cf. `reportPattern()` dans `friction.md`), mais aucun mecanisme ne constitue une garantie.
+1. **Constitutive friction** — friction is not a defect to fix but a structuring signal. The protocol MUST capture, qualify, and preserve it.
+2. **Human arbiter** — the orchestrator MUST resolve divergences between personas. No persona decides for another.
+3. **Isolation** — a persona MUST NOT interact outside its space and the shared space. The orchestrator is the only one who crosses boundaries.
+4. **Traceability** — every exchange MUST produce an identifiable trace.
+5. **Residual opacity** — the protocol cannot guarantee that the orchestrator arbitrates without bias. This limitation is structural, not fixable. The protocol MUST document it and SHOULD provide mitigation mechanisms (cf. `reportPattern()` in `friction.md`), but no mechanism constitutes a guarantee.
 
 ## Operations
 
-Operations implicites derivees des entites et des dimensions. Leur formalisation explicite (signature, wire format) est prevue quand une implementation temps reel le justifiera.
+Implicit operations derived from entities and dimensions. Their explicit formalization (signature, wire format) is planned when a real-time implementation justifies it.
 
-| Operation | Declencheur | Entites impliquees |
-|-----------|-------------|-------------------|
-| openSession() | orchestrateur | Echange (session), Persona |
-| closeSession() | orchestrateur | Echange (session), Friction, Contribution |
-| depositArtefact() | persona (sur instruction orchestrateur) | Echange (artefact) |
-| routeArtefact() | orchestrateur | Echange (artefact) |
-| markRead() | orchestrateur | Echange (artefact) |
-| markDone() | orchestrateur | Echange (artefact) — declenche l'archivage |
-| qualifyFriction() | persona (pre-remplit), orchestrateur (valide) | Friction |
+| Operation | Trigger | Involved entities |
+|-----------|---------|-------------------|
+| openSession() | orchestrator | Exchange (session), Persona |
+| closeSession() | orchestrator | Exchange (session), Friction, Contribution |
+| depositArtefact() | persona (on orchestrator instruction) | Exchange (artefact) |
+| routeArtefact() | orchestrator | Exchange (artefact) |
+| markRead() | orchestrator | Exchange (artefact) |
+| markDone() | orchestrator | Exchange (artefact) — triggers archiving |
+| qualifyFriction() | persona (pre-fills), orchestrator (validates) | Friction |
 | qualifyContribution() | persona | Contribution |
-| reportPattern() | persona | Friction — meta-operation (voir `friction.md`) |
+| reportPattern() | persona | Friction — meta-operation (see `friction.md`) |
 
-## Distinction protocole / observation
+## Protocol / observation distinction
 
-Le protocole distingue deux couches de formalisation :
+The protocol distinguishes two formalization layers:
 
-| Couche | Statut | Verification | Exemples |
-|--------|--------|-------------|----------|
-| **Protocolaire** | Garanti | Computationnelle (deterministe, automatisable) | Artefacts produits, notes deposees, traces de session |
-| **Observationnelle** | Best-effort | Inferentielle (jugement semantique, non-deterministe) | Friction qualifiee, flux epistemique, tags d'apport |
+| Layer | Status | Verification | Examples |
+|-------|--------|-------------|----------|
+| **Protocol** | Guaranteed | Computational (deterministic, automatable) | Produced artefacts, deposited notes, session traces |
+| **Observational** | Best-effort | Inferential (semantic judgment, non-deterministic) | Qualified friction, epistemic flow, contribution tags |
 
-La couche protocolaire definit ce que l'audit peut verifier mecaniquement. La couche observationnelle est remplie par l'assistant et validee par l'humain.
+The protocol layer defines what the audit can mechanically verify. The observational layer is filled by the assistant and validated by the human.
 
 ## Audit
 
-### Principe d'auditabilite
+### Auditability principle
 
-> Ce qui est dans le protocole est ce qu'un outil d'audit peut verifier cross-instance sans configuration specifique.
+> What is in the protocol is what an audit tool can verify cross-instance without instance-specific configuration.
 
-### Points de controle computationnels (DOIT)
+### Computational checkpoints (MUST)
 
-| Point | Verification |
-|-------|-------------|
-| Presence de traces de session | Chaque session a produit une trace identifiable |
-| Metadonnees de session | Chaque trace porte : persona, date, identifiant de session |
-| Sections protocolaires | Chaque trace contient : Produit, Decisions, Notes deposees, Ouvert |
-| Metadonnees d'artefact | Chaque artefact porte : emetteur, destinataire, nature, statut, date |
-| Cycle de vie statut | Valeurs dans {new, read, done} |
-| Isolation | Aucun persona n'a produit en dehors de son espace et de l'espace partage |
+| Checkpoint | Verification |
+|------------|-------------|
+| Session traces present | Each session produced an identifiable trace |
+| Session metadata | Each trace carries: persona, date, session identifier |
+| Protocol sections | Each trace contains: Produit, Decisions, Notes deposees, Ouvert |
+| Artefact metadata | Each artefact carries: emitter, recipient, nature, status, date |
+| Status lifecycle | Values in {new, read, done} |
+| Isolation | No persona produced outside its space and the shared space |
 
-> **FR retrocompat.** Le parser accepte aussi les identifiants FR (juste, angle-mort, faux, ratifie, conteste, revise, rejete, nouveau, lu, traite, matiere).
+> **FR retrocompat.** The parser also accepts FR identifiers (juste, angle-mort, faux, ratifie, conteste, revise, rejete, nouveau, lu, traite, matiere).
 
-### Signaux observationnels (PEUT)
+### Observational signals (MAY)
 
 | Signal | Interpretation |
 |--------|---------------|
-| Absence de friction sur N sessions consecutives | Friction possiblement absente — domestication ? |
-| Que des `[sound]` | Persona en mode validation |
-| Artefacts non routes depuis N echanges | Echange bloque |
-| Persona sans session depuis N jours | Persona inactif |
+| No friction over N consecutive sessions | Friction possibly absent — domestication? |
+| Only `[sound]` | Persona in validation mode |
+| Artefacts not routed for N exchanges | Exchange blocked |
+| Persona without session for N days | Inactive persona |
 
-Ces signaux ne sont pas des violations du protocole — ce sont des indicateurs a l'attention de l'orchestrateur.
+These signals are not protocol violations — they are indicators for the orchestrator's attention.
 
-## Terminologie
+## Terminology
 
-Les mots-cles "DOIT", "NE DOIT PAS", "DEVRAIT", "NE DEVRAIT PAS", "PEUT" sont a interpreter au sens de la RFC 2119 (MUST, MUST NOT, SHOULD, SHOULD NOT, MAY).
+The keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "MAY" are to be interpreted as described in RFC 2119.
 
-## Filiation theorique
+## Theoretical lineage
 
-| Reference | Apport a H2A |
-|-----------|-------------|
-| Sheridan & Verplank (1978) | 10 niveaux d'autonomie — cadre historique HITL |
-| Toulmin (1958) | Modele d'argumentation — eclairage des 5 marqueurs |
-| Searle (1995) | Regles constitutives vs regulatives — distinction core/protocol/doc |
-| Böckeler (2026) | Computationnel vs inferentiel — distinction couche protocolaire/observationnelle |
-| Wood, Bruner & Ross (1976) | Scaffolding — collaboration asymetrique |
-| Elster (1979) | Precommitment — contrainte productive |
+| Reference | Contribution to H2A |
+|-----------|---------------------|
+| Sheridan & Verplank (1978) | 10 levels of autonomy — historical HITL framework |
+| Toulmin (1958) | Argumentation model — illuminates the 5 markers |
+| Searle (1995) | Constitutive vs regulative rules — core/protocol/doc distinction |
+| Böckeler (2026) | Computational vs inferential — protocol/observational layer distinction |
+| Wood, Bruner & Ross (1976) | Scaffolding — asymmetric collaboration |
+| Elster (1979) | Precommitment — productive constraint |
 
-## Limitations structurelles
+## Structural limitations
 
-Le protocole documente ce qu'il ne peut pas garantir. Ces limitations sont inherentes au modele, pas des bugs a corriger.
+The protocol documents what it cannot guarantee. These limitations are inherent to the model, not bugs to fix.
 
 | Limitation | Nature | Mitigation |
 |------------|--------|-----------|
-| **Opacite residuelle** (invariant 5) | L'orchestrateur ne peut pas arbitrer sa propre resistance a la friction. Indecidabilite locale. | reportPattern() — mitigation, pas garantie |
-| **Friction non instrumentee** | Un participant peut exprimer des positions en texte libre sans marqueur. Le signal est perdu pour le protocole. | Template friction dans les contextes. Depend de la discipline du participant. |
-| **Lignage silencieux** | Si le champ `antecedent` est omis, la chaine de frictions est cassee sans signal. Le protocole ne peut pas deviner qu'une friction en resout une autre. | Bloc de validation avant commit. Hooks (v0.4). |
-| **Echanges cross-instance** | Le routage cross-instance depend entierement de l'orchestrateur. Pas de mecanisme automatique de decouverte ou de routage entre instances. | Formalise dans `exchange.md` §Echanges cross-instance. L'artefact DOIT etre depose dans le shared du destinataire. |
+| **Residual opacity** (invariant 5) | The orchestrator cannot arbitrate their own resistance to friction. Local undecidability. | reportPattern() — mitigation, not guarantee |
+| **Uninstrumented friction** | A participant can express positions in free text without markers. The signal is lost to the protocol. | Friction template in contexts. Depends on participant discipline. |
+| **Silent lineage** | If the `antecedent` field is omitted, the friction chain is broken without signal. The protocol cannot guess that one friction resolves another. | Validation block before commit. Hooks (v0.4). |
+| **Cross-instance exchanges** | Cross-instance routing depends entirely on the orchestrator. No automatic discovery or routing mechanism between instances. | Formalized in `exchange.md` §Cross-instance exchanges. Artefact MUST be deposited in the recipient's shared space. |
 
-## Origine
+## Origin
 
-Ce protocole a ete formalise empiriquement sur 3 instances (avril 2026). Les 4 documents de protocol/ sont la reference.
+This protocol was formalized empirically across 3 instances (April 2026). The 4 protocol/ documents are the reference.
