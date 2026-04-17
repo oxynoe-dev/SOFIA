@@ -33,7 +33,9 @@ import importlib
 audit = importlib.import_module("audit-instance")
 
 FRICTION_MARKERS = audit.FRICTION_MARKERS
+FRICTION_BRACKET_ALIASES = audit.FRICTION_BRACKET_ALIASES
 RESOLUTION_TAGS = audit.RESOLUTION_TAGS
+RESOLUTION_ALIASES = audit.RESOLUTION_ALIASES
 
 
 # ---------------------------------------------------------------------------
@@ -76,7 +78,7 @@ def parse_friction_lines(text: str) -> list[dict]:
             item = stripped[2:].strip()
         else:
             item = stripped
-        record = {"marker": None, "initiative": None, "resolution": None, "ref": None}
+        record = {"marker": None, "initiative": None, "resolution": None, "ref": None, "description": None}
 
         # Marker — icons
         for char, key in FRICTION_MARKERS.items():
@@ -88,12 +90,13 @@ def parse_friction_lines(text: str) -> list[dict]:
                 record["marker"] = key
                 break
 
-        # Marker — brackets
+        # Marker — brackets (FR and EN via aliases)
         if not record["marker"]:
-            bracket_match = re.search(r"\[(juste|contestable|simplification|angle-mort|faux)\]", item)
+            bracket_pattern = r"\[(" + "|".join(re.escape(k) for k in FRICTION_BRACKET_ALIASES) + r")\]"
+            bracket_match = re.search(bracket_pattern, item)
             if bracket_match:
-                tag = bracket_match.group(1).replace("-", "_")
-                record["marker"] = tag
+                tag = bracket_match.group(1)
+                record["marker"] = FRICTION_BRACKET_ALIASES[tag]
 
         if not record["marker"]:
             continue
@@ -106,17 +109,25 @@ def parse_friction_lines(text: str) -> list[dict]:
         else:
             continue
 
-        # Resolution
+        # Resolution (FR and EN via aliases)
         res_match = re.search(r"→\s*(\w+)", item)
         if res_match:
             tag = audit.strip_accents(res_match.group(1).lower())
-            if tag in RESOLUTION_TAGS:
+            if tag in RESOLUTION_ALIASES:
+                record["resolution"] = RESOLUTION_ALIASES[tag]
+            elif tag in RESOLUTION_TAGS:
                 record["resolution"] = tag
 
         # Ref
         ref_match = re.search(r"\(ref:\s*([^)]+)\)", item)
         if ref_match:
             record["ref"] = ref_match.group(1).strip()
+
+        # Description — strip marker, initiative, resolution to get the core text
+        desc = re.sub(r"[✓~⚡◐✗]\s*", "", item)
+        desc = re.sub(r"\[(juste|contestable|simplification|angle-mort|faux|sound|blind.spot|refuted)\]\s*", "", desc)
+        desc = re.sub(r"\s*—\s*\[\w+\]\s*(→\s*\w+)?(\s*\(ref:[^)]+\))?", "", desc)
+        record["description"] = desc.strip()[:120]  # cap at 120 chars
 
         records.append(record)
 
@@ -242,13 +253,78 @@ def parse_artefact_persona(filepath: Path) -> str | None:
 def compute_direction(initiative: str, marker: str) -> str:
     """Compute friction direction from initiative + marker.
 
-    Returns one of: a_corrobore_h, a_conteste_h, h_corrobore_h, h_conteste_a
+    Returns one of: a_corroborates_h, a_contests_h, h_corroborates_a, h_contests_a
     """
-    is_corroboration = marker == "juste"
+    is_corroboration = marker == "sound"
     if initiative == "persona":
-        return "a_corrobore_h" if is_corroboration else "a_conteste_h"
+        return "a_corroborates_h" if is_corroboration else "a_contests_h"
     else:  # PO
-        return "h_corrobore_a" if is_corroboration else "h_conteste_a"
+        return "h_corroborates_a" if is_corroboration else "h_contests_a"
+
+
+def resolve_lineage(records: list[dict]) -> list[dict]:
+    """Resolve friction lineage via ref: fields.
+
+    A chain of frictions linked by ref = one logical friction.
+    The last resolution in the chain propagates to the source.
+    Records with a ref are marked as amendments (not counted as standalone).
+    """
+    # Build index: source_key -> list of records at that source
+    by_source = {}
+    for i, r in enumerate(records):
+        source = r.get("source", "")
+        # Strip extension for matching
+        source_key = source.rsplit(".", 1)[0] if "." in source else source
+        if source_key not in by_source:
+            by_source[source_key] = []
+        by_source[source_key].append((i, r))
+
+    # For each record with a ref, find the source and propagate
+    resolved_sources = set()  # indices of records that are resolved by a later ref
+    for i, r in enumerate(records):
+        ref = r.get("ref")
+        if not ref:
+            continue
+
+        # Parse ref: {id-source}/{index}
+        parts = ref.strip().split("/")
+        if len(parts) < 2:
+            continue
+
+        ref_index_str = parts[-1]
+        ref_source = "/".join(parts[:-1])
+
+        try:
+            ref_index = int(ref_index_str) - 1  # 1-based to 0-based
+        except ValueError:
+            continue
+
+        # Find the source record
+        # Try matching with and without path prefix
+        matched = None
+        for key in by_source:
+            if key.endswith(ref_source) or ref_source.endswith(key.split("/")[-1]):
+                source_records = by_source[key]
+                if 0 <= ref_index < len(source_records):
+                    matched = source_records[ref_index]
+                    break
+
+        if matched:
+            src_idx, src_record = matched
+            # Propagate resolution from amendment to source
+            if r.get("resolution") and not src_record.get("resolution"):
+                src_record["resolution"] = r["resolution"]
+            # Mark source as resolved by lineage
+            resolved_sources.add(src_idx)
+            # Mark this record as an amendment
+            r["is_amendment"] = True
+
+    # Mark non-amendment records
+    for i, r in enumerate(records):
+        if "is_amendment" not in r:
+            r["is_amendment"] = False
+
+    return records
 
 
 # ---------------------------------------------------------------------------
@@ -295,6 +371,9 @@ def analyze_instance(instance_path: Path) -> dict:
 
     all_weeks = set()
     all_days = set()
+
+    # Individual friction records for pilotage dashboard
+    all_friction_records: list[dict] = []
 
     for filepath in session_files:
         fm = audit.parse_frontmatter(filepath)
@@ -349,6 +428,20 @@ def analyze_instance(instance_path: Path) -> dict:
 
             if resolution:
                 by_persona[persona]["resolutions"][resolution] += 1
+
+            # Collect individual record for pilotage
+            all_friction_records.append({
+                "persona": persona,
+                "date": session_date,
+                "source": filepath.relative_to(instance_path).as_posix(),
+                "source_type": "session",
+                "marker": marker,
+                "initiative": initiative,
+                "direction": direction,
+                "resolution": resolution,
+                "description": rec.get("description", ""),
+                "ref": rec.get("ref"),
+            })
 
         # Flux
         flux_records = parse_flux_lines(text)
@@ -428,13 +521,27 @@ def analyze_instance(instance_path: Path) -> dict:
             if resolution:
                 by_persona[persona]["resolutions"][resolution] += 1
 
+            # Collect individual record for pilotage
+            all_friction_records.append({
+                "persona": persona,
+                "date": artefact_date,
+                "source": filepath.relative_to(instance_path).as_posix(),
+                "source_type": "artefact",
+                "marker": marker,
+                "initiative": initiative,
+                "direction": direction,
+                "resolution": resolution,
+                "description": rec.get("description", ""),
+                "ref": rec.get("ref"),
+            })
+
     # Sort periods
     sorted_weeks = sorted(all_weeks)
     sorted_days = sorted(all_days)
 
     # Build time series helper
     marker_keys = list(FRICTION_MARKERS.values())
-    direction_keys = ["a_corrobore_h", "a_conteste_h", "h_corrobore_a", "h_conteste_a"]
+    direction_keys = ["a_corroborates_h", "a_contests_h", "h_corroborates_a", "h_contests_a"]
     resolution_keys = list(RESOLUTION_TAGS)
 
     def build_series(by_period: dict, sorted_keys: list[str]) -> dict:
@@ -472,8 +579,8 @@ def analyze_instance(instance_path: Path) -> dict:
         flux_h_pct = round(d["flux_h"] / max(total_flux, 1) * 100)
         flux_a_pct = 100 - flux_h_pct if total_flux > 0 else 0
 
-        a_total = d["directions"].get("a_corrobore_h", 0) + d["directions"].get("a_conteste_h", 0)
-        h_total = d["directions"].get("h_corrobore_a", 0) + d["directions"].get("h_conteste_a", 0)
+        a_total = d["directions"].get("a_corroborates_h", 0) + d["directions"].get("a_contests_h", 0)
+        h_total = d["directions"].get("h_corroborates_a", 0) + d["directions"].get("h_contests_a", 0)
         ratio = round(a_total / max(h_total, 1), 1)
 
         # signalerPattern summary
@@ -546,6 +653,7 @@ def analyze_instance(instance_path: Path) -> dict:
         },
         "time_series": time_series,
         "personas": personas_data,
+        "friction_records": resolve_lineage(sorted(all_friction_records, key=lambda r: r.get("date", ""))),
     }
 
 
@@ -556,7 +664,7 @@ def analyze_instance(instance_path: Path) -> dict:
 def aggregate_instances(instances_data: dict[str, dict]) -> dict:
     """Aggregate multiple instance analyses into a combined view."""
     marker_keys = list(FRICTION_MARKERS.values())
-    direction_keys = ["a_corrobore_h", "a_conteste_h", "h_corrobore_a", "h_conteste_a"]
+    direction_keys = ["a_corroborates_h", "a_contests_h", "h_corroborates_a", "h_contests_a"]
     resolution_keys = list(RESOLUTION_TAGS)
 
     def aggregate_period(period_key: str) -> dict:
@@ -631,11 +739,35 @@ def aggregate_instances(instances_data: dict[str, dict]) -> dict:
         for k, v in d["totals"]["resolutions"].items():
             res_totals[k] += v
 
-    # Aggregate personas
+    # Aggregate personas — merge across instances instead of overwriting
     all_personas = {}
     for inst_name, d in instances_data.items():
         for p, pdata in d["personas"].items():
-            all_personas[p] = pdata
+            if p not in all_personas:
+                # Deep copy to avoid mutating source
+                all_personas[p] = {k: (dict(v) if isinstance(v, dict) else list(v) if isinstance(v, list) else v) for k, v in pdata.items()}
+            else:
+                existing = all_personas[p]
+                # Sum numeric fields
+                for k in ("sessions", "artefacts", "frictions", "frictions_sessions", "frictions_artefacts",
+                           "flux_h", "flux_a", "signaler_pattern_count",
+                           "signaler_pattern_erreur_llm", "signaler_pattern_conviction", "signaler_pattern_resistance"):
+                    existing[k] = existing.get(k, 0) + pdata.get(k, 0)
+                # Merge dict fields (markers, resolutions, directions)
+                for dk in ("markers", "resolutions", "directions"):
+                    if dk in pdata:
+                        if dk not in existing:
+                            existing[dk] = {}
+                        for k, v in pdata[dk].items():
+                            existing[dk][k] = existing[dk].get(k, 0) + v
+                # Recompute derived fields
+                total_flux = existing["flux_h"] + existing["flux_a"]
+                existing["flux_h_pct"] = round(existing["flux_h"] / max(total_flux, 1) * 100)
+                existing["flux_a_pct"] = 100 - existing["flux_h_pct"] if total_flux > 0 else 0
+                a_total = existing["directions"].get("a_corroborates_h", 0) + existing["directions"].get("a_contests_h", 0)
+                h_total = existing["directions"].get("h_corroborates_a", 0) + existing["directions"].get("h_contests_a", 0)
+                existing["direction_ratio"] = round(a_total / max(h_total, 1), 1)
+                existing["resolved_pct"] = round(sum(existing.get("resolutions", {}).values()) / max(existing["frictions"], 1) * 100)
 
     return {
         "meta": {
@@ -661,6 +793,10 @@ def aggregate_instances(instances_data: dict[str, dict]) -> dict:
             "day": aggregate_period("day"),
         },
         "personas": all_personas,
+        "friction_records": sorted(
+            [r for d in instances_data.values() for r in d.get("friction_records", [])],
+            key=lambda r: r.get("date", ""),
+        ),
     }
 
 

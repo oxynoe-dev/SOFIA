@@ -195,11 +195,11 @@ C'est le seul espace que tous les personas peuvent lire et écrire. Les échange
 
 | Type | Convention | Emplacement |
 |------|-----------|-------------|
-| Notes | `note-{destinataire}-{sujet}-{auteur}.md` | `shared/notes/` |
-| Reviews | `review-{sujet}-{auteur}.md` | `shared/review/` |
-| Features | `feature-{sujet}.md` | `shared/features/` |
+| Notes | `note-{to}-{subject}-{from}.md` | `shared/notes/` |
+| Reviews | `review-{subject}-{from}.md` | `shared/review/` |
+| Features | `feature-{subject}.md` | `shared/features/` |
 
-Chaque artefact porte un frontmatter (`de`, `pour`, `type`, `statut`, `date`). Quand il est traité, il migre dans `archives/`.
+Chaque artefact porte un frontmatter (`from`, `to`, `nature`, `status`, `date`). Quand il est traité, il migre dans `archives/`.
 
 ### Les roadmaps
 
@@ -243,11 +243,11 @@ L'orchestration prend du temps. C'est le prix de la qualité. Si l'échange n'en
 
 1. **Résumés de session** — chaque session produit un résumé. C'est le pont entre les conversations. Format : `sessions/{YYYY-MM-DD}-{HHmm}-{persona}.md`
 
-2. **Notes** — messages inter-personas déposés dans `shared/notes/`. Format : `note-{destinataire}-{sujet}-{auteur}.md`
+2. **Notes** — messages inter-personas déposés dans `shared/notes/`. Format : `note-{to}-{subject}-{from}.md`
 
-3. **Reviews croisées** — quand un persona intervient sur le travail d'un autre, il produit une review avec des observations factuelles, des recommandations priorisées, et des questions ouvertes. Format : `review-{sujet}-{auteur}.md`
+3. **Reviews croisées** — quand un persona intervient sur le travail d'un autre, il produit une review avec des observations factuelles, des recommandations priorisées, et des questions ouvertes. Format : `review-{subject}-{from}.md`
 
-4. **Features** — specs fonctionnelles partagées. Format : `feature-{sujet}.md` dans `shared/features/`
+4. **Features** — specs fonctionnelles partagées. Format : `feature-{subject}.md` dans `shared/features/`
 
 5. **ADR** — les décisions structurantes sont tracées : contexte, décision, alternatives, conséquences, statut. L'ADR est écrit avant l'implémentation.
 

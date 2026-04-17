@@ -26,21 +26,51 @@ from collections import defaultdict
 # Constants
 # ---------------------------------------------------------------------------
 
+# Friction markers — EN canonical, icons map to EN keys
 FRICTION_MARKERS = {
-    "✓": "juste",
+    "✓": "sound",
     "~": "contestable",
     "⚡": "simplification",
-    "◐": "angle_mort",
-    "✗": "faux",
+    "◐": "blind_spot",
+    "✗": "refuted",
 }
 
-RESOLUTION_TAGS = {"ratifie", "conteste", "revise", "rejete"}
+# Bracket aliases — FR→EN mapping for retrocompat (ADR-013)
+FRICTION_BRACKET_ALIASES = {
+    "juste": "sound",
+    "angle-mort": "blind_spot",
+    "faux": "refuted",
+    # EN brackets map to themselves
+    "sound": "sound",
+    "blind_spot": "blind_spot",
+    "blind-spot": "blind_spot",
+    "refuted": "refuted",
+    # These are identical FR/EN
+    "contestable": "contestable",
+    "simplification": "simplification",
+}
+
+# Resolution tags — EN canonical
+RESOLUTION_TAGS = {"ratified", "contested", "revised", "rejected"}
+
+# Resolution aliases — FR→EN mapping for retrocompat
+RESOLUTION_ALIASES = {
+    "ratifie": "ratified",
+    "conteste": "contested",
+    "revise": "revised",
+    "rejete": "rejected",
+    # EN map to themselves
+    "ratified": "ratified",
+    "contested": "contested",
+    "revised": "revised",
+    "rejected": "rejected",
+}
 
 EMITTER_KEYS = {"de", "auteur", "emetteur", "from"}
 RECIPIENT_KEYS = {"pour", "destinataire", "destinataires", "to"}
 NATURE_KEYS = {"nature", "type"}
 
-VALID_STATUTS = {"nouveau", "lu", "traite"}
+VALID_STATUTS = {"nouveau", "lu", "traite", "new", "read", "done"}
 
 _ACCENT_MAP = str.maketrans(
     "àâäéèêëïîôùûüÿçÀÂÄÉÈÊËÏÎÔÙÛÜŸÇ",
@@ -596,6 +626,56 @@ def discover_personas(instance_path: Path) -> set[str]:
 
 
 # ---------------------------------------------------------------------------
+# Context size audit
+# ---------------------------------------------------------------------------
+
+def measure_context_sizes(instance_path: Path) -> dict[str, dict]:
+    """Measure persona.md + contexte.md sizes for each persona."""
+    personas_dir = instance_path / "shared" / "orga" / "personas"
+    contextes_dir = instance_path / "shared" / "orga" / "contextes"
+    results = {}
+
+    if not personas_dir.is_dir():
+        return results
+
+    for f in personas_dir.glob("persona-*.md"):
+        name = f.stem.removeprefix("persona-")
+        if not name:
+            continue
+
+        persona_lines = 0
+        try:
+            persona_lines = len(f.read_text(encoding="utf-8").splitlines())
+        except (OSError, UnicodeDecodeError):
+            pass
+
+        # Find matching contexte(s)
+        contexte_lines = 0
+        contexte_files = []
+        if contextes_dir.is_dir():
+            for cf in contextes_dir.glob(f"contexte-{name}*.md"):
+                try:
+                    lines = len(cf.read_text(encoding="utf-8").splitlines())
+                    contexte_lines += lines
+                    contexte_files.append({"file": cf.name, "lines": lines})
+                except (OSError, UnicodeDecodeError):
+                    pass
+
+        total = persona_lines + contexte_lines
+        status = "ok" if total < 150 else "warn" if total < 250 else "danger"
+
+        results[strip_accents(name.lower())] = {
+            "persona_lines": persona_lines,
+            "contexte_lines": contexte_lines,
+            "total_lines": total,
+            "status": status,
+            "contexte_files": contexte_files,
+        }
+
+    return results
+
+
+# ---------------------------------------------------------------------------
 # Phase 2 — Exchange & friction scanners
 # ---------------------------------------------------------------------------
 
@@ -681,12 +761,12 @@ def build_marker_totals(artifacts: list[dict]) -> dict[str, dict[str, int]]:
 def scan_session_friction(instance_path: Path) -> tuple[dict[str, dict], list[str]]:
     """Parse ## Friction orchestrateur sections from session files."""
     by_persona: dict[str, dict] = defaultdict(lambda: {
-        "juste": 0, "contestable": 0, "simplification": 0,
-        "angle_mort": 0, "faux": 0,
+        "sound": 0, "contestable": 0, "simplification": 0,
+        "blind_spot": 0, "refuted": 0,
         "total_sessions": 0, "sessions_with_friction": 0,
         "initiative_persona": 0, "initiative_po": 0,
-        "resolution_ratifie": 0, "resolution_conteste": 0,
-        "resolution_revise": 0, "resolution_rejete": 0,
+        "resolution_ratified": 0, "resolution_contested": 0,
+        "resolution_revised": 0, "resolution_rejected": 0,
         "resolution_missing": 0, "ref_count": 0,
         "signaler_pattern_count": 0,
         "signaler_pattern_erreur_llm": 0,
@@ -720,7 +800,8 @@ def scan_session_friction(instance_path: Path) -> tuple[dict[str, dict], list[st
         in_section = False
         friction_lines = []
         for line in lines:
-            if line.strip().startswith("## Friction orchestrateur"):
+            stripped = line.strip()
+            if stripped.startswith("## Friction") and not stripped.startswith("## Friction Engineering"):
                 in_section = True
                 continue
             if in_section and line.strip().startswith("## "):
@@ -755,11 +836,13 @@ def scan_session_friction(instance_path: Path) -> tuple[dict[str, dict], list[st
                 # [persona_name] or no tag = persona initiative
                 by_persona[persona]["initiative_persona"] += 1
 
-            # Resolution tag (→ ratifie/conteste/revise/rejete)
+            # Resolution tag (→ ratified/contested/revised/rejected + FR aliases)
             resolution_match = re.search(r"→\s*(\w+)", stripped)
             if resolution_match:
                 tag = strip_accents(resolution_match.group(1).lower())
-                if tag in RESOLUTION_TAGS:
+                if tag in RESOLUTION_ALIASES:
+                    by_persona[persona][f"resolution_{RESOLUTION_ALIASES[tag]}"] += 1
+                elif tag in RESOLUTION_TAGS:
                     by_persona[persona][f"resolution_{tag}"] += 1
             else:
                 by_persona[persona]["resolution_missing"] += 1
@@ -842,16 +925,16 @@ def generate_signals(
     for p in signalable:
         pm = marker_totals.get(p, {})
         total = sum(pm.values())
-        if total > 0 and pm.get("juste", 0) == total:
-            signals.append(f"Domestication inter-personas (100% juste) : {p}")
+        if total > 0 and pm.get("sound", 0) == total:
+            signals.append(f"Domestication inter-personas (100% sound) : {p}")
 
     # Domestication orchestrator
     for p, data in po_friction.items():
         if real_personas and p not in real_personas:
             continue
-        total = data["juste"] + data["contestable"] + data["simplification"] + data["angle_mort"] + data["faux"]
-        if total > 0 and data["juste"] == total and data["total_sessions"] >= 10:
-            signals.append(f"Domestication orchestrateur (100% juste, {data['total_sessions']} sessions) : {p}")
+        total = data["sound"] + data["contestable"] + data["simplification"] + data["blind_spot"] + data["refuted"]
+        if total > 0 and data["sound"] == total and data["total_sessions"] >= 10:
+            signals.append(f"Domestication orchestrateur (100% sound, {data['total_sessions']} sessions) : {p}")
 
     return signals
 
@@ -890,7 +973,7 @@ def format_markers_table(markers: dict[str, dict[str, int]], personas: list[str]
 
 def format_po_friction_table(po_friction: dict) -> str:
     marker_keys = list(FRICTION_MARKERS.values())
-    resolution_cols = ["ratifie", "conteste", "revise", "rejete", "no-res"]
+    resolution_cols = ["ratified", "contested", "revised", "rejected", "no-res"]
     extra_cols = ["sessions", "w/friction", "init.persona", "init.PO"]
     sp_cols = ["sp.count"]
     all_cols = marker_keys + resolution_cols + extra_cols + sp_cols
@@ -905,7 +988,7 @@ def format_po_friction_table(po_friction: dict) -> str:
         row = p.ljust(name_width)
         for k in marker_keys:
             row += str(d.get(k, 0)).rjust(col_width)
-        for tag in ["ratifie", "conteste", "revise", "rejete"]:
+        for tag in ["ratified", "contested", "revised", "rejected"]:
             row += str(d.get(f"resolution_{tag}", 0)).rjust(col_width)
         row += str(d.get("resolution_missing", 0)).rjust(col_width)
         row += str(d["total_sessions"]).rjust(col_width)
@@ -1112,12 +1195,12 @@ def write_sqlite(output_dir: Path, all_data: dict, all_personas: list[str]):
             c.execute("INSERT INTO friction VALUES (?, ?, ?)", (emitter, target, count))
 
     # Markers
-    c.execute("CREATE TABLE marqueurs (persona TEXT, juste INT, contestable INT, simplification INT, angle_mort INT, faux INT)")
+    c.execute("CREATE TABLE marqueurs (persona TEXT, sound INT, contestable INT, simplification INT, blind_spot INT, refuted INT)")
     for p in all_personas:
         pm = all_data["friction"]["markers"].get(p, {})
         c.execute("INSERT INTO marqueurs VALUES (?, ?, ?, ?, ?, ?)",
-                  (p, pm.get("juste", 0), pm.get("contestable", 0), pm.get("simplification", 0),
-                   pm.get("angle_mort", 0), pm.get("faux", 0)))
+                  (p, pm.get("sound", 0), pm.get("contestable", 0), pm.get("simplification", 0),
+                   pm.get("blind_spot", 0), pm.get("refuted", 0)))
 
     # Activity
     c.execute("CREATE TABLE activite (persona TEXT, sessions INTEGER)")
@@ -1126,17 +1209,17 @@ def write_sqlite(output_dir: Path, all_data: dict, all_personas: list[str]):
 
     # PO friction
     c.execute("""CREATE TABLE friction_po (
-        persona TEXT, juste INT, contestable INT, simplification INT, angle_mort INT, faux INT,
-        resolution_ratifie INT, resolution_conteste INT, resolution_revise INT, resolution_rejete INT, resolution_missing INT,
+        persona TEXT, sound INT, contestable INT, simplification INT, blind_spot INT, refuted INT,
+        resolution_ratified INT, resolution_contested INT, resolution_revised INT, resolution_rejected INT, resolution_missing INT,
         total_sessions INT, sessions_with_friction INT, initiative_persona INT, initiative_po INT,
         ref_count INT, signaler_pattern_count INT,
         signaler_pattern_erreur_llm INT, signaler_pattern_conviction INT, signaler_pattern_resistance INT
     )""")
     for p, d in all_data["friction_po"]["by_persona"].items():
         c.execute("INSERT INTO friction_po VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                  (p, d["juste"], d["contestable"], d["simplification"], d["angle_mort"], d["faux"],
-                   d.get("resolution_ratifie", 0), d.get("resolution_conteste", 0),
-                   d.get("resolution_revise", 0), d.get("resolution_rejete", 0), d.get("resolution_missing", 0),
+                  (p, d["sound"], d["contestable"], d["simplification"], d["blind_spot"], d["refuted"],
+                   d.get("resolution_ratified", 0), d.get("resolution_contested", 0),
+                   d.get("resolution_revised", 0), d.get("resolution_rejected", 0), d.get("resolution_missing", 0),
                    d["total_sessions"], d["sessions_with_friction"], d["initiative_persona"], d["initiative_po"],
                    d.get("ref_count", 0), d.get("signaler_pattern_count", 0),
                    d.get("signaler_pattern_erreur_llm", 0), d.get("signaler_pattern_conviction", 0),
@@ -1267,6 +1350,9 @@ def main():
         exchange_matrix, friction_matrix, marker_totals,
         po_friction, all_personas, signals)
 
+    # Context sizes
+    context_sizes = measure_context_sizes(instance_path)
+
     # All data for output writers
     all_data = {
         "structure": structure_data,
@@ -1274,6 +1360,7 @@ def main():
         "friction": friction_data,
         "friction_po": po_data,
         "activite": activite_data,
+        "context_sizes": context_sizes,
     }
 
     # Write outputs based on format
