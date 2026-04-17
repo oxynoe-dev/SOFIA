@@ -1,330 +1,330 @@
 # Implementation
 
-> Comment H2A est implemente aujourd'hui — et comment il pourrait l'etre demain.
+> How H2A is implemented today — and how it could be implemented tomorrow.
 
 ---
 
-## Principe
+## Principle
 
-H2A definit la semantique des interactions (entites, invariants, couches protocolaire/observationnelle). Ce document decrit l'implementation courante. Une implementation differente serait conforme a H2A tant qu'elle respecte la semantique definie dans `h2a.md`, `friction.md`, `contribution.md` et `exchange.md`.
+H2A defines the semantics of interactions (entities, invariants, protocol/observational layers). This document describes the current implementation. A different implementation would be H2A-conformant as long as it respects the semantics defined in `h2a.md`, `friction.md`, `contribution.md`, and `exchange.md`.
 
-## Implementation courante
+## Current implementation
 
 ### Stack
 
-| Composant | Choix | Role |
-|-----------|-------|------|
-| Format des artefacts | Markdown + frontmatter YAML | Lisible par l'humain et par l'outil d'audit, pas de dependance logicielle |
-| Persistance | git | Historique immutable, diff, blame — trace par session |
-| Structure des espaces | Repertoires filesystem | Un repertoire = un espace. Isolation naturelle |
-| Espace partage | `shared/` a la racine de l'instance | Canal unique entre personas |
-| Marqueur d'instance | Fichier `sofia.md` a la racine | Identifie un deploiement SOFIA et sa version |
-| Provider IA | Claude Code | CLAUDE.md comme instruction persona, hooks, memoire projet |
+| Component | Choice | Role |
+|-----------|--------|------|
+| Artefact format | Markdown + YAML frontmatter | Human-readable and audit-readable, no software dependency |
+| Persistence | git | Immutable history, diff, blame — trace per session |
+| Space structure | Filesystem directories | One directory = one space. Natural isolation |
+| Shared space | `shared/` at instance root | Sole channel between personas |
+| Instance marker | `sofia.md` file at root | Identifies a SOFIA deployment and its version |
+| AI provider | Claude Code | CLAUDE.md as persona instruction, hooks, project memory |
 
-### Conventions de tracabilite
+### Traceability conventions
 
-**Commits** (recommande) :
+**Commits** (recommended):
 ```
-{persona}: {resume court} ({date})
+{persona}: {short summary} ({date})
 ```
-Un commit par session.
+One commit per session.
 
-**Resumes de session** :
+**Session summaries**:
 ```
-{espace}/sessions/{YYYY-MM-DD}-{HHmm}-{persona}.md
+{space}/sessions/{YYYY-MM-DD}-{HHmm}-{persona}.md
 ```
-A chaque fermeture, le persona cree un **nouveau** fichier. Le `HHmm` est l'heure de la cloture (pas du boot). Une session longue avec plusieurs clotures produit plusieurs fichiers.
+At each closure, the persona creates a **new** file. The `HHmm` is the closure time (not the boot time). A long session with multiple closures produces multiple files.
 
-### Structure d'une instance
+### Instance structure
 
-Le scaffolding est **minimal** — seuls les elements necessaires au protocole sont crees a l'initialisation. L'organisation interne de `shared/` (sous-repertoires, conventions de nommage des artefacts, archivage) releve des conventions d'instance, pas de l'implementation standard.
+Scaffolding is **minimal** — only elements necessary for the protocol are created at initialization. The internal organization of `shared/` (subdirectories, artefact naming conventions, archiving) is an instance convention, not standard implementation.
 
 ```
 instance/                        ← scaffolding (create-instance)
-├── sofia.md                     ← marqueur d'instance
-├── shared/                      ← espace partage (bus d'echange)
-│   ├── conventions.md           ← conventions specifiques a l'instance
-│   └── orga/                    ← organisation equipe
-│       ├── personas/            ← fiches persona
-│       └── contextes/           ← contextes par persona-produit
-├── {espace}/                    ← un par persona
-│   ├── CLAUDE.md                ← instructions du persona (runtime)
-│   └── sessions/                ← resumes de session
+├── sofia.md                     ← instance marker
+├── shared/                      ← shared space (exchange bus)
+│   ├── conventions.md           ← instance-specific conventions
+│   └── orga/                    ← team organization
+│       ├── personas/            ← persona files
+│       └── contextes/           ← contexts per persona-product
+├── {space}/                     ← one per persona
+│   ├── CLAUDE.md                ← persona instructions (runtime)
+│   └── sessions/                ← session summaries
 └── ...
 ```
 
-Le protocole impose `shared/` comme canal unique et les artefacts avec frontmatter. Comment l'instance organise ses artefacts dans `shared/` (sous-repertoires, nommage, archivage) est une decision locale documentee dans `conventions.md`.
+The protocol requires `shared/` as the sole channel and artefacts with frontmatter. How the instance organizes its artefacts in `shared/` (subdirectories, naming, archiving) is a local decision documented in `conventions.md`.
 
-### Installation du protocole sur un persona
+### Installing the protocol on a persona
 
-Le protocole H2A est installe via le **contexte** (`shared/orga/contextes/contexte-{persona}-{produit}.md`), pas via la fiche persona. La fiche persona definit le role (agnostique de l'instance). Le contexte installe les regles de l'instance.
+The H2A protocol is installed via the **context** (`shared/orga/contextes/contexte-{persona}-{product}.md`), not via the persona file. The persona file defines the role (instance-agnostic). The context installs the instance rules.
 
-Chaque contexte DOIT contenir une section `## Protocole H2A` qui :
-- Pointe vers `shared/conventions.md` (a lire au premier boot, relire avant chaque artefact et fermeture)
-- Rappelle les sections obligatoires du resume de session (Produit, Decisions, Notes deposees, Ouvert)
-- Rappelle les sections observationnelles (Friction orchestrateur DEVRAIT, Flux PEUT)
-- Rappelle la convention de commit
-- Contient le **template friction inline** — le format exact attendu, directement visible dans le contexte
+Each context MUST contain an `## H2A Protocol` section that:
+- Points to `shared/conventions.md` (read at first boot, reread before each artefact and closure)
+- Recalls the mandatory session summary sections (Produit, Decisions, Notes deposees, Ouvert)
+- Recalls the observational sections (Friction orchestrateur SHOULD, Flux MAY)
+- Recalls the commit convention
+- Contains the **inline friction template** — the exact expected format, directly visible in the context
 
-Sans cette section, le persona ne tracera pas la friction — c'est le cas d'usage le plus frequent d'ecart prescription/usage.
+Without this section, the persona will not trace friction — this is the most common prescription/usage gap.
 
-**Template friction inline** (a inclure dans chaque contexte) :
+**Inline friction template** (to include in each context):
 
 ```
-Format friction : {symbole} [{marqueur}] {description} — [{initiative}] → {resolution}
-Marqueurs : ✓ [sound], ~ [contestable], ⚡ [simplification], ◐ [blind_spot], ✗ [refuted]
-Initiative : [persona] ou [PO]
-Resolution (DEVRAIT) : → ratified, → contested, → revised, → rejected
-Lignage : si amende une friction anterieure, ajouter (ref: {id-source}/{index})
+Friction format: {symbol} [{marker}] {description} — [{initiative}] → {resolution}
+Markers: ✓ [sound], ~ [contestable], ⚡ [simplification], ◐ [blind_spot], ✗ [refuted]
+Initiative: [persona] or [PO]
+Resolution (SHOULD): → ratified, → contested, → revised, → rejected
+Lineage: if amending a prior friction, add (ref: {source-id}/{index})
 ```
 
-Le template est un filet de securite — le persona a le format sous les yeux au moment de produire, sans relire un fichier externe.
+The template is a safety net — the persona has the format in view when producing, without rereading an external file.
 
 ### Frontmatter
 
-Tout artefact depose dans l'espace partage porte un frontmatter YAML. Pas d'accents dans les valeurs.
+Every artefact deposited in the shared space carries a YAML frontmatter. No accents in values.
 
-**Artefacts** :
+**Artefacts**:
 ```yaml
 ---
-from: persona-emetteur
-to: persona-destinataire
-nature: signal           # signal | question | demande | reponse
+from: persona-emitter
+to: persona-recipient
+nature: signal           # signal | question | request | response
 status: new              # new | read | done
 date: YYYY-MM-DD
 ---
 ```
 
-**Sessions** :
+**Sessions**:
 ```yaml
 ---
-persona: nom-persona
+persona: persona-name
 date: YYYY-MM-DD
 session: "HHmm"
 ---
 ```
 
-### Archivage
+### Archiving
 
-Quand un artefact passe a `status: done`, il est deplace dans `archives/` du repertoire parent.
+When an artefact moves to `status: done`, it is moved to `archives/` in the parent directory.
 
-### Statut du cycle de vie
+### Status lifecycle
 
-| Status | Signification |
-|--------|--------------|
-| `new` | Depose, pas encore lu par le destinataire |
-| `read` | Lu par le destinataire |
-| `done` | Le destinataire a fait ce qu'il fallait avec |
+| Status | Meaning |
+|--------|---------|
+| `new` | Deposited, not yet read by the recipient |
+| `read` | Read by the recipient |
+| `done` | The recipient has acted on it |
 
-> **Retrocompat** : le parser accepte aussi les valeurs FR (`nouveau`, `lu`, `traite`).
+> **Retrocompat**: the parser also accepts FR values (`nouveau`, `lu`, `traite`).
 
-### Resolution des artefacts
+### Artefact resolution
 
-Quand un artefact est traite, chaque point DEVRAIT porter un tag de resolution dans le corps du document (pas dans le frontmatter — un artefact contient souvent plusieurs points).
+When an artefact is processed, each point SHOULD carry a resolution tag in the document body (not in the frontmatter — an artefact often contains multiple points).
 
-Convention : le destinataire annote chaque point avec `→ ratified`, `→ contested`, `→ revised` ou `→ rejected` avant archivage.
+Convention: the recipient annotates each point with `→ ratified`, `→ contested`, `→ revised`, or `→ rejected` before archiving.
 
-**Exemple** :
+**Example**:
 ```markdown
 ## Proposition A
 → ratified
 
 ## Proposition B
-→ rejected (justification courte)
+→ rejected (short justification)
 
 ## Proposition C
-→ revised (precision sur ce qui change)
+→ revised (detail on what changes)
 ```
 
-> **Retrocompat** : le parser accepte aussi les tags FR (`ratifie`, `conteste`, `revise`, `rejete`).
+> **Retrocompat**: the parser also accepts FR tags (`ratifie`, `conteste`, `revise`, `rejete`).
 
-### Friction dans les resumes de session
+### Friction in session summaries
 
-Section `## Friction orchestrateur` (DEVRAIT — voir `exchange.md` §Sessions, couche observationnelle).
+Section `## Friction orchestrateur` (SHOULD — see `exchange.md` §Sessions, observational layer).
 
-Chaque ligne porte les 5 dimensions definies dans `friction.md`, rendues ainsi :
+Each line carries the dimensions defined in `friction.md`, rendered as:
 
 ```
 ## Friction orchestrateur
-- [marqueur] description — [initiative] → resolution
+- [marker] description — [initiative] → resolution
 ```
 
-**Marqueurs** : rendus en mots-cles entre crochets + symbole visuel dans les conventions d'instance.
+**Markers**: rendered as bracketed keywords + visual symbol in instance conventions.
 
-| Protocole (`friction.md`) | Rendu Markdown |
-|--------------------------|----------------|
-| `[sound]` | ✓ ou `[sound]` |
-| `[contestable]` | ~ ou `[contestable]` |
-| `[simplification]` | ⚡ ou `[simplification]` |
-| `[blind_spot]` | ◐ ou `[blind_spot]` |
-| `[refuted]` | ✗ ou `[refuted]` |
+| Protocol (`friction.md`) | Markdown rendering |
+|--------------------------|-------------------|
+| `[sound]` | ✓ or `[sound]` |
+| `[contestable]` | ~ or `[contestable]` |
+| `[simplification]` | ⚡ or `[simplification]` |
+| `[blind_spot]` | ◐ or `[blind_spot]` |
+| `[refuted]` | ✗ or `[refuted]` |
 
-> **Retrocompat** : le parser accepte aussi les brackets FR (`[juste]`, `[angle-mort]`, `[faux]`).
+> **Retrocompat**: the parser also accepts FR brackets (`[juste]`, `[angle-mort]`, `[faux]`).
 
-Les symboles visuels (✓/~/⚡/◐/✗) sont une commodite d'instance. Les mots-cles entre crochets font foi pour l'audit.
+Visual symbols (✓/~/⚡/◐/✗) are an instance convenience. Bracketed keywords are authoritative for audit.
 
-**Initiative** : `[persona]` ou `[PO]` — qui a initie le sujet de friction.
+**Initiative**: `[persona]` or `[PO]` — who initiated the friction subject.
 
-**Resolution** : tag de geste epistemique apres la fleche `→`. Voir `protocol/friction.md` §Resolution.
+**Resolution**: epistemic gesture tag after the arrow `→`. See `protocol/friction.md` §Resolution.
 
-| Protocole (`friction.md`) | Rendu Markdown |
-|--------------------------|----------------|
+| Protocol (`friction.md`) | Markdown rendering |
+|--------------------------|-------------------|
 | `ratified` | `→ ratified` |
 | `contested` | `→ contested` |
 | `revised` | `→ revised` |
 | `rejected` | `→ rejected` |
 
-Le tag de resolution est pose par point de friction, pas par section.
+The resolution tag is set per friction point, not per section.
 
-**Exemple** :
+**Example**:
 ```
 ## Friction orchestrateur
-- ✓ [sound] le mapping Toulmin eclaire sans contraindre — [PO] → ratified
-- ~ [contestable] le mapping Toulmin est suggestif, pas acquis — [PO] → revised
-- ◐ [blind_spot] scaffolding absent de la review Böckeler — [aurele] → ratified
+- ✓ [sound] the Toulmin mapping illuminates without constraining — [PO] → ratified
+- ~ [contestable] the Toulmin mapping is suggestive, not established — [PO] → revised
+- ◐ [blind_spot] scaffolding absent from the Böckeler review — [aurele] → ratified
 ```
 
-### Lignage (dimension `antecedent`)
+### Lineage (`antecedent` dimension)
 
-Quand une friction amende une friction anterieure (voir `protocol/friction.md` §Lignage), la dimension `antecedent` est materialisee par un champ `ref:` en fin de ligne :
+When a friction amends a prior friction (see `protocol/friction.md` §Lineage), the `antecedent` dimension is materialized by a `ref:` field at the end of the line:
 
 ```
-- ✓ [sound] la distinction protocolaire/observationnelle couvre le cas — [aurele] → ratified (ref: 2026-04-10-1430-aurele/3)
+- ✓ [sound] the protocol/observational distinction covers the case — [aurele] → ratified (ref: 2026-04-10-1430-aurele/3)
 ```
 
-**Format** : `ref: {id-source}/{index}` ou :
-- `{id-source}` = nom du fichier (sans extension) — resume de session ou artefact
-- `{index}` = position de la friction dans le fichier source (1-based, ordre d'apparition)
+**Format**: `ref: {source-id}/{index}` where:
+- `{source-id}` = filename (without extension) — session summary or artefact
+- `{index}` = friction position in the source file (1-based, order of appearance)
 
-**Regles d'implementation** :
-- Le parser DOIT suivre les `ref:` et propager la resolution du dernier maillon vers la friction source.
-- Une friction referencee par un `ref:` n'apparait pas dans la liste des frictions ouvertes si le maillon qui la reference porte une resolution.
-- Les compteurs comptent la friction logique une seule fois, avec le marqueur d'origine et la resolution finale.
+**Implementation rules**:
+- The parser MUST follow `ref:` links and propagate the resolution from the last link to the source friction.
+- A friction referenced by a `ref:` does not appear in the open frictions list if the referencing link carries a resolution.
+- Counters count the logical friction once, with the original marker and the final resolution.
 
-Les dimensions `echange` et `emetteur` sont implicites : l'echange est la session courante, l'emetteur est le persona auteur du resume.
+The `exchange` and `emitter` dimensions are implicit: the exchange is the current session, the emitter is the persona authoring the summary.
 
-### reportPattern dans les resumes de session
+### reportPattern in session summaries
 
-Section `## reportPattern` (PEUT — couche observationnelle pour le constat, protocolaire pour le compteur).
+Section `## reportPattern` (MAY — observational layer for the observation, protocol layer for the counter).
 
-Le persona consigne le declenchement et le choix de l'orchestrateur :
+The persona records the trigger and the orchestrator's choice:
 
 ```
 ## reportPattern
-- Theme : [theme] — N frictions rejetees (sessions YYYY-MM-DD, ...)
-- Choix : erreur LLM | conviction | resistance
-- Justification : ...
+- Theme: [theme] — N rejected frictions (sessions YYYY-MM-DD, ...)
+- Choice: LLM error | conviction | resistance
+- Justification: ...
 ```
 
-L'audit compte les declenchements et la distribution des choix (compteur protocolaire).
+The audit counts triggers and the distribution of choices (protocol counter).
 
-### Contribution dans les resumes de session
+### Contribution in session summaries
 
-Section `## Flux` (PEUT — voir `exchange.md` §Sessions, couche observationnelle).
+Section `## Flux` (MAY — see `exchange.md` §Sessions, observational layer).
 
-Chaque ligne porte les dimensions definies dans `contribution.md`, rendues ainsi :
+Each line carries the dimensions defined in `contribution.md`, rendered as:
 
 ```
 ## Flux
 - {direction}:{type} — description
 ```
 
-**Direction** : `H` (humain apporte) ou `A` (assistant apporte).
-**Type** : `substance`, `structure`, `contestation`, `decision`.
+**Direction**: `H` (human brings) or `A` (assistant brings).
+**Type**: `substance`, `structure`, `contestation`, `decision`.
 
-**Comptage** (optionnel) : une ligne de synthese en fin de section.
+**Counting** (optional): a summary line at the end of the section.
 
-**Exemple** :
+**Example**:
 ```
 ## Flux
-- H:substance — article Böckeler, demande d'avis
-- A:substance — filiation scaffolding absente chez Böckeler
-- A:structure — trois niveaux de complementarite harness/SOFIA
-- H:decision — on garde la notation mots-cles
+- H:substance — Böckeler article, request for opinion
+- A:substance — scaffolding lineage absent from Böckeler
+- A:structure — three levels of harness/SOFIA complementarity
+- H:decision — keep keyword notation
 
 H:2 (substance 1, decision 1) | A:2 (substance 1, structure 1)
 ```
 
-La dimension `session` est implicite : c'est la session courante.
+The `session` dimension is implicit: it is the current session.
 
-### Operations — implementation filesystem
+### Operations — filesystem implementation
 
-Mapping des operations H2A (voir `protocol/h2a.md`) sur l'implementation courante.
+Mapping of H2A operations (see `protocol/h2a.md`) to the current implementation.
 
-| Operation | Mode | Geste concret |
-|-----------|------|--------------|
-| openSession() | manuel | L'orchestrateur lance un terminal dans le workspace du persona (ou reprend une session Claude Code existante) |
-| closeSession() | manuel | L'orchestrateur donne le signal. Le persona **relit `shared/conventions.md`**, puis produit le resume, prepare le commit. L'orchestrateur execute le commit |
-| depositArtefact() | manuel | L'orchestrateur instruit le persona. Le persona **relit `shared/conventions.md`**, puis produit l'artefact (note, review, feature) et depose dans `shared/` |
-| routeArtefact() | manuel | L'orchestrateur lit l'artefact dans `shared/`, ouvre une session avec le destinataire, lui presente l'artefact. **Cross-instance** : l'orchestrateur depose l'artefact dans `shared/` de l'instance du destinataire, pas de l'emetteur |
-| markRead() | manuel | L'orchestrateur met `status: read` dans le frontmatter de l'artefact |
-| markDone() | manuel | L'orchestrateur met `status: done` dans le frontmatter — l'artefact est ensuite deplace dans `archives/` |
-| qualifyFriction() | automatique | Le persona pre-remplit la section `## Friction orchestrateur` a la fermeture. L'orchestrateur valide ou corrige |
-| qualifyContribution() | automatique | Le persona pre-remplit la section `## Flux` a la fermeture. L'orchestrateur valide ou corrige |
-| reportPattern() | automatique | Le persona detecte une convergence thematique de rejets en cours de session. Il interpelle l'orchestrateur avec le constat + 3 hypotheses argumentees. L'orchestrateur repond avec son choix + justification. A la fermeture, le persona consigne dans une section `## reportPattern` du resume |
+| Operation | Mode | Concrete gesture |
+|-----------|------|-----------------|
+| openSession() | manual | The orchestrator launches a terminal in the persona's workspace (or resumes an existing Claude Code session) |
+| closeSession() | manual | The orchestrator gives the signal. The persona **rereads `shared/conventions.md`**, then produces the summary, prepares the commit. The orchestrator executes the commit |
+| depositArtefact() | manual | The orchestrator instructs the persona. The persona **rereads `shared/conventions.md`**, then produces the artefact (note, review, feature) and deposits in `shared/` |
+| routeArtefact() | manual | The orchestrator reads the artefact in `shared/`, opens a session with the recipient, presents the artefact. **Cross-instance**: the orchestrator deposits the artefact in the recipient instance's `shared/`, not the emitter's |
+| markRead() | manual | The orchestrator sets `status: read` in the artefact's frontmatter |
+| markDone() | manual | The orchestrator sets `status: done` in the frontmatter — the artefact is then moved to `archives/` |
+| qualifyFriction() | automatic | The persona pre-fills the `## Friction orchestrateur` section at closure. The orchestrator validates or corrects |
+| qualifyContribution() | automatic | The persona pre-fills the `## Flux` section at closure. The orchestrator validates or corrects |
+| reportPattern() | automatic | The persona detects a thematic convergence of rejections during the session. It challenges the orchestrator with the observation + 3 argued hypotheses. The orchestrator responds with their choice + justification. At closure, the persona records in a `## reportPattern` section of the summary |
 
-**Manuel** = l'orchestrateur declenche par un geste explicite.
-**Automatique** = le persona produit a la fermeture de session, l'orchestrateur valide.
+**Manual** = the orchestrator triggers with an explicit gesture.
+**Automatic** = the persona produces at session closure, the orchestrator validates.
 
-Le persona NE DOIT PAS fermer de lui-meme ni deposer d'artefact sans instruction de l'orchestrateur.
+The persona MUST NOT close on its own or deposit an artefact without orchestrator instruction.
 
-### Outillage
+### Tooling
 
-| Outil | Role |
-|-------|------|
-| `implementation/filesystem/audit-instance.py` | Verifie la conformite d'une instance au protocole |
-| `implementation/filesystem/create-instance.py` | Scaffolde une nouvelle instance |
-| `sofia.md` | Persona meta — instancie, audite. Operatrice du protocole |
+| Tool | Role |
+|------|------|
+| `implementation/filesystem/audit-instance.py` | Verifies instance protocol conformity |
+| `implementation/filesystem/create-instance.py` | Scaffolds a new instance |
+| `sofia.md` | Meta persona — instantiates, audits. Protocol operator |
 
 ---
 
-## Ce qui est implementation vs protocole
+## What is implementation vs protocol
 
-| Element | Protocole (h2a.md) | Implementation (ce doc) |
-|---------|--------------------|-----------------------|
-| "Chaque session produit une trace" | ✓ | |
-| "La trace est un fichier .md commite dans git" | | ✓ |
-| "Les marqueurs sont [sound] [contestable] etc." | ✓ | |
-| "Les marqueurs sont dans un fichier Markdown" | | ✓ |
-| "L'espace partage est le seul canal" | ✓ | |
-| "L'espace partage est un dossier shared/" | | ✓ |
-| "L'instance est identifiable" | ✓ | |
-| "L'instance est identifiee par un fichier sofia.md" | | ✓ |
-| "La friction porte 5 dimensions" | ✓ | |
-| "La friction est une ligne Markdown avec symbole + mot-cle + initiative" | | ✓ |
-| "La contribution porte direction et type" | ✓ | |
-| "La contribution est une ligne `{H\|A}:{type} — description`" | | ✓ |
-| "La friction porte un tag de resolution" | ✓ | |
-| "Le tag de resolution est rendu `→ ratified` en fin de ligne Markdown" | | ✓ |
-| "Une resolution peut evoluer entre sessions avec ref:" | ✓ | |
-| "Le ref: est rendu `(ref: id-session/n)` en fin de ligne Markdown" | | ✓ |
-| "reportPattern() produit un constat + 3 hypotheses + qualification" | ✓ | |
-| "reportPattern est une section `## reportPattern` dans le resume" | | ✓ |
-| "Le compteur de choix reportPattern est auditable" | ✓ | |
+| Element | Protocol (h2a.md) | Implementation (this doc) |
+|---------|-------------------|--------------------------|
+| "Each session produces a trace" | ✓ | |
+| "The trace is a .md file committed in git" | | ✓ |
+| "The markers are [sound] [contestable] etc." | ✓ | |
+| "The markers are in a Markdown file" | | ✓ |
+| "The shared space is the sole channel" | ✓ | |
+| "The shared space is a shared/ directory" | | ✓ |
+| "The instance is identifiable" | ✓ | |
+| "The instance is identified by a sofia.md file" | | ✓ |
+| "Friction carries 5 dimensions" | ✓ | |
+| "Friction is a Markdown line with symbol + keyword + initiative" | | ✓ |
+| "Contribution carries direction and type" | ✓ | |
+| "Contribution is a `{H\|A}:{type} — description` line" | | ✓ |
+| "Friction carries a resolution tag" | ✓ | |
+| "The resolution tag is rendered `→ ratified` at end of Markdown line" | | ✓ |
+| "A resolution can evolve between sessions with ref:" | ✓ | |
+| "The ref: is rendered `(ref: session-id/n)` at end of Markdown line" | | ✓ |
+| "reportPattern() produces an observation + 3 hypotheses + qualification" | ✓ | |
+| "reportPattern is a `## reportPattern` section in the summary" | | ✓ |
+| "The reportPattern choice counter is auditable" | ✓ | |
 
 ---
 
 ## Perspectives
 
-### API HTTP
+### HTTP API
 
-H2A pourrait etre implemente comme une API REST :
-- Chaque entite (Instance, Espace, Persona, Echange, Friction, Contribution) devient une ressource
-- Les frontmatter YAML deviennent des schemas JSON
-- Les statuts (`new` → `read` → `done`) deviennent des transitions d'etat
-- L'audit devient un endpoint de verification
+H2A could be implemented as a REST API:
+- Each entity (Instance, Space, Persona, Exchange, Friction, Contribution) becomes a resource
+- YAML frontmatter becomes JSON schemas
+- Statuses (`new` → `read` → `done`) become state transitions
+- Audit becomes a verification endpoint
 
-### Base de donnees
+### Database
 
-Les resumes de session, artefacts et marqueurs de friction pourraient vivre dans une base relationnelle ou documentaire. L'historique git serait remplace par un log d'evenements.
+Session summaries, artefacts, and friction markers could live in a relational or document database. Git history would be replaced by an event log.
 
-### Interoperabilite MCP / A2A
+### MCP / A2A interoperability
 
-H2A couvre la couche humain-assistant. MCP et A2A couvrent les couches agent-outils et agent-agent. Un systeme complet pourrait combiner les trois :
-- H2A pour la coordination humain-assistants
-- MCP pour l'acces aux ressources par les assistants
-- A2A pour la coordination inter-assistants (si l'invariant de routage humain est assoupli)
+H2A covers the human-assistant layer. MCP and A2A cover the agent-tools and agent-agent layers. A complete system could combine all three:
+- H2A for human-assistant coordination
+- MCP for resource access by assistants
+- A2A for inter-assistant coordination (if the human routing invariant is relaxed)
 
 ### Wire format
 
-Si H2A evolue vers un protocole technique, il faudra definir un wire format (JSON, protobuf, etc.) et une spec d'interoperabilite. Ce n'est pas dans le scope actuel.
+If H2A evolves toward a technical protocol, a wire format (JSON, protobuf, etc.) and an interoperability spec will be needed. This is not in the current scope.
