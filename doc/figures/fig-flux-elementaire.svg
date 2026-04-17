@@ -12,8 +12,8 @@
   <rect width="880" height="720" fill="url(#bg)" rx="6"/>
 
   <!-- Titre -->
-  <text x="440" y="30" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Flux elementaire — pattern Inspector</text>
-  <text x="440" y="48" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Georgia,serif" font-size="9" font-style="italic">chaque transmission traverse l'orchestrateur</text>
+  <text x="440" y="30" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Elementary flow — Inspector pattern</text>
+  <text x="440" y="48" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Georgia,serif" font-size="9" font-style="italic">every transmission goes through the orchestrator</text>
 
   <!-- ════════════════════════════════════════
        3 LANES
@@ -22,23 +22,23 @@
   <!-- Lane Persona A -->
   <rect x="40" y="65" width="220" height="500" rx="6" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.15)" stroke-width="0.7"/>
   <text x="150" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-family="'IBM Plex Mono',monospace" font-size="10" letter-spacing="0.08em">PERSONA A</text>
-  <text x="150" y="100" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="8">architecte, stratege...</text>
+  <text x="150" y="100" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="8">architect, strategist...</text>
 
   <!-- Lane Humain (centre) -->
   <rect x="290" y="65" width="300" height="500" rx="6" fill="rgba(64,216,192,0.04)" stroke="#40d8c0" stroke-width="0.9"/>
-  <text x="440" y="86" text-anchor="middle" fill="#40d8c0" font-family="'IBM Plex Mono',monospace" font-size="10" letter-spacing="0.08em">HUMAIN</text>
-  <text x="440" y="100" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-family="Inter,sans-serif" font-size="8">orchestre · inspecte · arbitre</text>
+  <text x="440" y="86" text-anchor="middle" fill="#40d8c0" font-family="'IBM Plex Mono',monospace" font-size="10" letter-spacing="0.08em">HUMAN</text>
+  <text x="440" y="100" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-family="Inter,sans-serif" font-size="8">orchestrates · inspects · arbitrates</text>
 
   <!-- Lane Persona B -->
   <rect x="620" y="65" width="220" height="500" rx="6" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.15)" stroke-width="0.7"/>
   <text x="730" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-family="'IBM Plex Mono',monospace" font-size="10" letter-spacing="0.08em">PERSONA B</text>
-  <text x="730" y="100" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="8">dev, UX, recherche...</text>
+  <text x="730" y="100" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="8">dev, UX, research...</text>
 
   <!-- ════════════════════════════════════════
-       1 — Humain ouvre session avec A
+       1 — Humain opens session avec A
   ════════════════════════════════════════ -->
   <rect x="360" y="120" width="160" height="26" rx="4" fill="rgba(64,216,192,0.05)" stroke="rgba(64,216,192,0.2)" stroke-width="0.7"/>
-  <text x="440" y="137" text-anchor="middle" fill="rgba(240,248,245,0.5)" font-family="Inter,sans-serif" font-size="9">ouvre session</text>
+  <text x="440" y="137" text-anchor="middle" fill="rgba(240,248,245,0.5)" font-family="Inter,sans-serif" font-size="9">opens session</text>
 
 
   <line x1="360" y1="133" x2="262" y2="133" stroke="rgba(64,216,192,0.4)" stroke-width="1.2"/>
@@ -48,10 +48,10 @@
   <text x="310" y="137" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">1</text>
 
   <!-- ════════════════════════════════════════
-       2 — Humain pose question
+       2 — Humain asks question
   ════════════════════════════════════════ -->
   <rect x="360" y="160" width="160" height="26" rx="4" fill="rgba(64,216,192,0.05)" stroke="rgba(64,216,192,0.2)" stroke-width="0.7"/>
-  <text x="440" y="177" text-anchor="middle" fill="rgba(240,248,245,0.5)" font-family="Inter,sans-serif" font-size="9">pose question</text>
+  <text x="440" y="177" text-anchor="middle" fill="rgba(240,248,245,0.5)" font-family="Inter,sans-serif" font-size="9">asks question</text>
 
   <line x1="360" y1="173" x2="262" y2="173" stroke="rgba(64,216,192,0.4)" stroke-width="1"/>
   <polygon points="264,173 274,169 274,177" fill="rgba(64,216,192,0.45)"/>
@@ -63,7 +63,7 @@
        3 — A produit un livrable
   ════════════════════════════════════════ -->
   <rect x="75" y="205" width="150" height="40" rx="5" fill="rgba(64,216,192,0.05)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
-  <text x="150" y="223" text-anchor="middle" fill="#f0f8f5" font-family="Inter,sans-serif" font-size="10">produit</text>
+  <text x="150" y="223" text-anchor="middle" fill="#f0f8f5" font-family="Inter,sans-serif" font-size="10">produces</text>
   <text x="150" y="237" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="'IBM Plex Mono',monospace" font-size="8">review-adr-051.md</text>
 
   <circle cx="62" cy="225" r="9" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.25)" stroke-width="0.6"/>
@@ -89,9 +89,9 @@
 
   <rect x="340" y="275" width="200" height="70" rx="5" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
   <text x="440" y="294" text-anchor="middle" fill="rgba(64,216,192,0.65)" font-family="'IBM Plex Mono',monospace" font-size="8" letter-spacing="0.06em">INSPECTION</text>
-  <text x="440" y="312" text-anchor="middle" fill="rgba(240,248,245,0.5)" font-family="Inter,sans-serif" font-size="9">lit · verifie les faits</text>
-  <text x="440" y="326" text-anchor="middle" fill="rgba(240,248,245,0.5)" font-family="Inter,sans-serif" font-size="9">filtre · contextualise</text>
-  <text x="440" y="340" text-anchor="middle" fill="rgba(236,72,153,0.5)" font-family="Inter,sans-serif" font-size="9" font-weight="500">decide quoi transmettre</text>
+  <text x="440" y="312" text-anchor="middle" fill="rgba(240,248,245,0.5)" font-family="Inter,sans-serif" font-size="9">reads · verifies facts</text>
+  <text x="440" y="326" text-anchor="middle" fill="rgba(240,248,245,0.5)" font-family="Inter,sans-serif" font-size="9">filters · contextualizes</text>
+  <text x="440" y="340" text-anchor="middle" fill="rgba(236,72,153,0.5)" font-family="Inter,sans-serif" font-size="9" font-weight="500">decides what to transmit</text>
 
   <circle cx="327" cy="310" r="9" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.25)" stroke-width="0.6"/>
   <text x="327" y="314" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">5</text>
@@ -115,14 +115,14 @@
        7 — B réagit
   ════════════════════════════════════════ -->
   <rect x="655" y="380" width="150" height="40" rx="5" fill="rgba(64,216,192,0.05)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
-  <text x="730" y="398" text-anchor="middle" fill="#f0f8f5" font-family="Inter,sans-serif" font-size="10">reagit</text>
+  <text x="730" y="398" text-anchor="middle" fill="#f0f8f5" font-family="Inter,sans-serif" font-size="10">reacts</text>
   <text x="730" y="412" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="'IBM Plex Mono',monospace" font-size="8">note-reponse.md</text>
 
   <circle cx="818" cy="400" r="9" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.25)" stroke-width="0.6"/>
   <text x="818" y="404" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">7</text>
 
   <!-- Fleche réaction → Humain -->
-  <!-- Fleche en angle : reagit (milieu) → descend → tourne → inspection -->
+  <!-- Fleche en angle : reacts (milieu) → descend → tourne → inspection -->
   <path d="M 730,420 L 730,463 L 527,463" fill="none" stroke="rgba(167,139,250,0.45)" stroke-width="1.2"/>
   <polygon points="529,463 539,459 539,467" fill="rgba(167,139,250,0.55)"/>
 
@@ -131,13 +131,13 @@
   ════════════════════════════════════════ -->
   <rect x="355" y="445" width="170" height="36" rx="5" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.2)" stroke-width="0.8"/>
   <text x="440" y="464" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-family="'IBM Plex Mono',monospace" font-size="8" letter-spacing="0.06em">INSPECTION</text>
-  <text x="440" y="477" text-anchor="middle" fill="rgba(240,248,245,0.4)" font-family="Inter,sans-serif" font-size="8">verifie · le cycle continue</text>
+  <text x="440" y="477" text-anchor="middle" fill="rgba(240,248,245,0.4)" font-family="Inter,sans-serif" font-size="8">verifies · cycle continues</text>
 
   <line x1="355" y1="463" x2="227" y2="463" stroke="rgba(64,216,192,0.25)" stroke-width="0.8" stroke-dasharray="4,4"/>
   <polygon points="229,463 239,459 239,467" fill="rgba(64,216,192,0.35)"/>
 
   <rect x="75" y="446" width="150" height="34" rx="5" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.12)" stroke-width="0.6" stroke-dasharray="4,3"/>
-  <text x="150" y="467" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-family="Inter,sans-serif" font-size="9" font-style="italic">session suivante...</text>
+  <text x="150" y="467" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-family="Inter,sans-serif" font-size="9" font-style="italic">next session...</text>
 
   <circle cx="327" cy="463" r="9" fill="rgba(64,216,192,0.08)" stroke="rgba(64,216,192,0.25)" stroke-width="0.6"/>
   <text x="327" y="467" text-anchor="middle" fill="rgba(64,216,192,0.55)" font-family="'IBM Plex Mono',monospace" font-size="8">8</text>

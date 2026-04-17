@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Fig. — MCD H2A — 7 entites constitutives — 16/04/2026 -->
+<!-- Fig. — H2A MCD — 7 constitutive entities — 16/04/2026 -->
 <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace">
 
   <defs>
@@ -20,7 +20,7 @@
   <!-- ════════════════════════════════════════
        TITRE
   ════════════════════════════════════════ -->
-  <text x="450" y="30" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">MCD H2A — 7 entites constitutives</text>
+  <text x="450" y="30" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">H2A MCD — 7 constitutive entities</text>
 
   <!-- ════════════════════════════════════════
        NIVEAU LABELS (droite)
@@ -41,28 +41,28 @@
   <rect x="30" y="55" width="155" height="75" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
   <rect x="30" y="55" width="155" height="18" rx="4" fill="rgba(64,216,192,0.08)"/>
   <text x="107" y="68" text-anchor="middle" fill="#f0f8f5" font-size="9" font-weight="600">Orchestrateur</text>
-  <text x="40" y="86" fill="rgba(64,216,192,0.45)" font-size="7">identifiant : texte</text>
+  <text x="40" y="86" fill="rgba(64,216,192,0.45)" font-size="7">identifier : text</text>
   <text x="40" y="98" fill="rgba(64,216,192,0.45)" font-size="7">instances : ref[]</text>
   <line x1="30" y1="105" x2="185" y2="105" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
-  <text x="40" y="118" fill="rgba(64,216,192,0.3)" font-size="6.5" font-style="italic">humain — traverse tout</text>
+  <text x="40" y="118" fill="rgba(64,216,192,0.3)" font-size="6.5" font-style="italic">human — traverses all</text>
 
   <!-- Instance -->
   <rect x="245" y="55" width="155" height="75" rx="4" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.25)" stroke-width="0.8"/>
   <rect x="245" y="55" width="155" height="18" rx="4" fill="rgba(167,139,250,0.08)"/>
   <text x="322" y="68" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="600">Instance</text>
-  <text x="255" y="86" fill="rgba(64,216,192,0.45)" font-size="7">identifiant : texte</text>
-  <text x="255" y="98" fill="rgba(64,216,192,0.45)" font-size="7">version_methode : texte</text>
+  <text x="255" y="86" fill="rgba(64,216,192,0.45)" font-size="7">identifier : text</text>
+  <text x="255" y="98" fill="rgba(64,216,192,0.45)" font-size="7">method_version : text</text>
   <line x1="245" y1="105" x2="400" y2="105" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
-  <text x="255" y="118" fill="rgba(167,139,250,0.3)" font-size="6.5" font-style="italic">marqueur sofia.md</text>
+  <text x="255" y="118" fill="rgba(167,139,250,0.3)" font-size="6.5" font-style="italic">sofia.md marker</text>
 
   <!-- Espace -->
   <rect x="460" y="55" width="155" height="75" rx="4" fill="rgba(138,168,216,0.04)" stroke="rgba(138,168,216,0.25)" stroke-width="0.8"/>
   <rect x="460" y="55" width="155" height="18" rx="4" fill="rgba(138,168,216,0.08)"/>
   <text x="537" y="68" text-anchor="middle" fill="#8aa8d8" font-size="9" font-weight="600">Espace</text>
-  <text x="470" y="86" fill="rgba(64,216,192,0.45)" font-size="7">identifiant : texte</text>
-  <text x="470" y="98" fill="rgba(64,216,192,0.45)" font-size="7">partage : booleen</text>
+  <text x="470" y="86" fill="rgba(64,216,192,0.45)" font-size="7">identifier : text</text>
+  <text x="470" y="98" fill="rgba(64,216,192,0.45)" font-size="7">shared : boolean</text>
   <line x1="460" y1="105" x2="615" y2="105" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
-  <text x="470" y="118" fill="rgba(138,168,216,0.3)" font-size="6.5" font-style="italic">isolation stricte</text>
+  <text x="470" y="118" fill="rgba(138,168,216,0.3)" font-size="6.5" font-style="italic">strict isolation</text>
 
   <!-- Persona -->
   <rect x="675" y="50" width="130" height="130" rx="4" fill="rgba(212,160,48,0.04)" stroke="rgba(212,160,48,0.3)" stroke-width="0.8"/>
@@ -76,7 +76,7 @@
   <text x="685" y="135" fill="rgba(64,216,192,0.45)" font-size="6.5">6. challenge</text>
   <text x="685" y="146" fill="rgba(64,216,192,0.45)" font-size="6.5">7. collaboration</text>
   <line x1="675" y1="153" x2="805" y2="153" stroke="rgba(212,160,48,0.1)" stroke-width="0.5"/>
-  <text x="685" y="166" fill="rgba(212,160,48,0.3)" font-size="6.5" font-style="italic">role contraint</text>
+  <text x="685" y="166" fill="rgba(212,160,48,0.3)" font-size="6.5" font-style="italic">constrained role</text>
 
   <!-- Self-relation Persona challenge -->
   <path d="M805,100 C830,100 830,140 805,140" fill="none" stroke="rgba(224,80,80,0.25)" stroke-width="0.7" marker-end="url(#arr)"/>
@@ -88,19 +88,19 @@
 
   <!-- Orchestrateur → Instance -->
   <line x1="185" y1="92" x2="243" y2="92" stroke="rgba(160,208,200,0.3)" stroke-width="0.8" marker-end="url(#arr)"/>
-  <text x="214" y="86" text-anchor="middle" fill="rgba(160,208,200,0.3)" font-size="6">orchestre</text>
+  <text x="214" y="86" text-anchor="middle" fill="rgba(160,208,200,0.3)" font-size="6">orchestrates</text>
   <text x="190" y="102" fill="rgba(160,208,200,0.2)" font-size="5.5">1</text>
   <text x="237" y="102" fill="rgba(160,208,200,0.2)" font-size="5.5">1..*</text>
 
   <!-- Instance → Espace -->
   <line x1="400" y1="92" x2="458" y2="92" stroke="rgba(160,208,200,0.3)" stroke-width="0.8" marker-end="url(#arr)"/>
-  <text x="429" y="86" text-anchor="middle" fill="rgba(160,208,200,0.3)" font-size="6">contient</text>
+  <text x="429" y="86" text-anchor="middle" fill="rgba(160,208,200,0.3)" font-size="6">contains</text>
   <text x="405" y="102" fill="rgba(160,208,200,0.2)" font-size="5.5">1</text>
   <text x="452" y="102" fill="rgba(160,208,200,0.2)" font-size="5.5">1..*</text>
 
   <!-- Espace → Persona -->
   <line x1="615" y1="92" x2="673" y2="92" stroke="rgba(160,208,200,0.3)" stroke-width="0.8" marker-end="url(#arr)"/>
-  <text x="644" y="86" text-anchor="middle" fill="rgba(160,208,200,0.3)" font-size="6">opere</text>
+  <text x="644" y="86" text-anchor="middle" fill="rgba(160,208,200,0.3)" font-size="6">operates</text>
   <text x="620" y="102" fill="rgba(160,208,200,0.2)" font-size="5.5">1</text>
   <text x="667" y="102" fill="rgba(160,208,200,0.2)" font-size="5.5">1</text>
 
@@ -111,24 +111,24 @@
   <!-- Echange -->
   <rect x="245" y="225" width="310" height="85" rx="4" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.25)" stroke-width="0.8"/>
   <rect x="245" y="225" width="310" height="18" rx="4" fill="rgba(167,139,250,0.08)"/>
-  <text x="400" y="238" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="600">Echange</text>
+  <text x="400" y="238" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="600">Exchange</text>
   <text x="255" y="256" fill="rgba(64,216,192,0.45)" font-size="7">type : session | artefact</text>
   <text x="255" y="268" fill="rgba(64,216,192,0.45)" font-size="7">instance : ref</text>
   <text x="255" y="280" fill="rgba(64,216,192,0.45)" font-size="7">espace : ref</text>
   <text x="420" y="256" fill="rgba(64,216,192,0.45)" font-size="7">date_heure : datetime</text>
   <text x="420" y="268" fill="rgba(64,216,192,0.45)" font-size="7">persona : ref</text>
   <line x1="245" y1="288" x2="555" y2="288" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
-  <text x="255" y="301" fill="rgba(167,139,250,0.3)" font-size="6.5" font-style="italic">session = synchrone · artefact = depot asynchrone</text>
+  <text x="255" y="301" fill="rgba(167,139,250,0.3)" font-size="6.5" font-style="italic">session = synchronous · artefact = asynchronous deposit</text>
 
   <!-- Orchestrateur → Echange -->
   <path d="M107,130 L107,267 L243,267" fill="none" stroke="rgba(160,208,200,0.2)" stroke-width="0.7" marker-end="url(#arr)"/>
-  <text x="120" y="200" fill="rgba(160,208,200,0.25)" font-size="6">participe</text>
+  <text x="120" y="200" fill="rgba(160,208,200,0.25)" font-size="6">participates</text>
   <text x="112" y="135" fill="rgba(160,208,200,0.2)" font-size="5.5">1</text>
   <text x="237" y="278" fill="rgba(160,208,200,0.2)" font-size="5.5">*</text>
 
   <!-- Persona → Echange -->
   <path d="M740,180 L740,256 L557,256" fill="none" stroke="rgba(160,208,200,0.25)" stroke-width="0.7" marker-end="url(#arr)"/>
-  <text x="745" y="220" fill="rgba(160,208,200,0.25)" font-size="6">emet/recoit</text>
+  <text x="745" y="220" fill="rgba(160,208,200,0.25)" font-size="6">emits/receives</text>
   <text x="745" y="185" fill="rgba(160,208,200,0.2)" font-size="5.5">1</text>
   <text x="562" y="266" fill="rgba(160,208,200,0.2)" font-size="5.5">*</text>
 
@@ -142,12 +142,12 @@
   <text x="260" y="373" text-anchor="middle" fill="rgba(224,80,80,0.7)" font-size="9" font-weight="600">Friction</text>
   <text x="130" y="392" fill="rgba(64,216,192,0.45)" font-size="7">marqueur : [sound] [contestable]</text>
   <text x="130" y="403" fill="rgba(64,216,192,0.45)" font-size="7">  [simplification] [blind_spot] [refuted]</text>
-  <text x="130" y="415" fill="rgba(64,216,192,0.45)" font-size="7">description : texte</text>
+  <text x="130" y="415" fill="rgba(64,216,192,0.45)" font-size="7">description : text</text>
   <text x="130" y="427" fill="rgba(64,216,192,0.45)" font-size="7">initiative : [persona] | [PO]</text>
   <text x="130" y="439" fill="rgba(64,216,192,0.45)" font-size="7">resolution : ratified | contested | revised | rejected</text>
-  <text x="130" y="451" fill="rgba(64,216,192,0.45)" font-size="7">antecedent : ref (lignage)</text>
+  <text x="130" y="451" fill="rgba(64,216,192,0.45)" font-size="7">antecedent : ref (lineage)</text>
   <line x1="120" y1="458" x2="400" y2="458" stroke="rgba(224,80,80,0.1)" stroke-width="0.5"/>
-  <text x="130" y="471" fill="rgba(224,80,80,0.25)" font-size="6.5" font-style="italic">observationnelle · DEVRAIT pour la resolution</text>
+  <text x="130" y="471" fill="rgba(224,80,80,0.25)" font-size="6.5" font-style="italic">observational · SHOULD for resolution</text>
 
   <!-- Friction → Friction (amende / antecedent) — self-relation -->
   <path d="M120,400 C50,400 50,470 120,470" fill="none" stroke="rgba(224,80,80,0.25)" stroke-width="0.8" marker-end="url(#arr)"/>
@@ -162,19 +162,19 @@
   <text x="605" y="373" text-anchor="middle" fill="#3ddc84" font-size="9" font-weight="600">Contribution</text>
   <text x="490" y="392" fill="rgba(64,216,192,0.45)" font-size="7">direction : [H] | [A]</text>
   <text x="490" y="404" fill="rgba(64,216,192,0.45)" font-size="7">type : substance | structure | contestation | decision</text>
-  <text x="490" y="416" fill="rgba(64,216,192,0.45)" font-size="7">description : texte</text>
+  <text x="490" y="416" fill="rgba(64,216,192,0.45)" font-size="7">description : text</text>
   <line x1="480" y1="435" x2="730" y2="435" stroke="rgba(61,220,132,0.1)" stroke-width="0.5"/>
-  <text x="490" y="448" fill="rgba(61,220,132,0.25)" font-size="6.5" font-style="italic">observationnelle · PEUT</text>
+  <text x="490" y="448" fill="rgba(61,220,132,0.25)" font-size="6.5" font-style="italic">observational · MAY</text>
 
   <!-- Echange → Friction -->
   <path d="M340,310 L260,358" fill="none" stroke="rgba(224,80,80,0.25)" stroke-width="0.7" marker-end="url(#arr)"/>
-  <text x="290" y="328" fill="rgba(224,80,80,0.3)" font-size="6">genere</text>
+  <text x="290" y="328" fill="rgba(224,80,80,0.3)" font-size="6">generates</text>
   <text x="345" y="318" fill="rgba(160,208,200,0.2)" font-size="5.5">1</text>
   <text x="265" y="355" fill="rgba(160,208,200,0.2)" font-size="5.5">0..*</text>
 
   <!-- Echange → Contribution -->
   <path d="M460,310 L560,358" fill="none" stroke="rgba(61,220,132,0.25)" stroke-width="0.7" marker-end="url(#arr)"/>
-  <text x="520" y="328" fill="rgba(61,220,132,0.3)" font-size="6">genere</text>
+  <text x="520" y="328" fill="rgba(61,220,132,0.3)" font-size="6">generates</text>
   <text x="455" y="318" fill="rgba(160,208,200,0.2)" font-size="5.5">1</text>
   <text x="555" y="355" fill="rgba(160,208,200,0.2)" font-size="5.5">0..*</text>
 
@@ -182,7 +182,7 @@
        LEGENDE
   ════════════════════════════════════════ -->
   <rect x="30" y="480" width="8" height="8" rx="2" fill="rgba(64,216,192,0.1)" stroke="rgba(64,216,192,0.3)" stroke-width="0.5"/>
-  <text x="44" y="488" fill="rgba(64,216,192,0.35)" font-size="6.5">Topologie</text>
+  <text x="44" y="488" fill="rgba(64,216,192,0.35)" font-size="6.5">Topology</text>
   <rect x="110" y="480" width="8" height="8" rx="2" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.3)" stroke-width="0.5"/>
   <text x="124" y="488" fill="rgba(167,139,250,0.35)" font-size="6.5">Interaction</text>
   <rect x="200" y="480" width="8" height="8" rx="2" fill="rgba(224,80,80,0.1)" stroke="rgba(224,80,80,0.3)" stroke-width="0.5"/>
