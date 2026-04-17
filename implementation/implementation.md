@@ -256,7 +256,7 @@ Mapping des operations H2A (voir `protocol/h2a.md`) sur l'implementation courant
 | openSession() | manuel | L'orchestrateur lance un terminal dans le workspace du persona (ou reprend une session Claude Code existante) |
 | closeSession() | manuel | L'orchestrateur donne le signal. Le persona **relit `shared/conventions.md`**, puis produit le resume, prepare le commit. L'orchestrateur execute le commit |
 | depositArtefact() | manuel | L'orchestrateur instruit le persona. Le persona **relit `shared/conventions.md`**, puis produit l'artefact (note, review, feature) et depose dans `shared/` |
-| routeArtefact() | manuel | L'orchestrateur lit l'artefact dans `shared/`, ouvre une session avec le destinataire, lui presente l'artefact |
+| routeArtefact() | manuel | L'orchestrateur lit l'artefact dans `shared/`, ouvre une session avec le destinataire, lui presente l'artefact. **Cross-instance** : l'orchestrateur depose l'artefact dans `shared/` de l'instance du destinataire, pas de l'emetteur |
 | markRead() | manuel | L'orchestrateur met `status: read` dans le frontmatter de l'artefact |
 | markDone() | manuel | L'orchestrateur met `status: done` dans le frontmatter — l'artefact est ensuite deplace dans `archives/` |
 | qualifyFriction() | automatique | Le persona pre-remplit la section `## Friction orchestrateur` a la fermeture. L'orchestrateur valide ou corrige |

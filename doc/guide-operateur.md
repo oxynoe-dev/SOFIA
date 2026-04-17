@@ -14,7 +14,7 @@ Spec : `protocol/h2a.md`. Implementation : `implementation/implementation.md`.
 
 **Exemple** :
 ```
-cd produits/architecture/
+cd {instance}/{workspace}/
 claude
 ```
 
