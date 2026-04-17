@@ -35,7 +35,7 @@ Les invariants sont les proprietes constitutives du protocole — ce sans quoi H
 2. **Humain arbitre** — l'orchestrateur DOIT trancher les divergences entre personas. Aucun persona ne tranche pour un autre.
 3. **Isolation** — un persona NE DOIT PAS interagir en dehors de son espace et de l'espace partage. L'orchestrateur est le seul a traverser les frontieres.
 4. **Tracabilite** — tout echange DOIT produire une trace identifiable.
-5. **Opacite residuelle** — le protocole ne peut pas garantir que l'orchestrateur arbitre sans biais. Cette limitation est structurelle, pas corrigible. Le protocole DOIT la documenter et DEVRAIT fournir des mecanismes de mitigation (cf. `signalerPattern()` dans `friction.md`), mais aucun mecanisme ne constitue une garantie.
+5. **Opacite residuelle** — le protocole ne peut pas garantir que l'orchestrateur arbitre sans biais. Cette limitation est structurelle, pas corrigible. Le protocole DOIT la documenter et DEVRAIT fournir des mecanismes de mitigation (cf. `reportPattern()` dans `friction.md`), mais aucun mecanisme ne constitue une garantie.
 
 ## Operations
 
@@ -43,15 +43,15 @@ Operations implicites derivees des entites et des dimensions. Leur formalisation
 
 | Operation | Declencheur | Entites impliquees |
 |-----------|-------------|-------------------|
-| ouvrirSession() | orchestrateur | Echange (session), Persona |
-| fermerSession() | orchestrateur | Echange (session), Friction, Contribution |
-| deposerArtefact() | persona (sur instruction orchestrateur) | Echange (artefact) |
-| routerArtefact() | orchestrateur | Echange (artefact) |
-| marquerLu() | orchestrateur | Echange (artefact) |
-| marquerTraite() | orchestrateur | Echange (artefact) — declenche l'archivage |
-| qualifierFriction() | persona (pre-remplit), orchestrateur (valide) | Friction |
-| qualifierContribution() | persona | Contribution |
-| signalerPattern() | persona | Friction — meta-operation (voir `friction.md`) |
+| openSession() | orchestrateur | Echange (session), Persona |
+| closeSession() | orchestrateur | Echange (session), Friction, Contribution |
+| depositArtefact() | persona (sur instruction orchestrateur) | Echange (artefact) |
+| routeArtefact() | orchestrateur | Echange (artefact) |
+| markRead() | orchestrateur | Echange (artefact) |
+| markDone() | orchestrateur | Echange (artefact) — declenche l'archivage |
+| qualifyFriction() | persona (pre-remplit), orchestrateur (valide) | Friction |
+| qualifyContribution() | persona | Contribution |
+| reportPattern() | persona | Friction — meta-operation (voir `friction.md`) |
 
 ## Distinction protocole / observation
 
@@ -78,15 +78,17 @@ La couche protocolaire definit ce que l'audit peut verifier mecaniquement. La co
 | Metadonnees de session | Chaque trace porte : persona, date, identifiant de session |
 | Sections protocolaires | Chaque trace contient : Produit, Decisions, Notes deposees, Ouvert |
 | Metadonnees d'artefact | Chaque artefact porte : emetteur, destinataire, nature, statut, date |
-| Cycle de vie statut | Valeurs dans {nouveau, lu, traite} |
+| Cycle de vie statut | Valeurs dans {new, read, done} |
 | Isolation | Aucun persona n'a produit en dehors de son espace et de l'espace partage |
+
+> **FR retrocompat.** Le parser accepte aussi les identifiants FR (juste, angle-mort, faux, ratifie, conteste, revise, rejete, nouveau, lu, traite, matiere).
 
 ### Signaux observationnels (PEUT)
 
 | Signal | Interpretation |
 |--------|---------------|
 | Absence de friction sur N sessions consecutives | Friction possiblement absente — domestication ? |
-| Que des `[juste]` | Persona en mode validation |
+| Que des `[sound]` | Persona en mode validation |
 | Artefacts non routes depuis N echanges | Echange bloque |
 | Persona sans session depuis N jours | Persona inactif |
 

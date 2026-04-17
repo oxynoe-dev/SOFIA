@@ -180,4 +180,5 @@ La contribution est distincte de la friction : la friction capture la tension (p
 | Echange | Friction | genere | 1 → * |
 | Echange | Contribution | genere | 1 → * |
 | Persona | Persona | challenge | * → * |
+| Friction | Friction | amende (antecedent) | 0..1 → 0..1 |
 
