@@ -101,16 +101,30 @@ Un artefact est un depot asynchrone dans l'espace partage par un persona, a dest
 
 | Dimension | Valeurs | Obligatoire |
 |-----------|---------|-------------|
-| **emetteur** | Persona qui depose l'artefact | DOIT |
-| **destinataire** | Persona ou `equipe` | DOIT |
+| **from** | Persona qui depose l'artefact | DOIT |
+| **to** | Persona ou `equipe` | DOIT |
 | **nature** | `signal`, `question`, `demande`, `reponse` | DOIT |
-| **statut** | `nouveau` → `lu` → `traite` | DOIT |
+| **status** | `new` → `read` → `done` | DOIT |
 
-Le champ `nature` DOIT utiliser l'un des 4 types ci-dessus. Le champ `statut` DOIT suivre le cycle de vie indique.
+> **FR retrocompat.** Le parser accepte aussi les champs et valeurs FR : `de`/`pour`/`statut` (champs), `nouveau`/`lu`/`traite` (statuts), `ratifie`/`conteste`/`revise`/`rejete` (resolutions).
+
+Le champ `nature` DOIT utiliser l'un des 4 types ci-dessus. Le champ `status` DOIT suivre le cycle de vie indique.
+
+### Relecture des regles d'echange
+
+Le persona DOIT relire les regles d'echange de l'instance avant :
+- toute production d'artefact (note, review, feature)
+- toute fermeture de session (resume)
+
+Cette relecture garantit que les marqueurs de friction, les tags de resolution, le frontmatter et le nommage sont conformes. Sans relecture, le persona derive — surtout en session longue ou le contexte initial est compresse. Le mecanisme de relecture (fichier de conventions, hook, injection runtime) releve de l'implementation.
 
 ### Resolution des artefacts
 
-Quand un artefact passe a `statut: traite`, chaque point traite DEVRAIT porter un tag de resolution (voir `friction.md` §Resolution) : `ratifie`, `conteste`, `revise`, `rejete`. Le tag qualifie comment le destinataire a recu chaque point, pas l'artefact dans son ensemble.
+La resolution DOIT vivre dans l'artefact qui porte la friction — pas dans un artefact separe (note de retour, reponse). C'est l'orchestrateur qui annote chaque point de friction avec son tag de resolution (`→ ratified`, `→ contested`, `→ revised`, `→ rejected`) directement dans le fichier source, puis passe le statut a `done`.
+
+Cette regle garantit qu'une ligne de friction porte le cycle complet (marqueur + initiative + resolution) dans un seul fichier. Le parser n'a pas besoin de joindre plusieurs artefacts pour reconstituer le cycle.
+
+Une note de retour (reponse a une review) PEUT accompagner la resolution pour communiquer le contexte de la decision, mais elle NE DOIT PAS porter de marqueurs de friction ni de tags de resolution — sinon le parser compterait des doublons.
 
 ### Friction dans les artefacts
 
@@ -124,14 +138,14 @@ Un artefact PEUT porter des contributions (voir `contribution.md`). C'est le cas
 
 ### Routage
 
-1. Persona A depose un artefact dans l'espace partage (`statut: nouveau`)
+1. Persona A depose un artefact dans l'espace partage (`status: new`)
 2. L'orchestrateur lit l'artefact et decide de le router
-3. L'orchestrateur ouvre une session avec Persona B et lui presente l'artefact (`statut: lu`)
+3. L'orchestrateur ouvre une session avec Persona B et lui presente l'artefact (`status: read`)
 4. Persona B traite et PEUT deposer une reponse (`nature: reponse`)
-5. L'artefact original passe a `statut: traite`
+5. L'artefact original passe a `status: done`
 
 L'orchestrateur DOIT etre le routeur de tous les echanges. Un persona NE DOIT PAS consulter directement un artefact qui ne lui est pas destine.
 
 ### Archivage
 
-Quand un artefact passe a `statut: traite`, il DEVRAIT etre archive. Le mecanisme d'archivage est defini dans `implementation/implementation.md`.
+Quand un artefact passe a `status: done`, il DEVRAIT etre archive. Le mecanisme d'archivage est defini dans `implementation/implementation.md`.

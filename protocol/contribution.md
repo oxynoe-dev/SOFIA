@@ -14,14 +14,16 @@ La contribution capture la direction et la nature des apports pendant une sessio
 |-----------|---------|-------------|
 | **echange** | Reference a l'echange (session ou artefact) qui a genere la contribution | DOIT |
 | **direction** | `[H]` (humain apporte) ou `[A]` (assistant apporte) | DOIT |
-| **type** | `matiere`, `structure`, `contestation`, `decision` | DOIT |
+| **type** | `substance`, `structure`, `contestation`, `decision` | DOIT |
 | **description** | Resume court de l'apport | DOIT |
+
+> **FR retrocompat.** Le parser accepte aussi `matiere` comme alias de `substance`.
 
 **Portee** : une contribution est rattachee a un echange (session ou artefact), lui-meme rattache a un espace dans une instance.
 
 ## Couche
 
-La contribution est entierement **observationnelle**. La distinction entre types d'apport (matiere vs structure vs contestation) est semantique et non-deterministe. La section `## Flux` est optionnelle (PEUT).
+La contribution est entierement **observationnelle**. La distinction entre types d'apport (substance vs structure vs contestation) est semantique et non-deterministe. La section `## Flux` est optionnelle (PEUT).
 
 ## Tags de direction
 
@@ -34,7 +36,7 @@ La contribution est entierement **observationnelle**. La distinction entre types
 
 | Type | Definition |
 |------|-----------|
-| `matiere` | Information nouvelle — fait, donnee, reference, insight |
+| `substance` | Information nouvelle — fait, donnee, reference, insight |
 | `structure` | Mise en forme, categorisation, synthese |
 | `contestation` | Remise en question, contre-exemple, recadrage |
 | `decision` | Arbitrage, choix retenu |
@@ -49,12 +51,12 @@ Le comptage par direction et type est optionnel (PEUT).
 >
 > ```
 > ## Flux
-> - H:matiere — article Böckeler, demande d'avis
-> - A:matiere — filiation scaffolding absente chez Böckeler
+> - H:substance — article Böckeler, demande d'avis
+> - A:substance — filiation scaffolding absente chez Böckeler
 > - A:structure — trois niveaux de complementarite harness/SOFIA
 > - H:decision — on garde la notation mots-cles
 >
-> H:2 (matiere 1, decision 1) | A:2 (matiere 1, structure 1)
+> H:2 (substance 1, decision 1) | A:2 (substance 1, structure 1)
 > ```
 
 ## Distinction contribution / friction
@@ -70,8 +72,8 @@ Critere : une correction acceptee sans resistance = `H:contestation` dans le flu
 
 | Pattern | Interpretation |
 |---------|---------------|
-| H >> A sur matiere | L'assistant structure/scaffolde, l'humain apporte le fond |
-| A >> H sur matiere | L'humain pilote, l'assistant apporte le fond |
+| H >> A sur substance | L'assistant structure/scaffolde, l'humain apporte le fond |
+| A >> H sur substance | L'humain pilote, l'assistant apporte le fond |
 | H ≈ A | Co-construction equilibree |
 
 Ce n'est pas un jugement de valeur — c'est un signal sur le mode de collaboration actif.
