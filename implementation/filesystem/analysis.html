@@ -291,6 +291,62 @@ footer {
   letter-spacing: .08em;
 }
 
+/* ── Legend doc (same as site/oxynoe/sofia/doc/ .content) ── */
+.legend-toc {
+  display: block; padding: .4rem .8rem;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--ice-muted); text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  border-radius: 0 3px 3px 0;
+}
+.legend-toc:hover { color: var(--ice); border-left-color: var(--border-hi); }
+.legend-doc h1 {
+  font-family: var(--font-display); font-size: 28px; font-weight: 300;
+  color: var(--ice); margin-bottom: 1.5rem;
+}
+.legend-doc h2 {
+  font-family: var(--font-display); font-size: clamp(22px, 3vw, 28px);
+  font-weight: 300; color: var(--ice); line-height: 1.2;
+  margin: 3rem 0 1.2rem; scroll-margin-top: 20px;
+}
+.legend-doc h2:first-of-type { margin-top: 0; }
+.legend-doc h3 {
+  font-family: var(--font-display); font-size: 18px; font-weight: 300;
+  color: var(--ready); margin: 2rem 0 .8rem; scroll-margin-top: 20px;
+}
+.legend-doc p {
+  font-family: var(--font-sans); font-size: 15px; font-weight: 300;
+  color: var(--ice-dim); line-height: 1.7; margin-bottom: 1.2rem;
+}
+.legend-doc strong { color: var(--ice); font-weight: 500; }
+.legend-doc em { font-style: italic; color: var(--ice); }
+.legend-doc code {
+  font-family: var(--font-mono); font-size: 13px;
+  background: rgba(64,180,160,0.06); border: 1px solid var(--border);
+  padding: .15rem .4rem; border-radius: 2px;
+}
+.legend-doc table {
+  width: 100%; border-collapse: collapse; margin: 1.2rem 0;
+  font-family: var(--font-sans); font-size: 14px;
+}
+.legend-doc thead th {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ready); letter-spacing: .04em; text-transform: uppercase;
+  text-align: left; padding: .6rem .8rem;
+  border-bottom: 1px solid var(--border-hi);
+}
+.legend-doc tbody td {
+  color: var(--ice-dim); font-weight: 300; padding: .5rem .8rem;
+  border-bottom: 1px solid var(--border); line-height: 1.5;
+}
+.legend-doc tbody tr:hover td { background: rgba(64,180,160,0.03); }
+.legend-doc ul, .legend-doc ol { margin: .5rem 0 1.2rem 1.5rem; }
+.legend-doc li {
+  font-family: var(--font-sans); font-size: 15px; font-weight: 300;
+  color: var(--ice-dim); line-height: 1.7; margin: .3rem 0;
+}
+
 /* ── Info icon ── */
 .info-icon {
   display: inline-flex; align-items: center; justify-content: center;
@@ -433,6 +489,7 @@ td.diag-danger { color: var(--coral); }
     <li><button onclick="switchTab('mirror')">Mirror</button></li>
     <li><button onclick="switchTab('lens')">Lens</button></li>
     <li><button onclick="switchTab('probe')">Probe</button></li>
+    <li><button onclick="switchTab('legend')">Legend</button></li>
   </ul>
 </nav>
 
@@ -669,6 +726,622 @@ td.diag-danger { color: var(--coral); }
     </div>
   </div><!-- /tab-probe -->
 
+  <div id="tab-legend" class="tab-content">
+    <div class="rise" style="display:grid; grid-template-columns:200px 1fr; max-width:1100px; margin:0 auto; min-height:80vh;">
+      <!-- Sidebar TOC -->
+      <aside style="position:sticky; top:0; height:calc(100vh - 88px); overflow-y:auto; padding:2rem 1rem 2rem 0; border-right:1px solid var(--border); scrollbar-width:thin; scrollbar-color:var(--border) transparent;">
+        <div style="font-family:var(--font-mono); font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--ice-muted); opacity:.5; margin-bottom:.8rem; padding-left:.8rem;">Legend</div>
+        <a href="#introduction" class="legend-toc" onclick="legendScroll(event)">Introduction</a>
+        <a href="#map" class="legend-toc" onclick="legendScroll(event)">Map</a>
+        <a href="#mirror" class="legend-toc" onclick="legendScroll(event)">Mirror</a>
+        <a href="#lens" class="legend-toc" onclick="legendScroll(event)">Lens</a>
+        <a href="#probe" class="legend-toc" onclick="legendScroll(event)">Probe</a>
+        <a href="#glossary" class="legend-toc" onclick="legendScroll(event)">Glossary</a>
+      </aside>
+      <!-- Content -->
+      <div class="legend-doc" style="padding:2rem 3rem 10rem 2.5rem; max-width:800px; font-family:var(--font-sans); font-size:15px; color:var(--ice-dim); line-height:1.7;">
+<!-- LEGEND CONTENT -->
+<h1>Legend — How to read the SOFIA dashboard</h1>
+<p>This dashboard instruments a real human-AI collaboration practice. Every number comes from actual session logs and artifacts — nothing is simulated.</p>
+<h2 id="introduction">Introduction</h2>
+<p>SOFIA is a method for orchestrating specialized AI personas on a real project. One human orchestrator works with multiple constrained AI agents, each with a defined role (architect, researcher, developer, etc.). They disagree by design.</p>
+<p>The H2A protocol (Human-to-Assistant) captures and qualifies this disagreement — called <strong style="color:var(--ice)">friction</strong> — as structured data. This dashboard makes the quality of that friction visible.</p>
+<h3>What the dashboard shows</h3>
+<p>Five tabs, each a different lens on the same data:</p>
+<table><thead><tr>
+<th>Tab</th>
+<th>Question</th>
+<th>What you see</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Map</strong></td>
+<td>What does the organization look like?</td>
+<td>Instance cards, trajectory, persona cards</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Mirror</strong></td>
+<td>Is the practice healthy?</td>
+<td>KPIs, radars, contribution flow, open frictions, silence map</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Lens</strong></td>
+<td>What happened over time?</td>
+<td>Time series, distributions, counts</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Probe</strong></td>
+<td>Is the instance conforming?</td>
+<td>Structure checks, context sizes, activity</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Legend</strong></td>
+<td>How do I read all this?</td>
+<td>You are here</td>
+</tr>
+</tbody></table>
+<h3>How the data is collected</h3>
+<p>The parser scans all <code>.md</code> files (sessions and artifacts) for friction markers. A friction is any line that contains a marker + an initiative tag. Same parser everywhere — no distinction between session summaries and review artifacts.</p>
+<hr style="border:none; border-top:1px solid var(--border); margin:2rem 0;">
+<h2 id="map">Map</h2>
+<p>The entry point. Shows the topology of your SOFIA setup at a glance.</p>
+<h3>Instance cards</h3>
+<p>One card per instance. Each card shows:</p>
+<table><thead><tr>
+<th>Element</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Health dot</strong> (green/orange/red)</td>
+<td>Coverage — percentage of declared personas that have at least one friction</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Instance name</strong></td>
+<td>The instance identifier (from <code>sofia.md</code>)</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Friction count</strong></td>
+<td>Total frictions detected across all files in this instance</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Persona list</strong></td>
+<td>Each persona with their role. Greyed-out = no friction data (blind spot)</td>
+</tr>
+</tbody></table>
+<p>Right-click any instance or persona to navigate to Mirror, Lens, or Probe with the filter pre-selected.</p>
+<h3>Trajectory — challenge %</h3>
+<p>A line chart showing how the instance evolves over time.</p>
+<table><thead><tr>
+<th>Element</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">X axis</strong></td>
+<td>Friction windows (w1, w2, w3...) — groups of N consecutive frictions</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Y axis</strong></td>
+<td>Challenge % — share of non-sound frictions in each window</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Descending line</strong></td>
+<td>The instance is going quiet — less challenge over time</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Tooltip</strong></td>
+<td>Hover to see the date range covered by each window</td>
+</tr>
+</tbody></table>
+<p>Windows are not calendar-based. A window may cover 2 days or 2 weeks depending on friction density. This avoids artifacts from variable activity.</p>
+<h3>Persona mini cards</h3>
+<p>Below the trajectory: one small card per persona showing:</p>
+<table><thead><tr>
+<th>Element</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Friction count</strong></td>
+<td>Green if > 0, red if 0 (blind spot)</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Ctx lines</strong></td>
+<td>Context size (persona.md + contexte.md loaded at boot). Green < 150, yellow 150-250, red > 250</td>
+</tr>
+</tbody></table>
+<hr style="border:none; border-top:1px solid var(--border); margin:2rem 0;">
+<h2 id="mirror">Mirror</h2>
+<p>The health diagnostic. The orchestrator sees their own practice reflected back.</p>
+<h3>KPI banner</h3>
+<p>Five indicators at the top.</p>
+<table><thead><tr>
+<th>KPI</th>
+<th>What it measures</th>
+<th>Green</th>
+<th>Red</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Orchestrator</strong></td>
+<td>Is the orchestrator still pushing back AND resolving?</td>
+<td>H→A > 0 or open frictions low</td>
+<td>H→A = 0 AND > 10 open — complacent</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Recent challenge</strong></td>
+<td>Challenge % of the last N frictions</td>
+<td>> 20%</td>
+<td>< 10% — rubber-stamping</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Open frictions</strong></td>
+<td>Unresolved frictions — piloting debt</td>
+<td>Low count</td>
+<td>High count — decisions not made</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Coverage</strong></td>
+<td>% of declared personas with at least one friction</td>
+<td>100%</td>
+<td>≤ 50% — half the team invisible</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">PO / A contrib</strong></td>
+<td>Orchestrator vs assistant epistemic contributions</td>
+<td>Balanced</td>
+<td>Strong imbalance — one side dominates</td>
+</tr>
+</tbody></table>
+<h3>Instance radar (view 1a)</h3>
+<p>One aggregated radar for the whole instance. Two contours:</p>
+<ul>
+<li><strong style="color:var(--ice)">Grey</strong> = baseline (first N frictions)</li>
+<li><strong style="color:var(--ice)">Teal</strong> = recent (last N frictions)</li>
+</ul>
+<p>A shrinking contour = the instance is degrading.</p>
+<h3>Persona radars (view 1b)</h3>
+<p>One radar per persona, displayed side by side. Same baseline/recent contours.</p>
+<h3>The 6 radar axes</h3>
+<table><thead><tr>
+<th>Axis</th>
+<th>Formula</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Challenge %</strong></td>
+<td>(contestable + simplification + blind_spot) / total</td>
+<td>How much pushback vs pure validation. Low = rubber-stamping</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">A→H %</strong></td>
+<td>(AI contests human) / total</td>
+<td>Persona pushes back on orchestrator. The return on constraint design</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">H→A %</strong></td>
+<td>(human contests AI) / total</td>
+<td>Orchestrator pushes back on persona. Zero = consumes without questioning</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Resolved %</strong></td>
+<td>resolved / total</td>
+<td>Frictions with explicit decision. Unresolved = steering debt</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Diversity</strong></td>
+<td>distinct resolution types / 4</td>
+<td>25% = only ratified. 100% = all 4 types used (ratified, contested, revised, rejected)</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Contribution %</strong></td>
+<td>A / (A + H)</td>
+<td>Persona's share of epistemic exchange. 50% = balanced. > 50% = persona drives</td>
+</tr>
+</tbody></table>
+<h3>Trajectory — challenge % (view 0)</h3>
+<p>Same as the Map trajectory but affected by the instance/persona filters.</p>
+<h3>Trajectory — marker distribution</h3>
+<p>Stacked bar showing the marker breakdown per window. A monochrome bar (all sound) = domestication visible.</p>
+<h3>Contribution flow</h3>
+<p>Stacked bar chart per persona, broken down by contribution type:</p>
+<table><thead><tr>
+<th>Type</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">substance</strong></td>
+<td>New information — fact, data, reference, insight</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">structure</strong></td>
+<td>Organization, categorization, synthesis</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">contestation</strong></td>
+<td>Challenge, counter-example, reframing</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">decision</strong></td>
+<td>Arbitration, choice retained</td>
+</tr>
+</tbody></table>
+<p>H (orchestrator) and A (persona) contributions are summed.</p>
+<h3>Delta table</h3>
+<table><thead><tr>
+<th>Column</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Persona</strong></td>
+<td>Name</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Baseline challenge %</strong></td>
+<td>Challenge % of the first N frictions</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Recent challenge %</strong></td>
+<td>Challenge % of the last N frictions</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Delta</strong></td>
+<td>↑ increasing, ↓ decreasing, = stable</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Baseline A→H</strong></td>
+<td>A→H % at the start</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Recent A→H</strong></td>
+<td>A→H % now</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Diagnostic</strong></td>
+<td>healthy / domesticated / servile / complacent</td>
+</tr>
+</tbody></table>
+<h3>Open frictions</h3>
+<p>List of frictions without resolution, sorted oldest first. The orchestrator arbitrates in the next session — the friction leaves the list.</p>
+<table><thead><tr>
+<th>Column</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Date</strong></td>
+<td>When the friction was recorded</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Source</strong></td>
+<td>File where the friction was found</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Persona</strong></td>
+<td>Who emitted the friction</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Marker</strong></td>
+<td>sound, contestable, simplification, blind_spot, refuted</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Direction</strong></td>
+<td>a_corroborates_h, a_contests_h, h_corroborates_a, h_contests_a</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Description</strong></td>
+<td>First 120 characters of the friction text</td>
+</tr>
+</tbody></table>
+<h3>Silence map</h3>
+<p>Matrix persona × marker. Each cell = friction count with that marker.</p>
+<table><thead><tr>
+<th>Signal</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Zero (red)</strong></td>
+<td>Persona present but no friction of this type — blind spot</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Row of zeros</strong></td>
+<td>Persona invisible to the protocol</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Column of zeros</strong></td>
+<td>Marker never used across all personas</td>
+</tr>
+</tbody></table>
+<hr style="border:none; border-top:1px solid var(--border); margin:2rem 0;">
+<h2 id="lens">Lens</h2>
+<p>Raw data exploration — time series, counts, distributions. What happened over time.</p>
+<h3>Score cards</h3>
+<table><thead><tr>
+<th>Card</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Frictions</strong></td>
+<td>Total friction markers detected in the selected period</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Resolved</strong></td>
+<td>Percentage with a resolution (ratified, contested, revised, rejected)</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Ratified</strong></td>
+<td>Count of ratified resolutions</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Contested</strong></td>
+<td>Count of contested resolutions</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">reportPattern</strong></td>
+<td>Number of reportPattern triggers (convergence of rejections)</td>
+</tr>
+</tbody></table>
+<h3>Charts</h3>
+<table><thead><tr>
+<th>Chart</th>
+<th>X axis</th>
+<th>Y axis</th>
+<th>Reading</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Friction by marker — timeline</strong></td>
+<td>Period (week/day)</td>
+<td>Count per marker</td>
+<td>Rising line = more friction of that type</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Direction — who contests whom</strong></td>
+<td>Personas</td>
+<td>Count (right = A, left = H)</td>
+<td>Diverging bar — persona positions vs orchestrator positions</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Direction — timeline</strong></td>
+<td>Period</td>
+<td>Count per direction</td>
+<td>A→H rising = personas push back more</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Markers by persona</strong></td>
+<td>Personas</td>
+<td>Stacked count</td>
+<td>Monochrome = domestication</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Resolutions by persona</strong></td>
+<td>Personas</td>
+<td>Stacked count</td>
+<td>All ratified = no real arbitration</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Epistemic flow — H vs A</strong></td>
+<td>Personas</td>
+<td>% (H vs A)</td>
+<td>Who drives the exchange</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Frictions per session — timeline</strong></td>
+<td>Period</td>
+<td>Average per session</td>
+<td>Falling = sessions produce less signal</td>
+</tr>
+</tbody></table>
+<h3>Tables</h3>
+<table><thead><tr>
+<th>Table</th>
+<th>Content</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Directional matrix</strong></td>
+<td>A corroborates H, A contests H, H corroborates A, H contests A per persona. Ratio > 2 = healthy friction</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Detail by persona</strong></td>
+<td>Sessions, markers, resolutions, flux ratio, reportPattern count</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">reportPattern counter</strong></td>
+<td>Triggers, erreur LLM, conviction, resistance per persona</td>
+</tr>
+</tbody></table>
+<hr style="border:none; border-top:1px solid var(--border); margin:2rem 0;">
+<h2 id="probe">Probe</h2>
+<p>Structural audit — is the instance conforming to the protocol?</p>
+<h3>Context size</h3>
+<p>Bar chart per persona showing the total lines of persona.md + contexte.md loaded at boot.</p>
+<table><thead><tr>
+<th>Threshold</th>
+<th>Color</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td>< 150 lines</td>
+<td>Green</td>
+<td>Compact — optimal</td>
+</tr>
+<tr>
+<td>150-250 lines</td>
+<td>Yellow</td>
+<td>Attention — risk of compression in long sessions</td>
+</tr>
+<tr>
+<td>> 250 lines</td>
+<td>Red</td>
+<td>Danger — context will be compressed, persona will drift</td>
+</tr>
+</tbody></table>
+<h3>Structure checks</h3>
+<p>Protocol conformity checks: sofia.md marker, shared/ structure, session frontmatter, artefact frontmatter, isolation.</p>
+<table><thead><tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Pass</strong> (✓)</td>
+<td>Conformant</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Warn</strong> (⚠)</td>
+<td>Minor issue</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Fail</strong> (✗)</td>
+<td>Protocol violation</td>
+</tr>
+</tbody></table>
+<h3>Orchestrator friction</h3>
+<p>Friction markers from session summaries per persona: markers, resolutions, initiative (persona vs PO), reportPattern triggers.</p>
+<h3>Activity</h3>
+<p>Sessions per persona. Zero = inactive persona.</p>
+<h3>Exchange flow</h3>
+<p>Top artefact flows between personas — who sends to whom, ranked by volume.</p>
+<hr style="border:none; border-top:1px solid var(--border); margin:2rem 0;">
+<h2 id="glossary">Glossary</h2>
+<h3>Friction markers</h3>
+<table><thead><tr>
+<th>Marker</th>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">sound</strong></td>
+<td>✓</td>
+<td>The position is well-founded. Corroboration</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">contestable</strong></td>
+<td>~</td>
+<td>The position can be challenged. Weak points exist</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">simplification</strong></td>
+<td>⚡</td>
+<td>The position simplifies reality. Something important is lost</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">blind_spot</strong></td>
+<td>◐</td>
+<td>Something was missed entirely. An angle nobody considered</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">refuted</strong></td>
+<td>✗</td>
+<td>The position is factually wrong or logically broken</td>
+</tr>
+</tbody></table>
+<h3>Resolutions</h3>
+<table><thead><tr>
+<th>Resolution</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">ratified</strong></td>
+<td>Position holds. Decision: keep as is</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">contested</strong></td>
+<td>Acknowledged but deferred or disputed</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">revised</strong></td>
+<td>Led to a change. Original position modified</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">rejected</strong></td>
+<td>Dismissed. The challenge did not hold</td>
+</tr>
+</tbody></table>
+<h3>Directions</h3>
+<table><thead><tr>
+<th>Direction</th>
+<th>Notation</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">H→A</strong></td>
+<td>Human contests AI</td>
+<td>Orchestrator pushes back on a persona</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">A→H</strong></td>
+<td>AI contests Human</td>
+<td>Persona pushes back on the orchestrator</td>
+</tr>
+</tbody></table>
+<h3>Contribution types</h3>
+<table><thead><tr>
+<th>Type</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">substance</strong></td>
+<td>New information — fact, data, reference, insight</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">structure</strong></td>
+<td>Organization, categorization, synthesis</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">contestation</strong></td>
+<td>Challenge, counter-example, reframing</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">decision</strong></td>
+<td>Arbitration, choice retained</td>
+</tr>
+</tbody></table>
+<h3>Key terms</h3>
+<table><thead><tr>
+<th>Term</th>
+<th>Definition</th>
+</tr></thead><tbody>
+<tr>
+<td><strong style="color:var(--ice)">Orchestrator</strong></td>
+<td>The human who coordinates the AI personas. Makes final decisions</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Persona</strong></td>
+<td>A constrained AI agent with a defined role, expertise, and boundaries</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Instance</strong></td>
+<td>A project workspace where one orchestrator works with a team of personas</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Session</strong></td>
+<td>A single working conversation between the orchestrator and one persona</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Artefact</strong></td>
+<td>A structured file deposited in shared/ — note, review, feature spec</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Window</strong></td>
+<td>A group of N consecutive frictions, used for trend analysis instead of calendar periods</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Baseline</strong></td>
+<td>The first N frictions of an instance or persona — the reference point for detecting change</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Domestication</strong></td>
+<td>When a persona stops challenging over time — its friction output converges to pure validation</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Lineage</strong></td>
+<td>A chain of frictions linked by the antecedent dimension — one logical friction with its resolution history</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">H2A</strong></td>
+<td>Human-to-Assistant — the protocol that structures friction, contribution, and exchange</td>
+</tr>
+</tbody></table>
+
+<!-- /LEGEND CONTENT -->
+      </div>
+    </div>
+  </div><!-- /tab-legend -->
+
 </main>
 
 <footer>
@@ -719,7 +1392,7 @@ function switchTab(tab) {
 
   const subMenu = document.getElementById('probe-instances-menu');
   const filtersPanel = document.getElementById('filters-panel');
-  const noSidebar = (tab === 'probe' || tab === 'map');
+  const noSidebar = (tab === 'probe' || tab === 'map' || tab === 'legend');
 
   subMenu.classList.toggle('visible', tab === 'probe');
   filtersPanel.style.display = noSidebar ? 'none' : '';
@@ -740,6 +1413,7 @@ function switchTab(tab) {
     if (RAW) renderMap();
   }
   if (tab === 'mirror' && RAW) renderMirror();
+  if (tab === 'legend') loadLegend();
 }
 
 function selectProbeInstance(name) {
@@ -2123,6 +2797,101 @@ function navigateTo(tab, instance, persona) {
 }
 
 // ── Context menu ──
+// ── Legend ──
+function legendScroll(e) {
+  e.preventDefault();
+  const id = e.target.getAttribute('href').slice(1);
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+let legendLoaded = false;
+function loadLegend() {
+  if (legendLoaded) return;
+  fetch('legend.html').then(r => {
+    if (!r.ok) throw new Error(r.status);
+    return r.text();
+  }).then(html => {
+    document.getElementById('legend-content').innerHTML = html;
+    legendLoaded = true;
+  }).catch(() => {
+    document.getElementById('legend-content').innerHTML = '<p style="color:var(--coral)">Could not load legend.html — run: python3 data/build_legend.py</p>';
+  });
+}
+
+function renderMarkdown(md) {
+  // Minimal markdown → HTML renderer
+  const lines = md.split('\n');
+  let html = '';
+  let inTable = false;
+  let inList = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // Skip frontmatter
+    if (trimmed === '---' && i < 5) continue;
+
+    // Headers
+    if (trimmed.startsWith('# ')) {
+      if (inTable) { html += '</tbody></table>'; inTable = false; }
+      if (inList) { html += '</ul>'; inList = false; }
+      html += '<h1 style="font-family:var(--font-display); font-size:28px; font-weight:300; color:var(--ice); margin:2rem 0 1rem;">' + trimmed.slice(2) + '</h1>';
+    } else if (trimmed.startsWith('## ')) {
+      if (inTable) { html += '</tbody></table>'; inTable = false; }
+      if (inList) { html += '</ul>'; inList = false; }
+      html += '<h2 id="' + trimmed.slice(3).toLowerCase().replace(/[^a-z0-9]+/g,'-') + '">' + trimmed.slice(3) + '</h2>';
+    } else if (trimmed.startsWith('### ')) {
+      if (inTable) { html += '</tbody></table>'; inTable = false; }
+      if (inList) { html += '</ul>'; inList = false; }
+      html += '<h3>' + trimmed.slice(4) + '</h3>';
+    }
+    // Table
+    else if (trimmed.startsWith('|')) {
+      const cells = trimmed.split('|').slice(1, -1).map(c => c.trim());
+      if (cells.every(c => /^[-:]+$/.test(c))) continue; // separator row
+      if (!inTable) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += '<table style="margin:1rem 0; font-size:13px;"><thead><tr>';
+        cells.forEach(c => html += '<th>' + inlineFormat(c) + '</th>');
+        html += '</tr></thead><tbody>';
+        inTable = true;
+      } else {
+        html += '<tr>';
+        cells.forEach(c => html += '<td>' + inlineFormat(c) + '</td>');
+        html += '</tr>';
+      }
+    }
+    // List
+    else if (trimmed.startsWith('- ')) {
+      if (inTable) { html += '</tbody></table>'; inTable = false; }
+      if (!inList) { html += '<ul style="margin:.5rem 0 .5rem 1.5rem;">'; inList = true; }
+      html += '<li>' + inlineFormat(trimmed.slice(2)) + '</li>';
+    }
+    // Empty line
+    else if (trimmed === '') {
+      if (inTable) { html += '</tbody></table>'; inTable = false; }
+      if (inList) { html += '</ul>'; inList = false; }
+    }
+    // Paragraph
+    else {
+      if (inTable) { html += '</tbody></table>'; inTable = false; }
+      if (inList) { html += '</ul>'; inList = false; }
+      html += '<p style="margin:.5rem 0;">' + inlineFormat(trimmed) + '</p>';
+    }
+  }
+  if (inTable) html += '</tbody></table>';
+  if (inList) html += '</ul>';
+  return html;
+}
+
+function inlineFormat(s) {
+  return s
+    .replace(/\*\*(.+?)\*\*/g, '<strong style="color:var(--ice)">$1</strong>')
+    .replace(/`(.+?)`/g, '<code style="font-family:var(--font-mono); font-size:12px; background:rgba(64,180,160,0.06); padding:1px 4px; border-radius:2px;">$1</code>');
+}
+
 function showCtxMenu(e, instance, persona) {
   e.preventDefault();
   e.stopPropagation();

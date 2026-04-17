@@ -33,8 +33,11 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/":
             path = "/analysis.html"
 
+        # Serve from filesystem/ or from sofia root (for doc/)
         filepath = HERE / path.lstrip("/")
-        if not filepath.is_file() or HERE not in filepath.resolve().parents and filepath.resolve() != HERE:
+        if not filepath.is_file():
+            filepath = HERE.parent.parent / path.lstrip("/")
+        if not filepath.is_file():
             self.send_error(404)
             return
 
