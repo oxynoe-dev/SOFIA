@@ -157,9 +157,13 @@ def parse_flux_lines(text: str) -> list[dict]:
         # Pattern: H:matiere — description or A:structure — description
         flux_match = re.match(r"([HA]):(\w+)", item)
         if flux_match:
+            flux_type = flux_match.group(2)
+            # FR→EN aliases
+            flux_aliases = {"matiere": "substance", "challenge": "contestation"}
+            flux_type = flux_aliases.get(flux_type, flux_type)
             records.append({
                 "direction": flux_match.group(1),
-                "type": flux_match.group(2),
+                "type": flux_type,
             })
 
     return records
@@ -609,6 +613,8 @@ def analyze_instance(instance_path: Path) -> dict:
             "flux_a": d["flux_a"],
             "flux_h_pct": flux_h_pct,
             "flux_a_pct": flux_a_pct,
+            "flux_types_h": dict(d["flux_types_h"]),
+            "flux_types_a": dict(d["flux_types_a"]),
             "signaler_pattern_count": sp_count,
             "signaler_pattern_erreur_llm": sp_erreur,
             "signaler_pattern_conviction": sp_conviction,

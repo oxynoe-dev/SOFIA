@@ -598,7 +598,7 @@ td.diag-danger { color: var(--coral); }
       <div class="chart-card full">
         <h2>Instance profile — baseline vs recent <i class="info-icon">i<span class="info-tip">Aggregate radar for the whole instance. Grey = baseline (first N frictions). Color = recent (last N). A shrinking contour = the instance is going silent.</span></i></h2>
         <p style="font-size:10px; color:var(--ice-muted); margin-bottom:.5rem; font-family:var(--font-mono); line-height:1.8;">
-          Challenge % = non-sound frictions · A→H % = persona contests orchestrator · H→A % = orchestrator contests persona · Resolved % = arbitrated frictions · Diversity % = variety of resolutions (0 = monotone, 1 = balanced)
+          Challenge % = non-sound frictions · A→H % = persona contests orchestrator · H→A % = orchestrator contests persona · Resolved % = arbitrated frictions · Diversity % = variety of resolutions (0 = monotone, 1 = balanced) · Contribution % = persona share of exchange (A/(A+H)) — 50% = balanced, &gt;50% = persona drives, &lt;50% = orchestrator drives
         </p>
         <div style="display:flex; justify-content:center;">
           <div style="width:400px; height:400px;"><canvas id="radar-instance"></canvas></div>
@@ -640,6 +640,14 @@ td.diag-danger { color: var(--coral); }
       <table><thead><tr>
         <th>Date</th><th>Source</th><th>Persona</th><th>Marker</th><th>Direction</th><th>Description</th>
       </tr></thead><tbody id="table-open-frictions"></tbody></table>
+    </div>
+
+    <!-- Contribution flow -->
+    <div class="charts rise">
+      <div class="chart-card full">
+        <h2>Contribution flow <i class="info-icon">i<span class="info-tip">Epistemic contributions per persona, broken down by type (substance, structure, contestation, decision). H = orchestrator brings, A = persona brings.</span></i></h2>
+        <div class="chart-wrap"><canvas id="chart-contribution-flow"></canvas></div>
+      </div>
     </div>
 
     <!-- Vue 3 — Carte du silence -->
@@ -1222,6 +1230,7 @@ function renderMirror() {
     <div class="score-card ${healthClass}" title="Share of recent frictions that contest, flag a simplification or a blind spot. Low challenge % = personas validate without resistance."><div class="value">${recentChallenge}%</div><div class="label">Recent challenge</div></div>
     <div class="score-card accent" title="Frictions without resolution — piloting debt. The orchestrator sees the list, arbitrates in the next session, the friction leaves the list."><div class="value">${openCount}</div><div class="label">Open frictions</div></div>
     <div class="score-card ${coverageClass}" title="A persona with no friction is invisible to the protocol. 100% coverage = all personas participate in the friction cycle."><div class="value">${coverage}%</div><div class="label">Coverage (${personasWithFriction}/${totalPersonas})</div></div>
+    <div class="score-card" title="Epistemic contributions: PO (orchestrator) vs A (assistants). Balanced = co-construction."><div class="value" style="color:var(--ice); font-size:22px;"><span style="color:var(--ready)">${personas.reduce((s, p) => s + (D.personas[p]?.flux_h || 0), 0)}</span> / <span style="color:var(--violet)">${personas.reduce((s, p) => s + (D.personas[p]?.flux_a || 0), 0)}</span></div><div class="label">PO / A contrib</div></div>
   `;
 
   // ── Vue 0: Trajectoire instance ──
@@ -1287,7 +1296,7 @@ function renderMirror() {
   }
 
   // ── Helper: compute profile from a set of records (5 axes) ──
-  const radarLabels = ['Challenge %', 'A→H %', 'H→A %', 'Resolved %', 'Diversity %'];
+  const radarLabels = ['Challenge %', 'A→H %', 'H→A %', 'Resolved %', 'Diversity %', 'Contribution %'];
   const radarColors = [
     '#40d8c0', '#a78bfa', '#e05050', '#d4a030', '#3ddc84',
     '#8aa8d8', '#ff9966', '#66cccc', '#cc99ff', '#ff6699',
@@ -1302,9 +1311,8 @@ function renderMirror() {
     const resolved = recs.filter(r => r.resolution).length / total;
     const resCounts = {};
     recs.forEach(r => { if (r.resolution) resCounts[r.resolution] = (resCounts[r.resolution] || 0) + 1; });
-    const resTotal = Object.values(resCounts).reduce((a,b) => a+b, 0) || 1;
-    const maxRes = Math.max(...Object.values(resCounts), 0) / resTotal;
-    const diversity = 1 - maxRes;
+    const resTypes = Object.keys(resCounts).length; // how many distinct resolution types used
+    const diversity = resTypes / 4; // 4 possible types: ratified, contested, revised, rejected
     return {
       challenge: Math.round(challenge * 100),
       aContestsH: Math.round(aContH * 100),
@@ -1313,7 +1321,7 @@ function renderMirror() {
       diversity: Math.round(diversity * 100),
     };
   }
-  function profileToArray(p) { return [p.challenge, p.aContestsH, p.hContestsA, p.resolved, p.diversity]; }
+  function profileToArray(p, contribPct) { return [p.challenge, p.aContestsH, p.hContestsA, p.resolved, p.diversity, contribPct || 0]; }
 
   // ── Compute all profiles ──
   const deltaRows = [];
@@ -1325,13 +1333,18 @@ function renderMirror() {
     const baseline = computeProfile(pRecs.slice(0, N));
     const recent = computeProfile(pRecs.slice(-N));
 
+    // Contribution % — persona share of exchange on its scope (A / (A+H))
+    const pd = D.personas[p] || {};
+    const totalFlux = (pd.flux_h || 0) + (pd.flux_a || 0);
+    const contribPct = totalFlux > 0 ? Math.round((pd.flux_a || 0) / totalFlux * 100) : 0;
+
     let diag = 'healthy';
     let diagClass = 'healthy';
     if (recent.challenge < baseline.challenge * 0.5 && baseline.challenge > 10) { diag = 'domesticated'; diagClass = 'domesticated'; }
     else if (recent.aContestsH === 0 && baseline.aContestsH > 5) { diag = 'servile'; diagClass = 'servile'; }
     else if (recent.resolved === 100 && recent.challenge < 5) { diag = 'complacent'; diagClass = 'complacent'; }
 
-    personaProfiles[p] = { baseline, recent, diag, diagClass };
+    personaProfiles[p] = { baseline, recent, diag, diagClass, contribPct };
 
     const deltaChall = recent.challenge - baseline.challenge;
     const arrow = deltaChall > 5 ? '↑' : deltaChall < -5 ? '↓' : '=';
@@ -1343,12 +1356,17 @@ function renderMirror() {
   if (instanceRadarEl && filteredRecords.length > 0) {
     const instanceBaseline = computeProfile(filteredRecords.slice(0, N));
     const instanceRecent = computeProfile(filteredRecords.slice(-N));
+    // Instance-level contribution % — A share of total flux
+    const instFluxA = personas.reduce((s, p) => s + (D.personas[p]?.flux_a || 0), 0);
+    const instFluxH = personas.reduce((s, p) => s + (D.personas[p]?.flux_h || 0), 0);
+    const instTotalFlux = instFluxA + instFluxH;
+    const instContribPct = instTotalFlux > 0 ? Math.round(instFluxA / instTotalFlux * 100) : 0;
     mkChart2('radar-instance', {
       type: 'radar',
       data: { labels: radarLabels, datasets: [
-        { label: 'Baseline', data: profileToArray(instanceBaseline),
+        { label: 'Baseline', data: profileToArray(instanceBaseline, instContribPct),
           borderColor: 'rgba(160,208,200,0.5)', backgroundColor: 'rgba(160,208,200,0.08)', borderWidth: 1.5, pointRadius: 3 },
-        { label: 'Recent', data: profileToArray(instanceRecent),
+        { label: 'Recent', data: profileToArray(instanceRecent, instContribPct),
           borderColor: '#40d8c0', backgroundColor: 'rgba(64,216,192,0.12)', borderWidth: 2, pointRadius: 4 },
       ]},
       options: {
@@ -1377,9 +1395,9 @@ function renderMirror() {
       data: {
         labels: radarLabels,
         datasets: [
-          { label: 'Baseline', data: profileToArray(prof.baseline),
+          { label: 'Baseline', data: profileToArray(prof.baseline, prof.contribPct),
             borderColor: 'rgba(160,208,200,0.4)', backgroundColor: 'rgba(160,208,200,0.08)', borderWidth: 1, pointRadius: 2 },
-          { label: 'Recent', data: profileToArray(prof.recent),
+          { label: 'Recent', data: profileToArray(prof.recent, prof.contribPct),
             borderColor: '#a78bfa', backgroundColor: 'rgba(167,139,250,0.12)', borderWidth: 1.5, pointRadius: 3 },
         ]
       },
@@ -1410,6 +1428,31 @@ function renderMirror() {
 
   // ── Vue 3: Carte du silence ──
   const silencePersonas = personas;
+  // ── Contribution flow ──
+  const contribTypes = ['substance', 'structure', 'contestation', 'decision'];
+  const contribColors = { substance: '#40d8c0', structure: '#a78bfa', contestation: '#e05050', decision: '#d4a030' };
+  const contribCanvas = document.getElementById('chart-contribution-flow');
+  if (contribCanvas) {
+    const datasets = contribTypes.map(t => ({
+      label: t, backgroundColor: contribColors[t],
+      data: personas.map(p => {
+        const pd = D.personas[p] || {};
+        const h = (pd.flux_types_h || {})[t] || 0;
+        const a = (pd.flux_types_a || {})[t] || 0;
+        return h + a;
+      }),
+    }));
+    mkChart2('chart-contribution-flow', {
+      type: 'bar',
+      data: { labels: personas, datasets },
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 10 } } },
+        scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, beginAtZero: true, grid: { color: 'rgba(64,180,160,0.06)' }, title: { display: true, text: 'contributions', font: { size: 9, family: "'IBM Plex Mono'" }, color: 'rgba(160,208,200,0.4)' } } }
+      }
+    });
+  }
+
+  // ── Silence map ──
   const headerRow = document.getElementById('silence-header');
   headerRow.innerHTML = '<th>Persona</th>' + mk.map(m => `<th>${m.replace('_',' ')}</th>`).join('') + '<th>Total</th>';
 
