@@ -1,5 +1,52 @@
 # Changelog
 
+## v0.3.3 — Documentation, dashboard H2A & EN migration (2026-04-17)
+
+### Migration EN (ADR-013)
+- Bilingual parser — analysis.py + audit-instance.py accept FR and EN identifiers, documented mapping
+- Protocol identifiers EN — markers (sound, contestable, simplification, blind_spot, refuted), resolutions (ratified, contested, revised, rejected), statuses, frontmatter
+- Operations EN — openSession, closeSession, depositArtefact, routeArtefact, markRead, markDone, qualifyFriction, qualifyContribution, reportPattern
+- Conventions reread rule — closeSession() and depositArtefact() enforce rereading `shared/conventions.md`
+- Friction lineage — `antecedent` dimension in protocol/friction.md, `Friction → Friction (amends)` relation in core/model.md, `ref: {source-id}/{index}` in implementation.md
+- Instance conventions aligned (methodes, produits, oxynoe) — EN identifiers + naming + operations
+
+### Dashboard — Map / Mirror / Lens / Probe / Legend
+- Tabs renamed: Mirror / Lens / Probe (from Analysis / Audit / Pilotage)
+- Dashboard translated to EN
+- Map tab (home) — instance cards, trajectory challenge %, persona mini cards (frictions + ctx lines), Oxynoe figure style, callout, GitHub footer, right-click context menu overlay
+- Mirror tab — trajectory, instance/persona radar (5 axes), KPIs, open frictions, silence map, delta table
+- Style overhaul — fixed header/footer scroll container, dark scrollbar, info icons + tooltips on all charts, axis labels, source filter removed, diversity radar fix, coverage fix
+- Legend tab — HTML rendering of `sofia/doc/legend.md` (fetch + JS markdown parser), 5 tabs, 5 KPIs, 6 radar axes, trajectory, contribution flow, full glossary
+
+### Solidification friction
+- Inline friction template in all 14 contexts — exact format (EN markers, initiative, resolution, lineage)
+- Session close validation block installed in 14 contexts — sections, frictions, frontmatter, commit message check before commit
+- Context size audit — persona.md + context.md per persona, color thresholds (<150 green, 150-250 yellow, >250 red), visual bar in Audit view
+
+### Documentation
+- h2a-proposal closed — protocol/ absorbed all content (and more: PXP resolutions, friction in artifacts, dimensions). Proposal in architecture/doc/ kept as historical study
+- Operator guide H2A — 9 operations from orchestrator perspective (when, how, example), synthesis table mode/trigger/producer
+- Conceptual model UML — SVG fig-mcd-h2a.svg (7 entities, 3 levels, relations, formalization layers), integrated in arch-sofia.md §3
+- Architecture rewrite (arch-sofia.md) — 5 layers + canvas, triangle as motivation §1, H2A MCD 7 entities §3, elementary flow replaces exchange cycle, 3 SVGs remade
+- REX split + context transfer — merged into single REX (granularity diagnosis, transfer protocol, Claude memory)
+- Canvas: documentation workflow — 5 steps, practitioner/pedagogue loop, SVG
+- SVG MCD — Friction→Friction (amends/antecedent) relation added, EN markers
+- Structural limitations documented — uninstrumented artifacts, silent lineage, cross-instance (mitigations by discipline + hooks v0.4)
+
+### Tooling
+- analysis.py bulk scan — same parser everywhere (sessions + shared/), no distinction by file type. Marker + initiative = friction. Without frontmatter = fallback on filename
+- Unified dashboard — Analysis + Audit menu in nav (SOFIA site style), instance sub-menu. Audit tab: checks, orchestrator friction, activity, exchange flows. serve-analysis.py /audit endpoint. Tolerant friction parser + per-persona time series
+- analysis.py — map data extraction, context sizes, real personas filter, lineage resolve
+- build_legend.py — static HTML generation from legend.md
+
+### Article Bridle Engineering (H2A)
+- Epistemic register correction in conclusion — observation/exercised/instrument
+- Build pipeline — CSL author-number [Author, N], fix tables, fix refs
+- Empirical section reframing — 6-day window, W12-W14 removed, replication invitation
+
+### Decisions
+- ADR-013 — EN identifiers migration (markers, resolutions, operations, frontmatter)
+
 ## v0.3.2 — H2A Protocol, derivation grammar & operational modes (2026-04-16)
 
 ### H2A Protocol

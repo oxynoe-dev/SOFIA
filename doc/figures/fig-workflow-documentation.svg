@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fig. — Workflow Documentation — 16/04/2026 -->
+<svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace">
+
+  <defs>
+    <radialGradient id="bg-grad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0a4858"/>
+      <stop offset="100%" stop-color="#041c24"/>
+    </radialGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,200,220,0.06)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="700" height="240" fill="url(#bg-grad)" rx="6"/>
+  <rect width="700" height="240" fill="url(#grid)" rx="6"/>
+
+  <!-- ════════════════════════════════════════
+       TITRE
+  ════════════════════════════════════════ -->
+  <text x="350" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Workflow — Documentation</text>
+
+  <!-- ════════════════════════════════════════
+       ETAPES
+  ════════════════════════════════════════ -->
+
+  <!-- Step 1: Structuration (green — architecte) -->
+  <rect x="18" y="60" width="105" height="44" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
+  <text x="70" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Structuration</text>
+  <text x="70" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Architecte</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="127" y1="82" x2="143" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(149,82) rotate(180)"/>
+
+  <!-- Step 2: Analyse terrain (coral — praticien) -->
+  <rect x="153" y="60" width="105" height="44" rx="3" fill="rgba(220,120,90,0.05)" stroke="rgba(220,120,90,0.2)" stroke-width="0.7"/>
+  <text x="205" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Analyse terrain</text>
+  <text x="205" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Praticien</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="262" y1="82" x2="278" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(284,82) rotate(180)"/>
+
+  <!-- Step 3: Proposition (purple — pedagogue) -->
+  <rect x="288" y="60" width="105" height="44" rx="3" fill="rgba(160,120,255,0.05)" stroke="rgba(160,120,255,0.2)" stroke-width="0.7"/>
+  <text x="340" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Proposition</text>
+  <text x="340" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Pedagogue</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="397" y1="82" x2="413" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(419,82) rotate(180)"/>
+
+  <!-- Step 4: Convergence (amber — orchestrateur + coral — praticien) -->
+  <rect x="423" y="60" width="120" height="44" rx="3" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="0.7"/>
+  <text x="483" y="80" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Convergence</text>
+  <text x="483" y="92" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-size="7">par challenge</text>
+  <text x="483" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrateur</text>
+
+  <!-- Loop arrow: Convergence → Proposition (boucle iterative) -->
+  <path d="M 440 108 Q 440 140 370 140 Q 300 140 300 108"
+        fill="none" stroke="rgba(220,120,90,0.25)" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <path d="M5,-3 L0,0 L5,3Z" fill="rgba(220,120,90,0.4)" transform="translate(300,108) rotate(90)"/>
+  <text x="370" y="150" text-anchor="middle" fill="rgba(220,120,90,0.3)" font-size="6.5">Praticien challenge</text>
+
+  <!-- Arrow 4→5 -->
+  <line x1="547" y1="82" x2="563" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
+  <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(569,82) rotate(180)"/>
+
+  <!-- Step 5: Validation (amber — orchestrateur) -->
+  <rect x="573" y="60" width="110" height="44" rx="3" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="0.7"/>
+  <text x="628" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Validation</text>
+  <text x="628" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrateur</text>
+
+  <!-- ════════════════════════════════════════
+       LEGENDE
+  ════════════════════════════════════════ -->
+  <rect x="18" y="175" width="10" height="10" rx="2" fill="rgba(61,220,132,0.15)" stroke="rgba(61,220,132,0.4)" stroke-width="0.7"/>
+  <text x="34" y="184" fill="rgba(64,216,192,0.35)" font-size="7">Architecte</text>
+  <rect x="100" y="175" width="10" height="10" rx="2" fill="rgba(220,120,90,0.15)" stroke="rgba(220,120,90,0.4)" stroke-width="0.7"/>
+  <text x="116" y="184" fill="rgba(64,216,192,0.35)" font-size="7">Praticien</text>
+  <rect x="175" y="175" width="10" height="10" rx="2" fill="rgba(160,120,255,0.15)" stroke="rgba(160,120,255,0.4)" stroke-width="0.7"/>
+  <text x="191" y="184" fill="rgba(64,216,192,0.35)" font-size="7">Pedagogue</text>
+  <rect x="258" y="175" width="10" height="10" rx="2" fill="rgba(212,160,48,0.15)" stroke="rgba(212,160,48,0.4)" stroke-width="0.7"/>
+  <text x="274" y="184" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrateur</text>
+
+  <!-- ════════════════════════════════════════
+       SPORES
+  ════════════════════════════════════════ -->
+  <circle cx="650" cy="180" r="1.2" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="480" cy="195" r="0.9" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="200" cy="210" r="1.4" fill="rgba(64,216,192,0.04)"/>
+  <circle cx="80" cy="220" r="1.0" fill="rgba(64,216,192,0.04)"/>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <text x="350" y="228" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — methode Oxynoe — 16/04/2026</text>
+
+</svg>
