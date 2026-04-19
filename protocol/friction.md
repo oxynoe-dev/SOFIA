@@ -96,7 +96,7 @@ Each friction line MUST carry:
 > **Example** (Markdown implementation, see `implementation/implementation.md`):
 >
 > ```
-> ## Friction
+> ## Orchestrator friction
 > - [contestable] the Toulmin mapping is suggestive, not established — [PO] → revised
 > - [blind_spot] scaffolding absent from the Böckeler review — [aurele] → ratified
 > ```

@@ -23,7 +23,7 @@ Contribution captures the direction and nature of inputs during a session: who f
 
 ## Layer
 
-Contribution is entirely **observational**. The distinction between input types (substance vs structure vs contestation) is semantic and non-deterministic. The `## Flux` section is optional (MAY).
+Contribution is entirely **observational**. The distinction between input types (substance vs structure vs contestation) is semantic and non-deterministic. The `## Flow` section is optional (MAY).
 
 ## Direction tags
 
@@ -50,7 +50,7 @@ Counting by direction and type is optional (MAY).
 > **Example** (Markdown implementation, see `implementation/implementation.md`):
 >
 > ```
-> ## Flux
+> ## Flow
 > - H:substance — Böckeler article, request for opinion
 > - A:substance — scaffolding lineage absent from Böckeler
 > - A:structure — three levels of harness/SOFIA complementarity
@@ -61,7 +61,7 @@ Counting by direction and type is optional (MAY).
 
 ## Contribution / friction distinction
 
-The same exchange MAY appear in both `## Flux` and `## Friction`:
+The same exchange MAY appear in both `## Flow` and `## Orchestrator friction`:
 
 - **Contribution** captures input (who brought what)
 - **Friction** captures tension (opposing positions, resistance)

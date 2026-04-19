@@ -47,7 +47,7 @@
 
   <text x="135" y="140" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.5)" letter-spacing="0.06em">RESUME OBLIGATOIRE</text>
   <text x="135" y="160" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.35)">Produit · Decisions</text>
-  <text x="135" y="176" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.35)">Notes deposees · Ouvert</text>
+  <text x="135" y="176" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.35)">Shared notes · Open</text>
   <text x="135" y="202" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="rgba(64,216,192,0.2)" font-style="italic">le pont entre conversations</text>
 
   <!-- Fleche sessions → persona -->

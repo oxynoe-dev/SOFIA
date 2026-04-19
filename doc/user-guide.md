@@ -119,7 +119,7 @@ The persona reads the latest summary in `sessions/`. The orchestrator decides wh
 
 ### Session closing
 
-1. Summary in `sessions/` — Produit, Decisions, Notes deposees, Ouvert
+1. Summary in `sessions/` — Produced, Decisions, Shared notes, Open
 2. Direct commit in the instance — `{persona}: {short summary} ({date})`
 3. If the persona produced changes for your project (code, site, etc.) — prepare the commit message, the orchestrator verifies and executes
 

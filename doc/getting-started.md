@@ -190,7 +190,7 @@ When you deflect 3+ times on the same domain, signal it.
 
 ## Session protocol — mandatory
 Summary: `sessions/{YYYY-MM-DD}-{HHmm}-{name}.md`
-Sections: Produit, Decisions, Notes deposees, Friction orchestrateur, Ouvert
+Sections: Produced, Decisions, Shared notes, Orchestrator friction, Open
 ```
 
 The persona says **who you are**. The context says **where you are**.

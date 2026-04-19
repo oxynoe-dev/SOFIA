@@ -40,9 +40,9 @@ let's close
 sessions/2026-04-16-1430-mira.md
 ```
 
-MUST sections: `## Produit`, `## Decisions`, `## Notes deposees`, `## Ouvert`.
-SHOULD sections: `## Friction orchestrateur`.
-MAY sections: `## Flux`.
+MUST sections: `## Produced`, `## Decisions`, `## Shared notes`, `## Open`.
+SHOULD sections: `## Orchestrator friction`.
+MAY sections: `## Flow`.
 
 **Commit**:
 ```
@@ -131,7 +131,7 @@ mv shared/notes/note-emile-pedagogy-aurele.md shared/notes/archives/
 
 **When**: at every session closure (automatic).
 
-**How**: the persona pre-fills the `## Friction orchestrateur` section with the session's qualified positions. The orchestrator validates or corrects.
+**How**: the persona pre-fills the `## Orchestrator friction` section with the session's qualified positions. The orchestrator validates or corrects.
 
 5 markers (closed set):
 
@@ -154,7 +154,7 @@ mv shared/notes/note-emile-pedagogy-aurele.md shared/notes/archives/
 
 **Example**:
 ```
-## Friction orchestrateur
+## Orchestrator friction
 - ✓ [sound] the Toulmin mapping illuminates without constraining — [PO] → ratified
 - ◐ [blind_spot] SEO was not considered — [mira] → ratified
 ```
@@ -170,7 +170,7 @@ mv shared/notes/note-emile-pedagogy-aurele.md shared/notes/archives/
 
 **When**: at every session closure (automatic, optional).
 
-**How**: the persona pre-fills the `## Flux` section. The orchestrator validates or corrects.
+**How**: the persona pre-fills the `## Flow` section. The orchestrator validates or corrects.
 
 | Direction | Who brings |
 |-----------|-----------|
@@ -186,7 +186,7 @@ mv shared/notes/note-emile-pedagogy-aurele.md shared/notes/archives/
 
 **Example**:
 ```
-## Flux
+## Flow
 - H:substance — visual identity brief
 - A:structure — 3-axis brand proposal
 - H:decision — we keep axis 2

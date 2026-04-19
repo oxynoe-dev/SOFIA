@@ -135,13 +135,13 @@ def parse_friction_lines(text: str) -> list[dict]:
 
 
 def parse_flux_lines(text: str) -> list[dict]:
-    """Parse ## Flux lines into structured records."""
+    """Parse ## Flow / ## Flux lines into structured records."""
     lines = text.splitlines()
     in_section = False
     records = []
 
     for line in lines:
-        if line.strip().startswith("## Flux"):
+        if line.strip().startswith("## Flux") or line.strip().startswith("## Flow"):
             in_section = True
             continue
         if in_section and line.strip().startswith("## "):
@@ -176,7 +176,7 @@ def parse_signaler_pattern(text: str) -> dict | None:
     result = {"theme": None, "choix": None, "justification": None}
 
     for line in lines:
-        if line.strip().startswith("## signalerPattern"):
+        if line.strip().startswith("## signalerPattern") or line.strip().startswith("## reportPattern"):
             in_section = True
             continue
         if in_section and line.strip().startswith("## "):
@@ -185,12 +185,12 @@ def parse_signaler_pattern(text: str) -> dict | None:
             continue
 
         stripped = line.strip()
-        if stripped.startswith("- Theme"):
-            m = re.search(r"Theme\s*:\s*(.+)", stripped)
+        if stripped.startswith("- Theme") or stripped.startswith("- Topic"):
+            m = re.search(r"(?:Theme|Topic)\s*:\s*(.+)", stripped)
             if m:
                 result["theme"] = m.group(1).strip()
-        elif stripped.startswith("- Choix"):
-            m = re.search(r"Choix\s*:\s*(.+)", stripped)
+        elif stripped.startswith("- Choix") or stripped.startswith("- Choice"):
+            m = re.search(r"(?:Choix|Choice)\s*:\s*(.+)", stripped)
             if m:
                 result["choix"] = audit.strip_accents(m.group(1).strip().lower())
         elif stripped.startswith("- Justification"):

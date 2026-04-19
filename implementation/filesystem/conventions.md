@@ -50,10 +50,10 @@ session: "HHmm"
 
 | Section | Contenu |
 |---------|---------|
-| `## Produit` | Fichiers crees ou modifies |
+| `## Produced` | Fichiers crees ou modifies |
 | `## Decisions` | Choix retenus |
-| `## Notes deposees` | Artefacts deposes dans shared/ |
-| `## Ouvert` | Questions non resolues |
+| `## Shared notes` | Artefacts deposes dans shared/ |
+| `## Open` | Questions non resolues |
 
 Pas de prose — listes courtes. 30 lignes max.
 
@@ -61,8 +61,8 @@ Pas de prose — listes courtes. 30 lignes max.
 
 | Section | Statut | Contenu |
 |---------|--------|---------|
-| `## Friction orchestrateur` | DEVRAIT | Frictions qualifiees |
-| `## Flux` | PEUT | Apports epistemiques |
+| `## Orchestrator friction` | DEVRAIT | Frictions qualifiees |
+| `## Flow` | PEUT | Apports epistemiques |
 
 ## Commits
 
@@ -160,7 +160,7 @@ Une resolution peut evoluer dans une session ulterieure. La friction DEVRAIT por
 
 ## Contribution (flux epistemique)
 
-Section `## Flux` — optionnelle.
+Section `## Flow` — optionnelle.
 
 ```
 - {direction}:{type} — description

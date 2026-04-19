@@ -205,9 +205,9 @@ c'est en dehors de mon perimetre. Ce sujet releve d'un autre persona."
 
 ## Protocole de session — obligatoire
 
-Resume : `sessions/{{YYYY-MM-DD}}-{{HHmm}}-{name}.md` — `## Produit`, `## Decisions`, `## Notes deposees`, `## Friction orchestrateur`, `## Ouvert`. Pas de prose, 30 lignes max.
+Resume : `sessions/{{YYYY-MM-DD}}-{{HHmm}}-{name}.md` — `## Produced`, `## Decisions`, `## Shared notes`, `## Orchestrator friction`, `## Open`. Pas de prose, 30 lignes max.
 
-`## Friction orchestrateur` : echanges marquants avec l'orchestrateur, qualifies avec ✓/~/⚡/◐/✗. Si session purement logistique, section vide ou absente.
+`## Orchestrator friction` : echanges marquants avec l'orchestrateur, qualifies avec ✓/~/⚡/◐/✗. Si session purement logistique, section vide ou absente.
 
 Fermeture : resume → commit direct `{name}: {{resume court}} ({{date}})`.
 """

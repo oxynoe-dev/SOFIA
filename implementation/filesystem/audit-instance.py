@@ -759,7 +759,7 @@ def build_marker_totals(artifacts: list[dict]) -> dict[str, dict[str, int]]:
 # ---------------------------------------------------------------------------
 
 def scan_session_friction(instance_path: Path) -> tuple[dict[str, dict], list[str]]:
-    """Parse ## Friction orchestrateur sections from session files."""
+    """Parse ## Orchestrator friction / ## Friction orchestrateur sections from session files."""
     by_persona: dict[str, dict] = defaultdict(lambda: {
         "sound": 0, "contestable": 0, "simplification": 0,
         "blind_spot": 0, "refuted": 0,
@@ -795,13 +795,13 @@ def scan_session_friction(instance_path: Path) -> tuple[dict[str, dict], list[st
         except (OSError, UnicodeDecodeError):
             continue
 
-        # Find ## Friction orchestrateur section
+        # Find ## Orchestrator friction / ## Friction orchestrateur section
         lines = text.splitlines()
         in_section = False
         friction_lines = []
         for line in lines:
             stripped = line.strip()
-            if stripped.startswith("## Friction") and not stripped.startswith("## Friction Engineering"):
+            if (stripped.startswith("## Friction") or stripped.startswith("## Orchestrator friction")) and not stripped.startswith("## Friction Engineering"):
                 in_section = True
                 continue
             if in_section and line.strip().startswith("## "):
@@ -857,14 +857,14 @@ def scan_session_friction(instance_path: Path) -> tuple[dict[str, dict], list[st
         # signalerPattern section
         in_sp = False
         for line in lines:
-            if line.strip().startswith("## signalerPattern"):
+            if line.strip().startswith("## signalerPattern") or line.strip().startswith("## reportPattern"):
                 in_sp = True
                 by_persona[persona]["signaler_pattern_count"] += 1
                 continue
             if in_sp and line.strip().startswith("## "):
                 break
-            if in_sp and line.strip().startswith("- Choix"):
-                choix_match = re.search(r"Choix\s*:\s*(.+)", line.strip())
+            if in_sp and (line.strip().startswith("- Choix") or line.strip().startswith("- Choice")):
+                choix_match = re.search(r"(?:Choix|Choice)\s*:\s*(.+)", line.strip())
                 if choix_match:
                     choix = strip_accents(choix_match.group(1).strip().lower())
                     if "erreur" in choix or "llm" in choix:
@@ -1062,7 +1062,7 @@ def generate_report_md(
 
     # PO friction
     if po_friction:
-        lines.append("### Friction orchestrateur")
+        lines.append("### Orchestrator friction")
         lines.append("")
         lines.append("```")
         lines.append(format_po_friction_table(po_friction))

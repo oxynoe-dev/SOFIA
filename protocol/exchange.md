@@ -59,10 +59,10 @@ Protocol layer — deterministic and verifiable content.
 
 | Section | Content |
 |---------|---------|
-| Produit | List of artefacts created or modified |
+| Produced | List of artefacts created or modified |
 | Decisions | Choices made during the session |
-| Notes deposees | Artefacts deposited in the shared space |
-| Ouvert | Unresolved questions, pending items |
+| Shared notes | Artefacts deposited in the shared space |
+| Open | Unresolved questions, pending items |
 
 Each section MUST be present. If nothing to report: "None".
 
@@ -76,8 +76,8 @@ Observational layer — inferential content, subject to human validation.
 
 | Section | Content | Status |
 |---------|---------|--------|
-| Friction | Qualified frictions with resolution tag (see `friction.md`) | SHOULD |
-| Flux | Epistemic contributions (see `contribution.md`) | MAY |
+| Orchestrator friction | Qualified frictions with resolution tag (see `friction.md`) | SHOULD |
+| Flow | Epistemic contributions (see `contribution.md`) | MAY |
 
 The persona pre-fills these sections. The orchestrator MAY correct, complete, or remove content.
 

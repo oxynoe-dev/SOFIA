@@ -61,8 +61,8 @@ The H2A protocol is installed via the **context** (`shared/orga/contextes/contex
 
 Each context MUST contain an `## H2A Protocol` section that:
 - Points to `shared/conventions.md` (read at first boot, reread before each artefact and closure)
-- Recalls the mandatory session summary sections (Produit, Decisions, Notes deposees, Ouvert)
-- Recalls the observational sections (Friction orchestrateur SHOULD, Flux MAY)
+- Recalls the mandatory session summary sections (Produced, Decisions, Shared notes, Open)
+- Recalls the observational sections (Orchestrator friction SHOULD, Flow MAY)
 - Recalls the commit convention
 - Contains the **inline friction template** — the exact expected format, directly visible in the context
 
@@ -140,12 +140,12 @@ Convention: the recipient annotates each point with `→ ratified`, `→ contest
 
 ### Friction in session summaries
 
-Section `## Friction orchestrateur` (SHOULD — see `exchange.md` §Sessions, observational layer).
+Section `## Orchestrator friction` (SHOULD — see `exchange.md` §Sessions, observational layer).
 
 Each line carries the dimensions defined in `friction.md`, rendered as:
 
 ```
-## Friction orchestrateur
+## Orchestrator friction
 - [marker] description — [initiative] → resolution
 ```
 
@@ -178,7 +178,7 @@ The resolution tag is set per friction point, not per section.
 
 **Example**:
 ```
-## Friction orchestrateur
+## Orchestrator friction
 - ✓ [sound] the Toulmin mapping illuminates without constraining — [PO] → ratified
 - ~ [contestable] the Toulmin mapping is suggestive, not established — [PO] → revised
 - ◐ [blind_spot] scaffolding absent from the Böckeler review — [aurele] → ratified
@@ -220,12 +220,12 @@ The audit counts triggers and the distribution of choices (protocol counter).
 
 ### Contribution in session summaries
 
-Section `## Flux` (MAY — see `exchange.md` §Sessions, observational layer).
+Section `## Flow` (MAY — see `exchange.md` §Sessions, observational layer).
 
 Each line carries the dimensions defined in `contribution.md`, rendered as:
 
 ```
-## Flux
+## Flow
 - {direction}:{type} — description
 ```
 
@@ -236,7 +236,7 @@ Each line carries the dimensions defined in `contribution.md`, rendered as:
 
 **Example**:
 ```
-## Flux
+## Flow
 - H:substance — Böckeler article, request for opinion
 - A:substance — scaffolding lineage absent from Böckeler
 - A:structure — three levels of harness/SOFIA complementarity
@@ -259,8 +259,8 @@ Mapping of H2A operations (see `protocol/h2a.md`) to the current implementation.
 | routeArtefact() | manual | The orchestrator reads the artefact in `shared/`, opens a session with the recipient, presents the artefact. **Cross-instance**: the orchestrator deposits the artefact in the recipient instance's `shared/`, not the emitter's |
 | markRead() | manual | The orchestrator sets `status: read` in the artefact's frontmatter |
 | markDone() | manual | The orchestrator sets `status: done` in the frontmatter — the artefact is then moved to `archives/` |
-| qualifyFriction() | automatic | The persona pre-fills the `## Friction orchestrateur` section at closure. The orchestrator validates or corrects |
-| qualifyContribution() | automatic | The persona pre-fills the `## Flux` section at closure. The orchestrator validates or corrects |
+| qualifyFriction() | automatic | The persona pre-fills the `## Orchestrator friction` section at closure. The orchestrator validates or corrects |
+| qualifyContribution() | automatic | The persona pre-fills the `## Flow` section at closure. The orchestrator validates or corrects |
 | reportPattern() | automatic | The persona detects a thematic convergence of rejections during the session. It challenges the orchestrator with the observation + 3 argued hypotheses. The orchestrator responds with their choice + justification. At closure, the persona records in a `## reportPattern` section of the summary |
 
 **Manual** = the orchestrator triggers with an explicit gesture.
