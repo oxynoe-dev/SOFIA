@@ -69,7 +69,7 @@ The persona file is **product-agnostic**. It defines:
 - What they do NOT do — **the most important section**, the prohibitions
 - Collaboration — with whom and how
 
-Template: `instance/artefacts/persona.md`
+Template: `instance/artifacts/persona.md`
 
 ## What the context carries (contexte-{persona}-{produit}.md)
 
@@ -84,7 +84,7 @@ The context file is **specific to the persona×product pair**. It defines:
 - Emergence — protocol for detecting missing roles
 - Session protocol — summary format, commit
 
-Template: `instance/artefacts/contexte-persona-produit.md`
+Template: `instance/artifacts/product-persona-context.md`
 
 ## Common mistakes
 

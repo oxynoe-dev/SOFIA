@@ -1,6 +1,6 @@
 ## Escalation by note
 
-![Pattern — Escalation by note](../../doc/figures/fig-pattern-escalade-note.svg)
+![Pattern — Escalation by note](../../doc/figures/fig-pattern-note-escalation.svg)
 
 When a persona encounters a problem outside their scope, they deposit a note. The orchestrator routes.
 

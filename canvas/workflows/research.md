@@ -1,6 +1,6 @@
 ## Research
 
-![Workflow — Research](../../doc/figures/fig-workflow-recherche.svg)
+![Workflow — Research](../../doc/figures/fig-workflow-research.svg)
 
 Research workflow: from source identification to usage verification.
 

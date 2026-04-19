@@ -109,7 +109,7 @@ sofia/
 ├── runtime/           ← provider adapters (claude-code, sofia.md)
 ├── canvas/            ← instantiation references + inspiration tools
 │   ├── archetypes/    ← persona models by role
-│   ├── artefacts/     ← what a note, review, session looks like...
+│   ├── artifacts/     ← what a note, review, session looks like...
 │   ├── patterns/      ← recurring structures observed in the field
 │   ├── workflows/     ← standard processes
 │   └── examples/      ← katen/ (field instance snapshot)
@@ -187,7 +187,7 @@ Not prescription — inspiration. Draw from it, don't copy.
 | Directory | Content | Implementation tag |
 |-----------|---------|-------------------|
 | `archetypes/` | 9 persona models by role | No — agnostic |
-| `artefacts/` | 10 reference formats | `implementation:filesystem` |
+| `artifacts/` | 10 reference formats | `implementation:filesystem` |
 | `patterns/` | 4 recurring structures | No — agnostic |
 | `workflows/` | 10 standard processes | No — agnostic |
 | `examples/` | katen/ — field instance snapshot | `implementation:filesystem` |
@@ -267,7 +267,7 @@ The protocol/observational distinction traverses the MCD:
 
 ### Exchange flows
 
-![Elementary flow](figures/fig-flux-elementaire.svg)
+![Elementary flow](figures/fig-elementary-flow.svg)
 
 Everything goes through the orchestrator. Two patterns:
 
@@ -290,7 +290,7 @@ Personas never talk directly. The orchestrator is the human router of all exchan
 
 ### SOFIA Instance
 
-![Instance anatomy](figures/fig-anatomie-instance.svg)
+![Instance anatomy](figures/fig-instance-anatomy.svg)
 
 The `sofia.md` file at the root identifies the repository as an instance and links to the method.
 

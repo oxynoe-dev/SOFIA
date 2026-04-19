@@ -97,7 +97,7 @@
 ## v0.3.1 — Review, instance restructuring & tooling (2026-04-11)
 
 - ADR-009 amended — instance/ layer (archetypes, artifacts, examples/katen), not a scaffolding kit
-- Restructuring of sofia/ — instance/archetypes/, instance/artefacts/, instance/examples/katen/ (full snapshot)
+- Restructuring of sofia/ — instance/archetypes/, instance/artifacts/, instance/examples/katen/ (full snapshot)
 - Meta-challenger persona archetype added
 - Removal of core/templates/, protocol/templates/, runtime/claude-code/templates/, doc/examples/
 - audit-instance.py — SOFIA instance audit script (implementation/filesystem/), 30 structural checks, exchange/friction matrices, session/persona activity, signals, 4 output formats (md/json/csv/sqlite), 29 tests
@@ -210,7 +210,7 @@
 
 ## v0.2.0 — Enriched Voix product (2026-03-31)
 
-- Templates: backlog.md, roadmap-produit.md, note.md, feature.md, voix-instance.md
+- Templates: backlog.md, product-roadmap.md, note.md, feature.md, voix-instance.md
 - Enriched methode/artefacts.md — archiving, shared/orga/, multi-product features
 - Sofia + Winston examples in exemples/katen/
 - voix.md marker documented (methode/instance.md)

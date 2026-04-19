@@ -1,6 +1,6 @@
 ## Media calibration
 
-![Pattern — Media calibration](figures/fig-pattern-calibrage-media.svg)
+![Pattern — Media calibration](figures/fig-pattern-media-calibration.svg)
 
 Define a persona by what it produces (its medium), not only by its competence.
 

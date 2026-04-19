@@ -40,4 +40,4 @@ For any published content — web page, public document, white/blue book, extern
 
 - **Publishing without substance validation** — formatting gives an illusion of quality. A well-presented but factually wrong document is worse than a correct draft
 - **The orchestrator validates form, not substance** — the orchestrator's role at the last gate is specifically factual integrity. Form was validated before
-- **Unverified sources** — a reference cited without having been fully read propagates errors in everything that cites it afterwards (cf. `recherche.md`)
+- **Unverified sources** — a reference cited without having been fully read propagates errors in everything that cites it afterwards (cf. `research.md`)

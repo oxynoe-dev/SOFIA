@@ -1,6 +1,6 @@
 ## Star Review
 
-![Pattern — Star review](../../doc/figures/fig-pattern-revue-etoile.svg)
+![Pattern — Star review](../../doc/figures/fig-pattern-star-review.svg)
 
 An artifact is submitted to N personas in parallel, each reviews it on their axis. The orchestrator consolidates.
 

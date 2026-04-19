@@ -1,6 +1,6 @@
 ## Distillery
 
-![Pattern — Distillery](../../doc/figures/fig-pattern-distillerie.svg)
+![Pattern — Distillery](../../doc/figures/fig-pattern-distillery.svg)
 
 Field observations flow up into the method. Experience reports become documented patterns.
 

@@ -173,7 +173,7 @@ This is exactly what happened on the Katen project: the first persona (architect
 
 A **SOFIA instance** is not your project. It's the space where your personas think, plan, and exchange. Your **project** (the code, the product, the site) lives elsewhere, in its own repo.
 
-![Instance and project](figures/fig-instance-projet.svg)
+![Instance and project](figures/fig-project-instance.svg)
 
 The instance thinks. The project delivers. Personas work in the instance and produce deliverables that land in the project. Commits in the instance are automatic. Commits in the project go through the orchestrator.
 
@@ -187,7 +187,7 @@ Three possible configurations:
 
 An instance contains **workspaces** (one per persona) and a **shared zone** (`shared/`). Each workspace is isolated — a persona cannot read or write in another's workspace. The only communication goes through `shared/`.
 
-![Instance anatomy](figures/fig-anatomie-instance.svg)
+![Instance anatomy](figures/fig-instance-anatomy.svg)
 
 ### The shared zone — shared/
 

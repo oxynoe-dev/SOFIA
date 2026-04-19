@@ -158,13 +158,13 @@ The subdirectories of `shared/` (notes/, review/, etc.) are not scaffolded — t
 
 1. **Persona sheet** (`shared/orga/personas/persona-{nom}.md`) — the 7 dimensions:
    identity, stance, scope, deliverables, challenge, prohibitions, collaboration.
-   Draw inspiration from the template `canvas/artefacts/persona.md` and the archetypes `canvas/archetypes/`.
+   Draw inspiration from the template `canvas/artifacts/persona.md` and the archetypes `canvas/archetypes/`.
 
 2. **Context** (`shared/orga/contextes/contexte-{nom}-{produit}.md`) — the complete operational sections:
    Scope, Key documents, Isolation (file scope), Conventions (pointer to shared/conventions.md, language, formats),
    Workflow (boot = read latest summary, read before producing), Emergence (3+ deflections = signal),
    Session protocol (summary format, commit, closing).
-   Draw inspiration from the template `canvas/artefacts/contexte-persona-produit.md`.
+   Draw inspiration from the template `canvas/artifacts/product-persona-context.md`.
 
 3. **CLAUDE.md** (`{workspace}/CLAUDE.md`) — 2-line routing:
    ```

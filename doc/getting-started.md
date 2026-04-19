@@ -130,7 +130,7 @@ The first persona is a **structuring** role — the one that will frame your app
 
 ### Create the persona file
 
-Create `shared/orga/personas/persona-{name}.md`. Draw from the format in `canvas/artefacts/persona.md` and archetypes in `canvas/archetypes/`. Essential fields:
+Create `shared/orga/personas/persona-{name}.md`. Draw from the format in `canvas/artifacts/persona.md` and archetypes in `canvas/archetypes/`. Essential fields:
 
 ```markdown
 # {Name} — {Role}
@@ -154,7 +154,7 @@ The "What they do NOT do" section is **the most important**. It creates the prod
 
 ### Create the context file
 
-Create `shared/orga/contextes/contexte-{name}-{product}.md`. Draw from the template in `canvas/artefacts/contexte-persona-produit.md`. Essential fields:
+Create `shared/orga/contextes/contexte-{name}-{product}.md`. Draw from the template in `canvas/artifacts/product-persona-context.md`. Essential fields:
 
 ```markdown
 ---

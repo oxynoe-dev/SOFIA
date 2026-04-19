@@ -12,12 +12,12 @@ Observations from two phases: Katen (7 personas, 210+ sessions, single instance)
 
 | Report | Associated pattern or workflow |
 |--------|-------------------------------|
-| contamination-factuelle.md | `patterns/contamination-factuelle.md` |
+| contamination-factuelle.md | `patterns/factual-contamination.md` |
 | pattern-challenger.md | `patterns/challenger.md` |
 | calibrage-personas.md | `patterns/calibrage-media.md` |
 | isolation-production.md | `patterns/calibrage-media.md` (partial) |
 | pattern-editorial.md | `workflows/publication.md` |
-| chaine-produit.md | `workflows/chaine-produit.md` + several patterns |
+| chaine-produit.md | `workflows/product-chain.md` + several patterns |
 | pieges.md | Anti-patterns — no associated pattern |
 | cas-adr-051.md | Textbook case of dev/architect friction — Katen-specific |
 | katen.md | Global post-mortem |

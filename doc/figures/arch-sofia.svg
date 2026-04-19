@@ -130,7 +130,7 @@
   <text x="110" y="540" text-anchor="middle" font-size="7" fill="rgba(212,160,48,0.45)">9 persona models</text>
 
   <rect x="185" y="513" width="120" height="34" rx="5" fill="rgba(212,160,48,0.10)" stroke="rgba(212,160,48,0.25)" stroke-width="0.8"/>
-  <text x="245" y="528" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">artefacts/</text>
+  <text x="245" y="528" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">artifacts/</text>
   <text x="245" y="540" text-anchor="middle" font-size="7" fill="rgba(212,160,48,0.45)">10 reference formats</text>
 
   <rect x="320" y="513" width="120" height="34" rx="5" fill="rgba(212,160,48,0.10)" stroke="rgba(212,160,48,0.25)" stroke-width="0.8"/>

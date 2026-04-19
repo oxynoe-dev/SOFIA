@@ -1,6 +1,6 @@
 ## Product Chain
 
-![Workflow — Product chain](../../doc/figures/fig-workflow-chaine-produit.svg)
+![Workflow — Product chain](../../doc/figures/fig-workflow-product-chain.svg)
 
 Complete production chain: every step has a guardian, no shortcuts.
 

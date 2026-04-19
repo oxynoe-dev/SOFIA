@@ -120,7 +120,7 @@
 
   <line x1="150" y1="520" x2="170" y2="520" stroke="rgba(212,160,48,0.1)" stroke-width="0.5"/>
   <rect x="174" y="509" width="92" height="22" rx="3" fill="rgba(212,160,48,0.03)" stroke="rgba(212,160,48,0.12)" stroke-width="0.5"/>
-  <text x="186" y="524" fill="rgba(212,160,48,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">artefacts/</text>
+  <text x="186" y="524" fill="rgba(212,160,48,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">artifacts/</text>
   <text x="276" y="524" fill="rgba(212,160,48,0.3)" font-family="Inter,sans-serif" font-size="7">10 formats</text>
 
   <line x1="150" y1="540" x2="170" y2="540" stroke="rgba(212,160,48,0.1)" stroke-width="0.5"/>
