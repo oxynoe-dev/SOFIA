@@ -44,7 +44,6 @@ Si tu cherches une promesse de productivité magique, ce n'est pas le bon livre.
 7. [Le triangle de la dépendance — Au-delà du projet](#vii-au-delà-du-projet)
 8. [De conviction, pas technique — Le choix](#viii-le-choix)
 9. [Ce que la méthode ne sait pas encore — Travaux futurs](#ix-travaux-futurs)
-9. [Ce que la méthode ne sait pas encore — Travaux futurs](#ix-travaux-futurs)
 
 ---
 

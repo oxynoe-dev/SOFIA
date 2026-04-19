@@ -45,7 +45,6 @@ If you're looking for a magic productivity promise, this is the wrong book. If y
 7. [The dependency triangle — Beyond the project](#vii-beyond-the-project)
 8. [A matter of conviction, not technology — The choice](#viii-the-choice)
 9. [What the method doesn't know yet — Future work](#ix-future-work)
-9. [What the method doesn't know yet — Future work](#ix-future-work)
 
 ---
 
