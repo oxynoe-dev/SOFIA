@@ -23,7 +23,7 @@
        PRODUCTEUR
   ════════════════════════════════════════ -->
   <rect x="40" y="70" width="130" height="110" rx="4" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="1.2"/>
-  <text x="105" y="130" text-anchor="middle" fill="#4f8aff" font-size="9">Producteur</text>
+  <text x="105" y="130" text-anchor="middle" fill="#4f8aff" font-size="9">Producer</text>
 
   <!-- ════════════════════════════════════════
        FLECHES PRODUCTEUR → CHALLENGERS
@@ -40,7 +40,7 @@
   <!-- ════════════════════════════════════════
        CHALLENGERS
   ════════════════════════════════════════ -->
-  <text x="275" y="55" text-anchor="middle" fill="#e05050" font-size="7">bloquant</text>
+  <text x="275" y="55" text-anchor="middle" fill="#e05050" font-size="7">blocking</text>
 
   <!-- Challenger 1 (green) -->
   <rect x="262" y="60" width="190" height="40" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
@@ -79,14 +79,14 @@
        Orchestrateur
   ════════════════════════════════════════ -->
   <rect x="270" y="250" width="180" height="42" rx="4" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="1.2"/>
-  <text x="360" y="275" text-anchor="middle" fill="#d4a030" font-size="9">Orchestrateur</text>
-  <text x="360" y="286" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">resultat consolide</text>
+  <text x="360" y="275" text-anchor="middle" fill="#d4a030" font-size="9">Orchestrator</text>
+  <text x="360" y="286" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">consolidated result</text>
 
   <!-- ════════════════════════════════════════
        ANNOTATION
   ════════════════════════════════════════ -->
-  <text x="105" y="210" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">produit un artefact</text>
-  <text x="105" y="220" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">unique</text>
+  <text x="105" y="210" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">produces a single</text>
+  <text x="105" y="220" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">artifact</text>
 
   <!-- ════════════════════════════════════════
        SPORES
@@ -99,6 +99,6 @@
   <!-- ════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <text x="250" y="310" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — methode Oxynoe — 05/04/2026</text>
+  <text x="250" y="310" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — Oxynoe method — 05/04/2026</text>
 
 </svg>

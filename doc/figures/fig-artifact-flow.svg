@@ -14,12 +14,12 @@
   <!-- ════════════════════════════════════════
        TITLE
   ════════════════════════════════════════ -->
-  <text x="440" y="30" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Flux d'artefact entre personas</text>
+  <text x="440" y="30" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Artifact flow between personas</text>
 
   <!-- ════════════════════════════════════════
        COLUMN HEADERS
   ════════════════════════════════════════ -->
-  <text x="140" y="62" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em" text-transform="uppercase">ARCHITECTE</text>
+  <text x="140" y="62" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em" text-transform="uppercase">ARCHITECT</text>
   <text x="440" y="62" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em" text-transform="uppercase">SHARED/</text>
   <text x="740" y="62" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em" text-transform="uppercase">DEV</text>
 
@@ -31,7 +31,7 @@
        STEP 1 — Architecte rédige review
   ════════════════════════════════════════ -->
   <rect x="55" y="85" width="170" height="36" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
-  <text x="140" y="107" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">redige review</text>
+  <text x="140" y="107" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">writes review</text>
 
   <!-- Arrow 1: Architecte → shared/ -->
   <path d="M 225 103 C 290 103, 310 103, 355 103" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="1"/>
@@ -50,13 +50,13 @@
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.3)" transform="translate(655,157) rotate(20)"/>
 
   <rect x="655" y="140" width="170" height="36" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
-  <text x="740" y="162" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">lit la review</text>
+  <text x="740" y="162" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">reads the review</text>
 
   <!-- ════════════════════════════════════════
        STEP 3 — Dev rédige réponse
   ════════════════════════════════════════ -->
   <rect x="655" y="190" width="170" height="36" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
-  <text x="740" y="212" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">redige reponse</text>
+  <text x="740" y="212" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">writes response</text>
 
   <!-- Arrow 3: Dev → shared/ -->
   <path d="M 655 208 C 600 208, 580 220, 515 235" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="1"/>
@@ -75,7 +75,7 @@
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.3)" transform="translate(220,238) rotate(180)"/>
 
   <rect x="55" y="220" width="170" height="36" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
-  <text x="140" y="242" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">lit la note</text>
+  <text x="140" y="242" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">reads the note</text>
 
   <!-- ════════════════════════════════════════
        STEP 5 — Orchestrateur tranche
@@ -86,8 +86,8 @@
 
   <!-- Orchestrateur box -->
   <rect x="370" y="300" width="140" height="40" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
-  <text x="440" y="317" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">Orchestrateur</text>
-  <text x="440" y="331" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="8">lit les deux, tranche</text>
+  <text x="440" y="317" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">Orchestrator</text>
+  <text x="440" y="331" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="8">reads both, decides</text>
 
   <!-- ════════════════════════════════════════
        STEP NUMBERS
@@ -111,6 +111,6 @@
        FOOTER
   ════════════════════════════════════════ -->
   <line x1="40" y1="365" x2="840" y2="365" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
-  <text x="440" y="382" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" letter-spacing="0.05em">sofia — flux d'artefact inter-personas</text>
+  <text x="440" y="382" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" letter-spacing="0.05em">SOFIA — artifact flow between personas</text>
 
 </svg>

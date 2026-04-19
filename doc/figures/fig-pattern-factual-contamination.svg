@@ -17,7 +17,7 @@
   <!-- ════════════════════════════════════════
        TITRE
   ════════════════════════════════════════ -->
-  <text x="300" y="28" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Anti-pattern — Contamination factuelle</text>
+  <text x="300" y="28" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Anti-pattern — Factual contamination</text>
 
   <!-- ════════════════════════════════════════
        SOURCE: APPROXIMATION (coral)
@@ -89,7 +89,7 @@
   <!-- ════════════════════════════════════════
        ANNOTATION
   ════════════════════════════════════════ -->
-  <text x="300" y="270" text-anchor="middle" fill="#e05050" font-size="8" font-style="italic">Plus de documents = erreur plus invisible</text>
+  <text x="300" y="270" text-anchor="middle" fill="#e05050" font-size="8" font-style="italic">More documents = more invisible error</text>
 
   <!-- ════════════════════════════════════════
        SPORES
@@ -102,6 +102,6 @@
   <!-- ════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <text x="300" y="290" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — methode Oxynoe — 05/04/2026</text>
+  <text x="300" y="290" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — Oxynoe method — 05/04/2026</text>
 
 </svg>

@@ -14,14 +14,14 @@
   <!-- ════════════════════════════════════════
        TITLE
   ════════════════════════════════════════ -->
-  <text x="440" y="30" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Cycle complet d'un echange</text>
+  <text x="440" y="30" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Complete exchange cycle</text>
 
   <!-- ════════════════════════════════════════
        COLUMN HEADERS
   ════════════════════════════════════════ -->
   <text x="110" y="62" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">PERSONA A</text>
   <text x="330" y="62" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">SHARED/</text>
-  <text x="550" y="62" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">Orchestrateur</text>
+  <text x="550" y="62" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">Orchestrator</text>
   <text x="770" y="62" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">PERSONA B</text>
 
   <!-- Column separators -->
@@ -35,7 +35,7 @@
 
   <!-- ── STEP 1: Persona A rédige artefact ── -->
   <rect x="30" y="82" width="160" height="32" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
-  <text x="110" y="102" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">redige artefact</text>
+  <text x="110" y="102" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">writes artifact</text>
 
   <!-- Arrow 1: A → shared/ -->
   <path d="M 190 98 C 230 98, 250 98, 270 98" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="1"/>
@@ -43,7 +43,7 @@
 
   <!-- ── STEP 2: Déposé dans shared/ ── -->
   <rect x="250" y="82" width="160" height="32" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.2)" stroke-width="0.8"/>
-  <text x="330" y="102" text-anchor="middle" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8">depose dans bus</text>
+  <text x="330" y="102" text-anchor="middle" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8">deposits in bus</text>
 
   <!-- Arrow 2: shared/ → Orchestrateur -->
   <path d="M 410 98 C 430 98, 440 110, 460 130" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="1"/>
@@ -51,15 +51,15 @@
 
   <!-- ── STEP 3: Orchestrateur lit l'artefact ── -->
   <rect x="470" y="125" width="160" height="32" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.25)" stroke-width="0.8"/>
-  <text x="550" y="145" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">lit l'artefact</text>
+  <text x="550" y="145" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">reads artifact</text>
 
   <!-- ── STEP 4: Orchestrateur filtre ── -->
   <rect x="470" y="168" width="160" height="28" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.8"/>
-  <text x="550" y="186" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">filtre</text>
+  <text x="550" y="186" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">filters</text>
 
   <!-- ── STEP 5: Orchestrateur contextualise ── -->
   <rect x="470" y="205" width="160" height="28" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.8"/>
-  <text x="550" y="223" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">contextualise</text>
+  <text x="550" y="223" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">contextualizes</text>
 
   <!-- ── STEP 6: Orchestrateur transmet → Persona B ── -->
   <path d="M 630 236 C 660 250, 690 258, 710 258" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="1"/>
@@ -71,11 +71,11 @@
   <line x1="550" y1="233" x2="550" y2="240" stroke="rgba(167,139,250,0.15)" stroke-width="0.7"/>
 
   <rect x="470" y="242" width="160" height="28" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
-  <text x="550" y="260" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">transmet</text>
+  <text x="550" y="260" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">transmits</text>
 
   <!-- ── STEP 7: Persona B lit, réagit ── -->
   <rect x="690" y="244" width="160" height="32" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
-  <text x="770" y="264" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">lit, reagit</text>
+  <text x="770" y="264" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">reads, reacts</text>
 
   <!-- ── STEP 8: Persona B dépose réponse ── -->
   <!-- Arrow B → shared/ (going back left) -->
@@ -83,11 +83,11 @@
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.3)" transform="translate(455,311) rotate(170)"/>
 
   <rect x="690" y="284" width="160" height="32" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,180,160,0.2)" stroke-width="0.8"/>
-  <text x="770" y="304" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">depose reponse</text>
+  <text x="770" y="304" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">deposits response</text>
 
   <!-- shared/ receives response -->
   <rect x="250" y="296" width="160" height="32" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.2)" stroke-width="0.8"/>
-  <text x="330" y="316" text-anchor="middle" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8">reponse dans bus</text>
+  <text x="330" y="316" text-anchor="middle" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8">response in bus</text>
 
   <!-- Arrow shared/ → Orchestrateur (reads response) -->
   <path d="M 410 312 C 430 312, 445 330, 462 345" fill="none" stroke="rgba(64,216,192,0.2)" stroke-width="1"/>
@@ -95,15 +95,15 @@
 
   <!-- ── STEP 9: Orchestrateur lit la réponse ── -->
   <rect x="470" y="340" width="160" height="28" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.25)" stroke-width="0.8"/>
-  <text x="550" y="358" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">lit la reponse</text>
+  <text x="550" y="358" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="9">reads response</text>
 
   <!-- ── STEP 10: Orchestrateur tranche ── -->
   <rect x="470" y="377" width="160" height="28" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
-  <text x="550" y="395" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">tranche</text>
+  <text x="550" y="395" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">decides</text>
 
   <!-- ── STEP 11: Orchestrateur trace ── -->
   <rect x="470" y="414" width="160" height="28" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.8"/>
-  <text x="550" y="432" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">trace (ADR / note)</text>
+  <text x="550" y="432" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">traces (ADR / note)</text>
 
   <!-- Connectors between final Orchestrateur steps -->
   <line x1="550" y1="368" x2="550" y2="377" stroke="rgba(167,139,250,0.15)" stroke-width="0.7"/>
@@ -113,6 +113,6 @@
        FOOTER
   ════════════════════════════════════════ -->
   <line x1="40" y1="455" x2="840" y2="455" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
-  <text x="440" y="472" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" letter-spacing="0.05em">sofia — cycle complet d'un echange inter-personas</text>
+  <text x="440" y="472" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-family="IBM Plex Mono,monospace" font-size="7" letter-spacing="0.05em">SOFIA — complete inter-persona exchange cycle</text>
 
 </svg>

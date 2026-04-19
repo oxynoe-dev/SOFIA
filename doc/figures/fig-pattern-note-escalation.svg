@@ -17,12 +17,12 @@
   <!-- ════════════════════════════════════════
        TITRE
   ════════════════════════════════════════ -->
-  <text x="300" y="28" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Pattern — Escalade par note</text>
+  <text x="300" y="28" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Pattern — Note escalation</text>
 
   <!-- ════════════════════════════════════════
        FLOW LABEL
   ════════════════════════════════════════ -->
-  <text x="300" y="65" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-size="7">probleme detecte                         decision routee                      action</text>
+  <text x="300" y="65" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-size="7">problem detected                         decision routed                      action</text>
 
   <!-- ════════════════════════════════════════
        PERSONA A (blue)
@@ -43,7 +43,7 @@
   ════════════════════════════════════════ -->
   <rect x="188" y="80" width="110" height="50" rx="3" fill="rgba(64,216,192,0.04)" stroke="rgba(64,216,192,0.15)" stroke-width="0.7"/>
   <text x="243" y="104" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-size="7">shared/notes/</text>
-  <text x="243" y="118" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-size="6">bus asynchrone</text>
+  <text x="243" y="118" text-anchor="middle" fill="rgba(64,216,192,0.25)" font-size="6">asynchronous bus</text>
 
   <!-- Arrow: shared/notes/ -> Orchestrateur -->
   <line x1="298" y1="105" x2="347" y2="105" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
@@ -53,7 +53,7 @@
        Orchestrateur (amber)
   ════════════════════════════════════════ -->
   <rect x="353" y="80" width="90" height="50" rx="3" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="0.7"/>
-  <text x="398" y="109" text-anchor="middle" fill="#d4a030" font-size="9">Orchestrateur</text>
+  <text x="398" y="109" text-anchor="middle" fill="#d4a030" font-size="9">Orchestrator</text>
 
   <!-- Arrow: Orchestrateur -> Persona B -->
   <line x1="443" y1="105" x2="473" y2="105" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
@@ -74,7 +74,7 @@
   <line x1="305" y1="153" x2="295" y2="167" stroke="#e05050" stroke-width="1.5" opacity="0.6"/>
 
   <!-- Annotation -->
-  <text x="300" y="185" text-anchor="middle" fill="rgba(224,80,80,0.5)" font-size="7">pas de communication directe entre personas</text>
+  <text x="300" y="185" text-anchor="middle" fill="rgba(224,80,80,0.5)" font-size="7">no direct communication between personas</text>
 
   <!-- ════════════════════════════════════════
        SPORES
@@ -87,6 +87,6 @@
   <!-- ════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <text x="300" y="238" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — methode Oxynoe — 05/04/2026</text>
+  <text x="300" y="238" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — Oxynoe method — 05/04/2026</text>
 
 </svg>

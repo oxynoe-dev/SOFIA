@@ -40,7 +40,7 @@
   <!-- Orchestrateur -->
   <rect x="30" y="55" width="155" height="75" rx="4" fill="rgba(64,216,192,0.04)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
   <rect x="30" y="55" width="155" height="18" rx="4" fill="rgba(64,216,192,0.08)"/>
-  <text x="107" y="68" text-anchor="middle" fill="#f0f8f5" font-size="9" font-weight="600">Orchestrateur</text>
+  <text x="107" y="68" text-anchor="middle" fill="#f0f8f5" font-size="9" font-weight="600">Orchestrator</text>
   <text x="40" y="86" fill="rgba(64,216,192,0.45)" font-size="7">identifier : text</text>
   <text x="40" y="98" fill="rgba(64,216,192,0.45)" font-size="7">instances : ref[]</text>
   <line x1="30" y1="105" x2="185" y2="105" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
@@ -58,7 +58,7 @@
   <!-- Espace -->
   <rect x="460" y="55" width="155" height="75" rx="4" fill="rgba(138,168,216,0.04)" stroke="rgba(138,168,216,0.25)" stroke-width="0.8"/>
   <rect x="460" y="55" width="155" height="18" rx="4" fill="rgba(138,168,216,0.08)"/>
-  <text x="537" y="68" text-anchor="middle" fill="#8aa8d8" font-size="9" font-weight="600">Espace</text>
+  <text x="537" y="68" text-anchor="middle" fill="#8aa8d8" font-size="9" font-weight="600">Space</text>
   <text x="470" y="86" fill="rgba(64,216,192,0.45)" font-size="7">identifier : text</text>
   <text x="470" y="98" fill="rgba(64,216,192,0.45)" font-size="7">shared : boolean</text>
   <line x1="460" y1="105" x2="615" y2="105" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
@@ -68,11 +68,11 @@
   <rect x="675" y="50" width="130" height="130" rx="4" fill="rgba(212,160,48,0.04)" stroke="rgba(212,160,48,0.3)" stroke-width="0.8"/>
   <rect x="675" y="50" width="130" height="18" rx="4" fill="rgba(212,160,48,0.1)"/>
   <text x="740" y="63" text-anchor="middle" fill="#d4a030" font-size="9" font-weight="600">Persona</text>
-  <text x="685" y="80" fill="rgba(64,216,192,0.45)" font-size="6.5">1. identite</text>
-  <text x="685" y="91" fill="rgba(64,216,192,0.45)" font-size="6.5">2. posture</text>
-  <text x="685" y="102" fill="rgba(64,216,192,0.45)" font-size="6.5">3. perimetre</text>
-  <text x="685" y="113" fill="rgba(64,216,192,0.45)" font-size="6.5">4. livrables</text>
-  <text x="685" y="124" fill="rgba(64,216,192,0.45)" font-size="6.5">5. interdits</text>
+  <text x="685" y="80" fill="rgba(64,216,192,0.45)" font-size="6.5">1. identity</text>
+  <text x="685" y="91" fill="rgba(64,216,192,0.45)" font-size="6.5">2. stance</text>
+  <text x="685" y="102" fill="rgba(64,216,192,0.45)" font-size="6.5">3. scope</text>
+  <text x="685" y="113" fill="rgba(64,216,192,0.45)" font-size="6.5">4. deliverables</text>
+  <text x="685" y="124" fill="rgba(64,216,192,0.45)" font-size="6.5">5. prohibitions</text>
   <text x="685" y="135" fill="rgba(64,216,192,0.45)" font-size="6.5">6. challenge</text>
   <text x="685" y="146" fill="rgba(64,216,192,0.45)" font-size="6.5">7. collaboration</text>
   <line x1="675" y1="153" x2="805" y2="153" stroke="rgba(212,160,48,0.1)" stroke-width="0.5"/>
@@ -114,8 +114,8 @@
   <text x="400" y="238" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="600">Exchange</text>
   <text x="255" y="256" fill="rgba(64,216,192,0.45)" font-size="7">type : session | artefact</text>
   <text x="255" y="268" fill="rgba(64,216,192,0.45)" font-size="7">instance : ref</text>
-  <text x="255" y="280" fill="rgba(64,216,192,0.45)" font-size="7">espace : ref</text>
-  <text x="420" y="256" fill="rgba(64,216,192,0.45)" font-size="7">date_heure : datetime</text>
+  <text x="255" y="280" fill="rgba(64,216,192,0.45)" font-size="7">space : ref</text>
+  <text x="420" y="256" fill="rgba(64,216,192,0.45)" font-size="7">datetime : datetime</text>
   <text x="420" y="268" fill="rgba(64,216,192,0.45)" font-size="7">persona : ref</text>
   <line x1="245" y1="288" x2="555" y2="288" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
   <text x="255" y="301" fill="rgba(167,139,250,0.3)" font-size="6.5" font-style="italic">session = synchronous · artefact = asynchronous deposit</text>
@@ -140,7 +140,7 @@
   <rect x="120" y="360" width="280" height="122" rx="4" fill="rgba(224,80,80,0.03)" stroke="rgba(224,80,80,0.25)" stroke-width="0.8"/>
   <rect x="120" y="360" width="280" height="18" rx="4" fill="rgba(224,80,80,0.08)"/>
   <text x="260" y="373" text-anchor="middle" fill="rgba(224,80,80,0.7)" font-size="9" font-weight="600">Friction</text>
-  <text x="130" y="392" fill="rgba(64,216,192,0.45)" font-size="7">marqueur : [sound] [contestable]</text>
+  <text x="130" y="392" fill="rgba(64,216,192,0.45)" font-size="7">marker : [sound] [contestable]</text>
   <text x="130" y="403" fill="rgba(64,216,192,0.45)" font-size="7">  [simplification] [blind_spot] [refuted]</text>
   <text x="130" y="415" fill="rgba(64,216,192,0.45)" font-size="7">description : text</text>
   <text x="130" y="427" fill="rgba(64,216,192,0.45)" font-size="7">initiative : [persona] | [PO]</text>
@@ -151,7 +151,7 @@
 
   <!-- Friction → Friction (amende / antecedent) — self-relation -->
   <path d="M120,400 C50,400 50,470 120,470" fill="none" stroke="rgba(224,80,80,0.25)" stroke-width="0.8" marker-end="url(#arr)"/>
-  <text x="42" y="428" fill="rgba(224,80,80,0.35)" font-size="6.5" font-weight="500">amende</text>
+  <text x="42" y="428" fill="rgba(224,80,80,0.35)" font-size="6.5" font-weight="500">amends</text>
   <text x="42" y="440" fill="rgba(224,80,80,0.25)" font-size="5.5" font-style="italic">(antecedent)</text>
   <text x="95" y="396" fill="rgba(160,208,200,0.25)" font-size="5.5">0..1</text>
   <text x="95" y="478" fill="rgba(160,208,200,0.25)" font-size="5.5">0..1</text>

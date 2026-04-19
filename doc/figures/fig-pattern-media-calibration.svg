@@ -17,7 +17,7 @@
   <!-- ════════════════════════════════════════
        TITRE
   ════════════════════════════════════════ -->
-  <text x="250" y="28" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Pattern — Calibrage par le media</text>
+  <text x="250" y="28" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Pattern — Media calibration</text>
 
   <!-- ════════════════════════════════════════
        EN-TETES COLONNES
@@ -66,7 +66,7 @@
   <!-- ════════════════════════════════════════
        ANNOTATION
   ════════════════════════════════════════ -->
-  <text x="250" y="235" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="8" font-style="italic">Le media clarifie la frontiere</text>
+  <text x="250" y="235" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="8" font-style="italic">The medium clarifies the boundary</text>
 
   <!-- ════════════════════════════════════════
        SPORES
@@ -79,6 +79,6 @@
   <!-- ════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <text x="250" y="268" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — methode Oxynoe — 05/04/2026</text>
+  <text x="250" y="268" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — Oxynoe method — 05/04/2026</text>
 
 </svg>
