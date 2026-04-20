@@ -13,7 +13,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import importlib
 create = importlib.import_module("create-instance")
-audit = importlib.import_module("audit-instance")
+
+from analysis.lib import parser as audit_parser
+from analysis.cli import probe as audit_probe
+# Compat namespace
+from types import SimpleNamespace
+audit = SimpleNamespace(
+    check_structure=audit_probe.check_structure,
+    parse_frontmatter=audit_parser.parse_frontmatter,
+    parse_frontmatter_from_text=audit_parser.parse_frontmatter_from_text,
+)
 
 
 class TestCreateInstance(unittest.TestCase):
@@ -185,7 +194,7 @@ class TestCreateInstance(unittest.TestCase):
     def test_conventions_has_frontmatter_spec(self):
         self._create()
         text = (self.instance / "shared" / "conventions.md").read_text(encoding="utf-8")
-        for field in ["de:", "pour:", "nature:", "statut:", "date:"]:
+        for field in ["from:", "to:", "nature:", "status:", "date:"]:
             self.assertIn(field, text, f"Conventions must document frontmatter field '{field}'")
 
     def test_conventions_has_commit_format(self):
@@ -197,7 +206,7 @@ class TestCreateInstance(unittest.TestCase):
     def test_conventions_has_resolutions(self):
         self._create()
         text = (self.instance / "shared" / "conventions.md").read_text(encoding="utf-8")
-        for tag in ["ratifie", "conteste", "revise", "rejete"]:
+        for tag in ["ratified", "contested", "revised", "rejected"]:
             self.assertIn(tag, text, f"Conventions must document resolution tag '{tag}'")
 
     def test_conventions_has_mutabilite(self):

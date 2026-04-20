@@ -1,6 +1,6 @@
 # Audit rules — binding/filesystem
 
-> Reference for all checks performed by `audit-instance.py`.
+> Reference for all checks performed by `analysis/cli/probe.py`.
 
 ---
 
@@ -166,13 +166,13 @@ The `--artifacts` flag lets the user override which types are audited:
 
 ```bash
 # Audit only protocol checks + notes and reviews (default)
-python audit-instance.py /path/to/instance
+python analysis/cli/probe.py /path/to/instance
 
 # Audit with features included
-python audit-instance.py /path/to/instance --artifacts notes,reviews,features
+python analysis/cli/probe.py /path/to/instance --artifacts notes,reviews,features
 
 # Protocol checks only — skip all artifact and instance checks
-python audit-instance.py /path/to/instance --protocol-only
+python analysis/cli/probe.py /path/to/instance --protocol-only
 ```
 
 When `--protocol-only` is set, all artifact checks (AN1-AN5, AR1-AR5, AF1-AF3) and instance checks (IS1-IS4, IN1, IR1-IR8) are skipped.

@@ -9,6 +9,6 @@ objet: code-v1
 
 # Review code
 
-✓ Tests OK
-◐ Angle mort : pas de gestion d'erreur
-✗ Bug dans le parser
+- ✓ Tests OK
+- ◐ Angle mort : pas de gestion d'erreur
+- ✗ Bug dans le parser

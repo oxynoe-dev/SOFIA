@@ -17,9 +17,8 @@ from urllib.parse import urlparse
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 APP_DIR = Path(__file__).resolve().parent
-ANALYSIS_PY = Path(__file__).resolve().parent.parent.parent / "analysis_new.py"
-# Legacy dashboard — until migrated
-LEGACY_DASHBOARD = Path(__file__).resolve().parent.parent.parent / "analysis.html"
+ANALYSIS_PY = Path(__file__).resolve().parent.parent.parent / "analysis.py"
+DASHBOARD = Path(__file__).resolve().parent.parent.parent / "analysis.html"
 
 INSTANCE_PATHS: list[str] = []
 PORT = 8042
@@ -40,7 +39,7 @@ class Handler(BaseHTTPRequestHandler):
 
         # Serve dashboard
         if path == "/":
-            filepath = LEGACY_DASHBOARD
+            filepath = DASHBOARD
             if filepath.is_file():
                 self._serve_file(filepath)
                 return

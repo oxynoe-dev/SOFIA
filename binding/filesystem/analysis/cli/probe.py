@@ -757,10 +757,10 @@ def scan_session_friction(instance_path: Path) -> tuple[dict[str, dict], list[st
         if fm is None:
             continue
 
-        normalized = normalize_frontmatter(fm)
-        persona = normalized.get("persona", "")
+        persona = fm.get("persona", "").strip()
         if not persona:
             continue
+        persona = strip_accents(persona.lower())
 
         by_persona[persona]["total_sessions"] += 1
 

@@ -1,17 +1,37 @@
 #!/usr/bin/env python3
-"""Tests for audit-instance.py — zero external dependency (unittest + fixtures)."""
+"""Tests for probe.py / parser.py — zero external dependency (unittest + fixtures)."""
 from __future__ import annotations
 
 import unittest
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 
-# Add parent dir to path so we can import the script
+# Add parent dir to path so we can import the modules
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-# Import functions from audit-instance.py (hyphen in filename)
-import importlib
-audit = importlib.import_module("audit-instance")
+# Build a compat namespace that looks like the old `audit` module
+from analysis.lib.constants import FRICTION_MARKERS, RESOLUTION_TAGS, RESOLUTION_ALIASES, strip_accents
+from analysis.lib import parser
+from analysis.cli import probe
+
+# Create `audit` namespace for backward compat with test code
+audit = SimpleNamespace(
+    parse_frontmatter_from_text=parser.parse_frontmatter_from_text,
+    parse_frontmatter=parser.parse_frontmatter,
+    normalize_frontmatter=parser.normalize_frontmatter,
+    count_friction_markers_from_text=parser.count_friction_markers_from_text,
+    discover_personas=parser.discover_personas,
+    check_structure=probe.check_structure,
+    scan_artifacts=probe.scan_artifacts,
+    build_exchange_matrix=probe.build_exchange_matrix,
+    build_friction_matrix=probe.build_friction_matrix,
+    build_marker_totals=probe.build_marker_totals,
+    scan_session_friction=probe.scan_session_friction,
+    generate_signals=probe.generate_signals,
+    strip_accents=strip_accents,
+    FRICTION_MARKERS=FRICTION_MARKERS,
+)
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures" / "mini-instance"
 
@@ -82,7 +102,7 @@ class TestNormalizeFrontmatter(unittest.TestCase):
 class TestFrictionMarkers(unittest.TestCase):
 
     def test_all_markers(self):
-        text = "---\nde: x\n---\n✓ ok\n~ contestable\n⚡ trop\n◐ oubli\n✗ faux"
+        text = "---\nde: x\n---\n- ✓ ok\n- ~ contestable\n- ⚡ trop\n- ◐ oubli\n- ✗ faux"
         counts = audit.count_friction_markers_from_text(text)
         self.assertEqual(counts["sound"], 1)
         self.assertEqual(counts["contestable"], 1)
