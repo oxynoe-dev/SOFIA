@@ -198,8 +198,14 @@ def count_friction_markers_from_text(text: str) -> dict[str, int]:
 # Phase 1 — Structural conformity
 # ---------------------------------------------------------------------------
 
-def check_structure(instance: Path) -> list[dict]:
-    """Run structural conformity checks."""
+def check_structure(instance: Path, protocol_only: bool = False, artifact_types: set[str] | None = None) -> list[dict]:
+    """Run structural conformity checks.
+
+    protocol_only: skip instance-level checks (S4-S7, S10, F5, N1-N3, A1-A2, R1-R8)
+    artifact_types: set of artifact types to audit (default: {"notes", "reviews"})
+    """
+    if artifact_types is None:
+        artifact_types = {"notes", "reviews"}
     checks = []
 
     def add(cid: str, severity: str, passed: bool, detail: str, files: list[str] | None = None):
@@ -221,35 +227,37 @@ def check_structure(instance: Path) -> list[dict]:
     add("S3", "warn", (instance / "shared" / "conventions.md").is_file(),
         "shared/conventions.md present" if (instance / "shared" / "conventions.md").is_file() else "shared/conventions.md manquant")
 
-    # S4: shared/notes/ with archives/ (emerge a l'usage — absent = normal)
-    notes_dir = instance / "shared" / "notes"
-    notes_ok = notes_dir.is_dir()
-    notes_archives = (notes_dir / "archives").is_dir() if notes_ok else False
-    if notes_ok and notes_archives:
-        add("S4", "info", True, "shared/notes/ present avec archives/")
-    elif notes_ok:
-        add("S4", "info", False, "shared/notes/ present mais archives/ manquant")
-    else:
-        add("S4", "info", True, "shared/notes/ absent (emerge a l'usage)")
+    # S4-S7: instance-level structure checks (skipped in --protocol-only)
+    if not protocol_only:
+        # S4: shared/notes/ with archives/ (emerge a l'usage — absent = normal)
+        notes_dir = instance / "shared" / "notes"
+        notes_ok = notes_dir.is_dir()
+        notes_archives = (notes_dir / "archives").is_dir() if notes_ok else False
+        if notes_ok and notes_archives:
+            add("S4", "info", True, "shared/notes/ present avec archives/")
+        elif notes_ok:
+            add("S4", "info", False, "shared/notes/ present mais archives/ manquant")
+        else:
+            add("S4", "info", True, "shared/notes/ absent (emerge a l'usage)")
 
-    # S5: shared/review/ with archives/ (emerge a l'usage — absent = normal)
-    review_dir = instance / "shared" / "review"
-    review_ok = review_dir.is_dir()
-    review_archives = (review_dir / "archives").is_dir() if review_ok else False
-    if review_ok and review_archives:
-        add("S5", "info", True, "shared/review/ present avec archives/")
-    elif review_ok:
-        add("S5", "info", False, "shared/review/ present mais archives/ manquant")
-    else:
-        add("S5", "info", True, "shared/review/ absent (emerge a l'usage)")
+        # S5: shared/review/ with archives/ (emerge a l'usage — absent = normal)
+        review_dir = instance / "shared" / "review"
+        review_ok = review_dir.is_dir()
+        review_archives = (review_dir / "archives").is_dir() if review_ok else False
+        if review_ok and review_archives:
+            add("S5", "info", True, "shared/review/ present avec archives/")
+        elif review_ok:
+            add("S5", "info", False, "shared/review/ present mais archives/ manquant")
+        else:
+            add("S5", "info", True, "shared/review/ absent (emerge a l'usage)")
 
-    # S6: shared/features/ (emerge a l'usage — absent = normal)
-    add("S6", "info", True,
-        "shared/features/ present" if (instance / "shared" / "features").is_dir() else "shared/features/ absent (emerge a l'usage)")
+        # S6: shared/features/ (emerge a l'usage — absent = normal)
+        add("S6", "info", True,
+            "shared/features/ present" if (instance / "shared" / "features").is_dir() else "shared/features/ absent (emerge a l'usage)")
 
-    # S7: shared/orga/
-    add("S7", "info", (instance / "shared" / "orga").is_dir(),
-        "shared/orga/ present" if (instance / "shared" / "orga").is_dir() else "shared/orga/ manquant")
+        # S7: shared/orga/
+        add("S7", "info", (instance / "shared" / "orga").is_dir(),
+            "shared/orga/ present" if (instance / "shared" / "orga").is_dir() else "shared/orga/ manquant")
 
     # S8: at least 1 workspace with CLAUDE.md
     workspaces = [d for d in instance.iterdir() if d.is_dir() and (d / "CLAUDE.md").is_file() and d.name != "shared"]
@@ -263,13 +271,19 @@ def check_structure(instance: Path) -> list[dict]:
     else:
         add("S9", "warn", True, "tous les workspaces ont sessions/")
 
-    # S10: roadmaps (emerge a l'usage — absent = normal)
+    # S10: roadmaps (emerge a l'usage — absent = normal) — instance level
     roadmaps = list((instance / "shared").glob("roadmap-*.md")) if (instance / "shared").is_dir() else []
-    add("S10", "info", True,
-        f"{len(roadmaps)} roadmaps dans shared/" if roadmaps else "aucune roadmap dans shared/ (emerge a l'usage)")
+    if not protocol_only:
+        add("S10", "info", True,
+            f"{len(roadmaps)} roadmaps dans shared/" if roadmaps else "aucune roadmap dans shared/ (emerge a l'usage)")
 
-    # F1-F2: frontmatter presence
-    for label, rel_dir, fid in [("notes", "shared/notes", "F1"), ("reviews", "shared/review", "F2")]:
+    # F1-F2: frontmatter presence (only for declared artifact types)
+    artifact_dirs = [("notes", "shared/notes", "F1"), ("reviews", "shared/review", "F2")]
+    if "features" in artifact_types:
+        artifact_dirs.append(("features", "shared/features", "F1b"))
+    for label, rel_dir, fid in artifact_dirs:
+        if label not in artifact_types:
+            continue
         base = instance / rel_dir
         if not base.is_dir():
             continue
@@ -280,13 +294,19 @@ def check_structure(instance: Path) -> list[dict]:
         else:
             add(fid, "warn", True, f"{len(all_md)} {label} avec frontmatter")
 
-    # F3-F4: required fields
+    # F3-F4: required fields (only for declared artifact types)
     required_notes = {"de", "pour", "nature", "statut", "date"}
     required_reviews = {"de", "pour", "nature", "statut", "date", "objet"}
-    for label, rel_dir, fid, required in [
+    required_features = {"de", "pour", "nature", "statut", "date"}
+    field_checks = [
         ("notes", "shared/notes", "F3", required_notes),
         ("reviews", "shared/review", "F4", required_reviews),
-    ]:
+    ]
+    if "features" in artifact_types:
+        field_checks.append(("features", "shared/features", "F4b", required_features))
+    for label, rel_dir, fid, required in field_checks:
+        if label not in artifact_types:
+            continue
         base = instance / rel_dir
         if not base.is_dir():
             continue
@@ -323,24 +343,25 @@ def check_structure(instance: Path) -> list[dict]:
         else:
             add(fid, "warn", True, f"tous les {label} ont les champs requis")
 
-    # F5: accents in frontmatter values
-    accent_files = []
-    for rel_dir in ["shared/notes", "shared/review"]:
-        base = instance / rel_dir
-        if not base.is_dir():
-            continue
-        for f in base.rglob("*.md"):
-            fm = parse_frontmatter(f)
-            if fm is None:
+    # F5: accents in frontmatter values — instance level
+    if not protocol_only:
+        accent_files = []
+        for rel_dir in ["shared/notes", "shared/review"]:
+            base = instance / rel_dir
+            if not base.is_dir():
                 continue
-            for v in fm.values():
-                if v != strip_accents(v):
-                    accent_files.append(str(f.relative_to(instance)))
-                    break
-    if accent_files:
-        add("F5", "info", False, f"{len(accent_files)} fichiers avec accents dans le frontmatter", accent_files)
-    else:
-        add("F5", "info", True, "pas d'accents dans les valeurs frontmatter")
+            for f in base.rglob("*.md"):
+                fm = parse_frontmatter(f)
+                if fm is None:
+                    continue
+                for v in fm.values():
+                    if v != strip_accents(v):
+                        accent_files.append(str(f.relative_to(instance)))
+                        break
+        if accent_files:
+            add("F5", "info", False, f"{len(accent_files)} fichiers avec accents dans le frontmatter", accent_files)
+        else:
+            add("F5", "info", True, "pas d'accents dans les valeurs frontmatter")
 
     # F6: valid statut values
     bad_statut_files = []
@@ -386,7 +407,9 @@ def check_structure(instance: Path) -> list[dict]:
     else:
         add("F7", "info", True, f"{len(session_files)} sessions avec frontmatter conforme")
 
-    # N1-N3: naming conventions
+    # N1-N3: naming conventions — instance level
+    if protocol_only:
+        return checks
     note_pattern = re.compile(r"^note-.+-.+\.md$")
     review_pattern = re.compile(r"^review-.+-.+\.md$")
     roadmap_pattern = re.compile(r"^roadmap-.+\.md$")
@@ -1255,6 +1278,11 @@ def main():
     parser.add_argument("instance", help="Path to the SOFIA instance root")
     parser.add_argument("--format", choices=["md", "json", "csv", "sqlite"], default="md",
                         help="Output format (default: md)")
+    parser.add_argument("--protocol-only", action="store_true",
+                        help="Skip instance-level checks (S4-S7, S10, F5, N1-N3, A1-A2, R1-R8)")
+    parser.add_argument("--artifacts", type=str, default=None,
+                        help="Comma-separated artifact types to audit (default: notes,reviews). "
+                             "Use 'notes,reviews,features' to include features.")
     args = parser.parse_args()
 
     instance_path = Path(args.instance).resolve()
@@ -1273,8 +1301,13 @@ def main():
 
     today = date.today().isoformat()
 
+    # Parse artifact types
+    artifact_types = {"notes", "reviews"}
+    if args.artifacts:
+        artifact_types = set(a.strip() for a in args.artifacts.split(","))
+
     # Phase 1 — Structure
-    checks = check_structure(instance_path)
+    checks = check_structure(instance_path, protocol_only=args.protocol_only, artifact_types=artifact_types)
     check_summary = defaultdict(int)
     for c in checks:
         check_summary[c["status"]] += 1
