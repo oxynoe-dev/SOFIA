@@ -1173,7 +1173,7 @@ td.diag-danger { color: var(--coral); }
 </tr>
 </tbody></table>
 <h3>Audit checks</h3>
-<p>Protocol (PS/PF), artifact (AN/AR/AF), and instance (IS/IN/IR) conformity checks.</p>
+<p>Protocol (PS/PA/PF), artifact (AN/AR/AF), and instance (IS/IN/IR) conformity checks.</p>
 <table><thead><tr>
 <th>Status</th>
 <th>Meaning</th>
@@ -1490,9 +1490,9 @@ function renderProbeInstance(instName, instData) {
       let pass = 0, warn = 0, fail = 0, info = 0;
       const icons = { pass: '✓', warn: '⚠', fail: '✗', info: 'ℹ' };
 
-      html += '<div class="audit-section"><h2>Audit checks <i class=\"info-icon\">i<span class=\"info-tip\">Protocol (PS/PF), artifact (AN/AR/AF), and instance (IS/IN/IR) conformity checks. Pass = conformant, warn = minor issue, fail = violation.</span></i></h2></div>';
+      html += '<div class="audit-section"><h2>Audit checks <i class=\"info-icon\">i<span class=\"info-tip\">Protocol (PS/PA/PF), artifact (AN/AR/AF), and instance (IS/IN/IR) conformity checks. Pass = conformant, warn = minor issue, fail = violation.</span></i></h2></div>';
       html += '<div class="checks-grid">';
-      const prefixLabels = { PS: 'Protocol — Structure', PF: 'Protocol — Format', AN: 'Artifact — Notes', AR: 'Artifact — Reviews', AF: 'Artifact — Features', IS: 'Instance — Structure', IN: 'Instance — Naming', IR: 'Instance — Roadmap' };
+      const prefixLabels = { PS: 'Protocol — Structure', PA: 'Protocol — Artifacts', PF: 'Protocol — Format', AN: 'Artifact — Notes', AR: 'Artifact — Reviews', AF: 'Artifact — Features', IS: 'Instance — Structure', IN: 'Instance — Naming', IR: 'Instance — Roadmap' };
       let lastPrefix = '';
       for (const chk of checks) {
         const status = chk.status || 'info';

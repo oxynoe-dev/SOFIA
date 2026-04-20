@@ -277,6 +277,78 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
         add("IS2", "info", True,
             f"{len(roadmaps)} roadmaps dans shared/" if roadmaps else "aucune roadmap dans shared/ (emerge a l'usage)")
 
+    # ── PA: Protocol Artifact — global checks on ALL .md in shared/ ──
+    # Scan every .md under shared/ except: conventions.md, roadmap-*.md, orga/
+    shared_dir = instance / "shared"
+    pa_files = []
+    if shared_dir.is_dir():
+        exclude_dirs = {"orga", "audits"}
+        for f in shared_dir.rglob("*.md"):
+            rel_parts = f.relative_to(shared_dir).parts
+            if rel_parts[0] in exclude_dirs:
+                continue
+            if f.name == "conventions.md":
+                continue
+            if f.name.startswith("roadmap-"):
+                continue
+            pa_files.append(f)
+
+    # PA1: frontmatter present on all artifacts in shared/
+    pa_no_fm = [str(f.relative_to(instance)) for f in pa_files if parse_frontmatter(f) is None]
+    if pa_no_fm:
+        add("PA1", "warn", False, f"{len(pa_no_fm)}/{len(pa_files)} artifacts sans frontmatter dans shared/", pa_no_fm)
+    else:
+        add("PA1", "warn", True, f"{len(pa_files)} artifacts avec frontmatter dans shared/")
+
+    # PA2: required fields (from, to, nature, status, date) on all artifacts
+    pa_required = {"de", "pour", "nature", "statut", "date"}
+    pa_missing_files = []
+    for f in pa_files:
+        fm = parse_frontmatter(f)
+        if fm is None:
+            continue
+        fm_keys = set(fm.keys())
+        has_emitter = bool(fm_keys & EMITTER_KEYS)
+        has_recipient = bool(fm_keys & RECIPIENT_KEYS)
+        has_nature = bool(fm_keys & NATURE_KEYS)
+        has_statut = bool(fm_keys & STATUT_KEYS)
+        has_date = "date" in fm_keys
+        missing = []
+        if not has_emitter:
+            missing.append("from")
+        if not has_recipient:
+            missing.append("to")
+        if not has_nature:
+            missing.append("nature")
+        if not has_statut:
+            missing.append("status")
+        if not has_date:
+            missing.append("date")
+        if missing:
+            pa_missing_files.append(f"{f.relative_to(instance)} (missing: {', '.join(missing)})")
+    if pa_missing_files:
+        add("PA2", "warn", False, f"{len(pa_missing_files)} artifacts avec champs manquants", pa_missing_files)
+    else:
+        add("PA2", "warn", True, f"tous les artifacts ont les champs requis")
+
+    # PA3: valid status values on all artifacts
+    pa_bad_statut = []
+    for f in pa_files:
+        fm = parse_frontmatter(f)
+        if fm is None:
+            continue
+        statut_key = next((k for k in STATUT_KEYS if k in fm), None)
+        if statut_key is None:
+            continue
+        val = strip_accents(fm[statut_key].lower().strip())
+        if val not in VALID_STATUTS:
+            pa_bad_statut.append(f"{f.relative_to(instance)} (status: {fm[statut_key]})")
+    if pa_bad_statut:
+        add("PA3", "warn", False, f"{len(pa_bad_statut)} artifacts avec statut invalide", pa_bad_statut)
+    else:
+        add("PA3", "warn", True, "tous les statuts artifacts sont valides")
+
+    # ── AN/AR/AF: per-type artifact checks ──
     # AN2/AR2/AF2: frontmatter presence (only for declared artifact types)
     artifact_dirs = [("notes", "shared/notes", "AN2"), ("reviews", "shared/review", "AR2")]
     if "features" in artifact_types:
@@ -316,7 +388,6 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             if fm is None:
                 continue
             fm_keys = set(fm.keys())
-            # check with aliases
             has_emitter = bool(fm_keys & EMITTER_KEYS)
             has_recipient = bool(fm_keys & RECIPIENT_KEYS)
             has_nature = bool(fm_keys & NATURE_KEYS)
@@ -363,28 +434,7 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
         else:
             add("IS3", "info", True, "pas d'accents dans les valeurs frontmatter")
 
-    # PF1: valid statut values
-    bad_statut_files = []
-    for rel_dir in ["shared/notes", "shared/review"]:
-        base = instance / rel_dir
-        if not base.is_dir():
-            continue
-        for f in base.rglob("*.md"):
-            fm = parse_frontmatter(f)
-            if fm is None:
-                continue
-            statut_key = next((k for k in STATUT_KEYS if k in fm), None)
-            if statut_key is None:
-                continue
-            val = strip_accents(fm[statut_key].lower().strip())
-            if val not in VALID_STATUTS:
-                bad_statut_files.append(f"{f.relative_to(instance)} (statut: {fm[statut_key]})")
-    if bad_statut_files:
-        add("PF1", "warn", False, f"{len(bad_statut_files)} fichiers avec statut invalide", bad_statut_files)
-    else:
-        add("PF1", "warn", True, "tous les statuts sont valides")
-
-    # PF2: sessions frontmatter
+    # PF1: sessions frontmatter (PF1 — renumbered, old PF1 status check subsumed by PA3)
     session_files = list(instance.rglob("sessions/*.md"))
     session_files = [f for f in session_files if "shared" not in f.relative_to(instance).parts]
     bad_sessions = []
@@ -403,9 +453,9 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
         if missing:
             bad_sessions.append(f"{f.relative_to(instance)} (manque: {', '.join(missing)})")
     if bad_sessions:
-        add("PF2", "info", False, f"{len(bad_sessions)}/{len(session_files)} sessions sans frontmatter conforme", bad_sessions)
+        add("PF1", "info", False, f"{len(bad_sessions)}/{len(session_files)} sessions sans frontmatter conforme", bad_sessions)
     else:
-        add("PF2", "info", True, f"{len(session_files)} sessions avec frontmatter conforme")
+        add("PF1", "info", True, f"{len(session_files)} sessions avec frontmatter conforme")
 
     # AN4/AR4/IN1: naming conventions — instance level
     if protocol_only:

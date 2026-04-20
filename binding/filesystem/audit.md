@@ -11,6 +11,7 @@ Format: `{level}{category}{number}`
 | Prefix | Level | Category | Conditioned by |
 |--------|-------|----------|----------------|
 | PS | Protocol | Structure | always |
+| PA | Protocol | Artifacts | always |
 | PF | Protocol | Format | always |
 | AN | Artifact | Note | `--artifacts notes` |
 | AR | Artifact | Review | `--artifacts reviews` |
@@ -41,12 +42,21 @@ Format: `{level}{category}{number}`
 | PS4 | At least 1 workspace with `CLAUDE.md` | fail | `protocol/exchange.md` — persona space |
 | PS5 | Each workspace has `sessions/` | warn | `protocol/exchange.md` — session traces |
 
+### Protocol Artifacts (PA)
+
+Global checks on ALL `.md` files in `shared/` (excluding `conventions.md`, `roadmap-*.md`, `orga/`, `audits/`).
+
+| ID | Rule | Severity | Source |
+|----|------|----------|--------|
+| PA1 | All artifacts have frontmatter | warn | `protocol/exchange.md` §Artifacts |
+| PA2 | All artifacts have required fields (`from`, `to`, `nature`, `status`, `date`) | warn | `protocol/exchange.md` §Specific dimensions |
+| PA3 | All status values are valid (`new`/`read`/`done` or FR equivalents) | warn | `protocol/exchange.md` §Lifecycle |
+
 ### Protocol Format (PF)
 
 | ID | Rule | Severity | Source |
 |----|------|----------|--------|
-| PF1 | Status values are valid (`new`/`read`/`done` or FR equivalents) | warn | `protocol/exchange.md` §Lifecycle |
-| PF2 | Sessions have conformant frontmatter (`persona`, `date`) | info | `protocol/exchange.md` §Sessions |
+| PF1 | Sessions have conformant frontmatter (`persona`, `date`) | info | `protocol/exchange.md` §Sessions |
 
 ## Artifact checks
 
