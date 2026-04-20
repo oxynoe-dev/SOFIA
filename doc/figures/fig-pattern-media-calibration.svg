@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Fig. — Pattern Calibrage par le media — 05/04/2026 -->
+<!-- Fig. — Pattern Media calibration — 05/04/2026 -->
 <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono,monospace">
 
   <defs>
@@ -15,18 +15,18 @@
   <rect width="500" height="280" fill="url(#grid)" rx="6"/>
 
   <!-- ════════════════════════════════════════
-       TITRE
+       TITLE
   ════════════════════════════════════════ -->
   <text x="250" y="28" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Pattern — Media calibration</text>
 
   <!-- ════════════════════════════════════════
-       EN-TETES COLONNES
+       COLUMN HEADERS
   ════════════════════════════════════════ -->
-  <text x="130" y="58" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="8">Competence</text>
+  <text x="130" y="58" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="8">Skill</text>
   <text x="370" y="58" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="8">Media</text>
 
   <!-- ════════════════════════════════════════
-       COMPETENCES (green)
+       SKILLS (green)
   ════════════════════════════════════════ -->
   <rect x="50" y="72" width="160" height="34" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
   <text x="130" y="93" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="9">architecture</text>
@@ -47,10 +47,10 @@
   <text x="370" y="139" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="9">code / tests</text>
 
   <rect x="290" y="164" width="160" height="34" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
-  <text x="370" y="185" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="9">maquettes / reviews</text>
+  <text x="370" y="185" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="9">mockups / reviews</text>
 
   <!-- ════════════════════════════════════════
-       CONNEXIONS
+       CONNECTIONS
   ════════════════════════════════════════ -->
   <line x1="210" y1="89" x2="290" y2="89" stroke="rgba(64,216,192,0.15)" stroke-width="1" stroke-dasharray="4,3"/>
   <line x1="210" y1="135" x2="290" y2="135" stroke="rgba(64,216,192,0.15)" stroke-width="1" stroke-dasharray="4,3"/>

@@ -23,27 +23,27 @@
        ETAPES
   ════════════════════════════════════════ -->
 
-  <!-- Step 1: Redaction (blue) -->
+  <!-- Step 1: Writing (blue) -->
   <rect x="18" y="60" width="88" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
-  <text x="62" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Redaction</text>
+  <text x="62" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Writing</text>
   <text x="62" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">production</text>
 
   <!-- Arrow 1→2 -->
   <line x1="110" y1="82" x2="126" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(132,82) rotate(180)"/>
 
-  <!-- Step 2: Validation fond (green) -->
+  <!-- Step 2: Content validation (green) -->
   <rect x="136" y="60" width="96" height="44" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
-  <text x="184" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Validation fond</text>
+  <text x="184" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Content validation</text>
   <text x="184" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">validation</text>
 
   <!-- Arrow 2→3 -->
   <line x1="236" y1="82" x2="252" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(258,82) rotate(180)"/>
 
-  <!-- Step 3: Mise en forme (blue) -->
+  <!-- Step 3: Formatting (blue) -->
   <rect x="262" y="60" width="96" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
-  <text x="310" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Mise en forme</text>
+  <text x="310" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Formatting</text>
   <text x="310" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">production</text>
 
   <!-- Arrow 3→4 -->
@@ -59,18 +59,18 @@
   <line x1="480" y1="82" x2="496" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(502,82) rotate(180)"/>
 
-  <!-- Step 5: Go orchestrateur (amber) -->
+  <!-- Step 5: Orchestrator go (amber) -->
   <rect x="506" y="60" width="68" height="44" rx="3" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="0.7"/>
-  <text x="540" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Go orchestrateur</text>
+  <text x="540" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Orchestrator go</text>
   <text x="540" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">gate</text>
 
   <!-- Arrow 5→6 -->
   <line x1="578" y1="82" x2="594" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(600,82) rotate(180)"/>
 
-  <!-- Step 6: Mise en ligne (blue) -->
+  <!-- Step 6: Publishing (blue) -->
   <rect x="604" y="60" width="82" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
-  <text x="645" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Mise en ligne</text>
+  <text x="645" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Publishing</text>
   <text x="645" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">production</text>
 
   <!-- ════════════════════════════════════════
@@ -81,7 +81,7 @@
   <rect x="95" y="155" width="10" height="10" rx="2" fill="rgba(61,220,132,0.15)" stroke="rgba(61,220,132,0.4)" stroke-width="0.7"/>
   <text x="111" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Validation</text>
   <rect x="172" y="155" width="10" height="10" rx="2" fill="rgba(212,160,48,0.15)" stroke="rgba(212,160,48,0.4)" stroke-width="0.7"/>
-  <text x="188" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Gate orchestrateur</text>
+  <text x="188" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrator gate</text>
 
   <!-- ════════════════════════════════════════
        SPORES
@@ -94,6 +94,6 @@
   <!-- ════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <text x="350" y="208" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — methode Oxynoe — 05/04/2026</text>
+  <text x="350" y="208" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — Oxynoe method — 05/04/2026</text>
 
 </svg>

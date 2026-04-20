@@ -17,7 +17,7 @@
   <!-- ════════════════════════════════════════
        TITRE
   ════════════════════════════════════════ -->
-  <text x="350" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Workflow — Recherche</text>
+  <text x="350" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Workflow — Research</text>
 
   <!-- ════════════════════════════════════════
        ETAPES
@@ -33,10 +33,9 @@
   <line x1="170" y1="82" x2="194" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(200,82) rotate(180)"/>
 
-  <!-- Step 2: Relecture complete (blue) -->
+  <!-- Step 2: Full review complete (blue) -->
   <rect x="204" y="60" width="128" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
-  <text x="268" y="80" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Relecture</text>
-  <text x="268" y="92" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">complete</text>
+  <text x="268" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Full review</text>
   <text x="268" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">signal</text>
 
   <!-- Arrow 2→3 -->
@@ -77,6 +76,6 @@
   <!-- ════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <text x="350" y="208" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — methode Oxynoe — 05/04/2026</text>
+  <text x="350" y="208" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — Oxynoe method — 05/04/2026</text>
 
 </svg>

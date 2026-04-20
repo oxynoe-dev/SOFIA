@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Fig. F — Structure d'une instance SOFIA — 05/04/2026 -->
+<!-- Fig. F — Structure of a SOFIA instance — 05/04/2026 -->
 <svg viewBox="0 0 880 520" xmlns="http://www.w3.org/2000/svg">
 
   <defs>
@@ -12,9 +12,9 @@
   <!-- Background -->
   <rect width="880" height="520" fill="url(#bg-grad)" rx="6"/>
   <!-- ════════════════════════════════════════
-       TITRE
+       TITLE
   ════════════════════════════════════════ -->
-  <text x="440" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="15" font-weight="300" letter-spacing="0.03em">Structure d'une instance SOFIA</text>
+  <text x="440" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="15" font-weight="300" letter-spacing="0.03em">Structure of a SOFIA instance</text>
 
   <!-- ════════════════════════════════════════
        TREE — projet/
@@ -43,7 +43,7 @@
   <text x="126" y="132" fill="rgba(64,216,192,0.65)" font-family="IBM Plex Mono,monospace" font-size="9.5">architecture/</text>
 
   <!-- annotation -->
-  <text x="254" y="132" fill="rgba(64,216,192,0.35)" font-family="Inter,sans-serif" font-size="7.5" font-style="italic">workspace architecte</text>
+  <text x="254" y="132" fill="rgba(64,216,192,0.35)" font-family="Inter,sans-serif" font-size="7.5" font-style="italic">architect workspace</text>
 
   <!-- children trunk -->
   <line x1="160" y1="140" x2="160" y2="220" stroke="rgba(64,180,160,0.1)" stroke-width="0.5"/>
@@ -125,7 +125,7 @@
   <text x="126" y="464" fill="rgba(167,139,250,0.7)" font-family="IBM Plex Mono,monospace" font-size="9.5">shared/</text>
 
   <!-- annotation -->
-  <text x="254" y="464" fill="rgba(167,139,250,0.45)" font-family="Inter,sans-serif" font-size="7.5" font-style="italic">zone d'echange inter-personas</text>
+  <text x="254" y="464" fill="rgba(167,139,250,0.45)" font-family="Inter,sans-serif" font-size="7.5" font-style="italic">inter-persona exchange zone</text>
 
   <!-- shared children — horizontal layout to save vertical space -->
   <!-- trunk -->
@@ -158,30 +158,30 @@
   <line x1="420" y1="430" x2="430" y2="430" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
 
   <text x="440" y="250" fill="rgba(64,216,192,0.4)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.1em" text-transform="uppercase">WORKSPACES</text>
-  <text x="440" y="264" fill="rgba(64,216,192,0.28)" font-family="Inter,sans-serif" font-size="7.5">Un par persona.</text>
-  <text x="440" y="276" fill="rgba(64,216,192,0.28)" font-family="Inter,sans-serif" font-size="7.5">Chacun contient son CLAUDE.md</text>
-  <text x="440" y="288" fill="rgba(64,216,192,0.28)" font-family="Inter,sans-serif" font-size="7.5">(instructions persona) et ses sessions.</text>
+  <text x="440" y="264" fill="rgba(64,216,192,0.28)" font-family="Inter,sans-serif" font-size="7.5">One per persona.</text>
+  <text x="440" y="276" fill="rgba(64,216,192,0.28)" font-family="Inter,sans-serif" font-size="7.5">Each contains its own CLAUDE.md</text>
+  <text x="440" y="288" fill="rgba(64,216,192,0.28)" font-family="Inter,sans-serif" font-size="7.5">(persona instructions) and its sessions.</text>
 
   <!-- Shared annotation -->
-  <text x="640" y="464" fill="rgba(167,139,250,0.4)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.1em" text-transform="uppercase">BUS PARTAGE</text>
-  <text x="640" y="478" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">Artefacts de coordination :</text>
+  <text x="640" y="464" fill="rgba(167,139,250,0.4)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.1em" text-transform="uppercase">SHARED BUS</text>
+  <text x="640" y="478" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">Coordination artifacts:</text>
   <text x="640" y="490" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">reviews, notes, features, roadmaps.</text>
 
   <!-- sofia.md annotation box -->
   <rect x="560" y="72" width="280" height="50" rx="4" fill="rgba(167,139,250,0.03)" stroke="rgba(167,139,250,0.12)" stroke-width="0.5"/>
   <text x="572" y="89" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">sofia.md</text>
-  <text x="625" y="89" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">a la racine declare le projet</text>
-  <text x="572" y="103" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">comme instance SOFIA. Contient la liste</text>
-  <text x="572" y="115" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">des personas et la version du protocole.</text>
+  <text x="625" y="89" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">at root declares the project</text>
+  <text x="572" y="103" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">as a SOFIA instance. Contains the list</text>
+  <text x="572" y="115" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">of personas and the protocol version.</text>
 
   <!-- ════════════════════════════════════════
-       LEGENDE
+       LEGEND
   ════════════════════════════════════════ -->
   <rect x="560" y="140" width="12" height="12" rx="2" fill="rgba(64,216,192,0.08)" stroke="rgba(64,180,160,0.3)" stroke-width="0.7"/>
   <text x="580" y="150" fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="7.5">Workspace persona</text>
 
   <rect x="700" y="140" width="12" height="12" rx="2" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.7"/>
-  <text x="720" y="150" fill="rgba(167,139,250,0.4)" font-family="Inter,sans-serif" font-size="7.5">Partage / protocole</text>
+  <text x="720" y="150" fill="rgba(167,139,250,0.4)" font-family="Inter,sans-serif" font-size="7.5">Shared / protocol</text>
 
   <!-- ════════════════════════════════════════
        FOOTER

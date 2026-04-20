@@ -23,19 +23,19 @@
        ETAPES
   ════════════════════════════════════════ -->
 
-  <!-- Step 1: Manque constate (coral) -->
+  <!-- Step 1: Gap identified (coral) -->
   <rect x="38" y="60" width="108" height="44" rx="3" fill="rgba(224,80,80,0.05)" stroke="rgba(224,80,80,0.2)" stroke-width="0.7"/>
-  <text x="92" y="80" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Manque</text>
-  <text x="92" y="92" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">constate</text>
+  <text x="92" y="80" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Gap</text>
+  <text x="92" y="92" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">identified</text>
   <text x="92" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">trigger</text>
 
   <!-- Arrow 1→2 -->
   <line x1="150" y1="82" x2="170" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(176,82) rotate(180)"/>
 
-  <!-- Step 2: Fiche persona (green) -->
+  <!-- Step 2: Persona sheet (green) -->
   <rect x="180" y="60" width="108" height="44" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
-  <text x="234" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Fiche persona</text>
+  <text x="234" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Persona sheet</text>
   <text x="234" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">design</text>
 
   <!-- Arrow 2→3 -->
@@ -51,18 +51,18 @@
   <line x1="426" y1="82" x2="446" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(452,82) rotate(180)"/>
 
-  <!-- Step 4: Calibrage (blue) -->
+  <!-- Step 4: Calibration (blue) -->
   <rect x="456" y="60" width="100" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
-  <text x="506" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Calibrage</text>
+  <text x="506" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Calibration</text>
   <text x="506" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">execution</text>
 
   <!-- Arrow 4→5 -->
   <line x1="560" y1="82" x2="580" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(586,82) rotate(180)"/>
 
-  <!-- Step 5: 1ere session (blue) -->
+  <!-- Step 5: 1st session (blue) -->
   <rect x="590" y="60" width="82" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
-  <text x="631" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">1ere session</text>
+  <text x="631" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">1st session</text>
   <text x="631" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">execution</text>
 
   <!-- ════════════════════════════════════════
@@ -86,6 +86,6 @@
   <!-- ════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <text x="350" y="208" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — methode Oxynoe — 05/04/2026</text>
+  <text x="350" y="208" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — Oxynoe method — 05/04/2026</text>
 
 </svg>

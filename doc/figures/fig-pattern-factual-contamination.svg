@@ -24,7 +24,7 @@
   ════════════════════════════════════════ -->
   <rect x="30" y="85" width="120" height="60" rx="4" fill="rgba(224,80,80,0.05)" stroke="rgba(224,80,80,0.2)" stroke-width="1.2"/>
   <text x="90" y="110" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8">Approximation</text>
-  <text x="90" y="130" text-anchor="middle" fill="#e05050" font-size="11" font-weight="600">"15 ans"</text>
+  <text x="90" y="130" text-anchor="middle" fill="#e05050" font-size="11" font-weight="600">"15 years"</text>
 
   <!-- ════════════════════════════════════════
        FLECHES DE PROPAGATION
@@ -46,23 +46,23 @@
   ════════════════════════════════════════ -->
   <rect x="228" y="45" width="130" height="30" rx="3" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.1)" stroke-width="0.7"/>
   <text x="250" y="64" font-size="7" fill="rgba(64,216,192,0.4)">Doc 1</text>
-  <text x="340" y="64" font-size="7" fill="rgba(224,80,80,0.5)">15 ans</text>
+  <text x="340" y="64" font-size="7" fill="rgba(224,80,80,0.5)">15 years</text>
 
   <rect x="228" y="80" width="130" height="30" rx="3" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.1)" stroke-width="0.7"/>
   <text x="250" y="99" font-size="7" fill="rgba(64,216,192,0.4)">Doc 2</text>
-  <text x="340" y="99" font-size="7" fill="rgba(224,80,80,0.5)">15 ans</text>
+  <text x="340" y="99" font-size="7" fill="rgba(224,80,80,0.5)">15 years</text>
 
   <rect x="228" y="115" width="130" height="30" rx="3" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.1)" stroke-width="0.7"/>
   <text x="250" y="134" font-size="7" fill="rgba(64,216,192,0.4)">Doc 3</text>
-  <text x="340" y="134" font-size="7" fill="rgba(224,80,80,0.5)">15 ans</text>
+  <text x="340" y="134" font-size="7" fill="rgba(224,80,80,0.5)">15 years</text>
 
   <rect x="228" y="150" width="130" height="30" rx="3" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.1)" stroke-width="0.7"/>
   <text x="250" y="169" font-size="7" fill="rgba(64,216,192,0.4)">Doc 4</text>
-  <text x="340" y="169" font-size="7" fill="rgba(224,80,80,0.5)">15 ans</text>
+  <text x="340" y="169" font-size="7" fill="rgba(224,80,80,0.5)">15 years</text>
 
   <rect x="228" y="185" width="130" height="30" rx="3" fill="rgba(64,216,192,0.02)" stroke="rgba(64,216,192,0.1)" stroke-width="0.7"/>
   <text x="250" y="204" font-size="7" fill="rgba(64,216,192,0.4)">Doc 5</text>
-  <text x="340" y="204" font-size="7" fill="rgba(224,80,80,0.5)">15 ans</text>
+  <text x="340" y="204" font-size="7" fill="rgba(224,80,80,0.5)">15 years</text>
 
   <text x="293" y="232" text-anchor="middle" font-size="9" fill="rgba(64,216,192,0.15)">...</text>
 

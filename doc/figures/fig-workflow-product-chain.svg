@@ -17,33 +17,33 @@
   <!-- ════════════════════════════════════════
        TITRE
   ════════════════════════════════════════ -->
-  <text x="350" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Workflow — Chaine produit</text>
+  <text x="350" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="14" font-weight="300" letter-spacing="0.03em">Workflow — Product chain</text>
 
   <!-- ════════════════════════════════════════
        ETAPES
   ════════════════════════════════════════ -->
 
-  <!-- Step 1: Orchestrateur priorise (amber) -->
+  <!-- Step 1: Orchestrator prioritizes (amber) -->
   <rect x="22" y="60" width="88" height="44" rx="3" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="0.7"/>
-  <text x="66" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Orchestrateur priorise</text>
-  <text x="66" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrateur</text>
+  <text x="66" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Orchestrator prioritizes</text>
+  <text x="66" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrator</text>
 
   <!-- Arrow 1→2 -->
   <line x1="114" y1="82" x2="130" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(136,82) rotate(180)"/>
 
-  <!-- Step 2: Archi specifie (green) -->
+  <!-- Step 2: Architect specifies (green) -->
   <rect x="140" y="60" width="88" height="44" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
-  <text x="184" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Archi specifie</text>
-  <text x="184" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Archi</text>
+  <text x="184" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Architect specifies</text>
+  <text x="184" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Architect</text>
 
   <!-- Arrow 2→3 -->
   <line x1="232" y1="82" x2="248" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(254,82) rotate(180)"/>
 
-  <!-- Step 3: Dev implemente (blue) -->
+  <!-- Step 3: Dev implements (blue) -->
   <rect x="258" y="60" width="92" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
-  <text x="304" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Dev implemente</text>
+  <text x="304" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Dev implements</text>
   <text x="304" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Dev</text>
 
   <!-- Arrow 3→4 -->
@@ -59,19 +59,19 @@
   <line x1="472" y1="82" x2="488" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(494,82) rotate(180)"/>
 
-  <!-- Step 5: Recherche verifie (violet) -->
+  <!-- Step 5: Research verifies (violet) -->
   <rect x="498" y="60" width="96" height="44" rx="3" fill="rgba(167,139,250,0.05)" stroke="rgba(167,139,250,0.2)" stroke-width="0.7"/>
-  <text x="546" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Recherche verifie</text>
-  <text x="546" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Recherche</text>
+  <text x="546" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Research verifies</text>
+  <text x="546" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Research</text>
 
   <!-- Arrow 5→6 -->
   <line x1="598" y1="82" x2="610" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(616,82) rotate(180)"/>
 
-  <!-- Step 6: Orchestrateur arbitre (amber) -->
+  <!-- Step 6: Orchestrator arbitrates (amber) -->
   <rect x="620" y="60" width="64" height="44" rx="3" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="0.7"/>
-  <text x="652" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Orchestrateur arbitre</text>
-  <text x="652" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrateur</text>
+  <text x="652" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Orchestrator arbitrates</text>
+  <text x="652" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrator</text>
 
   <!-- ════════════════════════════════════════
        CYCLE
@@ -92,6 +92,6 @@
   <!-- ════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <text x="350" y="208" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — methode Oxynoe — 05/04/2026</text>
+  <text x="350" y="208" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — Oxynoe method — 05/04/2026</text>
 
 </svg>

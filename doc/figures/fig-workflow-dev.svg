@@ -23,27 +23,27 @@
        ETAPES
   ════════════════════════════════════════ -->
 
-  <!-- Step 1: Orchestrateur priorise (amber) -->
+  <!-- Step 1: Orchestrator prioritizes (amber) -->
   <rect x="18" y="60" width="80" height="44" rx="3" fill="rgba(212,160,48,0.05)" stroke="rgba(212,160,48,0.2)" stroke-width="0.7"/>
-  <text x="58" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Orchestrateur priorise</text>
-  <text x="58" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrateur</text>
+  <text x="58" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Orchestrator prioritizes</text>
+  <text x="58" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrator</text>
 
   <!-- Arrow 1→2 -->
   <line x1="102" y1="82" x2="118" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(124,82) rotate(180)"/>
 
-  <!-- Step 2: Archi specifie (green) -->
+  <!-- Step 2: Architect specifies (green) -->
   <rect x="128" y="60" width="80" height="44" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
-  <text x="168" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Archi specifie</text>
-  <text x="168" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Archi</text>
+  <text x="168" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Architect specifies</text>
+  <text x="168" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Architect</text>
 
   <!-- Arrow 2→3 -->
   <line x1="212" y1="82" x2="228" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <path d="M7,-3.5 L0,0 L7,3.5Z" fill="rgba(64,216,192,0.25)" transform="translate(234,82) rotate(180)"/>
 
-  <!-- Step 3: Dev planifie (blue) -->
+  <!-- Step 3: Dev plans (blue) -->
   <rect x="238" y="60" width="80" height="44" rx="3" fill="rgba(79,138,255,0.05)" stroke="rgba(79,138,255,0.2)" stroke-width="0.7"/>
-  <text x="278" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Dev planifie</text>
+  <text x="278" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Dev plans</text>
   <text x="278" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Dev</text>
 
   <!-- Arrow 3→4 -->
@@ -71,7 +71,7 @@
   <!-- Step 6: Review (green) -->
   <rect x="568" y="60" width="56" height="44" rx="3" fill="rgba(61,220,132,0.05)" stroke="rgba(61,220,132,0.2)" stroke-width="0.7"/>
   <text x="596" y="86" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-size="8.5">Review</text>
-  <text x="596" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Archi</text>
+  <text x="596" y="118" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-size="7">Architect</text>
 
   <!-- Arrow 6→7 -->
   <line x1="628" y1="82" x2="640" y2="82" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
@@ -86,9 +86,9 @@
        LEGENDE
   ════════════════════════════════════════ -->
   <rect x="18" y="155" width="10" height="10" rx="2" fill="rgba(212,160,48,0.15)" stroke="rgba(212,160,48,0.4)" stroke-width="0.7"/>
-  <text x="34" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrateur</text>
+  <text x="34" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Orchestrator</text>
   <rect x="60" y="155" width="10" height="10" rx="2" fill="rgba(61,220,132,0.15)" stroke="rgba(61,220,132,0.4)" stroke-width="0.7"/>
-  <text x="76" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Archi</text>
+  <text x="76" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Architect</text>
   <rect x="110" y="155" width="10" height="10" rx="2" fill="rgba(79,138,255,0.15)" stroke="rgba(79,138,255,0.4)" stroke-width="0.7"/>
   <text x="126" y="164" fill="rgba(64,216,192,0.35)" font-size="7">Dev</text>
 
@@ -103,6 +103,6 @@
   <!-- ════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <text x="350" y="208" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — methode Oxynoe — 05/04/2026</text>
+  <text x="350" y="208" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-size="7">SOFIA — Oxynoe method — 05/04/2026</text>
 
 </svg>

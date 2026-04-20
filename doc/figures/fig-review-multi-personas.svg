@@ -23,10 +23,10 @@
   <text x="440" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia, serif" font-size="15" font-weight="300" letter-spacing="0.03em">Review multi-personas — ADR</text>
 
   <!-- ════════════════════════════════════════
-       Orchestrateur NODE (top center)
+       Orchestrator NODE (top center)
   ════════════════════════════════════════ -->
   <circle cx="440" cy="75" r="10" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.4)" stroke-width="1.2"/>
-  <text x="440" y="79" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="'IBM Plex Mono', monospace" font-size="8" font-weight="600">Orchestrateur</text>
+  <text x="440" y="79" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="'IBM Plex Mono', monospace" font-size="8" font-weight="600">Orchestrator</text>
 
   <!-- Request label -->
   <text x="440" y="103" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter, system-ui, sans-serif" font-size="9">"review ADR-058"</text>
@@ -40,14 +40,14 @@
   <circle cx="180" cy="155" r="8" fill="rgba(64,216,192,0.08)" stroke="rgba(64,180,160,0.3)" stroke-width="1"/>
   <text x="180" y="159" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-family="'IBM Plex Mono', monospace" font-size="7">M</text>
   <text x="180" y="178" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="'IBM Plex Mono', monospace" font-size="9" letter-spacing="0.1em">MIRA</text>
-  <text x="180" y="190" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter, system-ui, sans-serif" font-size="7">archi</text>
+  <text x="180" y="190" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter, system-ui, sans-serif" font-size="7">architect</text>
 
   <!-- Lea -->
   <path d="M 436,86 C 410,110 380,125 360,145" fill="none" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
   <circle cx="360" cy="155" r="8" fill="rgba(64,216,192,0.08)" stroke="rgba(64,180,160,0.3)" stroke-width="1"/>
   <text x="360" y="159" text-anchor="middle" fill="rgba(64,216,192,0.6)" font-family="'IBM Plex Mono', monospace" font-size="7">L</text>
   <text x="360" y="178" text-anchor="middle" fill="rgba(64,216,192,0.5)" font-family="'IBM Plex Mono', monospace" font-size="9" letter-spacing="0.1em">LEA</text>
-  <text x="360" y="190" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter, system-ui, sans-serif" font-size="7">recherche</text>
+  <text x="360" y="190" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter, system-ui, sans-serif" font-size="7">research</text>
 
   <!-- Axel -->
   <path d="M 444,86 C 470,110 500,125 520,145" fill="none" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
@@ -91,7 +91,7 @@
   <text x="700" y="242" text-anchor="middle" fill="rgba(64,216,192,0.35)" font-family="'IBM Plex Mono', monospace" font-size="7">-NORA.MD</text>
 
   <!-- ════════════════════════════════════════
-       CONVERGENCE ARROWS — reviews → Orchestrateur
+       CONVERGENCE ARROWS — reviews → Orchestrator
   ════════════════════════════════════════ -->
   <path d="M 180,252 C 200,290 340,320 430,340" fill="none" stroke="rgba(64,216,192,0.18)" stroke-width="0.8"/>
   <path d="M 360,252 C 370,290 410,320 435,340" fill="none" stroke="rgba(64,216,192,0.18)" stroke-width="0.8"/>
@@ -103,12 +103,12 @@
   ════════════════════════════════════════ -->
   <rect x="300" y="330" width="280" height="70" rx="6" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.15)" stroke-width="1"/>
 
-  <!-- Orchestrateur consolidation node -->
+  <!-- Orchestrator consolidation node -->
   <circle cx="440" cy="350" r="8" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
-  <text x="440" y="354" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="600">Orchestrateur</text>
+  <text x="440" y="354" text-anchor="middle" fill="rgba(167,139,250,0.7)" font-family="'IBM Plex Mono', monospace" font-size="7" font-weight="600">Orchestrator</text>
 
-  <text x="440" y="375" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter, system-ui, sans-serif" font-size="9">lit les 4 reviews, consolide</text>
-  <text x="440" y="390" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter, system-ui, sans-serif" font-size="8">identifie convergences &amp; divergences</text>
+  <text x="440" y="375" text-anchor="middle" fill="rgba(64,216,192,0.4)" font-family="Inter, system-ui, sans-serif" font-size="9">reads 4 reviews, consolidates</text>
+  <text x="440" y="390" text-anchor="middle" fill="rgba(64,216,192,0.3)" font-family="Inter, system-ui, sans-serif" font-size="8">identifies convergences &amp; divergences</text>
 
   <!-- ════════════════════════════════════════
        DECISION
@@ -116,12 +116,12 @@
   <line x1="440" y1="402" x2="440" y2="425" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
 
   <rect x="350" y="425" width="180" height="30" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
-  <text x="440" y="444" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="'IBM Plex Mono', monospace" font-size="9" letter-spacing="0.08em">DECISION ORCHESTRATEUR</text>
+  <text x="440" y="444" text-anchor="middle" fill="rgba(167,139,250,0.6)" font-family="'IBM Plex Mono', monospace" font-size="9" letter-spacing="0.08em">ORCHESTRATOR DECISION</text>
 
   <!-- ════════════════════════════════════════
        PARALLEL LABEL
   ════════════════════════════════════════ -->
-  <text x="55" y="155" fill="rgba(64,216,192,0.25)" font-family="'IBM Plex Mono', monospace" font-size="7" letter-spacing="0.08em" transform="rotate(-90,55,155)">PARALLELE</text>
+  <text x="55" y="155" fill="rgba(64,216,192,0.25)" font-family="'IBM Plex Mono', monospace" font-size="7" letter-spacing="0.08em" transform="rotate(-90,55,155)">PARALLEL</text>
 
   <line x1="75" y1="110" x2="75" y2="260" stroke="rgba(64,216,192,0.08)" stroke-width="0.5" stroke-dasharray="3,5"/>
 
@@ -129,6 +129,6 @@
        FOOTER
   ════════════════════════════════════════ -->
   <line x1="60" y1="462" x2="820" y2="462" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
-  <text x="440" y="475" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-family="Inter, system-ui, sans-serif" font-size="7">SOFIA — methode Oxynoe — 05/04/2026</text>
+  <text x="440" y="475" text-anchor="middle" fill="rgba(64,216,192,0.2)" font-family="Inter, system-ui, sans-serif" font-size="7">SOFIA — Oxynoe method — 05/04/2026</text>
 
 </svg>
