@@ -1,12 +1,12 @@
 // ── Configuration ──
-const DATA_URL = 'analysis.json';
+var DATA_URL = 'analysis.json';
 
 Chart.defaults.color = '#a0d0c8';
 Chart.defaults.borderColor = 'rgba(64,180,160,0.12)';
 Chart.defaults.font.family = "'IBM Plex Mono', monospace";
 Chart.defaults.font.size = 10;
 
-const C = {
+var C = {
   sound: '#3ddc84', contestable: '#a0d0c8', simplification: '#d4a030',
   blind_spot: '#e05050', refuted: '#ff4444',
   ratified: '#3ddc84', contested: '#d4a030', revised: '#a78bfa', rejected: '#e05050',
@@ -14,17 +14,17 @@ const C = {
   a_corroborates_h: '#3ddc8480', a_contests_h: '#e0505080',
   h_corroborates_a: '#40d8c080', h_contests_a: '#d4a03080',
 };
-const lineOpts = (color) => ({ borderColor: color, backgroundColor: color + '20', fill: true, tension: .3 });
-const gridY = { beginAtZero: true, grid: { color: 'rgba(64,180,160,0.06)' } };
-const noGridX = { grid: { display: false } };
-const g = (obj, key) => (obj || {})[key] || 0;
+var lineOpts = (color) => ({ borderColor: color, backgroundColor: color + '20', fill: true, tension: .3 });
+var gridY = { beginAtZero: true, grid: { color: 'rgba(64,180,160,0.06)' } };
+var noGridX = { grid: { display: false } };
+var g = (obj, key) => (obj || {})[key] || 0;
 
-let RAW = null;        // full JSON
-let charts = [];       // Chart instances for cleanup
+var RAW = null;        // full JSON
+var charts = [];       // Chart instances for cleanup
 
 // ── Tabs ──
-let PROBE_DATA = null;
-let currentProbeInstance = null;
+var PROBE_DATA = null;
+var currentProbeInstance = null;
 
 function switchTab(tab) {
   document.querySelector('main').scrollTop = 0;
