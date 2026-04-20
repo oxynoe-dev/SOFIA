@@ -51,13 +51,13 @@ mira: short session summary (2026-04-16)
 
 ---
 
-## 3. depositArtefact()
+## 3. depositArtifact()
 
-**When**: the orchestrator wants a persona to produce an artefact for another persona (or for the team).
+**When**: the orchestrator wants a persona to produce an artifact for another persona (or for the team).
 
 **How**: instruct the persona with the type, recipient, and subject. The persona writes and deposits in `shared/`.
 
-**The persona MUST NOT deposit an artefact without instruction.**
+**The persona MUST NOT deposit an artifact without instruction.**
 
 **Examples**:
 ```
@@ -80,11 +80,11 @@ The persona chooses the content. The orchestrator chooses the trigger, recipient
 
 ---
 
-## 4. routeArtefact()
+## 4. routeArtifact()
 
-**When**: an artefact is in `shared/` and must be presented to its recipient.
+**When**: an artifact is in `shared/` and must be presented to its recipient.
 
-**How**: the orchestrator opens a session with the recipient and presents the artefact. They can filter, contextualize, or transmit only a part.
+**How**: the orchestrator opens a session with the recipient and presents the artifact. They can filter, contextualize, or transmit only a part.
 
 **Example**:
 ```
@@ -100,9 +100,9 @@ The orchestrator is the router — they decide what to transmit, to whom, and wi
 
 ## 5. markRead()
 
-**When**: the orchestrator has read an artefact and wants to signal it.
+**When**: the orchestrator has read an artifact and wants to signal it.
 
-**How**: modify the artefact's frontmatter.
+**How**: modify the artifact's frontmatter.
 
 ```yaml
 status: read          # was: new
@@ -112,7 +112,7 @@ status: read          # was: new
 
 ## 6. markDone()
 
-**When**: the recipient has done what was needed with the artefact.
+**When**: the recipient has done what was needed with the artifact.
 
 **How**: modify the frontmatter then move to `archives/`.
 
@@ -228,8 +228,8 @@ The choice counter is auditable (protocol layer).
 |-----------|------|-------------|-------------|
 | openSession() | manual | orchestrator | — |
 | closeSession() | manual | orchestrator | persona (summary) |
-| depositArtefact() | manual | orchestrator | persona (artefact) |
-| routeArtefact() | manual | orchestrator | — |
+| depositArtifact() | manual | orchestrator | persona (artifact) |
+| routeArtifact() | manual | orchestrator | — |
 | markRead() | manual | orchestrator | — |
 | markDone() | manual | orchestrator | — |
 | qualifyFriction() | automatic | closure | persona (pre-fills), orchestrator (validates) |

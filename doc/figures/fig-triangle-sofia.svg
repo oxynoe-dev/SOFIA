@@ -14,11 +14,11 @@
   <!-- ════════════════════════════════════════
        ARCS DU TRIANGLE (dessous les nodes)
   ════════════════════════════════════════ -->
-  <!-- Persona → Artefact -->
+  <!-- Persona → Artifact -->
   <path d="M 270,140 Q 200,210 160,280" fill="none" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
   <!-- Persona → Friction -->
   <path d="M 330,140 Q 400,210 440,280" fill="none" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
-  <!-- Artefact → Friction -->
+  <!-- Artifact → Friction -->
   <path d="M 200,310 Q 300,340 400,310" fill="none" stroke="rgba(64,216,192,0.15)" stroke-width="1"/>
 
   <!-- Labels sur les arcs -->
@@ -34,10 +34,10 @@
   <text x="300" y="128" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.4)">constraint</text>
 
   <!-- ════════════════════════════════════════
-       ARTEFACT (bas gauche)
+       ARTIFACT (bas gauche)
   ════════════════════════════════════════ -->
   <circle cx="155" cy="305" r="42" fill="rgba(167,139,250,0.05)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
-  <text x="155" y="300" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#a78bfa" font-weight="300">Artefact</text>
+  <text x="155" y="300" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#a78bfa" font-weight="300">Artifact</text>
   <text x="155" y="318" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(167,139,250,0.4)">protocol</text>
 
   <!-- ════════════════════════════════════════

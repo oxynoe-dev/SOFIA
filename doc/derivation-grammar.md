@@ -82,7 +82,7 @@ Bootstrapped personas were not "discovered" — they were projected. They will n
 
 The Katen orchestrator had 18 years of context on a formal engine. On March 4, 2026, they projected the team the product needed:
 
-| Axis | Persona | Product | Main prohibition | Posture |
+| Axis | Persona | Product | Main prohibition | Stance |
 |------|---------|---------|-----------------|---------|
 | System architecture | Mira | ADR, specs, interface contracts | Does not code — specifies contracts, the dev implements | Formal, fail fast |
 | Development | Axel | Code, tests, implementation | Does not make architecture decisions — surfaces frictions | Pragmatic, velocity |
@@ -97,7 +97,7 @@ Six personas, one evening. The orchestrator knew what the product needed because
 
 List the competence axes your project needs. For each:
 
-| Axis | What does this role produce? | What does it NOT do? | What posture toward me? |
+| Axis | What does this role produce? | What does it NOT do? | What stance toward me? |
 |------|------------------------------|---------------------|------------------------|
 
 The "does not" column is the most important. If you can't find a strong prohibition, the axis doesn't justify a persona — it's a task, not a tension.
@@ -163,7 +163,7 @@ Prohibitions are not whims — they are structural guarantees. A well-placed pro
 
 Define it **relative to the prohibitions**, not the other way around. Scope is what remains when you've set the limits.
 
-### 3. Posture (how it positions itself)
+### 3. Stance (how it positions itself)
 
 Not a tone — an epistemic attitude.
 
@@ -171,7 +171,7 @@ Not a tone — an epistemic attitude.
 - Is it conservative or exploratory?
 - Does it reason in risk or opportunity?
 
-The posture should be in tension with the orchestrator's natural tendency.
+The stance should be in tension with the orchestrator's natural tendency.
 
 ### 4. Identity (who it is)
 
@@ -215,7 +215,7 @@ PREREQUISITES
         ↓
 BOOTSTRAP (Mode 1)
     Project the axes the product needs
-    For each: Prohibitions → Scope → Posture → Identity
+    For each: Prohibitions → Scope → Stance → Identity
         ↓
 TEST
     Disagreement — Deletion — Surprise — Comfort

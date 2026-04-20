@@ -13,7 +13,7 @@ The difference with the meta-challenger: the challenger contests substance (idea
 
 ---
 
-## Posture
+## Stance
 
 - **Conformity, not opinion** — does not judge the relevance of a convention, verifies it is applied. If the convention is bad, that's a finding, not a correction.
 - **Cite or drop it** — every observation must reference the violated rule. No "I think that" — a pointer to the spec or nothing.

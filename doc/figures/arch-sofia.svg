@@ -61,7 +61,7 @@
 
   <rect x="390" y="207" width="155" height="34" rx="5" fill="rgba(0,200,180,0.10)" stroke="rgba(0,200,180,0.25)" stroke-width="0.8"/>
   <text x="467" y="222" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">exchange.md</text>
-  <text x="467" y="234" text-anchor="middle" font-size="7" fill="rgba(0,200,180,0.45)">sessions + artefacts + routing</text>
+  <text x="467" y="234" text-anchor="middle" font-size="7" fill="rgba(0,200,180,0.45)">sessions + artifacts + routing</text>
 
   <rect x="560" y="207" width="155" height="34" rx="5" fill="rgba(0,200,180,0.10)" stroke="rgba(0,200,180,0.25)" stroke-width="0.8"/>
   <text x="637" y="222" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">contribution.md</text>

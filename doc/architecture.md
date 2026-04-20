@@ -25,7 +25,7 @@
 Three interdependent concepts are at the origin of SOFIA:
 - **Persona** — an LLM constrained by a role, a scope, and prohibitions
 - **Friction** — the disagreements that emerge from constraints between personas
-- **Artefact** — the structured file that materializes exchange and trace
+- **Artifact** — the structured file that materializes exchange and trace
 
 The **orchestrator** (human) is at the center: orchestrates, filters, contextualizes, decides. Without them, friction is chaos. With them, it produces better decisions.
 
@@ -67,7 +67,7 @@ You can change the implementation without touching the protocol. You can change 
 
 No direct exchange between personas. The orchestrator filters, reformulates, contextualizes, decides. This is the cost of quality.
 
-### P4 — Isolation creates the need for artefacts
+### P4 — Isolation creates the need for artifacts
 
 A persona that cannot see the code is forced to specify. A persona that does not decide architecture is forced to surface frictions. Isolation is not a limitation — it is the generative mechanism.
 
@@ -122,7 +122,7 @@ The invariants. Remove them and it is no longer SOFIA.
 
 | Document | Content |
 |----------|---------|
-| `principles.md` | 7 principles — constraint forces quality, orchestrator arbitrates, artefacts are the protocol |
+| `principles.md` | 7 principles — constraint forces quality, orchestrator arbitrates, artifacts are the protocol |
 | `model.md` | 7 constitutive entities (Orchestrator, Instance, Space, Persona, Exchange, Friction, Contribution) |
 | `duties.md` | 6 orchestrator duties — non-delegable obligations |
 
@@ -136,7 +136,7 @@ The invariants. Remove them and it is no longer SOFIA.
 |----------|---------|---------------------|
 | `h2a.md` | 5 invariants, 9 operations, protocol/observational distinction | Entities, invariants, auditability criterion |
 | `friction.md` | 5 markers, 4 PXP resolutions, mutability, reportPattern() | Ratio per assistant, domestication detection |
-| `exchange.md` | Sessions (synchronous) and artefacts (asynchronous), frontmatter, naming | Frequency, assistant, date, friction section |
+| `exchange.md` | Sessions (synchronous) and artifacts (asynchronous), frontmatter, naming | Frequency, assistant, date, friction section |
 | `contribution.md` | Epistemic flow — direction (H/A), type (substance, structure, contestation, decision) | H/A tags, substance/structure ratio |
 
 **5 H2A invariants**:
@@ -224,7 +224,7 @@ Everything else. Recommended, not required.
 | Level | Entities | Nature |
 |-------|---------|--------|
 | **Topology** | Orchestrator, Instance, Space, Persona | The structure — who, where, in what |
-| **Interaction** | Exchange | The flow — sessions and artefacts |
+| **Interaction** | Exchange | The flow — sessions and artifacts |
 | **Observation** | Friction, Contribution | The signals — epistemic positions and inputs |
 
 ### Entities
@@ -234,8 +234,8 @@ Everything else. Recommended, not required.
 | **Orchestrator** | The human. Orchestrates, arbitrates, routes. Has no space — traverses everything | identifier, instances |
 | **Instance** | Method deployment on a project. Identified by `sofia.md` | identifier, spaces, method_version |
 | **Space** | Isolated perimeter of a persona. 1 persona = 1 space | identifier, persona, shared |
-| **Persona** | Constrained role. 7 dimensions (identity, posture, scope, deliverables, prohibitions, challenge, collaboration) | 7 dimensions |
-| **Exchange** | Interaction trace — `session` (synchronous) or `artefact` (asynchronous deposit) | type, instance, space, date |
+| **Persona** | Constrained role. 7 dimensions (identity, stance, scope, deliverables, prohibitions, challenge, collaboration) | 7 dimensions |
+| **Exchange** | Interaction trace — `session` (synchronous) or `artifact` (asynchronous deposit) | type, instance, space, date |
 | **Friction** | Qualified epistemic position. 5 markers, 4 PXP resolutions | marker, initiative, resolution, description |
 | **Contribution** | Epistemic input. Direction (H/A) + type (substance, structure, contestation, decision) | direction, type, description |
 
@@ -280,9 +280,9 @@ Everything goes through the orchestrator. Two patterns:
 
 #### Message (persona ↔ persona)
 
-1. Persona A deposits an artefact in `shared/` (note, review, feature)
+1. Persona A deposits an artifact in `shared/` (note, review, feature)
 2. The orchestrator reads, decides to route
-3. The orchestrator opens a session with Persona B and presents the artefact
+3. The orchestrator opens a session with Persona B and presents the artifact
 4. Persona B reads, responds, deposits their response in `shared/`
 5. The orchestrator routes the response to Persona A in a subsequent session
 
@@ -322,7 +322,7 @@ runtime/
 Prerequisite: v0.3 user feedback. Do not anticipate without feedback.
 
 The implementation/runtime distinction is structural:
-- `implementation/` answers "how are artefacts stored and audited" (filesystem, API, DB)
+- `implementation/` answers "how are artifacts stored and audited" (filesystem, API, DB)
 - `runtime/` answers "how does the persona receive instructions and persist context" (CLAUDE.md, MISTRAL.md)
 
 ---

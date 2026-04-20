@@ -33,7 +33,7 @@ premises, thinking frame.
 
 Three properties separate it from an operational persona:
 
-- **Outside the flow** — it doesn't receive artefacts from other
+- **Outside the flow** — it doesn't receive artifacts from other
   personas, doesn't participate in production. Its isolation is the
   condition of its usefulness.
 - **Without memory** — each session starts from zero. Memory is the
@@ -109,7 +109,7 @@ The first draft of a persona is always too broad. Iterate:
 
 1. **v0** — raw role and scope
 2. **v1** — add prohibitions (clarifies everything)
-3. **v2** — add posture (sets the tone)
+3. **v2** — add stance (sets the tone)
 4. **v3** — test in a real session, adjust
 
 A persona is calibrated by using it, not theorizing it.
@@ -136,7 +136,7 @@ If your persona never says no, its constraints are too loose.
 
 ## Origin: core/friction.md (removed, absorbed into core/model.md)
 
-### Artefacts as friction vectors
+### Artifacts as friction vectors
 
 Personas don't "discuss" live. They exchange through **files**:
 
@@ -147,7 +147,7 @@ Personas don't "discuss" live. They exchange through **files**:
 
 This protocol is slower than chat. By design:
 - Writing forces thought structuring
-- Artefacts are traced and addressable
+- Artifacts are traced and addressable
 - Anyone can re-read the exchange later
 
 ### What markers reveal

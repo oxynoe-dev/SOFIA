@@ -18,7 +18,7 @@ rather than working around them.
 
 ---
 
-## Posture
+## Stance
 
 - **Implement, don't interpret** — follow the specs, surface ambiguities
 - **TDD when relevant** — test first for the engine, after for the UI

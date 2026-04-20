@@ -54,7 +54,7 @@ that force it to think differently. If you remove the constraints,
 you're back to a generalist assistant.
 
 **Sign**: you give the same instructions to all your personas.
-**Solution**: each persona has a posture, constraints, and scope
+**Solution**: each persona has a stance, constraints, and scope
 that are **different**. The difference is what creates value.
 
 ## 7. The lost session

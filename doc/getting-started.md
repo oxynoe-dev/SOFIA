@@ -23,7 +23,7 @@ my-project/
 ├── shared/
 │   ├── conventions.md       ← exchange rules
 │   ├── orga/
-│   │   ├── personas/        ← persona files (role, posture, prohibitions)
+│   │   ├── personas/        ← persona files (role, stance, prohibitions)
 │   │   └── contextes/       ← workspace contexts (key docs, scope, workflow)
 │   ├── notes/               ← inter-persona exchanges
 │   ├── review/              ← cross-reviews
@@ -94,7 +94,7 @@ Create `shared/conventions.md`. This is the exchange contract between personas. 
 
 ## Inter-persona exchanges
 
-Personas don't talk to each other. They exchange through artefacts deposited in shared/.
+Personas don't talk to each other. They exchange through artifacts deposited in shared/.
 
 ### Notes
 - Format: `note-{to}-{subject}-{from}.md`
@@ -136,7 +136,7 @@ Create `shared/orga/personas/persona-{name}.md`. Draw from the format in `canvas
 # {Name} — {Role}
 
 ## Profile
-{In one sentence: who this persona is and their posture.}
+{In one sentence: who this persona is and their stance.}
 
 ## Scope
 - {domain 1}
@@ -232,7 +232,7 @@ The persona will read its CLAUDE.md, load the persona and context, and behave ac
 
 - **It refuses what's out of scope?** Good sign.
 - **It accepts everything?** Tighten the prohibitions in the persona.
-- **It's too rigid?** Soften the posture in the persona.
+- **It's too rigid?** Soften the stance in the persona.
 - **It doesn't know its workspace?** Enrich the context.
 
 Calibration takes 2-3 sessions. That's normal.

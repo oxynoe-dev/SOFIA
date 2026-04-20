@@ -19,7 +19,7 @@ implementation: filesystem
 
 ---
 
-## Posture
+## Stance
 
 <!-- HOW this persona behaves. Not what they know, but how
      they interact. This is the section that sets the tone.

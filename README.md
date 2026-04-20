@@ -29,17 +29,17 @@ Constraint is not a limit — it's what forces quality.
 ## What SOFIA is
 
 An **agnostic method** for working with specialized AI personas,
-in intentional friction, steered by a human orchestrator who arbitrates.
+through intentional friction, steered by a human orchestrator who arbitrates.
 Principles and protocol depend on no tool;
 `runtime/` provides an implementation for Claude Code, others can follow.
 
 Concretely:
-- **Personas** — AI roles with a name, posture, scope, prohibitions
+- **Personas** — AI roles with a name, stance, scope, prohibitions
 - **Friction** — personas challenge each other, the orchestrator decides
 - **Isolation** — each persona has its workspace, instructions, boundaries
 - **Orchestration** — the orchestrator is the message bus, carrying context between personas
 - **Traceability** — everything is traced: decisions, sessions, reviews, exchanges
-- **Artefacts** — personas communicate through files, not chat
+- **Artifacts** — personas communicate through files, not chat
 
 ## What SOFIA is not
 

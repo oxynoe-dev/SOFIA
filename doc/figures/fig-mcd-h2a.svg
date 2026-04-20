@@ -112,13 +112,13 @@
   <rect x="245" y="225" width="310" height="85" rx="4" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.25)" stroke-width="0.8"/>
   <rect x="245" y="225" width="310" height="18" rx="4" fill="rgba(167,139,250,0.08)"/>
   <text x="400" y="238" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="600">Exchange</text>
-  <text x="255" y="256" fill="rgba(64,216,192,0.45)" font-size="7">type : session | artefact</text>
+  <text x="255" y="256" fill="rgba(64,216,192,0.45)" font-size="7">type : session | artifact</text>
   <text x="255" y="268" fill="rgba(64,216,192,0.45)" font-size="7">instance : ref</text>
   <text x="255" y="280" fill="rgba(64,216,192,0.45)" font-size="7">space : ref</text>
   <text x="420" y="256" fill="rgba(64,216,192,0.45)" font-size="7">datetime : datetime</text>
   <text x="420" y="268" fill="rgba(64,216,192,0.45)" font-size="7">persona : ref</text>
   <line x1="245" y1="288" x2="555" y2="288" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
-  <text x="255" y="301" fill="rgba(167,139,250,0.3)" font-size="6.5" font-style="italic">session = synchronous · artefact = asynchronous deposit</text>
+  <text x="255" y="301" fill="rgba(167,139,250,0.3)" font-size="6.5" font-style="italic">session = synchronous · artifact = asynchronous deposit</text>
 
   <!-- Orchestrateur → Echange -->
   <path d="M107,130 L107,267 L243,267" fill="none" stroke="rgba(160,208,200,0.2)" stroke-width="0.7" marker-end="url(#arr)"/>

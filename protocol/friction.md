@@ -6,7 +6,7 @@
 
 ## Definition
 
-Friction is a position taken by a participant (persona or orchestrator) on the other's proposition. It qualifies the nature of an agreement or disagreement.
+Friction is a position taken by a participant (persona or orchestrator) regarding the other's proposition. It qualifies the nature of an agreement or disagreement.
 
 Friction is a productive mechanism, not a defect. See `core/model.md` for why.
 
@@ -14,7 +14,7 @@ Friction is a productive mechanism, not a defect. See `core/model.md` for why.
 
 | Dimension | Values | Required |
 |-----------|--------|----------|
-| **exchange** | Reference to the exchange (session or artefact) that generated the friction | MUST |
+| **exchange** | Reference to the exchange (session or artifact) that generated the friction | MUST |
 | **emitter** | Persona or orchestrator emitting the position | MUST |
 | **marker** | `[sound]`, `[contestable]`, `[simplification]`, `[blind_spot]`, `[refuted]` | MUST |
 | **description** | Short summary of the position | MUST |
@@ -55,7 +55,7 @@ Markers MUST be expressed as bracketed keywords.
 
 The set is closed — an instance MUST NOT add resolution tags.
 
-The resolution tag is set by the summary author (persona for sessions, emitter for artefacts). It reflects the author's perception of the outcome, not an objective verdict. The orchestrator MAY correct.
+The resolution tag is set by the summary author (persona for sessions, emitter for artifacts). It reflects the author's perception of the outcome, not an objective verdict. The orchestrator MAY correct.
 
 ### Inter-session mutability and lineage
 
@@ -124,7 +124,7 @@ Meta-operation on friction. Mitigation of the orchestrator's residual opacity (i
 
 ### Problem
 
-Faced with repeated friction rejection, three hypotheses are phenomenologically identical from the inside: persona error (LLM bias), legitimate orchestrator conviction, unconscious resistance. The orchestrator cannot arbitrate their own resistance to friction. This problem is unsolvable in the strict sense (applied version of the Münchhausen Trilemma), but mitigable.
+Faced with repeated friction rejection, three hypotheses are phenomenologically identical from the inside: persona error (LLM bias), legitimate orchestrator conviction, unconscious resistance. The orchestrator cannot arbitrate their own resistance to friction. This problem is unsolvable in the strict sense (applied version of the Münchhausen Trilemma), but it can be mitigated.
 
 ### Trigger
 

@@ -27,7 +27,7 @@ Before naming the persona, define:
 ### 2. Create the persona file
 
 Draw from the format in `canvas/artifacts/persona.md` and archetypes in `canvas/archetypes/`. Key fields:
-- Profile, posture, scope
+- Profile, stance, scope
 - Collaboration (with/mode table)
 - What it does not do
 
@@ -36,7 +36,7 @@ Draw from the format in `canvas/artifacts/persona.md` and archetypes in `canvas/
 ```
 {instance}/
 ├── shared/orga/
-│   ├── personas/persona-{name}.md       ← persona file (role, posture, prohibitions)
+│   ├── personas/persona-{name}.md       ← persona file (role, stance, prohibitions)
 │   └── contextes/contexte-{name}-{product}.md  ← workspace context (docs, isolation, workflow)
 └── {workspace}/
     ├── CLAUDE.md      ← runtime routing (2 lines → persona + context)
@@ -44,7 +44,7 @@ Draw from the format in `canvas/artifacts/persona.md` and archetypes in `canvas/
 ```
 
 The CLAUDE.md is a 2-line routing (see `runtime/claude-code/claude-md.md`). Content lives in two files:
-- **persona-{name}.md** — role, posture, prohibitions, collaboration (template: `canvas/artifacts/persona.md`)
+- **persona-{name}.md** — role, stance, prohibitions, collaboration (template: `canvas/artifacts/persona.md`)
 - **contexte-{name}-{product}.md** — scope, key documents, isolation, workflow (template: `canvas/artifacts/product-persona-context.md`)
 
 ### 4. Brief the persona
@@ -69,7 +69,7 @@ Other personas will discover it at their next session opening.
 ## Example: onboarding Sofia (Katen, March 2026)
 
 Sofia was onboarded by Nora (UX):
-1. Persona file defined with posture "the detail makes the product"
+1. Persona file defined with stance "the detail makes the product"
 2. `graphisme/` workspace created with specific CLAUDE.md
 3. Brief: targeted reading list (design-principles, design-system, feature-v022)
 4. First session: visual exploration, reference board v1

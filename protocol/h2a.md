@@ -45,10 +45,10 @@ Implicit operations derived from entities and dimensions. Their explicit formali
 |-----------|---------|-------------------|
 | openSession() | orchestrator | Exchange (session), Persona |
 | closeSession() | orchestrator | Exchange (session), Friction, Contribution |
-| depositArtefact() | persona (on orchestrator instruction) | Exchange (artefact) |
-| routeArtefact() | orchestrator | Exchange (artefact) |
-| markRead() | orchestrator | Exchange (artefact) |
-| markDone() | orchestrator | Exchange (artefact) — triggers archiving |
+| depositArtifact() | persona (on orchestrator instruction) | Exchange (artifact) |
+| routeArtifact() | orchestrator | Exchange (artifact) |
+| markRead() | orchestrator | Exchange (artifact) |
+| markDone() | orchestrator | Exchange (artifact) — triggers archiving |
 | qualifyFriction() | persona (pre-fills), orchestrator (validates) | Friction |
 | qualifyContribution() | persona | Contribution |
 | reportPattern() | persona | Friction — meta-operation (see `friction.md`) |
@@ -59,7 +59,7 @@ The protocol distinguishes two formalization layers:
 
 | Layer | Status | Verification | Examples |
 |-------|--------|-------------|----------|
-| **Protocol** | Guaranteed | Computational (deterministic, automatable) | Produced artefacts, deposited notes, session traces |
+| **Protocol** | Guaranteed | Computational (deterministic, automatable) | Produced artifacts, deposited notes, session traces |
 | **Observational** | Best-effort | Inferential (semantic judgment, non-deterministic) | Qualified friction, epistemic flow, contribution tags |
 
 The protocol layer defines what the audit can mechanically verify. The observational layer is filled by the assistant and validated by the human.
@@ -76,8 +76,8 @@ The protocol layer defines what the audit can mechanically verify. The observati
 |------------|-------------|
 | Session traces present | Each session produced an identifiable trace |
 | Session metadata | Each trace carries: persona, date, session identifier |
-| Protocol sections | Each trace contains: Produit, Decisions, Notes deposees, Ouvert |
-| Artefact metadata | Each artefact carries: emitter, recipient, nature, status, date |
+| Protocol sections | Each trace contains: Produced, Decisions, Shared notes, Open |
+| Artifact metadata | Each artifact carries: emitter, recipient, nature, status, date |
 | Status lifecycle | Values in {new, read, done} |
 | Isolation | No persona produced outside its space and the shared space |
 
@@ -89,7 +89,7 @@ The protocol layer defines what the audit can mechanically verify. The observati
 |--------|---------------|
 | No friction over N consecutive sessions | Friction possibly absent — domestication? |
 | Only `[sound]` | Persona in validation mode |
-| Artefacts not routed for N exchanges | Exchange blocked |
+| Artifacts not routed for N exchanges | Exchange blocked |
 | Persona without session for N days | Inactive persona |
 
 These signals are not protocol violations — they are indicators for the orchestrator's attention.
@@ -118,7 +118,7 @@ The protocol documents what it cannot guarantee. These limitations are inherent 
 | **Residual opacity** (invariant 5) | The orchestrator cannot arbitrate their own resistance to friction. Local undecidability. | reportPattern() — mitigation, not guarantee |
 | **Uninstrumented friction** | A participant can express positions in free text without markers. The signal is lost to the protocol. | Friction template in contexts. Depends on participant discipline. |
 | **Silent lineage** | If the `antecedent` field is omitted, the friction chain is broken without signal. The protocol cannot guess that one friction resolves another. | Validation block before commit. Hooks (v0.4). |
-| **Cross-instance exchanges** | Cross-instance routing depends entirely on the orchestrator. No automatic discovery or routing mechanism between instances. | Formalized in `exchange.md` §Cross-instance exchanges. Artefact MUST be deposited in the recipient's shared space. |
+| **Cross-instance exchanges** | Cross-instance routing depends entirely on the orchestrator. No automatic discovery or routing mechanism between instances. | Formalized in `exchange.md` §Cross-instance exchanges. Artifact MUST be deposited in the recipient's shared space. |
 
 ## Origin
 

@@ -8,7 +8,7 @@
 
 SOFIA is a method for orchestrating specialized AI assistants on a project. Each assistant has a role, a scope, and prohibitions. They don't talk to each other — you carry the context between them. Friction between roles produces better decisions.
 
-To start: clone the repo, run `claude`, and Sofia — the built-in guide — proposes your first persona. If the flow doesn't start, the [manual mode](getting-started.md) covers the same thing step by step.
+To start: clone the repo, run `claude`, and Sofia — the built-in guide — proposes your first persona. If the flow doesn't start, [manual mode](getting-started.md) covers the same thing step by step.
 
 > **Alpha preview** — Sofia relies on the runtime's conversational behavior. Results may vary depending on the environment.
 
@@ -44,7 +44,7 @@ Personas propose, challenge, produce. The orchestrator decides. A persona never 
 
 ### Files are the protocol
 
-Personas don't "discuss" — they exchange through **artefacts**: reviews, notes, specs. These artefacts are versioned, traceable, and readable by all. File-based exchange is slower than chat. That's the point. Slowness forces clarity.
+Personas don't "discuss" — they exchange through **artifacts**: reviews, notes, specs. These artifacts are versioned, traceable, and readable by all. File-based exchange is slower than chat. That's the point. Slowness forces clarity.
 
 ### Start small, iterate
 
@@ -57,7 +57,7 @@ One persona at launch. Two when the first is calibrated. Three when the need is 
 The SOFIA repo is not your project — it's the **method**. It contains:
 
 - `core/` — the invariants: principles, model, friction, duties
-- `protocol/` — the interface contract: artefacts, conventions, isolation, orchestration
+- `protocol/` — the interface contract: artifacts, conventions, isolation, orchestration
 - `runtime/` — the concrete implementation for Claude Code (other providers will follow)
 - `doc/` — guides, workflows, patterns, field feedback
 
@@ -105,7 +105,7 @@ After generating your first CLAUDE.md, Sofia tells you three things:
 
 It's the contract between you and your persona. It contains:
 
-- **Who** — name, role, posture
+- **Who** — name, role, stance
 - **What** — scope of intervention, expected deliverables
 - **Where** — which files/directories are accessible
 - **Forbidden** — what is out of scope (read AND write)
@@ -191,7 +191,7 @@ An instance contains **workspaces** (one per persona) and a **shared zone** (`sh
 
 ### The shared zone — shared/
 
-The only space all personas can read and write. Exchanges go through artefacts deposited here:
+The only space all personas can read and write. Exchanges go through artifacts deposited here:
 
 | Type | Convention | Location |
 |------|-----------|----------|
@@ -199,7 +199,7 @@ The only space all personas can read and write. Exchanges go through artefacts d
 | Reviews | `review-{subject}-{from}.md` | `shared/review/` |
 | Features | `feature-{subject}.md` | `shared/features/` |
 
-Each artefact carries a frontmatter (`from`, `to`, `nature`, `status`, `date`). When processed, it migrates to `archives/`.
+Each artifact carries a frontmatter (`from`, `to`, `nature`, `status`, `date`). When processed, it migrates to `archives/`.
 
 ### Roadmaps
 
@@ -239,7 +239,7 @@ Orchestration takes time. It's the price of quality. If the exchange isn't worth
 
 ## 8. Traceability
 
-### Traceability artefacts
+### Traceability artifacts
 
 1. **Session summaries** — each session produces a summary. It's the bridge between conversations. Format: `sessions/{YYYY-MM-DD}-{HHmm}-{persona}.md`
 
@@ -263,7 +263,7 @@ The next session won't have your context in mind. Summaries are its memory.
 |---------|---------|
 | The generalist persona | Does everything, therefore nothing well |
 | The compliant persona | Says yes to everything, never challenges |
-| The double hat | "Architect who also codes" — blurs the posture |
+| The double hat | "Architect who also codes" — blurs the stance |
 | Too many personas too early | Start with 1, not 5 |
 | The ghost persona | Created but never used — delete it |
 | Open questions at startup | The user doesn't know what they need |
@@ -284,7 +284,7 @@ The next session won't have your context in mind. Summaries are its memory.
 
 - [H2A](../protocol/h2a.md) — the coordination protocol
 - [Friction](../protocol/friction.md) — markers, resolutions, lineage
-- [Exchange](../protocol/exchange.md) — sessions, artefacts, routing
+- [Exchange](../protocol/exchange.md) — sessions, artifacts, routing
 - [Contribution](../protocol/contribution.md) — epistemic flow
 
 ### The Claude Code implementation
@@ -295,7 +295,7 @@ The next session won't have your context in mind. Summaries are its memory.
 
 ### Learn by example
 
-> The examples below come from the Katen project. The deliverables mentioned (ADR, design system, research notes...) are project-specific — adapt to your context. What transfers is the structure: constrained roles, isolation, traced artefacts.
+> The examples below come from the Katen project. The deliverables mentioned (ADR, design system, research notes...) are project-specific — adapt to your context. What transfers is the structure: constrained roles, isolation, traced artifacts.
 
 - Workflows — standard processes (dev, publication, ADR, research...)
 - Patterns — recurring structures (challenger, distillery, escalation...)

@@ -91,7 +91,7 @@ section makes friction structural.
 ### Initial calibration too broad
 
 The first personas were too generalist. It was by using them that we
-narrowed them down — adding constraints, sharpening posture, reducing
+narrowed them down — adding constraints, sharpening stance, reducing
 scope. Defining by medium (spec, code, review, PDF) is more reliable
 than by skill.
 

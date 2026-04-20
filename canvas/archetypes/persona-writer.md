@@ -17,7 +17,7 @@ actual writings.
 
 ---
 
-## Posture
+## Stance
 
 - **Orchestrator's voice** — write in their style, not in their place
 - **Radical honesty** — don't embellish what isn't

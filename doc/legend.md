@@ -218,7 +218,7 @@ Bar chart per persona showing the total lines of persona.md + contexte.md loaded
 
 ### Structure checks
 
-Protocol conformity checks: sofia.md marker, shared/ structure, session frontmatter, artefact frontmatter, isolation.
+Protocol conformity checks: sofia.md marker, shared/ structure, session frontmatter, artifact frontmatter, isolation.
 
 | Status | Meaning |
 |--------|---------|
@@ -236,7 +236,7 @@ Sessions per persona. Zero = inactive persona.
 
 ### Exchange flow
 
-Top artefact flows between personas — who sends to whom, ranked by volume.
+Top artifact flows between personas — who sends to whom, ranked by volume.
 
 ---
 
@@ -285,7 +285,7 @@ Top artefact flows between personas — who sends to whom, ranked by volume.
 | **Persona** | A constrained AI agent with a defined role, expertise, and boundaries |
 | **Instance** | A project workspace where one orchestrator works with a team of personas |
 | **Session** | A single working conversation between the orchestrator and one persona |
-| **Artefact** | A structured file deposited in shared/ — note, review, feature spec |
+| **Artifact** | A structured file deposited in shared/ — note, review, feature spec |
 | **Window** | A group of N consecutive frictions, used for trend analysis instead of calendar periods |
 | **Baseline** | The first N frictions of an instance or persona — the reference point for detecting change |
 | **Domestication** | When a persona stops challenging over time — its friction output converges to pure validation |

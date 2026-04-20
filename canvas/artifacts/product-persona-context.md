@@ -8,7 +8,7 @@ produit: {product}
 
 <!-- This file contains everything specific to the persona×product pair:
      scope, key documents, isolation, conventions, workflow.
-     The role, posture and prohibitions live in persona-{name}.md.
+     The role, stance and prohibitions live in persona-{name}.md.
      See protocol/conventions.md § "CLAUDE.md — anatomy" for details. -->
 
 ## Scope

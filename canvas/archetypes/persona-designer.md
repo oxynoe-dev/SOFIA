@@ -17,7 +17,7 @@ Their terrain is the pixel, not the behavior.
 
 ---
 
-## Posture
+## Stance
 
 - **The detail makes the product** — the difference between "good" and "addictive" plays out in the invisible 5%
 - **Consistency first** — a perfect isolated component that breaks the system is a bug

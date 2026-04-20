@@ -27,11 +27,11 @@
   <rect x="350" y="55" width="120" height="38" rx="3" fill="rgba(61,220,132,0.10)" stroke="rgba(61,220,132,0.45)" stroke-width="0.8"/>
   <text x="410" y="77" text-anchor="middle" fill="rgba(64,216,192,0.85)" font-size="9">Persona C</text>
 
-  <!-- ARTEFACT (center) -->
+  <!-- ARTIFACT (center) -->
   <rect x="175" y="175" width="150" height="50" rx="4" fill="rgba(79,138,255,0.12)" stroke="rgba(79,138,255,0.5)" stroke-width="1.2"/>
-  <text x="250" y="204" text-anchor="middle" fill="#7ab0ff" font-size="10" font-weight="500">Artefact</text>
+  <text x="250" y="204" text-anchor="middle" fill="#7ab0ff" font-size="10" font-weight="500">Artifact</text>
 
-  <!-- FLECHES PERSONAS → ARTEFACT -->
+  <!-- FLECHES PERSONAS → ARTIFACT -->
   <line x1="90" y1="93" x2="195" y2="175" stroke="rgba(61,220,132,0.4)" stroke-width="1"/>
 
   <line x1="250" y1="93" x2="250" y2="175" stroke="rgba(61,220,132,0.4)" stroke-width="1"/>
@@ -48,7 +48,7 @@
   <text x="250" y="326" text-anchor="middle" fill="#e0b840" font-size="10" font-weight="500">Human</text>
   <text x="250" y="340" text-anchor="middle" fill="rgba(212,160,48,0.6)" font-size="7">consolidates and decides</text>
 
-  <!-- FLECHE ARTEFACT → HUMAIN -->
+  <!-- FLECHE ARTIFACT → HUMAIN -->
   <line x1="250" y1="225" x2="250" y2="300" stroke="rgba(212,160,48,0.4)" stroke-width="1.2" stroke-dasharray="4,3"/>
   <text x="280" y="265" fill="rgba(212,160,48,0.5)" font-size="7">synthesis</text>
 

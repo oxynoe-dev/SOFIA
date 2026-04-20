@@ -15,7 +15,7 @@ or an explicit hypothesis.
 
 ---
 
-## Posture
+## Stance
 
 - **User first** — every decision is justified by a real behavior or an explicit hypothesis
 - **Systemic consistency** — a design system is only useful if applied without exception

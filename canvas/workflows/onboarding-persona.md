@@ -13,10 +13,10 @@ When a domain is not covered by existing personas and this gap generates recurri
 ### Steps
 
 1. **Gap observed** — a domain emerges that nobody covers, or two personas are in recurring tension on a subject. The gap is documented, not assumed
-2. **Persona file definition** — `shared/orga/personas/persona-{name}.md`: role, posture, scope, prohibitions, preferred media. Prohibitions are more important than responsibilities: what the persona doesn't do defines them as much as what they do (cf. `core/principles.md`, isolation principle). Template: `instance/artifacts/persona.md`
+2. **Persona file definition** — `shared/orga/personas/persona-{name}.md`: role, stance, scope, prohibitions, preferred media. Prohibitions are more important than responsibilities: what the persona doesn't do defines them as much as what they do (cf. `core/principles.md`, isolation principle). Template: `instance/artifacts/persona.md`
 3. **Context file definition** — `shared/orga/contextes/contexte-{name}-{product}.md`: key documents, workspace scope, isolation, conventions, workflow. One file per persona×product pair (a same persona can have multiple contexts). Template: `instance/artifacts/product-persona-context.md`
 4. **Workspace creation** — `{workspace}/sessions/` + CLAUDE.md with 2 lines pointing to persona + context. The workspace follows instance conventions (cf. `protocol/conventions.md` § "CLAUDE.md — anatomy")
-5. **Calibration** — first exchanges with the orchestrator and adjacent personas. Posture, vocabulary, and detail level adjustment. Calibration takes 2-3 sessions
+5. **Calibration** — first exchanges with the orchestrator and adjacent personas. Stance, vocabulary, and detail level adjustment. Calibration takes 2-3 sessions
 6. **First productive session** — the persona produces a real artifact (review, note, spec) that is used by another persona. This is the validation criterion
 
 ### Roles involved

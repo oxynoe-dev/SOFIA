@@ -5,8 +5,8 @@
 ### Migration EN (ADR-013)
 - Bilingual parser — analysis.py + audit-instance.py accept FR and EN identifiers, documented mapping
 - Protocol identifiers EN — markers (sound, contestable, simplification, blind_spot, refuted), resolutions (ratified, contested, revised, rejected), statuses, frontmatter
-- Operations EN — openSession, closeSession, depositArtefact, routeArtefact, markRead, markDone, qualifyFriction, qualifyContribution, reportPattern
-- Conventions reread rule — closeSession() and depositArtefact() enforce rereading `shared/conventions.md`
+- Operations EN — openSession, closeSession, depositArtifact, routeArtifact, markRead, markDone, qualifyFriction, qualifyContribution, reportPattern
+- Conventions reread rule — closeSession() and depositArtifact() enforce rereading `shared/conventions.md`
 - Friction lineage — `antecedent` dimension in protocol/friction.md, `Friction → Friction (amends)` relation in core/model.md, `ref: {source-id}/{index}` in implementation.md
 - Instance conventions aligned (methodes, produits, oxynoe) — EN identifiers + naming + operations
 
@@ -201,7 +201,7 @@
 - `backlog-archive.md` for completed item history
 - Updated conventions.md (roles, ownership, session protocol)
 - Updated 7 CLAUDE.md files (simplified boot/closing)
-- Updated methode/artefacts.md (roadmaps per product, no more backlog)
+- Updated methode/artifacts.md (roadmaps per product, no more backlog)
 
 ## v0.2.1 — Persona archetypes (2026-03-31)
 
@@ -211,7 +211,7 @@
 ## v0.2.0 — Enriched Voix product (2026-03-31)
 
 - Templates: backlog.md, product-roadmap.md, note.md, feature.md, voix-instance.md
-- Enriched methode/artefacts.md — archiving, shared/orga/, multi-product features
+- Enriched methode/artifacts.md — archiving, shared/orga/, multi-product features
 - Sofia + Winston examples in exemples/katen/
 - voix.md marker documented (methode/instance.md)
 - "AI Agent" → "Specialized AI assistant" in all examples

@@ -14,7 +14,7 @@ H2A defines the semantics of interactions (entities, invariants, protocol/observ
 
 | Component | Choice | Role |
 |-----------|--------|------|
-| Artefact format | Markdown + YAML frontmatter | Human-readable and audit-readable, no software dependency |
+| Artifact format | Markdown + YAML frontmatter | Human-readable and audit-readable, no software dependency |
 | Persistence | git | Immutable history, diff, blame — trace per session |
 | Space structure | Filesystem directories | One directory = one space. Natural isolation |
 | Shared space | `shared/` at instance root | Sole channel between personas |
@@ -37,7 +37,7 @@ At each closure, the persona creates a **new** file. The `HHmm` is the closure t
 
 ### Instance structure
 
-Scaffolding is **minimal** — only elements necessary for the protocol are created at initialization. The internal organization of `shared/` (subdirectories, artefact naming conventions, archiving) is an instance convention, not standard implementation.
+Scaffolding is **minimal** — only elements necessary for the protocol are created at initialization. The internal organization of `shared/` (subdirectories, artifact naming conventions, archiving) is an instance convention, not standard implementation.
 
 ```
 instance/                        ← scaffolding (create-instance)
@@ -53,14 +53,14 @@ instance/                        ← scaffolding (create-instance)
 └── ...
 ```
 
-The protocol requires `shared/` as the sole channel and artefacts with frontmatter. How the instance organizes its artefacts in `shared/` (subdirectories, naming, archiving) is a local decision documented in `conventions.md`.
+The protocol requires `shared/` as the sole channel and artifacts with frontmatter. How the instance organizes its artifacts in `shared/` (subdirectories, naming, archiving) is a local decision documented in `conventions.md`.
 
 ### Installing the protocol on a persona
 
 The H2A protocol is installed via the **context** (`shared/orga/contextes/contexte-{persona}-{product}.md`), not via the persona file. The persona file defines the role (instance-agnostic). The context installs the instance rules.
 
 Each context MUST contain an `## H2A Protocol` section that:
-- Points to `shared/conventions.md` (read at first boot, reread before each artefact and closure)
+- Points to `shared/conventions.md` (read at first boot, reread before each artifact and closure)
 - Recalls the mandatory session summary sections (Produced, Decisions, Shared notes, Open)
 - Recalls the observational sections (Orchestrator friction SHOULD, Flow MAY)
 - Recalls the commit convention
@@ -82,9 +82,9 @@ The template is a safety net — the persona has the format in view when produci
 
 ### Frontmatter
 
-Every artefact deposited in the shared space carries a YAML frontmatter. No accents in values.
+Every artifact deposited in the shared space carries a YAML frontmatter. No accents in values.
 
-**Artefacts**:
+**Artifacts**:
 ```yaml
 ---
 from: persona-emitter
@@ -106,7 +106,7 @@ session: "HHmm"
 
 ### Archiving
 
-When an artefact moves to `status: done`, it is moved to `archives/` in the parent directory.
+When an artifact moves to `status: done`, it is moved to `archives/` in the parent directory.
 
 ### Status lifecycle
 
@@ -118,9 +118,9 @@ When an artefact moves to `status: done`, it is moved to `archives/` in the pare
 
 > **Retrocompat**: the parser also accepts FR values (`nouveau`, `lu`, `traite`).
 
-### Artefact resolution
+### Artifact resolution
 
-When an artefact is processed, each point SHOULD carry a resolution tag in the document body (not in the frontmatter — an artefact often contains multiple points).
+When an artifact is processed, each point SHOULD carry a resolution tag in the document body (not in the frontmatter — an artifact often contains multiple points).
 
 Convention: the recipient annotates each point with `→ ratified`, `→ contested`, `→ revised`, or `→ rejected` before archiving.
 
@@ -193,7 +193,7 @@ When a friction amends a prior friction (see `protocol/friction.md` §Lineage), 
 ```
 
 **Format**: `ref: {source-id}/{index}` where:
-- `{source-id}` = filename (without extension) — session summary or artefact
+- `{source-id}` = filename (without extension) — session summary or artifact
 - `{index}` = friction position in the source file (1-based, order of appearance)
 
 **Implementation rules**:
@@ -255,10 +255,10 @@ Mapping of H2A operations (see `protocol/h2a.md`) to the current implementation.
 |-----------|------|-----------------|
 | openSession() | manual | The orchestrator launches a terminal in the persona's workspace (or resumes an existing Claude Code session) |
 | closeSession() | manual | The orchestrator gives the signal. The persona **rereads `shared/conventions.md`**, then produces the summary, prepares the commit. The orchestrator executes the commit |
-| depositArtefact() | manual | The orchestrator instructs the persona. The persona **rereads `shared/conventions.md`**, then produces the artefact (note, review, feature) and deposits in `shared/` |
-| routeArtefact() | manual | The orchestrator reads the artefact in `shared/`, opens a session with the recipient, presents the artefact. **Cross-instance**: the orchestrator deposits the artefact in the recipient instance's `shared/`, not the emitter's |
-| markRead() | manual | The orchestrator sets `status: read` in the artefact's frontmatter |
-| markDone() | manual | The orchestrator sets `status: done` in the frontmatter — the artefact is then moved to `archives/` |
+| depositArtifact() | manual | The orchestrator instructs the persona. The persona **rereads `shared/conventions.md`**, then produces the artifact (note, review, feature) and deposits in `shared/` |
+| routeArtifact() | manual | The orchestrator reads the artifact in `shared/`, opens a session with the recipient, presents the artifact. **Cross-instance**: the orchestrator deposits the artifact in the recipient instance's `shared/`, not the emitter's |
+| markRead() | manual | The orchestrator sets `status: read` in the artifact's frontmatter |
+| markDone() | manual | The orchestrator sets `status: done` in the frontmatter — the artifact is then moved to `archives/` |
 | qualifyFriction() | automatic | The persona pre-fills the `## Orchestrator friction` section at closure. The orchestrator validates or corrects |
 | qualifyContribution() | automatic | The persona pre-fills the `## Flow` section at closure. The orchestrator validates or corrects |
 | reportPattern() | automatic | The persona detects a thematic convergence of rejections during the session. It challenges the orchestrator with the observation + 3 argued hypotheses. The orchestrator responds with their choice + justification. At closure, the persona records in a `## reportPattern` section of the summary |
@@ -266,7 +266,7 @@ Mapping of H2A operations (see `protocol/h2a.md`) to the current implementation.
 **Manual** = the orchestrator triggers with an explicit gesture.
 **Automatic** = the persona produces at session closure, the orchestrator validates.
 
-The persona MUST NOT close on its own or deposit an artefact without orchestrator instruction.
+The persona MUST NOT close on its own or deposit an artifact without orchestrator instruction.
 
 ### Tooling
 
@@ -316,7 +316,7 @@ H2A could be implemented as a REST API:
 
 ### Database
 
-Session summaries, artefacts, and friction markers could live in a relational or document database. Git history would be replaced by an event log.
+Session summaries, artifacts, and friction markers could live in a relational or document database. Git history would be replaced by an event log.
 
 ### MCP / A2A interoperability
 

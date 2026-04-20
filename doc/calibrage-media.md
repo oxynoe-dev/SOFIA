@@ -6,9 +6,9 @@ Define a persona by what it produces (its medium), not only by its competence.
 
 ### Structure
 
-Each persona has an explicit output medium: the type of artefact only it produces. This medium delimits its production scope better than a competence description, because it is observable and unambiguous.
+Each persona has an explicit output medium: the type of artifact only it produces. This medium delimits its production scope better than a competence description, because it is observable and unambiguous.
 
-A persona that produces no artefact of its own is a challenger, not a producer. This distinction avoids overlaps and territory conflicts.
+A persona that produces no artifact of its own is a challenger, not a producer. This distinction avoids overlaps and territory conflicts.
 
 ### When to recognize it
 

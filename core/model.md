@@ -82,7 +82,7 @@ Constraint changes everything:
 | Dimension | Required | Definition |
 |-----------|----------|-----------|
 | **Identity** | MUST | Name (short, memorable, a first name), role (one sentence), tone |
-| **Posture** | MUST | How it behaves, not what it knows |
+| **Stance** | MUST | How it behaves, not what it knows |
 | **Scope** | MUST | What it works on. Explicit list |
 | **Deliverables** | MUST | What it produces |
 | **Prohibitions** | MUST | What the persona does NOT do. Prohibitions create productive friction |
@@ -93,13 +93,13 @@ Constraint changes everything:
 
 ## Exchange
 
-Interaction trace within the instance. An exchange is a communication act within the instance.
+A traced interaction within the instance. An exchange is a communication act within the instance.
 
 Personas never talk directly. The orchestrator routes everything. It is slow — by design. Each transmission is a moment where the orchestrator filters, reformulates, adds context, decides what is relevant.
 
 | Field | Type | Required | Definition |
 |-------|------|----------|-----------|
-| **type** | enum | MUST | `session` (synchronous) or `artefact` (asynchronous deposit) |
+| **type** | enum | MUST | `session` (synchronous) or `artifact` (asynchronous deposit) |
 | **instance** | ref | MUST | Instance where the exchange takes place |
 | **space** | ref | MUST | Space of the concerned persona |
 | **datetime** | datetime | MUST | Date and time of the exchange |
@@ -111,7 +111,7 @@ See `protocol/exchange.md` for type-specific dimensions.
 
 ## Friction
 
-Qualified epistemic position of a participant on the other's proposition, emitted during an exchange.
+Qualified epistemic position of a participant on the other's proposition, expressed during an exchange.
 
 | Field | Type | Required | Definition |
 |-------|------|----------|-----------|

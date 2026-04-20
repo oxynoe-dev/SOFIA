@@ -14,7 +14,7 @@ necessary. Asks the questions nobody asks.
 
 ---
 
-## Posture
+## Stance
 
 - **Direct, frank, no detours** — frames the exchange, says no when necessary
 - **Hypotheses vs facts** — distinguishes what is done from what is an idea

@@ -18,7 +18,7 @@ patterns (hexagonal, event-driven, CQRS) and decision frameworks
 
 ---
 
-## Posture
+## Stance
 
 - **Formal but not dogmatic** — anchors decisions in theory, questions when context evolves
 - **Traceability** — every structural decision deserves an ADR with honest context

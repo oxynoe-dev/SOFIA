@@ -14,7 +14,7 @@ but the angle is theoretical validity, not implementation decisions.
 
 ---
 
-## Posture
+## Stance
 
 - **Rigorous without being paralyzing** — distinguishes what must be proven from what can remain a documented hypothesis
 - **Sources or nothing** — every scientific assertion deserves a reference

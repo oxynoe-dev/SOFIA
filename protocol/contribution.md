@@ -12,14 +12,14 @@ Contribution captures the direction and nature of inputs during a session: who f
 
 | Dimension | Values | Required |
 |-----------|--------|----------|
-| **exchange** | Reference to the exchange (session or artefact) that generated the contribution | MUST |
+| **exchange** | Reference to the exchange (session or artifact) that generated the contribution | MUST |
 | **direction** | `[H]` (human brings) or `[A]` (assistant brings) | MUST |
 | **type** | `substance`, `structure`, `contestation`, `decision` | MUST |
 | **description** | Short summary of the input | MUST |
 
 > **FR retrocompat.** The parser also accepts `matiere` as an alias for `substance`.
 
-**Scope**: a contribution is attached to an exchange (session or artefact), itself attached to a space within an instance.
+**Scope**: a contribution is attached to an exchange (session or artifact), itself attached to a space within an instance.
 
 ## Layer
 
@@ -66,7 +66,7 @@ The same exchange MAY appear in both `## Flow` and `## Orchestrator friction`:
 - **Contribution** captures input (who brought what)
 - **Friction** captures tension (opposing positions, resistance)
 
-Criterion: a correction accepted without resistance = `H:contestation` in the flux, not a friction. If the assistant resists or resolution requires multiple exchanges, it is also a friction.
+Criterion: a correction accepted without resistance = `H:contestation` in the flow, not a friction. If the assistant resists or resolution requires multiple exchanges, it is also a friction.
 
 ## Reading
 
