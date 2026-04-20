@@ -12,7 +12,7 @@
   <rect width="880" height="680" fill="url(#bg-grad)" rx="6"/>
 
   <!-- TITRE -->
-  <text x="440" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="15" font-weight="300" letter-spacing="0.03em">Structure du repository sofia/</text>
+  <text x="440" y="32" text-anchor="middle" fill="#f0f8f5" font-family="Georgia,serif" font-size="15" font-weight="300" letter-spacing="0.03em">Repository structure — sofia/</text>
 
   <!-- ROOT -->
   <rect x="40" y="52" width="80" height="24" rx="3" fill="rgba(64,216,192,0.06)" stroke="rgba(64,180,160,0.25)" stroke-width="0.7"/>
@@ -116,7 +116,7 @@
   <line x1="150" y1="500" x2="170" y2="500" stroke="rgba(212,160,48,0.1)" stroke-width="0.5"/>
   <rect x="174" y="489" width="100" height="22" rx="3" fill="rgba(212,160,48,0.03)" stroke="rgba(212,160,48,0.12)" stroke-width="0.5"/>
   <text x="186" y="504" fill="rgba(212,160,48,0.5)" font-family="IBM Plex Mono,monospace" font-size="8.5">archetypes/</text>
-  <text x="284" y="504" fill="rgba(212,160,48,0.3)" font-family="Inter,sans-serif" font-size="7">9 fiches</text>
+  <text x="284" y="504" fill="rgba(212,160,48,0.3)" font-family="Inter,sans-serif" font-size="7">9 files</text>
 
   <line x1="150" y1="520" x2="170" y2="520" stroke="rgba(212,160,48,0.1)" stroke-width="0.5"/>
   <rect x="174" y="509" width="92" height="22" rx="3" fill="rgba(212,160,48,0.03)" stroke="rgba(212,160,48,0.12)" stroke-width="0.5"/>
@@ -168,21 +168,21 @@
   <line x1="680" y1="95" x2="690" y2="95" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
   <line x1="680" y1="180" x2="690" y2="180" stroke="rgba(64,216,192,0.1)" stroke-width="0.5"/>
   <text x="700" y="125" fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">CORE</text>
-  <text x="700" y="140" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="7.5">Invariants methode.</text>
+  <text x="700" y="140" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="7.5">Method invariants.</text>
   <text x="700" y="152" fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="7.5">3 documents.</text>
 
   <line x1="680" y1="192" x2="680" y2="300" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
   <line x1="680" y1="192" x2="690" y2="192" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
   <line x1="680" y1="300" x2="690" y2="300" stroke="rgba(167,139,250,0.1)" stroke-width="0.5"/>
   <text x="700" y="230" fill="rgba(167,139,250,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">PROTOCOL</text>
-  <text x="700" y="245" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">H2A — semantique.</text>
+  <text x="700" y="245" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">H2A — semantics.</text>
   <text x="700" y="257" fill="rgba(167,139,250,0.3)" font-family="Inter,sans-serif" font-size="7.5">5 invariants, 9 operations.</text>
 
   <line x1="680" y1="312" x2="680" y2="380" stroke="rgba(220,120,90,0.1)" stroke-width="0.5"/>
   <line x1="680" y1="312" x2="690" y2="312" stroke="rgba(220,120,90,0.1)" stroke-width="0.5"/>
   <line x1="680" y1="380" x2="690" y2="380" stroke="rgba(220,120,90,0.1)" stroke-width="0.5"/>
   <text x="700" y="338" fill="rgba(220,120,90,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">IMPLEMENTATION</text>
-  <text x="700" y="353" fill="rgba(220,120,90,0.3)" font-family="Inter,sans-serif" font-size="7.5">Materialisation.</text>
+  <text x="700" y="353" fill="rgba(220,120,90,0.3)" font-family="Inter,sans-serif" font-size="7.5">Materialization.</text>
   <text x="700" y="365" fill="rgba(220,120,90,0.3)" font-family="Inter,sans-serif" font-size="7.5">Filesystem (extensible).</text>
 
   <line x1="680" y1="392" x2="680" y2="455" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
@@ -190,14 +190,14 @@
   <line x1="680" y1="455" x2="690" y2="455" stroke="rgba(138,168,216,0.1)" stroke-width="0.5"/>
   <text x="700" y="415" fill="rgba(138,168,216,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">RUNTIME</text>
   <text x="700" y="430" fill="rgba(138,168,216,0.3)" font-family="Inter,sans-serif" font-size="7.5">Adaptateurs provider.</text>
-  <text x="700" y="442" fill="rgba(138,168,216,0.3)" font-family="Inter,sans-serif" font-size="7.5">Claude Code (+ futur).</text>
+  <text x="700" y="442" fill="rgba(138,168,216,0.3)" font-family="Inter,sans-serif" font-size="7.5">Claude Code (+ future).</text>
 
   <line x1="680" y1="468" x2="680" y2="590" stroke="rgba(212,160,48,0.1)" stroke-width="0.5"/>
   <line x1="680" y1="468" x2="690" y2="468" stroke="rgba(212,160,48,0.1)" stroke-width="0.5"/>
   <line x1="680" y1="590" x2="690" y2="590" stroke="rgba(212,160,48,0.1)" stroke-width="0.5"/>
   <text x="700" y="510" fill="rgba(212,160,48,0.5)" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="0.1em">CANVAS</text>
   <text x="700" y="525" fill="rgba(212,160,48,0.3)" font-family="Inter,sans-serif" font-size="7.5">Inspiration.</text>
-  <text x="700" y="537" fill="rgba(212,160,48,0.3)" font-family="Inter,sans-serif" font-size="7.5">Archetypes, artefacts,</text>
+  <text x="700" y="537" fill="rgba(212,160,48,0.3)" font-family="Inter,sans-serif" font-size="7.5">Archetypes, artifacts,</text>
   <text x="700" y="549" fill="rgba(212,160,48,0.3)" font-family="Inter,sans-serif" font-size="7.5">patterns, workflows.</text>
 
   <text x="700" y="615" fill="rgba(200,210,220,0.35)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.1em">DOC</text>

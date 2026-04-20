@@ -67,10 +67,19 @@ RESOLUTION_ALIASES = {
 }
 
 EMITTER_KEYS = {"de", "auteur", "emetteur", "from"}
-RECIPIENT_KEYS = {"pour", "destinataire", "destinataires", "to"}
+RECIPIENT_KEYS = {"pour", "destinataire", "destinataires", "to", "for"}
 NATURE_KEYS = {"nature", "type"}
+STATUT_KEYS = {"statut", "status"}
+OBJET_KEYS = {"objet", "subject", "object"}
 
 VALID_STATUTS = {"nouveau", "lu", "traite", "new", "read", "done"}
+
+# Statut value aliases — EN→FR canonical for normalize_frontmatter
+STATUT_ALIASES = {
+    "nouveau": "nouveau", "new": "nouveau",
+    "lu": "lu", "read": "lu",
+    "traite": "traite", "done": "traite",
+}
 
 _ACCENT_MAP = str.maketrans(
     "àâäéèêëïîôùûüÿçÀÂÄÉÈÊËÏÎÔÙÛÜŸÇ",
@@ -138,11 +147,16 @@ def normalize_frontmatter(fm: dict) -> dict:
     if "date" in fm:
         result["date"] = fm["date"].strip()
 
-    if "statut" in fm:
-        result["statut"] = strip_accents(fm["statut"].lower().strip())
+    for k in STATUT_KEYS:
+        if k in fm:
+            raw = strip_accents(fm[k].lower().strip())
+            result["statut"] = STATUT_ALIASES.get(raw, raw)
+            break
 
-    if "objet" in fm:
-        result["objet"] = fm["objet"].strip()
+    for k in OBJET_KEYS:
+        if k in fm:
+            result["objet"] = fm[k].strip()
+            break
 
     if "persona" in fm:
         result["persona"] = strip_accents(fm["persona"].lower().strip())
@@ -286,9 +300,9 @@ def check_structure(instance: Path) -> list[dict]:
             has_emitter = bool(fm_keys & EMITTER_KEYS)
             has_recipient = bool(fm_keys & RECIPIENT_KEYS)
             has_nature = bool(fm_keys & NATURE_KEYS)
-            has_statut = "statut" in fm_keys
+            has_statut = bool(fm_keys & STATUT_KEYS)
             has_date = "date" in fm_keys
-            has_objet = "objet" in fm_keys
+            has_objet = bool(fm_keys & OBJET_KEYS)
             missing = []
             if not has_emitter:
                 missing.append("de")
@@ -336,11 +350,14 @@ def check_structure(instance: Path) -> list[dict]:
             continue
         for f in base.rglob("*.md"):
             fm = parse_frontmatter(f)
-            if fm is None or "statut" not in fm:
+            if fm is None:
                 continue
-            val = strip_accents(fm["statut"].lower().strip())
+            statut_key = next((k for k in STATUT_KEYS if k in fm), None)
+            if statut_key is None:
+                continue
+            val = strip_accents(fm[statut_key].lower().strip())
             if val not in VALID_STATUTS:
-                bad_statut_files.append(f"{f.relative_to(instance)} (statut: {fm['statut']})")
+                bad_statut_files.append(f"{f.relative_to(instance)} (statut: {fm[statut_key]})")
     if bad_statut_files:
         add("F6", "warn", False, f"{len(bad_statut_files)} fichiers avec statut invalide", bad_statut_files)
     else:
@@ -412,8 +429,9 @@ def check_structure(instance: Path) -> list[dict]:
             fm = parse_frontmatter(f)
             if fm is None:
                 continue
-            statut = strip_accents(fm.get("statut", "").lower().strip())
-            if statut == "traite":
+            statut_raw = next((fm[k] for k in STATUT_KEYS if k in fm), "")
+            statut = strip_accents(statut_raw.lower().strip())
+            if statut in ("traite", "done"):
                 misplaced_traite.append(str(f.relative_to(instance)))
     if misplaced_traite:
         add("A1", "warn", False, f"{len(misplaced_traite)} fichiers traite hors archives/", misplaced_traite)
@@ -433,9 +451,10 @@ def check_structure(instance: Path) -> list[dict]:
             fm = parse_frontmatter(f)
             if fm is None:
                 continue
-            statut = strip_accents(fm.get("statut", "").lower().strip())
-            if statut and statut != "traite":
-                bad_archive.append(f"{f.relative_to(instance)} (statut: {fm.get('statut', '')})")
+            statut_raw = next((fm[k] for k in STATUT_KEYS if k in fm), "")
+            statut = strip_accents(statut_raw.lower().strip())
+            if statut and statut not in ("traite", "done"):
+                bad_archive.append(f"{f.relative_to(instance)} (statut: {statut_raw})")
     if bad_archive:
         add("A2", "info", False, f"{len(bad_archive)} fichiers dans archives/ sans statut traite", bad_archive)
     else:

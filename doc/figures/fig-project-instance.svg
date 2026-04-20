@@ -24,7 +24,7 @@
   <!-- Sous-titre -->
   <text x="180" y="78" text-anchor="middle"
         fill="rgba(64,216,192,0.4)" font-family="Inter,sans-serif" font-size="10"
-        font-style="italic">l'atelier — les personas pensent ici</text>
+        font-style="italic">the workshop — personas think here</text>
 
   <!-- Workspaces (blocs simples) -->
   <rect x="64" y="98" width="108" height="28" rx="4"
@@ -83,7 +83,7 @@
   <!-- Sous-titre -->
   <text x="540" y="78" text-anchor="middle"
         fill="rgba(255,221,68,0.4)" font-family="Inter,sans-serif" font-size="10"
-        font-style="italic">le livrable — le code vit ici</text>
+        font-style="italic">the deliverable — code lives here</text>
 
   <!-- Blocs projet -->
   <rect x="424" y="98" width="108" height="28" rx="4"
@@ -108,12 +108,12 @@
         fill="rgba(64,216,192,0.5)" font-family="IBM Plex Mono,monospace" font-size="9">CLAUDE.md</text>
   <text x="540" y="222" text-anchor="middle"
         fill="rgba(64,216,192,0.3)" font-family="Inter,sans-serif" font-size="7.5"
-        font-style="italic">le dev travaille ici aussi</text>
+        font-style="italic">the dev works here too</text>
 
   <!-- ══ LEGENDE ══ -->
   <text x="360" y="268" text-anchor="middle"
         fill="rgba(240,248,245,0.25)" font-family="Inter,sans-serif" font-size="8">
-    Les personas pensent dans l'instance. Le produit sort dans le projet. L'orchestrateur porte le contexte entre les deux.
+    Personas think in the instance. The product ships in the project. The orchestrator carries context between both.
   </text>
 
 </svg>
