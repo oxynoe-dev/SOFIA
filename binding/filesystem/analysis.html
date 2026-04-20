@@ -1492,8 +1492,8 @@ function renderProbeInstance(instName, instData) {
 
       html += '<div class="audit-section"><h2>Audit checks <i class=\"info-icon\">i<span class=\"info-tip\">Protocol (PS/PA/PF), artifact (AN/AR/AF), and instance (IS/IN/IR) conformity checks. Pass = conformant, warn = minor issue, fail = violation.</span></i></h2></div>';
       html += '<div class="checks-grid">';
-      const prefixLabels = { PS: 'Protocol — Structure', PA: 'Protocol — Artifacts', PF: 'Protocol — Format', IS: 'Instance — Structure', IN: 'Instance — Naming', AN: 'Artifact — Notes', AR: 'Artifact — Reviews', AF: 'Artifact — Features', IR: 'Instance — Roadmap' };
-      const prefixOrder = ['PS', 'PA', 'PF', 'IS', 'IN', 'AN', 'AR', 'AF', 'IR'];
+      const prefixLabels = { PS: 'Protocol — Structure', PP: 'Protocol — Personas', PA: 'Protocol — Artifacts', PF: 'Protocol — Format', IS: 'Instance — Structure', IN: 'Instance — Naming', AN: 'Artifact — Notes', AR: 'Artifact — Reviews', AF: 'Artifact — Features', IR: 'Instance — Roadmap' };
+      const prefixOrder = ['PS', 'PP', 'PA', 'PF', 'IS', 'IN', 'AN', 'AR', 'AF', 'IR'];
       const sortedChecks = [...checks].sort((a, b) => {
         const pa = a.id.replace(/[0-9]+.*$/, '');
         const pb = b.id.replace(/[0-9]+.*$/, '');

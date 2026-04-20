@@ -271,6 +271,103 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
     else:
         add("PS5", "warn", True, "tous les workspaces ont sessions/")
 
+    # ── PP: Protocol Persona checks ──
+    personas_dir = instance / "shared" / "orga" / "personas"
+    contextes_dir = instance / "shared" / "orga" / "contextes"
+
+    # PP1: persona files exist
+    persona_files = list(personas_dir.glob("persona-*.md")) if personas_dir.is_dir() else []
+    persona_names = [f.stem.removeprefix("persona-") for f in persona_files]
+    if persona_files:
+        add("PP1", "warn", True, f"{len(persona_files)} persona files dans shared/orga/personas/")
+    else:
+        add("PP1", "warn", False, "aucun persona-*.md dans shared/orga/personas/")
+
+    # PP2: each workspace references an existing persona (via CLAUDE.md)
+    orphan_ws = []
+    for ws in workspaces:
+        claude_md = ws / "CLAUDE.md"
+        try:
+            content = claude_md.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            orphan_ws.append(ws.name)
+            continue
+        # Look for persona-*.md reference in CLAUDE.md
+        found = False
+        for pn in persona_names:
+            if f"persona-{pn}" in content:
+                found = True
+                break
+        # Also check for contexte-*.md reference (points to persona indirectly)
+        if not found:
+            for pn in persona_names:
+                if f"contexte-{pn}" in content:
+                    found = True
+                    break
+        if not found:
+            orphan_ws.append(ws.name)
+    if orphan_ws:
+        add("PP2", "info", False, f"{len(orphan_ws)} workspaces sans reference persona dans CLAUDE.md", orphan_ws)
+    else:
+        add("PP2", "info", True, "tous les workspaces referencent un persona")
+
+    # PP3: persona files have required sections (7 dimensions)
+    # Bilingual section mapping → dimension
+    section_aliases = {
+        # EN
+        "profile": "identity", "identity": "identity",
+        "stance": "stance", "posture": "stance",
+        "scope": "scope", "domaines d'intervention": "scope", "domaines d intervention": "scope",
+        "what they produce": "deliverables", "deliverables": "deliverables",
+        "ce qu'il produit": "deliverables", "ce qu il produit": "deliverables",
+        "ce qu'elle produit": "deliverables", "ce qu elle produit": "deliverables",
+        "what they don't do": "prohibitions", "prohibitions": "prohibitions",
+        "ce qu'il ne fait pas": "prohibitions", "ce qu il ne fait pas": "prohibitions",
+        "ce qu'elle ne fait pas": "prohibitions", "ce qu elle ne fait pas": "prohibitions",
+        "what they challenge": "challenge", "right to contest": "challenge",
+        "ce qu'il challenge": "challenge", "ce qu il challenge": "challenge",
+        "ce qu'elle challenge": "challenge", "ce qu elle challenge": "challenge",
+        "collaboration": "collaboration",
+        # FR aliases
+        "profil": "identity",
+    }
+    required_dimensions = {"identity", "stance", "scope", "deliverables", "prohibitions", "challenge", "collaboration"}
+    pp3_issues = []
+    for pf in persona_files:
+        try:
+            text = pf.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        # Extract ## sections
+        found_dims = set()
+        for line in text.splitlines():
+            if line.startswith("## "):
+                section_name = strip_accents(line[3:].strip().lower())
+                dim = section_aliases.get(section_name)
+                if dim:
+                    found_dims.add(dim)
+        missing_dims = required_dimensions - found_dims
+        if missing_dims:
+            pp3_issues.append(f"{pf.name} (missing: {', '.join(sorted(missing_dims))})")
+    if pp3_issues:
+        add("PP3", "warn", False, f"{len(pp3_issues)} personas avec dimensions manquantes", pp3_issues)
+    else:
+        add("PP3", "warn", True, f"tous les personas ont les 7 dimensions")
+
+    # PP4: each persona has a context file
+    pp4_missing = []
+    if contextes_dir.is_dir():
+        for name in persona_names:
+            matches = list(contextes_dir.glob(f"contexte-{name}*.md"))
+            if not matches:
+                pp4_missing.append(name)
+    else:
+        pp4_missing = persona_names.copy()
+    if pp4_missing:
+        add("PP4", "info", False, f"{len(pp4_missing)} personas sans contexte", pp4_missing)
+    else:
+        add("PP4", "info", True, "tous les personas ont un fichier contexte")
+
     # IS2: roadmaps (emerge a l'usage — absent = normal) — instance level
     roadmaps = list((instance / "shared").glob("roadmap-*.md")) if (instance / "shared").is_dir() else []
     if not protocol_only:

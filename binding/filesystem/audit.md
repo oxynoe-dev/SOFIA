@@ -11,6 +11,7 @@ Format: `{level}{category}{number}`
 | Prefix | Level | Category | Conditioned by |
 |--------|-------|----------|----------------|
 | PS | Protocol | Structure | always |
+| PP | Protocol | Personas | always |
 | PA | Protocol | Artifacts | always |
 | PF | Protocol | Format | always |
 | AN | Artifact | Note | `--artifacts notes` |
@@ -41,6 +42,15 @@ Format: `{level}{category}{number}`
 | PS3 | `shared/conventions.md` present | warn | `protocol/exchange.md` — exchange rules |
 | PS4 | At least 1 workspace with `CLAUDE.md` | fail | `protocol/exchange.md` — persona space |
 | PS5 | Each workspace has `sessions/` | warn | `protocol/exchange.md` — session traces |
+
+### Protocol Personas (PP)
+
+| ID | Rule | Severity | Source |
+|----|------|----------|--------|
+| PP1 | `shared/orga/personas/` has `persona-*.md` files | warn | `core/model.md` — persona entity |
+| PP2 | Each workspace maps to a persona file | warn | `protocol/exchange.md` — persona space |
+| PP3 | Persona files have 7 required dimensions (identity, stance, scope, deliverables, prohibitions, challenge, collaboration) | warn | `core/model.md` §7 dimensions |
+| PP4 | Each persona has a context file in `shared/orga/contextes/` | info | Instance convention |
 
 ### Protocol Artifacts (PA)
 
