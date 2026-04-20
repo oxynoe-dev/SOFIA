@@ -102,6 +102,20 @@ When an artifact is processed, each point SHOULD carry a resolution tag in the d
 
 `→ ratified` | `→ contested` | `→ revised` | `→ rejected`
 
+### Artifact types
+
+Declare which artifact types this instance uses. The audit checks only declared types.
+
+| Type | Directory | Naming | Extra fields |
+|------|-----------|--------|--------------|
+| notes | shared/notes/ | `note-{subject}-{author}.md` | |
+| reviews | shared/review/ | `review-{subject}-{author}.md` | subject |
+
+<!-- Add rows for additional types used by this instance, e.g.:
+| features | shared/features/ | `feature-{name}.md` | |
+| specs | shared/specs/ | `spec-{name}.md` | |
+-->
+
 ---
 
 ## Friction

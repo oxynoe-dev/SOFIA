@@ -92,6 +92,84 @@ def strip_accents(s: str) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Artifact type discovery from conventions.md
+# ---------------------------------------------------------------------------
+
+# Default artifact types (used if conventions.md has no ## Artifact types table)
+DEFAULT_ARTIFACT_TYPES = {
+    "notes": {"dir": "shared/notes", "naming": r"^note-.+-.+\.md$", "extra_fields": set()},
+    "reviews": {"dir": "shared/review", "naming": r"^review-.+-.+\.md$", "extra_fields": {"objet"}},
+}
+
+def parse_artifact_types_from_conventions(instance: Path) -> dict[str, dict] | None:
+    """Parse the ## Artifact types table from shared/conventions.md.
+
+    Returns a dict mapping type name → {dir, naming, extra_fields}, or None
+    if the section is absent (caller should fall back to DEFAULT_ARTIFACT_TYPES).
+    """
+    conv = instance / "shared" / "conventions.md"
+    if not conv.is_file():
+        return None
+    try:
+        text = conv.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
+        return None
+
+    # Find ## Artifact types section
+    lines = text.splitlines()
+    in_section = False
+    table_lines = []
+    for line in lines:
+        if re.match(r"^#{1,3}\s+[Aa]rtifact [Tt]ypes?\s*$", line):
+            in_section = True
+            continue
+        if in_section and line.startswith("#"):
+            break
+        if in_section and "|" in line:
+            table_lines.append(line)
+
+    if len(table_lines) < 3:  # header + separator + at least 1 row
+        return None
+
+    # Parse table rows (skip header and separator)
+    result = {}
+    for row in table_lines[2:]:
+        cells = [c.strip() for c in row.split("|")]
+        cells = [c for c in cells if c]  # remove empty from leading/trailing |
+        if len(cells) < 2:
+            continue
+        # Skip HTML comment rows
+        if cells[0].startswith("<!--"):
+            continue
+        type_name = cells[0].strip().lower()
+        directory = cells[1].strip().rstrip("/") if len(cells) > 1 else f"shared/{type_name}"
+        naming = cells[2].strip() if len(cells) > 2 else ""
+        extra = cells[3].strip() if len(cells) > 3 else ""
+
+        # Convert naming pattern like note-{subject}-{author}.md → regex
+        naming_re = ""
+        if naming and naming.startswith("`"):
+            naming = naming.strip("`")
+        if naming:
+            # Replace {xxx} placeholders with .+ regex
+            naming_re = "^" + re.sub(r"\{[^}]+\}", ".+", re.escape(naming).replace(r"\.\+", ".+")) + "$"
+            # Fix: re.escape escapes the dots, we need .md at end
+            naming_re = naming_re.replace(r"\.md", r"\.md")
+
+        extra_fields = set()
+        if extra:
+            extra_fields = {f.strip() for f in extra.split(",") if f.strip()}
+
+        result[type_name] = {
+            "dir": directory.rstrip("/"),
+            "naming": naming_re,
+            "extra_fields": extra_fields,
+        }
+
+    return result if result else None
+
+
+# ---------------------------------------------------------------------------
 # Frontmatter parser
 # ---------------------------------------------------------------------------
 
@@ -198,14 +276,17 @@ def count_friction_markers_from_text(text: str) -> dict[str, int]:
 # Phase 1 — Structural conformity
 # ---------------------------------------------------------------------------
 
-def check_structure(instance: Path, protocol_only: bool = False, artifact_types: set[str] | None = None) -> list[dict]:
+def check_structure(instance: Path, protocol_only: bool = False, artifact_types: set[str] | None = None, artifact_defs: dict | None = None) -> list[dict]:
     """Run structural conformity checks.
 
-    protocol_only: skip instance-level checks (AN1-AR1, IS2, IS3, AN4-IN1, AN5-AR5, IS4, IR1-IR8)
+    protocol_only: skip instance-level checks
     artifact_types: set of artifact types to audit (default: {"notes", "reviews"})
+    artifact_defs: dict mapping type name → {dir, naming, extra_fields}
     """
     if artifact_types is None:
         artifact_types = {"notes", "reviews"}
+    if artifact_defs is None:
+        artifact_defs = dict(DEFAULT_ARTIFACT_TYPES)
     checks = []
 
     def add(cid: str, severity: str, passed: bool, detail: str, files: list[str] | None = None):
@@ -227,33 +308,26 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
     add("PS3", "warn", (instance / "shared" / "conventions.md").is_file(),
         "shared/conventions.md present" if (instance / "shared" / "conventions.md").is_file() else "shared/conventions.md manquant")
 
-    # AN1-IS1: instance-level structure checks (skipped in --protocol-only)
+    # Prefix mapping: type name → 2-letter prefix for check IDs
+    _type_prefixes = {"notes": "AN", "reviews": "AR", "features": "AF"}
+
+    # A{X}1: per-type directory presence (skipped in --protocol-only)
     if not protocol_only:
-        # AN1: shared/notes/ with archives/ (emerge a l'usage — absent = normal)
-        notes_dir = instance / "shared" / "notes"
-        notes_ok = notes_dir.is_dir()
-        notes_archives = (notes_dir / "archives").is_dir() if notes_ok else False
-        if notes_ok and notes_archives:
-            add("AN1", "info", True, "shared/notes/ present avec archives/")
-        elif notes_ok:
-            add("AN1", "info", False, "shared/notes/ present mais archives/ manquant")
-        else:
-            add("AN1", "info", True, "shared/notes/ absent (emerge a l'usage)")
-
-        # AR1: shared/review/ with archives/ (emerge a l'usage — absent = normal)
-        review_dir = instance / "shared" / "review"
-        review_ok = review_dir.is_dir()
-        review_archives = (review_dir / "archives").is_dir() if review_ok else False
-        if review_ok and review_archives:
-            add("AR1", "info", True, "shared/review/ present avec archives/")
-        elif review_ok:
-            add("AR1", "info", False, "shared/review/ present mais archives/ manquant")
-        else:
-            add("AR1", "info", True, "shared/review/ absent (emerge a l'usage)")
-
-        # AF1: shared/features/ (emerge a l'usage — absent = normal)
-        add("AF1", "info", True,
-            "shared/features/ present" if (instance / "shared" / "features").is_dir() else "shared/features/ absent (emerge a l'usage)")
+        for type_name in sorted(artifact_types):
+            defn = artifact_defs.get(type_name)
+            if not defn:
+                continue
+            prefix = _type_prefixes.get(type_name, "A" + type_name[0:1].upper())
+            rel_dir = defn["dir"]
+            type_dir = instance / rel_dir
+            type_ok = type_dir.is_dir()
+            type_archives = (type_dir / "archives").is_dir() if type_ok else False
+            if type_ok and type_archives:
+                add(f"{prefix}1", "info", True, f"{rel_dir}/ present avec archives/")
+            elif type_ok:
+                add(f"{prefix}1", "info", False, f"{rel_dir}/ present mais archives/ manquant")
+            else:
+                add(f"{prefix}1", "info", True, f"{rel_dir}/ absent (emerge a l'usage)")
 
         # IS1: shared/orga/
         add("IS1", "info", (instance / "shared" / "orga").is_dir(),
@@ -445,71 +519,65 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
     else:
         add("PA3", "warn", True, "tous les statuts artifacts sont valides")
 
-    # ── AN/AR/AF: per-type artifact checks ──
-    # AN2/AR2/AF2: frontmatter presence (only for declared artifact types)
-    artifact_dirs = [("notes", "shared/notes", "AN2"), ("reviews", "shared/review", "AR2")]
-    if "features" in artifact_types:
-        artifact_dirs.append(("features", "shared/features", "AF2"))
-    for label, rel_dir, fid in artifact_dirs:
-        if label not in artifact_types:
-            continue
-        base = instance / rel_dir
-        if not base.is_dir():
-            continue
-        all_md = list(base.rglob("*.md"))
-        no_fm = [str(f.relative_to(instance)) for f in all_md if parse_frontmatter(f) is None]
-        if no_fm:
-            add(fid, "warn", False, f"{len(no_fm)}/{len(all_md)} {label} sans frontmatter", no_fm)
-        else:
-            add(fid, "warn", True, f"{len(all_md)} {label} avec frontmatter")
+    # ── Per-type artifact checks (dynamic from artifact_defs) ──
+    base_required = {"de", "pour", "nature", "statut", "date"}
 
-    # AN3/AR3/AF3: required fields (only for declared artifact types)
-    required_notes = {"de", "pour", "nature", "statut", "date"}
-    required_reviews = {"de", "pour", "nature", "statut", "date", "objet"}
-    required_features = {"de", "pour", "nature", "statut", "date"}
-    field_checks = [
-        ("notes", "shared/notes", "AN3", required_notes),
-        ("reviews", "shared/review", "AR3", required_reviews),
-    ]
-    if "features" in artifact_types:
-        field_checks.append(("features", "shared/features", "AF3", required_features))
-    for label, rel_dir, fid, required in field_checks:
-        if label not in artifact_types:
+    for type_name in sorted(artifact_types):
+        defn = artifact_defs.get(type_name)
+        if not defn:
             continue
+        prefix = _type_prefixes.get(type_name)
+        if not prefix:
+            # Dynamic prefix: first letter uppercase + second letter, e.g. "specs" → "AS"
+            prefix = "A" + type_name[0:1].upper()
+        rel_dir = defn["dir"]
         base = instance / rel_dir
-        if not base.is_dir():
-            continue
-        missing_fields_files = []
-        for f in base.rglob("*.md"):
-            fm = parse_frontmatter(f)
-            if fm is None:
-                continue
-            fm_keys = set(fm.keys())
-            has_emitter = bool(fm_keys & EMITTER_KEYS)
-            has_recipient = bool(fm_keys & RECIPIENT_KEYS)
-            has_nature = bool(fm_keys & NATURE_KEYS)
-            has_statut = bool(fm_keys & STATUT_KEYS)
-            has_date = "date" in fm_keys
-            has_objet = bool(fm_keys & OBJET_KEYS)
-            missing = []
-            if not has_emitter:
-                missing.append("de")
-            if not has_recipient:
-                missing.append("pour")
-            if not has_nature:
-                missing.append("nature")
-            if not has_statut:
-                missing.append("statut")
-            if not has_date:
-                missing.append("date")
-            if "objet" in required and not has_objet:
-                missing.append("objet")
-            if missing:
-                missing_fields_files.append(f"{f.relative_to(instance)} (manque: {', '.join(missing)})")
-        if missing_fields_files:
-            add(fid, "warn", False, f"{len(missing_fields_files)} {label} avec champs manquants", missing_fields_files)
-        else:
-            add(fid, "warn", True, f"tous les {label} ont les champs requis")
+        extra_fields = defn.get("extra_fields", set())
+        naming_re = defn.get("naming", "")
+
+        # {prefix}2: frontmatter presence
+        if base.is_dir():
+            all_md = list(base.rglob("*.md"))
+            no_fm = [str(f.relative_to(instance)) for f in all_md if parse_frontmatter(f) is None]
+            if no_fm:
+                add(f"{prefix}2", "warn", False, f"{len(no_fm)}/{len(all_md)} {type_name} sans frontmatter", no_fm)
+            else:
+                add(f"{prefix}2", "warn", True, f"{len(all_md)} {type_name} avec frontmatter")
+
+        # {prefix}3: required fields
+        required = base_required | extra_fields
+        if base.is_dir():
+            missing_fields_files = []
+            for f in base.rglob("*.md"):
+                fm = parse_frontmatter(f)
+                if fm is None:
+                    continue
+                fm_keys = set(fm.keys())
+                has_emitter = bool(fm_keys & EMITTER_KEYS)
+                has_recipient = bool(fm_keys & RECIPIENT_KEYS)
+                has_nature = bool(fm_keys & NATURE_KEYS)
+                has_statut = bool(fm_keys & STATUT_KEYS)
+                has_date = "date" in fm_keys
+                has_objet = bool(fm_keys & OBJET_KEYS)
+                missing = []
+                if not has_emitter:
+                    missing.append("from")
+                if not has_recipient:
+                    missing.append("to")
+                if not has_nature:
+                    missing.append("nature")
+                if not has_statut:
+                    missing.append("status")
+                if not has_date:
+                    missing.append("date")
+                if "objet" in extra_fields and not has_objet:
+                    missing.append("subject")
+                if missing:
+                    missing_fields_files.append(f"{f.relative_to(instance)} (missing: {', '.join(missing)})")
+            if missing_fields_files:
+                add(f"{prefix}3", "warn", False, f"{len(missing_fields_files)} {type_name} avec champs manquants", missing_fields_files)
+            else:
+                add(f"{prefix}3", "warn", True, f"tous les {type_name} ont les champs requis")
 
     # IS3: accents in frontmatter values — instance level
     if not protocol_only:
@@ -554,20 +622,20 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
     else:
         add("PF1", "info", True, f"{len(session_files)} sessions avec frontmatter conforme")
 
-    # AN4/AR4/IN1: naming conventions — instance level
+    # A{X}4: naming conventions — instance level
     if protocol_only:
         return checks
-    note_pattern = re.compile(r"^note-.+-.+\.md$")
-    review_pattern = re.compile(r"^review-.+-.+\.md$")
-    roadmap_pattern = re.compile(r"^roadmap-.+\.md$")
 
-    for label, rel_dir, nid, pattern in [
-        ("notes", "shared/notes", "AN4", note_pattern),
-        ("reviews", "shared/review", "AR4", review_pattern),
-    ]:
+    for type_name in sorted(artifact_types):
+        defn = artifact_defs.get(type_name)
+        if not defn or not defn.get("naming"):
+            continue
+        prefix = _type_prefixes.get(type_name, "A" + type_name[0:1].upper())
+        rel_dir = defn["dir"]
         base = instance / rel_dir
         if not base.is_dir():
             continue
+        pattern = re.compile(defn["naming"])
         bad_names = []
         for f in base.rglob("*.md"):
             if "archives" in f.relative_to(base).parts or "archive" in f.relative_to(base).parts:
@@ -575,10 +643,11 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             if not pattern.match(f.name):
                 bad_names.append(str(f.relative_to(instance)))
         if bad_names:
-            add(nid, "info", False, f"{len(bad_names)} {label} hors convention de nommage", bad_names)
+            add(f"{prefix}4", "info", False, f"{len(bad_names)} {type_name} hors convention de nommage", bad_names)
         else:
-            add(nid, "info", True, f"toutes les {label} suivent la convention")
+            add(f"{prefix}4", "info", True, f"tous les {type_name} suivent la convention")
 
+    roadmap_pattern = re.compile(r"^roadmap-.+\.md$")
     if roadmaps:
         bad_rm = [str(f.relative_to(instance)) for f in roadmaps if not roadmap_pattern.match(f.name)]
         if bad_rm:
@@ -586,12 +655,19 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
         else:
             add("IN1", "info", True, "toutes les roadmaps suivent roadmap-{{produit}}.md")
 
-    # AN5: traite notes not in archives/
-    misplaced_notes = []
-    notes_base = instance / "shared" / "notes"
-    if notes_base.is_dir():
-        for f in notes_base.rglob("*.md"):
-            in_archives = "archives" in f.relative_to(notes_base).parts or "archive" in f.relative_to(notes_base).parts
+    # A{X}5: done files not in archives/
+    for type_name in sorted(artifact_types):
+        defn = artifact_defs.get(type_name)
+        if not defn:
+            continue
+        prefix = _type_prefixes.get(type_name, "A" + type_name[0:1].upper())
+        rel_dir = defn["dir"]
+        base = instance / rel_dir
+        if not base.is_dir():
+            continue
+        misplaced = []
+        for f in base.rglob("*.md"):
+            in_archives = "archives" in f.relative_to(base).parts or "archive" in f.relative_to(base).parts
             if in_archives:
                 continue
             fm = parse_frontmatter(f)
@@ -600,31 +676,11 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             statut_raw = next((fm[k] for k in STATUT_KEYS if k in fm), "")
             statut = strip_accents(statut_raw.lower().strip())
             if statut in ("traite", "done"):
-                misplaced_notes.append(str(f.relative_to(instance)))
-    if misplaced_notes:
-        add("AN5", "warn", False, f"{len(misplaced_notes)} notes traite hors archives/", misplaced_notes)
-    else:
-        add("AN5", "warn", True, "toutes les notes traite sont dans archives/")
-
-    # AR5: traite reviews not in archives/
-    misplaced_reviews = []
-    reviews_base = instance / "shared" / "review"
-    if reviews_base.is_dir():
-        for f in reviews_base.rglob("*.md"):
-            in_archives = "archives" in f.relative_to(reviews_base).parts or "archive" in f.relative_to(reviews_base).parts
-            if in_archives:
-                continue
-            fm = parse_frontmatter(f)
-            if fm is None:
-                continue
-            statut_raw = next((fm[k] for k in STATUT_KEYS if k in fm), "")
-            statut = strip_accents(statut_raw.lower().strip())
-            if statut in ("traite", "done"):
-                misplaced_reviews.append(str(f.relative_to(instance)))
-    if misplaced_reviews:
-        add("AR5", "warn", False, f"{len(misplaced_reviews)} reviews traite hors archives/", misplaced_reviews)
-    else:
-        add("AR5", "warn", True, "toutes les reviews traite sont dans archives/")
+                misplaced.append(str(f.relative_to(instance)))
+        if misplaced:
+            add(f"{prefix}5", "warn", False, f"{len(misplaced)} {type_name} done hors archives/", misplaced)
+        else:
+            add(f"{prefix}5", "warn", True, f"tous les {type_name} done sont dans archives/")
 
     # IS4: files in archives/ with non-traite status
     bad_archive = []
@@ -1466,13 +1522,23 @@ def main():
 
     today = date.today().isoformat()
 
-    # Parse artifact types
-    artifact_types = {"notes", "reviews"}
+    # Parse artifact types — CLI flag overrides, then conventions.md, then defaults
+    declared_types = parse_artifact_types_from_conventions(instance_path)
     if args.artifacts:
         artifact_types = set(a.strip() for a in args.artifacts.split(","))
+    elif declared_types:
+        artifact_types = set(declared_types.keys())
+    else:
+        artifact_types = {"notes", "reviews"}
+
+    # Merge declared type definitions with defaults
+    artifact_defs = dict(DEFAULT_ARTIFACT_TYPES)
+    if declared_types:
+        for name, defn in declared_types.items():
+            artifact_defs[name] = defn
 
     # Phase 1 — Structure
-    checks = check_structure(instance_path, protocol_only=args.protocol_only, artifact_types=artifact_types)
+    checks = check_structure(instance_path, protocol_only=args.protocol_only, artifact_types=artifact_types, artifact_defs=artifact_defs)
     check_summary = defaultdict(int)
     for c in checks:
         check_summary[c["status"]] += 1

@@ -84,11 +84,11 @@ class TestFrictionMarkers(unittest.TestCase):
     def test_all_markers(self):
         text = "---\nde: x\n---\n✓ ok\n~ contestable\n⚡ trop\n◐ oubli\n✗ faux"
         counts = audit.count_friction_markers_from_text(text)
-        self.assertEqual(counts["juste"], 1)
+        self.assertEqual(counts["sound"], 1)
         self.assertEqual(counts["contestable"], 1)
         self.assertEqual(counts["simplification"], 1)
-        self.assertEqual(counts["angle_mort"], 1)
-        self.assertEqual(counts["faux"], 1)
+        self.assertEqual(counts["blind_spot"], 1)
+        self.assertEqual(counts["refuted"], 1)
 
     def test_no_markers(self):
         text = "---\nde: x\n---\nJust regular text."
@@ -108,16 +108,16 @@ class TestFrictionMarkers(unittest.TestCase):
     def test_from_fixture(self):
         counts = audit.count_friction_markers_from_text(
             (FIXTURES / "shared" / "notes" / "note-bob-arch-alice.md").read_text())
-        self.assertEqual(counts["juste"], 1)
+        self.assertEqual(counts["sound"], 1)
         self.assertEqual(counts["contestable"], 1)
         self.assertEqual(counts["simplification"], 1)
 
     def test_review_fixture(self):
         counts = audit.count_friction_markers_from_text(
             (FIXTURES / "shared" / "review" / "review-code-alice.md").read_text())
-        self.assertEqual(counts["juste"], 1)
-        self.assertEqual(counts["angle_mort"], 1)
-        self.assertEqual(counts["faux"], 1)
+        self.assertEqual(counts["sound"], 1)
+        self.assertEqual(counts["blind_spot"], 1)
+        self.assertEqual(counts["refuted"], 1)
 
 
 class TestDiscoverPersonas(unittest.TestCase):
@@ -178,7 +178,7 @@ class TestMatrices(unittest.TestCase):
         artifacts, _ = audit.scan_artifacts(FIXTURES)
         totals = audit.build_marker_totals(artifacts)
         # alice emits friction with markers
-        self.assertGreater(totals.get("alice", {}).get("juste", 0), 0)
+        self.assertGreater(totals.get("alice", {}).get("sound", 0), 0)
 
 
 class TestSessionFriction(unittest.TestCase):
@@ -189,9 +189,9 @@ class TestSessionFriction(unittest.TestCase):
         self.assertEqual(po_friction["alice"]["total_sessions"], 1)
         self.assertEqual(po_friction["alice"]["sessions_with_friction"], 1)
         # 1 juste, 1 contestable, 1 angle_mort
-        self.assertEqual(po_friction["alice"]["juste"], 1)
+        self.assertEqual(po_friction["alice"]["sound"], 1)
         self.assertEqual(po_friction["alice"]["contestable"], 1)
-        self.assertEqual(po_friction["alice"]["angle_mort"], 1)
+        self.assertEqual(po_friction["alice"]["blind_spot"], 1)
 
     def test_initiative_tags(self):
         po_friction, _ = audit.scan_session_friction(FIXTURES)
