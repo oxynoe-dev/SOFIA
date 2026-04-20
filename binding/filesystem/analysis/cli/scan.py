@@ -30,6 +30,8 @@ from analysis.lib.parser import (
     resolve_lineage,
     date_to_week,
     discover_personas,
+    discover_persona_roles,
+    measure_context_sizes,
 )
 
 
@@ -58,6 +60,7 @@ def scan_instance(instance_path: Path) -> dict:
     friction_records: list[dict] = []
     contribution_records: list[dict] = []
     signaler_patterns: list[dict] = []
+    all_session_dates: list[str] = []
 
     for filepath in session_files:
         fm = parse_frontmatter(filepath)
@@ -72,6 +75,7 @@ def scan_instance(instance_path: Path) -> dict:
         session_date = parse_session_date(filepath)
         if not session_date:
             continue
+        all_session_dates.append(session_date)
 
         try:
             text = filepath.read_text(encoding="utf-8")
@@ -156,12 +160,15 @@ def scan_instance(instance_path: Path) -> dict:
             "instance": instance_path.name,
             "date": date.today().isoformat(),
             "personas": real_personas,
+            "persona_roles": discover_persona_roles(instance_path),
+            "context_sizes": measure_context_sizes(instance_path),
             "sessions_scanned": len(session_files),
             "artifacts_scanned": len(find_artifacts(instance_path)),
         },
         "friction_records": friction_records,
         "contribution_records": contribution_records,
         "signaler_patterns": signaler_patterns,
+        "session_dates": sorted(set(all_session_dates)),
     }
 
 

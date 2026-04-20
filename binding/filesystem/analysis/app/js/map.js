@@ -23,12 +23,19 @@ function svgOxynoeBackground(svgEl) {
 }
 
 function renderMap() {
-  // Map always uses aggregated data, ignoring filters
-  const D = RAW.all || RAW.instances[Object.keys(RAW.instances)[0]];
-  if (!D || !D.map) return;
+  // Map uses MIRROR_DATA — one map entry per instance
+  if (!MIRROR_DATA) return;
 
-  const mapData = D.map.instances || (D.map.instance ? { [D.meta.instance]: D.map } : {});
-  const allRecords = D.friction_records || [];
+  // Build mapData: one entry per instance from mirror's per-instance map
+  const mapData = {};
+  for (const [instName, instData] of Object.entries(MIRROR_DATA.instances)) {
+    if (instData.map) mapData[instName] = instData.map;
+  }
+  // Collect all friction records across instances for trajectory
+  const allRecords = [];
+  for (const instData of Object.values(MIRROR_DATA.instances)) {
+    if (instData.friction_records) allRecords.push(...instData.friction_records);
+  }
 
   // ── Vue 1: Topology cards ──
   const topoDiv = document.getElementById('map-topology');

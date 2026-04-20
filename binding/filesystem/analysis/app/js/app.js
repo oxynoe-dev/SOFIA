@@ -1,5 +1,4 @@
 // ── Configuration ──
-var DATA_URL = 'analysis.json';
 
 Chart.defaults.color = '#a0d0c8';
 Chart.defaults.borderColor = 'rgba(64,180,160,0.12)';
@@ -19,13 +18,26 @@ var gridY = { beginAtZero: true, grid: { color: 'rgba(64,180,160,0.06)' } };
 var noGridX = { grid: { display: false } };
 var g = (obj, key) => (obj || {})[key] || 0;
 
-var RAW = null;        // full JSON
 var charts = [];       // Chart instances for cleanup
 
-// ── Tabs ──
-var PROBE_DATA = null;
+// ── Per-view data ──
+var LENS_DATA = null;   // from /lens
+var MIRROR_DATA = null;  // from /mirror
+var PROBE_DATA = null;   // from /audit
 var currentProbeInstance = null;
 
+// ── Data loading ──
+function loadLensData() {
+  if (LENS_DATA) return Promise.resolve(LENS_DATA);
+  return fetch('/lens').then(r => r.json()).then(data => { LENS_DATA = data; return data; });
+}
+
+function loadMirrorData() {
+  if (MIRROR_DATA) return Promise.resolve(MIRROR_DATA);
+  return fetch('/mirror').then(r => r.json()).then(data => { MIRROR_DATA = data; return data; });
+}
+
+// ── Tabs ──
 function switchTab(tab) {
   document.querySelector('main').scrollTop = 0;
   document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
@@ -54,9 +66,10 @@ function switchTab(tab) {
     const selPersona = document.getElementById('sel-persona');
     if (selInst && selInst.querySelector('option[value="all"]')) selInst.value = 'all';
     if (selPersona) selPersona.value = 'all';
-    if (RAW) renderMap();
+    loadMirrorData().then(() => renderMap());
   }
-  if (tab === 'mirror' && RAW) renderMirror();
+  if (tab === 'mirror') loadMirrorData().then(() => renderMirror());
+  if (tab === 'lens') loadLensData().then(() => renderCurrent());
   if (tab === 'legend') loadLegend();
 }
 
@@ -68,33 +81,24 @@ function selectProbeInstance(name) {
   if (PROBE_DATA) renderProbeInstance(name, PROBE_DATA[name]);
 }
 
-// ── Run analysis via server ──
-function runAnalysis() {
-  const btn = document.getElementById('btn-run');
-  if (btn) { btn.classList.add('running'); btn.textContent = '⟳ ...'; }
-  fetch('/run', { method: 'POST' })
-    .then(r => {
-      if (!r.ok) return r.json().then(d => { throw new Error(d.error || r.statusText); });
-      return r.json();
-    })
-    .then(data => {
-      RAW = data;
-      renderCurrent();
-      if (btn) { btn.textContent = '⟳ Analyser'; btn.classList.remove('running'); }
-    })
-    .catch(err => {
-      if (btn) { btn.textContent = '⟳ Analyser'; btn.classList.remove('running'); }
-      console.warn('Analysis error:', err.message);
-    });
-}
-
+// ── Refresh ──
 function runRefresh() {
   const btn = document.getElementById('btn-refresh');
   if (btn) { btn.textContent = '⟳ ...'; btn.disabled = true; }
   fetch('/refresh', { method: 'POST' })
     .then(r => { if (!r.ok) return r.json().then(d => { throw new Error(d.error || r.statusText); }); return r.json(); })
     .then(result => {
-      fetch(DATA_URL).then(r => r.json()).then(data => { RAW = data; renderCurrent(); });
+      // Invalidate caches — next view switch will reload
+      LENS_DATA = null;
+      MIRROR_DATA = null;
+      // Reload active view
+      const activeTab = document.querySelector('.tab-content.active');
+      if (activeTab) {
+        const tabId = activeTab.id.replace('tab-', '');
+        if (tabId === 'lens') loadLensData().then(() => renderCurrent());
+        if (tabId === 'mirror') loadMirrorData().then(() => renderMirror());
+        if (tabId === 'map') loadMirrorData().then(() => renderMap());
+      }
       if (result && Object.keys(result).length) { PROBE_DATA = result; if (currentProbeInstance) selectProbeInstance(currentProbeInstance); }
     })
     .catch(err => console.warn('Refresh error:', err.message))
@@ -102,42 +106,69 @@ function runRefresh() {
 }
 
 // ── Filters ──
-function initFilters() {
+function initFilters(data) {
   const selInst = document.getElementById('sel-instance');
   const selPersona = document.getElementById('sel-persona');
 
-  const instances = Object.keys(RAW.instances);
-  const hasAll = !!RAW.all;
+  const instances = Object.keys(data.instances);
   selInst.innerHTML = '';
-  if (hasAll) selInst.innerHTML += `<option value="all">All (${instances.length})</option>`;
   instances.forEach(name => selInst.innerHTML += `<option value="${name}">${name}</option>`);
-  selInst.value = RAW.default || instances[0];
+  selInst.value = data.default || instances[0];
 
-  selInst.addEventListener('change', () => { populatePersonas(); renderCurrent(); });
-  selPersona.addEventListener('change', renderCurrent);
-  document.getElementById('sel-period').addEventListener('change', renderCurrent);
-  document.getElementById('sel-granularity').addEventListener('change', renderCurrent);
+  selInst.addEventListener('change', () => {
+    populatePersonas();
+    // Re-render active view
+    const activeTab = document.querySelector('.tab-content.active');
+    if (activeTab) {
+      const tabId = activeTab.id.replace('tab-', '');
+      if (tabId === 'lens' && LENS_DATA) renderCurrent();
+      if (tabId === 'mirror' && MIRROR_DATA) renderMirror();
+    }
+  });
+  selPersona.addEventListener('change', () => {
+    const activeTab = document.querySelector('.tab-content.active');
+    if (activeTab) {
+      const tabId = activeTab.id.replace('tab-', '');
+      if (tabId === 'lens' && LENS_DATA) renderCurrent();
+      if (tabId === 'mirror' && MIRROR_DATA) renderMirror();
+    }
+  });
+  document.getElementById('sel-period').addEventListener('change', () => { if (LENS_DATA) renderCurrent(); });
+  document.getElementById('sel-granularity').addEventListener('change', () => { if (LENS_DATA) renderCurrent(); });
 
   populatePersonas();
 }
 
 function populatePersonas() {
-  const D = getCurrentData();
+  // Use whichever data is available (both share the same instance/persona structure)
+  const data = LENS_DATA || MIRROR_DATA;
+  if (!data) return;
+  const D = _getInstanceData(data);
+  if (!D) return;
   const selPersona = document.getElementById('sel-persona');
-  const personas = (D.meta.personas || Object.keys(D.personas)).sort();
+  const personas = (D.meta.personas || Object.keys(D.personas || {})).sort();
   selPersona.innerHTML = `<option value="all">All</option>`;
   personas.forEach(p => selPersona.innerHTML += `<option value="${p}">${p}</option>`);
 }
 
-function getCurrentData() {
+function _getInstanceData(data) {
   const inst = document.getElementById('sel-instance').value;
-  if (inst === 'all') return RAW.all;
-  return RAW.instances[inst];
+  return data.instances[inst];
+}
+
+function getCurrentLensData() {
+  if (!LENS_DATA) return null;
+  return _getInstanceData(LENS_DATA);
+}
+
+function getCurrentMirrorData() {
+  if (!MIRROR_DATA) return null;
+  return _getInstanceData(MIRROR_DATA);
 }
 
 function getFilteredPersonas(D) {
   const sel = document.getElementById('sel-persona').value;
-  if (sel === 'all') return (D.meta.personas || Object.keys(D.personas)).sort();
+  if (sel === 'all') return (D.meta.personas || Object.keys(D.personas || {})).sort();
   return [sel];
 }
 
@@ -157,7 +188,6 @@ function navigateTo(tab, instance, persona) {
       for (const opt of selPersona.options) {
         if (opt.value === persona) { selPersona.value = persona; break; }
       }
-      renderCurrent();
     }, 50);
   }
   switchTab(tab);
@@ -233,15 +263,15 @@ document.querySelectorAll('.chart-card, .table-card, .score-card, .instance-card
   card.appendChild(inner);
 });
 
-fetch(DATA_URL).then(r => r.json()).then(data => {
-  RAW = data;
-  initFilters();
+// Boot: load mirror data (for Map default view), init filters, render
+loadMirrorData().then(data => {
+  initFilters(data);
   // Map is default — hide sidebar, render
   document.getElementById('filters-panel').style.display = 'none';
   document.querySelectorAll('.tab-content').forEach(t => t.style.paddingLeft = '2rem');
   renderMap();
-  renderCurrent();
-}).catch(() => {
-  document.getElementById('scores').innerHTML =
-    `<div class="score-card" style="grid-column:1/-1"><div class="label" style="color:var(--coral)">Loading error ${DATA_URL} — run: python3 analysis.py &lt;instance&gt;</div></div>`;
+}).catch(err => {
+  console.warn('Boot error:', err.message);
+  document.getElementById('map-topology').innerHTML =
+    `<div class="score-card" style="grid-column:1/-1"><div class="label" style="color:var(--coral)">Loading error — run: python3 analysis.py &lt;instance&gt;</div></div>`;
 });

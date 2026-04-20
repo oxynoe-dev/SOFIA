@@ -537,6 +537,23 @@ def discover_personas(instance_path: Path) -> set[str]:
     return result
 
 
+def discover_persona_roles(instance_path: Path) -> dict[str, str]:
+    """Discover persona → role mapping from shared/orga/personas/persona-*.md frontmatter."""
+    personas_dir = instance_path / "shared" / "orga" / "personas"
+    if not personas_dir.is_dir():
+        return {}
+    roles = {}
+    for f in personas_dir.glob("persona-*.md"):
+        name = f.stem.removeprefix("persona-")
+        if not name:
+            continue
+        key = strip_accents(name.lower())
+        fm = parse_frontmatter(f)
+        if fm:
+            roles[key] = fm.get("role", "")
+    return roles
+
+
 # ---------------------------------------------------------------------------
 # Context size audit
 # ---------------------------------------------------------------------------

@@ -57,6 +57,8 @@ def build_mirror(records: dict) -> dict:
             "directions": defaultdict(int),
             "frictions": 0, "sessions_frictions": 0, "artifact_frictions": 0,
             "flux_h": 0, "flux_a": 0,
+            "flux_types_h": defaultdict(int),
+            "flux_types_a": defaultdict(int),
         })
 
         # Count sessions per persona (from friction sources)
@@ -75,10 +77,13 @@ def build_mirror(records: dict) -> dict:
 
         for r in contrib_records:
             p = r["persona"]
+            ctype = r.get("type", "substance")
             if r["direction"] == "H":
                 by_persona[p]["flux_h"] += 1
+                by_persona[p]["flux_types_h"][ctype] += 1
             else:
                 by_persona[p]["flux_a"] += 1
+                by_persona[p]["flux_types_a"][ctype] += 1
 
         # --- Trajectory (challenge % by week) ---
         by_week = defaultdict(lambda: {"total": 0, "challenge": 0})
@@ -169,14 +174,48 @@ def build_mirror(records: dict) -> dict:
             if not r.get("resolution") and not r.get("is_amendment")
         ]
 
+        # --- Map topology ---
+        persona_roles = inst_data["meta"].get("persona_roles", {})
+        context_sizes = inst_data["meta"].get("context_sizes", {})
+        links = []
+        for p in personas:
+            d = by_persona.get(p, {})
+            total = d.get("frictions", 0)
+            if total > 0:
+                links.append({"persona": p, "total": total})
+
+        map_data = {
+            "persona_roles": persona_roles,
+            "links": links,
+            "context_sizes": context_sizes,
+            "description": "",
+        }
+
+        # --- Per-persona data for client-side rendering ---
+        personas_data = {}
+        for p in personas:
+            d = by_persona.get(p, {})
+            personas_data[p] = {
+                "flux_h": d.get("flux_h", 0),
+                "flux_a": d.get("flux_a", 0),
+                "flux_types_h": dict(d.get("flux_types_h", defaultdict(int))),
+                "flux_types_a": dict(d.get("flux_types_a", defaultdict(int))),
+            }
+
         result["instances"][inst_name] = {
             "meta": inst_data["meta"],
+            "friction_records": friction_records,
+            "personas": personas_data,
+            "map": map_data,
             "trajectory": trajectory,
             "radars": radars,
             "kpi": kpi,
             "map_cards": map_cards,
             "open_frictions": open_frictions[-20:],  # last 20
         }
+
+    if result["instances"]:
+        result["default"] = next(iter(result["instances"]))
 
     return result
 

@@ -5,12 +5,13 @@ function renderCurrent() {
   charts.forEach(c => c.destroy());
   charts = [];
 
-  // Also re-render pilotage if that tab is active
-  if (document.getElementById('tab-mirror').classList.contains('active')) {
+  // Also re-render mirror if that tab is active and data loaded
+  if (document.getElementById('tab-mirror').classList.contains('active') && MIRROR_DATA) {
     renderMirror();
   }
 
-  const D = getCurrentData();
+  const D = getCurrentLensData();
+  if (!D) return;
   const t = D.totals, P = D.personas;
   const personas = getFilteredPersonas(D);
   const gran = document.getElementById('sel-granularity').value;

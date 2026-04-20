@@ -5,7 +5,8 @@ function renderMirror() {
   mirrorCharts.forEach(c => c.destroy());
   mirrorCharts = [];
 
-  const D = getCurrentData();
+  const D = getCurrentMirrorData();
+  if (!D) return;
   const personas = getFilteredPersonas(D);
   const records = D.friction_records || [];
   const N = 25; // window size for baseline/recent
