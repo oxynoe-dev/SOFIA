@@ -73,13 +73,6 @@ class Handler(BaseHTTPRequestHandler):
                 self._serve_file(filepath)
                 return
 
-        # Legacy: serve analysis.json from old location
-        if path == "/analysis.json":
-            legacy = Path(__file__).resolve().parent.parent.parent / "analysis.json"
-            if legacy.is_file():
-                self._serve_file(legacy)
-                return
-
         self.send_error(404)
 
     def do_POST(self):

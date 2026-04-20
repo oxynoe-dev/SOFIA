@@ -111,7 +111,9 @@ function initFilters(data) {
   const selPersona = document.getElementById('sel-persona');
 
   const instances = Object.keys(data.instances);
+  const hasAll = !!data.all;
   selInst.innerHTML = '';
+  if (hasAll) selInst.innerHTML += `<option value="all">All (${instances.length})</option>`;
   instances.forEach(name => selInst.innerHTML += `<option value="${name}">${name}</option>`);
   selInst.value = data.default || instances[0];
 
@@ -153,6 +155,7 @@ function populatePersonas() {
 
 function _getInstanceData(data) {
   const inst = document.getElementById('sel-instance').value;
+  if (inst === 'all') return data.all;
   return data.instances[inst];
 }
 

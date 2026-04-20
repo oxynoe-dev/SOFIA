@@ -239,6 +239,40 @@ def build_lens(records: dict) -> dict:
             "personas": _build_persona_data(friction_recs, contrib_recs, sp_recs, personas),
         }
 
+    # ── Cross-instance aggregation ──
+    if len(result["instances"]) > 1:
+        all_friction = []
+        all_contrib = []
+        all_sp = []
+        all_session_dates = []
+        all_personas = set()
+        total_sessions = 0
+        total_artifacts = 0
+        for inst_data in records.values():
+            all_friction.extend(inst_data.get("friction_records", []))
+            all_contrib.extend(inst_data.get("contribution_records", []))
+            all_sp.extend(inst_data.get("signaler_patterns", []))
+            all_session_dates.extend(inst_data.get("session_dates", []))
+            all_personas.update(inst_data.get("meta", {}).get("personas", []))
+            total_sessions += inst_data.get("meta", {}).get("sessions_scanned", 0)
+            total_artifacts += inst_data.get("meta", {}).get("artifacts_scanned", 0)
+        sorted_personas = sorted(all_personas)
+        result["all"] = {
+            "meta": {
+                "instance": "all",
+                "date": next(iter(records.values()))["meta"]["date"],
+                "personas": sorted_personas,
+                "sessions_scanned": total_sessions,
+                "artifacts_scanned": total_artifacts,
+            },
+            "totals": {"signaler_pattern": len(all_sp)},
+            "time_series": {
+                "week": _build_series(all_friction, all_contrib, "week", all_session_dates),
+                "day": _build_series(all_friction, all_contrib, "day", all_session_dates),
+            },
+            "personas": _build_persona_data(all_friction, all_contrib, all_sp, sorted_personas),
+        }
+
     return result
 
 

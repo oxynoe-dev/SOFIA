@@ -217,6 +217,52 @@ def build_mirror(records: dict) -> dict:
     if result["instances"]:
         result["default"] = next(iter(result["instances"]))
 
+    # ── Cross-instance aggregation ──
+    if len(result["instances"]) > 1:
+        all_friction = []
+        all_personas_data = {}
+        all_map = {}
+        all_personas_set = set()
+        for inst_name, inst_data in records.items():
+            all_friction.extend(inst_data.get("friction_records", []))
+            all_personas_set.update(inst_data.get("meta", {}).get("personas", []))
+            # Build map per instance
+            if inst_name in result["instances"]:
+                all_map[inst_name] = result["instances"][inst_name]["map"]
+        # Merge personas flux
+        all_contrib = []
+        for inst_data in records.values():
+            all_contrib.extend(inst_data.get("contribution_records", []))
+        by_p = defaultdict(lambda: {"flux_h": 0, "flux_a": 0, "flux_types_h": defaultdict(int), "flux_types_a": defaultdict(int)})
+        for r in all_contrib:
+            p = r["persona"]
+            ctype = r.get("type", "substance")
+            if r["direction"] == "H":
+                by_p[p]["flux_h"] += 1
+                by_p[p]["flux_types_h"][ctype] += 1
+            else:
+                by_p[p]["flux_a"] += 1
+                by_p[p]["flux_types_a"][ctype] += 1
+        sorted_personas = sorted(all_personas_set)
+        for p in sorted_personas:
+            d = by_p.get(p, {})
+            all_personas_data[p] = {
+                "flux_h": d.get("flux_h", 0),
+                "flux_a": d.get("flux_a", 0),
+                "flux_types_h": dict(d.get("flux_types_h", defaultdict(int))),
+                "flux_types_a": dict(d.get("flux_types_a", defaultdict(int))),
+            }
+        result["all"] = {
+            "meta": {
+                "instance": "all",
+                "date": next(iter(records.values()))["meta"]["date"],
+                "personas": sorted_personas,
+            },
+            "friction_records": all_friction,
+            "personas": all_personas_data,
+            "map": {"instances": all_map},
+        }
+
     return result
 
 
