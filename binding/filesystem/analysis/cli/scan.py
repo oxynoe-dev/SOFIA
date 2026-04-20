@@ -64,12 +64,10 @@ def scan_instance(instance_path: Path) -> dict:
         if fm is None:
             continue
 
-        nfm = normalize_frontmatter(fm)
-        persona = nfm.get("persona", "") if "persona" in (fm or {}) else fm.get("persona", "")
-        if not persona:
-            persona = strip_accents(fm.get("persona", "").lower().strip()) if fm.get("persona") else ""
+        persona = fm.get("persona", "").strip()
         if not persona:
             continue
+        persona = strip_accents(persona.lower())
 
         session_date = parse_session_date(filepath)
         if not session_date:
