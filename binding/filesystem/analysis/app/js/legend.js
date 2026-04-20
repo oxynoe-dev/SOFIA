@@ -10,7 +10,7 @@ function legendScroll(e) {
 let legendLoaded = false;
 function loadLegend() {
   if (legendLoaded) return;
-  fetch('legend.html').then(r => {
+  fetch('/legend').then(r => {
     if (!r.ok) throw new Error(r.status);
     return r.text();
   }).then(html => {
