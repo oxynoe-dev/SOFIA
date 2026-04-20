@@ -1544,9 +1544,9 @@ function renderProbeInstance(instName, instData) {
           html += `<div class="check-group-title">${prefixLabels[prefix] || prefix}</div>`;
           lastPrefix = prefix;
         }
-        const hasFiles = chk.files && chk.files.length > 0 && (status === 'warn' || status === 'fail');
-        const dataAttr = hasFiles ? ` data-chk-idx="${ci}"` : '';
-        const arrow = hasFiles ? ' <span style="opacity:0.3;font-size:9px">▸</span>' : '';
+        const clickable = (status === 'warn' || status === 'fail');
+        const dataAttr = clickable ? ` data-chk-idx="${ci}"` : '';
+        const arrow = clickable ? ' <span style="opacity:0.3;font-size:9px">▸</span>' : '';
         html += `<div class="check-item ${status}"${dataAttr}><span class="icon">${icons[status] || '?'}</span><span class="msg"><strong>${chk.id}</strong> — ${chk.detail || chk.message || ''}${arrow}</span></div>`;
       }
       html += '</div>';
@@ -2997,10 +2997,14 @@ _cdPanel.addEventListener('click', (e) => { if (e.target === _cdPanel) closeChec
 
 // Event delegation for check items
 document.addEventListener('click', (e) => {
-  const item = e.target.closest('.check-item[data-chk-idx]');
-  if (item && window._auditChecks) {
+  const item = e.target.closest('[data-chk-idx]');
+  if (!item) return;
+  console.log('check click', item.getAttribute('data-chk-idx'), window._auditChecks);
+  if (window._auditChecks) {
     const idx = parseInt(item.getAttribute('data-chk-idx'), 10);
-    openCheckDetail(window._auditChecks[idx]);
+    const chk = window._auditChecks[idx];
+    console.log('opening detail for', chk);
+    if (chk) openCheckDetail(chk);
   }
 });
 </script>
