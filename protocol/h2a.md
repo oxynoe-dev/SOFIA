@@ -14,7 +14,7 @@ H2A formalizes the coordination layer between a human (orchestrator) and constra
 | A2A (Google) | Agent ↔ Agent | Technical — communication |
 | **H2A** | **Human ↔ Assistant** | **Organizational — coordination** |
 
-H2A is not a technical protocol — it defines the semantics of interactions, not their implementation. See `implementation/implementation.md` for current implementation choices.
+H2A is not a technical protocol — it defines the semantics of interactions, not their implementation. See `binding/implementation.md` for current implementation choices.
 
 ## Entities
 

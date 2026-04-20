@@ -11,7 +11,8 @@
 | 007 | Ownership by roadmap (supersedes ADR-002) | Accepted | 2026-04-05 |
 | 008 | Core / Protocol / Runtime restructuring | Accepted | 2026-04-06 |
 | 009 | Instance layer and Sofia's position | Accepted | 2026-04-10 |
-| 010 | Multi-platform via implementation layer (supersedes ADR-004) | Accepted | 2026-04-16 |
+| 010 | Multi-platform via binding layer (supersedes ADR-004) | Accepted | 2026-04-16 |
 | 011 | H2A Protocol (Human-to-Assistant) | Accepted | 2026-04-16 |
-| 012 | Extraction of the implementation layer | Accepted | 2026-04-16 |
+| 012 | Extraction of the binding layer | Accepted | 2026-04-16 |
 | 013 | Technical identifiers in English | Accepted | 2026-04-16 |
+| 014 | Rename implementation/ → binding/, runtime/ → provider/ | Accepted | 2026-04-20 |

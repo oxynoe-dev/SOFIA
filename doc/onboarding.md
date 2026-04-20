@@ -39,11 +39,11 @@ Draw from the format in `canvas/artifacts/persona.md` and archetypes in `canvas/
 │   ├── personas/persona-{name}.md       ← persona file (role, stance, prohibitions)
 │   └── contextes/contexte-{name}-{product}.md  ← workspace context (docs, isolation, workflow)
 └── {workspace}/
-    ├── CLAUDE.md      ← runtime routing (2 lines → persona + context)
+    ├── CLAUDE.md      ← provider routing (2 lines → persona + context)
     └── sessions/      ← empty, the persona will write its first summary
 ```
 
-The CLAUDE.md is a 2-line routing (see `runtime/claude-code/claude-md.md`). Content lives in two files:
+The CLAUDE.md is a 2-line routing (see `provider/claude-code/claude-md.md`). Content lives in two files:
 - **persona-{name}.md** — role, stance, prohibitions, collaboration (template: `canvas/artifacts/persona.md`)
 - **contexte-{name}-{product}.md** — scope, key documents, isolation, workflow (template: `canvas/artifacts/product-persona-context.md`)
 

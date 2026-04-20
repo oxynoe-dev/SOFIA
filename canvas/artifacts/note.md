@@ -1,5 +1,5 @@
 ---
-implementation: filesystem
+binding: filesystem
 de: {author}
 pour: {recipient}
 type: signal           # signal | question | demande | reponse

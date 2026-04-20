@@ -21,7 +21,7 @@
 
   <!-- Titre -->
   <text x="480" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="15" font-weight="300" fill="#f0f8f5" letter-spacing="0.03em">SOFIA Architecture — 5 layers + canvas</text>
-  <text x="480" y="50" text-anchor="middle" font-size="8" fill="rgba(167,139,250,0.4)" letter-spacing="0.1em">CORE (why) · PROTOCOL (what to trace) · IMPLEMENTATION (how) · RUNTIME (with what) · CANVAS (inspiration) · DOC</text>
+  <text x="480" y="50" text-anchor="middle" font-size="8" fill="rgba(167,139,250,0.4)" letter-spacing="0.1em">CORE (why) · PROTOCOL (what to trace) · BINDING (how) · PROVIDER (with what) · CANVAS (inspiration) · DOC</text>
 
   <!-- ================================================================ -->
   <!-- CORE -->
@@ -70,11 +70,11 @@
   <text x="750" y="228" font-size="7" fill="rgba(240,248,245,0.3)" font-style="italic">What the audit reads cross-instance</text>
 
   <!-- ================================================================ -->
-  <!-- IMPLEMENTATION -->
+  <!-- BINDING -->
   <!-- ================================================================ -->
   <rect x="30" y="274" width="900" height="90" rx="8" fill="rgba(220,120,90,0.06)" stroke="rgba(220,120,90,0.35)" stroke-width="1"/>
-  <text x="50" y="295" font-size="12" font-weight="600" fill="rgba(220,120,90,0.9)" letter-spacing="0.05em">IMPLEMENTATION</text>
-  <text x="200" y="295" font-size="9" fill="rgba(220,120,90,0.5)">— how it materializes</text>
+  <text x="50" y="295" font-size="12" font-weight="600" fill="rgba(220,120,90,0.9)" letter-spacing="0.05em">BINDING</text>
+  <text x="130" y="295" font-size="9" fill="rgba(220,120,90,0.5)">— how it materializes</text>
 
   <rect x="50" y="309" width="155" height="34" rx="5" fill="rgba(220,120,90,0.10)" stroke="rgba(220,120,90,0.25)" stroke-width="0.8"/>
   <text x="127" y="324" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">implementation.md</text>
@@ -95,11 +95,11 @@
   <text x="750" y="328" font-size="7" fill="rgba(240,248,245,0.3)" font-style="italic">Markdown + git + filesystem</text>
 
   <!-- ================================================================ -->
-  <!-- RUNTIME -->
+  <!-- PROVIDER -->
   <!-- ================================================================ -->
   <rect x="30" y="376" width="900" height="90" rx="8" fill="rgba(138,168,216,0.06)" stroke="rgba(138,168,216,0.35)" stroke-width="1"/>
-  <text x="50" y="397" font-size="12" font-weight="600" fill="#8aa8d8" letter-spacing="0.05em">RUNTIME</text>
-  <text x="130" y="397" font-size="9" fill="rgba(138,168,216,0.5)">— with which tool</text>
+  <text x="50" y="397" font-size="12" font-weight="600" fill="#8aa8d8" letter-spacing="0.05em">PROVIDER</text>
+  <text x="140" y="397" font-size="9" fill="rgba(138,168,216,0.5)">— with which tool</text>
 
   <rect x="50" y="411" width="120" height="34" rx="5" fill="rgba(138,168,216,0.10)" stroke="rgba(138,168,216,0.25)" stroke-width="0.8"/>
   <text x="110" y="426" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">claude-code/</text>

@@ -1,5 +1,5 @@
 ---
-implementation: filesystem
+binding: filesystem
 de: {author}
 produit: {product}
 type: feature

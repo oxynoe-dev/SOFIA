@@ -7,7 +7,7 @@
 - Protocol identifiers EN — markers (sound, contestable, simplification, blind_spot, refuted), resolutions (ratified, contested, revised, rejected), statuses, frontmatter
 - Operations EN — openSession, closeSession, depositArtifact, routeArtifact, markRead, markDone, qualifyFriction, qualifyContribution, reportPattern
 - Conventions reread rule — closeSession() and depositArtifact() enforce rereading `shared/conventions.md`
-- Friction lineage — `antecedent` dimension in protocol/friction.md, `Friction → Friction (amends)` relation in core/model.md, `ref: {source-id}/{index}` in implementation.md
+- Friction lineage — `antecedent` dimension in protocol/friction.md, `Friction → Friction (amends)` relation in core/model.md, `ref: {source-id}/{index}` in binding/implementation.md
 - Instance conventions aligned (methodes, produits, oxynoe) — EN identifiers + naming + operations
 
 ### Dashboard — Map / Mirror / Lens / Probe / Legend
@@ -56,7 +56,7 @@
 - PXP resolution tags — ratified/contested/revised/rejected (6th friction dimension, inspired by Mestha et al. 2025)
 - Inter-session mutability of resolutions — possible evolution with `ref:` field
 - Separation of exchange.md (artifacts, naming conventions, inter-instance flows) and contribution.md
-- Extraction of implementation/ — protocol/tools/ to implementation/filesystem/ (prepares future implementations)
+- Extraction of binding/ — protocol/tools/ to binding/filesystem/ (prepares future implementations)
 
 ### Grammar & target profile
 - Derivation grammar v1 — two modes (bootstrap B1-B4, emergence E1-E4), Katen examples, Alexander/Chomsky/Stiny references
@@ -74,7 +74,7 @@
 - analysis.py + analysis.html — multi-instance analysis + interactive dashboard, 7 charts, 3 tables, 4 filters. Oxynoe palette. **Under calibration**
 - audit-instance.py — aligned with H2A (PXP resolutions, `ref:`, signalerPattern, minimal scaffolding). 60 tests
 - create-instance.py — rewritten (sofia.md, minimal scaffolding, template conventions). 31 tests
-- Tag implementation:filesystem on 10 artifact canvas files
+- Tag binding:filesystem on 10 artifact canvas files
 
 ### Documentation
 - End-to-end test — Sofia from scratch, 3 CLAUDE.md recalibrations, successful audit
@@ -86,9 +86,9 @@
 - Fix CLAUDE.md paths — relative to workspace
 
 ### Decisions
-- ADR-010 — Multi-platform via implementation layer, in-repo (supersedes ADR-004 separate repos)
+- ADR-010 — Multi-platform via binding layer, in-repo (supersedes ADR-004 separate repos)
 - ADR-011 — Formalized H2A protocol (5 invariants, 9 operations, 2 layers)
-- ADR-012 — Implementation layer extraction (semantics vs materialization)
+- ADR-012 — Binding layer extraction (semantics vs materialization)
 - ADR-001 (semver) and ADR-009 (Instance layer) moved to Accepted
 
 ### Fixes
@@ -99,8 +99,8 @@
 - ADR-009 amended — instance/ layer (archetypes, artifacts, examples/katen), not a scaffolding kit
 - Restructuring of sofia/ — instance/archetypes/, instance/artifacts/, instance/examples/katen/ (full snapshot)
 - Meta-challenger persona archetype added
-- Removal of core/templates/, protocol/templates/, runtime/claude-code/templates/, doc/examples/
-- audit-instance.py — SOFIA instance audit script (implementation/filesystem/), 30 structural checks, exchange/friction matrices, session/persona activity, signals, 4 output formats (md/json/csv/sqlite), 29 tests
+- Removal of core/templates/, protocol/templates/, provider/claude-code/templates/, doc/examples/
+- audit-instance.py — SOFIA instance audit script (binding/filesystem/), 30 structural checks, exchange/friction matrices, session/persona activity, signals, 4 output formats (md/json/csv/sqlite), 29 tests
 - CLAUDE.md factored into 3 layers — 2-line boot (persona + context)
 
 ## v0.3.0 — Rodin integration & persona topology (2026-04-10)
@@ -108,7 +108,7 @@
 - Two types of personas: operational (in the flow, long-term memory) and meta (out of flow, no memory)
 - Fusion signals and suppression test in core/personas.md
 - Anti-pattern "projected org chart" — derive from axes of tension, not job titles
-- ADR-009 — Instance layer as 4th conceptual layer (Core / Protocol / Runtime / Instance)
+- ADR-009 — Instance layer as 4th conceptual layer (Core / Protocol / Provider / Instance)
 - Sofia positioned outside the instance — exteriority as a condition of objectivity
 - Formalized audit instance — 1:1 mirror challengers, no inter-cycle memory, kill after synthesis
 - Sofia and Rodin: comparative table of two forms of exteriority
@@ -139,11 +139,11 @@
 ## v0.2.6 — Polish + SOFIA rename (2026-04-08)
 
 - Triple rename: Diapason → **Sofia**, Sofia (graphic designer) → **Luz**, Voix → **SOFIA**
-- Persona `core/sofia.md` — method guardian, decoupled from runtime
+- Persona `core/sofia.md` — method guardian, decoupled from provider
 - SVG diagrams remade (elementary flow, instance anatomy, repo structure)
 - `arch-voix.md` → `arch-sofia.md`, `fig-triangle-voix.svg` → `fig-triangle-sofia.svg`
-- README — SOFIA presented as agnostic, `runtime/` = one implementation among others
-- Runtime disclaimer in doc (user-guide.md, orchestration.md)
+- README — SOFIA presented as agnostic, `provider/` = one implementation among others
+- Provider disclaimer in doc (user-guide.md, orchestration.md)
 - OCDS review fixes: "Claude Code conversational behavior" → "runtime behavior"
 - Katen example: `sofia.md` → `luz.md`
 
@@ -160,15 +160,15 @@
 - Star review SVG remade (personas top, human bottom, increased contrast)
 - feedback/pattern-editorial.md renamed to chaine-editoriale.md
 - Architecture page removed from site (first release)
-- README.md: runtime description + Mistral
+- README.md: provider description + Mistral
 
-## v0.2.4 — Core / Protocol / Runtime restructuring (2026-04-06)
+## v0.2.4 — Core / Protocol / Provider restructuring (2026-04-06)
 
 - Isolation of core/ (principles, personas, friction, duties, templates)
 - Separation of protocol/ (artifacts, conventions, traceability, isolation, orchestration, instance)
-- Separation of runtime/ (claude-code/)
-- Split templates (core/, protocol/, runtime/)
-- ADR-008 — Core/Protocol/Runtime decision
+- Separation of provider/ (claude-code/)
+- Split templates (core/, protocol/, provider/)
+- ADR-008 — Core/Protocol/Provider decision
 - conventions.md consolidated in protocol/
 - Feedback distillation → doc/patterns/ + doc/feedback/
 - Workflows documented (dev, publication, ADR, research, onboarding, product chain)

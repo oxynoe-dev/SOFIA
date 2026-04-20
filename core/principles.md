@@ -32,7 +32,7 @@ A persona without constraint generates no friction.
 
 Personas do not exchange directly. Everything goes through traced, addressable, readable artifacts: reviews, notes, specs.
 
-Exchange through artifacts is slower than direct exchange. This is a property, not a defect — slowness forces clarity. The format and persistence system are implementation choices (see `implementation/implementation.md`).
+Exchange through artifacts is slower than direct exchange. This is a property, not a defect — slowness forces clarity. The format and persistence system are implementation choices (see `binding/implementation.md`).
 
 ## 6. Everything is traced
 

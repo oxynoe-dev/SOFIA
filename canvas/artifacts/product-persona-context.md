@@ -1,5 +1,5 @@
 ---
-implementation: filesystem
+binding: filesystem
 persona: {name}
 produit: {product}
 ---

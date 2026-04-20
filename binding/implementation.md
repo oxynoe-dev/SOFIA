@@ -48,7 +48,7 @@ instance/                        ← scaffolding (create-instance)
 │       ├── personas/            ← persona files
 │       └── contextes/           ← contexts per persona-product
 ├── {space}/                     ← one per persona
-│   ├── CLAUDE.md                ← persona instructions (runtime)
+│   ├── CLAUDE.md                ← persona instructions (provider)
 │   └── sessions/                ← session summaries
 └── ...
 ```
@@ -272,8 +272,8 @@ The persona MUST NOT close on its own or deposit an artifact without orchestrato
 
 | Tool | Role |
 |------|------|
-| `implementation/filesystem/audit-instance.py` | Verifies instance protocol conformity |
-| `implementation/filesystem/create-instance.py` | Scaffolds a new instance |
+| `binding/filesystem/audit-instance.py` | Verifies instance protocol conformity |
+| `binding/filesystem/create-instance.py` | Scaffolds a new instance |
 | `sofia.md` | Meta persona — instantiates, audits. Protocol operator |
 
 ---

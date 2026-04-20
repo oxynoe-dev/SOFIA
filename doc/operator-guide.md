@@ -2,7 +2,7 @@
 
 > The 9 operations from the orchestrator's perspective. When, how, example.
 
-Spec: `protocol/h2a.md`. Implementation: `implementation/implementation.md`.
+Spec: `protocol/h2a.md`. Implementation: `binding/implementation.md`.
 
 ---
 

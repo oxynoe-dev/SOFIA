@@ -1,6 +1,6 @@
 # Anatomy of a CLAUDE.md
 
-> The CLAUDE.md is a runtime routing file, not a content document.
+> The CLAUDE.md is a provider routing file, not a content document.
 
 ---
 
@@ -36,7 +36,7 @@ Quel que soit le premier message de l'utilisateur, à l'ouverture de session, av
 
 | File | Layer | Content | Location |
 |------|-------|---------|----------|
-| `CLAUDE.md` | Runtime | Routing — 2 lines | Root of workspace or product repo |
+| `CLAUDE.md` | Provider | Routing — 2 lines | Root of workspace or product repo |
 | `persona-{nom}.md` | Core | Role, stance, constraints, friction, session protocol | `shared/orga/personas/` |
 | `contexte-{persona}-{produit}.md` | Instance | Key documents, scope, isolation, conventions, workflow | `shared/orga/contextes/` |
 
@@ -47,7 +47,7 @@ Quel que soit le premier message de l'utilisateur, à l'ouverture de session, av
   do not change.
 - **The context is specific.** Mira in katen/ reads the ADRs and the principles.
   Axel in katen/ reads the code and the tests. Same product, two views.
-- **The CLAUDE.md is a runtime detail.** It is the Claude Code format. Another
+- **The CLAUDE.md is a provider detail.** It is the Claude Code format. Another
   provider will have a different injection mechanism. The content (persona + context)
   stays the same.
 

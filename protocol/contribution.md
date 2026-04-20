@@ -47,7 +47,7 @@ Each contribution line carries: direction tag, type, short description.
 
 Counting by direction and type is optional (MAY).
 
-> **Example** (Markdown implementation, see `implementation/implementation.md`):
+> **Example** (Markdown implementation, see `binding/implementation.md`):
 >
 > ```
 > ## Flow

@@ -58,7 +58,7 @@ The SOFIA repo is not your project — it's the **method**. It contains:
 
 - `core/` — the invariants: principles, model, friction, duties
 - `protocol/` — the interface contract: artifacts, conventions, isolation, orchestration
-- `runtime/` — the concrete implementation for Claude Code (other providers will follow)
+- `provider/` — the concrete implementation for Claude Code (other providers will follow)
 - `doc/` — guides, workflows, patterns, field feedback
 
 Your project will live elsewhere, in its own repo. SOFIA helps you organize the AI assistants working on it. The [Isolation](#instance-and-project) section details the possible configurations.
@@ -289,9 +289,9 @@ The next session won't have your context in mind. Summaries are its memory.
 
 ### The Claude Code implementation
 
-- [CLAUDE.md](../runtime/claude-code/claude-md.md) — anatomy of a CLAUDE.md
-- [Sessions](../runtime/claude-code/sessions.md) — session summary format
-- [Memory](../runtime/claude-code/memoire.md) — persistent memory between sessions
+- [CLAUDE.md](../provider/claude-code/claude-md.md) — anatomy of a CLAUDE.md
+- [Sessions](../provider/claude-code/sessions.md) — session summary format
+- [Memory](../provider/claude-code/memoire.md) — persistent memory between sessions
 
 ### Learn by example
 

@@ -49,7 +49,7 @@ H2A is not a technical protocol — it defines the semantics of interactions, no
 
 ### P1 — Core holds without tools
 
-The 7 principles and the conceptual model are independent of Claude Code. You could apply SOFIA with text files and an editor. The runtime is an accelerator, not a prerequisite.
+The 7 principles and the conceptual model are independent of Claude Code. You could apply SOFIA with text files and an editor. The provider is an accelerator, not a prerequisite.
 
 ### P2 — Five layers + canvas
 
@@ -57,11 +57,11 @@ The 7 principles and the conceptual model are independent of Claude Code. You co
 |-------|---------|-------------|
 | Core | What are the invariants? | The method changes (rare) |
 | Protocol | What is the interaction semantics? | The protocol evolves |
-| Implementation | How is it materialized? | Stack changes (filesystem → API) |
-| Runtime | How does the provider execute? | Provider changes (Claude → Mistral) |
+| Binding | How is it materialized? | Stack changes (filesystem → API) |
+| Provider | How does the provider execute? | Provider changes (Claude → Mistral) |
 | Canvas | What does it look like in practice? | New patterns documented |
 
-You can change the implementation without touching the protocol. You can change the runtime without touching the implementation. You can read the core without knowing the tool.
+You can change the binding without touching the protocol. You can change the provider without touching the binding. You can read the core without knowing the tool.
 
 ### P3 — The orchestrator is the sole passage point
 
@@ -86,9 +86,9 @@ Not conversations, not memory, not compressed sessions. Versioned files in git.
 
 Start small, add structure when the orchestrator's mental load demands it.
 
-### P7 — Semantics first, implementation second
+### P7 — Semantics first, binding second
 
-The protocol defines the what (entities, invariants, operations). The implementation defines the how (Markdown, git, filesystem). This separation enables:
+The protocol defines the what (entities, invariants, operations). The binding defines the how (Markdown, git, filesystem). This separation enables:
 - Mechanical audit of the protocol layer
 - Changing stack without changing method
 - Reasoning about the protocol without drowning in rendering details
@@ -105,8 +105,8 @@ Five layers in the product repo, plus a transversal canvas layer.
 sofia/
 ├── core/              ← method invariants (principles, model, duties)
 ├── protocol/          ← H2A protocol (invariants, operations, entities)
-├── implementation/    ← current materialization (filesystem, audit, scaffolding)
-├── runtime/           ← provider adapters (claude-code, sofia.md)
+├── binding/           ← current materialization (filesystem, audit, scaffolding)
+├── provider/          ← provider adapters (claude-code, sofia.md)
 ├── canvas/            ← instantiation references + inspiration tools
 │   ├── archetypes/    ← persona models by role
 │   ├── artifacts/     ← what a note, review, session looks like...
@@ -153,9 +153,9 @@ The invariants. Remove them and it is no longer SOFIA.
 | Protocol | Guaranteed | Computational (deterministic, automatable) |
 | Observational | Best-effort | Inferential (semantic judgment, non-deterministic) |
 
-### implementation/ — how it materializes
+### binding/ — how it materializes
 
-Separated from semantics (protocol/) to allow other materializations (REST API, DB...). The distinction: "friction carries 5 dimensions" is protocol; "friction is a Markdown line with symbol + keyword + initiative" is implementation.
+Separated from semantics (protocol/) to allow other materializations (REST API, DB...). The distinction: "friction carries 5 dimensions" is protocol; "friction is a Markdown line with symbol + keyword + initiative" is binding.
 
 | Component | Role |
 |-----------|------|
@@ -166,9 +166,9 @@ Separated from semantics (protocol/) to allow other materializations (REST API, 
 | `filesystem/analysis.html` | Interactive dashboard — Map, Mirror, Lens, Probe, Legend |
 | `filesystem/conventions.md` | Standard conventions template |
 
-### runtime/ — with which tool
+### provider/ — with which tool
 
-The only point that changes when porting SOFIA to another AI assistant. Replaceable without touching core/, protocol/, or implementation/.
+The only point that changes when porting SOFIA to another AI assistant. Replaceable without touching core/, protocol/, or binding/.
 
 | Component | Role |
 |-----------|------|
@@ -178,21 +178,21 @@ The only point that changes when porting SOFIA to another AI assistant. Replacea
 | `claude-code/hooks.md` | Automations triggered by events |
 | `sofia.md` | Sofia persona — 4 operational modes |
 
-**Multi-provider** (v0.4): `runtime/mistral/`, `runtime/gemini/`, etc. In-repo, not separate repos (ADR-010).
+**Multi-provider** (v0.4): `provider/mistral/`, `provider/gemini/`, etc. In-repo, not separate repos (ADR-010).
 
 ### canvas/ — what it looks like
 
 Not prescription — inspiration. Draw from it, don't copy.
 
-| Directory | Content | Implementation tag |
+| Directory | Content | Binding tag |
 |-----------|---------|-------------------|
 | `archetypes/` | 9 persona models by role | No — agnostic |
-| `artifacts/` | 10 reference formats | `implementation:filesystem` |
+| `artifacts/` | 10 reference formats | `binding:filesystem` |
 | `patterns/` | 4 recurring structures | No — agnostic |
 | `workflows/` | 10 standard processes | No — agnostic |
-| `examples/` | katen/ — field instance snapshot | `implementation:filesystem` |
+| `examples/` | katen/ — field instance snapshot | `binding:filesystem` |
 
-The `implementation:filesystem` tag distinguishes what is tied to the current implementation from pure method content.
+The `binding:filesystem` tag distinguishes what is tied to the current binding from pure method content.
 
 ### doc/ — how to organize
 
@@ -306,14 +306,14 @@ Sofia mounts both types from the product. It has no workspace in instances — i
 
 ### Current architecture
 
-`core/` and `protocol/` are provider-agnostic. `implementation/` is potentially multi-stack. `runtime/` is the only variation point per provider. Adding a provider = adding `runtime/mistral/`, etc.
+`core/` and `protocol/` are provider-agnostic. `binding/` is potentially multi-stack. `provider/` is the only variation point per provider. Adding a provider = adding `provider/mistral/`, etc.
 
 ### Strategy (ADR-010)
 
 Everything in the same repo. No separate repos per platform (supersedes ADR-004).
 
 ```
-runtime/
+provider/
 ├── claude-code/       ← reference implementation
 ├── mistral/           ← v0.4 target (summer 2026)
 └── gemini/            ← if relevant
@@ -321,9 +321,9 @@ runtime/
 
 Prerequisite: v0.3 user feedback. Do not anticipate without feedback.
 
-The implementation/runtime distinction is structural:
-- `implementation/` answers "how are artifacts stored and audited" (filesystem, API, DB)
-- `runtime/` answers "how does the persona receive instructions and persist context" (CLAUDE.md, MISTRAL.md)
+The binding/provider distinction is structural:
+- `binding/` answers "how are artifacts stored and audited" (filesystem, API, DB)
+- `provider/` answers "how does the persona receive instructions and persist context" (CLAUDE.md, MISTRAL.md)
 
 ---
 
@@ -334,15 +334,15 @@ The implementation/runtime distinction is structural:
 | Semver | 001 | GitHub credibility + communication |
 | Instance marker sofia.md | 005 | Self-descriptive instance |
 | Core isolation pre-publication | 006 | Stability before contributions |
-| Core / Protocol / Runtime | 008 | Invariants / contract / implementation separation |
+| Core / Protocol / Provider | 008 | Invariants / contract / binding separation |
 | Instance layer + Sofia position | 009 | Instantiation ≠ method, Sofia exteriority |
-| Multi-platform in-repo | 010 | Runtime adapters, not separate repos (supersedes 004) |
+| Multi-platform in-repo | 010 | Provider adapters, not separate repos (supersedes 004) |
 | H2A Protocol | 011 | Human-assistant coordination formalization |
-| Implementation extraction | 012 | Semantics ≠ materialization |
+| Binding extraction | 012 | Semantics ≠ materialization |
 
 ---
 
-> **Current implementation.** This document describes the method's architecture — not its tooling. For materialization details (stack, operations → concrete gestures mapping, audit, scaffolding, dashboard): see `implementation/implementation.md` and `implementation/filesystem/`.
+> **Current binding.** This document describes the method's architecture — not its tooling. For materialization details (stack, operations → concrete gestures mapping, audit, scaffolding, dashboard): see `binding/implementation.md` and `binding/filesystem/`.
 
 ---
 

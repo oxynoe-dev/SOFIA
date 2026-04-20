@@ -16,7 +16,7 @@ Before contributing, read the user guide: [`doc/user-guide.md`](doc/user-guide.m
 |-----------|------|-----------|
 | `core/` | Invariants (principles, model, friction, duties) | Stable — rare and deliberate changes |
 | `protocol/` | Interface contract (H2A, exchange, friction, contribution) | Semi-stable — evolves with feedback |
-| `runtime/` | Concrete implementation (Claude Code today, others tomorrow) | Volatile — adapts to tools |
+| `provider/` | Concrete implementation (Claude Code today, others tomorrow) | Volatile — adapts to tools |
 | `doc/` | Guides, workflows, patterns, feedback, architecture, ADR | Open to contributions |
 
 ## Conventions

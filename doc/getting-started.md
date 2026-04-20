@@ -29,7 +29,7 @@ my-project/
 │   ├── review/              ← cross-reviews
 │   └── roadmap-{product}.md ← planning
 ├── {workspace-1}/
-│   ├── CLAUDE.md            ← runtime routing (2 lines)
+│   ├── CLAUDE.md            ← provider routing (2 lines)
 │   └── sessions/            ← session summaries
 ├── {workspace-2}/
 │   ├── CLAUDE.md
@@ -205,7 +205,7 @@ mkdir -p {workspace}/sessions
 
 ### The CLAUDE.md
 
-Create `{workspace}/CLAUDE.md`. This is a runtime routing — 2 lines pointing to the persona and context:
+Create `{workspace}/CLAUDE.md`. This is a provider routing — 2 lines pointing to the persona and context:
 
 ```markdown
 Whatever the user's first message, at session opening, before any response, read these two files:
@@ -215,7 +215,7 @@ Whatever the user's first message, at session opening, before any response, read
 
 That's it. Content lives in the persona and context, not in the CLAUDE.md.
 
-See `runtime/claude-code/claude-md.md` for details on the three layers.
+See `provider/claude-code/claude-md.md` for details on the three layers.
 
 ---
 

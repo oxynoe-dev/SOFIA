@@ -91,7 +91,7 @@ This rereading ensures that friction markers, resolution tags, frontmatter, and 
 
 ### Traceability
 
-Each session MUST produce an identifiable trace. The persistence mechanism is defined in `implementation/implementation.md`.
+Each session MUST produce an identifiable trace. The persistence mechanism is defined in `binding/implementation.md`.
 
 ---
 
@@ -160,4 +160,4 @@ The emitting persona does not need to know the recipient's instance. The orchest
 
 ### Archiving
 
-When an artifact moves to `status: done`, it SHOULD be archived. The archiving mechanism is defined in `implementation/implementation.md`.
+When an artifact moves to `status: done`, it SHOULD be archived. The archiving mechanism is defined in `binding/implementation.md`.

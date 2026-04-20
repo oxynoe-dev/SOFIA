@@ -93,7 +93,7 @@ Each friction line MUST carry:
 3. An initiative tag: `[persona]` or `[PO]`
 4. A resolution tag (SHOULD): `→ ratified`, `→ contested`, `→ revised`, `→ rejected`
 
-> **Example** (Markdown implementation, see `implementation/implementation.md`):
+> **Example** (Markdown implementation, see `binding/implementation.md`):
 >
 > ```
 > ## Orchestrator friction
@@ -158,4 +158,4 @@ Thematic convergence detection belongs to the **observational** layer. The choic
 
 ## Rendering
 
-Keyword markers and resolution tags are the protocol format. Implementations MUST render them legibly. See `implementation/implementation.md` for Markdown rendering.
+Keyword markers and resolution tags are the protocol format. Implementations MUST render them legibly. See `binding/implementation.md` for Markdown rendering.

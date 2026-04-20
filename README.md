@@ -14,7 +14,7 @@ They don't talk to each other — they exchange through artifacts.
 The orchestrator carries context, routes, decides.
 
 Principles and protocol depend on no tool;
-`runtime/` provides an implementation for Claude Code, others can follow.
+`provider/` provides an implementation for Claude Code, others can follow.
 
 ### Key concepts
 
@@ -52,8 +52,8 @@ The built-in guide (Sofia) walks you through instance creation.
 |-----------|---------|
 | `core/` | Invariants — principles, model, friction, duties |
 | `protocol/` | Interface contract — H2A, exchange, friction, contribution |
-| `implementation/` | Materialization — filesystem scripts, audit, analysis |
-| `runtime/` | Provider implementation — Claude Code (others planned) |
+| `binding/` | Materialization — filesystem scripts, audit, analysis |
+| `provider/` | Provider implementation — Claude Code (others planned) |
 | `canvas/` | Inspiration — archetypes, artifacts, patterns, workflows |
 | `doc/` | Guides, architecture, field feedback, ADR |
 
