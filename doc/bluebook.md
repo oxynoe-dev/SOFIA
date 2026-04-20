@@ -61,7 +61,7 @@ And yet, that's exactly what the market pushes. More automation. Fewer humans in
 
 The problem lies in the arithmetic nobody wants to look at.
 
-An agent that's 90% reliable on a single step — that's fine. Ten steps in sequence, the overall error rate climbs to ~65% (1 − 0.9¹⁰ ≈ 0.65). The error from step 2 arrives at step 3 as a valid premise. Step 3 builds on it. The cascade is silent. The final output looks correct. It isn't. This calculation assumes independent errors — in practice, correlation between steps can make things worse.
+An agent that's 90% reliable on a single step — that's fine. Ten steps in sequence, the overall error rate climbs to ~65% (1 − 0.9¹⁰ ≈ 0.65). The error from step 2 enters step 3 as a valid premise. Step 3 builds on it. The cascade is silent. The final output looks correct. It isn't. This calculation assumes independent errors — in practice, correlation between steps can make things worse.
 
 Salesforce saw it in production: beyond a handful of directives, LLMs start dropping some — Agentforce's CTO cited an empirical threshold around eight[^12]. Cemri et al. (2025) analyzed 1,642 execution traces across 7 multi-agent frameworks: 14 failure modes identified, split between design problems (41.8%), inter-agent misalignment (36.9%), and task verification (21.3%)[^13]. Our intuition is that multi-agent without governance degrades reliability rather than improving it.
 
@@ -89,15 +89,15 @@ A qualitative difference, not a quantitative one.
 
 ## <a id="ii-the-thesis"></a>II. A sharp stance, not a middle ground — The thesis [↑](#table-of-contents)
 
-It is possible to go faster and better at constant human resources — not at constant total cost, the transfer of load to infrastructure is real (see §V).
+It is possible to go faster and better with the same headcount — not at constant total cost, the transfer of load to infrastructure is real (see §V).
 
 Not fewer people. The same people, augmented. Not replaced — amplified. An architect who holds three levels of complexity in parallel because AI helps them not drop anything. A developer who explores four approaches in an hour instead of one. A strategist who tests their hypotheses against structured challengers before presenting them.
 
-Growth at constant employment rate. Shneiderman frames it: high automation and high human control can coexist — it's a matter of design, not a trade-off[^22].
+Growth with stable headcount. Shneiderman frames it: high automation and high human control can coexist — it's a matter of design, not a trade-off[^22].
 
 It's less sellable. It doesn't make for a spectacular demo. It doesn't promise to cut costs tenfold. But it's sustainable. Because the human stays in the loop. Because when things break, someone understands why. Because competence is maintained instead of eroding[^5].
 
-Friction is the value mechanism, not an obstacle to eliminate. Intentional friction and role isolation aren't a methodological luxury. They're the condition for value[^23]. La Rosa and Beretta formalize this principle within the framework of joint cognitive systems: friction must be designed as a scalable design element, adapted to the functional role and degree of control of each actor in the system[^28].
+Friction is the value mechanism, not an obstacle to eliminate. Intentional friction and role isolation aren't methodological luxuries. They're the condition for value[^23]. La Rosa and Beretta formalize this principle within the framework of joint cognitive systems: friction must be designed as a scalable design element, adapted to the functional role and degree of control of each actor in the system[^28].
 
 In the market, everyone is trying to reduce friction with AI. Fewer prompts, more autonomy, agents that work on their own. My approach is the opposite: I generate friction to move the product forward. Specialized AI personas. Each with a scope, constraints, a stance, and a duty to challenge the others. The architect says "not now." The researcher says "your reference doesn't hold up." The strategist says "nobody will pay for that." If all the personas agree, they're useless.
 

@@ -46,7 +46,7 @@ The orchestrator MUST ensure that:
 - The one who analyzes is not the one who publishes
 - The chain includes at least one external review before output
 
-A persona that reflects AND produces the final deliverable is judge and party. Friction disappears.
+A persona that reflects AND produces the final deliverable is judge in its own case. Friction disappears.
 
 ## 6. Maintain attention
 
