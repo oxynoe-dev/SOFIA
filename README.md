@@ -1,50 +1,36 @@
 # SOFIA
 
-> Specialized roles that think with you. The product emerges from their friction.
+> A method for orchestrating specialized AI personas through intentional friction.
 
 ---
 
-## The problem
-
-A generalist LLM does everything. Poorly.
-
-It codes, advises, writes, reviews — in the same conversation,
-with the same tone, no scope constraints. It says yes to everything.
-It challenges nothing. It remembers nothing.
-
-The result: a servile assistant producing average content,
-without friction, without trace, without progression.
-
-## The thesis
-
-**Constrained roles produce better than a free agent.**
-
-An architect who doesn't code is forced to specify clearly.
-A developer who doesn't decide architecture is forced to
-surface frictions. A strategist without code access is forced
-to think in value, not implementation.
-
-Constraint is not a limit — it's what forces quality.
-
 ## What SOFIA is
 
-An **agnostic method** for working with specialized AI personas,
-through intentional friction, steered by a human orchestrator who arbitrates.
+An **agnostic method** for working with constrained AI roles,
+steered by a human orchestrator who arbitrates.
+
+Each persona has a name, a stance, a scope, prohibitions.
+They don't talk to each other — they exchange through artifacts.
+The orchestrator carries context, routes, decides.
+
 Principles and protocol depend on no tool;
 `runtime/` provides an implementation for Claude Code, others can follow.
 
-Concretely:
+### Key concepts
+
 - **Personas** — AI roles with a name, stance, scope, prohibitions
 - **Friction** — personas challenge each other, the orchestrator decides
 - **Isolation** — each persona has its workspace, instructions, boundaries
-- **Orchestration** — the orchestrator is the message bus, carrying context between personas
-- **Traceability** — everything is traced: decisions, sessions, reviews, exchanges
+- **Orchestration** — the orchestrator is the message bus between personas
+- **Traceability** — decisions, sessions, reviews, exchanges are traced
 - **Artifacts** — personas communicate through files, not chat
 
-## What SOFIA is not
+### What SOFIA is not
 
 - Not a framework — no code to install, no dependency
-- Not a product — it's a method, documented in a repo
+- Not a product — a method, documented in a repo
+
+---
 
 ## Quick start
 
@@ -54,30 +40,32 @@ cd sofia
 claude
 ```
 
-Claude Code opens the repo, loads the built-in guide (Sofia) and asks
-the right questions. In 10 minutes, you have your first persona
-calibrated for your project.
+The built-in guide (Sofia) walks you through instance creation.
 
-> **Alpha preview** — Sofia relies on the runtime's conversational behavior. Results may vary depending on the environment. If the flow doesn't start, the [manual mode](doc/getting-started.md) covers the same thing step by step.
+> **Alpha** — Sofia relies on the runtime's conversational behavior. Results may vary. If the flow doesn't start, [manual mode](doc/getting-started.md) covers the same steps.
 
-## Learn more
+---
 
-| | |
-|---|---|
-| `core/` | The invariants — principles, model, friction, duties |
-| `protocol/` | The interface contract — H2A, exchange, friction, contribution |
-| `runtime/` | The concrete implementation — Claude Code today, Mistral tomorrow, others after |
-| `doc/` | Guides, workflows, patterns, field feedback, architecture, ADR |
+## Repository structure
+
+| Directory | Content |
+|-----------|---------|
+| `core/` | Invariants — principles, model, friction, duties |
+| `protocol/` | Interface contract — H2A, exchange, friction, contribution |
+| `implementation/` | Materialization — filesystem scripts, audit, analysis |
+| `runtime/` | Provider implementation — Claude Code (others planned) |
+| `canvas/` | Inspiration — archetypes, artifacts, patterns, workflows |
+| `doc/` | Guides, architecture, field feedback, ADR |
+
+---
 
 ## Origin
 
-SOFIA was born from the Katen project — a formally verified
-orchestration engine for Data & AI pipelines, built with 7 specialized
-AI assistants (architect, dev, UX, researcher, strategist, designer,
-writer) across 280+ sessions.
+SOFIA emerged from the Katen project — an orchestration engine
+for Data & AI pipelines, built with 7 specialized AI personas
+across 280+ sessions.
 
-A method that emerged from personal practice — to be confronted
-with your expertise.
+A method extracted from practice — to be confronted with yours.
 
 **Site**: [oxynoe.io/sofia](https://oxynoe.io/sofia/)
 
