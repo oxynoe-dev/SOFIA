@@ -4,12 +4,20 @@
 
 ---
 
-## Levels
+## Check ID taxonomy
 
-| Level | Meaning |
-|-------|---------|
-| **protocol** | Required by the H2A protocol (`protocol/exchange.md`, `protocol/friction.md`). Every conformant instance MUST pass these. |
-| **instance** | Convention adopted by this instance. Declared in `shared/conventions.md`. The audit checks them only if the instance uses the corresponding artifact type. |
+Format: `{level}{category}{number}`
+
+| Prefix | Level | Category | Conditioned by |
+|--------|-------|----------|----------------|
+| PS | Protocol | Structure | always |
+| PF | Protocol | Format | always |
+| AN | Artifact | Note | `--artifacts notes` |
+| AR | Artifact | Review | `--artifacts reviews` |
+| AF | Artifact | Feature | `--artifacts features` |
+| IS | Instance | Structure | not `--protocol-only` |
+| IN | Instance | Naming | not `--protocol-only` |
+| IR | Instance | Roadmap | not `--protocol-only` |
 
 ## Severity
 
@@ -21,60 +29,86 @@
 
 ---
 
-## Structure checks (S)
+## Protocol checks
 
-| ID | Rule | Severity | Level | Source |
-|----|------|----------|-------|--------|
-| S1 | `sofia.md` (or `voix.md`) present at root | fail | protocol | `protocol/exchange.md` — instance marker |
-| S2 | `shared/` directory present | fail | protocol | `protocol/exchange.md` — shared space |
-| S3 | `shared/conventions.md` present | warn | protocol | `protocol/exchange.md` — exchange rules |
-| S4 | `shared/notes/` present with `archives/` | info | instance | Emerges on usage — absent is normal |
-| S5 | `shared/review/` present with `archives/` | info | instance | Emerges on usage — absent is normal |
-| S6 | `shared/features/` present | info | instance | Emerges on usage — absent is normal |
-| S7 | `shared/orga/` present | info | instance | Organization files |
-| S8 | At least 1 workspace with `CLAUDE.md` | fail | protocol | `protocol/exchange.md` — persona space |
-| S9 | Each workspace has `sessions/` | warn | protocol | `protocol/exchange.md` — session traces |
-| S10 | Roadmaps in `shared/` | info | instance | Convention `roadmap-{product}.md` |
+### Protocol Structure (PS)
 
-## Frontmatter checks (F)
+| ID | Rule | Severity | Source |
+|----|------|----------|--------|
+| PS1 | `sofia.md` present at root | fail | `protocol/exchange.md` — instance marker |
+| PS2 | `shared/` directory present | fail | `protocol/exchange.md` — shared space |
+| PS3 | `shared/conventions.md` present | warn | `protocol/exchange.md` — exchange rules |
+| PS4 | At least 1 workspace with `CLAUDE.md` | fail | `protocol/exchange.md` — persona space |
+| PS5 | Each workspace has `sessions/` | warn | `protocol/exchange.md` — session traces |
 
-| ID | Rule | Severity | Level | Source |
-|----|------|----------|-------|--------|
-| F1 | Notes have frontmatter | warn | protocol | `protocol/exchange.md` §Artifacts — frontmatter MUST |
-| F2 | Reviews have frontmatter | warn | protocol | `protocol/exchange.md` §Artifacts — frontmatter MUST |
-| F3 | Notes have required fields (`from`, `to`, `nature`, `status`, `date`) | warn | protocol | `protocol/exchange.md` §Specific dimensions |
-| F4 | Reviews have required fields (`from`, `to`, `nature`, `status`, `date`, `subject`) | warn | protocol | `protocol/exchange.md` §Specific dimensions |
-| F5 | No accents in frontmatter values | info | instance | Convention — ASCII identifiers for parsability |
-| F6 | Status values are valid (`new`/`read`/`done` or FR equivalents) | warn | protocol | `protocol/exchange.md` §Lifecycle |
-| F7 | Sessions have conformant frontmatter (`persona`, `date`) | info | protocol | `protocol/exchange.md` §Sessions |
+### Protocol Format (PF)
 
-## Naming checks (N)
+| ID | Rule | Severity | Source |
+|----|------|----------|--------|
+| PF1 | Status values are valid (`new`/`read`/`done` or FR equivalents) | warn | `protocol/exchange.md` §Lifecycle |
+| PF2 | Sessions have conformant frontmatter (`persona`, `date`) | info | `protocol/exchange.md` §Sessions |
 
-| ID | Rule | Severity | Level | Source |
-|----|------|----------|-------|--------|
-| N1 | Notes follow `note-{subject}-{author}.md` | info | instance | Instance convention |
-| N2 | Reviews follow `review-{subject}-{author}.md` | info | instance | Instance convention |
-| N3 | Roadmaps follow `roadmap-{product}.md` | info | instance | Instance convention |
+## Artifact checks
 
-## Archiving checks (A)
+Each declared artifact type gets 5 standard checks. Add `--artifacts notes,reviews,features` to control which types are audited.
 
-| ID | Rule | Severity | Level | Source |
-|----|------|----------|-------|--------|
-| A1 | Files with status `done`/`traite` are in `archives/` | warn | instance | Instance convention — keeps scan lean |
-| A2 | Files in `archives/` have status `done`/`traite` | info | instance | Coherence check |
+### Artifact Note (AN)
 
-## Roadmap checks (R)
+| ID | Rule | Severity |
+|----|------|----------|
+| AN1 | `shared/notes/` present with `archives/` | info |
+| AN2 | Notes have frontmatter | warn |
+| AN3 | Required fields (`from`, `to`, `nature`, `status`, `date`) | warn |
+| AN4 | Naming convention `note-{subject}-{author}.md` | info |
+| AN5 | Done files archived | warn |
 
-| ID | Rule | Severity | Level | Source |
-|----|------|----------|-------|--------|
-| R1 | Roadmap has `# Roadmap` header | warn | instance | Convention — structure formelle |
-| R2 | Roadmap declares an Owner in blockquote | warn | instance | Convention — ownership |
-| R3 | Version sections have metadata comment | info | instance | Convention — frontmatter versions |
-| R4 | Items have a status (`[done]`/`[running]`/`[todo]`/`[blocked]`/`[ready]`) | warn | instance | Convention — progress tracking |
-| R5 | Items have an `@owner` | warn | instance | Convention — accountability |
-| R6 | Roadmaps use `↔` convergence markers | info | instance | Convention — cross-instance dependencies |
-| R7 | Roadmaps use `cible:` markers | info | instance | Convention — target dates |
-| R8 | Roadmaps use `source:` markers | info | instance | Convention — source references |
+### Artifact Review (AR)
+
+| ID | Rule | Severity |
+|----|------|----------|
+| AR1 | `shared/review/` present with `archives/` | info |
+| AR2 | Reviews have frontmatter | warn |
+| AR3 | Required fields (`from`, `to`, `nature`, `status`, `date`, `subject`) | warn |
+| AR4 | Naming convention `review-{subject}-{author}.md` | info |
+| AR5 | Done files archived | warn |
+
+### Artifact Feature (AF)
+
+| ID | Rule | Severity |
+|----|------|----------|
+| AF1 | `shared/features/` present | info |
+| AF2 | Features have frontmatter | warn |
+| AF3 | Required fields (`from`, `to`, `nature`, `status`, `date`) | warn |
+
+## Instance checks
+
+### Instance Structure (IS)
+
+| ID | Rule | Severity |
+|----|------|----------|
+| IS1 | `shared/orga/` present | info |
+| IS2 | Roadmaps in `shared/` | info |
+| IS3 | No accents in frontmatter values | info |
+| IS4 | Files in `archives/` have status `done` | info |
+
+### Instance Naming (IN)
+
+| ID | Rule | Severity |
+|----|------|----------|
+| IN1 | Roadmaps follow `roadmap-{product}.md` | info |
+
+### Instance Roadmap (IR)
+
+| ID | Rule | Severity |
+|----|------|----------|
+| IR1 | Roadmap has `# Roadmap` header | warn |
+| IR2 | Roadmap declares an Owner | warn |
+| IR3 | Version sections have metadata comment | info |
+| IR4 | Items have a status tag | warn |
+| IR5 | Items have an `@owner` | warn |
+| IR6 | Uses `↔` convergence markers | info |
+| IR7 | Uses `cible:` markers | info |
+| IR8 | Uses `source:` markers | info |
 
 ---
 
@@ -101,11 +135,11 @@ python audit-instance.py /path/to/instance
 # Audit with features included
 python audit-instance.py /path/to/instance --artifacts notes,reviews,features
 
-# Protocol checks only — skip all instance artifact checks
+# Protocol checks only — skip all artifact and instance checks
 python audit-instance.py /path/to/instance --protocol-only
 ```
 
-When `--protocol-only` is set, all instance-level checks (S4-S7, S10, F5, N1-N3, A1-A2, R1-R8) are skipped.
+When `--protocol-only` is set, all artifact checks (AN1-AN5, AR1-AR5, AF1-AF3) and instance checks (IS1-IS4, IN1, IR1-IR8) are skipped.
 
 ---
 

@@ -137,11 +137,11 @@ class TestCheckStructure(unittest.TestCase):
         checks = audit.check_structure(FIXTURES)
         by_id = {c["id"]: c for c in checks}
 
-        self.assertEqual(by_id["S1"]["status"], "pass")  # sofia.md
-        self.assertEqual(by_id["S2"]["status"], "pass")  # shared/
-        self.assertEqual(by_id["S3"]["status"], "pass")  # conventions.md
-        self.assertEqual(by_id["S8"]["status"], "pass")  # workspaces with CLAUDE.md
-        self.assertEqual(by_id["R1"]["status"], "pass")  # roadmap header
+        self.assertEqual(by_id["PS1"]["status"], "pass")  # sofia.md
+        self.assertEqual(by_id["PS2"]["status"], "pass")  # shared/
+        self.assertEqual(by_id["PS3"]["status"], "pass")  # conventions.md
+        self.assertEqual(by_id["PS4"]["status"], "pass")  # workspaces with CLAUDE.md
+        self.assertEqual(by_id["IR1"]["status"], "pass")  # roadmap header
 
 
 class TestScanArtifacts(unittest.TestCase):

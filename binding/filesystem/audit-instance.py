@@ -201,7 +201,7 @@ def count_friction_markers_from_text(text: str) -> dict[str, int]:
 def check_structure(instance: Path, protocol_only: bool = False, artifact_types: set[str] | None = None) -> list[dict]:
     """Run structural conformity checks.
 
-    protocol_only: skip instance-level checks (S4-S7, S10, F5, N1-N3, A1-A2, R1-R8)
+    protocol_only: skip instance-level checks (AN1-AR1, IS2, IS3, AN4-IN1, AN5-AR5, IS4, IR1-IR8)
     artifact_types: set of artifact types to audit (default: {"notes", "reviews"})
     """
     if artifact_types is None:
@@ -215,72 +215,72 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             entry["files"] = files
         checks.append(entry)
 
-    # S1: sofia.md or voix.md (instance marker)
+    # PS1: sofia.md or voix.md (instance marker)
     marker_found = (instance / "sofia.md").is_file() or (instance / "voix.md").is_file()
     marker_name = "sofia.md" if (instance / "sofia.md").is_file() else "voix.md" if (instance / "voix.md").is_file() else "sofia.md/voix.md"
-    add("S1", "fail", marker_found, f"{marker_name} present" if marker_found else "sofia.md ou voix.md manquant")
+    add("PS1", "fail", marker_found, f"{marker_name} present" if marker_found else "sofia.md ou voix.md manquant")
 
-    # S2: shared/
-    add("S2", "fail", (instance / "shared").is_dir(), "shared/ present" if (instance / "shared").is_dir() else "shared/ manquant")
+    # PS2: shared/
+    add("PS2", "fail", (instance / "shared").is_dir(), "shared/ present" if (instance / "shared").is_dir() else "shared/ manquant")
 
-    # S3: shared/conventions.md
-    add("S3", "warn", (instance / "shared" / "conventions.md").is_file(),
+    # PS3: shared/conventions.md
+    add("PS3", "warn", (instance / "shared" / "conventions.md").is_file(),
         "shared/conventions.md present" if (instance / "shared" / "conventions.md").is_file() else "shared/conventions.md manquant")
 
-    # S4-S7: instance-level structure checks (skipped in --protocol-only)
+    # AN1-IS1: instance-level structure checks (skipped in --protocol-only)
     if not protocol_only:
-        # S4: shared/notes/ with archives/ (emerge a l'usage — absent = normal)
+        # AN1: shared/notes/ with archives/ (emerge a l'usage — absent = normal)
         notes_dir = instance / "shared" / "notes"
         notes_ok = notes_dir.is_dir()
         notes_archives = (notes_dir / "archives").is_dir() if notes_ok else False
         if notes_ok and notes_archives:
-            add("S4", "info", True, "shared/notes/ present avec archives/")
+            add("AN1", "info", True, "shared/notes/ present avec archives/")
         elif notes_ok:
-            add("S4", "info", False, "shared/notes/ present mais archives/ manquant")
+            add("AN1", "info", False, "shared/notes/ present mais archives/ manquant")
         else:
-            add("S4", "info", True, "shared/notes/ absent (emerge a l'usage)")
+            add("AN1", "info", True, "shared/notes/ absent (emerge a l'usage)")
 
-        # S5: shared/review/ with archives/ (emerge a l'usage — absent = normal)
+        # AR1: shared/review/ with archives/ (emerge a l'usage — absent = normal)
         review_dir = instance / "shared" / "review"
         review_ok = review_dir.is_dir()
         review_archives = (review_dir / "archives").is_dir() if review_ok else False
         if review_ok and review_archives:
-            add("S5", "info", True, "shared/review/ present avec archives/")
+            add("AR1", "info", True, "shared/review/ present avec archives/")
         elif review_ok:
-            add("S5", "info", False, "shared/review/ present mais archives/ manquant")
+            add("AR1", "info", False, "shared/review/ present mais archives/ manquant")
         else:
-            add("S5", "info", True, "shared/review/ absent (emerge a l'usage)")
+            add("AR1", "info", True, "shared/review/ absent (emerge a l'usage)")
 
-        # S6: shared/features/ (emerge a l'usage — absent = normal)
-        add("S6", "info", True,
+        # AF1: shared/features/ (emerge a l'usage — absent = normal)
+        add("AF1", "info", True,
             "shared/features/ present" if (instance / "shared" / "features").is_dir() else "shared/features/ absent (emerge a l'usage)")
 
-        # S7: shared/orga/
-        add("S7", "info", (instance / "shared" / "orga").is_dir(),
+        # IS1: shared/orga/
+        add("IS1", "info", (instance / "shared" / "orga").is_dir(),
             "shared/orga/ present" if (instance / "shared" / "orga").is_dir() else "shared/orga/ manquant")
 
-    # S8: at least 1 workspace with CLAUDE.md
+    # PS4: at least 1 workspace with CLAUDE.md
     workspaces = [d for d in instance.iterdir() if d.is_dir() and (d / "CLAUDE.md").is_file() and d.name != "shared"]
-    add("S8", "fail", len(workspaces) > 0,
+    add("PS4", "fail", len(workspaces) > 0,
         f"{len(workspaces)} workspaces avec CLAUDE.md" if workspaces else "aucun workspace avec CLAUDE.md")
 
-    # S9: each workspace has sessions/
+    # PS5: each workspace has sessions/
     ws_without_sessions = [d.name for d in workspaces if not (d / "sessions").is_dir()]
     if ws_without_sessions:
-        add("S9", "warn", False, f"{len(ws_without_sessions)} workspaces sans sessions/", ws_without_sessions)
+        add("PS5", "warn", False, f"{len(ws_without_sessions)} workspaces sans sessions/", ws_without_sessions)
     else:
-        add("S9", "warn", True, "tous les workspaces ont sessions/")
+        add("PS5", "warn", True, "tous les workspaces ont sessions/")
 
-    # S10: roadmaps (emerge a l'usage — absent = normal) — instance level
+    # IS2: roadmaps (emerge a l'usage — absent = normal) — instance level
     roadmaps = list((instance / "shared").glob("roadmap-*.md")) if (instance / "shared").is_dir() else []
     if not protocol_only:
-        add("S10", "info", True,
+        add("IS2", "info", True,
             f"{len(roadmaps)} roadmaps dans shared/" if roadmaps else "aucune roadmap dans shared/ (emerge a l'usage)")
 
-    # F1-F2: frontmatter presence (only for declared artifact types)
-    artifact_dirs = [("notes", "shared/notes", "F1"), ("reviews", "shared/review", "F2")]
+    # AN2/AR2/AF2: frontmatter presence (only for declared artifact types)
+    artifact_dirs = [("notes", "shared/notes", "AN2"), ("reviews", "shared/review", "AR2")]
     if "features" in artifact_types:
-        artifact_dirs.append(("features", "shared/features", "F1b"))
+        artifact_dirs.append(("features", "shared/features", "AF2"))
     for label, rel_dir, fid in artifact_dirs:
         if label not in artifact_types:
             continue
@@ -294,16 +294,16 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
         else:
             add(fid, "warn", True, f"{len(all_md)} {label} avec frontmatter")
 
-    # F3-F4: required fields (only for declared artifact types)
+    # AN3/AR3/AF3: required fields (only for declared artifact types)
     required_notes = {"de", "pour", "nature", "statut", "date"}
     required_reviews = {"de", "pour", "nature", "statut", "date", "objet"}
     required_features = {"de", "pour", "nature", "statut", "date"}
     field_checks = [
-        ("notes", "shared/notes", "F3", required_notes),
-        ("reviews", "shared/review", "F4", required_reviews),
+        ("notes", "shared/notes", "AN3", required_notes),
+        ("reviews", "shared/review", "AR3", required_reviews),
     ]
     if "features" in artifact_types:
-        field_checks.append(("features", "shared/features", "F4b", required_features))
+        field_checks.append(("features", "shared/features", "AF3", required_features))
     for label, rel_dir, fid, required in field_checks:
         if label not in artifact_types:
             continue
@@ -343,7 +343,7 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
         else:
             add(fid, "warn", True, f"tous les {label} ont les champs requis")
 
-    # F5: accents in frontmatter values — instance level
+    # IS3: accents in frontmatter values — instance level
     if not protocol_only:
         accent_files = []
         for rel_dir in ["shared/notes", "shared/review"]:
@@ -359,11 +359,11 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
                         accent_files.append(str(f.relative_to(instance)))
                         break
         if accent_files:
-            add("F5", "info", False, f"{len(accent_files)} fichiers avec accents dans le frontmatter", accent_files)
+            add("IS3", "info", False, f"{len(accent_files)} fichiers avec accents dans le frontmatter", accent_files)
         else:
-            add("F5", "info", True, "pas d'accents dans les valeurs frontmatter")
+            add("IS3", "info", True, "pas d'accents dans les valeurs frontmatter")
 
-    # F6: valid statut values
+    # PF1: valid statut values
     bad_statut_files = []
     for rel_dir in ["shared/notes", "shared/review"]:
         base = instance / rel_dir
@@ -380,11 +380,11 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             if val not in VALID_STATUTS:
                 bad_statut_files.append(f"{f.relative_to(instance)} (statut: {fm[statut_key]})")
     if bad_statut_files:
-        add("F6", "warn", False, f"{len(bad_statut_files)} fichiers avec statut invalide", bad_statut_files)
+        add("PF1", "warn", False, f"{len(bad_statut_files)} fichiers avec statut invalide", bad_statut_files)
     else:
-        add("F6", "warn", True, "tous les statuts sont valides")
+        add("PF1", "warn", True, "tous les statuts sont valides")
 
-    # F7: sessions frontmatter
+    # PF2: sessions frontmatter
     session_files = list(instance.rglob("sessions/*.md"))
     session_files = [f for f in session_files if "shared" not in f.relative_to(instance).parts]
     bad_sessions = []
@@ -403,11 +403,11 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
         if missing:
             bad_sessions.append(f"{f.relative_to(instance)} (manque: {', '.join(missing)})")
     if bad_sessions:
-        add("F7", "info", False, f"{len(bad_sessions)}/{len(session_files)} sessions sans frontmatter conforme", bad_sessions)
+        add("PF2", "info", False, f"{len(bad_sessions)}/{len(session_files)} sessions sans frontmatter conforme", bad_sessions)
     else:
-        add("F7", "info", True, f"{len(session_files)} sessions avec frontmatter conforme")
+        add("PF2", "info", True, f"{len(session_files)} sessions avec frontmatter conforme")
 
-    # N1-N3: naming conventions — instance level
+    # AN4/AR4/IN1: naming conventions — instance level
     if protocol_only:
         return checks
     note_pattern = re.compile(r"^note-.+-.+\.md$")
@@ -415,8 +415,8 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
     roadmap_pattern = re.compile(r"^roadmap-.+\.md$")
 
     for label, rel_dir, nid, pattern in [
-        ("notes", "shared/notes", "N1", note_pattern),
-        ("reviews", "shared/review", "N2", review_pattern),
+        ("notes", "shared/notes", "AN4", note_pattern),
+        ("reviews", "shared/review", "AR4", review_pattern),
     ]:
         base = instance / rel_dir
         if not base.is_dir():
@@ -435,18 +435,16 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
     if roadmaps:
         bad_rm = [str(f.relative_to(instance)) for f in roadmaps if not roadmap_pattern.match(f.name)]
         if bad_rm:
-            add("N3", "info", False, f"{len(bad_rm)} roadmaps hors convention", bad_rm)
+            add("IN1", "info", False, f"{len(bad_rm)} roadmaps hors convention", bad_rm)
         else:
-            add("N3", "info", True, "toutes les roadmaps suivent roadmap-{{produit}}.md")
+            add("IN1", "info", True, "toutes les roadmaps suivent roadmap-{{produit}}.md")
 
-    # A1: traite files not in archives/
-    misplaced_traite = []
-    for rel_dir in ["shared/notes", "shared/review"]:
-        base = instance / rel_dir
-        if not base.is_dir():
-            continue
-        for f in base.rglob("*.md"):
-            in_archives = "archives" in f.relative_to(base).parts or "archive" in f.relative_to(base).parts
+    # AN5: traite notes not in archives/
+    misplaced_notes = []
+    notes_base = instance / "shared" / "notes"
+    if notes_base.is_dir():
+        for f in notes_base.rglob("*.md"):
+            in_archives = "archives" in f.relative_to(notes_base).parts or "archive" in f.relative_to(notes_base).parts
             if in_archives:
                 continue
             fm = parse_frontmatter(f)
@@ -455,13 +453,33 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             statut_raw = next((fm[k] for k in STATUT_KEYS if k in fm), "")
             statut = strip_accents(statut_raw.lower().strip())
             if statut in ("traite", "done"):
-                misplaced_traite.append(str(f.relative_to(instance)))
-    if misplaced_traite:
-        add("A1", "warn", False, f"{len(misplaced_traite)} fichiers traite hors archives/", misplaced_traite)
+                misplaced_notes.append(str(f.relative_to(instance)))
+    if misplaced_notes:
+        add("AN5", "warn", False, f"{len(misplaced_notes)} notes traite hors archives/", misplaced_notes)
     else:
-        add("A1", "warn", True, "tous les fichiers traite sont dans archives/")
+        add("AN5", "warn", True, "toutes les notes traite sont dans archives/")
 
-    # A2: files in archives/ with non-traite status
+    # AR5: traite reviews not in archives/
+    misplaced_reviews = []
+    reviews_base = instance / "shared" / "review"
+    if reviews_base.is_dir():
+        for f in reviews_base.rglob("*.md"):
+            in_archives = "archives" in f.relative_to(reviews_base).parts or "archive" in f.relative_to(reviews_base).parts
+            if in_archives:
+                continue
+            fm = parse_frontmatter(f)
+            if fm is None:
+                continue
+            statut_raw = next((fm[k] for k in STATUT_KEYS if k in fm), "")
+            statut = strip_accents(statut_raw.lower().strip())
+            if statut in ("traite", "done"):
+                misplaced_reviews.append(str(f.relative_to(instance)))
+    if misplaced_reviews:
+        add("AR5", "warn", False, f"{len(misplaced_reviews)} reviews traite hors archives/", misplaced_reviews)
+    else:
+        add("AR5", "warn", True, "toutes les reviews traite sont dans archives/")
+
+    # IS4: files in archives/ with non-traite status
     bad_archive = []
     for rel_dir in ["shared/notes", "shared/review"]:
         base = instance / rel_dir
@@ -479,11 +497,11 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             if statut and statut not in ("traite", "done"):
                 bad_archive.append(f"{f.relative_to(instance)} (statut: {statut_raw})")
     if bad_archive:
-        add("A2", "info", False, f"{len(bad_archive)} fichiers dans archives/ sans statut traite", bad_archive)
+        add("IS4", "info", False, f"{len(bad_archive)} fichiers dans archives/ sans statut traite", bad_archive)
     else:
-        add("A2", "info", True, "tous les fichiers dans archives/ ont statut traite")
+        add("IS4", "info", True, "tous les fichiers dans archives/ ont statut traite")
 
-    # R1-R8: roadmap checks
+    # IR1-IR8: roadmap checks
     if roadmaps:
         no_header = []
         no_owner_header = []
@@ -507,17 +525,17 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
 
             lines_text = text.splitlines()
 
-            # R1: header format — # Roadmap {Nom}
+            # IR1: header format — # Roadmap {Nom}
             has_header = bool(lines_text) and lines_text[0].startswith("# Roadmap")
             if not has_header:
                 no_header.append(rel)
 
-            # R2: owner in blockquote — > ... Owner : @persona
+            # IR2: owner in blockquote — > ... Owner : @persona
             has_owner_header = bool(re.search(r"^>\s*.*[Oo]wners?\s*:\s*@\w+", text, re.MULTILINE))
             if not has_owner_header:
                 no_owner_header.append(rel)
 
-            # R3: version metadata comments — <!-- produit: X | ... statut: X -->
+            # IR3: version metadata comments — <!-- produit: X | ... statut: X -->
             version_comments = re.findall(r"<!--\s*produit:", text)
             sections = [l for l in lines_text if l.startswith("### ")]
             if sections and not version_comments:
@@ -543,12 +561,12 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
                 total_items += 1
                 lineno = i + 1  # 1-based for display
 
-                # R4: status marker
+                # IR4: status marker
                 has_status = bool(re.search(r"\[(done|running|todo|blocked|ready)\]", stripped))
                 if not has_status:
                     items_without_status.append(f"{rel}:{lineno}")
 
-                # R5: @owner
+                # IR5: @owner
                 has_owner = bool(re.search(r"@\w+", stripped))
                 if not has_owner:
                     items_without_owner.append(f"{rel}:{lineno}")
@@ -593,59 +611,59 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             if not rm_has_source:
                 no_source.append(rel)
 
-        # R1: header
+        # IR1: header
         if no_header:
-            add("R1", "warn", False, f"{len(no_header)} roadmaps sans en-tete '# Roadmap'", no_header)
+            add("IR1", "warn", False, f"{len(no_header)} roadmaps sans en-tete '# Roadmap'", no_header)
         else:
-            add("R1", "warn", True, "toutes les roadmaps ont un en-tete conforme")
+            add("IR1", "warn", True, "toutes les roadmaps ont un en-tete conforme")
 
-        # R2: owner in header
+        # IR2: owner in header
         if no_owner_header:
-            add("R2", "warn", False, f"{len(no_owner_header)} roadmaps sans Owner dans le blockquote", no_owner_header)
+            add("IR2", "warn", False, f"{len(no_owner_header)} roadmaps sans Owner dans le blockquote", no_owner_header)
         else:
-            add("R2", "warn", True, "toutes les roadmaps declarent un Owner")
+            add("IR2", "warn", True, "toutes les roadmaps declarent un Owner")
 
-        # R3: version metadata
+        # IR3: version metadata
         if no_version_meta:
-            add("R3", "info", False, f"{len(no_version_meta)} roadmaps avec sections ### sans commentaire metadata", no_version_meta)
+            add("IR3", "info", False, f"{len(no_version_meta)} roadmaps avec sections ### sans commentaire metadata", no_version_meta)
         else:
-            add("R3", "info", True, "toutes les sections version ont un commentaire metadata")
+            add("IR3", "info", True, "toutes les sections version ont un commentaire metadata")
 
-        # R4: status per item
+        # IR4: status per item
         if items_without_status:
-            add("R4", "warn", False, f"{len(items_without_status)}/{total_items} items sans statut [done/running/todo/blocked/ready]", items_without_status[:20])
+            add("IR4", "warn", False, f"{len(items_without_status)}/{total_items} items sans statut [done/running/todo/blocked/ready]", items_without_status[:20])
         else:
-            add("R4", "warn", True, f"tous les {total_items} items ont un statut")
+            add("IR4", "warn", True, f"tous les {total_items} items ont un statut")
 
-        # R5: @owner per item
+        # IR5: @owner per item
         if items_without_owner:
-            add("R5", "warn", False, f"{len(items_without_owner)}/{total_items} items sans @porteur", items_without_owner[:20])
+            add("IR5", "warn", False, f"{len(items_without_owner)}/{total_items} items sans @porteur", items_without_owner[:20])
         else:
-            add("R5", "warn", True, f"tous les {total_items} items ont un @porteur")
+            add("IR5", "warn", True, f"tous les {total_items} items ont un @porteur")
 
-        # R6: convergence markers
+        # IR6: convergence markers
         if no_convergence:
-            add("R6", "info", False,
+            add("IR6", "info", False,
                 f"{len(no_convergence)}/{len(roadmaps)} roadmaps sans marqueur ↔ ({total_with_convergence} marqueurs au total)",
                 no_convergence)
         else:
-            add("R6", "info", True, f"toutes les roadmaps utilisent ↔ ({total_with_convergence} marqueurs)")
+            add("IR6", "info", True, f"toutes les roadmaps utilisent ↔ ({total_with_convergence} marqueurs)")
 
-        # R7: cible markers
+        # IR7: cible markers
         if no_cible:
-            add("R7", "info", False,
+            add("IR7", "info", False,
                 f"{len(no_cible)}/{len(roadmaps)} roadmaps sans marqueur cible: ({total_with_cible} marqueurs au total)",
                 no_cible)
         else:
-            add("R7", "info", True, f"toutes les roadmaps utilisent cible: ({total_with_cible} marqueurs)")
+            add("IR7", "info", True, f"toutes les roadmaps utilisent cible: ({total_with_cible} marqueurs)")
 
-        # R8: source markers
+        # IR8: source markers
         if no_source:
-            add("R8", "info", False,
+            add("IR8", "info", False,
                 f"{len(no_source)}/{len(roadmaps)} roadmaps sans marqueur source: ({total_with_source} marqueurs au total)",
                 no_source)
         else:
-            add("R8", "info", True, f"toutes les roadmaps utilisent source: ({total_with_source} marqueurs)")
+            add("IR8", "info", True, f"toutes les roadmaps utilisent source: ({total_with_source} marqueurs)")
 
     return checks
 
@@ -1279,7 +1297,7 @@ def main():
     parser.add_argument("--format", choices=["md", "json", "csv", "sqlite"], default="md",
                         help="Output format (default: md)")
     parser.add_argument("--protocol-only", action="store_true",
-                        help="Skip instance-level checks (S4-S7, S10, F5, N1-N3, A1-A2, R1-R8)")
+                        help="Skip instance-level checks (AN1-AR1, IS2, IS3, AN4-IN1, AN5-AR5, IS4, IR1-IR8)")
     parser.add_argument("--artifacts", type=str, default=None,
                         help="Comma-separated artifact types to audit (default: notes,reviews). "
                              "Use 'notes,reviews,features' to include features.")
