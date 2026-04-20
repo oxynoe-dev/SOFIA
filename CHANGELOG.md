@@ -1,5 +1,34 @@
 # Changelog
 
+## v0.3.4 — EN translation polish & architectural rename (2026-04-20)
+
+### Terminology standardization
+- `artefact` → `artifact` across 17 .md files + 5 SVGs (102 replacements)
+- `posture` → `stance` as persona dimension across 22 .md files + model.md
+- 6 priority gallicism/false friend fixes (judge and party, destined for, flux, emitted, at constant human resources/employment rate)
+- 10 secondary formulation fixes (rereading, compressed, mitigable, in friction, etc.)
+
+### SVG translations
+- 3 remaining doc SVGs translated (fig-project-instance, fig-structure-repo, fig-instance-anatomy)
+- 11 additional SVGs translated FR→EN (7 workflows, structure-instance, review-multi-personas, media-calibration, factual-contamination)
+
+### Bilingual support
+- audit-instance.py — accepts `status:`/`statut:`, `new`/`nouveau`, `read`/`lu`, `done`/`traite`, `from:`/`de:`, `to:`/`pour:`
+- conventions.md template translated to EN
+- Cross-instance exchange section added to template + 3 instance conventions (methodes, produits, oxynoe)
+
+### Architectural rename (ADR-014)
+- `implementation/` → `binding/` — protocol materialization layer (precedent: CloudEvents, AsyncAPI, WSDL)
+- `runtime/` → `provider/` — AI provider layer (precedent: Terraform, Pulumi)
+- Two orthogonal axes: binding (filesystem, API, DB) × provider (Claude Code, Mistral, Gemini)
+- 68 files renamed/updated, 3 SVGs updated, all internal references aligned
+
+### Other
+- README rewritten — factual tone, complete repo structure (6 directories)
+
+### Decisions
+- ADR-014 — Rename implementation/ → binding/, runtime/ → provider/
+
 ## v0.3.3 — Documentation, dashboard H2A & EN migration (2026-04-17)
 
 ### Migration EN (ADR-013)

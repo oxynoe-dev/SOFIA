@@ -3,28 +3,28 @@
     "methodes": {
       "meta": {
         "instance": "methodes",
-        "date": "2026-04-17",
+        "date": "2026-04-20",
         "personas": [
           "aurele",
           "emile",
           "garance",
           "solene"
         ],
-        "sessions_scanned": 54,
-        "artefacts_scanned": 85
+        "sessions_scanned": 59,
+        "artefacts_scanned": 89
       },
       "totals": {
-        "frictions": 263,
-        "frictions_sessions": 181,
+        "frictions": 279,
+        "frictions_sessions": 197,
         "frictions_artefacts": 82,
-        "resolved": 180,
-        "resolved_pct": 68,
-        "sessions": 48,
-        "artefacts": 71,
+        "resolved": 195,
+        "resolved_pct": 70,
+        "sessions": 53,
+        "artefacts": 75,
         "signaler_pattern": 0,
         "resolutions": {
-          "ratified": 151,
-          "revised": 24,
+          "ratified": 165,
+          "revised": 25,
           "rejected": 5
         }
       },
@@ -39,7 +39,7 @@
             "sound": [
               0,
               14,
-              155
+              170
             ],
             "contestable": [
               0,
@@ -49,7 +49,7 @@
             "simplification": [
               0,
               3,
-              26
+              27
             ],
             "blind_spot": [
               0,
@@ -66,7 +66,7 @@
             "a_corroborates_h": [
               0,
               1,
-              2
+              4
             ],
             "a_contests_h": [
               0,
@@ -76,45 +76,45 @@
             "h_corroborates_a": [
               0,
               13,
-              153
+              166
             ],
             "h_contests_a": [
               0,
               7,
-              58
+              59
             ]
           },
           "resolutions": {
             "revised": [
               0,
               0,
-              24
+              25
             ],
-            "ratified": [
+            "rejected": [
               0,
               0,
-              151
+              5
             ],
             "contested": [
               0,
               0,
               0
             ],
-            "rejected": [
+            "ratified": [
               0,
               0,
-              5
+              165
             ]
           },
           "frictions_per_session": [
             0.0,
             2.6,
-            6.2
+            5.8
           ],
           "resolutions_per_session": [
             0.0,
             0.0,
-            4.6
+            4.4
           ],
           "flux_h": [
             0,
@@ -129,17 +129,17 @@
           "sessions": [
             0,
             9,
-            39
+            44
           ],
           "artefacts": [
             16,
             30,
-            25
+            29
           ],
           "frictions_sessions": [
             0,
             19,
-            162
+            178
           ],
           "frictions_artefacts": [
             0,
@@ -163,7 +163,8 @@
             "2026-04-14",
             "2026-04-15",
             "2026-04-16",
-            "2026-04-17"
+            "2026-04-17",
+            "2026-04-19"
           ],
           "markers": {
             "sound": [
@@ -181,7 +182,8 @@
               14,
               13,
               39,
-              77
+              86,
+              6
             ],
             "contestable": [
               0,
@@ -198,7 +200,8 @@
               2,
               3,
               2,
-              16
+              16,
+              0
             ],
             "simplification": [
               0,
@@ -215,7 +218,8 @@
               0,
               3,
               7,
-              11
+              11,
+              1
             ],
             "blind_spot": [
               0,
@@ -232,9 +236,11 @@
               0,
               5,
               2,
-              20
+              20,
+              0
             ],
             "refuted": [
+              0,
               0,
               0,
               0,
@@ -268,6 +274,7 @@
               0,
               0,
               1,
+              2,
               1
             ],
             "a_contests_h": [
@@ -285,7 +292,8 @@
               2,
               2,
               2,
-              17
+              17,
+              0
             ],
             "h_corroborates_a": [
               0,
@@ -302,7 +310,8 @@
               14,
               13,
               38,
-              76
+              84,
+              5
             ],
             "h_contests_a": [
               0,
@@ -319,7 +328,8 @@
               0,
               9,
               9,
-              30
+              30,
+              1
             ]
           },
           "resolutions": {
@@ -338,41 +348,8 @@
               0,
               3,
               6,
-              15
-            ],
-            "ratified": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              9,
-              43,
-              99
-            ],
-            "contested": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
+              15,
+              1
             ],
             "rejected": [
               0,
@@ -389,7 +366,44 @@
               0,
               0,
               1,
-              4
+              4,
+              0
+            ],
+            "contested": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ratified": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              43,
+              108,
+              5
             ]
           },
           "frictions_per_session": [
@@ -407,7 +421,8 @@
             2.0,
             4.8,
             4.2,
-            15.5
+            12.1,
+            3.5
           ],
           "resolutions_per_session": [
             0.0,
@@ -424,7 +439,8 @@
             0.0,
             2.4,
             4.2,
-            14.8
+            11.5,
+            3.0
           ],
           "flux_h": [
             0,
@@ -441,7 +457,8 @@
             18,
             15,
             9,
-            3
+            3,
+            0
           ],
           "flux_a": [
             0,
@@ -458,7 +475,8 @@
             12,
             10,
             3,
-            2
+            2,
+            0
           ],
           "sessions": [
             0,
@@ -475,7 +493,8 @@
             8,
             5,
             12,
-            8
+            11,
+            2
           ],
           "artefacts": [
             5,
@@ -491,8 +510,9 @@
             6,
             0,
             3,
-            4,
-            12
+            3,
+            13,
+            4
           ],
           "frictions_sessions": [
             0,
@@ -509,7 +529,8 @@
             16,
             24,
             50,
-            46
+            55,
+            7
           ],
           "frictions_artefacts": [
             0,
@@ -526,35 +547,36 @@
             0,
             0,
             0,
-            78
+            78,
+            0
           ]
         }
       },
       "personas": {
         "aurele": {
-          "sessions": 31,
-          "artefacts": 9,
-          "frictions": 139,
-          "frictions_sessions": 139,
+          "sessions": 35,
+          "artefacts": 10,
+          "frictions": 151,
+          "frictions_sessions": 151,
           "frictions_artefacts": 0,
           "markers": {
-            "sound": 90,
+            "sound": 102,
             "contestable": 14,
             "simplification": 17,
             "blind_spot": 18
           },
           "resolutions": {
-            "ratified": 65,
+            "ratified": 76,
             "revised": 17
           },
-          "resolved_pct": 59,
+          "resolved_pct": 62,
           "directions": {
-            "h_corroborates_a": 89,
+            "h_corroborates_a": 99,
             "h_contests_a": 32,
             "a_contests_h": 17,
-            "a_corroborates_h": 1
+            "a_corroborates_h": 3
           },
-          "direction_ratio": 0.1,
+          "direction_ratio": 0.2,
           "flux_h": 8,
           "flux_a": 6,
           "flux_h_pct": 57,
@@ -583,7 +605,7 @@
                 "sound": [
                   0,
                   11,
-                  79
+                  91
                 ],
                 "contestable": [
                   0,
@@ -610,7 +632,7 @@
                 "a_corroborates_h": [
                   0,
                   0,
-                  1
+                  3
                 ],
                 "a_contests_h": [
                   0,
@@ -620,7 +642,7 @@
                 "h_corroborates_a": [
                   0,
                   11,
-                  78
+                  88
                 ],
                 "h_contests_a": [
                   0,
@@ -634,31 +656,31 @@
                   0,
                   17
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
-                  65
+                  0
                 ],
                 "contested": [
                   0,
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
-                  0
+                  76
                 ]
               },
               "frictions_per_session": [
                 0.0,
                 2.7,
-                4.9
+                4.7
               ],
               "resolutions_per_session": [
                 0.0,
                 0.0,
-                3.3
+                3.2
               ],
               "flux_h": [
                 0,
@@ -673,17 +695,17 @@
               "sessions": [
                 0,
                 6,
-                25
+                29
               ],
               "artefacts": [
                 0,
                 3,
-                6
+                7
               ],
               "frictions_sessions": [
                 0,
                 16,
-                123
+                135
               ],
               "frictions_artefacts": [
                 0,
@@ -707,7 +729,8 @@
                 "2026-04-14",
                 "2026-04-15",
                 "2026-04-16",
-                "2026-04-17"
+                "2026-04-17",
+                "2026-04-19"
               ],
               "markers": {
                 "sound": [
@@ -725,7 +748,8 @@
                   9,
                   8,
                   30,
-                  24
+                  33,
+                  3
                 ],
                 "contestable": [
                   0,
@@ -742,7 +766,8 @@
                   2,
                   3,
                   1,
-                  1
+                  1,
+                  0
                 ],
                 "simplification": [
                   0,
@@ -759,7 +784,8 @@
                   0,
                   1,
                   6,
-                  3
+                  3,
+                  0
                 ],
                 "blind_spot": [
                   0,
@@ -776,9 +802,11 @@
                   0,
                   4,
                   2,
-                  12
+                  12,
+                  0
                 ],
                 "refuted": [
+                  0,
                   0,
                   0,
                   0,
@@ -812,7 +840,8 @@
                   0,
                   0,
                   1,
-                  0
+                  1,
+                  1
                 ],
                 "a_contests_h": [
                   0,
@@ -829,7 +858,8 @@
                   2,
                   2,
                   2,
-                  10
+                  10,
+                  0
                 ],
                 "h_corroborates_a": [
                   0,
@@ -846,7 +876,8 @@
                   9,
                   8,
                   29,
-                  24
+                  32,
+                  2
                 ],
                 "h_contests_a": [
                   0,
@@ -863,7 +894,8 @@
                   0,
                   6,
                   7,
-                  6
+                  6,
+                  0
                 ]
               },
               "resolutions": {
@@ -882,40 +914,7 @@
                   0,
                   1,
                   6,
-                  10
-                ],
-                "ratified": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  7,
-                  33,
-                  25
-                ],
-                "contested": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
+                  10,
                   0
                 ],
                 "rejected": [
@@ -933,7 +932,44 @@
                   0,
                   0,
                   0,
+                  0,
                   0
+                ],
+                "contested": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "ratified": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  7,
+                  33,
+                  34,
+                  2
                 ]
               },
               "frictions_per_session": [
@@ -951,7 +987,8 @@
                 1.8,
                 5.3,
                 4.9,
-                8.0
+                6.1,
+                3.0
               ],
               "resolutions_per_session": [
                 0.0,
@@ -968,7 +1005,8 @@
                 0.0,
                 2.7,
                 4.9,
-                7.0
+                5.5,
+                2.0
               ],
               "flux_h": [
                 0,
@@ -984,6 +1022,7 @@
                 0,
                 3,
                 5,
+                0,
                 0,
                 0
               ],
@@ -1002,6 +1041,7 @@
                 2,
                 4,
                 0,
+                0,
                 0
               ],
               "sessions": [
@@ -1019,7 +1059,8 @@
                 6,
                 3,
                 8,
-                5
+                8,
+                1
               ],
               "artefacts": [
                 0,
@@ -1036,7 +1077,8 @@
                 0,
                 0,
                 1,
-                4
+                4,
+                1
               ],
               "frictions_sessions": [
                 0,
@@ -1053,9 +1095,11 @@
                 11,
                 16,
                 39,
-                40
+                49,
+                3
               ],
               "frictions_artefacts": [
+                0,
                 0,
                 0,
                 0,
@@ -1076,26 +1120,26 @@
           }
         },
         "solene": {
-          "sessions": 17,
-          "artefacts": 18,
-          "frictions": 124,
-          "frictions_sessions": 42,
+          "sessions": 18,
+          "artefacts": 19,
+          "frictions": 128,
+          "frictions_sessions": 46,
           "frictions_artefacts": 82,
           "markers": {
-            "sound": 79,
+            "sound": 82,
             "contestable": 21,
             "blind_spot": 12,
-            "simplification": 12
+            "simplification": 13
           },
           "resolutions": {
-            "revised": 7,
-            "ratified": 86,
+            "revised": 8,
+            "ratified": 89,
             "rejected": 5
           },
-          "resolved_pct": 79,
+          "resolved_pct": 80,
           "directions": {
-            "h_corroborates_a": 77,
-            "h_contests_a": 33,
+            "h_corroborates_a": 80,
+            "h_contests_a": 34,
             "a_contests_h": 12,
             "a_corroborates_h": 2
           },
@@ -1129,7 +1173,7 @@
                 "sound": [
                   0,
                   3,
-                  76
+                  79
                 ],
                 "contestable": [
                   0,
@@ -1139,7 +1183,7 @@
                 "simplification": [
                   0,
                   1,
-                  11
+                  12
                 ],
                 "blind_spot": [
                   0,
@@ -1166,45 +1210,45 @@
                 "h_corroborates_a": [
                   0,
                   2,
-                  75
+                  78
                 ],
                 "h_contests_a": [
                   0,
                   2,
-                  31
+                  32
                 ]
               },
               "resolutions": {
                 "revised": [
                   0,
                   0,
-                  7
+                  8
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
-                  86
+                  5
                 ],
                 "contested": [
                   0,
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
-                  5
+                  89
                 ]
               },
               "frictions_per_session": [
                 0.0,
                 2.3,
-                8.4
+                8.1
               ],
               "resolutions_per_session": [
                 0.0,
                 0.0,
-                7.0
+                6.8
               ],
               "flux_h": [
                 0,
@@ -1219,17 +1263,17 @@
               "sessions": [
                 0,
                 3,
-                14
+                15
               ],
               "artefacts": [
                 0,
                 6,
-                12
+                13
               ],
               "frictions_sessions": [
                 0,
                 3,
-                39
+                43
               ],
               "frictions_artefacts": [
                 0,
@@ -1253,7 +1297,8 @@
                 "2026-04-14",
                 "2026-04-15",
                 "2026-04-16",
-                "2026-04-17"
+                "2026-04-17",
+                "2026-04-19"
               ],
               "markers": {
                 "sound": [
@@ -1271,7 +1316,8 @@
                   5,
                   5,
                   9,
-                  53
+                  53,
+                  3
                 ],
                 "contestable": [
                   0,
@@ -1288,7 +1334,8 @@
                   0,
                   0,
                   1,
-                  15
+                  15,
+                  0
                 ],
                 "simplification": [
                   0,
@@ -1305,7 +1352,8 @@
                   0,
                   2,
                   1,
-                  8
+                  8,
+                  1
                 ],
                 "blind_spot": [
                   0,
@@ -1322,9 +1370,11 @@
                   0,
                   1,
                   0,
-                  8
+                  8,
+                  0
                 ],
                 "refuted": [
+                  0,
                   0,
                   0,
                   0,
@@ -1358,7 +1408,8 @@
                   0,
                   0,
                   0,
-                  1
+                  1,
+                  0
                 ],
                 "a_contests_h": [
                   0,
@@ -1375,7 +1426,8 @@
                   0,
                   0,
                   0,
-                  7
+                  7,
+                  0
                 ],
                 "h_corroborates_a": [
                   0,
@@ -1392,7 +1444,8 @@
                   5,
                   5,
                   9,
-                  52
+                  52,
+                  3
                 ],
                 "h_contests_a": [
                   0,
@@ -1409,7 +1462,8 @@
                   0,
                   3,
                   2,
-                  24
+                  24,
+                  1
                 ]
               },
               "resolutions": {
@@ -1428,41 +1482,8 @@
                   0,
                   2,
                   0,
-                  5
-                ],
-                "ratified": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  2,
-                  10,
-                  74
-                ],
-                "contested": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
+                  5,
+                  1
                 ],
                 "rejected": [
                   0,
@@ -1479,7 +1500,44 @@
                   0,
                   0,
                   1,
-                  4
+                  4,
+                  0
+                ],
+                "contested": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "ratified": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  2,
+                  10,
+                  74,
+                  3
                 ]
               },
               "frictions_per_session": [
@@ -1497,7 +1555,8 @@
                 2.5,
                 4.0,
                 2.8,
-                28.0
+                28.0,
+                4.0
               ],
               "resolutions_per_session": [
                 0.0,
@@ -1514,7 +1573,8 @@
                 0.0,
                 2.0,
                 2.8,
-                27.7
+                27.7,
+                4.0
               ],
               "flux_h": [
                 0,
@@ -1531,7 +1591,8 @@
                 15,
                 10,
                 9,
-                3
+                3,
+                0
               ],
               "flux_a": [
                 0,
@@ -1548,7 +1609,8 @@
                 10,
                 6,
                 3,
-                2
+                2,
+                0
               ],
               "sessions": [
                 0,
@@ -1565,7 +1627,8 @@
                 2,
                 2,
                 4,
-                3
+                3,
+                1
               ],
               "artefacts": [
                 0,
@@ -1581,8 +1644,9 @@
                 3,
                 0,
                 2,
-                2,
-                5
+                1,
+                5,
+                2
               ],
               "frictions_sessions": [
                 0,
@@ -1599,7 +1663,8 @@
                 5,
                 8,
                 11,
-                6
+                6,
+                4
               ],
               "frictions_artefacts": [
                 0,
@@ -1616,7 +1681,8 @@
                 0,
                 0,
                 0,
-                78
+                78,
+                0
               ]
             }
           }
@@ -3951,6 +4017,123 @@
           "is_amendment": false
         },
         {
+          "persona": "aurele",
+          "date": "2026-04-17",
+          "source": "architecture/sessions/2026-04-17-1200-aurele.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": "ratified",
+          "description": "traduction fichier par fichier avec word count check",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "aurele",
+          "date": "2026-04-17",
+          "source": "architecture/sessions/2026-04-17-1200-aurele.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": "ratified",
+          "description": "livre bleu reste FR, tache Winston",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "aurele",
+          "date": "2026-04-17",
+          "source": "architecture/sessions/2026-04-17-1200-aurele.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": "ratified",
+          "description": "noms de sections sessions a la fin",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "aurele",
+          "date": "2026-04-17",
+          "source": "architecture/sessions/2026-04-17-1200-aurele.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": "ratified",
+          "description": "contribution % = A/(A+H)",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "aurele",
+          "date": "2026-04-17",
+          "source": "architecture/sessions/2026-04-17-1200-aurele.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": "ratified",
+          "description": "cross-instance dans protocol",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "aurele",
+          "date": "2026-04-17",
+          "source": "architecture/sessions/2026-04-17-1400-aurele.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": "ratified",
+          "description": "batch par agent pour les gros volumes",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "aurele",
+          "date": "2026-04-17",
+          "source": "architecture/sessions/2026-04-17-1400-aurele.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": "ratified",
+          "description": "garder les deux versions livre bleu",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "aurele",
+          "date": "2026-04-17",
+          "source": "architecture/sessions/2026-04-17-1600-aurele.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "persona",
+          "direction": "a_corroborates_h",
+          "resolution": "ratified",
+          "description": "batch canvas traduit directement après échec permissions agents",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "aurele",
+          "date": "2026-04-17",
+          "source": "architecture/sessions/2026-04-17-1600-aurele.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": "ratified",
+          "description": "katen gardé FR",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
           "persona": "solene",
           "date": "2026-04-17",
           "source": "recherche/sessions/2026-04-17-0900-solene.md",
@@ -5041,6 +5224,97 @@
           "description": "",
           "ref": "2026-04-15-0014-aurele/5",
           "is_amendment": true
+        },
+        {
+          "persona": "aurele",
+          "date": "2026-04-19",
+          "source": "architecture/sessions/2026-04-19-2130-aurele.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": null,
+          "description": "reorganisation roadmap v0.3.3→v0.3.5 pour debloquer la trad",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "aurele",
+          "date": "2026-04-19",
+          "source": "architecture/sessions/2026-04-19-2130-aurele.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": "ratified",
+          "description": "\"Shared notes\" plutot que \"Deposited notes\"",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "aurele",
+          "date": "2026-04-19",
+          "source": "architecture/sessions/2026-04-19-2130-aurele.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "persona",
+          "direction": "a_corroborates_h",
+          "resolution": "ratified",
+          "description": "identification bug frontmatter `status:` vs `statut:` dans audit-instance.py",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "solene",
+          "date": "2026-04-19",
+          "source": "recherche/sessions/2026-04-19-2131-solene.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": "ratified",
+          "description": "retour a Friction Engineering — la polysemie tribologique est un atout, pas une collision [PO] → ratified",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "solene",
+          "date": "2026-04-19",
+          "source": "recherche/sessions/2026-04-19-2131-solene.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": "ratified",
+          "description": "roadmap recherche separee du produit — rythme propre [PO] → ratified",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "solene",
+          "date": "2026-04-19",
+          "source": "recherche/sessions/2026-04-19-2131-solene.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "PO",
+          "direction": "h_corroborates_a",
+          "resolution": "ratified",
+          "description": "tribologie = inspiration interne, pas publication [PO] → ratified",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "solene",
+          "date": "2026-04-19",
+          "source": "recherche/sessions/2026-04-19-2131-solene.md",
+          "source_type": "session",
+          "marker": "simplification",
+          "initiative": "PO",
+          "direction": "h_contests_a",
+          "resolution": "revised",
+          "description": "analyse detaillee dans la roadmap au lieu de l'etude — la roadmap liste, l'etude analyse [PO] → revised",
+          "ref": null,
+          "is_amendment": false
         }
       ],
       "map": {
@@ -5055,16 +5329,16 @@
         "links": [
           {
             "persona": "aurele",
-            "a_to_h": 18,
-            "h_to_a": 121,
-            "total": 139,
+            "a_to_h": 20,
+            "h_to_a": 131,
+            "total": 151,
             "dominant": "h→a"
           },
           {
             "persona": "solene",
             "a_to_h": 14,
-            "h_to_a": 110,
-            "total": 124,
+            "h_to_a": 114,
+            "total": 128,
             "dominant": "h→a"
           }
         ],
@@ -5091,7 +5365,7 @@
     "produits": {
       "meta": {
         "instance": "produits",
-        "date": "2026-04-17",
+        "date": "2026-04-20",
         "personas": [
           "axel",
           "lea",
@@ -5201,12 +5475,12 @@
               0,
               2
             ],
-            "ratified": [
+            "rejected": [
               0,
               0,
               0,
-              20,
-              4
+              0,
+              1
             ],
             "contested": [
               0,
@@ -5215,12 +5489,12 @@
               0,
               0
             ],
-            "rejected": [
+            "ratified": [
               0,
               0,
               0,
-              0,
-              1
+              20,
+              4
             ]
           },
           "frictions_per_session": [
@@ -5605,7 +5879,7 @@
               0,
               2
             ],
-            "ratified": [
+            "rejected": [
               0,
               0,
               0,
@@ -5624,15 +5898,15 @@
               0,
               0,
               0,
-              3,
               0,
               0,
-              14,
-              0,
-              3,
               0,
               0,
-              4
+              0,
+              0,
+              0,
+              0,
+              1
             ],
             "contested": [
               0,
@@ -5663,7 +5937,7 @@
               0,
               0
             ],
-            "rejected": [
+            "ratified": [
               0,
               0,
               0,
@@ -5682,15 +5956,15 @@
               0,
               0,
               0,
+              3,
               0,
               0,
+              14,
+              0,
+              3,
               0,
               0,
-              0,
-              0,
-              0,
-              0,
-              1
+              4
             ]
           },
           "frictions_per_session": [
@@ -6042,7 +6316,7 @@
                   0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
@@ -6056,7 +6330,7 @@
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
@@ -6446,7 +6720,7 @@
                   0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
@@ -6504,7 +6778,7 @@
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
@@ -6885,11 +7159,11 @@
                   0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
-                  3,
+                  0,
                   0
                 ],
                 "contested": [
@@ -6899,11 +7173,11 @@
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
-                  0,
+                  3,
                   0
                 ]
               },
@@ -7289,7 +7563,7 @@
                   0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
@@ -7308,7 +7582,7 @@
                   0,
                   0,
                   0,
-                  3,
+                  0,
                   0,
                   0,
                   0,
@@ -7347,7 +7621,7 @@
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
@@ -7366,7 +7640,7 @@
                   0,
                   0,
                   0,
-                  0,
+                  3,
                   0,
                   0,
                   0,
@@ -7731,12 +8005,12 @@
                   0,
                   2
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
-                  3,
-                  4
+                  0,
+                  1
                 ],
                 "contested": [
                   0,
@@ -7745,12 +8019,12 @@
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
-                  0,
-                  1
+                  3,
+                  4
                 ]
               },
               "frictions_per_session": [
@@ -8135,7 +8409,7 @@
                   0,
                   2
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
@@ -8159,10 +8433,10 @@
                   0,
                   0,
                   0,
-                  3,
                   0,
                   0,
-                  4
+                  0,
+                  1
                 ],
                 "contested": [
                   0,
@@ -8193,7 +8467,7 @@
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
@@ -8217,10 +8491,10 @@
                   0,
                   0,
                   0,
+                  3,
                   0,
                   0,
-                  0,
-                  1
+                  4
                 ]
               },
               "frictions_per_session": [
@@ -8567,7 +8841,7 @@
                   0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
@@ -8581,7 +8855,7 @@
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
@@ -8971,7 +9245,7 @@
                   0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
@@ -9029,7 +9303,7 @@
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
@@ -9410,11 +9684,11 @@
                   0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
-                  14,
+                  0,
                   0
                 ],
                 "contested": [
@@ -9424,11 +9698,11 @@
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
-                  0,
+                  14,
                   0
                 ]
               },
@@ -9814,7 +10088,7 @@
                   0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
@@ -9836,7 +10110,7 @@
                   0,
                   0,
                   0,
-                  14,
+                  0,
                   0,
                   0,
                   0,
@@ -9872,7 +10146,7 @@
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
@@ -9894,7 +10168,7 @@
                   0,
                   0,
                   0,
-                  0,
+                  14,
                   0,
                   0,
                   0,
@@ -12706,7 +12980,7 @@
             "status": "warn"
           },
           "sofia": {
-            "total_lines": 267,
+            "total_lines": 268,
             "status": "danger"
           },
           "nora": {
@@ -12723,28 +12997,28 @@
     "oxynoe": {
       "meta": {
         "instance": "oxynoe",
-        "date": "2026-04-17",
+        "date": "2026-04-20",
         "personas": [
           "alma",
           "livia",
           "marc",
           "winston"
         ],
-        "sessions_scanned": 171,
-        "artefacts_scanned": 27
+        "sessions_scanned": 174,
+        "artefacts_scanned": 28
       },
       "totals": {
-        "frictions": 23,
-        "frictions_sessions": 23,
+        "frictions": 26,
+        "frictions_sessions": 26,
         "frictions_artefacts": 0,
-        "resolved": 20,
-        "resolved_pct": 87,
-        "sessions": 160,
-        "artefacts": 27,
+        "resolved": 23,
+        "resolved_pct": 88,
+        "sessions": 163,
+        "artefacts": 28,
         "signaler_pattern": 0,
         "resolutions": {
-          "ratified": 15,
-          "revised": 2,
+          "ratified": 16,
+          "revised": 4,
           "rejected": 1,
           "contested": 2
         }
@@ -12764,14 +13038,14 @@
               0,
               0,
               0,
-              8
+              9
             ],
             "contestable": [
               0,
               0,
               0,
               0,
-              10
+              12
             ],
             "simplification": [
               0,
@@ -12801,14 +13075,14 @@
               0,
               0,
               0,
-              3
+              4
             ],
             "a_contests_h": [
               0,
               0,
               0,
               0,
-              10
+              11
             ],
             "h_corroborates_a": [
               0,
@@ -12822,11 +13096,25 @@
               0,
               0,
               0,
-              5
+              6
             ]
           },
           "resolutions": {
             "revised": [
+              0,
+              0,
+              0,
+              0,
+              4
+            ],
+            "rejected": [
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            "contested": [
               0,
               0,
               0,
@@ -12838,21 +13126,7 @@
               0,
               0,
               0,
-              15
-            ],
-            "contested": [
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "rejected": [
-              0,
-              0,
-              0,
-              0,
-              1
+              16
             ]
           },
           "frictions_per_session": [
@@ -12860,49 +13134,49 @@
             0.0,
             0.0,
             0.0,
-            1.9
+            1.7
           ],
           "resolutions_per_session": [
             0.0,
             0.0,
             0.0,
             0.0,
-            1.7
+            1.5
           ],
           "flux_h": [
             0,
             0,
             0,
             0,
-            14
+            16
           ],
           "flux_a": [
             0,
             0,
             0,
             0,
-            8
+            9
           ],
           "sessions": [
             13,
             28,
             68,
             39,
-            12
+            15
           ],
           "artefacts": [
             0,
             0,
             6,
             9,
-            12
+            13
           ],
           "frictions_sessions": [
             0,
             0,
             0,
             0,
-            23
+            26
           ],
           "frictions_artefacts": [
             0,
@@ -12940,7 +13214,8 @@
             "2026-04-12",
             "2026-04-13",
             "2026-04-16",
-            "2026-04-17"
+            "2026-04-17",
+            "2026-04-19"
           ],
           "markers": {
             "sound": [
@@ -12970,7 +13245,8 @@
               0,
               0,
               5,
-              3
+              3,
+              1
             ],
             "contestable": [
               0,
@@ -12999,7 +13275,8 @@
               0,
               0,
               7,
-              3
+              4,
+              1
             ],
             "simplification": [
               0,
@@ -13028,6 +13305,7 @@
               0,
               0,
               1,
+              0,
               0
             ],
             "blind_spot": [
@@ -13057,9 +13335,11 @@
               0,
               0,
               2,
-              2
+              2,
+              0
             ],
             "refuted": [
+              0,
               0,
               0,
               0,
@@ -13117,6 +13397,7 @@
               0,
               0,
               2,
+              1,
               1
             ],
             "a_contests_h": [
@@ -13146,7 +13427,8 @@
               0,
               0,
               7,
-              3
+              4,
+              0
             ],
             "h_corroborates_a": [
               0,
@@ -13175,7 +13457,8 @@
               0,
               0,
               3,
-              2
+              2,
+              0
             ],
             "h_contests_a": [
               0,
@@ -13204,11 +13487,73 @@
               0,
               0,
               3,
-              2
+              2,
+              1
             ]
           },
           "resolutions": {
             "revised": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              1,
+              1
+            ],
+            "rejected": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            "contested": [
+              0,
               0,
               0,
               0,
@@ -13264,65 +13609,8 @@
               0,
               0,
               9,
-              6
-            ],
-            "contested": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "rejected": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0
+              6,
+              1
             ]
           },
           "frictions_per_session": [
@@ -13352,6 +13640,7 @@
             0.0,
             0.0,
             1.9,
+            1.5,
             2.0
           ],
           "resolutions_per_session": [
@@ -13380,6 +13669,7 @@
             0.0,
             0.0,
             0.0,
+            1.5,
             1.5,
             2.0
           ],
@@ -13410,6 +13700,7 @@
             0,
             0,
             14,
+            2,
             0
           ],
           "flux_a": [
@@ -13439,6 +13730,7 @@
             0,
             0,
             8,
+            1,
             0
           ],
           "sessions": [
@@ -13468,7 +13760,8 @@
             3,
             0,
             8,
-            4
+            6,
+            1
           ],
           "artefacts": [
             0,
@@ -13497,7 +13790,8 @@
             6,
             1,
             9,
-            2
+            3,
+            0
           ],
           "frictions_sessions": [
             0,
@@ -13526,9 +13820,11 @@
             0,
             0,
             15,
-            8
+            9,
+            2
           ],
           "frictions_artefacts": [
+            0,
             0,
             0,
             0,
@@ -13561,7 +13857,7 @@
       },
       "personas": {
         "alma": {
-          "sessions": 3,
+          "sessions": 4,
           "artefacts": 4,
           "frictions": 2,
           "frictions_sessions": 2,
@@ -13575,12 +13871,17 @@
             "a_contests_h": 2
           },
           "direction_ratio": 2.0,
-          "flux_h": 0,
-          "flux_a": 0,
-          "flux_h_pct": 0,
-          "flux_a_pct": 0,
-          "flux_types_h": {},
-          "flux_types_a": {},
+          "flux_h": 2,
+          "flux_a": 1,
+          "flux_h_pct": 67,
+          "flux_a_pct": 33,
+          "flux_types_h": {
+            "substance": 1,
+            "decision": 1
+          },
+          "flux_types_a": {
+            "structure": 1
+          },
           "signaler_pattern_count": 0,
           "signaler_pattern_erreur_llm": 0,
           "signaler_pattern_conviction": 0,
@@ -13669,7 +13970,7 @@
                   0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
@@ -13683,7 +13984,7 @@
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
@@ -13696,7 +13997,7 @@
                 0.0,
                 0.0,
                 0.0,
-                0.7
+                0.5
               ],
               "resolutions_per_session": [
                 0.0,
@@ -13710,21 +14011,21 @@
                 0,
                 0,
                 0,
-                0
+                2
               ],
               "flux_a": [
                 0,
                 0,
                 0,
                 0,
-                0
+                1
               ],
               "sessions": [
                 0,
                 0,
                 0,
                 0,
-                3
+                4
               ],
               "artefacts": [
                 0,
@@ -13776,10 +14077,12 @@
                 "2026-04-12",
                 "2026-04-13",
                 "2026-04-16",
-                "2026-04-17"
+                "2026-04-17",
+                "2026-04-19"
               ],
               "markers": {
                 "sound": [
+                  0,
                   0,
                   0,
                   0,
@@ -13835,9 +14138,11 @@
                   0,
                   0,
                   2,
+                  0,
                   0
                 ],
                 "simplification": [
+                  0,
                   0,
                   0,
                   0,
@@ -13893,9 +14198,11 @@
                   0,
                   0,
                   0,
+                  0,
                   0
                 ],
                 "refuted": [
+                  0,
                   0,
                   0,
                   0,
@@ -13953,6 +14260,7 @@
                   0,
                   0,
                   0,
+                  0,
                   0
                 ],
                 "a_contests_h": [
@@ -13982,6 +14290,7 @@
                   0,
                   0,
                   2,
+                  0,
                   0
                 ],
                 "h_corroborates_a": [
@@ -14011,9 +14320,11 @@
                   0,
                   0,
                   0,
+                  0,
                   0
                 ],
                 "h_contests_a": [
+                  0,
                   0,
                   0,
                   0,
@@ -14071,9 +14382,11 @@
                   0,
                   0,
                   0,
+                  0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
+                  0,
                   0,
                   0,
                   0,
@@ -14129,9 +14442,11 @@
                   0,
                   0,
                   0,
+                  0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
+                  0,
                   0,
                   0,
                   0,
@@ -14188,9 +14503,11 @@
                 0.0,
                 0.0,
                 0.7,
+                0.0,
                 0.0
               ],
               "resolutions_per_session": [
+                0.0,
                 0.0,
                 0.0,
                 0.0,
@@ -14246,6 +14563,7 @@
                 0,
                 0,
                 0,
+                2,
                 0
               ],
               "flux_a": [
@@ -14275,6 +14593,7 @@
                 0,
                 0,
                 0,
+                1,
                 0
               ],
               "sessions": [
@@ -14304,6 +14623,7 @@
                 0,
                 0,
                 3,
+                1,
                 0
               ],
               "artefacts": [
@@ -14333,6 +14653,7 @@
                 0,
                 0,
                 4,
+                0,
                 0
               ],
               "frictions_sessions": [
@@ -14362,9 +14683,11 @@
                 0,
                 0,
                 2,
+                0,
                 0
               ],
               "frictions_artefacts": [
+                0,
                 0,
                 0,
                 0,
@@ -14501,7 +14824,7 @@
                   0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
@@ -14515,7 +14838,7 @@
                   0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
@@ -14608,10 +14931,12 @@
                 "2026-04-12",
                 "2026-04-13",
                 "2026-04-16",
-                "2026-04-17"
+                "2026-04-17",
+                "2026-04-19"
               ],
               "markers": {
                 "sound": [
+                  0,
                   0,
                   0,
                   0,
@@ -14667,9 +14992,11 @@
                   0,
                   0,
                   0,
+                  0,
                   0
                 ],
                 "simplification": [
+                  0,
                   0,
                   0,
                   0,
@@ -14725,9 +15052,11 @@
                   0,
                   0,
                   0,
+                  0,
                   0
                 ],
                 "refuted": [
+                  0,
                   0,
                   0,
                   0,
@@ -14785,9 +15114,11 @@
                   0,
                   0,
                   0,
+                  0,
                   0
                 ],
                 "a_contests_h": [
+                  0,
                   0,
                   0,
                   0,
@@ -14843,9 +15174,11 @@
                   0,
                   0,
                   0,
+                  0,
                   0
                 ],
                 "h_contests_a": [
+                  0,
                   0,
                   0,
                   0,
@@ -14903,9 +15236,11 @@
                   0,
                   0,
                   0,
+                  0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
+                  0,
                   0,
                   0,
                   0,
@@ -14961,9 +15296,11 @@
                   0,
                   0,
                   0,
+                  0,
                   0
                 ],
-                "rejected": [
+                "ratified": [
+                  0,
                   0,
                   0,
                   0,
@@ -15020,9 +15357,11 @@
                 0.0,
                 0.0,
                 0.0,
+                0.0,
                 0.0
               ],
               "resolutions_per_session": [
+                0.0,
                 0.0,
                 0.0,
                 0.0,
@@ -15078,9 +15417,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
               "flux_a": [
+                0,
                 0,
                 0,
                 0,
@@ -15136,6 +15477,7 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
               "artefacts": [
@@ -15165,6 +15507,7 @@
                 0,
                 0,
                 1,
+                0,
                 0
               ],
               "frictions_sessions": [
@@ -15194,9 +15537,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
               "frictions_artefacts": [
+                0,
                 0,
                 0,
                 0,
@@ -15351,12 +15696,12 @@
                   0,
                   0
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
                   0,
-                  9
+                  0
                 ],
                 "contested": [
                   0,
@@ -15365,12 +15710,12 @@
                   0,
                   1
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
                   0,
-                  0
+                  9
                 ]
               },
               "frictions_per_session": [
@@ -15458,7 +15803,8 @@
                 "2026-04-12",
                 "2026-04-13",
                 "2026-04-16",
-                "2026-04-17"
+                "2026-04-17",
+                "2026-04-19"
               ],
               "markers": {
                 "sound": [
@@ -15488,7 +15834,8 @@
                   0,
                   0,
                   2,
-                  2
+                  2,
+                  0
                 ],
                 "contestable": [
                   0,
@@ -15517,9 +15864,11 @@
                   0,
                   0,
                   1,
-                  2
+                  2,
+                  0
                 ],
                 "simplification": [
+                  0,
                   0,
                   0,
                   0,
@@ -15575,9 +15924,11 @@
                   0,
                   0,
                   2,
-                  2
+                  2,
+                  0
                 ],
                 "refuted": [
+                  0,
                   0,
                   0,
                   0,
@@ -15635,7 +15986,8 @@
                   0,
                   0,
                   2,
-                  1
+                  1,
+                  0
                 ],
                 "a_contests_h": [
                   0,
@@ -15664,7 +16016,8 @@
                   0,
                   0,
                   3,
-                  2
+                  2,
+                  0
                 ],
                 "h_corroborates_a": [
                   0,
@@ -15693,7 +16046,8 @@
                   0,
                   0,
                   0,
-                  1
+                  1,
+                  0
                 ],
                 "h_contests_a": [
                   0,
@@ -15722,7 +16076,8 @@
                   0,
                   0,
                   0,
-                  2
+                  2,
+                  0
                 ]
               },
               "resolutions": {
@@ -15753,6 +16108,67 @@
                   0,
                   0,
                   0,
+                  0,
+                  0
+                ],
+                "rejected": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "contested": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
                   0
                 ],
                 "ratified": [
@@ -15782,64 +16198,7 @@
                   0,
                   0,
                   4,
-                  5
-                ],
-                "contested": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  1
-                ],
-                "rejected": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
+                  5,
                   0
                 ]
               },
@@ -15870,7 +16229,8 @@
                 0.0,
                 0.0,
                 1.7,
-                2.0
+                2.0,
+                0.0
               ],
               "resolutions_per_session": [
                 0.0,
@@ -15899,7 +16259,8 @@
                 0.0,
                 0.0,
                 1.3,
-                2.0
+                2.0,
+                0.0
               ],
               "flux_h": [
                 0,
@@ -15928,6 +16289,7 @@
                 0,
                 0,
                 6,
+                0,
                 0
               ],
               "flux_a": [
@@ -15957,6 +16319,7 @@
                 0,
                 0,
                 3,
+                0,
                 0
               ],
               "sessions": [
@@ -15986,7 +16349,8 @@
                 2,
                 0,
                 3,
-                3
+                3,
+                0
               ],
               "artefacts": [
                 0,
@@ -16015,6 +16379,7 @@
                 1,
                 0,
                 1,
+                0,
                 0
               ],
               "frictions_sessions": [
@@ -16044,9 +16409,11 @@
                 0,
                 0,
                 5,
-                6
+                6,
+                0
               ],
               "frictions_artefacts": [
+                0,
                 0,
                 0,
                 0,
@@ -16079,29 +16446,30 @@
           }
         },
         "winston": {
-          "sessions": 36,
+          "sessions": 38,
           "artefacts": 5,
-          "frictions": 10,
-          "frictions_sessions": 10,
+          "frictions": 13,
+          "frictions_sessions": 13,
           "frictions_artefacts": 0,
           "markers": {
-            "contestable": 5,
-            "sound": 4,
+            "contestable": 7,
+            "sound": 5,
             "simplification": 1
           },
           "resolutions": {
-            "ratified": 6,
-            "revised": 2,
+            "ratified": 7,
+            "revised": 4,
             "rejected": 1,
             "contested": 1
           },
           "resolved_pct": 100,
           "directions": {
-            "h_contests_a": 3,
-            "a_contests_h": 3,
-            "h_corroborates_a": 4
+            "h_contests_a": 4,
+            "a_contests_h": 4,
+            "h_corroborates_a": 4,
+            "a_corroborates_h": 1
           },
-          "direction_ratio": 0.4,
+          "direction_ratio": 0.6,
           "flux_h": 8,
           "flux_a": 5,
           "flux_h_pct": 62,
@@ -16134,14 +16502,14 @@
                   0,
                   0,
                   0,
-                  4
+                  5
                 ],
                 "contestable": [
                   0,
                   0,
                   0,
                   0,
-                  5
+                  7
                 ],
                 "simplification": [
                   0,
@@ -16171,14 +16539,14 @@
                   0,
                   0,
                   0,
-                  0
+                  1
                 ],
                 "a_contests_h": [
                   0,
                   0,
                   0,
                   0,
-                  3
+                  4
                 ],
                 "h_corroborates_a": [
                   0,
@@ -16192,7 +16560,7 @@
                   0,
                   0,
                   0,
-                  3
+                  4
                 ]
               },
               "resolutions": {
@@ -16201,14 +16569,14 @@
                   0,
                   0,
                   0,
-                  2
+                  4
                 ],
-                "ratified": [
+                "rejected": [
                   0,
                   0,
                   0,
                   0,
-                  6
+                  1
                 ],
                 "contested": [
                   0,
@@ -16217,12 +16585,12 @@
                   0,
                   1
                 ],
-                "rejected": [
+                "ratified": [
                   0,
                   0,
                   0,
                   0,
-                  1
+                  7
                 ]
               },
               "frictions_per_session": [
@@ -16230,14 +16598,14 @@
                 0.0,
                 0.0,
                 0.0,
-                3.3
+                2.6
               ],
               "resolutions_per_session": [
                 0.0,
                 0.0,
                 0.0,
                 0.0,
-                3.3
+                2.6
               ],
               "flux_h": [
                 0,
@@ -16258,7 +16626,7 @@
                 4,
                 21,
                 8,
-                3
+                5
               ],
               "artefacts": [
                 0,
@@ -16272,7 +16640,7 @@
                 0,
                 0,
                 0,
-                10
+                13
               ],
               "frictions_artefacts": [
                 0,
@@ -16310,7 +16678,8 @@
                 "2026-04-12",
                 "2026-04-13",
                 "2026-04-16",
-                "2026-04-17"
+                "2026-04-17",
+                "2026-04-19"
               ],
               "markers": {
                 "sound": [
@@ -16340,6 +16709,7 @@
                   0,
                   0,
                   3,
+                  1,
                   1
                 ],
                 "contestable": [
@@ -16369,6 +16739,7 @@
                   0,
                   0,
                   4,
+                  2,
                   1
                 ],
                 "simplification": [
@@ -16398,6 +16769,7 @@
                   0,
                   0,
                   1,
+                  0,
                   0
                 ],
                 "blind_spot": [
@@ -16427,9 +16799,11 @@
                   0,
                   0,
                   0,
+                  0,
                   0
                 ],
                 "refuted": [
+                  0,
                   0,
                   0,
                   0,
@@ -16487,7 +16861,8 @@
                   0,
                   0,
                   0,
-                  0
+                  0,
+                  1
                 ],
                 "a_contests_h": [
                   0,
@@ -16516,7 +16891,8 @@
                   0,
                   0,
                   2,
-                  1
+                  2,
+                  0
                 ],
                 "h_corroborates_a": [
                   0,
@@ -16545,7 +16921,8 @@
                   0,
                   0,
                   3,
-                  1
+                  1,
+                  0
                 ],
                 "h_contests_a": [
                   0,
@@ -16574,7 +16951,8 @@
                   0,
                   0,
                   3,
-                  0
+                  0,
+                  1
                 ]
               },
               "resolutions": {
@@ -16605,64 +16983,7 @@
                   0,
                   0,
                   2,
-                  0
-                ],
-                "ratified": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  5,
-                  1
-                ],
-                "contested": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
+                  1,
                   1
                 ],
                 "rejected": [
@@ -16692,7 +17013,68 @@
                   0,
                   0,
                   1,
+                  0,
                   0
+                ],
+                "contested": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0
+                ],
+                "ratified": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  5,
+                  1,
+                  1
                 ]
               },
               "frictions_per_session": [
@@ -16722,6 +17104,7 @@
                 0.0,
                 0.0,
                 4.0,
+                1.5,
                 2.0
               ],
               "resolutions_per_session": [
@@ -16751,6 +17134,7 @@
                 0.0,
                 0.0,
                 4.0,
+                1.5,
                 2.0
               ],
               "flux_h": [
@@ -16780,6 +17164,7 @@
                 0,
                 0,
                 8,
+                0,
                 0
               ],
               "flux_a": [
@@ -16809,6 +17194,7 @@
                 0,
                 0,
                 5,
+                0,
                 0
               ],
               "sessions": [
@@ -16837,6 +17223,7 @@
                 1,
                 1,
                 0,
+                2,
                 2,
                 1
               ],
@@ -16867,6 +17254,7 @@
                 1,
                 0,
                 3,
+                0,
                 0
               ],
               "frictions_sessions": [
@@ -16896,9 +17284,11 @@
                 0,
                 0,
                 8,
+                3,
                 2
               ],
               "frictions_artefacts": [
+                0,
                 0,
                 0,
                 0,
@@ -17154,6 +17544,19 @@
           "is_amendment": false
         },
         {
+          "persona": "winston",
+          "date": "2026-04-17",
+          "source": "editorial/sessions/2026-04-17-1800-winston.md",
+          "source_type": "session",
+          "marker": "contestable",
+          "initiative": "persona",
+          "direction": "a_contests_h",
+          "resolution": "revised",
+          "description": "Traduction livree d'un bloc sans review chapitre par chapitre (PO a confirme \"c'est ok\")",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
           "persona": "marc",
           "date": "2026-04-17",
           "source": "strategie/sessions/2026-04-17-0832-marc.md",
@@ -17230,6 +17633,32 @@
           "description": "correction derogatoire de sessions anterieures sur demande PO",
           "ref": null,
           "is_amendment": false
+        },
+        {
+          "persona": "winston",
+          "date": "2026-04-19",
+          "source": "editorial/sessions/2026-04-19-2149-winston.md",
+          "source_type": "session",
+          "marker": "sound",
+          "initiative": "persona",
+          "direction": "a_corroborates_h",
+          "resolution": "ratified",
+          "description": "depublier fragments et regards plutot que maintenir du contenu non corrige en ligne",
+          "ref": null,
+          "is_amendment": false
+        },
+        {
+          "persona": "winston",
+          "date": "2026-04-19",
+          "source": "editorial/sessions/2026-04-19-2149-winston.md",
+          "source_type": "session",
+          "marker": "contestable",
+          "initiative": "PO",
+          "direction": "h_contests_a",
+          "resolution": "revised",
+          "description": "statut \"traite\" au lieu de \"done\" sur les notes fermees",
+          "ref": null,
+          "is_amendment": false
         }
       ],
       "map": {
@@ -17243,18 +17672,18 @@
         },
         "links": [
           {
+            "persona": "winston",
+            "a_to_h": 5,
+            "h_to_a": 8,
+            "total": 13,
+            "dominant": "h→a"
+          },
+          {
             "persona": "marc",
             "a_to_h": 8,
             "h_to_a": 3,
             "total": 11,
             "dominant": "a→h"
-          },
-          {
-            "persona": "winston",
-            "a_to_h": 3,
-            "h_to_a": 7,
-            "total": 10,
-            "dominant": "h→a"
           },
           {
             "persona": "alma",
@@ -17288,7 +17717,7 @@
   "all": {
     "meta": {
       "instance": "all",
-      "date": "2026-04-17",
+      "date": "2026-04-20",
       "personas": [
         "alma",
         "aurele",
@@ -17302,21 +17731,21 @@
         "solene",
         "winston"
       ],
-      "sessions_scanned": 397,
-      "artefacts_scanned": 217
+      "sessions_scanned": 405,
+      "artefacts_scanned": 222
     },
     "totals": {
-      "frictions": 479,
-      "frictions_sessions": 285,
+      "frictions": 498,
+      "frictions_sessions": 304,
       "frictions_artefacts": 194,
-      "resolved": 227,
-      "resolved_pct": 47,
-      "sessions": 380,
-      "artefacts": 201,
+      "resolved": 245,
+      "resolved_pct": 49,
+      "sessions": 388,
+      "artefacts": 206,
       "signaler_pattern": 0,
       "resolutions": {
-        "ratified": 190,
-        "revised": 28,
+        "ratified": 205,
+        "revised": 31,
         "rejected": 7,
         "contested": 2
       }
@@ -17336,21 +17765,21 @@
             2,
             16,
             103,
-            171
+            187
           ],
           "contestable": [
             0,
             1,
             3,
             27,
-            44
+            46
           ],
           "simplification": [
             0,
             1,
             2,
             32,
-            27
+            28
           ],
           "blind_spot": [
             0,
@@ -17373,28 +17802,28 @@
             2,
             16,
             58,
-            5
+            8
           ],
           "a_contests_h": [
             0,
             3,
             6,
             36,
-            37
+            38
           ],
           "h_corroborates_a": [
             0,
             0,
             0,
             45,
-            166
+            179
           ],
           "h_contests_a": [
             0,
             0,
             0,
             37,
-            68
+            70
           ]
         },
         "resolutions": {
@@ -17403,14 +17832,14 @@
             0,
             0,
             0,
-            28
+            31
           ],
-          "ratified": [
+          "rejected": [
             0,
             0,
             0,
-            20,
-            170
+            0,
+            7
           ],
           "contested": [
             0,
@@ -17419,12 +17848,12 @@
             0,
             2
           ],
-          "rejected": [
+          "ratified": [
             0,
             0,
             0,
-            0,
-            7
+            20,
+            185
           ]
         },
         "flux_h": [
@@ -17432,35 +17861,35 @@
           0,
           0,
           0,
-          59
+          61
         ],
         "flux_a": [
           0,
           0,
           0,
           0,
-          35
+          36
         ],
         "sessions": [
           23,
           60,
           118,
           122,
-          57
+          65
         ],
         "artefacts": [
           4,
           2,
           61,
           97,
-          37
+          42
         ],
         "frictions_sessions": [
           0,
           0,
           0,
           87,
-          198
+          217
         ],
         "frictions_artefacts": [
           0,
@@ -17474,14 +17903,14 @@
           0.2,
           0.4,
           2.1,
-          4.8
+          4.5
         ],
         "resolutions_per_session": [
           0.0,
           0.0,
           0.0,
           0.2,
-          3.6
+          3.5
         ]
       },
       "day": {
@@ -17515,7 +17944,8 @@
           "2026-04-14",
           "2026-04-15",
           "2026-04-16",
-          "2026-04-17"
+          "2026-04-17",
+          "2026-04-19"
         ],
         "markers": {
           "sound": [
@@ -17548,7 +17978,8 @@
             14,
             13,
             49,
-            80
+            89,
+            7
           ],
           "contestable": [
             0,
@@ -17580,7 +18011,8 @@
             2,
             3,
             13,
-            19
+            20,
+            1
           ],
           "simplification": [
             0,
@@ -17612,7 +18044,8 @@
             0,
             3,
             8,
-            11
+            11,
+            1
           ],
           "blind_spot": [
             0,
@@ -17644,7 +18077,8 @@
             0,
             5,
             5,
-            22
+            22,
+            0
           ],
           "refuted": [
             0,
@@ -17669,6 +18103,7 @@
             0,
             0,
             4,
+            0,
             0,
             0,
             0,
@@ -17710,6 +18145,7 @@
             0,
             0,
             3,
+            3,
             2
           ],
           "a_contests_h": [
@@ -17742,7 +18178,8 @@
             2,
             2,
             9,
-            20
+            21,
+            0
           ],
           "h_corroborates_a": [
             0,
@@ -17774,7 +18211,8 @@
             14,
             13,
             46,
-            78
+            86,
+            5
           ],
           "h_contests_a": [
             0,
@@ -17806,7 +18244,8 @@
             0,
             9,
             17,
-            32
+            32,
+            2
           ]
         },
         "resolutions": {
@@ -17840,70 +18279,7 @@
             0,
             3,
             10,
-            15
-          ],
-          "ratified": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            3,
-            0,
-            0,
-            14,
-            0,
-            3,
-            0,
-            0,
-            0,
-            9,
-            56,
-            105
-          ],
-          "contested": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
+            16,
             2
           ],
           "rejected": [
@@ -17936,7 +18312,74 @@
             0,
             0,
             3,
-            4
+            4,
+            0
+          ],
+          "contested": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0
+          ],
+          "ratified": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            14,
+            0,
+            3,
+            0,
+            0,
+            0,
+            9,
+            56,
+            114,
+            6
           ]
         },
         "flux_h": [
@@ -17969,7 +18412,8 @@
           18,
           15,
           23,
-          3
+          5,
+          0
         ],
         "flux_a": [
           0,
@@ -18001,7 +18445,8 @@
           12,
           10,
           11,
-          2
+          3,
+          0
         ],
         "sessions": [
           0,
@@ -18033,7 +18478,8 @@
           8,
           5,
           23,
-          12
+          17,
+          3
         ],
         "artefacts": [
           4,
@@ -18064,8 +18510,9 @@
           7,
           0,
           3,
-          13,
-          14
+          12,
+          16,
+          4
         ],
         "frictions_sessions": [
           0,
@@ -18097,7 +18544,8 @@
           16,
           24,
           75,
-          54
+          64,
+          9
         ],
         "frictions_artefacts": [
           0,
@@ -18129,7 +18577,8 @@
           0,
           0,
           0,
-          78
+          78,
+          0
         ],
         "frictions_per_session": [
           0.0,
@@ -18161,7 +18610,8 @@
           2.0,
           4.8,
           3.3,
-          11.0
+          8.4,
+          3.0
         ],
         "resolutions_per_session": [
           0.0,
@@ -18193,35 +18643,36 @@
           0.0,
           2.4,
           3.0,
-          10.5
+          8.0,
+          2.7
         ]
       }
     },
     "personas": {
       "aurele": {
-        "sessions": 31,
-        "artefacts": 9,
-        "frictions": 139,
-        "frictions_sessions": 139,
+        "sessions": 35,
+        "artefacts": 10,
+        "frictions": 151,
+        "frictions_sessions": 151,
         "frictions_artefacts": 0,
         "markers": {
-          "sound": 90,
+          "sound": 102,
           "contestable": 14,
           "simplification": 17,
           "blind_spot": 18
         },
         "resolutions": {
-          "ratified": 65,
+          "ratified": 76,
           "revised": 17
         },
-        "resolved_pct": 59,
+        "resolved_pct": 62,
         "directions": {
-          "h_corroborates_a": 89,
+          "h_corroborates_a": 99,
           "h_contests_a": 32,
           "a_contests_h": 17,
-          "a_corroborates_h": 1
+          "a_corroborates_h": 3
         },
-        "direction_ratio": 0.1,
+        "direction_ratio": 0.2,
         "flux_h": 8,
         "flux_a": 6,
         "flux_h_pct": 57,
@@ -18250,7 +18701,7 @@
               "sound": [
                 0,
                 11,
-                79
+                91
               ],
               "contestable": [
                 0,
@@ -18277,7 +18728,7 @@
               "a_corroborates_h": [
                 0,
                 0,
-                1
+                3
               ],
               "a_contests_h": [
                 0,
@@ -18287,7 +18738,7 @@
               "h_corroborates_a": [
                 0,
                 11,
-                78
+                88
               ],
               "h_contests_a": [
                 0,
@@ -18301,31 +18752,31 @@
                 0,
                 17
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
-                65
+                0
               ],
               "contested": [
                 0,
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
-                0
+                76
               ]
             },
             "frictions_per_session": [
               0.0,
               2.7,
-              4.9
+              4.7
             ],
             "resolutions_per_session": [
               0.0,
               0.0,
-              3.3
+              3.2
             ],
             "flux_h": [
               0,
@@ -18340,17 +18791,17 @@
             "sessions": [
               0,
               6,
-              25
+              29
             ],
             "artefacts": [
               0,
               3,
-              6
+              7
             ],
             "frictions_sessions": [
               0,
               16,
-              123
+              135
             ],
             "frictions_artefacts": [
               0,
@@ -18374,7 +18825,8 @@
               "2026-04-14",
               "2026-04-15",
               "2026-04-16",
-              "2026-04-17"
+              "2026-04-17",
+              "2026-04-19"
             ],
             "markers": {
               "sound": [
@@ -18392,7 +18844,8 @@
                 9,
                 8,
                 30,
-                24
+                33,
+                3
               ],
               "contestable": [
                 0,
@@ -18409,7 +18862,8 @@
                 2,
                 3,
                 1,
-                1
+                1,
+                0
               ],
               "simplification": [
                 0,
@@ -18426,7 +18880,8 @@
                 0,
                 1,
                 6,
-                3
+                3,
+                0
               ],
               "blind_spot": [
                 0,
@@ -18443,9 +18898,11 @@
                 0,
                 4,
                 2,
-                12
+                12,
+                0
               ],
               "refuted": [
+                0,
                 0,
                 0,
                 0,
@@ -18479,7 +18936,8 @@
                 0,
                 0,
                 1,
-                0
+                1,
+                1
               ],
               "a_contests_h": [
                 0,
@@ -18496,7 +18954,8 @@
                 2,
                 2,
                 2,
-                10
+                10,
+                0
               ],
               "h_corroborates_a": [
                 0,
@@ -18513,7 +18972,8 @@
                 9,
                 8,
                 29,
-                24
+                32,
+                2
               ],
               "h_contests_a": [
                 0,
@@ -18530,7 +18990,8 @@
                 0,
                 6,
                 7,
-                6
+                6,
+                0
               ]
             },
             "resolutions": {
@@ -18549,40 +19010,7 @@
                 0,
                 1,
                 6,
-                10
-              ],
-              "ratified": [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                7,
-                33,
-                25
-              ],
-              "contested": [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
+                10,
                 0
               ],
               "rejected": [
@@ -18600,7 +19028,44 @@
                 0,
                 0,
                 0,
+                0,
                 0
+              ],
+              "contested": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "ratified": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                7,
+                33,
+                34,
+                2
               ]
             },
             "frictions_per_session": [
@@ -18618,7 +19083,8 @@
               1.8,
               5.3,
               4.9,
-              8.0
+              6.1,
+              3.0
             ],
             "resolutions_per_session": [
               0.0,
@@ -18635,7 +19101,8 @@
               0.0,
               2.7,
               4.9,
-              7.0
+              5.5,
+              2.0
             ],
             "flux_h": [
               0,
@@ -18651,6 +19118,7 @@
               0,
               3,
               5,
+              0,
               0,
               0
             ],
@@ -18669,6 +19137,7 @@
               2,
               4,
               0,
+              0,
               0
             ],
             "sessions": [
@@ -18686,7 +19155,8 @@
               6,
               3,
               8,
-              5
+              8,
+              1
             ],
             "artefacts": [
               0,
@@ -18703,7 +19173,8 @@
               0,
               0,
               1,
-              4
+              4,
+              1
             ],
             "frictions_sessions": [
               0,
@@ -18720,9 +19191,11 @@
               11,
               16,
               39,
-              40
+              49,
+              3
             ],
             "frictions_artefacts": [
+              0,
               0,
               0,
               0,
@@ -18743,26 +19216,26 @@
         }
       },
       "solene": {
-        "sessions": 17,
-        "artefacts": 18,
-        "frictions": 124,
-        "frictions_sessions": 42,
+        "sessions": 18,
+        "artefacts": 19,
+        "frictions": 128,
+        "frictions_sessions": 46,
         "frictions_artefacts": 82,
         "markers": {
-          "sound": 79,
+          "sound": 82,
           "contestable": 21,
           "blind_spot": 12,
-          "simplification": 12
+          "simplification": 13
         },
         "resolutions": {
-          "revised": 7,
-          "ratified": 86,
+          "revised": 8,
+          "ratified": 89,
           "rejected": 5
         },
-        "resolved_pct": 79,
+        "resolved_pct": 80,
         "directions": {
-          "h_corroborates_a": 77,
-          "h_contests_a": 33,
+          "h_corroborates_a": 80,
+          "h_contests_a": 34,
           "a_contests_h": 12,
           "a_corroborates_h": 2
         },
@@ -18796,7 +19269,7 @@
               "sound": [
                 0,
                 3,
-                76
+                79
               ],
               "contestable": [
                 0,
@@ -18806,7 +19279,7 @@
               "simplification": [
                 0,
                 1,
-                11
+                12
               ],
               "blind_spot": [
                 0,
@@ -18833,45 +19306,45 @@
               "h_corroborates_a": [
                 0,
                 2,
-                75
+                78
               ],
               "h_contests_a": [
                 0,
                 2,
-                31
+                32
               ]
             },
             "resolutions": {
               "revised": [
                 0,
                 0,
-                7
+                8
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
-                86
+                5
               ],
               "contested": [
                 0,
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
-                5
+                89
               ]
             },
             "frictions_per_session": [
               0.0,
               2.3,
-              8.4
+              8.1
             ],
             "resolutions_per_session": [
               0.0,
               0.0,
-              7.0
+              6.8
             ],
             "flux_h": [
               0,
@@ -18886,17 +19359,17 @@
             "sessions": [
               0,
               3,
-              14
+              15
             ],
             "artefacts": [
               0,
               6,
-              12
+              13
             ],
             "frictions_sessions": [
               0,
               3,
-              39
+              43
             ],
             "frictions_artefacts": [
               0,
@@ -18920,7 +19393,8 @@
               "2026-04-14",
               "2026-04-15",
               "2026-04-16",
-              "2026-04-17"
+              "2026-04-17",
+              "2026-04-19"
             ],
             "markers": {
               "sound": [
@@ -18938,7 +19412,8 @@
                 5,
                 5,
                 9,
-                53
+                53,
+                3
               ],
               "contestable": [
                 0,
@@ -18955,7 +19430,8 @@
                 0,
                 0,
                 1,
-                15
+                15,
+                0
               ],
               "simplification": [
                 0,
@@ -18972,7 +19448,8 @@
                 0,
                 2,
                 1,
-                8
+                8,
+                1
               ],
               "blind_spot": [
                 0,
@@ -18989,9 +19466,11 @@
                 0,
                 1,
                 0,
-                8
+                8,
+                0
               ],
               "refuted": [
+                0,
                 0,
                 0,
                 0,
@@ -19025,7 +19504,8 @@
                 0,
                 0,
                 0,
-                1
+                1,
+                0
               ],
               "a_contests_h": [
                 0,
@@ -19042,7 +19522,8 @@
                 0,
                 0,
                 0,
-                7
+                7,
+                0
               ],
               "h_corroborates_a": [
                 0,
@@ -19059,7 +19540,8 @@
                 5,
                 5,
                 9,
-                52
+                52,
+                3
               ],
               "h_contests_a": [
                 0,
@@ -19076,7 +19558,8 @@
                 0,
                 3,
                 2,
-                24
+                24,
+                1
               ]
             },
             "resolutions": {
@@ -19095,41 +19578,8 @@
                 0,
                 2,
                 0,
-                5
-              ],
-              "ratified": [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                2,
-                10,
-                74
-              ],
-              "contested": [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
+                5,
+                1
               ],
               "rejected": [
                 0,
@@ -19146,7 +19596,44 @@
                 0,
                 0,
                 1,
-                4
+                4,
+                0
+              ],
+              "contested": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "ratified": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                2,
+                10,
+                74,
+                3
               ]
             },
             "frictions_per_session": [
@@ -19164,7 +19651,8 @@
               2.5,
               4.0,
               2.8,
-              28.0
+              28.0,
+              4.0
             ],
             "resolutions_per_session": [
               0.0,
@@ -19181,7 +19669,8 @@
               0.0,
               2.0,
               2.8,
-              27.7
+              27.7,
+              4.0
             ],
             "flux_h": [
               0,
@@ -19198,7 +19687,8 @@
               15,
               10,
               9,
-              3
+              3,
+              0
             ],
             "flux_a": [
               0,
@@ -19215,7 +19705,8 @@
               10,
               6,
               3,
-              2
+              2,
+              0
             ],
             "sessions": [
               0,
@@ -19232,7 +19723,8 @@
               2,
               2,
               4,
-              3
+              3,
+              1
             ],
             "artefacts": [
               0,
@@ -19248,8 +19740,9 @@
               3,
               0,
               2,
-              2,
-              5
+              1,
+              5,
+              2
             ],
             "frictions_sessions": [
               0,
@@ -19266,7 +19759,8 @@
               5,
               8,
               11,
-              6
+              6,
+              4
             ],
             "frictions_artefacts": [
               0,
@@ -19283,7 +19777,8 @@
               0,
               0,
               0,
-              78
+              78,
+              0
             ]
           }
         }
@@ -19402,7 +19897,7 @@
                 0,
                 0
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
@@ -19416,7 +19911,7 @@
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
@@ -19806,7 +20301,7 @@
                 0,
                 0
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
@@ -19864,7 +20359,7 @@
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
@@ -20245,11 +20740,11 @@
                 0,
                 0
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
-                3,
+                0,
                 0
               ],
               "contested": [
@@ -20259,11 +20754,11 @@
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
-                0,
+                3,
                 0
               ]
             },
@@ -20649,7 +21144,7 @@
                 0,
                 0
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
@@ -20668,7 +21163,7 @@
                 0,
                 0,
                 0,
-                3,
+                0,
                 0,
                 0,
                 0,
@@ -20707,7 +21202,7 @@
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
@@ -20726,7 +21221,7 @@
                 0,
                 0,
                 0,
-                0,
+                3,
                 0,
                 0,
                 0,
@@ -21091,12 +21586,12 @@
                 0,
                 2
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
-                3,
-                4
+                0,
+                1
               ],
               "contested": [
                 0,
@@ -21105,12 +21600,12 @@
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
-                0,
-                1
+                3,
+                4
               ]
             },
             "frictions_per_session": [
@@ -21495,7 +21990,7 @@
                 0,
                 2
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
@@ -21519,10 +22014,10 @@
                 0,
                 0,
                 0,
-                3,
                 0,
                 0,
-                4
+                0,
+                1
               ],
               "contested": [
                 0,
@@ -21553,7 +22048,7 @@
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
@@ -21577,10 +22072,10 @@
                 0,
                 0,
                 0,
+                3,
                 0,
                 0,
-                0,
-                1
+                4
               ]
             },
             "frictions_per_session": [
@@ -21927,7 +22422,7 @@
                 0,
                 0
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
@@ -21941,7 +22436,7 @@
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
@@ -22331,7 +22826,7 @@
                 0,
                 0
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
@@ -22389,7 +22884,7 @@
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
@@ -22770,11 +23265,11 @@
                 0,
                 0
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
-                14,
+                0,
                 0
               ],
               "contested": [
@@ -22784,11 +23279,11 @@
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
-                0,
+                14,
                 0
               ]
             },
@@ -23174,7 +23669,7 @@
                 0,
                 0
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
@@ -23196,7 +23691,7 @@
                 0,
                 0,
                 0,
-                14,
+                0,
                 0,
                 0,
                 0,
@@ -23232,7 +23727,7 @@
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
@@ -23254,7 +23749,7 @@
                 0,
                 0,
                 0,
-                0,
+                14,
                 0,
                 0,
                 0,
@@ -23498,7 +23993,7 @@
         }
       },
       "alma": {
-        "sessions": 3,
+        "sessions": 4,
         "artefacts": 4,
         "frictions": 2,
         "frictions_sessions": 2,
@@ -23512,12 +24007,17 @@
           "a_contests_h": 2
         },
         "direction_ratio": 2.0,
-        "flux_h": 0,
-        "flux_a": 0,
-        "flux_h_pct": 0,
-        "flux_a_pct": 0,
-        "flux_types_h": {},
-        "flux_types_a": {},
+        "flux_h": 2,
+        "flux_a": 1,
+        "flux_h_pct": 67,
+        "flux_a_pct": 33,
+        "flux_types_h": {
+          "substance": 1,
+          "decision": 1
+        },
+        "flux_types_a": {
+          "structure": 1
+        },
         "signaler_pattern_count": 0,
         "signaler_pattern_erreur_llm": 0,
         "signaler_pattern_conviction": 0,
@@ -23606,7 +24106,7 @@
                 0,
                 0
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
@@ -23620,7 +24120,7 @@
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
@@ -23633,7 +24133,7 @@
               0.0,
               0.0,
               0.0,
-              0.7
+              0.5
             ],
             "resolutions_per_session": [
               0.0,
@@ -23647,21 +24147,21 @@
               0,
               0,
               0,
-              0
+              2
             ],
             "flux_a": [
               0,
               0,
               0,
               0,
-              0
+              1
             ],
             "sessions": [
               0,
               0,
               0,
               0,
-              3
+              4
             ],
             "artefacts": [
               0,
@@ -23713,10 +24213,12 @@
               "2026-04-12",
               "2026-04-13",
               "2026-04-16",
-              "2026-04-17"
+              "2026-04-17",
+              "2026-04-19"
             ],
             "markers": {
               "sound": [
+                0,
                 0,
                 0,
                 0,
@@ -23772,9 +24274,11 @@
                 0,
                 0,
                 2,
+                0,
                 0
               ],
               "simplification": [
+                0,
                 0,
                 0,
                 0,
@@ -23830,9 +24334,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
               "refuted": [
+                0,
                 0,
                 0,
                 0,
@@ -23890,6 +24396,7 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
               "a_contests_h": [
@@ -23919,6 +24426,7 @@
                 0,
                 0,
                 2,
+                0,
                 0
               ],
               "h_corroborates_a": [
@@ -23948,9 +24456,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
               "h_contests_a": [
+                0,
                 0,
                 0,
                 0,
@@ -24008,9 +24518,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
-              "ratified": [
+              "rejected": [
+                0,
                 0,
                 0,
                 0,
@@ -24066,9 +24578,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
-              "rejected": [
+              "ratified": [
+                0,
                 0,
                 0,
                 0,
@@ -24125,9 +24639,11 @@
               0.0,
               0.0,
               0.7,
+              0.0,
               0.0
             ],
             "resolutions_per_session": [
+              0.0,
               0.0,
               0.0,
               0.0,
@@ -24183,6 +24699,7 @@
               0,
               0,
               0,
+              2,
               0
             ],
             "flux_a": [
@@ -24212,6 +24729,7 @@
               0,
               0,
               0,
+              1,
               0
             ],
             "sessions": [
@@ -24241,6 +24759,7 @@
               0,
               0,
               3,
+              1,
               0
             ],
             "artefacts": [
@@ -24270,6 +24789,7 @@
               0,
               0,
               4,
+              0,
               0
             ],
             "frictions_sessions": [
@@ -24299,9 +24819,11 @@
               0,
               0,
               2,
+              0,
               0
             ],
             "frictions_artefacts": [
+              0,
               0,
               0,
               0,
@@ -24438,7 +24960,7 @@
                 0,
                 0
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
@@ -24452,7 +24974,7 @@
                 0,
                 0
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
@@ -24545,10 +25067,12 @@
               "2026-04-12",
               "2026-04-13",
               "2026-04-16",
-              "2026-04-17"
+              "2026-04-17",
+              "2026-04-19"
             ],
             "markers": {
               "sound": [
+                0,
                 0,
                 0,
                 0,
@@ -24604,9 +25128,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
               "simplification": [
+                0,
                 0,
                 0,
                 0,
@@ -24662,9 +25188,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
               "refuted": [
+                0,
                 0,
                 0,
                 0,
@@ -24722,9 +25250,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
               "a_contests_h": [
+                0,
                 0,
                 0,
                 0,
@@ -24780,9 +25310,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
               "h_contests_a": [
+                0,
                 0,
                 0,
                 0,
@@ -24840,9 +25372,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
-              "ratified": [
+              "rejected": [
+                0,
                 0,
                 0,
                 0,
@@ -24898,9 +25432,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
-              "rejected": [
+              "ratified": [
+                0,
                 0,
                 0,
                 0,
@@ -24957,9 +25493,11 @@
               0.0,
               0.0,
               0.0,
+              0.0,
               0.0
             ],
             "resolutions_per_session": [
+              0.0,
               0.0,
               0.0,
               0.0,
@@ -25015,9 +25553,11 @@
               0,
               0,
               0,
+              0,
               0
             ],
             "flux_a": [
+              0,
               0,
               0,
               0,
@@ -25073,6 +25613,7 @@
               0,
               0,
               0,
+              0,
               0
             ],
             "artefacts": [
@@ -25102,6 +25643,7 @@
               0,
               0,
               1,
+              0,
               0
             ],
             "frictions_sessions": [
@@ -25131,9 +25673,11 @@
               0,
               0,
               0,
+              0,
               0
             ],
             "frictions_artefacts": [
+              0,
               0,
               0,
               0,
@@ -25288,12 +25832,12 @@
                 0,
                 0
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
                 0,
-                9
+                0
               ],
               "contested": [
                 0,
@@ -25302,12 +25846,12 @@
                 0,
                 1
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
                 0,
-                0
+                9
               ]
             },
             "frictions_per_session": [
@@ -25395,7 +25939,8 @@
               "2026-04-12",
               "2026-04-13",
               "2026-04-16",
-              "2026-04-17"
+              "2026-04-17",
+              "2026-04-19"
             ],
             "markers": {
               "sound": [
@@ -25425,7 +25970,8 @@
                 0,
                 0,
                 2,
-                2
+                2,
+                0
               ],
               "contestable": [
                 0,
@@ -25454,9 +26000,11 @@
                 0,
                 0,
                 1,
-                2
+                2,
+                0
               ],
               "simplification": [
+                0,
                 0,
                 0,
                 0,
@@ -25512,9 +26060,11 @@
                 0,
                 0,
                 2,
-                2
+                2,
+                0
               ],
               "refuted": [
+                0,
                 0,
                 0,
                 0,
@@ -25572,7 +26122,8 @@
                 0,
                 0,
                 2,
-                1
+                1,
+                0
               ],
               "a_contests_h": [
                 0,
@@ -25601,7 +26152,8 @@
                 0,
                 0,
                 3,
-                2
+                2,
+                0
               ],
               "h_corroborates_a": [
                 0,
@@ -25630,7 +26182,8 @@
                 0,
                 0,
                 0,
-                1
+                1,
+                0
               ],
               "h_contests_a": [
                 0,
@@ -25659,7 +26212,8 @@
                 0,
                 0,
                 0,
-                2
+                2,
+                0
               ]
             },
             "resolutions": {
@@ -25690,6 +26244,67 @@
                 0,
                 0,
                 0,
+                0,
+                0
+              ],
+              "rejected": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "contested": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
                 0
               ],
               "ratified": [
@@ -25719,64 +26334,7 @@
                 0,
                 0,
                 4,
-                5
-              ],
-              "contested": [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1
-              ],
-              "rejected": [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
+                5,
                 0
               ]
             },
@@ -25807,7 +26365,8 @@
               0.0,
               0.0,
               1.7,
-              2.0
+              2.0,
+              0.0
             ],
             "resolutions_per_session": [
               0.0,
@@ -25836,7 +26395,8 @@
               0.0,
               0.0,
               1.3,
-              2.0
+              2.0,
+              0.0
             ],
             "flux_h": [
               0,
@@ -25865,6 +26425,7 @@
               0,
               0,
               6,
+              0,
               0
             ],
             "flux_a": [
@@ -25894,6 +26455,7 @@
               0,
               0,
               3,
+              0,
               0
             ],
             "sessions": [
@@ -25923,7 +26485,8 @@
               2,
               0,
               3,
-              3
+              3,
+              0
             ],
             "artefacts": [
               0,
@@ -25952,6 +26515,7 @@
               1,
               0,
               1,
+              0,
               0
             ],
             "frictions_sessions": [
@@ -25981,9 +26545,11 @@
               0,
               0,
               5,
-              6
+              6,
+              0
             ],
             "frictions_artefacts": [
+              0,
               0,
               0,
               0,
@@ -26016,29 +26582,30 @@
         }
       },
       "winston": {
-        "sessions": 36,
+        "sessions": 38,
         "artefacts": 5,
-        "frictions": 10,
-        "frictions_sessions": 10,
+        "frictions": 13,
+        "frictions_sessions": 13,
         "frictions_artefacts": 0,
         "markers": {
-          "contestable": 5,
-          "sound": 4,
+          "contestable": 7,
+          "sound": 5,
           "simplification": 1
         },
         "resolutions": {
-          "ratified": 6,
-          "revised": 2,
+          "ratified": 7,
+          "revised": 4,
           "rejected": 1,
           "contested": 1
         },
         "resolved_pct": 100,
         "directions": {
-          "h_contests_a": 3,
-          "a_contests_h": 3,
-          "h_corroborates_a": 4
+          "h_contests_a": 4,
+          "a_contests_h": 4,
+          "h_corroborates_a": 4,
+          "a_corroborates_h": 1
         },
-        "direction_ratio": 0.4,
+        "direction_ratio": 0.6,
         "flux_h": 8,
         "flux_a": 5,
         "flux_h_pct": 62,
@@ -26071,14 +26638,14 @@
                 0,
                 0,
                 0,
-                4
+                5
               ],
               "contestable": [
                 0,
                 0,
                 0,
                 0,
-                5
+                7
               ],
               "simplification": [
                 0,
@@ -26108,14 +26675,14 @@
                 0,
                 0,
                 0,
-                0
+                1
               ],
               "a_contests_h": [
                 0,
                 0,
                 0,
                 0,
-                3
+                4
               ],
               "h_corroborates_a": [
                 0,
@@ -26129,7 +26696,7 @@
                 0,
                 0,
                 0,
-                3
+                4
               ]
             },
             "resolutions": {
@@ -26138,14 +26705,14 @@
                 0,
                 0,
                 0,
-                2
+                4
               ],
-              "ratified": [
+              "rejected": [
                 0,
                 0,
                 0,
                 0,
-                6
+                1
               ],
               "contested": [
                 0,
@@ -26154,12 +26721,12 @@
                 0,
                 1
               ],
-              "rejected": [
+              "ratified": [
                 0,
                 0,
                 0,
                 0,
-                1
+                7
               ]
             },
             "frictions_per_session": [
@@ -26167,14 +26734,14 @@
               0.0,
               0.0,
               0.0,
-              3.3
+              2.6
             ],
             "resolutions_per_session": [
               0.0,
               0.0,
               0.0,
               0.0,
-              3.3
+              2.6
             ],
             "flux_h": [
               0,
@@ -26195,7 +26762,7 @@
               4,
               21,
               8,
-              3
+              5
             ],
             "artefacts": [
               0,
@@ -26209,7 +26776,7 @@
               0,
               0,
               0,
-              10
+              13
             ],
             "frictions_artefacts": [
               0,
@@ -26247,7 +26814,8 @@
               "2026-04-12",
               "2026-04-13",
               "2026-04-16",
-              "2026-04-17"
+              "2026-04-17",
+              "2026-04-19"
             ],
             "markers": {
               "sound": [
@@ -26277,6 +26845,7 @@
                 0,
                 0,
                 3,
+                1,
                 1
               ],
               "contestable": [
@@ -26306,6 +26875,7 @@
                 0,
                 0,
                 4,
+                2,
                 1
               ],
               "simplification": [
@@ -26335,6 +26905,7 @@
                 0,
                 0,
                 1,
+                0,
                 0
               ],
               "blind_spot": [
@@ -26364,9 +26935,11 @@
                 0,
                 0,
                 0,
+                0,
                 0
               ],
               "refuted": [
+                0,
                 0,
                 0,
                 0,
@@ -26424,7 +26997,8 @@
                 0,
                 0,
                 0,
-                0
+                0,
+                1
               ],
               "a_contests_h": [
                 0,
@@ -26453,7 +27027,8 @@
                 0,
                 0,
                 2,
-                1
+                2,
+                0
               ],
               "h_corroborates_a": [
                 0,
@@ -26482,7 +27057,8 @@
                 0,
                 0,
                 3,
-                1
+                1,
+                0
               ],
               "h_contests_a": [
                 0,
@@ -26511,7 +27087,8 @@
                 0,
                 0,
                 3,
-                0
+                0,
+                1
               ]
             },
             "resolutions": {
@@ -26542,64 +27119,7 @@
                 0,
                 0,
                 2,
-                0
-              ],
-              "ratified": [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                5,
-                1
-              ],
-              "contested": [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
+                1,
                 1
               ],
               "rejected": [
@@ -26629,7 +27149,68 @@
                 0,
                 0,
                 1,
+                0,
                 0
+              ],
+              "contested": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              "ratified": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                5,
+                1,
+                1
               ]
             },
             "frictions_per_session": [
@@ -26659,6 +27240,7 @@
               0.0,
               0.0,
               4.0,
+              1.5,
               2.0
             ],
             "resolutions_per_session": [
@@ -26688,6 +27270,7 @@
               0.0,
               0.0,
               4.0,
+              1.5,
               2.0
             ],
             "flux_h": [
@@ -26717,6 +27300,7 @@
               0,
               0,
               8,
+              0,
               0
             ],
             "flux_a": [
@@ -26746,6 +27330,7 @@
               0,
               0,
               5,
+              0,
               0
             ],
             "sessions": [
@@ -26774,6 +27359,7 @@
               1,
               1,
               0,
+              2,
               2,
               1
             ],
@@ -26804,6 +27390,7 @@
               1,
               0,
               3,
+              0,
               0
             ],
             "frictions_sessions": [
@@ -26833,9 +27420,11 @@
               0,
               0,
               8,
+              3,
               2
             ],
             "frictions_artefacts": [
+              0,
               0,
               0,
               0,
@@ -31901,6 +32490,123 @@
         "is_amendment": false
       },
       {
+        "persona": "aurele",
+        "date": "2026-04-17",
+        "source": "architecture/sessions/2026-04-17-1200-aurele.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": "ratified",
+        "description": "traduction fichier par fichier avec word count check",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "aurele",
+        "date": "2026-04-17",
+        "source": "architecture/sessions/2026-04-17-1200-aurele.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": "ratified",
+        "description": "livre bleu reste FR, tache Winston",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "aurele",
+        "date": "2026-04-17",
+        "source": "architecture/sessions/2026-04-17-1200-aurele.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": "ratified",
+        "description": "noms de sections sessions a la fin",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "aurele",
+        "date": "2026-04-17",
+        "source": "architecture/sessions/2026-04-17-1200-aurele.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": "ratified",
+        "description": "contribution % = A/(A+H)",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "aurele",
+        "date": "2026-04-17",
+        "source": "architecture/sessions/2026-04-17-1200-aurele.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": "ratified",
+        "description": "cross-instance dans protocol",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "aurele",
+        "date": "2026-04-17",
+        "source": "architecture/sessions/2026-04-17-1400-aurele.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": "ratified",
+        "description": "batch par agent pour les gros volumes",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "aurele",
+        "date": "2026-04-17",
+        "source": "architecture/sessions/2026-04-17-1400-aurele.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": "ratified",
+        "description": "garder les deux versions livre bleu",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "aurele",
+        "date": "2026-04-17",
+        "source": "architecture/sessions/2026-04-17-1600-aurele.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "persona",
+        "direction": "a_corroborates_h",
+        "resolution": "ratified",
+        "description": "batch canvas traduit directement après échec permissions agents",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "aurele",
+        "date": "2026-04-17",
+        "source": "architecture/sessions/2026-04-17-1600-aurele.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": "ratified",
+        "description": "katen gardé FR",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
         "persona": "solene",
         "date": "2026-04-17",
         "source": "recherche/sessions/2026-04-17-0900-solene.md",
@@ -33019,6 +33725,19 @@
         "is_amendment": false
       },
       {
+        "persona": "winston",
+        "date": "2026-04-17",
+        "source": "editorial/sessions/2026-04-17-1800-winston.md",
+        "source_type": "session",
+        "marker": "contestable",
+        "initiative": "persona",
+        "direction": "a_contests_h",
+        "resolution": "revised",
+        "description": "Traduction livree d'un bloc sans review chapitre par chapitre (PO a confirme \"c'est ok\")",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
         "persona": "marc",
         "date": "2026-04-17",
         "source": "strategie/sessions/2026-04-17-0832-marc.md",
@@ -33095,6 +33814,123 @@
         "description": "correction derogatoire de sessions anterieures sur demande PO",
         "ref": null,
         "is_amendment": false
+      },
+      {
+        "persona": "aurele",
+        "date": "2026-04-19",
+        "source": "architecture/sessions/2026-04-19-2130-aurele.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": null,
+        "description": "reorganisation roadmap v0.3.3→v0.3.5 pour debloquer la trad",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "aurele",
+        "date": "2026-04-19",
+        "source": "architecture/sessions/2026-04-19-2130-aurele.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": "ratified",
+        "description": "\"Shared notes\" plutot que \"Deposited notes\"",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "aurele",
+        "date": "2026-04-19",
+        "source": "architecture/sessions/2026-04-19-2130-aurele.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "persona",
+        "direction": "a_corroborates_h",
+        "resolution": "ratified",
+        "description": "identification bug frontmatter `status:` vs `statut:` dans audit-instance.py",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "solene",
+        "date": "2026-04-19",
+        "source": "recherche/sessions/2026-04-19-2131-solene.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": "ratified",
+        "description": "retour a Friction Engineering — la polysemie tribologique est un atout, pas une collision [PO] → ratified",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "solene",
+        "date": "2026-04-19",
+        "source": "recherche/sessions/2026-04-19-2131-solene.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": "ratified",
+        "description": "roadmap recherche separee du produit — rythme propre [PO] → ratified",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "solene",
+        "date": "2026-04-19",
+        "source": "recherche/sessions/2026-04-19-2131-solene.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "PO",
+        "direction": "h_corroborates_a",
+        "resolution": "ratified",
+        "description": "tribologie = inspiration interne, pas publication [PO] → ratified",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "solene",
+        "date": "2026-04-19",
+        "source": "recherche/sessions/2026-04-19-2131-solene.md",
+        "source_type": "session",
+        "marker": "simplification",
+        "initiative": "PO",
+        "direction": "h_contests_a",
+        "resolution": "revised",
+        "description": "analyse detaillee dans la roadmap au lieu de l'etude — la roadmap liste, l'etude analyse [PO] → revised",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "winston",
+        "date": "2026-04-19",
+        "source": "editorial/sessions/2026-04-19-2149-winston.md",
+        "source_type": "session",
+        "marker": "sound",
+        "initiative": "persona",
+        "direction": "a_corroborates_h",
+        "resolution": "ratified",
+        "description": "depublier fragments et regards plutot que maintenir du contenu non corrige en ligne",
+        "ref": null,
+        "is_amendment": false
+      },
+      {
+        "persona": "winston",
+        "date": "2026-04-19",
+        "source": "editorial/sessions/2026-04-19-2149-winston.md",
+        "source_type": "session",
+        "marker": "contestable",
+        "initiative": "PO",
+        "direction": "h_contests_a",
+        "resolution": "revised",
+        "description": "statut \"traite\" au lieu de \"done\" sur les notes fermees",
+        "ref": null,
+        "is_amendment": false
       }
     ],
     "map": {
@@ -33111,16 +33947,16 @@
           "links": [
             {
               "persona": "aurele",
-              "a_to_h": 18,
-              "h_to_a": 121,
-              "total": 139,
+              "a_to_h": 20,
+              "h_to_a": 131,
+              "total": 151,
               "dominant": "h→a"
             },
             {
               "persona": "solene",
               "a_to_h": 14,
-              "h_to_a": 110,
-              "total": 124,
+              "h_to_a": 114,
+              "total": 128,
               "dominant": "h→a"
             }
           ],
@@ -33200,7 +34036,7 @@
               "status": "warn"
             },
             "sofia": {
-              "total_lines": 267,
+              "total_lines": 268,
               "status": "danger"
             },
             "nora": {
@@ -33224,18 +34060,18 @@
           },
           "links": [
             {
+              "persona": "winston",
+              "a_to_h": 5,
+              "h_to_a": 8,
+              "total": 13,
+              "dominant": "h→a"
+            },
+            {
               "persona": "marc",
               "a_to_h": 8,
               "h_to_a": 3,
               "total": 11,
               "dominant": "a→h"
-            },
-            {
-              "persona": "winston",
-              "a_to_h": 3,
-              "h_to_a": 7,
-              "total": 10,
-              "dominant": "h→a"
             },
             {
               "persona": "alma",
