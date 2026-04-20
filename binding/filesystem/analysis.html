@@ -1530,8 +1530,10 @@ function renderProbeInstance(instName, instData) {
         if (ia !== ib) return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
         return a.id.localeCompare(b.id);
       });
+      window._auditChecks = sortedChecks;
       let lastPrefix = '';
-      for (const chk of sortedChecks) {
+      for (let ci = 0; ci < sortedChecks.length; ci++) {
+        const chk = sortedChecks[ci];
         const status = chk.status || 'info';
         if (status === 'pass') pass++;
         else if (status === 'warn') warn++;
@@ -1543,7 +1545,7 @@ function renderProbeInstance(instName, instData) {
           lastPrefix = prefix;
         }
         const hasFiles = chk.files && chk.files.length > 0 && (status === 'warn' || status === 'fail');
-        const clickAttr = hasFiles ? ` onclick='openCheckDetail(${JSON.stringify(chk).replace(/'/g, "&#39;")})'` : '';
+        const clickAttr = hasFiles ? ` onclick="openCheckDetail(window._auditChecks[${ci}])"` : '';
         const arrow = hasFiles ? ' <span style="opacity:0.3;font-size:9px">▸</span>' : '';
         html += `<div class="check-item ${status}"${clickAttr}><span class="icon">${icons[status] || '?'}</span><span class="msg"><strong>${chk.id}</strong> — ${chk.detail || chk.message || ''}${arrow}</span></div>`;
       }
