@@ -1492,9 +1492,17 @@ function renderProbeInstance(instName, instData) {
 
       html += '<div class="audit-section"><h2>Audit checks <i class=\"info-icon\">i<span class=\"info-tip\">Protocol (PS/PA/PF), artifact (AN/AR/AF), and instance (IS/IN/IR) conformity checks. Pass = conformant, warn = minor issue, fail = violation.</span></i></h2></div>';
       html += '<div class="checks-grid">';
-      const prefixLabels = { PS: 'Protocol — Structure', PA: 'Protocol — Artifacts', PF: 'Protocol — Format', AN: 'Artifact — Notes', AR: 'Artifact — Reviews', AF: 'Artifact — Features', IS: 'Instance — Structure', IN: 'Instance — Naming', IR: 'Instance — Roadmap' };
+      const prefixLabels = { PS: 'Protocol — Structure', PA: 'Protocol — Artifacts', PF: 'Protocol — Format', IS: 'Instance — Structure', IN: 'Instance — Naming', AN: 'Artifact — Notes', AR: 'Artifact — Reviews', AF: 'Artifact — Features', IR: 'Instance — Roadmap' };
+      const prefixOrder = ['PS', 'PA', 'PF', 'IS', 'IN', 'AN', 'AR', 'AF', 'IR'];
+      const sortedChecks = [...checks].sort((a, b) => {
+        const pa = a.id.replace(/[0-9]+.*$/, '');
+        const pb = b.id.replace(/[0-9]+.*$/, '');
+        const ia = prefixOrder.indexOf(pa); const ib = prefixOrder.indexOf(pb);
+        if (ia !== ib) return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+        return a.id.localeCompare(b.id);
+      });
       let lastPrefix = '';
-      for (const chk of checks) {
+      for (const chk of sortedChecks) {
         const status = chk.status || 'info';
         if (status === 'pass') pass++;
         else if (status === 'warn') warn++;
