@@ -2572,7 +2572,6 @@ function _placeholder() {
   svg.addEventListener('mouseup', () => { dragNode = null; });
   svg.addEventListener('mouseleave', () => { dragNode = null; });
 }
-  tlSvg.setAttribute('viewBox', '0 0 900 360');
 
 function _removed() { /* timeline, heatmap, sankey removed */
   const _unused = 0;
@@ -2998,14 +2997,10 @@ _cdPanel.addEventListener('click', (e) => { if (e.target === _cdPanel) closeChec
 // Event delegation for check items
 document.addEventListener('click', (e) => {
   const item = e.target.closest('[data-chk-idx]');
-  if (!item) return;
-  console.log('check click', item.getAttribute('data-chk-idx'), window._auditChecks);
-  if (window._auditChecks) {
-    const idx = parseInt(item.getAttribute('data-chk-idx'), 10);
-    const chk = window._auditChecks[idx];
-    console.log('opening detail for', chk);
-    if (chk) openCheckDetail(chk);
-  }
+  if (!item || !window._auditChecks) return;
+  const idx = parseInt(item.getAttribute('data-chk-idx'), 10);
+  const chk = window._auditChecks[idx];
+  if (chk) openCheckDetail(chk);
 });
 </script>
 </body>
