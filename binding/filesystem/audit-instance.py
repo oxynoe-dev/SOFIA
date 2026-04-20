@@ -273,6 +273,28 @@ def count_friction_markers_from_text(text: str) -> dict[str, int]:
 
 
 # ---------------------------------------------------------------------------
+# Path resolution
+# ---------------------------------------------------------------------------
+
+def resolve_artifact_dir(instance: Path, rel_dir: str) -> Path:
+    """Resolve an artifact directory path relative to the instance root.
+    Handles ../ for external repos (e.g., ../sofia/doc/adr/)."""
+    return (instance / rel_dir).resolve()
+
+
+def safe_relative(f: Path, instance: Path) -> str:
+    """Return a path relative to instance, or the original rel_dir prefix if external."""
+    try:
+        return str(f.relative_to(instance.resolve()))
+    except ValueError:
+        # External file — show from the parent of instance
+        try:
+            return str(f.relative_to(instance.resolve().parent))
+        except ValueError:
+            return str(f)
+
+
+# ---------------------------------------------------------------------------
 # Phase 1 — Structural conformity
 # ---------------------------------------------------------------------------
 
@@ -309,7 +331,7 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
         "shared/conventions.md present" if (instance / "shared" / "conventions.md").is_file() else "shared/conventions.md manquant")
 
     # Prefix mapping: type name → 2-letter prefix for check IDs
-    _type_prefixes = {"notes": "AN", "reviews": "AR", "features": "AF"}
+    _type_prefixes = {"notes": "AN", "reviews": "AR", "features": "AF", "adr": "AD"}
 
     # A{X}1: per-type directory presence (skipped in --protocol-only)
     if not protocol_only:
@@ -319,7 +341,7 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
                 continue
             prefix = _type_prefixes.get(type_name, "A" + type_name[0:1].upper())
             rel_dir = defn["dir"]
-            type_dir = instance / rel_dir
+            type_dir = resolve_artifact_dir(instance, rel_dir)
             type_ok = type_dir.is_dir()
             type_archives = (type_dir / "archives").is_dir() if type_ok else False
             if type_ok and type_archives:
@@ -531,14 +553,14 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             # Dynamic prefix: first letter uppercase + second letter, e.g. "specs" → "AS"
             prefix = "A" + type_name[0:1].upper()
         rel_dir = defn["dir"]
-        base = instance / rel_dir
+        base = resolve_artifact_dir(instance, rel_dir)
         extra_fields = defn.get("extra_fields", set())
         naming_re = defn.get("naming", "")
 
         # {prefix}2: frontmatter presence
         if base.is_dir():
             all_md = list(base.rglob("*.md"))
-            no_fm = [str(f.relative_to(instance)) for f in all_md if parse_frontmatter(f) is None]
+            no_fm = [safe_relative(f, instance) for f in all_md if parse_frontmatter(f) is None]
             if no_fm:
                 add(f"{prefix}2", "warn", False, f"{len(no_fm)}/{len(all_md)} {type_name} sans frontmatter", no_fm)
             else:
@@ -573,7 +595,7 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
                 if "objet" in extra_fields and not has_objet:
                     missing.append("subject")
                 if missing:
-                    missing_fields_files.append(f"{f.relative_to(instance)} (missing: {', '.join(missing)})")
+                    missing_fields_files.append(f"{safe_relative(f, instance)} (missing: {', '.join(missing)})")
             if missing_fields_files:
                 add(f"{prefix}3", "warn", False, f"{len(missing_fields_files)} {type_name} avec champs manquants", missing_fields_files)
             else:
@@ -583,7 +605,7 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
     if not protocol_only:
         accent_files = []
         for rel_dir in ["shared/notes", "shared/review"]:
-            base = instance / rel_dir
+            base = resolve_artifact_dir(instance, rel_dir)
             if not base.is_dir():
                 continue
             for f in base.rglob("*.md"):
@@ -632,7 +654,7 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             continue
         prefix = _type_prefixes.get(type_name, "A" + type_name[0:1].upper())
         rel_dir = defn["dir"]
-        base = instance / rel_dir
+        base = resolve_artifact_dir(instance, rel_dir)
         if not base.is_dir():
             continue
         pattern = re.compile(defn["naming"])
@@ -641,7 +663,7 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             if "archives" in f.relative_to(base).parts or "archive" in f.relative_to(base).parts:
                 continue
             if not pattern.match(f.name):
-                bad_names.append(str(f.relative_to(instance)))
+                bad_names.append(safe_relative(f, instance))
         if bad_names:
             add(f"{prefix}4", "info", False, f"{len(bad_names)} {type_name} hors convention de nommage", bad_names)
         else:
@@ -662,7 +684,7 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             continue
         prefix = _type_prefixes.get(type_name, "A" + type_name[0:1].upper())
         rel_dir = defn["dir"]
-        base = instance / rel_dir
+        base = resolve_artifact_dir(instance, rel_dir)
         if not base.is_dir():
             continue
         misplaced = []
@@ -676,7 +698,7 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
             statut_raw = next((fm[k] for k in STATUT_KEYS if k in fm), "")
             statut = strip_accents(statut_raw.lower().strip())
             if statut in ("traite", "done"):
-                misplaced.append(str(f.relative_to(instance)))
+                misplaced.append(safe_relative(f, instance))
         if misplaced:
             add(f"{prefix}5", "warn", False, f"{len(misplaced)} {type_name} done hors archives/", misplaced)
         else:
@@ -685,7 +707,7 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
     # IS4: files in archives/ with non-traite status
     bad_archive = []
     for rel_dir in ["shared/notes", "shared/review"]:
-        base = instance / rel_dir
+        base = resolve_artifact_dir(instance, rel_dir)
         if not base.is_dir():
             continue
         for f in base.rglob("*.md"):

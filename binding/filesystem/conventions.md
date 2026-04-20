@@ -2,6 +2,21 @@
 
 > Instance conventions. Extend as the project evolves.
 
+## Artifact types
+
+Declare which artifact types this instance uses. The audit checks only declared types.
+
+| Type | Directory | Naming | Extra fields |
+|------|-----------|--------|--------------|
+| notes | shared/notes/ | `note-{subject}-{author}.md` | |
+| reviews | shared/review/ | `review-{subject}-{author}.md` | subject |
+
+<!-- Add rows for additional types used by this instance, e.g.:
+| features | shared/features/ | `feature-{name}.md` | |
+| adr | shared/adr/ | `adr-{number}-{title}.md` | |
+| team-orga | shared/orga/ | `team-orga.md` | |
+-->
+
 ---
 
 ## Structure
@@ -102,20 +117,6 @@ When an artifact is processed, each point SHOULD carry a resolution tag in the d
 
 `→ ratified` | `→ contested` | `→ revised` | `→ rejected`
 
-### Artifact types
-
-Declare which artifact types this instance uses. The audit checks only declared types.
-
-| Type | Directory | Naming | Extra fields |
-|------|-----------|--------|--------------|
-| notes | shared/notes/ | `note-{subject}-{author}.md` | |
-| reviews | shared/review/ | `review-{subject}-{author}.md` | subject |
-
-<!-- Add rows for additional types used by this instance, e.g.:
-| features | shared/features/ | `feature-{name}.md` | |
-| specs | shared/specs/ | `spec-{name}.md` | |
--->
-
 ---
 
 ## Friction
@@ -193,6 +194,27 @@ Section `## Flow` — optional.
 | `decision` | Arbitration, choice made |
 
 Optional counting at end of section.
+
+---
+
+## Roadmaps
+
+Roadmaps live in `shared/` and follow the naming convention `roadmap-{product}.md`.
+
+### Structure
+
+Each roadmap SHOULD have:
+- A `# Roadmap {name}` header
+- An owner declaration in the blockquote: `> Owner : @persona`
+- Version sections (`### vX.Y.Z`) with metadata comments: `<!-- produit: X | cible: YYYY-MM | statut: todo -->`
+
+### Items
+
+Each item is a markdown list entry (`- [status] description @owner`).
+
+- **Status**: `[done]`, `[running]`, `[todo]`, `[blocked]`, `[ready]`
+- **Owner**: `@persona` — who is responsible
+- **Cross-instance**: `↔` marker for dependencies on other instances
 
 ---
 

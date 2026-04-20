@@ -100,6 +100,18 @@ Each declared artifact type gets 5 standard checks. Add `--artifacts notes,revie
 | AF2 | Features have frontmatter | warn |
 | AF3 | Required fields (`from`, `to`, `nature`, `status`, `date`) | warn |
 
+### Other artifact types (dynamic)
+
+Any type declared in `## Artifact types` of `shared/conventions.md` gets the same 5 checks (A{X}1-A{X}5) with a dynamic prefix. Common optional types:
+
+| Type | Prefix | Directory | Naming | Notes |
+|------|--------|-----------|--------|-------|
+| features | AF | shared/features/ | `feature-{name}.md` | Feature specs |
+| adr | AA | shared/adr/ | `adr-{number}-{title}.md` | Instance-level decision records |
+| team-orga | AT | shared/orga/ | `team-orga.md` | Team organization (single file) |
+
+These are **not protocol** — they are instance conventions. An instance that doesn't use ADRs or team-orga simply doesn't declare them.
+
 ## Instance checks
 
 ### Instance Structure (IS)
@@ -118,6 +130,8 @@ Each declared artifact type gets 5 standard checks. Add `--artifacts notes,revie
 | IN1 | Roadmaps follow `roadmap-{product}.md` | info |
 
 ### Instance Roadmap (IR)
+
+Conventions documented in `shared/conventions.md` §Roadmaps.
 
 | ID | Rule | Severity |
 |----|------|----------|
@@ -139,11 +153,13 @@ By default, the audit scans `notes` and `reviews` in `shared/`. An instance can 
 ```markdown
 ## Artifact types
 
-| Type | Directory | Naming | Frontmatter |
-|------|-----------|--------|-------------|
-| notes | shared/notes/ | note-{subject}-{author}.md | from, to, nature, status, date |
-| reviews | shared/review/ | review-{subject}-{author}.md | from, to, nature, status, date, subject |
-| features | shared/features/ | feature-{name}.md | from, to, nature, status, date |
+| Type | Directory | Naming | Extra fields |
+|------|-----------|--------|--------------|
+| notes | shared/notes/ | `note-{subject}-{author}.md` | |
+| reviews | shared/review/ | `review-{subject}-{author}.md` | subject |
+| features | shared/features/ | `feature-{name}.md` | |
+| adr | shared/adr/ | `adr-{number}-{title}.md` | |
+| team-orga | shared/orga/ | `team-orga.md` | |
 ```
 
 The `--artifacts` flag lets the user override which types are audited:
