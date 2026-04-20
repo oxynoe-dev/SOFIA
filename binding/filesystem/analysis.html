@@ -183,6 +183,35 @@ main > .tab-content { max-width: 1200px; margin: 0 auto; padding: 24px 2rem 80px
 .check-item.fail .icon { color: var(--coral); }
 .check-item.info .icon { color: var(--ice-muted); }
 .check-item .msg { color: var(--ice-dim); flex: 1; }
+.check-item.warn, .check-item.fail { cursor: pointer; }
+.check-item.warn:hover, .check-item.fail:hover { background: rgba(255,255,255,0.04); }
+.check-detail-panel {
+  position: fixed; top: 0; right: 0; width: 420px; height: 100vh;
+  background: var(--void); border-left: 1px solid var(--border-hi);
+  z-index: 1000; transform: translateX(100%); transition: transform 0.2s ease;
+  display: flex; flex-direction: column; box-shadow: -4px 0 20px rgba(0,0,0,0.4);
+}
+.check-detail-panel.open { transform: translateX(0); }
+.check-detail-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+}
+.check-detail-header h3 { margin: 0; font-size: 13px; font-family: var(--font-mono); }
+.check-detail-close {
+  background: none; border: none; color: var(--ice-muted); font-size: 18px;
+  cursor: pointer; padding: 4px 8px; border-radius: 3px;
+}
+.check-detail-close:hover { background: rgba(255,255,255,0.08); }
+.check-detail-body {
+  flex: 1; overflow-y: auto; padding: 16px 20px; font-family: var(--font-mono); font-size: 11px;
+}
+.check-detail-body .file-item {
+  padding: 4px 0; color: var(--ice-dim); border-bottom: 1px solid var(--border);
+  word-break: break-all;
+}
+.check-detail-body .file-count {
+  color: var(--ice-muted); font-size: 10px; margin-bottom: 12px; letter-spacing: 0.05em;
+}
 .audit-summary {
   display: flex; gap: 1.5rem; margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 12px;
 }
@@ -1513,7 +1542,10 @@ function renderProbeInstance(instName, instData) {
           html += `<div class="check-group-title">${prefixLabels[prefix] || prefix}</div>`;
           lastPrefix = prefix;
         }
-        html += `<div class="check-item ${status}"><span class="icon">${icons[status] || '?'}</span><span class="msg"><strong>${chk.id}</strong> — ${chk.detail || chk.message || ''}</span></div>`;
+        const hasFiles = chk.files && chk.files.length > 0 && (status === 'warn' || status === 'fail');
+        const clickAttr = hasFiles ? ` onclick='openCheckDetail(${JSON.stringify(chk).replace(/'/g, "&#39;")})'` : '';
+        const arrow = hasFiles ? ' <span style="opacity:0.3;font-size:9px">▸</span>' : '';
+        html += `<div class="check-item ${status}"${clickAttr}><span class="icon">${icons[status] || '?'}</span><span class="msg"><strong>${chk.id}</strong> — ${chk.detail || chk.message || ''}${arrow}</span></div>`;
       }
       html += '</div>';
 
@@ -2929,8 +2961,37 @@ function hideCtxMenu() {
   document.getElementById('ctx-menu').classList.remove('visible');
   document.getElementById('ctx-overlay').classList.remove('visible');
 }
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideCtxMenu(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { hideCtxMenu(); closeCheckDetail(); } });
 window.addEventListener('blur', hideCtxMenu);
+
+// ── Check detail panel ──
+const _cdPanel = document.createElement('div');
+_cdPanel.className = 'check-detail-panel';
+_cdPanel.innerHTML = '<div class="check-detail-header"><h3 id="cd-title"></h3><button class="check-detail-close" onclick="closeCheckDetail()">✕</button></div><div class="check-detail-body" id="cd-body"></div>';
+document.body.appendChild(_cdPanel);
+
+function openCheckDetail(chk) {
+  const title = document.getElementById('cd-title');
+  const body = document.getElementById('cd-body');
+  const statusIcon = chk.status === 'fail' ? '✗' : '⚠';
+  const statusColor = chk.status === 'fail' ? 'var(--coral)' : 'var(--amber)';
+  title.innerHTML = `<span style="color:${statusColor}">${statusIcon}</span> ${chk.id}`;
+  let html = `<div style="color:var(--ice-dim);margin-bottom:12px">${chk.detail || ''}</div>`;
+  if (chk.files && chk.files.length > 0) {
+    html += `<div class="file-count">${chk.files.length} file${chk.files.length > 1 ? 's' : ''}</div>`;
+    for (const f of chk.files) {
+      html += `<div class="file-item">${f}</div>`;
+    }
+  }
+  body.innerHTML = html;
+  _cdPanel.classList.add('open');
+}
+
+function closeCheckDetail() {
+  _cdPanel.classList.remove('open');
+}
+
+_cdPanel.addEventListener('click', (e) => { if (e.target === _cdPanel) closeCheckDetail(); });
 </script>
 </body>
 </html>
