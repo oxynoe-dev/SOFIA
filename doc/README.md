@@ -26,7 +26,7 @@ Practical documentation — how to do things.
 | Document | For whom | Content |
 |----------|----------|---------|
 | [Getting started](guides/getting-started.md) | New users | From prerequisites to first friction — the complete guide |
-| [Onboarding](guides/onboarding.md) | Existing instances | How to add a new persona |
+| [Onboarding](guides/getting-started.md#part-3--adding-a-persona-to-an-existing-instance) | Existing instances | How to add a new persona |
 | [Operator guide](guides/operator-guide.md) | Orchestrators | H2A (Human-to-Assistant) operations — when, how, examples |
 | [Audit guide](guides/audit-guide.md) | Orchestrators | Running the audit tools, reading results |
 

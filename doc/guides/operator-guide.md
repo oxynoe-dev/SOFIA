@@ -1,8 +1,8 @@
-# H2A Operator Guide
+# Orchestrator Guide
 
-> H2A (Human-to-Assistant — the coordination protocol between a human orchestrator and constrained AI personas) operations from the orchestrator's perspective. When, how, example.
+> The operations you perform as orchestrator — opening sessions, exchanging artifacts, qualifying friction.
 
-Spec: [`protocol/h2a.md`](../../protocol/h2a.md). Implementation: [`binding/implementation.md`](../../binding/implementation.md).
+These operations are constitutive of the SOFIA method. They are not optional features — each one structures the collaboration between you and your personas. Together, they form the H2A protocol ([Human-to-Assistant](../../protocol/h2a.md) — the coordination protocol specification). The implementation details live in [`binding/implementation.md`](../../binding/implementation.md).
 
 ---
 
@@ -28,15 +28,16 @@ Spec: [`protocol/h2a.md`](../../protocol/h2a.md). Implementation: [`binding/impl
 
 **When**: the orchestrator wants to work with a persona.
 
-**How**: open a terminal in the persona's workspace and launch the assistant (e.g., `claude` in the persona's directory). The assistant reads its CLAUDE.md and the latest session summary.
+**How**: open a terminal in the persona's workspace and launch the assistant (e.g., `claude` in the persona's directory). Say "hello" — the CLAUDE.md routes to the persona and context files, the persona loads its latest session summary and boots.
 
 **Example**:
 ```
 cd {instance}/{workspace}/
 claude
+> hello
 ```
 
-The persona boots, reads its latest session, waits for instructions.
+The persona reads its CLAUDE.md, loads persona + context, reads the latest session summary, and is ready to work.
 
 ---
 
@@ -44,7 +45,7 @@ The persona boots, reads its latest session, waits for instructions.
 
 **When**: the orchestrator decides the session is over.
 
-**How**: give an explicit verbal signal ("let's close", "we're done"). The persona produces a **new** summary file in `sessions/` with the protocol sections. The orchestrator executes the commit.
+**How**: give an explicit verbal signal ("let's close", "we're done"). The persona produces a **new** summary file in `sessions/` with the protocol sections. If using git, the orchestrator executes the commit. Git is recommended for traceability but not required — the method works without it.
 
 **The persona MUST NOT close on its own.**
 
@@ -62,7 +63,7 @@ MUST sections: `## Produced`, `## Decisions`, `## Shared notes`, `## Open`.
 SHOULD sections: `## Orchestrator friction`.
 MAY sections: `## Flow`.
 
-**Commit**:
+**Commit** (if using git):
 ```
 mira: short session summary (2026-04-16)
 ```
@@ -77,16 +78,16 @@ mira: short session summary (2026-04-16)
 
 **The persona MUST NOT send an artifact without instruction.**
 
-**Examples**:
+**Examples** — always specify the type, recipient, and where to deposit:
 ```
-write a note to emile about the pedagogical pass on the grammar
+write a note to emile about the pedagogical pass on the grammar — deposit in shared/notes/
 
-review the architecture.md for garance
+review the architecture.md for garance — deposit in shared/review/
 
-write the spec for the reorganization mode feature
+write the spec for the reorganization mode feature — deposit in shared/features/
 ```
 
-The persona chooses the content. The orchestrator chooses the trigger, recipient, and location.
+The persona chooses the content. The orchestrator specifies the type, recipient, and location.
 
 **Naming**:
 
@@ -118,10 +119,9 @@ The orchestrator is the router — they decide what to transmit, to whom, and wi
 
 ## 5. markRead()
 
+**When**: the recipient persona has read an artifact (typically during receive()).
 
-**When**: the orchestrator has read an artifact and wants to signal it.
-
-**How**: modify the artifact's frontmatter.
+**How**: the orchestrator modifies the artifact's frontmatter on behalf of the recipient.
 
 ```yaml
 status: read          # was: new
@@ -131,9 +131,9 @@ status: read          # was: new
 
 ## 6. markDone()
 
-**When**: the recipient has done what was needed with the artifact.
+**When**: the recipient persona has processed the artifact — produced a response, integrated the feedback, or acted on the request.
 
-**How**: modify the frontmatter then move to `archives/`.
+**How**: the orchestrator modifies the frontmatter then moves to `archives/`.
 
 ```yaml
 status: done          # was: read

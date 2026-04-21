@@ -30,7 +30,7 @@ Step-by-step documentation for practitioners.
 | Guide | Content |
 |-------|---------|
 | [Getting started](../guides/getting-started.md) | From prerequisites to first friction — the complete guide |
-| [Onboarding](../guides/onboarding.md) | Adding a persona to an existing instance |
+| [Onboarding](../guides/getting-started.md#part-3--adding-a-persona-to-an-existing-instance) | Adding a persona to an existing instance |
 | [Operator guide](../guides/operator-guide.md) | H2A (Human-to-Assistant) operations — when, how, examples |
 | [Audit guide](../guides/audit-guide.md) | Running audits, reading results |
 

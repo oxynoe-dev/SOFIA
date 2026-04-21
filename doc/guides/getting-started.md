@@ -21,6 +21,8 @@ SOFIA is provider-agnostic — the method works with any AI tool that can read a
 
 ---
 
+# Part 1 — Understanding the method
+
 ## What SOFIA is — in one minute
 
 A method for orchestrating specialized AI assistants on a project. Each assistant has a role, a scope, and prohibitions. They don't talk to each other — you carry the context between them. Friction between roles produces better decisions.
@@ -32,8 +34,6 @@ Five things to know before you start:
 3. **The orchestrator decides. Always.** Personas propose, challenge, produce. You decide.
 4. **Files are the protocol.** Personas exchange through artifacts (notes, reviews, specs), not chat. Slowness forces clarity.
 5. **Start small, iterate.** One persona at launch. Others emerge from the work.
-
----
 
 ## How personas work
 
@@ -88,25 +88,6 @@ A well-calibrated persona says "no" regularly:
 
 If your persona never says no, its constraints are too loose.
 
----
-
-## Sofia — the built-in guide (optional)
-
-> **Alpha** — Sofia relies on the provider's conversational behavior. Results may vary. If the flow doesn't start, skip to the manual steps below.
-
-Sofia is SOFIA's built-in guide. When you run `claude` in the sofia repo, it guides you to create your first instance:
-
-1. **Your project** — Sofia asks what you're building
-2. **First persona** — it proposes a structuring role. Not a list — a direct proposal you validate or adjust
-3. **Calibration** — name, stance, scope, prohibitions. Sofia proposes, you adjust
-4. **Generation** — Sofia produces the files and gives you starting keys
-
-After generation, Sofia tells you: your persona will say no (by design), other personas will come (when the work makes them emerge), and you can come back anytime.
-
-We recommend manual mode for your first instance — understanding the structure is more valuable than speed.
-
----
-
 ## Instance and project
 
 A **SOFIA instance** is not your project. It's the space where personas think. Your **project** (code, product, site) lives elsewhere.
@@ -123,9 +104,86 @@ Three configurations:
 | **Instance repo + project repo** — the standard case | Analysis history doesn't pollute the product repo |
 | **Instance repo + multiple projects** — cross-cutting personas | Roadmaps in shared/ make the link |
 
+## Orchestration — the orchestrator's role
+
+### You are the message bus
+
+Personas don't talk to each other. You carry the context. You can open multiple terminals in parallel — one per persona — to accelerate exchanges:
+
+1. You open a session with a persona
+2. It produces a deliverable
+3. You close the session
+4. You open a session with another persona
+5. You transmit the deliverable
+6. You collect the reaction
+
+Each transmission is a moment where you filter, reformulate, add context, decide what is relevant to transmit.
+
+### What you don't delegate
+
+- **Prioritization** — which persona intervenes, in what order
+- **Consolidation** — synthesizing feedback from N personas
+- **Decision** — deciding when personas diverge
+- **Filtering** — what is relevant to transmit or not
+
+### The cost
+
+Orchestration takes time. It's the price of quality. If the exchange isn't worth the cost, the subject didn't need multiple personas.
+
+## Anti-patterns
+
+| Pattern | Problem |
+|---------|---------|
+| The generalist persona | Does everything, therefore nothing well |
+| The compliant persona | Says yes to everything, never challenges |
+| The double hat | "Architect who also codes" — blurs the constraint |
+| Too many personas too early | Start with 1, not 5 |
+| The ghost persona | Created but never used — delete it |
+| No isolation | Without boundaries, the persona overflows |
+| Approving without reading | When you rubber-stamp, you've stopped orchestrating |
+
 ---
 
-## Step 1 — Clone the SOFIA repo
+# Part 2 — Setting up an instance
+
+Two paths to the same result. Choose the one that fits.
+
+## Path A — Guided by Sofia
+
+> **Alpha** — Sofia relies on the provider's conversational behavior. Results may vary. Sofia now offers specific modes: instance creation, persona addition, recalibration, audit.
+
+```bash
+git clone https://github.com/oxynoe-dev/sofia
+cd sofia
+claude
+```
+
+Sofia guides you through instance creation:
+
+1. **Your project** — Sofia asks what you're building (1-2 turns)
+2. **First persona** — it proposes a structuring role adapted to your context. Not a list of choices — a direct proposal you validate or adjust
+3. **Calibration** — name, stance, scope, prohibitions. Sofia proposes, you adjust
+4. **Generation** — Sofia produces the files (persona, context, CLAUDE.md, conventions)
+5. **Briefing** — Sofia tells you three things: your persona will say no (by design), other personas will come (when the work makes them emerge), you can come back anytime
+
+### First persona heuristic
+
+| Your context | Proposed first persona |
+|-------------|----------------------|
+| Solo dev, messy code | Architect |
+| Team, no specs | Product lead |
+| Solo dev, design priority | Design system lead |
+| Data/ML, unclear pipeline | Data architect |
+
+The first persona is always a structuring role — never an executor.
+
+> If the flow doesn't start or drifts, switch to Path B.
+
+---
+
+## Path B — Manual setup
+
+### Step 1 — Clone the SOFIA repo
 
 ```bash
 git clone https://github.com/oxynoe-dev/sofia
@@ -133,9 +191,7 @@ git clone https://github.com/oxynoe-dev/sofia
 
 This is your reference — templates and documentation. You don't need to keep it in your project.
 
----
-
-## Step 2 — Create the instance marker
+### Step 2 — Create the instance marker
 
 At your project root (or instance root), create `sofia.md`:
 
@@ -157,15 +213,11 @@ This repository is an **instance of the SOFIA method**.
 | `shared/` | Inter-persona exchange bus | Shared |
 ```
 
----
-
-## Step 3 — Create the shared structure
+### Step 3 — Create the shared structure
 
 ```bash
 mkdir -p shared/orga/personas shared/orga/contextes shared/notes shared/review
 ```
-
-### conventions.md
 
 Create `shared/conventions.md` — the exchange contract between personas:
 
@@ -191,31 +243,16 @@ Personas don't talk to each other. They exchange through artifacts in shared/.
 - Product repos: the orchestrator verifies and commits
 ```
 
-**Artifact types explained**:
+**Artifact types**:
 - **Note** — a message between personas: a signal, a question, a request. Short, directional (from → to). Example: `note-dev-design-tokens-architect.md`
 - **Review** — a persona takes a position on another's work. Carries friction markers. Example: `review-api-spec-v2-dev.md`
 - **Feature** — a shared functional spec. Not directional. Example: `feature-export-pipeline.md`
 
 Each artifact carries a YAML frontmatter (`from`, `to`, `nature`, `status`, `date`). When processed, it migrates to `archives/`.
 
----
-
-## Step 4 — Define your first persona
+### Step 4 — Define your first persona
 
 Start with **one**. Others will come.
-
-### Choose the role
-
-| Your context | First persona |
-|-------------|--------------|
-| Solo dev, messy code | Architect |
-| Team, no specs | Product lead |
-| Solo dev, design priority | Design system lead |
-| Data/ML, unclear pipeline | Data architect |
-
-The first persona is a **structuring** role — the one that frames your approach.
-
-### Create the persona file
 
 Create `shared/orga/personas/persona-{name}.md`. A persona has 7 dimensions:
 
@@ -249,11 +286,9 @@ Create `shared/orga/personas/persona-{name}.md`. A persona has 7 dimensions:
 | {other persona} | {how they interact} |
 ```
 
-The "What they do NOT do" section is **the most important**. It creates the productive constraint. If you can't find a strong prohibition, the role doesn't justify a persona — it's a task, not a tension.
+The "What they do NOT do" section is **the most important**. It creates the productive constraint.
 
-### Create the context file
-
-Create `shared/orga/contextes/contexte-{name}-{product}.md` — the workspace-specific contract:
+Then create `shared/orga/contextes/contexte-{name}-{product}.md` — the workspace-specific contract:
 
 ```markdown
 ---
@@ -289,15 +324,11 @@ Sections: Produced, Decisions, Shared notes, Open
 
 The persona says **who you are**. The context says **where you are**.
 
----
-
-## Step 5 — Create the workspace
+### Step 5 — Create the workspace
 
 ```bash
 mkdir -p {workspace}/sessions
 ```
-
-### The CLAUDE.md
 
 Create `{workspace}/CLAUDE.md` — a 2-line provider routing:
 
@@ -309,16 +340,15 @@ Whatever the user's first message, at session opening, before any response, read
 
 That's it. Content lives in the persona and context, not in the CLAUDE.md.
 
----
-
-## Step 6 — First session
+### Step 6 — First session
 
 ```bash
 cd {workspace}
 claude
+> hello
 ```
 
-The persona reads its CLAUDE.md, loads the persona and context, and behaves according to the contract. Give it a real task — not a test.
+The persona reads its CLAUDE.md, loads the persona and context, reads the latest session summary, and is ready to work. Give it a real task — not a test.
 
 **Calibration signals**:
 - **It refuses what's out of scope?** Good — the prohibitions work.
@@ -336,74 +366,27 @@ When you're done, give the signal ("let's close"). The persona produces a summar
 sessions/2026-04-21-1430-architect.md
 ```
 
-Mandatory sections: `## Produced`, `## Decisions`, `## Shared notes`, `## Open`. No prose — short lists, 30 lines max. Then commit:
+Mandatory sections: `## Produced`, `## Decisions`, `## Shared notes`, `## Open`. No prose — short lists, 30 lines max.
 
+Commit (if using git):
 ```
 architect: first session — scope definition + ADR-001 (2026-04-21)
 ```
 
-The summary is the bridge to the next session. If it's not traced, it doesn't exist.
-
----
-
-## Step 7 — Adding a second persona
+### Adding a second persona
 
 When the need emerges — not before. SOFIA's value starts at 2 personas — a single persona generates no friction.
 
-### Signals that trigger the need
-
-- **Repeated deflection** — the first persona tells you "that's not my role" 3+ times on the same domain. That domain needs its own role.
-- **Quality gap** — the persona produces something adequate but shallow. A dedicated role would do better. This signal is silent — you must notice it.
+**Signals**:
+- **Repeated deflection** — the first persona tells you "that's not my role" 3+ times on the same domain.
+- **Quality gap** — the persona produces something adequate but shallow. A dedicated role would do better.
 - **Two domains in tension** — you spend time arbitrating between concerns that belong to different axes.
 
-### What to do
-
-Go back to step 4. The new persona must be **in tension** with the existing one — if they agree on everything, one of them is unnecessary.
+Go back to step 4. The new persona must be **in tension** with the existing one.
 
 For the full derivation process, see [Derivation grammar](../concepts/derivation-grammar.md).
 
----
-
-## Step 8 — First friction
-
-Your two personas are set up. Now the method starts producing value.
-
-1. Open a session with Persona A — get a deliverable
-2. Close the session
-3. Open a session with Persona B — present Persona A's deliverable
-4. Watch what happens — Persona B, with different constraints, sees what Persona A missed
-
-That moment — when Persona B pushes back — is SOFIA working. Not because the AI is smarter, but because the structure forces a different angle.
-
-### You are the message bus
-
-Personas don't talk to each other. You carry the context. Each transmission is a moment where you filter, reformulate, add context, decide what is relevant.
-
-**What you don't delegate**:
-- Prioritization — which persona intervenes, in what order
-- Consolidation — synthesizing feedback from multiple personas
-- Decision — deciding when personas diverge
-- Filtering — what is relevant to transmit or not
-
-It's slow. That's the cost of quality.
-
----
-
-## Anti-patterns
-
-| Pattern | Problem |
-|---------|---------|
-| The generalist persona | Does everything, therefore nothing well |
-| The compliant persona | Says yes to everything, never challenges |
-| The double hat | "Architect who also codes" — blurs the constraint |
-| Too many personas too early | Start with 1, not 5 |
-| The ghost persona | Created but never used — delete it |
-| No isolation | Without boundaries, the persona overflows |
-| Approving without reading | When you rubber-stamp, you've stopped orchestrating |
-
----
-
-## Checklist
+### Checklist
 
 - [ ] Prerequisites installed (terminal, VS Code, Claude Code, git)
 - [ ] `sofia.md` at root
@@ -417,7 +400,82 @@ It's slow. That's the cost of quality.
 
 ---
 
-## Going further
+# Part 3 — Adding a persona to an existing instance
+
+## Example: onboarding Sofia (Katen, March 2026)
+
+Sofia (visual production) was onboarded by Nora (UX):
+1. **Persona file** defined with stance "the detail makes the product"
+2. **Workspace** `graphisme/` created with specific CLAUDE.md
+3. **Brief**: targeted reading list (design-principles, design-system, feature-v022)
+4. **First session**: visual exploration, reference board v1
+
+The brief was a dedicated document (`onboarding-sofia.md`) — short, ordered, with references to existing docs rather than duplicated content. The entire process took one session.
+
+## When to add a persona?
+
+A persona is justified when:
+- A **domain** emerges that nobody covers correctly
+- Two existing personas are in **tension** on a recurring subject
+- The orchestrator spends time doing work a persona could structure
+
+A persona is **not** justified when:
+- It's a task, not a role (use a note or backlog item)
+- The domain is covered but "not well enough" (improve the existing persona)
+
+## Steps
+
+### 1. Define the role
+
+Before naming the persona, define:
+- **What** — what types of deliverables it produces
+- **Not what** — what it explicitly does not do (the most important)
+- **With whom** — its main interactions
+
+### 2. Create the persona file
+
+Draw from the format in [`canvas/artifacts/persona.md`](../../canvas/artifacts/persona.md) and archetypes in [`canvas/archetypes/README.md`](../../canvas/archetypes/README.md). Key fields:
+- Profile, stance, scope
+- Collaboration (with/mode table)
+- What it does not do
+
+### 3. Create the workspace
+
+```
+{instance}/
+├── shared/orga/
+│   ├── personas/persona-{name}.md
+│   └── contextes/contexte-{name}-{product}.md
+└── {workspace}/
+    ├── CLAUDE.md      ← 2-line routing
+    └── sessions/
+```
+
+### 4. Brief the persona
+
+At the first session, the persona must:
+1. Read its persona file
+2. Read key documents in its domain
+3. Scan `shared/notes/` for any messages
+4. Deposit a first session summary
+
+### 5. Introduce to the rest of the team
+
+Deposit a note in `shared/notes/`:
+```
+note-team-new-persona-{author}.md
+```
+Content: who, why, what scope, who it interacts with. Other personas will discover it at their next session opening.
+
+## Onboarding anti-patterns
+
+- **The catch-all persona** — "it does a bit of everything". If you can't say what it doesn't do, it's not calibrated.
+- **The orphan persona** — no interaction with others. An isolated persona generates no useful friction.
+- **The mirror persona** — it does the same thing as another with a different name. Merge rather than duplicate.
+
+---
+
+# Going further
 
 ### The method
 
