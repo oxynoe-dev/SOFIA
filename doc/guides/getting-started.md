@@ -35,11 +35,85 @@ Five things to know before you start:
 
 ---
 
+## How personas work
+
+### One persona = one strict role
+
+A persona is not a generic assistant. It is a constrained LLM: a name, a tone, a scope, and above all things it is **not allowed to do**.
+
+Constraint changes everything. An architect who doesn't code is forced to specify. A developer who doesn't decide architecture is forced to question. A strategist without code access thinks in value, not implementation.
+
+Define what the persona **does not do** before defining what it does.
+
+### Friction is the mechanism
+
+If all your personas agree, they're useless. Friction — an architect challenging the dev, a strategist questioning the priority — is the mechanism that produces better decisions.
+
+Friction without an arbiter is chaos. The arbiter is you. You listen, question, then decide. A persona never validates its own proposals. A persona never forces acceptance of a decision.
+
+### Isolation — each persona in its space
+
+Each persona operates in its own workspace. It sees only its files. It cannot read or write elsewhere. Isolation forces formal exchanges: to communicate, personas deposit artifacts in a shared space (`shared/`).
+
+![Instance anatomy](../figures/fig-instance-anatomy.svg)
+
+The orchestrator is the only one who crosses boundaries — carrying context, filtering, reformulating.
+
+### Files are the protocol
+
+Personas don't "discuss" — they exchange through **artifacts**: reviews, notes, specs. These artifacts are versioned, traceable, and readable by all. File-based exchange is slower than chat. That's the point. Slowness forces clarity.
+
+### Emergence — personas appear from the work
+
+Subsequent personas are not planned. They emerge from the work. Every persona includes an **Emergence** section:
+
+> *When you deflect a question because it's outside your scope, note the domain. If you deflect 3+ times on the same domain, signal it explicitly.*
+
+The persona doesn't create the new persona — it signals the gap. You decide whether to act on it.
+
+**Concrete example**: you're working with an architect. After a few sessions, it tells you 3 times "I don't code, you'd need someone to implement." That's the signal — a dev persona is needed. Not because you planned it, but because the work revealed the gap.
+
+### Traceability — if it's not traced, it doesn't exist
+
+Every session produces a structured summary (Produced, Decisions, Shared notes, Open). The summary is the bridge to the next session — the persona reads it at opening. Without it, continuity is lost.
+
+Decisions are traced in ADRs (context, decision, alternatives, consequences). Exchanges are traced in artifacts with frontmatter (who, to whom, nature, status, date).
+
+### The "no" test
+
+A well-calibrated persona says "no" regularly:
+- "That's not my role, check with [other persona]"
+- "The spec isn't precise enough for me to code"
+- "This decision needs an ADR before I implement"
+
+If your persona never says no, its constraints are too loose.
+
+---
+
+## Sofia — the built-in guide (optional)
+
+> **Alpha** — Sofia relies on the provider's conversational behavior. Results may vary. If the flow doesn't start, skip to the manual steps below.
+
+Sofia is SOFIA's built-in guide. When you run `claude` in the sofia repo, it guides you to create your first instance:
+
+1. **Your project** — Sofia asks what you're building
+2. **First persona** — it proposes a structuring role. Not a list — a direct proposal you validate or adjust
+3. **Calibration** — name, stance, scope, prohibitions. Sofia proposes, you adjust
+4. **Generation** — Sofia produces the files and gives you starting keys
+
+After generation, Sofia tells you: your persona will say no (by design), other personas will come (when the work makes them emerge), and you can come back anytime.
+
+We recommend manual mode for your first instance — understanding the structure is more valuable than speed.
+
+---
+
 ## Instance and project
 
 A **SOFIA instance** is not your project. It's the space where personas think. Your **project** (code, product, site) lives elsewhere.
 
-The instance thinks. The project delivers. Personas work in the instance and produce deliverables that land in the project.
+![Instance and project](../figures/fig-project-instance.svg)
+
+The instance thinks. The project delivers. Personas work in the instance and produce deliverables that land in the project. Commits in the instance are automatic. Commits in the project go through the orchestrator.
 
 Three configurations:
 
