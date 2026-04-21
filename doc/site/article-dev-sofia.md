@@ -1,5 +1,5 @@
 ---
-title: "SOFIA: One Practitioner, Nine AI Personas, Structured Disagreement"
+title: "SOFIA: One Practitioner, Constrained AI Personas, Structured Disagreement"
 type: article
 target: dev.to
 canonical: https://github.com/oxynoe-dev/sofia/blob/main/doc/article-dev-sofia.md
@@ -9,7 +9,7 @@ date: 2026-04-21
 author: winston
 ---
 
-# SOFIA: One Practitioner, Nine AI Personas, Structured Disagreement
+# SOFIA: One Practitioner, Constrained AI Personas, Structured Disagreement
 
 A single LLM says yes. Always. Give it a flawed direction, it executes enthusiastically. The error from step 2 arrives at step 3 as a valid premise. The cascade is silent. The final output looks correct. It is not.
 
@@ -64,7 +64,7 @@ my-project/
 
 Each persona is a markdown file. It defines a role, a scope, what it challenges — and what it *cannot do*. The constraint is the mechanism: an architect who can't code is forced to challenge on principles. A dev who can't set strategy is forced to justify against the roadmap.
 
-No framework. No runtime. Markdown files and a convention.
+No framework. No dependency. Markdown files and a convention.
 
 ---
 
@@ -82,7 +82,7 @@ The live dashboard is at [oxynoe.io/sofia/h2a](https://oxynoe.io/sofia/h2a/).
 git clone https://github.com/oxynoe-dev/sofia
 ```
 
-- [Getting started](doc/guides/getting-started.md) — set up your first persona in 6 steps
+- [Getting started](https://github.com/oxynoe-dev/sofia/blob/main/doc/guides/getting-started.md) — set up your first instance
 - [H2A dashboard](https://oxynoe.io/sofia/h2a/) — live friction data from a real project
 - [The long-form article](https://medium.com/@olivier.cds/35037eb1a5cc) — the thesis behind the method
 
