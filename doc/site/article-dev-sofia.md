@@ -17,6 +17,16 @@ SOFIA is a method that makes AI personas disagree — on purpose.
 
 ---
 
+## How it works
+
+A persona is a constrained AI assistant — a markdown file that defines a role, a scope, and explicit prohibitions. An architect who cannot code. A dev who cannot set strategy. The prohibitions force each persona to challenge instead of comply.
+
+Personas don't talk to each other. They exchange through files — notes, reviews, artifacts — deposited in a shared directory. No chat, no memory leaking between sessions. Everything is traced, versioned, auditable.
+
+The human orchestrator reads the disagreements and decides. Not the AI. The friction between constrained roles produces better decisions than any single assistant would. That's the core bet.
+
+---
+
 ## Friction in action
 
 Real session, real personas. A developer persona (Axel) proposes an ADR to add concurrent execution via Web Workers to the engine. Solid design — Petri nets, worker pool, opt-in mode.
