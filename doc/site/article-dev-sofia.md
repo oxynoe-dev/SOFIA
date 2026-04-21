@@ -86,4 +86,4 @@ git clone https://github.com/oxynoe-dev/sofia
 - [H2A dashboard](https://oxynoe.io/sofia/h2a/) — live friction data from a real project
 - [The long-form article](https://medium.com/@olivier.cds/35037eb1a5cc) — the thesis behind the method
 
-Start with one persona. Add a second when you notice the first one agrees with you too easily. That's the signal.
+Start with two personas in tension. A single persona generates no friction — SOFIA's value starts at two.
