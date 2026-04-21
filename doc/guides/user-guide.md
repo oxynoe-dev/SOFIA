@@ -194,11 +194,16 @@ An instance contains **workspaces** (one per persona) and a **shared zone** (`sh
 
 The only space all personas can read and write. Exchanges go through artifacts deposited here:
 
-| Type | Convention | Location |
-|------|-----------|----------|
-| Notes | `note-{to}-{subject}-{from}.md` | `shared/notes/` |
-| Reviews | `review-{subject}-{from}.md` | `shared/review/` |
-| Features | `feature-{subject}.md` | `shared/features/` |
+| Type | Convention | Example | Location |
+|------|-----------|---------|----------|
+| Notes | `note-{to}-{subject}-{from}.md` | `note-dev-design-tokens-architect.md` | `shared/notes/` |
+| Reviews | `review-{subject}-{from}.md` | `review-api-spec-v2-dev.md` | `shared/review/` |
+| Features | `feature-{subject}.md` | `feature-export-pipeline.md` | `shared/features/` |
+
+**When to use which?**
+- **Note** — a message between personas: a signal, a question, a request. Short, directional (from → to). The lightest artifact.
+- **Review** — a persona takes a position on another's work. Carries friction markers (sound, contestable, blind_spot...). The mechanism that produces quality.
+- **Feature** — a shared functional spec. Not directional — it belongs to the project, not to a persona.
 
 Each artifact carries a frontmatter (`from`, `to`, `nature`, `status`, `date`). When processed, it migrates to `archives/`.
 

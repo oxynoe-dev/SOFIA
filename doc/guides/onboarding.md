@@ -6,6 +6,18 @@
 
 ---
 
+## Example first: onboarding Sofia (Katen, March 2026)
+
+Sofia (visual production) was onboarded by Nora (UX):
+1. **Persona file** defined with stance "the detail makes the product"
+2. **Workspace** `graphisme/` created with specific CLAUDE.md
+3. **Brief**: targeted reading list (design-principles, design-system, feature-v022)
+4. **First session**: visual exploration, reference board v1
+
+The brief was a dedicated document (`onboarding-sofia.md`) — short, ordered, with references to existing docs rather than duplicated content. The entire process took one session.
+
+---
+
 ## When to add a persona?
 
 A persona is justified when:
@@ -67,17 +79,6 @@ note-team-new-persona-{author}.md
 
 Content: who, why, what scope, who it interacts with.
 Other personas will discover it at their next session opening.
-
-## Example: onboarding Sofia (Katen, March 2026)
-
-Sofia was onboarded by Nora (UX):
-1. Persona file defined with stance "the detail makes the product"
-2. `graphisme/` workspace created with specific CLAUDE.md
-3. Brief: targeted reading list (design-principles, design-system, feature-v022)
-4. First session: visual exploration, reference board v1
-
-The brief was a dedicated document (`onboarding-sofia.md`) — short, ordered,
-with references to existing docs rather than duplicated content.
 
 ## Anti-patterns
 

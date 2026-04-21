@@ -84,3 +84,7 @@ Intentional friction between constrained roles, with a human who arbitrates — 
 This isn't theory. It's what came out of the field when we solved problems one by one: context that doesn't hold, files as memory, separation of dependencies, and friction that emerges from isolation.
 
 The method was born from constraints. The thesis came after.
+
+---
+
+Continue → [The method](methode.html) · [Tutorial](tutorial.html)

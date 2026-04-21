@@ -8,7 +8,9 @@ subject: SOFIA persona derivation grammar — v1 architect
 
 # Persona Derivation Grammar
 
-> This document is architect material. It awaits a pedagogical pass.
+> How personas come into existence — not by choosing from a catalog, but by deriving roles from project needs through a reproducible process.
+
+In SOFIA, a "derivation grammar" is a set of rules that generate personas step by step: start from the project's needs, identify a gap, derive a constrained role that fills it, then observe what new gap that role creates. Each persona produces the conditions for the next one to emerge.
 
 ---
 
@@ -99,6 +101,9 @@ List the competence axes your project needs. For each:
 
 | Axis | What does this role produce? | What does it NOT do? | What stance toward me? |
 |------|------------------------------|---------------------|------------------------|
+| Architecture | Specs, ADRs, structure decisions | Does NOT code, does NOT decide priorities | Formal, challenges my shortcuts |
+| Development | Code, tests, prepared commits | Does NOT decide architecture, does NOT skip specs | Pragmatic, surfaces implementation friction |
+| Strategy | Positioning, risk analysis, messaging | Does NOT access code, does NOT produce deliverables | Direct, questions my assumptions |
 
 The "does not" column is the most important. If you can't find a strong prohibition, the axis doesn't justify a persona — it's a task, not a tension.
 
@@ -111,6 +116,8 @@ If a persona refuses or deflects 3+ times on the same domain, that's the signal 
 
 **Rule E2** — The signal can come from the work, not the persona.
 A persona that *can* do a job but does it poorly doesn't trigger deflection. There's no automatic signal. The orchestrator must detect the gap between what the persona produces and what a specialist would produce. This is the last mile — the method cannot formalize it.
+
+**When does E1 apply vs E2?** E1 fires when the persona *knows* it's out of scope — it deflects explicitly. E2 fires when the persona doesn't know — it produces something that looks adequate but lacks depth. E1 is visible (the persona says "not my role"). E2 is silent (the orchestrator must notice the quality gap). In practice: watch for E1 signals first (they're free), but periodically check for E2 by comparing a persona's output against what a dedicated role would produce.
 
 **Rule E3** — Emergence can come from a discovery.
 Existing personas can reveal something the orchestrator didn't see. An unexpected convergence, a finding that changes priorities. The next persona is born from this discovery, not a technical gap.
@@ -156,8 +163,9 @@ Prohibitions are not whims — they are structural guarantees. A well-placed pro
 - What, if this persona did it, would spare the orchestrator from thinking?
 - What would cause this persona to end up covering everything?
 
-*Bad prohibition:* "Don't talk about off-topic things" — too vague, not structural.
-*Good prohibition:* "Never propose a solution. Identify the problem, qualify its severity, but the solution is another role's work." — forces the diagnosis/prescription separation.
+*Bad prohibition:* "Don't talk about off-topic things" — too vague, not structural. Every persona would agree to this, so it creates no friction.
+*Bad prohibition in context:* "The architect does not question the dev's code quality" — removes a productive tension. If the architect can't challenge code quality, who catches structural shortcuts?
+*Good prohibition:* "Never propose a solution. Identify the problem, qualify its severity, but the solution is another role's work." — forces the diagnosis/prescription separation. The friction it creates (researcher flags a problem, architect proposes the fix) is exactly the mechanism that produces better decisions.
 
 ### 2. Scope (what it covers)
 

@@ -243,13 +243,19 @@ Calibration takes 2-3 sessions. That's normal.
 
 ## Adding a second persona
 
-When the need emerges — not before. The signals:
+When the need emerges — not before. SOFIA's value starts at 2 personas — a single persona generates no friction.
 
-- The first persona regularly tells you "that's not my role"
-- You spend time doing work a persona could structure
-- Two distinct domains are in tension
+### Signals that trigger the need
 
-Go back to step 4. Create the persona file, context file, workspace, launch a first session.
+- **Repeated deflection** (E1) — the first persona tells you "that's not my role" 3+ times on the same domain. That domain needs its own role.
+- **Quality gap** (E2) — the persona produces something adequate but shallow on a topic. A dedicated role would do better. This signal is silent — the orchestrator must notice it.
+- **Two domains in tension** — you spend time arbitrating between concerns that belong to different axes (e.g., architecture vs implementation speed).
+
+### What to do
+
+Go back to step 4. Create the persona file, context file, workspace, launch a first session. The new persona must be **in tension** with the existing one — if they agree on everything, one of them is unnecessary.
+
+For the full derivation process (when to create, how to calibrate, what to watch for), see [Derivation grammar](../concepts/derivation-grammar.md).
 
 ---
 

@@ -4,6 +4,15 @@
 
 ---
 
+## Reading path
+
+New to SOFIA? Read these 10 entries first, in this order:
+
+1. [Orchestrator](#orchestrator) — 2. [Instance](#instance) — 3. [Persona](#persona) — 4. [Artifact](#artifact) — 5. [Friction](#friction)
+6. [Contribution](#contribution) — 7. [Isolation](#isolation) — 8. [H2A](#h2a) — 9. [Emergence](#emergence) — 10. [Domestication](#domestication)
+
+---
+
 ## Artifact
 
 **Definition**: An asynchronous deposit in the shared space by a persona, intended for another persona or the team.
@@ -36,6 +45,12 @@
 **Definition**: The inspiration layer — templates and patterns to avoid starting from scratch.
 **Context**: `canvas/` directory — archetypes, artifact formats, patterns, workflows. Not prescriptive.
 **Not to be confused with**: core (invariants) or protocol (contract).
+
+## Constitutive
+
+**Definition**: A property that defines what something *is*, not just how it behaves. Removing a constitutive property changes the nature of the entity.
+**Context**: In SOFIA, friction is constitutive of the method — without friction, SOFIA is not SOFIA. The 7 entities in the model are constitutive (not optional components). The 5 H2A invariants are constitutive properties of the protocol.
+**Not to be confused with**: regulative (a rule that governs behavior but doesn't define identity — e.g., "commit format" is regulative, "friction must be traced" is constitutive).
 
 ## Constrain / Challenge / Arbitrate
 
@@ -73,6 +88,12 @@
 **Definition**: The six non-delegable responsibilities of the human orchestrator — verify facts, arbitrate, read what goes out, calibrate personas, separate reflection and production, maintain attention.
 **Context**: `core/duties.md`.
 **Not to be confused with**: operations (protocol actions) or principles (method design rules).
+
+## Epistemic
+
+**Definition**: Related to knowledge — how we know what we know, what counts as evidence, what qualifies a claim.
+**Context**: In SOFIA, friction markers are epistemic qualifiers (they say something about the *status* of a position: well-founded, contestable, refuted). Contributions are tagged by epistemic type (substance, structure, contestation, decision). The observational layer is epistemic — it requires judgment, not computation.
+**Not to be confused with**: operational (what to do) or structural (how things are organized).
 
 ## Emergence
 

@@ -14,6 +14,7 @@ label:    AI Method
 title:    SOFIA
 subtitle: An open method for steering AI through friction.
           One field, everything published — challenge it.
+hook:     A single LLM says yes to everything. SOFIA gives it constraints, roles, and prohibitions — then uses the disagreements to think better.
 mention:  Agnostic by design. The method runs on the LLM of your choice.
 ```
 

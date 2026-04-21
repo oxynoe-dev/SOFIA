@@ -111,3 +111,7 @@ Three paths:
 - **Read** — The [blue book](bluebook.html) details what we built, how, and what broke
 - **See** — The [repo](https://github.com/oxynoe-dev/sofia) contains the code, the personas, the protocol. MIT.
 - **Try** — Fork, adapt, test on your field. Tell us what breaks.
+
+---
+
+Continue → [The method](methode.html) · [History](histoire.html) · [Tutorial](tutorial.html)

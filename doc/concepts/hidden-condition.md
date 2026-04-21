@@ -36,6 +36,14 @@ This trait is neither teachable by a book nor compensable by a framework. It pre
 
 **SOFIA does not create this trait. It structures it.** Friction between personas, the emergence protocol, recalibration through prohibitions — these are not innovations for the orchestrator who has this trait. They are formalizations of what they were already doing intuitively. SOFIA gives them a framework to do it systematically, on demand, without depending on human availability.
 
+### What happens without the trait
+
+An orchestrator who doesn't seek contradiction will use SOFIA as a production accelerator — multiple assistants producing in parallel. The personas will generate deliverables, the orchestrator will approve them, and the frictions will progressively disappear. Not because the personas agree, but because the orchestrator stops engaging with disagreements.
+
+The symptoms: only `[sound]` markers in session summaries, declining challenge trajectory, no `contested` or `rejected` resolutions. The method still runs — it just produces nothing that a single unconstrained LLM couldn't produce. The structure is there, the friction is gone.
+
+This is not a failure of the method. It's a failure of the prerequisite.
+
 ---
 
 ## The last mile

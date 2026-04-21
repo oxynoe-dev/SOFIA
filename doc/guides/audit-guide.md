@@ -107,16 +107,30 @@ Check IDs follow a taxonomy: `{level}{category}{number}`. See `binding/filesyste
 
 The analysis produces observational data — no pass/fail, just indicators for the orchestrator's attention.
 
-**Key signals to watch**:
-- **Only `[sound]` frictions** → domestication signal, the persona has stopped challenging
-- **No friction over consecutive sessions** → friction possibly absent
-- **High contested/rejected ratio** → sustained tension to investigate
-- **Persona without session for several days** → inactive persona
-- **Artifacts not routed** → exchange blocked
+**Terms**: *Mirror* shows orchestrator health (KPIs, radar, trajectory). *Lens* shows raw time series (per-persona, per-week). *Domestication* = a persona progressively aligns with the orchestrator's thinking and stops challenging. *Radar* = a 6-axis chart per persona (challenge %, contribution %, etc.).
 
-**Trajectory** (Mirror tab): tracks challenge % over time. A declining trajectory suggests domestication. A stable trajectory above 20-30% suggests healthy friction.
+#### Recommended workflow
 
-**Contribution flow** (Mirror tab): stacked bar by persona showing substance/structure/contestation/decision balance. Heavy `substance` from assistant + heavy `decision` from human = healthy asymmetry.
+1. **Start with Probe** — fix any `fail` checks first (structural conformity)
+2. **Then Mirror** — check trajectory and KPIs (is friction healthy? any domestication?)
+3. **Then Lens** — drill into per-persona time series (who contributes what, when?)
+
+#### Signals and actions
+
+| Signal | What it means | What to do |
+|--------|---------------|------------|
+| Only `[sound]` frictions | Domestication — the persona validates everything | Tighten prohibitions, review stance, consider recalibration |
+| No friction over consecutive sessions | Friction absent — the persona may not be challenged | Check if the orchestrator presents enough cross-persona deliverables |
+| High contested/rejected ratio | Sustained tension | Healthy if the topics are substantive. Investigate if the same theme recurs → may trigger reportPattern |
+| Declining trajectory | Challenge % dropping over time | Domestication signal — recalibrate the persona or introduce a new one |
+| Persona without session for several days | Inactive persona | Either the role isn't needed (consider deletion) or the orchestrator forgot to engage it |
+| Artifacts not routed | Exchange blocked | Check shared/ for `status: new` artifacts that haven't been presented |
+| Heavy `substance` from A + heavy `decision` from H | Healthy asymmetry | The assistant brings material, the human decides — this is the target pattern |
+| Heavy `decision` from A | Assistant decides too much | The orchestrator may be rubber-stamping — slow down, read more carefully |
+
+**Trajectory** (Mirror tab): tracks challenge % over time. A stable trajectory above 20-30% suggests healthy friction.
+
+**Contribution flow** (Mirror tab): stacked bar by persona showing substance/structure/contestation/decision balance.
 
 ---
 

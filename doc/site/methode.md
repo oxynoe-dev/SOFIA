@@ -4,12 +4,50 @@ to: sofia, nora
 nature: content
 date: 2026-04-05
 subject: Method page — architectural overview of SOFIA
-source: core/*.md, doc/architecture.md
+source: core/*.md, doc/concepts/architecture.md
 ---
 
 # The SOFIA method
 
 > Specialized roles that think with you. The product emerges from their friction.
+
+---
+
+## Anatomy of a persona
+
+A persona is an AI assistant constrained by an **instruction file** (`persona.md`) that defines its identity, stance, scope, and prohibitions.
+
+Each persona operates in its own workspace. It sees only its files. It cannot read or write elsewhere. Isolation forces formal exchanges: to communicate, you must deposit an artifact.
+
+![Anatomy of a persona](figures/fig-methode-persona.svg)
+
+### What surrounds a persona
+
+**Sessions** — Each conversation produces a summary. It's the bridge between sessions: the next one starts by reading the previous one. Structured format, 30 lines max.
+
+**Deliverables** — Each persona produces typed deliverables according to its role: specs, reviews, code, strategic notes, mockups. Not generic text — named, addressable, versioned artifacts.
+
+**Exchanged artifacts** — Personas don't talk to each other. They deposit files in a shared bus (`shared/`). Notes, reviews, features — each with frontmatter that says who wrote it, for whom, and whether it's been processed.
+
+**Emergence** — A well-constrained persona detects when a question falls outside its scope. After repeated deflections on the same domain, it signals the gap. The next persona is born from this observation, not from an initial plan.
+
+---
+
+## Orchestration
+
+The orchestrator is the message bus. Nothing flows between personas without them.
+
+![Orchestration — the orchestrator's role](figures/fig-methode-orchestration.svg)
+
+The orchestrator opens a session with a persona, gets a deliverable, closes the session. Opens a session with another persona, transmits the deliverable, collects the reaction. Each transmission is a moment of filtering, reformulation, context addition.
+
+**What the orchestrator does not delegate**:
+- Prioritization — which persona intervenes, in what order
+- Consolidation — synthesizing feedback from multiple personas
+- Decision — deciding when personas diverge
+- Filtering — what is relevant to transmit or not
+
+It's slow. That's the cost of quality. If the exchange isn't worth the cost, the subject didn't need multiple personas.
 
 ---
 
@@ -59,41 +97,18 @@ The pillars say *why*, the concepts say *how*.
 
 ---
 
-## Anatomy of a persona
+## The gradient
 
-A persona is an AI assistant constrained by an **instruction file** (`persona.md`) that defines its identity, stance, scope, and prohibitions.
+The method doesn't deploy as big bang. It grows with the project.
 
-Each persona operates in its own workspace. It sees only its files. It cannot read or write elsewhere. Isolation forces formal exchanges: to communicate, you must deposit an artifact.
+| Threshold | What activates |
+|---|---|
+| 1 persona | persona.md + sessions/ — the base |
+| 2+ personas | shared/ — the exchange bus (notes, reviews) |
+| 3+ personas | per-workspace roadmaps |
+| 4+ personas | features/ — formalized specs |
 
-![Anatomy of a persona](figures/fig-methode-persona.svg)
-
-### What surrounds a persona
-
-**Sessions** — Each conversation produces a summary. It's the bridge between sessions: the next one starts by reading the previous one. Structured format, 30 lines max.
-
-**Deliverables** — Each persona produces typed deliverables according to its role: specs, reviews, code, strategic notes, mockups. Not generic text — named, addressable, versioned artifacts.
-
-**Exchanged artifacts** — Personas don't talk to each other. They deposit files in a shared bus (`shared/`). Notes, reviews, features — each with frontmatter that says who wrote it, for whom, and whether it's been processed.
-
-**Emergence** — A well-constrained persona detects when a question falls outside its scope. After repeated deflections on the same domain, it signals the gap. The next persona is born from this observation, not from an initial plan.
-
----
-
-## Orchestration
-
-The orchestrator is the message bus. Nothing flows between personas without them.
-
-![Orchestration — the orchestrator's role](figures/fig-methode-orchestration.svg)
-
-The orchestrator opens a session with a persona, gets a deliverable, closes the session. Opens a session with another persona, transmits the deliverable, collects the reaction. Each transmission is a moment of filtering, reformulation, context addition.
-
-**What the orchestrator does not delegate**:
-- Prioritization — which persona intervenes, in what order
-- Consolidation — synthesizing feedback from multiple personas
-- Decision — deciding when personas diverge
-- Filtering — what is relevant to transmit or not
-
-It's slow. That's the cost of quality. If the exchange isn't worth the cost, the subject didn't need multiple personas.
+Start small. Add structure when the orchestrator's cognitive load demands it.
 
 ---
 
@@ -103,7 +118,7 @@ The method is structured in five independent layers. You can change one without 
 
 **Core** — The invariants. Principles, model, friction, duties. What doesn't change when you change tools. If Claude Code disappears tomorrow, core holds.
 
-**Protocol** — The interface contract. H2A, exchanges, friction, contribution. The semantics of interactions, not their materialization.
+**Protocol** — The interface contract. H2A (Human-to-Assistant — the coordination protocol between a human orchestrator and constrained AI personas), exchanges, friction, contribution. The semantics of interactions, not their materialization.
 
 **Binding** — The materialization. How the protocol takes form in a concrete persistence system (filesystem + Markdown + git today, REST API or database tomorrow).
 
@@ -121,27 +136,6 @@ The method is structured in five independent layers. You can change one without 
 
 ---
 
-## The gradient
-
-The method doesn't deploy as big bang. It grows with the project.
-
-| Threshold | What activates |
-|---|---|
-| 1 persona | persona.md + sessions/ — the base |
-| 2+ personas | shared/ — the exchange bus (notes, reviews) |
-| 3+ personas | per-workspace roadmaps |
-| 4+ personas | features/ — formalized specs |
-
-Start small. Add structure when the orchestrator's cognitive load demands it.
-
----
-
-## Field
-
-The method was developed and validated on the Katen project — a formally verified orchestration engine for Data & AI pipelines, built with specialized AI personas across hundreds of sessions.
-
----
-
 ## Six orchestrator duties
 
 Personas produce, challenge, document. But some responsibilities cannot be delegated.
@@ -152,3 +146,13 @@ Personas produce, challenge, document. But some responsibilities cannot be deleg
 4. **Calibrate personas** — Adjust constraints continuously.
 5. **Separate reflection and production** — The one who writes is not the one who validates.
 6. **Maintain attention** — When you approve without reading, that's the moment to slow down.
+
+---
+
+## Field
+
+The method was developed and validated on the Katen project — a formally verified orchestration engine for Data & AI pipelines, built with specialized AI personas across hundreds of sessions.
+
+---
+
+Continue → [Tutorial](tutorial.html) · [Documentation](documentation.html)

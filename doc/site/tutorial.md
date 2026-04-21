@@ -14,9 +14,31 @@ subject: Tutorial page — step-by-step introduction to SOFIA
 
 ## What you'll build
 
-A small SOFIA instance with two personas working on the same project. By the end, you'll have:
+A small SOFIA instance with two personas working on the same project. Here's what the result looks like:
 
-- An instance structure (sofia.md, shared/, two workspaces)
+```
+my-project/
+├── sofia.md                          ← instance marker (name, version, team)
+├── shared/
+│   ├── conventions.md                ← exchange rules (frontmatter, naming, friction markers)
+│   └── orga/
+│       ├── personas/
+│       │   ├── persona-architect.md  ← role: specs, ADRs, structure — does NOT code
+│       │   └── persona-dev.md        ← role: code, tests, implementation — does NOT decide architecture
+│       └── contextes/
+│           ├── contexte-architect-myproject.md
+│           └── contexte-dev-myproject.md
+├── architecture/
+│   ├── CLAUDE.md                     ← routes to persona + context
+│   └── sessions/
+│       └── 2026-04-21-1-architect.md ← first session summary
+└── dev/
+    ├── CLAUDE.md
+    └── sessions/
+        └── 2026-04-21-1-dev.md
+```
+
+By the end, you'll have:
 - Two personas with constrained roles, in tension with each other
 - A first session producing a structured summary
 - An artifact exchanged between the two personas
@@ -31,28 +53,11 @@ A small SOFIA instance with two personas working on the same project. By the end
 
 ---
 
-## Two paths
+## Setting up the instance
 
-### Path A — With Sofia (guided)
+Follow the [Getting started guide](../guides/getting-started.md) to create each file by hand. You'll understand every piece — what it does, why it's there.
 
-```bash
-git clone https://github.com/oxynoe-dev/sofia
-cd sofia
-claude
-```
-
-Sofia guides you through instance creation:
-1. She asks about your project — domain, objectives, current challenges
-2. She proposes personas in tension (minimum 2)
-3. You calibrate together — adjust scope, prohibitions, stance
-4. She generates the files — persona sheets, contexts, CLAUDE.md, conventions
-5. You start working
-
-> If the flow doesn't start or drifts, switch to Path B.
-
-### Path B — Manual (step by step)
-
-Follow the [Getting started guide](../guides/getting-started.md). You create each file by hand — slower, but you understand every piece.
+> **Sofia (the built-in guide)** can automate this setup, but we recommend manual mode for your first instance. Understanding the structure is more valuable than speed.
 
 ---
 

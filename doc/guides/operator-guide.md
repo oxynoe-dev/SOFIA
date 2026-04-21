@@ -1,8 +1,26 @@
 # H2A Operator Guide
 
-> H2A operations from the orchestrator's perspective. When, how, example.
+> H2A (Human-to-Assistant — the coordination protocol between a human orchestrator and constrained AI personas) operations from the orchestrator's perspective. When, how, example.
 
-Spec: `protocol/h2a.md`. Implementation: `binding/implementation.md`.
+Spec: [`protocol/h2a.md`](../../protocol/h2a.md). Implementation: [`binding/implementation.md`](../../binding/implementation.md).
+
+---
+
+## Overview
+
+| Operation | Mode | Who triggers | Who produces |
+|-----------|------|-------------|-------------|
+| openSession() | manual | orchestrator | — |
+| closeSession() | manual | orchestrator | persona (summary) |
+| send() | manual | orchestrator | persona (artifact) |
+| receive() | manual | orchestrator | — |
+| markRead() | manual | orchestrator | — |
+| markDone() | manual | orchestrator | — |
+| qualifyFriction() | automatic | closure | persona (pre-fills), orchestrator (validates) |
+| qualifyContribution() | automatic | closure | persona (pre-fills), orchestrator (validates) |
+| reportPattern() | automatic | persona (detection) | persona (observation), orchestrator (qualification) |
+
+**Golden rule**: the persona does nothing without orchestrator instruction, except closure sections (friction, flow) and reportPattern.
 
 ---
 
