@@ -150,32 +150,31 @@ Two paths to the same result. Choose the one that fits.
 
 ## Path A — Guided by Sofia
 
-> **Alpha** — Sofia relies on the provider's conversational behavior. Results may vary. Sofia now offers specific modes: instance creation, persona addition, recalibration, audit.
+> **Alpha** — Sofia relies on the provider's conversational behavior. Results may vary.
 
 ```bash
 git clone https://github.com/oxynoe-dev/sofia
 cd sofia
 claude
+> hello
 ```
 
-Sofia guides you through instance creation:
+Sofia presents a menu with 4 modes:
 
-1. **Your project** — Sofia asks what you're building (1-2 turns)
-2. **First persona** — it proposes a structuring role adapted to your context. Not a list of choices — a direct proposal you validate or adjust
-3. **Calibration** — name, stance, scope, prohibitions. Sofia proposes, you adjust
-4. **Generation** — Sofia produces the files (persona, context, CLAUDE.md, conventions)
-5. **Briefing** — Sofia tells you three things: your persona will say no (by design), other personas will come (when the work makes them emerge), you can come back anytime
+> 1. **Create an instance** — I guide the setup (structure, conventions, personas)
+> 2. **Add a persona** — a new voice in an existing instance
+> 3. **Recalibrate** — adjust an existing persona
+> 4. **Audit** — compliance diagnostic + frictions
 
-### First persona heuristic
+Choose **1. Create an instance**. Sofia then:
 
-| Your context | Proposed first persona |
-|-------------|----------------------|
-| Solo dev, messy code | Architect |
-| Team, no specs | Product lead |
-| Solo dev, design priority | Design system lead |
-| Data/ML, unclear pipeline | Data architect |
+1. **Locates the instance** — asks where to create it, and where your project repo lives
+2. **Understands your project** — asks what you're building (1-2 turns)
+3. **Proposes personas in tension** — at least 2, directly proposed based on your project's axes of tension. Not a list of choices — a proposal you validate or adjust
+4. **Calibrates** — name, stance, scope, prohibitions for each persona. Sofia proposes, you adjust
+5. **Generates the files** — persona sheets, contexts, CLAUDE.md, conventions, workspace structure
 
-The first persona is always a structuring role — never an executor.
+After generation: your personas will say no (by design), other personas will come (when the work makes them emerge), and you can relaunch Sofia anytime (mode 2 to add, mode 3 to recalibrate).
 
 > If the flow doesn't start or drifts, switch to Path B.
 
