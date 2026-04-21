@@ -2,7 +2,7 @@
 
 SOFIA is in **alpha**. Contributions are welcome — field feedback, corrections, pattern proposals.
 
-Before contributing, read the user guide: [`doc/guides/user-guide.md`](doc/guides/user-guide.md).
+Before contributing, read the getting started guide: [`doc/guides/getting-started.md`](doc/guides/getting-started.md).
 
 ## How to contribute
 

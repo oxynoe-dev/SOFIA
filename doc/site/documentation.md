@@ -29,8 +29,7 @@ Step-by-step documentation for practitioners.
 
 | Guide | Content |
 |-------|---------|
-| [User guide](../guides/user-guide.md) | Overview — concepts, getting started, anti-patterns |
-| [Getting started](../guides/getting-started.md) | Manual instance setup, file by file |
+| [Getting started](../guides/getting-started.md) | From prerequisites to first friction — the complete guide |
 | [Onboarding](../guides/onboarding.md) | Adding a persona to an existing instance |
 | [Operator guide](../guides/operator-guide.md) | H2A (Human-to-Assistant) operations — when, how, examples |
 | [Audit guide](../guides/audit-guide.md) | Running audits, reading results |

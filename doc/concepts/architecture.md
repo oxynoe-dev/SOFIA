@@ -201,7 +201,7 @@ Everything else. Recommended, not required.
 | Content | Role |
 |---------|------|
 | `architecture.md` | This document |
-| `user-guide.md` | Unified user guide |
+| `getting-started.md` | Complete guide — from prerequisites to first friction |
 | `getting-started.md` | Getting started without Sofia |
 | `operator-guide.md` | 9 H2A operations from the orchestrator's view |
 | `derivation-grammar.md` | Persona derivation grammar (2 modes, 8 steps) |
