@@ -15,7 +15,7 @@
   <!-- ════════════════════════════════════════
        Orchestrateur (centre)
   ════════════════════════════════════════ -->
-  <circle cx="440" cy="220" r="44" fill="rgba(64,216,192,0.06)" stroke="#40d8c0" stroke-width="1.2"/>
+  <circle cx="440" cy="220" r="58" fill="rgba(64,216,192,0.06)" stroke="#40d8c0" stroke-width="1.2"/>
   <text x="440" y="215" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#f0f8f5" font-weight="300">Orchestrator</text>
   <text x="440" y="232" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.4)">human</text>
 
