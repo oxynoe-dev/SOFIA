@@ -2,7 +2,7 @@
 title: "SOFIA: One Practitioner, Constrained AI Personas, Structured Disagreement"
 type: article
 target: dev.to
-canonical: https://github.com/oxynoe-dev/sofia/blob/main/doc/article-dev-sofia.md
+canonical: https://github.com/oxynoe-dev/sofia/blob/main/doc/site/article-dev-sofia.md
 tags: [ai, methodology, opensource, productivity]
 status: draft
 date: 2026-04-21
@@ -86,7 +86,7 @@ The live dashboard is at [oxynoe.io/sofia/h2a](https://oxynoe.io/sofia/h2a/).
 
 ---
 
-## Fork and go
+## Clone and go
 
 ```bash
 git clone https://github.com/oxynoe-dev/sofia
