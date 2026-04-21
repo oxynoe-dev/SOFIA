@@ -1,9 +1,3 @@
-# Getting started with SOFIA
-
-> From prerequisites to your first friction — one document, everything you need.
-
----
-
 ## Prerequisites
 
 **What you need**:
@@ -21,7 +15,7 @@ SOFIA is provider-agnostic — the method works with any AI tool that can read a
 
 ---
 
-# Part 1 — Understanding the method
+# Understanding the method
 
 ## What SOFIA is — in one minute
 
@@ -144,11 +138,7 @@ Orchestration takes time. It's the price of quality. If the exchange isn't worth
 
 ---
 
-# Part 2 — Setting up an instance
-
-Two paths to the same result. Choose the one that fits.
-
-## Path A — Guided by Sofia
+# Setting up with Sofia
 
 > **Alpha** — Sofia relies on the provider's conversational behavior. Results may vary.
 
@@ -166,6 +156,8 @@ Sofia presents a menu with 4 modes:
 > 3. **Recalibrate** — adjust an existing persona
 > 4. **Audit** — compliance diagnostic + frictions
 
+## Creating an instance (mode 1)
+
 Choose **1. Create an instance**. Sofia then:
 
 1. **Locates the instance** — asks where to create it, and where your project repo lives
@@ -174,15 +166,49 @@ Choose **1. Create an instance**. Sofia then:
 4. **Calibrates** — name, stance, scope, prohibitions for each persona. Sofia proposes, you adjust
 5. **Generates the files** — persona sheets, contexts, CLAUDE.md, conventions, workspace structure
 
-After generation: your personas will say no (by design), other personas will come (when the work makes them emerge), and you can relaunch Sofia anytime (mode 2 to add, mode 3 to recalibrate).
+After generation: your personas will say no (by design), other personas will come (when the work makes them emerge), and you can relaunch Sofia anytime.
 
-> If the flow doesn't start or drifts, switch to Path B.
+## Adding a persona (mode 2)
+
+Relaunch Sofia and choose **2. Add a persona**. Sofia then:
+
+1. **Reads the existing team** — personas, contexts, conventions
+2. **Asks what triggers the need** — a persona that deflects? a recurring tension? a domain nobody covers?
+3. **Proposes a persona in tension** — in tension with at least one existing persona (otherwise no friction)
+4. **Calibrates** — name, stance, scope, prohibitions
+5. **Generates 3 files** — persona sheet, context, CLAUDE.md + workspace
+6. **Announces** — deposits a note in shared/notes/ so other personas discover the new one at their next boot
+
+> If Sofia flags "that looks like a task, not a role" — listen. A persona is a permanent role with prohibitions, not a one-off executor.
+
+> If the flow doesn't start or drifts, switch to manual setup below.
 
 ---
 
-## Path B — Manual setup
+# Setting up manually
 
-### Step 1 — Clone the SOFIA repo
+## Overview
+
+```
+my-project/
+├── sofia.md                 ← instance marker
+├── shared/
+│   ├── conventions.md       ← exchange rules
+│   ├── orga/
+│   │   ├── personas/        ← persona files (role, stance, prohibitions)
+│   │   └── contextes/       ← workspace contexts (key docs, scope, workflow)
+│   ├── notes/               ← inter-persona exchanges
+│   └── review/              ← cross-reviews
+├── {workspace-1}/
+│   ├── CLAUDE.md            ← provider routing (2 lines)
+│   └── sessions/            ← session summaries
+├── {workspace-2}/
+│   ├── CLAUDE.md
+│   └── sessions/
+└── ...
+```
+
+## Step 1 — Clone the SOFIA repo
 
 ```bash
 git clone https://github.com/oxynoe-dev/sofia
@@ -190,7 +216,7 @@ git clone https://github.com/oxynoe-dev/sofia
 
 This is your reference — templates and documentation. You don't need to keep it in your project.
 
-### Step 2 — Create the instance marker
+## Step 2 — Create the instance marker
 
 At your project root (or instance root), create `sofia.md`:
 
@@ -212,7 +238,7 @@ This repository is an **instance of the SOFIA method**.
 | `shared/` | Inter-persona exchange bus | Shared |
 ```
 
-### Step 3 — Create the shared structure
+## Step 3 — Create the shared structure
 
 ```bash
 mkdir -p shared/orga/personas shared/orga/contextes shared/notes shared/review
@@ -249,7 +275,7 @@ Personas don't talk to each other. They exchange through artifacts in shared/.
 
 Each artifact carries a YAML frontmatter (`from`, `to`, `nature`, `status`, `date`). When processed, it migrates to `archives/`.
 
-### Step 4 — Define your first persona
+## Step 4 — Define your first persona
 
 Start with **one**. Others will come.
 
@@ -323,7 +349,7 @@ Sections: Produced, Decisions, Shared notes, Open
 
 The persona says **who you are**. The context says **where you are**.
 
-### Step 5 — Create the workspace
+## Step 5 — Create the workspace
 
 ```bash
 mkdir -p {workspace}/sessions
@@ -339,7 +365,7 @@ Whatever the user's first message, at session opening, before any response, read
 
 That's it. Content lives in the persona and context, not in the CLAUDE.md.
 
-### Step 6 — First session
+## Step 6 — First session
 
 ```bash
 cd {workspace}
@@ -357,7 +383,7 @@ The persona reads its CLAUDE.md, loads the persona and context, reads the latest
 
 Calibration takes 2-3 sessions. That's normal.
 
-### Session closing
+## Session closing
 
 When you're done, give the signal ("let's close"). The persona produces a summary:
 
@@ -372,7 +398,7 @@ Commit (if using git):
 architect: first session — scope definition + ADR-001 (2026-04-21)
 ```
 
-### Adding a second persona
+## Adding a second persona
 
 When the need emerges — not before. SOFIA's value starts at 2 personas — a single persona generates no friction.
 
@@ -383,9 +409,19 @@ When the need emerges — not before. SOFIA's value starts at 2 personas — a s
 
 Go back to step 4. The new persona must be **in tension** with the existing one.
 
+**Example: onboarding Sofia (Katen, March 2026)**
+
+Sofia (visual production) was onboarded by Nora (UX):
+1. Persona file defined with stance "the detail makes the product"
+2. Workspace `graphisme/` created with specific CLAUDE.md
+3. Brief: targeted reading list (design-principles, design-system, feature-v022)
+4. First session: visual exploration, reference board v1
+
+The entire process took one session.
+
 For the full derivation process, see [Derivation grammar](../concepts/derivation-grammar.md).
 
-### Checklist
+## Checklist
 
 - [ ] Prerequisites installed (terminal, VS Code, Claude Code, git)
 - [ ] `sofia.md` at root
@@ -399,110 +435,9 @@ For the full derivation process, see [Derivation grammar](../concepts/derivation
 
 ---
 
-# Part 3 — Adding a persona to an existing instance
-
-Two paths, same result.
-
-## With Sofia (mode 2)
-
-Relaunch Sofia and choose **2. Add a persona**:
-
-```bash
-cd sofia/
-claude
-> hello
-> 2
-```
-
-Sofia then:
-
-1. **Reads the existing team** — personas, contexts, conventions
-2. **Asks what triggers the need** — a persona that deflects? a recurring tension? a domain nobody covers?
-3. **Proposes a persona in tension** — in tension with at least one existing persona (otherwise no friction)
-4. **Calibrates** — name, stance, scope, prohibitions
-5. **Generates 3 files** — persona sheet, context, CLAUDE.md + workspace
-6. **Announces** — deposits a note in shared/notes/ so other personas discover the new one at their next boot
-
-> If Sofia flags "that looks like a task, not a role" — listen. A persona is a permanent role with prohibitions, not a one-off executor.
-
-## Manual onboarding
-
-### Example: onboarding Sofia (Katen, March 2026)
-
-Sofia (visual production) was onboarded by Nora (UX):
-1. **Persona file** defined with stance "the detail makes the product"
-2. **Workspace** `graphisme/` created with specific CLAUDE.md
-3. **Brief**: targeted reading list (design-principles, design-system, feature-v022)
-4. **First session**: visual exploration, reference board v1
-
-The brief was a dedicated document (`onboarding-sofia.md`) — short, ordered, with references to existing docs rather than duplicated content. The entire process took one session.
-
-## When to add a persona?
-
-A persona is justified when:
-- A **domain** emerges that nobody covers correctly
-- Two existing personas are in **tension** on a recurring subject
-- The orchestrator spends time doing work a persona could structure
-
-A persona is **not** justified when:
-- It's a task, not a role (use a note or backlog item)
-- The domain is covered but "not well enough" (improve the existing persona)
-
-## Steps
-
-### 1. Define the role
-
-Before naming the persona, define:
-- **What** — what types of deliverables it produces
-- **Not what** — what it explicitly does not do (the most important)
-- **With whom** — its main interactions
-
-### 2. Create the persona file
-
-Draw from the format in [`canvas/artifacts/persona.md`](../../canvas/artifacts/persona.md) and archetypes in [`canvas/archetypes/README.md`](../../canvas/archetypes/README.md). Key fields:
-- Profile, stance, scope
-- Collaboration (with/mode table)
-- What it does not do
-
-### 3. Create the workspace
-
-```
-{instance}/
-├── shared/orga/
-│   ├── personas/persona-{name}.md
-│   └── contextes/contexte-{name}-{product}.md
-└── {workspace}/
-    ├── CLAUDE.md      ← 2-line routing
-    └── sessions/
-```
-
-### 4. Brief the persona
-
-At the first session, the persona must:
-1. Read its persona file
-2. Read key documents in its domain
-3. Scan `shared/notes/` for any messages
-4. Deposit a first session summary
-
-### 5. Introduce to the rest of the team
-
-Deposit a note in `shared/notes/`:
-```
-note-team-new-persona-{author}.md
-```
-Content: who, why, what scope, who it interacts with. Other personas will discover it at their next session opening.
-
-## Onboarding anti-patterns
-
-- **The catch-all persona** — "it does a bit of everything". If you can't say what it doesn't do, it's not calibrated.
-- **The orphan persona** — no interaction with others. An isolated persona generates no useful friction.
-- **The mirror persona** — it does the same thing as another with a different name. Merge rather than duplicate.
-
----
-
 # Going further
 
-### The method
+## The method
 
 - [Principles](../../core/principles.md) — the 7 invariant principles
 - [Model](../../core/model.md) — the 7 constitutive entities
@@ -511,20 +446,20 @@ Content: who, why, what scope, who it interacts with. Other personas will discov
 - [Hidden condition](../concepts/hidden-condition.md) — target profile, cognitive trait
 - [Derivation grammar](../concepts/derivation-grammar.md) — how personas come into existence
 
-### The protocol
+## The protocol
 
 - [H2A](../../protocol/h2a.md) — the coordination protocol
 - [Friction](../../protocol/friction.md) — markers, resolutions, lineage
 - [Exchange](../../protocol/exchange.md) — sessions, artifacts, routing
 - [Contribution](../../protocol/contribution.md) — epistemic flow
 
-### The provider
+## The provider
 
 - [CLAUDE.md anatomy](../../provider/claude-code/claude-md.md) — the 3-layer routing
 - [Sessions](../../provider/claude-code/sessions.md) — session summary format
 - [Memory](../../provider/claude-code/memory.md) — persistent memory between sessions
 
-### Inspiration
+## Inspiration
 
 - [Archetypes](../../canvas/archetypes/README.md) — persona templates by role (with prohibition summary)
 - [Artifact formats](../../canvas/artifacts/README.md) — note, review, feature, ADR... (with frontmatter reference)
