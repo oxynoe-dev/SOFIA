@@ -120,6 +120,35 @@ The analysis produces observational data — no pass/fail, just indicators for t
 
 ---
 
+## Publishing data (open-source repo)
+
+When publishing analysis data to an open-source repository (e.g., h2a-data), use the `--sanitize` flag to strip sensitive fields before export.
+
+```bash
+# Build dashboard + sanitized data for h2a-data
+python binding/filesystem/build_dist.py \
+    --output ../h2a-data/dashboard \
+    --data-dir ../h2a-data/data \
+    --sanitize
+```
+
+The `--sanitize` flag strips:
+- **Friction/contribution descriptions** — qualitative content (what was said, contested, decided)
+- **Source filenames** — session paths with timestamps and potentially real names
+- **Probe check details** — filenames in warn/fail messages
+- **Persona role descriptions** — real role text from persona files
+- **Non-persona identifiers** — replaced with "orchestrator" in exchange/friction matrices
+
+What is preserved: markers, resolutions, directions, types, dates, personas, aggregated counters, trajectories, radars.
+
+The standalone script `binding/filesystem/sanitize.py` can also be used independently:
+
+```bash
+python binding/filesystem/sanitize.py binding/filesystem/analysis/data/ output/
+```
+
+---
+
 ## Cost
 
 The audit tools run locally — no API calls, no token cost. They parse Markdown files and produce JSON.
