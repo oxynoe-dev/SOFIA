@@ -401,7 +401,33 @@ For the full derivation process, see [Derivation grammar](../concepts/derivation
 
 # Part 3 — Adding a persona to an existing instance
 
-## Example: onboarding Sofia (Katen, March 2026)
+Two paths, same result.
+
+## With Sofia (mode 2)
+
+Relaunch Sofia and choose **2. Add a persona**:
+
+```bash
+cd sofia/
+claude
+> hello
+> 2
+```
+
+Sofia then:
+
+1. **Reads the existing team** — personas, contexts, conventions
+2. **Asks what triggers the need** — a persona that deflects? a recurring tension? a domain nobody covers?
+3. **Proposes a persona in tension** — in tension with at least one existing persona (otherwise no friction)
+4. **Calibrates** — name, stance, scope, prohibitions
+5. **Generates 3 files** — persona sheet, context, CLAUDE.md + workspace
+6. **Announces** — deposits a note in shared/notes/ so other personas discover the new one at their next boot
+
+> If Sofia flags "that looks like a task, not a role" — listen. A persona is a permanent role with prohibitions, not a one-off executor.
+
+## Manual onboarding
+
+### Example: onboarding Sofia (Katen, March 2026)
 
 Sofia (visual production) was onboarded by Nora (UX):
 1. **Persona file** defined with stance "the detail makes the product"
