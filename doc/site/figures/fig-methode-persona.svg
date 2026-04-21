@@ -9,8 +9,8 @@
   <rect width="880" height="560" fill="url(#bg)"/>
 
   <!-- Label section -->
-  <text x="440" y="38" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(64,216,192,0.5)" letter-spacing="0.12em">ANATOMIE D'UN PERSONA</text>
-  <text x="440" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="rgba(64,216,192,0.25)" font-style="italic">ce qui le definit, ce qu'il produit, ce qu'il echange</text>
+  <text x="440" y="38" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(64,216,192,0.5)" letter-spacing="0.12em">ANATOMY OF A PERSONA</text>
+  <text x="440" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="rgba(64,216,192,0.25)" font-style="italic">what defines it, what it produces, what it exchanges</text>
 
   <!-- ════════════════════════════════════════
        PERSONA (centre)
@@ -21,20 +21,20 @@
 
   <!-- persona.md -->
   <rect x="300" y="124" width="280" height="28" rx="4" fill="rgba(64,216,192,0.06)" stroke="rgba(64,216,192,0.2)" stroke-width="0.6"/>
-  <text x="440" y="143" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(64,216,192,0.6)" letter-spacing="0.06em">PERSONA.MD — LE CONTRAT</text>
+  <text x="440" y="143" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(64,216,192,0.6)" letter-spacing="0.06em">PERSONA.MD — THE CONTRACT</text>
 
   <!-- 4 composants -->
   <rect x="300" y="162" width="132" height="26" rx="4" fill="rgba(64,216,192,0.03)" stroke="rgba(64,180,160,0.15)" stroke-width="0.5"/>
-  <text x="366" y="179" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.4)">Identite + Posture</text>
+  <text x="366" y="179" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.4)">Identity + Stance</text>
 
   <rect x="442" y="162" width="138" height="26" rx="4" fill="rgba(64,216,192,0.03)" stroke="rgba(64,180,160,0.15)" stroke-width="0.5"/>
-  <text x="511" y="179" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.4)">Perimetre + Interdits</text>
+  <text x="511" y="179" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.4)">Scope + Prohibitions</text>
 
   <rect x="300" y="196" width="132" height="26" rx="4" fill="rgba(64,216,192,0.03)" stroke="rgba(64,180,160,0.15)" stroke-width="0.5"/>
   <text x="366" y="213" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.4)">Conventions</text>
 
   <rect x="442" y="196" width="138" height="26" rx="4" fill="rgba(64,216,192,0.03)" stroke="rgba(64,180,160,0.15)" stroke-width="0.5"/>
-  <text x="511" y="213" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.4)">Protocole session</text>
+  <text x="511" y="213" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.4)">Session protocol</text>
 
   <text x="440" y="256" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="rgba(64,216,192,0.2)" font-style="italic">1 persona = 1 workspace = 1 persona.md</text>
 
@@ -45,10 +45,10 @@
 
   <text x="135" y="116" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#f0f8f5" font-weight="300">Sessions</text>
 
-  <text x="135" y="140" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.5)" letter-spacing="0.06em">RESUME OBLIGATOIRE</text>
-  <text x="135" y="160" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.35)">Produit · Decisions</text>
+  <text x="135" y="140" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.5)" letter-spacing="0.06em">MANDATORY SUMMARY</text>
+  <text x="135" y="160" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.35)">Output · Decisions</text>
   <text x="135" y="176" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.35)">Shared notes · Open</text>
-  <text x="135" y="202" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="rgba(64,216,192,0.2)" font-style="italic">le pont entre conversations</text>
+  <text x="135" y="202" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="rgba(64,216,192,0.2)" font-style="italic">the bridge between conversations</text>
 
   <!-- Fleche sessions → persona -->
   <line x1="242" y1="155" x2="268" y2="155" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
@@ -59,12 +59,12 @@
   ════════════════════════════════════════ -->
   <rect x="640" y="90" width="210" height="130" rx="8" fill="rgba(64,216,192,0.03)" stroke="rgba(64,180,160,0.18)" stroke-width="0.8"/>
 
-  <text x="745" y="116" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#f0f8f5" font-weight="300">Livrables</text>
+  <text x="745" y="116" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#f0f8f5" font-weight="300">Deliverables</text>
 
-  <text x="745" y="140" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.5)" letter-spacing="0.06em">TYPES SELON LE ROLE</text>
+  <text x="745" y="140" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.5)" letter-spacing="0.06em">TYPED BY ROLE</text>
   <text x="745" y="160" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.35)">specs · code · reviews</text>
-  <text x="745" y="176" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.35)">notes · maquettes · ADR</text>
-  <text x="745" y="202" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="rgba(64,216,192,0.2)" font-style="italic">nommes, versionnes, adressables</text>
+  <text x="745" y="176" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="9" fill="rgba(64,216,192,0.35)">notes · mockups · ADR</text>
+  <text x="745" y="202" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="rgba(64,216,192,0.2)" font-style="italic">named, versioned, addressable</text>
 
   <!-- Fleche persona → livrables -->
   <line x1="612" y1="155" x2="638" y2="155" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
@@ -76,7 +76,7 @@
   <rect x="130" y="310" width="620" height="140" rx="8" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.25)" stroke-width="0.8"/>
 
   <text x="440" y="336" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#a78bfa" font-weight="300">Bus shared/</text>
-  <text x="440" y="354" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(167,139,250,0.4)" letter-spacing="0.06em">ZONE D'ECHANGE ENTRE PERSONAS</text>
+  <text x="440" y="354" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(167,139,250,0.4)" letter-spacing="0.06em">EXCHANGE ZONE BETWEEN PERSONAS</text>
 
   <!-- Artefacts dans le bus -->
   <rect x="155" y="370" width="100" height="28" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.18)" stroke-width="0.5"/>
@@ -95,7 +95,7 @@
   <text x="682" y="389" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(167,139,250,0.5)">orga/</text>
 
   <!-- Frontmatter -->
-  <text x="440" y="426" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="rgba(167,139,250,0.3)" font-style="italic">chaque artefact : de · pour · type · statut · date</text>
+  <text x="440" y="426" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="rgba(167,139,250,0.3)" font-style="italic">each artifact: from · to · type · status · date</text>
 
   <!-- Mycélium persona → bus -->
   <path d="M 440,272 Q 440,285 438,295 Q 436,305 440,310" fill="none" stroke="rgba(64,180,160,0.1)" stroke-width="0.5"/>
@@ -105,7 +105,7 @@
   <!-- Persona B (gauche) -->
   <rect x="30" y="360" width="80" height="44" rx="4" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.15)" stroke-width="0.5"/>
   <text x="70" y="381" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="rgba(64,216,192,0.4)">Persona B</text>
-  <text x="70" y="395" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.2)">lit, reagit</text>
+  <text x="70" y="395" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.2)">reads, reacts</text>
 
   <line x1="112" y1="382" x2="128" y2="388" stroke="rgba(64,180,160,0.15)" stroke-width="0.6"/>
   <polygon points="128,388 122,383 122,390" fill="rgba(64,180,160,0.25)"/>
@@ -113,7 +113,7 @@
   <!-- Persona C (droite) -->
   <rect x="770" y="360" width="80" height="44" rx="4" fill="rgba(64,216,192,0.03)" stroke="rgba(64,216,192,0.15)" stroke-width="0.5"/>
   <text x="810" y="381" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="rgba(64,216,192,0.4)">Persona C</text>
-  <text x="810" y="395" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.2)">lit, reagit</text>
+  <text x="810" y="395" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.2)">reads, reacts</text>
 
   <line x1="768" y1="382" x2="752" y2="388" stroke="rgba(64,180,160,0.15)" stroke-width="0.6"/>
   <polygon points="752,388 758,383 758,390" fill="rgba(64,180,160,0.25)"/>
@@ -124,7 +124,7 @@
   <rect x="640" y="236" width="210" height="56" rx="6" fill="rgba(226,72,153,0.03)" stroke="rgba(236,72,153,0.2)" stroke-width="0.6" stroke-dasharray="4,3"/>
 
   <text x="745" y="258" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="rgba(236,72,153,0.6)" font-weight="300">Emergence</text>
-  <text x="745" y="276" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="8" fill="rgba(64,216,192,0.3)">3+ refus sur un domaine → signale le manque</text>
+  <text x="745" y="276" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="8" fill="rgba(64,216,192,0.3)">3+ deflections on same domain → signals the gap</text>
 
   <!-- Mycélium persona → emergence -->
   <path d="M 612,240 Q 625,238 638,252" fill="none" stroke="rgba(236,72,153,0.15)" stroke-width="0.5" stroke-dasharray="3,3"/>
@@ -133,14 +133,14 @@
        Orchestrateur (bas)
   ════════════════════════════════════════ -->
   <circle cx="440" cy="500" r="28" fill="rgba(64,216,192,0.05)" stroke="#40d8c0" stroke-width="1"/>
-  <text x="440" y="497" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#f0f8f5" font-weight="300">Orchestrateur</text>
-  <text x="440" y="511" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.35)">humain</text>
+  <text x="440" y="497" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#f0f8f5" font-weight="300">Orchestrator</text>
+  <text x="440" y="511" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(64,216,192,0.35)">human</text>
 
   <!-- Fleche Orchestrateur ↔ bus -->
   <line x1="440" y1="452" x2="440" y2="472" stroke="rgba(64,216,192,0.2)" stroke-width="0.8"/>
   <polygon points="440,472 436,464 444,464" fill="rgba(64,216,192,0.3)"/>
 
-  <text x="440" y="545" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="rgba(64,216,192,0.2)" font-style="italic">orchestre · filtre · contextualise · tranche</text>
+  <text x="440" y="545" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="rgba(64,216,192,0.2)" font-style="italic">orchestrates · filters · contextualizes · decides</text>
 
   <!-- Filet footer -->
   <line x1="40" y1="555" x2="840" y2="555" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>

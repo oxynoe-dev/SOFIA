@@ -10,14 +10,14 @@
 
   <!-- Label section -->
   <text x="440" y="38" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(64,216,192,0.5)" letter-spacing="0.12em">ORCHESTRATION</text>
-  <text x="440" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="rgba(64,216,192,0.25)" font-style="italic">l'orchestrateur porte le contexte entre les personas</text>
+  <text x="440" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="rgba(64,216,192,0.25)" font-style="italic">the orchestrator carries context between personas</text>
 
   <!-- ════════════════════════════════════════
        Orchestrateur (centre)
   ════════════════════════════════════════ -->
   <circle cx="440" cy="220" r="44" fill="rgba(64,216,192,0.06)" stroke="#40d8c0" stroke-width="1.2"/>
-  <text x="440" y="215" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#f0f8f5" font-weight="300">Orchestrateur</text>
-  <text x="440" y="232" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.4)">humain</text>
+  <text x="440" y="215" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#f0f8f5" font-weight="300">Orchestrator</text>
+  <text x="440" y="232" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(64,216,192,0.4)">human</text>
 
   <!-- ════════════════════════════════════════
        4 PERSONAS
@@ -25,27 +25,27 @@
 
   <!-- Architecte (haut gauche) -->
   <rect x="60" y="88" width="170" height="64" rx="6" fill="rgba(64,216,192,0.04)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
-  <text x="145" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#f0f8f5" font-weight="300">Architecte</text>
+  <text x="145" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#f0f8f5" font-weight="300">Architect</text>
   <text x="145" y="132" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="8" fill="rgba(64,216,192,0.35)">specs · ADR · reviews</text>
-  <text x="145" y="145" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.35)">ne code pas</text>
+  <text x="145" y="145" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.35)">doesn't code</text>
 
   <!-- Dev (haut droite) -->
   <rect x="650" y="88" width="170" height="64" rx="6" fill="rgba(64,216,192,0.04)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
   <text x="735" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#f0f8f5" font-weight="300">Dev</text>
   <text x="735" y="132" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="8" fill="rgba(64,216,192,0.35)">code · tests · frictions</text>
-  <text x="735" y="145" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.35)">ne decide pas l'archi</text>
+  <text x="735" y="145" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.35)">doesn't decide architecture</text>
 
   <!-- Stratege (bas gauche) -->
   <rect x="60" y="290" width="170" height="64" rx="6" fill="rgba(64,216,192,0.04)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
-  <text x="145" y="316" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#f0f8f5" font-weight="300">Stratege</text>
-  <text x="145" y="334" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="8" fill="rgba(64,216,192,0.35)">positionnement · pricing</text>
-  <text x="145" y="347" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.35)">pas d'acces au code</text>
+  <text x="145" y="316" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#f0f8f5" font-weight="300">Strategist</text>
+  <text x="145" y="334" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="8" fill="rgba(64,216,192,0.35)">positioning · pricing</text>
+  <text x="145" y="347" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.35)">no access to code</text>
 
   <!-- UX (bas droite) -->
   <rect x="650" y="290" width="170" height="64" rx="6" fill="rgba(64,216,192,0.04)" stroke="rgba(64,216,192,0.25)" stroke-width="0.8"/>
   <text x="735" y="316" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#f0f8f5" font-weight="300">UX</text>
-  <text x="735" y="334" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="8" fill="rgba(64,216,192,0.35)">parcours · maquettes</text>
-  <text x="735" y="347" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.35)">ne valide pas la faisabilite</text>
+  <text x="735" y="334" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="8" fill="rgba(64,216,192,0.35)">flows · mockups</text>
+  <text x="735" y="347" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.35)">doesn't validate feasibility</text>
 
   <!-- ════════════════════════════════════════
        CONNEXIONS Orchestrateur ↔ Personas (mycélium)
@@ -73,18 +73,18 @@
 
   <!-- Haut : Archi ↔ Dev -->
   <line x1="232" y1="108" x2="648" y2="108" stroke="rgba(64,180,160,0.06)" stroke-width="0.6" stroke-dasharray="3,5"/>
-  <text x="440" y="100" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.3)" letter-spacing="0.06em">PAS DE LIEN DIRECT</text>
+  <text x="440" y="100" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.3)" letter-spacing="0.06em">NO DIRECT LINK</text>
 
   <!-- Bas : Stratege ↔ UX -->
   <line x1="232" y1="332" x2="648" y2="332" stroke="rgba(64,180,160,0.06)" stroke-width="0.6" stroke-dasharray="3,5"/>
-  <text x="440" y="345" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.3)" letter-spacing="0.06em">PAS DE LIEN DIRECT</text>
+  <text x="440" y="345" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(236,72,153,0.3)" letter-spacing="0.06em">NO DIRECT LINK</text>
 
   <!-- ════════════════════════════════════════
        SHARED/ (bas)
   ════════════════════════════════════════ -->
   <rect x="250" y="385" width="380" height="40" rx="6" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.2)" stroke-width="0.6"/>
   <text x="440" y="405" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#a78bfa" font-weight="300">shared/</text>
-  <text x="440" y="419" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(167,139,250,0.35)">notes · reviews · features — le bus d'echange</text>
+  <text x="440" y="419" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="rgba(167,139,250,0.35)">notes · reviews · features — the exchange bus</text>
 
   <!-- Mycélium Orchestrateur → shared -->
   <path d="M 440,264 Q 442,320 440,383" fill="none" stroke="rgba(167,139,250,0.18)" stroke-width="0.6"/>
@@ -95,5 +95,5 @@
   ════════════════════════════════════════ -->
   <!-- Filet footer -->
   <line x1="40" y1="440" x2="840" y2="440" stroke="rgba(64,180,160,0.12)" stroke-width="0.5"/>
-  <text x="440" y="454" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="rgba(64,216,192,0.18)" font-style="italic">chaque fleche passe par l'orchestrateur — pas de raccourci</text>
+  <text x="440" y="454" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="rgba(64,216,192,0.18)" font-style="italic">every arrow goes through the orchestrator — no shortcut</text>
 </svg>
