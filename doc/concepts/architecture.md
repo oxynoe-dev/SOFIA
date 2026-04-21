@@ -20,7 +20,7 @@
 
 ### Motivation
 
-![The SOFIA triangle](figures/fig-triangle-sofia.svg)
+![The SOFIA triangle](../figures/fig-triangle-sofia.svg)
 
 Three interdependent concepts are at the origin of SOFIA:
 - **Persona** — an LLM constrained by a role, a scope, and prohibitions
@@ -95,7 +95,7 @@ The protocol defines the what (entities, invariants, operations). The binding de
 
 ---
 
-![SOFIA Architecture](figures/arch-sofia.svg)
+![SOFIA Architecture](../figures/arch-sofia.svg)
 
 ## 3. Architecture — 5 layers + canvas
 
@@ -217,7 +217,7 @@ Everything else. Recommended, not required.
 
 ### MCD — 7 constitutive entities
 
-![SOFIA MCD — 7 H2A entities](figures/fig-mcd-h2a.svg)
+![SOFIA MCD — 7 H2A entities](../figures/fig-mcd-h2a.svg)
 
 7 entities, organized in 3 levels. Ref: `core/model.md`.
 
@@ -267,7 +267,7 @@ The protocol/observational distinction traverses the MCD:
 
 ### Exchange flows
 
-![Elementary flow](figures/fig-elementary-flow.svg)
+![Elementary flow](../figures/fig-elementary-flow.svg)
 
 Everything goes through the orchestrator. Two patterns:
 
@@ -290,7 +290,7 @@ Personas never talk directly. The orchestrator is the human router of all exchan
 
 ### SOFIA Instance
 
-![Instance anatomy](figures/fig-instance-anatomy.svg)
+![Instance anatomy](../figures/fig-instance-anatomy.svg)
 
 The `sofia.md` file at the root identifies the repository as an instance and links to the method.
 

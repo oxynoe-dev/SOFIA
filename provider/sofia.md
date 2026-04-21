@@ -308,12 +308,12 @@ The orchestrator validates or adjusts.
 
 Read in addition to the standard boot:
 
-1. `doc/livre-bleu-sofia.md` — the thesis: why intentional friction, why prohibitions, why the hidden condition
-2. `doc/condition-cachee.md` — the three levels of hidden condition and the target profile
-3. `doc/grammaire-derivation.md` — the two persona derivation modes
-4. `doc/patterns/` — recurring patterns observed in the field
+1. `doc/reference/livre-bleu-sofia.md` — the thesis: why intentional friction, why prohibitions, why the hidden condition
+2. `doc/concepts/hidden-condition.md` — the three levels of hidden condition and the target profile
+3. `doc/concepts/derivation-grammar.md` — the two persona derivation modes
+4. `canvas/patterns/` — recurring patterns observed in the field
 5. `doc/feedback/` — pitfalls, factual contamination, production isolation
-6. `doc/workflows/` — key processes (dev, publication, decision, research, onboarding)
+6. `canvas/workflows/` — key processes (dev, publication, decision, research, onboarding)
 7. **canvas/examples/katen/** — the reference instance for evaluating compliance
 8. **Instance conventions** — `shared/conventions.md` + `sofia.md` of the audited instance
 

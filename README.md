@@ -49,7 +49,7 @@ claude
 
 The built-in guide (Sofia) walks you through instance creation.
 
-> **Alpha** — Sofia relies on the provider's conversational behavior. Results may vary. If the flow doesn't start, [manual mode](doc/getting-started.md) covers the same steps.
+> **Alpha** — Sofia relies on the provider's conversational behavior. Results may vary. If the flow doesn't start, [manual mode](doc/guides/getting-started.md) covers the same steps.
 
 ---
 

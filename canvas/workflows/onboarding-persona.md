@@ -8,7 +8,7 @@ New persona integration workflow: from observed gap to first productive session.
 
 ### When to use it
 
-When a domain is not covered by existing personas and this gap generates recurring problems. This workflow is the process version — for the technical checklist, see `doc/onboarding.md`.
+When a domain is not covered by existing personas and this gap generates recurring problems. This workflow is the process version — for the technical checklist, see `doc/guides/onboarding.md`.
 
 ### Steps
 

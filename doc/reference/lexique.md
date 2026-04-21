@@ -29,7 +29,7 @@
 **Definition**: One of two persona derivation modes — the orchestrator projects roles from prior experience before any session.
 **Context**: Derivation grammar, modes B1-B4. Typical at instance creation.
 **Not to be confused with**: emergence (the other mode, where roles appear from observed gaps during work).
-**Ref**: `doc/derivation-grammar.md`.
+**Ref**: `doc/concepts/derivation-grammar.md`.
 
 ## Canvas
 
@@ -79,7 +79,7 @@
 **Definition**: One of two persona derivation modes — a new role appears from observed gaps during work (repeated deflections on the same domain).
 **Context**: Derivation grammar, modes E1-E4. Typical during ongoing work.
 **Not to be confused with**: bootstrap (the other mode, where roles are projected upfront).
-**Ref**: `doc/derivation-grammar.md`.
+**Ref**: `doc/concepts/derivation-grammar.md`.
 
 ## Exchange
 
@@ -109,7 +109,7 @@
 ## Hidden condition
 
 **Definition**: The prerequisite that SOFIA cannot verify — domain expertise, strong intention, and a cognitive trait that seeks contradiction.
-**Context**: `doc/hidden-condition.md`. Three levels: expertise (visible), intention (discipline), cognitive trait (precedes the method).
+**Context**: `doc/concepts/hidden-condition.md`. Three levels: expertise (visible), intention (discipline), cognitive trait (precedes the method).
 
 ## Instance
 
@@ -152,7 +152,7 @@
 ## Operation
 
 **Definition**: An implicit action derived from H2A entities — openSession, closeSession, send, receive, markRead, markDone, qualifyFriction, qualifyContribution, reportPattern.
-**Context**: `protocol/h2a.md` §Operations, `doc/operator-guide.md`.
+**Context**: `protocol/h2a.md` §Operations, `doc/guides/operator-guide.md`.
 
 ## Orchestrator
 
