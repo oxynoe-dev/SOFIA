@@ -96,11 +96,10 @@ Starting points — not prescriptions.
 
 | Type | Content |
 |------|---------|
-| [Archetypes](../../canvas/archetypes/) | Persona templates by role |
-| [Artifacts](../../canvas/artifacts/) | Artifact format templates |
+| [Archetypes](../../canvas/archetypes/README.md) | Persona templates by role (with prohibition summary) |
+| [Artifacts](../../canvas/artifacts/README.md) | Artifact format templates (with frontmatter reference) |
 | [Patterns](../../canvas/patterns/) | Recurring structures |
 | [Workflows](../../canvas/workflows/) | Process templates |
-| [Example: Katen](../../canvas/examples/katen/) | Reference instance |
 
 ---
 

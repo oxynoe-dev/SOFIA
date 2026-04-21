@@ -443,10 +443,9 @@ It's slow. That's the cost of quality.
 
 ### Inspiration
 
-- [Archetypes](../../canvas/archetypes/) — persona templates by role
-- [Artifact formats](../../canvas/artifacts/) — note, review, feature, ADR...
+- [Archetypes](../../canvas/archetypes/README.md) — persona templates by role (with prohibition summary)
+- [Artifact formats](../../canvas/artifacts/README.md) — note, review, feature, ADR... (with frontmatter reference)
 - [Patterns](../../canvas/patterns/) — challenger, inspector, memory, media calibration
 - [Workflows](../../canvas/workflows/) — dev, publication, ADR, research, onboarding
-- [Example: Katen](../../canvas/examples/katen/) — reference instance
 - [Field feedback](../feedback/) — experience reports (N=1)
 - [Glossary](../reference/lexique.md) — all SOFIA terms defined
