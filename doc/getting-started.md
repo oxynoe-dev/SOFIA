@@ -1,6 +1,8 @@
 # Getting started without Sofia — manual mode
 
 > Install personas by hand, file by file.
+>
+> To add a persona to an existing instance, see [Onboarding](onboarding.md).
 
 ---
 

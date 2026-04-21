@@ -1,6 +1,8 @@
 # Onboarding a new persona
 
 > How to integrate a new persona into an existing SOFIA instance.
+>
+> To create a new instance from scratch, see [Getting started](getting-started.md).
 
 ---
 

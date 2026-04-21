@@ -1,163 +1,154 @@
 ---
-de: mira
-pour: sofia, nora
-type: contenu
+from: mira
+to: sofia, nora
+nature: content
 date: 2026-04-05
-objet: Page Méthode — vue d'ensemble architecturale de SOFIA
-source: core/*.md, doc/arch-sofia.md
+subject: Method page — architectural overview of SOFIA
+source: core/*.md, doc/architecture.md
 ---
 
-# La méthode SOFIA
+# The SOFIA method
 
-> Des rôles spécialisés qui pensent avec vous. Le produit émerge de leur friction.
-
----
-
-## Trois piliers
-
-SOFIA repose sur trois idées. Elles ne fonctionnent pas l'une sans l'autre.
-
-**Contraindre** — Un assistant IA sans limites dit oui à tout et ne produit rien de bon. SOFIA impose à chaque assistant un rôle strict, un périmètre, et surtout des interdits. C'est la limitation qui le rend utile.
-
-**Éprouver** — Si tous les rôles sont d'accord, personne ne pense. La friction entre un architecte qui refuse de coder et un dev qui refuse d'implémenter une spec floue est un signal, pas un bug. Les désaccords forcent la clarté.
-
-**Arbitrer** — La friction sans arbitre est du chaos. L'orchestrateur écoute, questionne, puis tranche. Toujours. Aucun assistant ne valide ses propres propositions. Aucun assistant ne force l'acceptation d'une décision.
-
-![Les trois piliers de SOFIA](figures/fig-methode-piliers.svg)
+> Specialized roles that think with you. The product emerges from their friction.
 
 ---
 
-## Le modèle
+## Three pillars
 
-Trois objets interdépendants. Le persona contraint produit des artefacts. Les artefacts créent de la friction quand ils sont éprouvés par d'autres personas. La friction produit de meilleures décisions. L'orchestrateur orchestre le cycle.
+SOFIA rests on three ideas. They don't work without each other.
 
-![Modèle conceptuel — Persona, Artefact, Friction](figures/fig-triangle-sofia.svg)
+**Constrain** — An AI assistant without limits says yes to everything and produces nothing good. SOFIA gives each assistant a strict role, a scope, and above all prohibitions. It's the limitation that makes it useful.
 
-### Piliers et concepts
+**Challenge** — If all roles agree, nobody thinks. The friction between an architect who refuses to code and a developer who refuses to implement a vague spec is a signal, not a bug. Disagreements force clarity.
 
-Les piliers disent *pourquoi*, les concepts disent *comment*.
+**Arbitrate** — Friction without an arbiter is chaos. The orchestrator listens, questions, then decides. Always. No assistant validates its own proposals. No assistant forces acceptance of a decision.
 
-| Pilier | Concept | Lien |
+![The three pillars of SOFIA](figures/fig-methode-piliers.svg)
+
+---
+
+## The model
+
+Three interdependent objects. The constrained persona produces artifacts. Artifacts create friction when challenged by other personas. Friction produces better decisions. The orchestrator steers the cycle.
+
+![Conceptual model — Persona, Artifact, Friction](figures/fig-triangle-sofia.svg)
+
+### Pillars and concepts
+
+The pillars say *why*, the concepts say *how*.
+
+| Pillar | Concept | Link |
 |--------|---------|------|
-| **Contraindre** | Persona | Le persona est le véhicule de la contrainte — rôle strict, périmètre borné, interdits |
-| **Éprouver** | Friction | La friction naît quand des personas contraints se confrontent sur un même sujet |
-| **Arbitrer** | Artefact | L'artefact est le support de l'arbitrage — tracé, versionné, adressable. L'orchestrateur tranche sur pièce |
+| **Constrain** | Persona | The persona is the vehicle of constraint — strict role, bounded scope, prohibitions |
+| **Challenge** | Friction | Friction arises when constrained personas confront each other on the same subject |
+| **Arbitrate** | Artifact | The artifact is the support of arbitration — traced, versioned, addressable. The orchestrator decides on evidence |
 
 ---
 
-## Sept principes
+## Seven principles
 
-| # | Principe | En bref |
-|---|----------|---------|
-| 1 | La friction est productive | Les désaccords entre rôles sont des signaux |
-| 2 | L'orchestrateur arbitre | Les assistants proposent, l'orchestrateur tranche |
-| 3 | Chaque voix compte | Un rôle inutilisé est un rôle à supprimer |
-| 4 | La contrainte force la qualité | Définis ce que le rôle ne fait pas avant ce qu'il fait |
-| 5 | Les artefacts sont le protocole | Les échanges passent par des fichiers, pas du chat |
-| 6 | Tout est tracé | Si ce n'est pas tracé, ça n'existe pas |
-| 7 | Commence petit, itère | Un rôle au démarrage. Les autres émergent du travail |
-
-→ [Lire les principes en détail](doc/organisation.html#principes-de-sofia)
+| # | Principle | In brief |
+|---|-----------|----------|
+| 1 | Friction is productive | Disagreements between roles are signals |
+| 2 | The orchestrator arbitrates | Assistants propose, the orchestrator decides |
+| 3 | Every voice counts | An unused role is a role to remove |
+| 4 | Constraint forces quality | Define what the role doesn't do before what it does |
+| 5 | Artifacts are the protocol | Exchanges go through files, not chat |
+| 6 | Everything is traced | If it's not traced, it doesn't exist |
+| 7 | Start small, iterate | One role at the start. The others emerge from the work |
 
 ---
 
-## Anatomie d'un persona
+## Anatomy of a persona
 
-Un persona est un assistant IA contraint par un **fichier d'instructions** (`persona.md`) qui définit son identité, sa posture, son périmètre et ses interdits.
+A persona is an AI assistant constrained by an **instruction file** (`persona.md`) that defines its identity, stance, scope, and prohibitions.
 
-Chaque persona évolue dans son propre workspace. Il ne voit que ses fichiers. Il ne peut pas lire ou écrire chez les autres. L'isolation force les échanges formels : pour communiquer, il faut déposer un artefact.
+Each persona operates in its own workspace. It sees only its files. It cannot read or write elsewhere. Isolation forces formal exchanges: to communicate, you must deposit an artifact.
 
-![Anatomie d'un persona](figures/fig-methode-persona.svg)
+![Anatomy of a persona](figures/fig-methode-persona.svg)
 
-### Ce qui tourne autour d'un persona
+### What surrounds a persona
 
-**Sessions** — Chaque conversation produit un résumé. C'est le pont entre les sessions : la suivante commence par lire la précédente. Format structuré, 30 lignes max.
+**Sessions** — Each conversation produces a summary. It's the bridge between sessions: the next one starts by reading the previous one. Structured format, 30 lines max.
 
-**Livrables** — Chaque persona produit des livrables typés selon son rôle : specs, reviews, code, notes stratégiques, maquettes. Pas du texte générique — des artefacts nommés, adressables, versionnés.
+**Deliverables** — Each persona produces typed deliverables according to its role: specs, reviews, code, strategic notes, mockups. Not generic text — named, addressable, versioned artifacts.
 
-**Artefacts échangés** — Les personas ne se parlent pas. Ils déposent des fichiers dans un bus partagé (`shared/`). Notes, reviews, features — chacun avec un frontmatter qui dit qui l'a écrit, pour qui, et si c'est traité.
+**Exchanged artifacts** — Personas don't talk to each other. They deposit files in a shared bus (`shared/`). Notes, reviews, features — each with frontmatter that says who wrote it, for whom, and whether it's been processed.
 
-**Émergence** — Un persona bien contraint détecte quand une question sort de son périmètre. Après 3 refus sur le même domaine, il signale le manque. Le persona suivant naît de cette observation, pas d'un plan initial.
-
-→ [Voir les personas en détail](doc/organisation.html#personas)
+**Emergence** — A well-constrained persona detects when a question falls outside its scope. After repeated deflections on the same domain, it signals the gap. The next persona is born from this observation, not from an initial plan.
 
 ---
 
-## L'orchestration
+## Orchestration
 
-L'orchestrateur est le message bus. Rien ne circule entre personas sans lui.
+The orchestrator is the message bus. Nothing flows between personas without them.
 
-![Orchestration — le rôle de l'orchestrateur](figures/fig-methode-orchestration.svg)
+![Orchestration — the orchestrator's role](figures/fig-methode-orchestration.svg)
 
-L'orchestrateur ouvre une session avec un persona, obtient un livrable, ferme la session. Ouvre une session avec un autre persona, transmet le livrable, recueille la réaction. Chaque transmission est un moment de filtrage, de reformulation, d'ajout de contexte.
+The orchestrator opens a session with a persona, gets a deliverable, closes the session. Opens a session with another persona, transmits the deliverable, collects the reaction. Each transmission is a moment of filtering, reformulation, context addition.
 
-**Ce que l'orchestrateur ne délègue pas** :
-- La priorisation — quel persona intervient, dans quel ordre
-- La consolidation — synthétiser les retours de plusieurs personas
-- La décision — trancher quand les personas divergent
-- Le filtrage — ce qui est pertinent à transmettre ou pas
+**What the orchestrator does not delegate**:
+- Prioritization — which persona intervenes, in what order
+- Consolidation — synthesizing feedback from multiple personas
+- Decision — deciding when personas diverge
+- Filtering — what is relevant to transmit or not
 
-C'est lent. C'est le prix de la qualité. Si l'échange n'en vaut pas le coût, c'est que le sujet ne nécessitait pas plusieurs personas.
+It's slow. That's the cost of quality. If the exchange isn't worth the cost, the subject didn't need multiple personas.
 
 ---
 
-## Trois couches
+## Five layers
 
-La méthode se structure en trois couches indépendantes. On peut changer l'une sans toucher les autres.
+The method is structured in five independent layers. You can change one without touching the others.
 
-**Core** — Les invariants. Principes, personas, friction. Ce qui ne change pas quand on change d'outil. Si demain Claude Code disparaît, le core tient.
+**Core** — The invariants. Principles, model, friction, duties. What doesn't change when you change tools. If Claude Code disappears tomorrow, core holds.
 
-**Protocol** — Le contrat d'interface. Artefacts, conventions, traçabilité, instance. Fichiers, pas API. Git, pas base de données. Le protocol est ce qui rend la méthode portable — n'importe quel outil capable de lire et écrire des fichiers markdown peut implémenter SOFIA.
+**Protocol** — The interface contract. H2A, exchanges, friction, contribution. The semantics of interactions, not their materialization.
 
-**Runtime** — L'implémentation concrète. CLAUDE.md, Claude Code, hooks, mémoire persistante. Remplaçable sans toucher au core ni au protocol. C'est la seule couche qui change si on porte SOFIA sur un autre provider.
+**Binding** — The materialization. How the protocol takes form in a concrete persistence system (filesystem + Markdown + git today, REST API or database tomorrow).
 
-| Couche | Contenu | Change quand… |
+**Provider** — The AI provider. CLAUDE.md, Claude Code, hooks, persistent memory. Replaceable without touching the rest. It's the only layer that changes when porting SOFIA to another provider.
+
+**Canvas** — Tools so you don't start from scratch. Persona archetypes, artifact formats, patterns, workflows.
+
+| Layer | Content | Changes when… |
 |---|---|---|
-| **Core** | principes, personas, friction, devoirs | …la méthode évolue (rare) |
-| **Protocol** | artefacts, conventions, traçabilité, instance | …le format d'échange évolue |
-| **Runtime** | CLAUDE.md, hooks, sessions, mémoire | …on change d'outil |
+| **Core** | principles, model, friction, duties | …the method evolves (rare) |
+| **Protocol** | H2A, exchanges, friction, contribution | …the semantics of interactions evolve |
+| **Binding** | filesystem stack, conventions, audit, dashboard | …you change persistence system |
+| **Provider** | CLAUDE.md, hooks, sessions, memory | …you change AI provider |
+| **Canvas** | archetypes, artifacts, patterns, workflows | …you add inspiration |
 
 ---
 
-## Le gradient
+## The gradient
 
-La méthode ne se déploie pas en big bang. Elle grandit avec le projet.
+The method doesn't deploy as big bang. It grows with the project.
 
-| Seuil | Ce qui s'active |
+| Threshold | What activates |
 |---|---|
-| 1 persona | persona.md + sessions/ — la base |
-| 2+ personas | shared/ — le bus d'échange (notes, reviews) |
-| 3+ personas | backlogs par workspace |
-| 4+ personas | features/ — les specs formalisées |
-On commence petit. On ajoute de la structure quand la charge mentale de l'orchestrateur l'exige.
+| 1 persona | persona.md + sessions/ — the base |
+| 2+ personas | shared/ — the exchange bus (notes, reviews) |
+| 3+ personas | per-workspace roadmaps |
+| 4+ personas | features/ — formalized specs |
+
+Start small. Add structure when the orchestrator's cognitive load demands it.
 
 ---
 
-## Terrain
+## Field
 
-La méthode a été développée et validée sur le projet Katen — un moteur d'orchestration formellement vérifié pour pipelines Data & IA, construit avec 7 personas sur 210+ sessions.
-
-| Indicateur | Valeur |
-|---|---|
-| Personas actifs | 7 (architecte, dev, UX, stratégie, recherche, rédaction, graphisme) |
-| Sessions | 210+ |
-| ADR produits | 62 |
-| Produit en cours | Katen (v0.2, 5 semaines) |
-
-→ [Voir les fiches personas Katen](doc/tutoriels.html#examples)
-→ [Lire le livre bleu](livre-bleu-sofia.html)
+The method was developed and validated on the Katen project — a formally verified orchestration engine for Data & AI pipelines, built with specialized AI personas across hundreds of sessions.
 
 ---
 
-## Six devoirs de l'orchestrateur
+## Six orchestrator duties
 
-Les personas produisent, challengent, documentent. Mais certaines responsabilités ne se délèguent pas.
+Personas produce, challenge, document. But some responsibilities cannot be delegated.
 
-1. **Vérifier les faits** — Les LLMs ne comptent pas. Dates, chiffres, références : vérification humaine systématique.
-2. **Arbitrer** — Écouter, questionner, trancher. La décision est tracée.
-3. **Relire ce qui sort** — Aucun document ne sort sans relecture complète.
-4. **Calibrer les personas** — Ajuster les contraintes en continu.
-5. **Séparer réflexion et production** — Celui qui rédige n'est pas celui qui valide.
-6. **Maintenir l'attention** — Quand tu approuves sans lire, c'est le moment de ralentir.
-
-→ [Lire les devoirs en détail](doc/organisation.html#devoirs-de-l-humain)
+1. **Verify facts** — LLMs don't count. Dates, numbers, references: systematic human verification.
+2. **Arbitrate** — Listen, question, decide. The decision is traced.
+3. **Read what goes out** — No document goes out without full review.
+4. **Calibrate personas** — Adjust constraints continuously.
+5. **Separate reflection and production** — The one who writes is not the one who validates.
+6. **Maintain attention** — When you approve without reading, that's the moment to slow down.

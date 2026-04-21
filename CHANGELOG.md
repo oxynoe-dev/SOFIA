@@ -1,5 +1,41 @@
 # Changelog
 
+## v0.3.5 — Dashboard split, per-view endpoints, pipeline refactoring, static build (2026-04-20)
+
+### Dashboard modularization
+- Split dashboard.html (3023L monolithic) → css/tokens.css + 6 JS modules + analysis.html (895L)
+- Dead code removed — _placeholder, _removed (~480 lines eliminated)
+- Legend tab — inline content removed (598L), loads from /legend endpoint
+
+### Per-view endpoints
+- Each view loads its own endpoint JSON (/mirror, /lens, /probe, /legend)
+- Legacy analysis.json monolithic endpoint removed
+- Cross-instance aggregation (all) added
+
+### Pipeline refactoring
+- Reorganized filesystem/ → analysis/ with lib/, cli/, app/, data/, legend/
+- Split analysis.py → scan.py, mirror.py, lens.py, probe.py
+- Unified serve.py — GET /mirror, /lens, /probe, /legend + POST /refresh
+- scan.py — session_dates, persona_roles, context_sizes in meta
+- lens.py — totals, per-persona extras, silent weeks
+- mirror.py — friction_records, map topology
+
+### Audit enhancement
+- Dynamic artifact types from conventions.md
+- PP1-PP4 persona checks (7 dimensions, workspace mapping)
+- PA1-PA3 global artifact checks on all shared/
+- IHM audit detail panel — clickable warn/fail entries
+- Restructured audit IDs — PS/PF/AN/AR/AF/IS/IN/IR taxonomy
+
+### Tooling
+- build_dist.py — static dashboard bundle generation, supports h2a-data structure
+- audit.md reference + --protocol-only + --artifacts flags
+- .gitignore — __pycache__, .pytest_cache, *.pyc
+
+### Decisions
+- ADR — Remove monolithic analysis.json, per-view autonomous endpoints
+- ADR — Pipeline split into specialized scripts (scan/mirror/lens/probe)
+
 ## v0.3.4 — EN translation polish & architectural rename (2026-04-20)
 
 ### Terminology standardization

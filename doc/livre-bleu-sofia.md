@@ -5,6 +5,7 @@ statut: brouillon-complet
 date: 2026-04-02
 auteur: winston (voix d'Olivier)
 structure: mira (lb-voix-struct)
+translation: fr (english: bluebook.md)
 ---
 
 # SOFIA — La friction est le mécanisme de valeur

@@ -10,7 +10,7 @@ SOFIA is a method for orchestrating specialized AI assistants on a project. Each
 
 To start: clone the repo, run `claude`, and Sofia — the built-in guide — proposes your first persona. If the flow doesn't start, [manual mode](getting-started.md) covers the same thing step by step.
 
-> **Alpha preview** — Sofia relies on the runtime's conversational behavior. Results may vary depending on the environment.
+> **Alpha preview** — Sofia relies on the provider's conversational behavior. Results may vary depending on the environment.
 
 ```
 git clone https://github.com/oxynoe-dev/sofia
@@ -58,7 +58,8 @@ The SOFIA repo is not your project — it's the **method**. It contains:
 
 - `core/` — the invariants: principles, model, friction, duties
 - `protocol/` — the interface contract: artifacts, conventions, isolation, orchestration
-- `provider/` — the concrete implementation for Claude Code (other providers will follow)
+- `binding/` — the materialization layer (filesystem today, API/DB tomorrow)
+- `provider/` — the AI provider layer (Claude Code today, Mistral/Gemini tomorrow)
 - `doc/` — guides, workflows, patterns, field feedback
 
 Your project will live elsewhere, in its own repo. SOFIA helps you organize the AI assistants working on it. The [Isolation](#instance-and-project) section details the possible configurations.
@@ -67,7 +68,7 @@ Your project will live elsewhere, in its own repo. SOFIA helps you organize the 
 
 ## 3. Getting started with Sofia
 
-> **Alpha preview** — Sofia relies on the runtime's conversational behavior. Results may vary depending on the provider, model version, and environment. If the flow doesn't start or drifts, switch to manual mode (see next section).
+> **Alpha preview** — Sofia relies on the provider's conversational behavior. Results may vary depending on the provider, model version, and environment. If the flow doesn't start or drifts, switch to manual mode (see next section).
 
 Sofia is SOFIA's built-in guide. When you run `claude` in the repo, it guides you to create your first persona.
 
@@ -287,11 +288,11 @@ The next session won't have your context in mind. Summaries are its memory.
 - [Exchange](../protocol/exchange.md) — sessions, artifacts, routing
 - [Contribution](../protocol/contribution.md) — epistemic flow
 
-### The Claude Code implementation
+### The Claude Code provider
 
 - [CLAUDE.md](../provider/claude-code/claude-md.md) — anatomy of a CLAUDE.md
 - [Sessions](../provider/claude-code/sessions.md) — session summary format
-- [Memory](../provider/claude-code/memoire.md) — persistent memory between sessions
+- [Memory](../provider/claude-code/memory.md) — persistent memory between sessions
 
 ### Learn by example
 

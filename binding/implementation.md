@@ -55,6 +55,21 @@ instance/                        ← scaffolding (create-instance)
 
 The protocol requires `shared/` as the sole channel and artifacts with frontmatter. How the instance organizes its artifacts in `shared/` (subdirectories, naming, archiving) is a local decision documented in `conventions.md`.
 
+### Repo ownership (MAY)
+
+When an instance spans multiple repositories, `conventions.md` MAY declare a `## Repo ownership` section mapping external repo paths to persona owners.
+
+```markdown
+## Repo ownership
+
+| Repo | Path | Owner |
+|------|------|-------|
+| product-repo | doc/architecture/ | @architect |
+| product-repo | (rest) | @dev |
+```
+
+This is useful when personas from the same instance work in different parts of the same external repo. The workspace field in persona files covers the instance-internal space; repo ownership covers external repos.
+
 ### Installing the protocol on a persona
 
 The H2A protocol is installed via the **context** (`shared/orga/contextes/contexte-{persona}-{product}.md`), not via the persona file. The persona file defines the role (instance-agnostic). The context installs the instance rules.
@@ -92,8 +107,11 @@ to: persona-recipient
 nature: signal           # signal | question | request | response
 status: new              # new | read | done
 date: YYYY-MM-DD
+ref: artifact-identifier # SHOULD when nature = response
 ---
 ```
+
+The `ref` field links a response to its source artifact. The identifier is the filename without extension (e.g., `note-aurele-localisation-doc-site-livia`). For cross-instance artifacts, the `instance-source` field indicates the originating instance.
 
 **Sessions**:
 ```yaml
@@ -255,8 +273,8 @@ Mapping of H2A operations (see `protocol/h2a.md`) to the current implementation.
 |-----------|------|-----------------|
 | openSession() | manual | The orchestrator launches a terminal in the persona's workspace (or resumes an existing Claude Code session) |
 | closeSession() | manual | The orchestrator gives the signal. The persona **rereads `shared/conventions.md`**, then produces the summary, prepares the commit. The orchestrator executes the commit |
-| depositArtifact() | manual | The orchestrator instructs the persona. The persona **rereads `shared/conventions.md`**, then produces the artifact (note, review, feature) and deposits in `shared/` |
-| routeArtifact() | manual | The orchestrator reads the artifact in `shared/`, opens a session with the recipient, presents the artifact. **Cross-instance**: the orchestrator deposits the artifact in the recipient instance's `shared/`, not the emitter's |
+| send() | manual | The orchestrator instructs the persona. The persona **rereads `shared/conventions.md`**, then produces the artifact (note, review, feature) and deposits in the recipient's `shared/`. **Cross-instance**: the artifact goes to the recipient instance's `shared/`, not the emitter's |
+| receive() | manual | The orchestrator opens a session with the recipient and presents the artifact. The recipient reads, processes, and MAY produce a response (with `ref:` to the source artifact) |
 | markRead() | manual | The orchestrator sets `status: read` in the artifact's frontmatter |
 | markDone() | manual | The orchestrator sets `status: done` in the frontmatter — the artifact is then moved to `archives/` |
 | qualifyFriction() | automatic | The persona pre-fills the `## Orchestrator friction` section at closure. The orchestrator validates or corrects |

@@ -1,113 +1,113 @@
 ---
-de: winston
-pour: sofia, alma
-type: contenu
+from: winston
+to: sofia, alma
+nature: content
 date: 2026-04-16
-objet: Page intention — pourquoi SOFIA, profil cible, terrain, réflexivité
+subject: Intention page — why SOFIA, target profile, field, reflexivity
 source: condition-cachee.md, grammaire-derivation.md, h2a-friction-engineering.md, review-lea-rodin.md
 ---
 
-# Pourquoi SOFIA
+# Why SOFIA
 
 ---
 
-## Le problème
+## The problem
 
-Un LLM seul dit oui. Toujours. Il code, conseille, rédige — dans la même conversation, avec le même ton, sans contrainte. Pose-lui une question mal cadrée, il produit une réponse bien formulée. Donne-lui une direction bancale, il exécute avec enthousiasme.
+A single LLM says yes. Always. It codes, advises, writes — in the same conversation, with the same tone, without constraint. Ask it a poorly framed question, it produces a well-phrased answer. Give it a shaky direction, it executes with enthusiasm.
 
-La réponse dominante est d'ajouter de l'automatisation : des agents qui font le travail, des humains qui supervisent. Le pitch est propre. L'arithmétique l'est moins. Un agent fiable à 90% sur une étape enchaîne à ~65% d'erreur sur dix étapes sérielles. L'erreur de l'étape 2 arrive à l'étape 3 comme une prémisse valide. La cascade est silencieuse. Le résultat final a l'air correct. Il ne l'est pas.
+The dominant response is to add automation: agents that do the work, humans who supervise. The pitch is clean. The arithmetic less so. An agent reliable at 90% on one step chains to ~65% error across ten serial steps. Step 2's error arrives at step 3 as a valid premise. The cascade is silent. The final result looks correct. It isn't.
 
-Il y a une troisième voie, entre l'automatisation totale et le refus total. Elle repose sur un constat simple : la friction entre humains et machines n'est pas nécessairement un problème à résoudre. **C'est peut-être le mécanisme qui produit la valeur.**
-
----
-
-## La thèse
-
-SOFIA formalise la friction intentionnelle comme mécanisme de qualité dans la collaboration humain-IA.
-
-Trois mécanismes, inséparables :
-
-**Contraindre** — Chaque persona a un périmètre, des conventions, des interdits. L'architecte ne code pas. Le dev ne positionne pas. C'est l'interdit qui force la séparation des axes — et c'est la séparation qui rend chaque voix utile.
-
-**Éprouver** — Les personas ne se parlent pas. Ils s'éprouvent par artefacts : notes, reviews, specs. Un désaccord entre l'architecte et le dev n'est pas un bug — c'est un signal que quelque chose n'a pas été pensé.
-
-**Arbitrer** — La friction sans arbitre est du chaos. L'humain écoute, questionne, puis tranche. Toujours. Ce qui émerge n'est pas un compromis — c'est une décision tracée.
-
-Ce ne sont pas des principes abstraits. C'est un protocole — H2A, Human-to-Assistant — spécifié dans le repo ouvert.
+There is a third way, between total automation and total refusal. It rests on a simple observation: friction between humans and machines is not necessarily a problem to solve. **It may be the mechanism that produces value.**
 
 ---
 
-## Le profil cible
+## The thesis
 
-SOFIA ne s'adresse pas à tout le monde. L'honnêteté impose de le dire.
+SOFIA formalizes intentional friction as a quality mechanism in human-AI collaboration.
 
-### Pour qui
+Three mechanisms, inseparable:
 
-Les praticiens qui cherchent déjà la contradiction mais n'ont pas de cadre pour la structurer :
+**Constrain** — Each persona has a scope, conventions, and prohibitions. The architect doesn't code. The developer doesn't position. It's the prohibition that forces the separation of axes — and it's the separation that makes each voice useful.
 
-- Le manager qui fait des constats d'étonnement sans avoir formalisé pourquoi ça marche
-- L'architecte qui sait qu'il a des angles morts mais n'a pas de mécanisme systématique pour les révéler
-- L'expert solo qui se contredit mentalement mais perd le fil sans trace
+**Challenge** — Personas don't talk to each other. They challenge through artifacts: notes, reviews, specs. A disagreement between the architect and the developer isn't a bug — it's a signal that something hasn't been thought through.
 
-Ces gens reconnaîtront SOFIA immédiatement — pas comme une révolution, mais comme la codification de ce qu'ils pratiquent déjà. Et c'est exactement la bonne réaction.
+**Arbitrate** — Friction without an arbiter is chaos. The human listens, questions, then decides. Always. What emerges isn't a compromise — it's a traced decision.
 
-### Pas pour qui
-
-- Celui qui cherche un outil plug-and-play pour déléguer sa réflexion à l'IA
-- Celui qui veut de la confirmation, pas du challenge
-- Celui qui n'a ni expertise domaine ni intention claire sur un projet
-
-Ce n'est pas un jugement. C'est un constat de périmètre.
-
-### La condition cachée
-
-L'IA amplifie. Elle n'invente pas.
-
-Si tu arrives avec du vide, elle produit du vide bien formulé. Si tu arrives avec des années de conviction sur un problème réel, elle construit avec. La performance avec SOFIA dépend de ce que tu apportes — pas de la méthode elle-même.
-
-Trois niveaux, du plus visible au plus profond :
-
-1. **L'expertise domaine** — un expert tire plus d'un LLM qu'un débutant. Ce niveau est documenté, compris, non controversé.
-2. **L'intention** — sans direction forte, la méthode tourne à vide. L'intention n'est pas un pré-requis qu'on coche une fois. C'est une discipline de chaque session : "pourquoi j'ouvre cette session *maintenant* ?"
-3. **Le trait cognitif** — il faut être le genre de personne qui *cherche* à être contredite. Qui valorise l'inconfort intellectuel. Ce trait n'est ni enseignable par un livre, ni compensable par un framework. Il précède la méthode.
-
-SOFIA ne crée pas ce trait. Elle le structure.
+These aren't abstract principles. It's a protocol — H2A, Human-to-Assistant — specified in the open repo.
 
 ---
 
-## Le terrain
+## Target profile
 
-Ceci est un travail empirique précoce, issu d'un seul déploiement.
+SOFIA is not for everyone. Honesty requires saying so.
 
-Sur un terrain (N=1, praticien solo, neuf personas IA contraints, trois instances projet) :
+### For whom
 
-- 210+ sessions documentées
-- 62 ADR tracées
-- Des échecs documentés, pas cachés
-- Un produit en cours — Katen, construit depuis zéro en 5 semaines par un humain et sept voix
+Practitioners who already seek contradiction but lack a framework to structure it:
 
-Pas livré. En route.
+- The manager who notices patterns of surprise without having formalized why it works
+- The architect who knows they have blind spots but has no systematic mechanism to reveal them
+- The solo expert who mentally contradicts themselves but loses the thread without a trace
 
-La méthode, les données et l'instrumentation sont ouvertes précisément pour que d'autres puissent répliquer ou réfuter.
+These people will recognize SOFIA immediately — not as a revolution, but as the codification of what they already practice. And that's exactly the right reaction.
+
+### Not for whom
+
+- Those looking for a plug-and-play tool to delegate their thinking to AI
+- Those who want confirmation, not challenge
+- Those with neither domain expertise nor clear intention on a project
+
+This isn't a judgment. It's a scope statement.
+
+### The hidden condition
+
+AI amplifies. It doesn't invent.
+
+If you arrive with nothing, it produces well-phrased nothing. If you arrive with years of conviction about a real problem, it builds with you. Performance with SOFIA depends on what you bring — not on the method itself.
+
+Three levels, from most visible to deepest:
+
+1. **Domain expertise** — an expert gets more from an LLM than a beginner. This level is documented, understood, uncontroversial.
+2. **Intention** — without strong direction, the method runs idle. Intention isn't a prerequisite you check once. It's a discipline for every session: "why am I opening this session *now*?"
+3. **The cognitive trait** — you have to be the kind of person who *seeks* to be contradicted. Who values intellectual discomfort. This trait is neither teachable by a book, nor compensable by a framework. It precedes the method.
+
+SOFIA doesn't create this trait. It structures it.
 
 ---
 
-## Ce que SOFIA ne dit pas sur elle-même
+## The field
 
-SOFIA a les mêmes conditions cachées que ce qu'elle dénonce.
+This is early empirical work, from a single deployment.
 
-La méthode prescrit de l'expertise domaine, de l'intention forte, et un trait cognitif qui précède le framework. Mais elle ne peut pas vérifier que son propre concepteur les possède. Le terrain est N=1. L'orchestrateur qui teste la méthode est celui qui l'a construite. L'observateur et le sujet sont la même personne.
+On one field (N=1, solo practitioner, constrained AI personas, three project instances):
 
-Ce n'est pas une faiblesse qu'on minimise — c'est une limite structurelle qu'on assume. La grammaire de dérivation est observée sur une instance. Les deux modes (bootstrap par projection, émergence par le travail) sont documentés, pas prouvés. La semaine de sessions perdues couvre des moments de calibrage initial non documentés.
+- Hundreds of documented sessions
+- Traced ADRs
+- Documented failures, not hidden
+- A product underway — Katen, built from scratch by one human and multiple personas
 
-La seule réponse honnête à cette circularité est l'ouverture : tout est publié, tout est contestable, tout est traçable. Si la méthode tient, elle tiendra sur d'autres terrains que le nôtre. Si elle ne tient pas, les données sont là pour le montrer.
+Not shipped. Underway.
+
+The method, the data, and the instrumentation are open precisely so that others can replicate or refute.
 
 ---
 
-## Et maintenant
+## What SOFIA doesn't say about itself
 
-Trois chemins :
+SOFIA has the same hidden conditions as what it denounces.
 
-- **Lire** — Le [livre bleu](livre-bleu-sofia.html) détaille ce qu'on a construit, comment, et ce qui a cassé
-- **Voir** — Le [repo](https://github.com/oxynoe-dev/sofia) contient le code, les personas, le protocole. MIT.
-- **Essayer** — Forke, adapte, teste sur ton terrain. Dis-nous ce qui casse.
+The method prescribes domain expertise, strong intention, and a cognitive trait that precedes the framework. But it cannot verify that its own designer possesses them. The field is N=1. The orchestrator who tests the method is the one who built it. The observer and the subject are the same person.
+
+This is not a weakness we minimize — it's a structural limitation we accept. The derivation grammar is observed on one instance. The two modes (bootstrap by projection, emergence through work) are documented, not proven.
+
+The only honest answer to this circularity is openness: everything is published, everything is contestable, everything is traceable. If the method holds, it will hold on other fields than ours. If it doesn't, the data is there to show it.
+
+---
+
+## Next steps
+
+Three paths:
+
+- **Read** — The [blue book](bluebook.html) details what we built, how, and what broke
+- **See** — The [repo](https://github.com/oxynoe-dev/sofia) contains the code, the personas, the protocol. MIT.
+- **Try** — Fork, adapt, test on your field. Tell us what breaks.

@@ -45,8 +45,8 @@ Implicit operations derived from entities and dimensions. Their explicit formali
 |-----------|---------|-------------------|
 | openSession() | orchestrator | Exchange (session), Persona |
 | closeSession() | orchestrator | Exchange (session), Friction, Contribution |
-| depositArtifact() | persona (on orchestrator instruction) | Exchange (artifact) |
-| routeArtifact() | orchestrator | Exchange (artifact) |
+| send() | persona (on orchestrator instruction) | Exchange (artifact) |
+| receive() | orchestrator | Exchange (artifact), Persona (recipient) |
 | markRead() | orchestrator | Exchange (artifact) |
 | markDone() | orchestrator | Exchange (artifact) — triggers archiving |
 | qualifyFriction() | persona (pre-fills), orchestrator (validates) | Friction |

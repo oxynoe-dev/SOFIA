@@ -39,6 +39,19 @@ instance/
 
 ---
 
+## Repo ownership (optional)
+
+<!-- Uncomment and fill if your instance spans external repos.
+
+| Repo | Path | Owner |
+|------|------|-------|
+| product-repo | doc/architecture/ | @architect |
+| product-repo | (rest) | @dev |
+
+-->
+
+---
+
 ## Sessions
 
 ### Session summary
@@ -100,6 +113,7 @@ to: recipient-persona
 nature: signal           # signal | question | request | response
 status: new              # new | read | done
 date: YYYY-MM-DD
+ref: source-artifact     # SHOULD when nature = response (filename without extension)
 ---
 ```
 

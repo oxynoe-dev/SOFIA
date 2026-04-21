@@ -14,10 +14,12 @@ Before contributing, read the user guide: [`doc/user-guide.md`](doc/user-guide.m
 
 | Directory | Role | Stability |
 |-----------|------|-----------|
-| `core/` | Invariants (principles, model, friction, duties) | Stable — rare and deliberate changes |
-| `protocol/` | Interface contract (H2A, exchange, friction, contribution) | Semi-stable — evolves with feedback |
-| `provider/` | Concrete implementation (Claude Code today, others tomorrow) | Volatile — adapts to tools |
-| `doc/` | Guides, workflows, patterns, feedback, architecture, ADR | Open to contributions |
+| `core/` | Invariants (principles, model, duties) | Stable — rare and deliberate changes |
+| `protocol/` | H2A coordination protocol (exchange, friction, contribution) | Semi-stable — evolves with feedback |
+| `binding/` | Materialization (filesystem implementation, audit, analysis) | Semi-stable — evolves with tooling |
+| `provider/` | AI provider layer (Claude Code today, others planned) | Volatile — adapts to tools |
+| `canvas/` | Starting points (archetypes, artifact formats, patterns, workflows) | Open to contributions |
+| `doc/` | Guides, architecture, field feedback, ADR | Open to contributions |
 
 ## Conventions
 

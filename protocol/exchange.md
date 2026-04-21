@@ -113,6 +113,7 @@ An artifact is an asynchronous deposit in the shared space by a persona, intende
 | **to** | Persona or `team` | MUST |
 | **nature** | `signal`, `question`, `request`, `response` | MUST |
 | **status** | `new` → `read` → `done` | MUST |
+| **ref** | Identifier of the artifact this one responds to | SHOULD (when nature = `response`) |
 
 > **FR retrocompat.** The parser also accepts FR fields and values: `de`/`pour`/`statut` (fields), `nouveau`/`lu`/`traite` (statuses), `ratifie`/`conteste`/`revise`/`rejete` (resolutions).
 
@@ -124,7 +125,7 @@ The resolution MUST live in the artifact that carries the friction — not in a 
 
 This rule ensures that a friction line carries the complete cycle (marker + initiative + resolution) in a single file. The parser does not need to join multiple artifacts to reconstruct the cycle.
 
-A return note (response to a review) MAY accompany the resolution to communicate decision context, but it MUST NOT carry friction markers or resolution tags — otherwise the parser would count duplicates.
+A return note (response to a review) MAY accompany the resolution to communicate decision context, but it MUST NOT carry friction markers or resolution tags — otherwise the parser would count duplicates. When an artifact responds to another, it SHOULD carry a `ref` dimension pointing to the original artifact identifier, creating an explicit lineage between artifacts.
 
 ### Friction in artifacts
 
@@ -136,25 +137,29 @@ Markers follow the same format as in sessions: marker, description, initiative t
 
 An artifact MAY carry contributions (see `contribution.md`). This is typical of reviews and notes involving input from both parties: the orchestrator brings source material (`[H]`), the persona brings analysis (`[A]`). The `[H]`/`[A]` direction applies as in sessions — the artifact is produced during a session.
 
-### Routing
+### send() and receive()
 
-1. Persona A deposits an artifact in the shared space (`status: new`)
-2. The orchestrator reads the artifact and decides to route it
+Artifact exchange is a two-step process:
+
+**send()** — the persona produces and deposits the artifact:
+1. The orchestrator instructs Persona A to produce an artifact for Persona B
+2. Persona A produces the artifact and deposits it in the recipient's `shared/` (`status: new`)
+
+**receive()** — the orchestrator presents the artifact to the recipient:
 3. The orchestrator opens a session with Persona B and presents the artifact (`status: read`)
-4. Persona B processes and MAY deposit a response (`nature: response`)
+4. Persona B processes and MAY deposit a response (`nature: response`, `ref:` to the source artifact)
 5. The original artifact moves to `status: done`
 
 The orchestrator MUST be the router of all exchanges. A persona MUST NOT directly consult an artifact not intended for them.
 
 ### Cross-instance exchanges
 
-When the orchestrator routes an artifact between two instances, the artifact MUST be deposited in the shared space of the recipient's instance — not the emitter's.
+When the orchestrator routes an artifact between two instances, send() deposits the artifact in the shared space of the recipient's instance — not the emitter's.
 
 1. The orchestrator instructs Persona A (instance X) to produce an artifact for Persona B (instance Y)
-2. Persona A produces the artifact during its session
-3. The orchestrator deposits the artifact in `shared/` of instance Y (`status: new`)
-4. The orchestrator opens a session with Persona B (instance Y) and presents the artifact
-5. The lifecycle (routing, resolution, archiving) follows instance Y's rules
+2. Persona A produces the artifact during its session — send() deposits in `shared/` of instance Y (`status: new`)
+3. The orchestrator opens a session with Persona B (instance Y) — receive() presents the artifact
+4. The lifecycle (resolution, archiving) follows instance Y's rules
 
 The emitting persona does not need to know the recipient's instance. The orchestrator crosses instance boundaries — personas remain isolated.
 

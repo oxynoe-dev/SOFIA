@@ -4,7 +4,7 @@ Observations from two phases: Katen (7 personas, 210+ sessions, single instance)
 
 ## Suggested reading order
 
-1. **pieges.md** — classic mistakes, read first
+1. **pitfalls.md** — classic mistakes, read first
 2. **katen.md** — overview of the project that produced these reports
 3. Individual reports, in whatever order interests you
 
@@ -12,16 +12,16 @@ Observations from two phases: Katen (7 personas, 210+ sessions, single instance)
 
 | Report | Associated pattern or workflow |
 |--------|-------------------------------|
-| contamination-factuelle.md | `patterns/factual-contamination.md` |
-| pattern-challenger.md | `patterns/challenger.md` |
-| calibrage-personas.md | `patterns/calibrage-media.md` |
-| isolation-production.md | `patterns/calibrage-media.md` (partial) |
-| pattern-editorial.md | `workflows/publication.md` |
-| chaine-produit.md | `workflows/product-chain.md` + several patterns |
-| pieges.md | Anti-patterns — no associated pattern |
-| cas-adr-051.md | Textbook case of dev/architect friction — Katen-specific |
+| factual-contamination.md | `patterns/factual-contamination.md` |
+| challenger-pattern.md | `patterns/challenger.md` |
+| persona-calibration.md | `canvas/patterns/media-calibration.md` |
+| production-isolation.md | `canvas/patterns/media-calibration.md` (partial) |
+| editorial-chain.md | `workflows/publication.md` |
+| product-chain.md | `workflows/product-chain.md` + several patterns |
+| pitfalls.md | Anti-patterns — no associated pattern |
+| case-adr-051.md | Textbook case of dev/architect friction — Katen-specific |
 | katen.md | Global post-mortem |
-| transfert-contexte.md | Split, context transfer + Claude memory post-reorg |
+| context-transfer.md | Split, context transfer + Claude memory post-reorg |
 
 ## What these reports are for
 

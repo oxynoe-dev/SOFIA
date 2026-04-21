@@ -1,20 +1,20 @@
 ---
-de: winston
-pour: sofia, alma
-type: contenu
+from: winston
+to: sofia, alma
+nature: content
 date: 2026-04-16
-objet: Landing SOFIA — hero minimaliste + CTA
+subject: Landing SOFIA — minimal hero + CTA
 source: note-marc-hero-landing-winston.md, note-alma-reponse-wording-site-v035-winston.md
 ---
 
 # SOFIA
 
 ```
-label:    Méthode IA
-titre:    SOFIA
-sous-titre: Une méthode ouverte pour piloter l'IA par la friction.
-            Un terrain, tout publié — challengez-la.
-mention:  Agnostique par design. La méthode tourne sur le LLM de ton choix.
+label:    AI Method
+title:    SOFIA
+subtitle: An open method for steering AI through friction.
+          One field, everything published — challenge it.
+mention:  Agnostic by design. The method runs on the LLM of your choice.
 ```
 
 ---
@@ -23,16 +23,16 @@ mention:  Agnostique par design. La méthode tourne sur le LLM de ton choix.
 
 ```
 cta-1:  GitHub →
-        Lien: https://github.com/oxynoe-dev/sofia
-        Texte court: Le code, les personas, le protocole. MIT.
+        Link: https://github.com/oxynoe-dev/sofia
+        Short text: The code, the personas, the protocol. MIT.
 
-cta-2:  Livre bleu →
-        Lien: livre-bleu-sofia.html
-        Texte court: 50 pages. Ce qu'on a construit, comment, pourquoi ça casse.
+cta-2:  Blue book →
+        Link: bluebook.html
+        Short text: What we built, how, and what broke.
 
-cta-3:  Pourquoi SOFIA →
-        Lien: intention.html
-        Texte court: Le problème, la thèse, le profil cible. Pas de pitch — un cadrage.
+cta-3:  Why SOFIA →
+        Link: intention.html
+        Short text: The problem, the thesis, the target profile. Not a pitch — a framing.
 ```
 
 ---
@@ -40,10 +40,8 @@ cta-3:  Pourquoi SOFIA →
 ## Disclaimer
 
 ```
-Version alpha — en développement actif, sujette à ajustements et bugs.
-Signaler un problème → https://github.com/oxynoe-dev/sofia/issues
+Alpha — under active development, subject to adjustments and bugs.
+Report an issue → https://github.com/oxynoe-dev/sofia/issues
 ```
 
 ---
-
-

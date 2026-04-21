@@ -1,6 +1,6 @@
 # H2A Operator Guide
 
-> The 9 operations from the orchestrator's perspective. When, how, example.
+> H2A operations from the orchestrator's perspective. When, how, example.
 
 Spec: `protocol/h2a.md`. Implementation: `binding/implementation.md`.
 
@@ -51,13 +51,13 @@ mira: short session summary (2026-04-16)
 
 ---
 
-## 3. depositArtifact()
+## 3. send()
 
 **When**: the orchestrator wants a persona to produce an artifact for another persona (or for the team).
 
-**How**: instruct the persona with the type, recipient, and subject. The persona writes and deposits in `shared/`.
+**How**: instruct the persona with the type, recipient, and subject. The persona writes and deposits in the recipient's `shared/`. Cross-instance: the artifact goes to the recipient instance's `shared/`, not the emitter's.
 
-**The persona MUST NOT deposit an artifact without instruction.**
+**The persona MUST NOT send an artifact without instruction.**
 
 **Examples**:
 ```
@@ -80,16 +80,16 @@ The persona chooses the content. The orchestrator chooses the trigger, recipient
 
 ---
 
-## 4. routeArtifact()
+## 4. receive()
 
-**When**: an artifact is in `shared/` and must be presented to its recipient.
+**When**: an artifact has been sent and must be presented to its recipient.
 
-**How**: the orchestrator opens a session with the recipient and presents the artifact. They can filter, contextualize, or transmit only a part.
+**How**: the orchestrator opens a session with the recipient and presents the artifact. They can filter, contextualize, or transmit only a part. The recipient MAY produce a response (`nature: response`, `ref:` to the source artifact).
 
 **Example**:
 ```
 [session with emile]
-garance deposited a review of architecture.md.
+garance sent you a review of architecture.md.
 Here are her points: shared/review/review-architecture-garance.md
 Read and tell me what you think for your pedagogical pass.
 ```
@@ -99,6 +99,7 @@ The orchestrator is the router — they decide what to transmit, to whom, and wi
 ---
 
 ## 5. markRead()
+
 
 **When**: the orchestrator has read an artifact and wants to signal it.
 
@@ -228,8 +229,8 @@ The choice counter is auditable (protocol layer).
 |-----------|------|-------------|-------------|
 | openSession() | manual | orchestrator | — |
 | closeSession() | manual | orchestrator | persona (summary) |
-| depositArtifact() | manual | orchestrator | persona (artifact) |
-| routeArtifact() | manual | orchestrator | — |
+| send() | manual | orchestrator | persona (artifact) |
+| receive() | manual | orchestrator | — |
 | markRead() | manual | orchestrator | — |
 | markDone() | manual | orchestrator | — |
 | qualifyFriction() | automatic | closure | persona (pre-fills), orchestrator (validates) |

@@ -22,7 +22,7 @@ The distillery is what differentiates a collection of notes from a living method
 
 ### Example
 
-The observation that personas should be defined by their production medium (documented in `feedback/calibrage-personas.md`) was extracted and formalized as the pattern `calibrage-media.md`. The original feedback remains in `feedback/` as a trace; the pattern lives in `doc/patterns/`.
+The observation that personas should be defined by their production medium (documented in `feedback/persona-calibration.md`) was extracted and formalized as the pattern `media-calibration.md`. The original feedback remains in `feedback/` as a trace; the pattern lives in `canvas/patterns/`.
 
 ### Variants
 

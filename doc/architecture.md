@@ -134,7 +134,7 @@ The invariants. Remove them and it is no longer SOFIA.
 
 | Document | Content | What the audit reads |
 |----------|---------|---------------------|
-| `h2a.md` | 5 invariants, 9 operations, protocol/observational distinction | Entities, invariants, auditability criterion |
+| `h2a.md` | Invariants, operations, protocol/observational distinction | Entities, invariants, auditability criterion |
 | `friction.md` | 5 markers, 4 PXP resolutions, mutability, reportPattern() | Ratio per assistant, domestication detection |
 | `exchange.md` | Sessions (synchronous) and artifacts (asynchronous), frontmatter, naming | Frequency, assistant, date, friction section |
 | `contribution.md` | Epistemic flow — direction (H/A), type (substance, structure, contestation, decision) | H/A tags, substance/structure ratio |
@@ -160,10 +160,10 @@ Separated from semantics (protocol/) to allow other materializations (REST API, 
 | Component | Role |
 |-----------|------|
 | `implementation.md` | Current stack, operations → concrete gestures mapping |
-| `filesystem/audit-instance.py` | Instance conformity (60 tests) |
-| `filesystem/create-instance.py` | Scaffolds a new instance (31 tests) |
-| `filesystem/analysis.py` | Multi-instance analysis — friction, contribution, direction (calibrating) |
-| `filesystem/analysis.html` | Interactive dashboard — Map, Mirror, Lens, Probe, Legend |
+| `filesystem/audit-instance.py` | Instance conformity |
+| `filesystem/create-instance.py` | Scaffolds a new instance |
+| `filesystem/analysis/` | Multi-instance analysis pipeline — scan, mirror, lens, probe |
+| `filesystem/analysis/analysis.html` | Interactive dashboard — Map, Mirror, Lens, Probe, Legend |
 | `filesystem/conventions.md` | Standard conventions template |
 
 ### provider/ — with which tool
@@ -173,7 +173,7 @@ The only point that changes when porting SOFIA to another AI assistant. Replacea
 | Component | Role |
 |-----------|------|
 | `claude-code/claude-md.md` | CLAUDE.md anatomy — the persona guardian |
-| `claude-code/memoire.md` | Persistent memory between conversations |
+| `claude-code/memory.md` | Persistent memory between conversations |
 | `claude-code/sessions.md` | Opening/closing protocol, mandatory summary |
 | `claude-code/hooks.md` | Automations triggered by events |
 | `sofia.md` | Sofia persona — 4 operational modes |
@@ -186,9 +186,9 @@ Not prescription — inspiration. Draw from it, don't copy.
 
 | Directory | Content | Binding tag |
 |-----------|---------|-------------------|
-| `archetypes/` | 9 persona models by role | No — agnostic |
-| `artifacts/` | 10 reference formats | `binding:filesystem` |
-| `patterns/` | 4 recurring structures | No — agnostic |
+| `archetypes/` | Persona models by role | No — agnostic |
+| `artifacts/` | Reference formats | `binding:filesystem` |
+| `patterns/` | Recurring structures | No — agnostic |
 | `workflows/` | 10 standard processes | No — agnostic |
 | `examples/` | katen/ — field instance snapshot | `binding:filesystem` |
 
@@ -207,7 +207,7 @@ Everything else. Recommended, not required.
 | `derivation-grammar.md` | Persona derivation grammar (2 modes, 8 steps) |
 | `hidden-condition.md` | Target profile, self-diagnosis |
 | `bluebook.md` | Blue book in .md |
-| `feedback/` | 11 field REX |
+| `feedback/` | Field REX |
 | `adr/` | 13 structural decisions |
 | `figures/` | SVG visuals |
 
@@ -314,7 +314,7 @@ Everything in the same repo. No separate repos per platform (supersedes ADR-004)
 
 ```
 provider/
-├── claude-code/       ← reference implementation
+├── claude-code/       ← reference provider
 ├── mistral/           ← v0.4 target (summer 2026)
 └── gemini/            ← if relevant
 ```
