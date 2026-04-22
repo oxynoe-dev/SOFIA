@@ -1,6 +1,6 @@
 ## Challenger
 
-![Pattern — Challenger](../../doc/figures/fig-pattern-challenger.svg)
+![Pattern — Challenger](../../../doc/figures/fig-pattern-challenger.svg)
 
 One producer advances, N challengers verify each on their own axis.
 

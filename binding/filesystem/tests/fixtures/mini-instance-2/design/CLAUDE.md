@@ -1,0 +1,1 @@
+Read shared/orga/personas/persona-charlie.md

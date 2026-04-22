@@ -42,10 +42,15 @@ def build_dist(output: Path, data_dir: Path | None = None, sanitize: bool = Fals
                   If set, copies there and patches JS paths accordingly.
         sanitize: If True, strip sensitive fields before copying JSON.
     """
-    # Clean dashboard output
-    if output.exists():
-        shutil.rmtree(output)
-    output.mkdir(parents=True)
+    # Clean only generated artifacts (preserve .git, README, etc.)
+    output.mkdir(parents=True, exist_ok=True)
+    for sub in ["css", "js", "data", "legend"]:
+        target = output / sub
+        if target.is_dir():
+            shutil.rmtree(target)
+    index = output / "index.html"
+    if index.is_file():
+        index.unlink()
 
     # Resolve data destination and JS fetch path
     # Data is always copied INTO dashboard/data/ so the bundle is self-contained.

@@ -2,7 +2,7 @@
 """analysis.py — Single entry point for the H2A analysis pipeline.
 
 Usage:
-    python analysis.py <instance> [<instance> ...] [--only mirror|lens|probe] [--serve]
+    python analysis.py <instance> [<instance> ...] [--only mirror|lens|probe] [--output DIR] [--sanitize] [--serve]
 
 Orchestrates:
     1. scan.py  → records.json     (internal, called by mirror/lens)
@@ -10,12 +10,26 @@ Orchestrates:
     3. lens.py   → lens.json       (Lens view — time series)
     4. probe.py  → probe.json      (Probe view — conformity)
 
-All outputs go to analysis/data/ (gitignored).
+Output structure (per-instance + aggregated):
+    <output>/
+    ├── methodes/         per-instance
+    │   ├── lens.json
+    │   ├── mirror.json
+    │   └── records.json
+    ├── produits/         per-instance
+    │   └── ...
+    ├── lens.json         aggregated (all instances)
+    ├── mirror.json       aggregated
+    └── index.json        instance list
+
+Default output: analysis/data/ (gitignored).
 """
 from __future__ import annotations
 
 import argparse
+import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 # Ensure imports work
@@ -25,12 +39,37 @@ from analysis.cli.scan import scan_instances, write_records
 from analysis.cli.mirror import build_mirror, write_mirror
 from analysis.cli.lens import build_lens, write_lens
 from analysis.cli.probe import probe_instances, write_probe
+from sanitize import sanitize_records, sanitize_mirror, sanitize_lens, sanitize_probe
 
 DATA_DIR = Path(__file__).resolve().parent / "analysis" / "data"
 
 
-def run_pipeline(instance_paths: list[Path], only: str | None = None):
-    """Run the full analysis pipeline (or a single view)."""
+def _write_index(out: Path, instances: list[str]):
+    """Write index.json listing available instances."""
+    index = {
+        "instances": instances,
+        "generated": datetime.now(timezone.utc).isoformat(),
+    }
+    (out / "index.json").write_text(
+        json.dumps(index, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
+def run_pipeline(instance_paths: list[Path], only: str | None = None,
+                  output_dir: Path | None = None, sanitize: bool = False):
+    """Run the full analysis pipeline (or a single view).
+
+    Writes per-instance JSON into <output>/<instance>/ and aggregated
+    JSON at <output>/ root.
+
+    Args:
+        instance_paths: Paths to SOFIA instance roots.
+        only: Run only one view (mirror, lens, probe).
+        output_dir: Where to write JSON files. Defaults to analysis/data/.
+        sanitize: If True, strip sensitive fields before writing.
+    """
+    out = output_dir if output_dir else DATA_DIR
 
     views = {"mirror", "lens", "probe"}
     if only and only not in views:
@@ -43,27 +82,75 @@ def run_pipeline(instance_paths: list[Path], only: str | None = None):
     if targets & {"mirror", "lens"}:
         print("  Scanning instances...")
         records = scan_instances(instance_paths)
-        records_path = DATA_DIR / "records.json"
-        write_records(records, records_path)
 
+        # Write per-instance JSON
+        for inst_name, inst_data in records.items():
+            inst_out = out / inst_name
+            inst_out.mkdir(parents=True, exist_ok=True)
+            single = {inst_name: inst_data}
+            records_out = single
+            if sanitize:
+                records_out = sanitize_records(records_out)
+            write_records(records_out, inst_out / "records.json")
+
+            if "mirror" in targets:
+                mirror_single = build_mirror(single)
+                if sanitize:
+                    mirror_single = sanitize_mirror(mirror_single)
+                write_mirror(mirror_single, inst_out / "mirror.json")
+
+            if "lens" in targets:
+                lens_single = build_lens(single)
+                if sanitize:
+                    lens_single = sanitize_lens(lens_single)
+                write_lens(lens_single, inst_out / "lens.json")
+
+            print(f"  ✓ {inst_name}/ — per-instance JSON")
+
+        # Write aggregated JSON at root
         total_f = sum(len(d["friction_records"]) for d in records.values())
-        print(f"  ✓ records.json — {total_f} frictions")
+        records_agg = records
+        if sanitize:
+            records_agg = sanitize_records(records_agg)
+        write_records(records_agg, out / "records.json")
+        print(f"  ✓ records.json — {total_f} frictions (aggregated)")
 
         if "mirror" in targets:
             mirror = build_mirror(records)
-            write_mirror(mirror)
-            print(f"  ✓ mirror.json — {len(mirror['instances'])} instances")
+            if sanitize:
+                mirror = sanitize_mirror(mirror)
+            write_mirror(mirror, out / "mirror.json")
+            print(f"  ✓ mirror.json — {len(mirror['instances'])} instances (aggregated)")
 
         if "lens" in targets:
             lens = build_lens(records)
-            write_lens(lens)
-            print(f"  ✓ lens.json — {len(lens['instances'])} instances")
+            if sanitize:
+                lens = sanitize_lens(lens)
+            write_lens(lens, out / "lens.json")
+            print(f"  ✓ lens.json — {len(lens['instances'])} instances (aggregated)")
+
+        # Write index
+        instance_names = sorted(records.keys())
+        _write_index(out, instance_names)
+        print(f"  ✓ index.json — {len(instance_names)} instances")
 
     # --- Conformity pipeline (probe) ---
     if "probe" in targets:
         print("  Probing instances...")
         probe_data = probe_instances(instance_paths)
-        write_probe(probe_data)
+        # Write per-instance probe
+        for inst_name, inst_probe in probe_data.items():
+            inst_out = out / inst_name
+            inst_out.mkdir(parents=True, exist_ok=True)
+            probe_single = {inst_name: inst_probe}
+            if sanitize:
+                probe_single = sanitize_probe(probe_single)
+            write_probe(probe_single, inst_out / "probe.json")
+        # Write aggregated probe
+        probe_agg = probe_data
+        if sanitize:
+            probe_agg = sanitize_probe(probe_agg)
+        write_probe(probe_agg, out / "probe.json")
         for name, data in probe_data.items():
             checks = data["structure"]["checks"]
             passed = sum(1 for c in checks if c["status"] == "pass")
@@ -77,6 +164,8 @@ def main():
         epilog="Examples:\n"
                "  python analysis.py ../methodes ../produits ../oxynoe\n"
                "  python analysis.py ../methodes --only probe\n"
+               "  python analysis.py ../methodes ../produits -o ../h2a-data/data\n"
+               "  python analysis.py ../methodes ../produits -o ../h2a-data/data --sanitize\n"
                "  python analysis.py ../methodes ../produits --serve\n",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
@@ -85,6 +174,10 @@ def main():
                         help="Run only one view (default: all)")
     parser.add_argument("--serve", action="store_true",
                         help="Start the dashboard server after analysis")
+    parser.add_argument("--output", "-o", default=None,
+                        help="Output directory for JSON files (default: analysis/data/)")
+    parser.add_argument("--sanitize", action="store_true",
+                        help="Strip sensitive fields for open-source publication")
     parser.add_argument("--port", type=int, default=8042,
                         help="Server port (default: 8042)")
     args = parser.parse_args()
@@ -106,7 +199,13 @@ def main():
     print(f"✓ H2A Analysis Pipeline")
     print(f"  Instances: {names}")
 
-    run_pipeline(instance_paths, only=args.only)
+    output_dir = Path(args.output).resolve() if args.output else None
+    if output_dir:
+        print(f"  Output: {output_dir}")
+    if args.sanitize:
+        print(f"  🔒 Sanitize mode — stripping sensitive fields")
+    run_pipeline(instance_paths, only=args.only, output_dir=output_dir,
+                 sanitize=args.sanitize)
 
     if args.serve:
         print(f"\n  Starting server on http://localhost:{args.port}")

@@ -329,18 +329,7 @@ The binding/provider distinction is structural:
 
 ## 6. Decisions
 
-| Decision | ADR | Reason |
-|----------|-----|--------|
-| Semver | 001 | GitHub credibility + communication |
-| Instance marker sofia.md | 005 | Self-descriptive instance |
-| Core isolation pre-publication | 006 | Stability before contributions |
-| Core / Protocol / Provider | 008 | Invariants / contract / binding separation |
-| Instance layer + Sofia position | 009 | Instantiation ≠ method, Sofia exteriority |
-| Multi-platform in-repo | 010 | Provider adapters, not separate repos (supersedes 004) |
-| H2A Protocol | 011 | Human-assistant coordination formalization |
-| Binding extraction | 012 | Semantics ≠ materialization |
-
----
+Architecture decisions are tracked in [ADR records](../adr/adrs.md).
 
 > **Current binding.** This document describes the method's architecture — not its tooling. For materialization details (stack, operations → concrete gestures mapping, audit, scaffolding, dashboard): see `binding/implementation.md` and `binding/filesystem/`.
 

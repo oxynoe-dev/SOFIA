@@ -13,9 +13,9 @@ Observations from two phases: Katen (7 personas, 210+ sessions, single instance)
 | Report | Associated pattern or workflow |
 |--------|-------------------------------|
 | factual-contamination.md | `patterns/factual-contamination.md` |
-| challenger-pattern.md | `patterns/challenger.md` |
-| persona-calibration.md | `canvas/patterns/media-calibration.md` |
-| production-isolation.md | `canvas/patterns/media-calibration.md` (partial) |
+| challenger-pattern.md | `patterns/modes/challenger.md` |
+| persona-calibration.md | `canvas/patterns/design/media-calibration.md` |
+| production-isolation.md | `canvas/patterns/design/media-calibration.md` (partial) |
 | editorial-chain.md | `workflows/publication.md` |
 | product-chain.md | `workflows/product-chain.md` + several patterns |
 | pitfalls.md | Anti-patterns — no associated pattern |
