@@ -186,22 +186,76 @@ Full workflow: analysis → aggregate → build_dist with adding an external ins
 
 ---
 
+### E2E-3 — Friction maximale (stress test)
+
+Instance with personas calibrated to reject everything. Stress test of the protocol under maximum pressure. Manual test.
+
+| ID | Step | Verification | Status |
+|----|------|--------------|--------|
+| E2E-3.1 | Create instance with 2-3 personas with strict prohibitions (wide interdits, narrow scope) | Instance created, probe passes | todo |
+| E2E-3.2 | Run sessions where personas contest every orchestrator directive | Frictions produced: 100% non-sound (contestable, simplification, blind_spot, refuted) | todo |
+| E2E-3.3 | Orchestrator resolves with contested/rejected (no ratified) | Resolutions recorded, no domestication possible | todo |
+| E2E-3.4 | Run analysis pipeline | mirror.json: challenge % = 100%, trajectory flat at max, radars fully extended on challenge axis | todo |
+| E2E-3.5 | Verify dashboard renders correctly under extreme values | KPIs, radars, trajectory handle 100% challenge without display bugs | todo |
+| E2E-3.6 | Verify reportPattern triggers if convergence of rejections on same theme | reportPattern section in session summary, analysis detects it | todo |
+| E2E-3.7 | Verify the persona does NOT domesticate over multiple sessions | Challenge % stays at 100% across sessions — prohibitions hold | todo |
+
+### E2E-4 — Productor pur (friction zero)
+
+Instance where personas execute without challenging. No friction, fast output, uncontrolled quality. Tests the protocol's ability to detect absence of friction as a signal. Manual test.
+
+| ID | Step | Verification | Status |
+|----|------|--------------|--------|
+| E2E-4.1 | Create instance with 2-3 personas with no prohibitions, pure productor stance | Instance created, probe passes | todo |
+| E2E-4.2 | Run sessions where personas produce without contesting | Sessions with ## Orchestrator friction section empty or absent | todo |
+| E2E-4.3 | Orchestrator does not contest either — rubber-stamps everything | No friction records generated | todo |
+| E2E-4.4 | Run analysis pipeline | mirror.json: challenge % = 0%, trajectory flat at 0, coverage 0% | todo |
+| E2E-4.5 | Verify dashboard signals detect the problem | KPI "complacent", domestication signals, friction holes, coverage red | todo |
+| E2E-4.6 | Verify probe signals detect silent personas | "no friction" signal for each persona | todo |
+
+### E2E-5 — Explorer pur (friction emergente)
+
+Instance where personas explore with open scope. Friction is neither absent nor forced — it emerges if the persona finds something. Tests whether emergent friction produces comparable value to scripted friction, or drifts toward noise. Manual test.
+
+Two axes tested:
+- **Intensity**: productor (0) → calibrated → max contestation — where does explorer land?
+- **Predictability**: challenger/inspector (scripted) vs explorer (emergent) — is emergent friction actionable?
+
+| ID | Step | Verification | Status |
+|----|------|--------------|--------|
+| E2E-5.1 | Create instance with 2 personas in explorer stance (open directives, no pre-set deliverable) | Instance created, probe passes | todo |
+| E2E-5.2 | Run 3+ sessions with open-ended directives ("look at this space, tell me what you see") | Sessions produce variable friction — some sessions with markers, some without | todo |
+| E2E-5.3 | Verify friction is emergent, not forced | Markers appear when persona finds something, not systematically. Mix of sound + non-sound | todo |
+| E2E-5.4 | Run analysis pipeline | mirror.json: challenge % between 0% and 100% (not at either extreme), variable per session | todo |
+| E2E-5.5 | Verify trajectory shows variability | Trajectory not flat — challenge % oscillates between sessions depending on what was found | todo |
+| E2E-5.6 | Compare signal-to-noise ratio | Frictions produced are substantive (lead to decisions or revisions), not just observations | todo |
+| E2E-5.7 | Verify no domestication over sessions | Challenge % does not systematically decrease — explorer doesn't converge to productor | todo |
+
+---
+
 ## Fixtures needed
 
 | Fixture | For | Status |
 |---------|-----|--------|
 | `mini-instance/` | T1, T5, E2E-1, E2E-2 | exists |
-| `mini-instance-2/` | E2E-2 (second instance, different personas) | todo — create with 2 different personas (charlie, diana) |
-| Sample JSON (records, mirror, lens, probe) | T2, T3 | todo — generate from mini-instance or create minimal stubs |
+| `mini-instance-2/` | E2E-2 (second instance, different personas) | exists (charlie, diana) |
+| Sample JSON (records, mirror, lens, probe) | T2, T3 | covered by mock dicts in tests |
+| Instance art génératif (shinoe-lab) | E2E-1 | todo — created live via Sofia guide |
+| Instance friction maximale | E2E-3 | todo — created live with strict prohibitions |
+| Instance productor pur | E2E-4 | todo — created live with no prohibitions, no challenge |
+| Instance explorer pur | E2E-5 | todo — created live with open directives, emergent friction |
 
 ---
 
 ## Priority
 
-1. **E2E-1** (Sofia guide) — highest value, validates the user journey end-to-end (manual)
-2. **E2E-1b + E2E-2** — automated e2e, validates script + pipeline + h2a workflow
-3. **T3** (aggregate) — new code, no coverage
-4. **T4** (build_dist) — new behavior (selective cleanup)
-5. **T2** (sanitize) — critical for publication
-6. **T1** (pipeline) — largest gap but modules are stable
-7. **T5** (analysis orchestration) — partially covered by E2E
+1. **E2E-1** (Sofia guide, shinoe-lab) — highest value, validates the user journey end-to-end (manual)
+2. **E2E-3** (friction maximale) — stress test, validates protocol resilience under max pressure (manual)
+2b. **E2E-4** (productor pur) — friction zero, validates detection of absent friction as signal (manual)
+2c. **E2E-5** (explorer pur) — friction emergente, validates signal vs noise and non-domestication (manual)
+3. **E2E-1b + E2E-2** — automated e2e, validates script + pipeline + h2a workflow — **done (4 tests)**
+4. **T3** (aggregate) — new code — **done (15 tests)**
+5. **T4** (build_dist) — selective cleanup — **done (8 tests)**
+6. **T2** (sanitize) — publication safety — **done (15 tests)**
+7. **T1** (pipeline) — scan/mirror/lens — **done (17 tests)**
+8. **T5** (analysis orchestration) — partially covered by E2E
