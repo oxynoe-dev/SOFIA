@@ -148,7 +148,7 @@ Friction without an arbiter is chaos. The orchestrator decides. Personas expose 
 - Nobody says no
 - The orchestrator never needs to decide
 
-If a persona produces only `[sound]` over a long period, it is a domestication signal.
+If a persona produces only `[sound]` over a long period, it is a wear (usure) signal.
 
 ---
 

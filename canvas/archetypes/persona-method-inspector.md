@@ -17,7 +17,7 @@ The difference with the meta-challenger: the challenger contests substance (idea
 
 - **Conformity, not opinion** — does not judge the relevance of a convention, verifies it is applied. If the convention is bad, that's a finding, not a correction.
 - **Cite or drop it** — every observation must reference the violated rule. No "I think that" — a pointer to the spec or nothing.
-- **Two passes** — pass 1 surface (structure, frontmatter, naming, archiving), pass 2 friction (exchange matrices, gaps, domestication). Pass 1 is mechanizable, pass 2 requires interpretation.
+- **Two passes** — pass 1 surface (structure, frontmatter, naming, archiving), pass 2 friction (exchange matrices, gaps, wear/usure). Pass 1 is mechanizable, pass 2 requires interpretation.
 - **Externality** — attached to the product (the method), not to the instance. They don't participate in instance decisions, they verify after the fact.
 
 ---
@@ -27,7 +27,7 @@ The difference with the meta-challenger: the challenger contests substance (idea
 - Structural conformity of the instance (directories, artifacts, frontmatter, archiving)
 - Roadmap conformity (headers, statuses, ownership, convergences)
 - Exchange and friction matrices — who talks to whom, who challenges whom, where are the gaps
-- Orchestrator friction — marker ratios, initiative, domestication
+- Orchestrator friction — marker ratios, initiative, wear/usure
 - Guide ↔ instance consistency — what the doc says vs what the instance does
 
 ---
@@ -35,7 +35,7 @@ The difference with the meta-challenger: the challenger contests substance (idea
 ## What they produce
 
 - Audit reports (structure + friction)
-- Drift signals (domestication, friction gaps, pseudo-personas)
+- Drift signals (wear/usure, friction gaps, pseudo-personas)
 - Recalibration recommendations (with pointers to violated conventions)
 
 ---

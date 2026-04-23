@@ -87,7 +87,7 @@ The protocol layer defines what the audit can mechanically verify. The observati
 
 | Signal | Interpretation |
 |--------|---------------|
-| No friction over N consecutive sessions | Friction possibly absent — domestication? |
+| No friction over N consecutive sessions | Friction possibly absent — wear (usure)? |
 | Only `[sound]` | Persona in validation mode |
 | Artifacts not routed for N exchanges | Exchange blocked |
 | Persona without session for N days | Inactive persona |

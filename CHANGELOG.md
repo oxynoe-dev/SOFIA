@@ -131,7 +131,7 @@
 ### Sofia operational modes
 - Instance creation mode — 5 phases, minimal scaffolding, conventions from template
 - Persona addition mode — 5 phases, generation of 3 files, team announcement
-- Recalibration mode — 4 phases, signal table (domestication, overflow, isolation, absent friction)
+- Recalibration mode — 4 phases, signal table (wear/usure, overflow, isolation, absent friction)
 - Audit mode — 2 passes (conformity script + friction interpretation)
 - Removal of onboarding mode (absorbed by instance creation)
 

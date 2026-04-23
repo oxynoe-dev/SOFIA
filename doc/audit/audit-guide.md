@@ -9,7 +9,7 @@
 
 - **Before a release** — part of the pre-release checklist
 - **After a structural change** — new personas, workspace reorganization, conventions update
-- **Periodically** — to detect drift (domestication, silent personas, unrouted artifacts)
+- **Periodically** — to detect drift (wear/usure, silent personas, unrouted artifacts)
 - **On a new instance** — to verify initial conformity after bootstrapping
 
 ---

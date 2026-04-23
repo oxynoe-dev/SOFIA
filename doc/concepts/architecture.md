@@ -135,7 +135,7 @@ The invariants. Remove them and it is no longer SOFIA.
 | Document | Content | What the audit reads |
 |----------|---------|---------------------|
 | `h2a.md` | Invariants, operations, protocol/observational distinction | Entities, invariants, auditability criterion |
-| `friction.md` | 5 markers, 4 PXP resolutions, mutability, reportPattern() | Ratio per assistant, domestication detection |
+| `friction.md` | 5 markers, 4 PXP resolutions, mutability, reportPattern() | Ratio per assistant, failure mode detection (wear, slip, crush, asymmetry, instability) |
 | `exchange.md` | Sessions (synchronous) and artifacts (asynchronous), frontmatter, naming | Frequency, assistant, date, friction section |
 | `contribution.md` | Epistemic flow — direction (H/A), type (substance, structure, contestation, decision) | H/A tags, substance/structure ratio |
 

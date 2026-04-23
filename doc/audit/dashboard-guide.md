@@ -80,7 +80,7 @@ Five indicators at the top:
 
 ![Mirror — persona radars side by side](figures/dashboard-mirror-radar-persona.png)
 
-One radar per persona, displayed side by side. Same 6 axes as the instance radar. Each persona gets a **diagnostic** label below: "healthy" (green), "domesticated" (red), "improving" (blue). A persona marked "domesticated" has a shrinking recent contour — its friction output is converging toward pure validation.
+One radar per persona, displayed side by side. Same 6 axes as the instance radar. Each persona gets a **diagnostic** label below: "healthy" (green), "usure" (red), "ecrasement" (amber), "glissement" (amber). A persona marked "usure" has a shrinking recent contour — its friction output is converging toward pure validation (surfaces polish each other).
 
 ### Trajectory
 
@@ -114,7 +114,7 @@ A persona with mostly substance = content provider. A persona with mostly contes
 Per-persona trend indicators:
 - **Baseline challenge %** vs **Recent challenge %** — with delta arrow (↓ = degrading, = = stable, ↑ = improving)
 - **Baseline A→H** vs **Recent A→H** — how much the persona pushes back
-- **Diagnostic** — "healthy" (green), "domesticated" (red), derived from the delta
+- **Diagnostic** — "healthy" (green), "usure" (red), "ecrasement"/"glissement" (amber), derived from the delta
 
 ### Open frictions
 
@@ -162,7 +162,7 @@ Table showing the 4 directions per persona:
 - **A contests H** — persona pushes back on the orchestrator
 - **H corroborates A** — orchestrator validates the persona
 - **H contests A** — orchestrator pushes back on the persona
-- **Ratio A→H / H→A** — > 2 = healthy friction (persona contests more than contested). < 0.5 = potential domestication.
+- **Ratio A→H / H→A** — > 2 = healthy friction (persona contests more than contested). < 0.5 = potential wear (usure).
 
 ### Detail by persona
 
@@ -204,7 +204,7 @@ Each check shows:
 ### Signals
 
 High-level patterns detected automatically:
-- Friction holes, pure receivers, domestication, no incoming friction
+- Friction holes, pure receivers, wear (usure), no incoming friction
 
 See [audit-guide.md](audit-guide.md) for the full signal reference.
 

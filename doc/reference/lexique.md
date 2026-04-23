@@ -9,7 +9,7 @@
 New to SOFIA? Read these 10 entries first, in this order:
 
 1. [Orchestrator](#orchestrator) — 2. [Instance](#instance) — 3. [Persona](#persona) — 4. [Artifact](#artifact) — 5. [Friction](#friction)
-6. [Contribution](#contribution) — 7. [Isolation](#isolation) — 8. [H2A](#h2a) — 9. [Emergence](#emergence) — 10. [Domestication](#domestication)
+6. [Contribution](#contribution) — 7. [Isolation](#isolation) — 8. [H2A](#h2a) — 9. [Emergence](#emergence) — 10. [Wear (usure)](#wear-usure)
 
 ---
 
@@ -77,11 +77,12 @@ New to SOFIA? Read these 10 entries first, in this order:
 **Context**: `core/` directory — principles, model, duties.
 **Not to be confused with**: protocol (the interface contract) or binding (the materialization).
 
-## Domestication
+## Wear (usure)
 
-**Definition**: The progressive alignment of a persona with the orchestrator's thinking frame, resulting in loss of friction.
-**Context**: Signal: only `[sound]` frictions over a sustained period. The persona stops challenging.
-**Not to be confused with**: calibration (deliberate adjustment of constraints — domestication is unintentional drift).
+**Definition**: The progressive alignment of a persona with the orchestrator's thinking frame, resulting in loss of friction. Surfaces polish each other — the form of friction is preserved, the substance has disappeared. One of 5 instrumented failure modes (slip, wear, crush, asymmetry, instability).
+**Context**: Signal: only `[sound]` frictions over a sustained period, challenge % descending, marker entropy decreasing. The persona stops challenging.
+**Not to be confused with**: calibration (deliberate adjustment of constraints — wear is unintentional drift).
+**Ref**: `binding/filesystem/analysis/cli/mirror.py` (compute_failure_modes)
 
 ## Duties
 

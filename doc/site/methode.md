@@ -155,4 +155,4 @@ The method was developed and validated on the Katen project — a formally verif
 
 ---
 
-Continue → [Tutorial](tutorial.html) · [Documentation](documentation.html)
+Continue → [Understand](doc/guides-understand.html)

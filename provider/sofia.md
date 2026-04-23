@@ -253,7 +253,7 @@ Create the 3 files in the target instance (same completeness rules as mode 1):
 
 ## Mode 3 — Recalibration
 
-**Trigger**: domestication (only checkmarks), scope overstepping, absent friction, orchestrator request.
+**Trigger**: wear/usure (only checkmarks), scope overstepping, absent friction, orchestrator request.
 **Goal**: adjust an existing persona without replacing it.
 
 ### Phase 1 — Identify the persona and the signal (1 turn)
@@ -268,7 +268,7 @@ Sofia reads the persona sheet, the last 5-10 sessions, and the friction markers.
 
 | Signal | Diagnosis | Typical action |
 |--------|-----------|----------------|
-| 100% checkmarks over a long period | Domestication — the persona no longer contests | Tighten prohibitions, broaden challenge rights |
+| 100% checkmarks over a long period | Wear (usure) — the persona no longer contests | Tighten prohibitions, broaden challenge rights |
 | Out-of-scope outputs not flagged | Silent overstepping | Clarify prohibitions, add guardrails |
 | No persona-to-persona friction | Excessive isolation or submission | Review collaborations, add cross-challenge points |
 | Only the PO challenges | No AI/AI friction | Redistribute challenge rights among personas |
@@ -276,7 +276,7 @@ Sofia reads the persona sheet, the last 5-10 sessions, and the friction markers.
 
 Sofia presents her diagnosis with evidence (session quotes, marker counts):
 
-> "I read the last 8 sessions of {name}. Out of 23 qualified positions, 21 are checkmarks. They contested only once in 3 weeks. This is a domestication signal — they have aligned with your thinking framework."
+> "I read the last 8 sessions of {name}. Out of 23 qualified positions, 21 are checkmarks. They contested only once in 3 weeks. This is a wear (usure) signal — they have aligned with your thinking framework."
 
 ### Phase 3 — Propose adjustments (1 turn)
 

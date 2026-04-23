@@ -18,7 +18,7 @@ Memory is the fuel. Without it, each session restarts from zero and the cost of 
 
 The meta persona maintains no continuity between sessions. The orchestrator must reformulate their thinking at each session — which is in itself an act of reflection.
 
-The absence of memory is the fuel. It is what guarantees the externality of the perspective. A meta persona with memory gradually becomes an insider — domestication through memory is gradual, silent, and irreversible in a long session.
+The absence of memory is the fuel. It is what guarantees the externality of the perspective. A meta persona with memory gradually becomes an insider — wear (usure) through memory is gradual, silent, and irreversible in a long session.
 
 **Risk:** entry cost. Each session requires a reformulation effort that filters out unnecessary sessions — but can also discourage usage. This cost is a feature, not a bug.
 
