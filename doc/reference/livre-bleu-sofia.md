@@ -225,6 +225,18 @@ Marc bloque sur le positionnement : sans récit clair, personne ne comprend ce q
 
 Aucune de ces corrections ne vient d'un outil automatique. Elles viennent de rôles contraints qui font leur travail — contester ce qui est devant eux.
 
+### Le contrefactuel
+
+Une question s'est posée après sept jours de conception : est-ce que j'aurais pu arriver à ce résultat en un seul prompt ?
+
+Le test est simple. Donner à un LLM le code source Caméléon v1, le papier arXiv, et une spec de refactoring. Un prompt, une session, pas d'itération. Trois runs indépendants, contexte vierge à chaque fois. De l'autre côté : ~100 heures sur sept jours, six personas, 38 ADR révisés.
+
+Les trois runs produisent du code qui tourne. L'interface s'affiche, les opérateurs s'enchaînent, le résultat a l'air correct. Mais "avoir l'air correct" n'est pas "être correct". Rien ne prouve que le modèle formel sous-jacent — celui qui fait la valeur du projet — est fidèlement implémenté. Le code est un mock convaincant, pas une implémentation vérifiée. Et les trois runs ne couvrent pas les mêmes fonctionnalités — les choix sont arbitraires d'un run à l'autre, probablement dictés par la fenêtre de contexte plutôt que par une compréhension du modèle.
+
+Les décisions architecturales qui ont émergé de la friction — celles qui n'étaient pas dans la spec, qui sont nées d'un cas limite ou d'un désaccord entre personas — aucune n'apparaît dans les résultats du prompt seul. Ce sont des décisions qui n'existent que parce que quelqu'un a contesté ce qui était devant lui.
+
+Ce n'est pas une preuve — c'est un cas documenté, sur un terrain réel. Mais il dit quelque chose de précis : le LLM seul produit ce qu'on lui demande. La friction produit ce qu'on n'avait pas pensé à demander.
+
 ### Le résultat
 
 Un cadre de travail et d'architecture strict. Recherche, stratégie, UX, communication, graphisme, rédaction — un projet porté par une seule personne avec la rigueur d'une équipe de sept.
@@ -358,6 +370,14 @@ Le choix n'est pas technique. Il est de conviction.
 ## <a id="ix-travaux-futurs"></a>IX. Ce que la méthode ne sait pas encore — Travaux futurs [↑](#sommaire)
 
 > *L'honnêteté d'une méthode se mesure à ce qu'elle admet ne pas savoir.*
+
+### SOFIA appliquée à elle-même
+
+La méthode diagnostique des conditions cachées — surautomatisation, deskilling, angle mort, contamination silencieuse. L'honnêteté impose de retourner le miroir.
+
+SOFIA a les mêmes conditions cachées que ce qu'elle dénonce. Elle exige une expertise domaine profonde — mais rien dans la méthode ne valide que l'orchestrateur la possède. Elle détecte les angles morts croisés — mais tous les personas sont calibrés par le même humain, avec les mêmes biais implicites. Elle documente la contamination factuelle — et elle-même l'a subie : une durée approximative propagée dans une trentaine de documents avant d'être corrigée. Elle prône la friction comme mécanisme de qualité — mais aucun mécanisme externe ne challenge la méthode elle-même.
+
+Ce n'est pas une faiblesse qu'on corrigera dans la prochaine version. C'est une propriété structurelle d'un système mono-orchestrateur. La seule parade connue est le regard extérieur — et ce regard, par définition, ne peut pas venir de l'intérieur.
 
 ### Trois profils, trois réalités
 

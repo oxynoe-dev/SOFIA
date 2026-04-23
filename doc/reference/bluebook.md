@@ -225,6 +225,18 @@ Marc blocks on positioning: without a clear narrative, nobody understands what t
 
 None of these corrections came from an automated tool. They came from constrained roles doing their job — challenging what's in front of them.
 
+### The counterfactual
+
+A question came up after seven days of design: could I have gotten to this result in a single prompt?
+
+The test is simple. Give an LLM the Caméléon v1 source code, the arXiv paper, and a refactoring spec. One prompt, one session, no iteration. Three independent runs, clean context each time. On the other side: ~100 hours over seven days, six personas, 38 ADRs revised.
+
+All three runs produce code that works. The interface renders, operators chain together, the result looks correct. But "looking correct" isn't "being correct." Nothing proves that the underlying formal model — the one that makes the project valuable — is faithfully implemented. The code is a convincing mock, not a verified implementation. And the three runs don't cover the same features — choices are arbitrary from one run to the next, likely driven by the context window rather than by an understanding of the model.
+
+The architectural decisions that emerged from friction — those that weren't in the spec, that were born from an edge case or a disagreement between personas — none of them appear in the prompt-only results. These are decisions that exist only because someone challenged what was in front of them.
+
+This isn't proof — it's a documented case, on real ground. But it says something precise: the LLM alone produces what you ask for. Friction produces what you hadn't thought to ask.
+
 ### The result
 
 A strict work and architecture framework. Research, strategy, UX, communication, visual design, writing — a project carried by one person with the rigor of a team of seven.
@@ -358,6 +370,14 @@ The choice isn't technical. It's a matter of conviction.
 ## <a id="ix-future-work"></a>IX. What the method doesn't know yet — Future work [↑](#table-of-contents)
 
 > *A method's honesty is measured by what it admits it doesn't know.*
+
+### SOFIA applied to itself
+
+The method diagnoses hidden conditions — over-automation, deskilling, blind spots, silent contamination. Honesty demands turning the mirror around.
+
+SOFIA has the same hidden conditions as what it denounces. It requires deep domain expertise — but nothing in the method validates that the orchestrator possesses it. It detects cross-persona blind spots — but all personas are calibrated by the same human, with the same implicit biases. It documents factual contamination — and suffered it itself: an approximate duration propagated across some thirty documents before being corrected. It advocates friction as a quality mechanism — but no external mechanism challenges the method itself.
+
+This isn't a weakness that will be fixed in the next version. It's a structural property of a single-orchestrator system. The only known countermeasure is an external perspective — and that perspective, by definition, cannot come from within.
 
 ### Three profiles, three realities
 
