@@ -212,6 +212,26 @@ Full workflow: analysis → aggregate → build_dist with adding an external ins
 
 ---
 
+### E2E-2b — End-to-end: Dashboard visuel fixtures
+
+Pipeline complet sur les 6 fixtures failure modes + mini-instance. Build static, inspection visuelle du rendu aux bornes. Manual test.
+
+| ID | Step | Verification | Status |
+|----|------|--------------|--------|
+| E2E-2b.1 | Run analysis.py on all 8 fixtures (6 FM + 2 mini) with -o tmpdir | Per-instance JSON for each fixture, aggregated root, index.json | todo |
+| E2E-2b.2 | Run aggregate.py on tmpdir | mirror.json + lens.json with 8 instances + "all" | todo |
+| E2E-2b.3 | Run build_dist.py --output tmpdir/dashboard --data-dir tmpdir | dashboard/ contains index.html, css/, js/, data/, legend/ | todo |
+| E2E-2b.4 | Serve dashboard, open in browser | Dashboard loads, instance selector shows 8 instances | todo |
+| E2E-2b.5 | Mirror — verify FM panel (5 columns) | Each fixture shows its mode at alert (red), nominale all ok (green) | todo |
+| E2E-2b.6 | Mirror — verify persona radars with FM tags | Tags render correctly under radars (slip, wear, crush, asymmetry, instability) | todo |
+| E2E-2b.7 | Mirror — verify delta table | Failure modes column shows correct tags per persona | todo |
+| E2E-2b.8 | Mirror — verify KPI banner at extreme values | 0%, 100% challenge, 0% coverage — no display bugs | todo |
+| E2E-2b.9 | Mirror — verify trajectory at extremes | Flat at 0% (nominale-like) and descending (usure) render correctly | todo |
+| E2E-2b.10 | Map — verify instance cards with FM fixtures | Health dots, friction counts, persona cards render for all 8 | todo |
+| E2E-2b.11 | "All" view — verify cross-instance FM panel | Aggregated failure modes render, no crash | todo |
+
+---
+
 ### E2E-3 — Friction maximale (stress test)
 
 Instance with personas calibrated to reject everything. Stress test of the protocol under maximum pressure. Manual test.
