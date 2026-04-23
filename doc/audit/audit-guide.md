@@ -68,13 +68,28 @@ Check IDs follow a taxonomy: `{level}{category}{number}`. See `binding/filesyste
 
 ## Signals
 
-The probe also emits high-level signals when patterns emerge:
+The probe emits high-level signals when patterns emerge.
+
+### Structural signals
 
 | Signal | What it means |
 |--------|---------------|
 | Friction holes | A persona emits 0 reviews |
 | Pure receiver | A persona receives but never emits |
-| Domestication | 100% `[sound]` markers — no challenge |
 | No incoming friction | A persona's work is never reviewed |
 
-These signals appear in the Probe tab of the [dashboard](dashboard-guide.md).
+### Failure mode signals
+
+The 5 instrumented failure modes are detectable from session data. The probe flags early indicators; the [dashboard](dashboard-guide.md) Mirror view provides the full diagnostic.
+
+| Mode | Signal | Threshold |
+|------|--------|-----------|
+| **Slip** | Non-resolution rate, recurrence without resolution, reflexive ratification | >60% unresolved |
+| **Wear** | Challenge % descending, absence of `[refuted]`, marker entropy decreasing | Challenge % <20% over sustained period |
+| **Crush** | High density + low revised rate, rejection rate | Density >2x baseline AND revised <10% |
+| **Asymmetry** | Direction ratio (A→H vs H→A) | Per-persona: 20/80% threshold |
+| **Instability** | Revised dominant, high density, no stabilization | Revised >80% over N windows |
+
+6 silent failure modes (instrumentation bias, factual contamination, validation without reading, scope drift, shared blind spot, load transfer) are not instrumentable — they require human observation. See the [glossary](../reference/lexique.md#failure-modes) for definitions.
+
+These signals appear in the Probe and Mirror tabs of the [dashboard](dashboard-guide.md).

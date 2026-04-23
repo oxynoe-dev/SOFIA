@@ -149,6 +149,37 @@ Personas produce, challenge, document. But some responsibilities cannot be deleg
 
 ---
 
+## What can go wrong
+
+Friction is a mechanism. Like any mechanism, it can fail. SOFIA classifies failure modes into two categories based on detectability.
+
+**Instrumented failures** — dysfunctions of the friction mechanism itself. The protocol produces the data to detect them.
+
+| Mode | What happens |
+|---|---|
+| **Slip** | Friction exists but is not arbitrated. Challenges are logged, resolutions don't come. The protocol runs idle. |
+| **Wear** | Surfaces polish each other. The form of friction is preserved, the substance has disappeared. The persona stops challenging. |
+| **Crush** | One side imposes by force — volume, insistence, convergent reformulation — until the other yields. |
+| **Asymmetry** | Friction flows in one direction only. The mechanism is blind — it only sees defects from one side. |
+| **Instability** | Every challenge leads to a revision, every revision is re-challenged. Change without convergence. |
+
+**Silent failures** — dysfunctions of the environment in which friction operates. Only the orchestrator can see them.
+
+| Mode | What happens |
+|---|---|
+| **Instrumentation bias** | The measurement layer is produced by the same assistants it measures. A worn persona under-qualifies its own frictions. |
+| **Factual contamination** | A false datum propagates through generated documents. The error stabilizes through repetition. |
+| **Validation without reading** | The orchestrator approves without reading. Sessions become a ritual. |
+| **Scope drift** | A miscalibrated persona absorbs the roles of others. Boundaries become invisible. |
+| **Shared blind spot** | All personas are calibrated by the same human. Their biases become the team's biases. |
+| **Load transfer** | What the human no longer carries, the machine carries. The cost shifts to infrastructure. |
+
+Silent failures cause or mask instrumented failures. Validation without reading produces slip. Scope drift produces wear. Instrumentation bias masks wear. Shared blind spot is invisible to all modes.
+
+The six orchestrator duties are the governance response to these failure modes. The [dashboard](doc/audit-dashboard-guide.html) detects the instrumented ones. The silent ones remain the orchestrator's responsibility.
+
+---
+
 ## Field
 
 The method was developed and validated on the Katen project — a formally verified orchestration engine for Data & AI pipelines, built with specialized AI personas across hundreds of sessions.
