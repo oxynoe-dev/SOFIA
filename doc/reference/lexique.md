@@ -9,7 +9,7 @@
 New to SOFIA? Read these 10 entries first, in this order:
 
 1. [Orchestrator](#orchestrator) — 2. [Instance](#instance) — 3. [Persona](#persona) — 4. [Artifact](#artifact) — 5. [Friction](#friction)
-6. [Contribution](#contribution) — 7. [Isolation](#isolation) — 8. [H2A](#h2a) — 9. [Emergence](#emergence) — 10. [Wear (usure)](#wear-usure)
+6. [Contribution](#contribution) — 7. [Isolation](#isolation) — 8. [H2A](#h2a) — 9. [Emergence](#emergence) — 10. [Failure modes](#failure-modes)
 
 ---
 
@@ -25,6 +25,13 @@ New to SOFIA? Read these 10 entries first, in this order:
 **Definition**: A reusable persona template organized by role — a starting point, not a prescription.
 **Context**: `canvas/archetypes/` — persona-architect, persona-dev, persona-researcher, etc.
 **Not to be confused with**: persona (an archetype becomes a persona when instantiated with a name, scope, and prohibitions for a specific project).
+
+## Asymmetry (asymetrie)
+
+**Definition**: Friction flows in one direction only — one side challenges, the other never does. The mechanism works but is blind — it only sees defects from one side of the relationship. One of 5 instrumented failure modes (slip, wear, crush, asymmetry, instability).
+**Context**: Signal: direction ratio 100% unilateral (A→H = 0% or H→A = 0%). Per-persona threshold: 20/80%.
+**Not to be confused with**: imbalance in contribution volume (asymmetry is about friction direction, not quantity).
+**Ref**: `binding/filesystem/analysis/cli/mirror.py` (compute_failure_modes)
 
 ## Binding
 
@@ -77,11 +84,11 @@ New to SOFIA? Read these 10 entries first, in this order:
 **Context**: `core/` directory — principles, model, duties.
 **Not to be confused with**: protocol (the interface contract) or binding (the materialization).
 
-## Wear (usure)
+## Crush (ecrasement)
 
-**Definition**: The progressive alignment of a persona with the orchestrator's thinking frame, resulting in loss of friction. Surfaces polish each other — the form of friction is preserved, the substance has disappeared. One of 5 instrumented failure modes (slip, wear, crush, asymmetry, instability).
-**Context**: Signal: only `[sound]` frictions over a sustained period, challenge % descending, marker entropy decreasing. The persona stops challenging.
-**Not to be confused with**: calibration (deliberate adjustment of constraints — wear is unintentional drift).
+**Definition**: Friction is overwhelmed by force. One side imposes — through volume, insistence, or convergent reformulation — until the other yields. The challenge mechanism is intact but inoperative under pressure. H crushes A (directive) or A crushes H (undiscriminated noise). One of 5 instrumented failure modes (slip, wear, crush, asymmetry, instability).
+**Context**: Signal: high density (>2x baseline) with low revised rate (<10%), rejection rate >50%.
+**Not to be confused with**: arbitration (a legitimate decision after hearing the challenge — crush bypasses the hearing).
 **Ref**: `binding/filesystem/analysis/cli/mirror.py` (compute_failure_modes)
 
 ## Duties
@@ -109,6 +116,20 @@ New to SOFIA? Read these 10 entries first, in this order:
 **Context**: A constitutive entity of the H2A model.
 **Ref**: `protocol/exchange.md`.
 
+## Factual contamination (contamination factuelle)
+
+**Definition**: A false datum enters the system — from the human or the AI — and propagates through subsequently generated documents. The error stabilizes through repetition: each occurrence reinforces its apparent credibility. One of 6 silent failure modes.
+**Context**: Not instrumentable by the dashboard. The orchestrator must verify facts (duty 1).
+**Not to be confused with**: disagreement (a friction about interpretation — contamination is about factual error propagation).
+**Ref**: `core/duties.md` (duty 1: verify facts)
+
+## Failure modes
+
+**Definition**: A systematic dysfunction in the friction mechanism or its environment. Classified into two categories: **instrumented** (detectable by the parser/dashboard) and **silent** (detectable only by the human orchestrator).
+**Context**: 5 instrumented modes: slip, wear, crush, asymmetry, instability — dysfunctions of the friction mechanism itself. 6 silent modes: instrumentation bias, factual contamination, validation without reading, scope drift, shared blind spot, load transfer — dysfunctions of the environment in which friction operates. Silent failures can cause or mask instrumented failures.
+**Not to be confused with**: friction (a productive tension — failure modes are dysfunctions of the friction mechanism or its context).
+**Ref**: `binding/filesystem/analysis/cli/mirror.py` (compute_failure_modes), `core/duties.md`
+
 ## Friction
 
 **Definition**: A qualified tension between two positions during an exchange — not a defect to fix but a structuring signal.
@@ -133,11 +154,24 @@ New to SOFIA? Read these 10 entries first, in this order:
 **Definition**: The prerequisite that SOFIA cannot verify — domain expertise, strong intention, and a cognitive trait that seeks contradiction.
 **Context**: `doc/concepts/hidden-condition.md`. Three levels: expertise (visible), intention (discipline), cognitive trait (precedes the method).
 
+## Instability (instabilite)
+
+**Definition**: Friction produces change but not convergence. Each challenge leads to a revision, each revision is re-challenged. Surfaces cannot break in — destructive stick-slip, screeching without music. One of 5 instrumented failure modes (slip, wear, crush, asymmetry, instability).
+**Context**: Signal: revised dominant (>80%), high density, no stabilization over N windows.
+**Not to be confused with**: productive iteration (instability is oscillation without convergence — iteration converges).
+**Ref**: `binding/filesystem/analysis/cli/mirror.py` (compute_failure_modes)
+
 ## Instance
 
 **Definition**: A concrete deployment of the SOFIA method on a project — a set of personas, a shared space, and conventions.
 **Context**: Identified by a `sofia.md` file at its root.
 **Not to be confused with**: the sofia/ repository (which contains the method, not an instance).
+
+## Instrumentation bias (biais d'instrumentation)
+
+**Definition**: The measurement layer is inferential — produced by the same assistants whose friction it measures. A worn persona under-qualifies its own frictions. The measurement inherits the biases of the measurer. No computational sensor validates the markers. One of 6 silent failure modes.
+**Context**: Not instrumentable by the dashboard. This is the structural link between the two failure classes: silent failures degrade the reliability of instrumented failure detection.
+**Not to be confused with**: measurement error (a one-time mistake — instrumentation bias is systematic).
 
 ## Invariant
 
@@ -157,6 +191,12 @@ New to SOFIA? Read these 10 entries first, in this order:
 **Definition**: The chain linking related frictions across sessions via `ref:` fields — a logical friction may span multiple sessions.
 **Context**: The current resolution is that of the last link. The trace remains immutable.
 **Ref**: `protocol/friction.md` §Lineage.
+
+## Load transfer (transfert de charge)
+
+**Definition**: What the human no longer carries, the machine carries. The cost shifts to infrastructure — tokens, compute, energy. The method multiplies interactions by design: each handoff is a cost. One of 6 silent failure modes.
+**Context**: Not instrumentable by the dashboard. A systemic property, not a defect.
+**Not to be confused with**: delegation (intentional task routing — load transfer is unintentional cost shift).
 
 ## Marker
 
@@ -227,6 +267,12 @@ New to SOFIA? Read these 10 entries first, in this order:
 **Not to be confused with**: marker (the qualification of the position — resolution is the outcome).
 **Ref**: `protocol/friction.md` §Resolution.
 
+## Scope drift (derive de scope)
+
+**Definition**: A miscalibrated persona absorbs the roles of others. Scope boundaries become invisible — tasks fall between chairs or overlap without anyone flagging it. One of 6 silent failure modes.
+**Context**: Not instrumentable by the dashboard. The orchestrator must recalibrate persona scope.
+**Not to be confused with**: emergence (discovering a new role — scope drift is unauthorized expansion of an existing role).
+
 ## send()
 
 **Definition**: The operation where a persona produces an artifact and deposits it in the recipient's shared space.
@@ -240,11 +286,24 @@ New to SOFIA? Read these 10 entries first, in this order:
 **Not to be confused with**: artifact (asynchronous) or conversation (a session may span multiple conversations if the context is reloaded).
 **Ref**: `protocol/exchange.md` §Sessions.
 
+## Shared blind spot (angle mort partage)
+
+**Definition**: All personas are calibrated by the same human. Their implicit biases become the entire team's biases. Friction is real but plays within a thought space bounded by what the orchestrator knows they don't know. One of 6 silent failure modes.
+**Context**: Not instrumentable by the dashboard. Structural — no internal mechanism can detect what the orchestrator doesn't know they're missing.
+**Not to be confused with**: residual opacity (the orchestrator's inability to arbitrate their own resistance — shared blind spot is about shared ignorance, not resistance).
+
 ## Shared space
 
 **Definition**: The sole communication channel between personas — a directory (`shared/`) where artifacts are deposited and routed by the orchestrator.
 **Context**: Invariant 3 of H2A. Personas cannot access each other's workspaces.
 **Not to be confused with**: workspace (a persona's private space).
+
+## Slip (glissement)
+
+**Definition**: Friction exists but is not arbitrated. Challenges are logged, resolutions don't come. The protocol runs idle — friction is decorative. H→A only: the orchestrator doesn't arbitrate. One of 5 instrumented failure modes (slip, wear, crush, asymmetry, instability).
+**Context**: Signal: non-resolution rate >60%, recurrence without resolution, reflexive ratification.
+**Not to be confused with**: pending resolution (a friction awaiting arbitration in the current session — slip is sustained non-arbitration over time).
+**Ref**: `binding/filesystem/analysis/cli/mirror.py` (compute_failure_modes)
 
 ## sofia.md
 
@@ -257,6 +316,20 @@ New to SOFIA? Read these 10 entries first, in this order:
 **Definition**: The isolated perimeter of a persona — one persona, one space.
 **Context**: A constitutive entity of the H2A model. Contains the persona's workspace and sessions.
 **Not to be confused with**: shared space (the exchange bus) or workspace (the implementation directory).
+
+## Validation without reading (validation sans regard)
+
+**Definition**: The human approves without reading. Sessions become a ritual — open, validate, close. The better the system works, the less vigilant the orchestrator becomes. Bainbridge's automation paradox applied to the method. One of 6 silent failure modes.
+**Context**: Not instrumentable by the dashboard. The orchestrator must read what goes out (duty 3).
+**Not to be confused with**: trust (deliberate trust after verification — validation without reading skips verification).
+**Ref**: `core/duties.md` (duty 3: read what goes out)
+
+## Wear (usure)
+
+**Definition**: The progressive alignment of a persona with the orchestrator's thinking frame, resulting in loss of friction. Surfaces polish each other — the form of friction is preserved, the substance has disappeared. One of 5 instrumented failure modes (slip, wear, crush, asymmetry, instability).
+**Context**: Signal: only `[sound]` frictions over a sustained period, challenge % descending, marker entropy decreasing. The persona stops challenging.
+**Not to be confused with**: calibration (deliberate adjustment of constraints — wear is unintentional drift).
+**Ref**: `binding/filesystem/analysis/cli/mirror.py` (compute_failure_modes)
 
 ## Workspace
 
