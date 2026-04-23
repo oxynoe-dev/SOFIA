@@ -1,5 +1,46 @@
 # Changelog
 
+## v0.3.6 — Failure modes, documentation EN, pedagogical pass, fixtures (2026-04-23)
+
+### Failure modes — tribology diagnostic
+- 5 instrumented failure modes: slip, wear, crush, asymmetry, instability
+- `compute_failure_modes()` in mirror.py — per-instance + per-persona non-exclusive diagnostics
+- Dashboard: 5-column FM panel, per-persona tags under radars, delta table, signals & actions
+- Lexique: 11 entries (5 instrumented + 6 silent + 1 umbrella)
+- Lexical alignment: domestication → usure (wear) across ~15 files
+- Fix sanitize.py — preserve failure_modes in mirror.json for static builds
+
+### Documentation
+- methode.md — "What can go wrong" section (instrumented + silent failure modes)
+- audit-guide.md — signals restructured (structural + failure modes with thresholds)
+- dashboard-guide.md — FM radars, delta, probe signals, signals & actions per mode
+- getting-started.md — split into understand, setup-sofia, setup-manual, going-further
+- Pedagogical pass — 14 items from Emile review (reorder, jargon, lexique reading path, audit workflow)
+- doc/ restructured — guides/, concepts/, reference/ + README navigation + 31 refs fixed
+- Site pages: tutorial.md, documentation.md landing
+- Corrections doc: ADR-014 propagation, send()/receive(), lexique 40+ terms, EN translations
+
+### Tests & fixtures
+- 6 deterministic fixtures (1 per failure mode + 1 healthy baseline)
+- 17 fixture tests (TestFixtureFailureModes) — mode assertions + false positive checks
+- 151 tests total, all green
+- TEST_PLAN: T6 section + E2E-2b dashboard visual inspection (11 steps)
+
+### Pipeline & tooling
+- sanitize.py, aggregate.py, build_dist.py --sanitize
+- build_dist fix — selective cleanup (no rmtree)
+- Protocol README index
+- VERSION file added
+- .gitignore — analysis/data/ secured
+
+### Livre bleu
+- Contrefactuel (ch. IV) — single-prompt comparison
+- Réflexivité (ch. IX) — SOFIA applied to itself
+
+### Communication
+- Article dev.to — draft + review
+- Blog — failure modes aligned (asymmetry + instability added, domestication → wear)
+
 ## v0.3.5 — Dashboard split, per-view endpoints, pipeline refactoring, static build (2026-04-20)
 
 ### Dashboard modularization
