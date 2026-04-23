@@ -80,7 +80,17 @@ Five indicators at the top:
 
 ![Mirror — persona radars side by side](figures/dashboard-mirror-radar-persona.png)
 
-One radar per persona, displayed side by side. Same 6 axes as the instance radar. Each persona gets a **diagnostic** label below: "healthy" (green), "usure" (red), "ecrasement" (amber), "glissement" (amber). A persona marked "usure" has a shrinking recent contour — its friction output is converging toward pure validation (surfaces polish each other).
+One radar per persona, displayed side by side. Same 6 axes as the instance radar. Each persona gets **failure mode tags** below — non-exclusive (a persona can cumulate several modes):
+
+| Tag | Color | What it means |
+|-----|-------|---------------|
+| **slip** | amber | Friction exists but is not arbitrated — high non-resolution rate |
+| **wear** | red | Surfaces polished — challenge % descending, marker entropy decreasing |
+| **crush** | amber | One side imposes by force — high density + low revised rate |
+| **asymmetry** | amber | Friction flows in one direction only — direction ratio beyond 20/80% |
+| **instability** | amber | Change without convergence — revised dominant (>80%) |
+
+A persona with no tags is "healthy" (green). Tags are computed from baseline vs recent comparison.
 
 ### Trajectory
 
@@ -114,7 +124,7 @@ A persona with mostly substance = content provider. A persona with mostly contes
 Per-persona trend indicators:
 - **Baseline challenge %** vs **Recent challenge %** — with delta arrow (↓ = degrading, = = stable, ↑ = improving)
 - **Baseline A→H** vs **Recent A→H** — how much the persona pushes back
-- **Diagnostic** — "healthy" (green), "usure" (red), "ecrasement"/"glissement" (amber), derived from the delta
+- **Failure modes** — non-exclusive tags: slip, wear, crush, asymmetry, instability (see persona radars above for thresholds)
 
 ### Open frictions
 
@@ -204,7 +214,8 @@ Each check shows:
 ### Signals
 
 High-level patterns detected automatically:
-- Friction holes, pure receivers, wear (usure), no incoming friction
+- Structural: friction holes, pure receivers, no incoming friction
+- Failure modes: slip, wear, crush, asymmetry, instability (see [audit-guide.md](audit-guide.md) for thresholds)
 
 See [audit-guide.md](audit-guide.md) for the full signal reference.
 
@@ -218,13 +229,23 @@ In-dashboard documentation. Rendered from `binding/filesystem/analysis/legend/le
 
 ## Signals and actions
 
+### Failure modes
+
+| Mode | What you see | What to do |
+|------|-------------|------------|
+| **Slip** | Frictions logged but never resolved. Non-resolution rate >60% | Arbitrate the backlog. If the orchestrator isn't reading, that's validation without reading (silent failure) |
+| **Wear** | Only `[sound]` frictions, challenge % declining, marker entropy dropping | Tighten prohibitions, review stance, consider recalibration or introduce a new persona |
+| **Crush** | High friction density + low revised rate (<10%), rejection rate >50% | Identify who crushes. If H→A: orchestrator too directive. If A→H: persona producing noise — recalibrate scope |
+| **Asymmetry** | Friction flows one way only — direction ratio beyond 20/80% | The silent side needs to be challenged. Route more cross-persona deliverables to provoke friction |
+| **Instability** | Revised dominant (>80%), re-contestation chains, no stabilization | Investigate the root: genuine disagreement (healthy) or scope ambiguity (needs recalibration) |
+
+### Other signals
+
 | Signal | What it means | What to do |
 |--------|---------------|------------|
-| Only `[sound]` frictions | Domestication — the persona validates everything | Tighten prohibitions, review stance, consider recalibration |
 | No friction over consecutive sessions | Friction absent | Check if the orchestrator presents enough cross-persona deliverables |
-| High contested/rejected ratio | Sustained tension | Healthy if substantive. Investigate if the same theme recurs → may trigger reportPattern |
-| Declining trajectory | Challenge % dropping over time | Domestication signal — recalibrate or introduce a new persona |
 | Persona inactive several days | Inactive persona | Either the role isn't needed (consider deletion) or the orchestrator forgot |
 | Artifacts not routed | Exchange blocked | Check shared/ for `status: new` artifacts |
 | Heavy `substance` from A + heavy `decision` from H | Healthy asymmetry | Target pattern: assistant brings material, human decides |
 | Heavy `decision` from A | Assistant decides too much | Orchestrator may be rubber-stamping — slow down |
+| High contested/rejected ratio | Sustained tension | Healthy if substantive. Investigate if the same theme recurs → may trigger reportPattern |
