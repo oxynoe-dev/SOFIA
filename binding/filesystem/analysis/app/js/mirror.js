@@ -13,6 +13,7 @@ function renderMirror() {
 
   const mk = ['sound','contestable','simplification','blind_spot','refuted'];
   const W = 15; // window size for trajectory
+  const fmLabels = { glissement: 'slip', usure: 'wear', ecrasement: 'crush', asymetrie: 'asymmetry', instabilite: 'instability' };
 
   function mkChart2(id, cfg) { const c = new Chart(document.getElementById(id), cfg); mirrorCharts.push(c); }
 
@@ -142,17 +143,17 @@ function renderMirror() {
     const totalFlux = (pd.flux_h || 0) + (pd.flux_a || 0);
     const contribPct = totalFlux > 0 ? Math.round((pd.flux_a || 0) / totalFlux * 100) : 0;
 
-    let diag = 'healthy';
-    let diagClass = 'healthy';
-    if (recent.challenge < baseline.challenge * 0.5 && baseline.challenge > 10) { diag = 'domesticated'; diagClass = 'domesticated'; }
-    else if (recent.aContestsH === 0 && baseline.aContestsH > 5) { diag = 'servile'; diagClass = 'servile'; }
-    else if (recent.resolved === 100 && recent.challenge < 5) { diag = 'complacent'; diagClass = 'complacent'; }
+    // Diagnostic from server-side failure_modes.per_persona (non-exclusive)
+    const pFm = D.failure_modes?.per_persona?.[p];
+    const diagModes = pFm?.modes || [];
+    const dominant = pFm?.dominant || 'healthy';
+    const diagClass = dominant === 'healthy' ? 'healthy' : dominant;
 
-    personaProfiles[p] = { baseline, recent, diag, diagClass, contribPct };
+    personaProfiles[p] = { baseline, recent, diagModes, dominant, diagClass, contribPct };
 
     const deltaChall = recent.challenge - baseline.challenge;
     const arrow = deltaChall > 5 ? '↑' : deltaChall < -5 ? '↓' : '=';
-    deltaRows.push({ p, baseline, recent, deltaChall, arrow, diag, diagClass });
+    deltaRows.push({ p, baseline, recent, deltaChall, arrow, diagModes, dominant, diagClass });
   }
 
   // ── Vue 1a: Radar instance agrege ──
@@ -190,7 +191,10 @@ function renderMirror() {
 
     const card = document.createElement('div');
     card.className = 'radar-card';
-    card.innerHTML = `<div class="persona-name">${p}</div><canvas id="radar-${p}" width="240" height="240"></canvas><div class="diagnostic ${prof.diagClass}">${prof.diag}</div>`;
+    const tagsHtml = prof.diagModes.length > 0
+      ? prof.diagModes.map(m => `<span class="fm-tag ${m.level === 'alert' ? 'coral' : 'amber'}">${fmLabels[m.mode] || m.mode}</span>`).join(' ')
+      : '<span class="fm-tag done">healthy</span>';
+    card.innerHTML = `<div class="persona-name">${p}</div><canvas id="radar-${p}" width="240" height="240"></canvas><div class="diagnostic">${tagsHtml}</div>`;
     radarsDiv.appendChild(card);
 
     const chart = new Chart(document.getElementById('radar-' + p), {
@@ -215,8 +219,37 @@ function renderMirror() {
 
   // ── Tableau delta ──
   document.getElementById('table-delta').innerHTML = deltaRows.map(d =>
-    `<tr><td class="name">${d.p}</td><td class="num">${d.baseline.challenge}%</td><td class="num">${d.recent.challenge}%</td><td class="num">${d.arrow}</td><td class="num">${d.baseline.aContestsH}%</td><td class="num">${d.recent.aContestsH}%</td><td class="diag-${d.diagClass === 'healthy' ? 'healthy' : d.diagClass === 'domesticated' ? 'danger' : 'warn'}">${d.diag}</td></tr>`
+    `<tr><td class="name">${d.p}</td><td class="num">${d.baseline.challenge}%</td><td class="num">${d.recent.challenge}%</td><td class="num">${d.arrow}</td><td class="num">${d.baseline.aContestsH}%</td><td class="num">${d.recent.aContestsH}%</td><td>${d.diagModes.length > 0 ? d.diagModes.map(m => `<span class="fm-tag ${m.level === 'alert' ? 'coral' : 'amber'}">${fmLabels[m.mode]||m.mode}</span>`).join(' ') : '<span class="fm-tag done">healthy</span>'}</td></tr>`
   ).join('');
+
+  // ── Failure modes panel ──
+  const fmPanel = document.getElementById('failure-modes-panel');
+  if (fmPanel && D.failure_modes) {
+    const fm = D.failure_modes;
+    const levelColor = { ok: 'done', signal: 'amber', alert: 'coral' };
+    const levelIcon = { ok: '✓', signal: '~', alert: '!' };
+    const modes = [
+      { key: 'glissement', label: 'Slip', primary: `Non-resol. ${fm.glissement?.non_resolution_rate?.toFixed(0) ?? '—'}%`,
+        secondary: [`Recurr: ${fm.glissement?.recurrence_count ?? 0}`, `Ratif: ${fm.glissement?.reflexive_ratification?.toFixed(0) ?? '—'}%`] },
+      { key: 'usure', label: 'Wear', primary: `Challenge ${fm.usure?.challenge_pct_trend ?? '—'}`,
+        secondary: [`Refuted: ${fm.usure?.refuted_count_recent ?? 0}`, `Delta: ${fm.usure?.delta_baseline_recent?.toFixed(0) ?? '—'}%`] },
+      { key: 'ecrasement', label: 'Crush', primary: `Reject. ${fm.ecrasement?.rejection_rate?.toFixed(0) ?? '—'}%`,
+        secondary: [`Density: ${fm.ecrasement?.density_ratio?.toFixed(1) ?? '—'}x`, fm.ecrasement?.direction ?? '—'] },
+      { key: 'asymetrie', label: 'Asymmetry', primary: `Dir. ${fm.asymetrie?.direction_ratio?.toFixed(0) ?? '—'}%`,
+        secondary: [] },
+      { key: 'instabilite', label: 'Instability', primary: `Revised ${fm.instabilite?.revised_rate_recent?.toFixed(0) ?? '—'}%`,
+        secondary: [`Re-cont: ${fm.instabilite?.recontestation_chains ?? 0}`] },
+    ];
+    fmPanel.innerHTML = modes.map(m => {
+      const lvl = fm[m.key]?.level || 'ok';
+      return `<div class="fm-column ${levelColor[lvl]}">
+        <div class="fm-title">${m.label}</div>
+        <div class="fm-level" style="color:var(--${levelColor[lvl]})">${levelIcon[lvl]}</div>
+        <div class="fm-primary">${m.primary}</div>
+        ${m.secondary.map(s => `<div class="fm-secondary">${s}</div>`).join('')}
+      </div>`;
+    }).join('');
+  }
 
   // ── Vue 2: Open frictions ──
   const openRecs = records.filter(r => !r.resolution);

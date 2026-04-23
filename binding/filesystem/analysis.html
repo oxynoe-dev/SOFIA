@@ -105,7 +105,7 @@
   <!-- Charts detail -->
   <div class="charts rise rise-3">
     <div class="chart-card">
-      <h2>Markers by persona <i class="info-icon">i<span class="info-tip">Stacked bar: total friction per persona, broken down by marker type. Monochrome = domestication (only sound).</span></i></h2>
+      <h2>Markers by persona <i class="info-icon">i<span class="info-tip">Stacked bar: total friction per persona, broken down by marker type. Monochrome = wear (usure) (only sound).</span></i></h2>
       <div class="chart-wrap"><canvas id="chart-markers-persona"></canvas></div>
     </div>
     <div class="chart-card">
@@ -137,7 +137,7 @@
       <th>Ratio A→H / H→A</th>
     </tr></thead><tbody id="table-direction"></tbody></table>
     <p style="font-size:10px; color:var(--ice-muted); margin-top:.75rem; font-family:var(--font-mono); letter-spacing:.05em;">
-      Ratio > 2 = persona contests more than contested — healthy friction. Ratio ~ 1 = balanced. Ratio &lt; 0.5 = potential domestication.
+      Ratio > 2 = persona contests more than contested — healthy friction. Ratio ~ 1 = balanced. Ratio &lt; 0.5 = potential wear (usure).
     </p>
   </div>
 
@@ -177,7 +177,7 @@
         <div class="chart-wrap"><canvas id="chart-trajectory-line"></canvas></div>
       </div>
       <div class="chart-card">
-        <h2>Trajectory — marker distribution <i class="info-icon">i<span class="info-tip">Marker breakdown per window. A bar becoming monochrome (all sound) = domestication visible. Diverse colors = healthy friction.</span></i></h2>
+        <h2>Trajectory — marker distribution <i class="info-icon">i<span class="info-tip">Marker breakdown per window. A bar becoming monochrome (all sound) = wear (usure) visible. Diverse colors = healthy friction.</span></i></h2>
         <div class="chart-wrap"><canvas id="chart-trajectory-bar"></canvas></div>
       </div>
     </div>
@@ -198,7 +198,7 @@
     <!-- Vue 1b — Radars persona individuels -->
     <div class="charts rise">
       <div class="chart-card full">
-        <h2>Persona profiles — baseline vs recent <i class="info-icon">i<span class="info-tip">One radar per persona. Grey = baseline (first N frictions). Violet = recent (last N). A persona whose contour shrinks is being domesticated — it contests less than before.</span></i></h2>
+        <h2>Persona profiles — baseline vs recent <i class="info-icon">i<span class="info-tip">One radar per persona. Grey = baseline (first N frictions). Violet = recent (last N). A persona whose contour shrinks shows wear (usure) — it contests less than before.</span></i></h2>
         <p style="font-size:10px; color:var(--ice-muted); margin-bottom:.5rem; font-family:var(--font-mono);">
           Grey = baseline (first N frictions) · Color = recent (last N frictions) · Shrinking contour = deterioration
         </p>
@@ -218,6 +218,12 @@
         <th>Recent A→H</th>
         <th>Diagnostic</th>
       </tr></thead><tbody id="table-delta"></tbody></table>
+    </div>
+
+    <!-- Failure modes — tribology diagnostic -->
+    <div class="table-card rise">
+      <h2>Failure modes — tribology diagnostic <i class="info-icon">i<span class="info-tip">5 instrumented failure modes based on friction tribology. Green = ok, amber = signal, red = alert. Slip = unresolved friction. Wear = friction smoothed out. Crush = friction forced out. Asymmetry = one-way friction. Instability = no convergence.</span></i></h2>
+      <div id="failure-modes-panel" style="display:grid; grid-template-columns:repeat(5,1fr); gap:1rem; padding:1rem 0;"></div>
     </div>
 
     <!-- Vue 2 — Open frictions -->

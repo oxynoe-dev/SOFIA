@@ -482,13 +482,29 @@ footer {
   font-family: var(--font-mono); font-size: 9px; margin-top: .25rem; letter-spacing: .06em;
 }
 .diagnostic.healthy { color: var(--done); }
-.diagnostic.domesticated { color: var(--coral); }
-.diagnostic.complacent { color: var(--amber); }
-.diagnostic.servile { color: var(--amber); }
+.diagnostic.usure { color: var(--coral); }
+.diagnostic.glissement { color: var(--amber); }
+.diagnostic.ecrasement { color: var(--amber); }
 td.zero { color: var(--coral); font-weight: 600; }
 td.diag-healthy { color: var(--done); }
 td.diag-warn { color: var(--amber); }
 td.diag-danger { color: var(--coral); }
+
+/* ── Failure mode tags (per-persona) ── */
+.fm-tag { display:inline-block; padding:1px 6px; border-radius:3px; font-family:var(--font-mono); font-size:9px; letter-spacing:.04em; }
+.fm-tag.done { color:var(--done); border:1px solid var(--done); }
+.fm-tag.amber { color:var(--amber); border:1px solid var(--amber); }
+.fm-tag.coral { color:var(--coral); border:1px solid var(--coral); }
+
+/* ── Failure modes panel ── */
+.fm-column { text-align:center; padding:1rem .5rem; border:1px solid var(--border); border-radius:4px; background:var(--deep); }
+.fm-column.done { border-color: var(--done); }
+.fm-column.amber { border-color: var(--amber); }
+.fm-column.coral { border-color: var(--coral); }
+.fm-title { font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:.5rem; color:var(--ice); }
+.fm-level { font-size:20px; font-weight:700; margin-bottom:.25rem; }
+.fm-primary { font-family:var(--font-mono); font-size:12px; color:var(--ice); margin-bottom:.25rem; }
+.fm-secondary { font-family:var(--font-mono); font-size:10px; color:var(--ice-muted); }
 
 /* ── Animations ── */
 @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }

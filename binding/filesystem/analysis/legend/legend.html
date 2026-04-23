@@ -195,7 +195,7 @@
 <h3>Trajectory — challenge % (view 0)</h3>
 <p>Same as the Map trajectory but affected by the instance/persona filters.</p>
 <h3>Trajectory — marker distribution</h3>
-<p>Stacked bar showing the marker breakdown per window. A monochrome bar (all sound) = domestication visible.</p>
+<p>Stacked bar showing the marker breakdown per window. A monochrome bar (all sound) = wear (usure) visible.</p>
 <h3>Contribution flow</h3>
 <p>Stacked bar chart per persona, broken down by contribution type:</p>
 <table><thead><tr>
@@ -251,7 +251,7 @@
 </tr>
 <tr>
 <td><strong style="color:var(--ice)">Diagnostic</strong></td>
-<td>healthy / domesticated / servile / complacent</td>
+<td>Tags: healthy, or one or more failure modes (slip, wear, crush, asymmetry, instability). Non-exclusive — a persona can show multiple modes simultaneously</td>
 </tr>
 </tbody></table>
 <h3>Open frictions</h3>
@@ -362,7 +362,7 @@
 <td><strong style="color:var(--ice)">Markers by persona</strong></td>
 <td>Personas</td>
 <td>Stacked count</td>
-<td>Monochrome = domestication</td>
+<td>Monochrome = wear (usure)</td>
 </tr>
 <tr>
 <td><strong style="color:var(--ice)">Resolutions by persona</strong></td>
@@ -581,8 +581,28 @@
 <td>The first N frictions of an instance or persona — the reference point for detecting change</td>
 </tr>
 <tr>
-<td><strong style="color:var(--ice)">Domestication</strong></td>
-<td>When a persona stops challenging over time — its friction output converges to pure validation</td>
+<td><strong style="color:var(--ice)">Failure modes</strong></td>
+<td>5 instrumented failure modes detectable from friction data (tribology vocabulary). Displayed per-instance (5-column panel) and per-persona (non-exclusive tags under radars)</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Slip (glissement)</strong></td>
+<td>Friction exists but is not arbitrated. Contestations logged, resolutions don't come. Signal: non-resolution rate &gt; 60%</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Wear (usure)</strong></td>
+<td>Friction was real but the system smoothed out. Surfaces polish each other — challenge % descends, marker entropy decreases. Signal: challenge % descending, 0 refuted over 4+ weeks</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Crush (écrasement)</strong></td>
+<td>Friction is forced out by one side. One side imposes until the other yields. Signal: rejection rate &gt; 50%, with direction (H crushes A or A crushes H)</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Asymmetry (asymétrie)</strong></td>
+<td>Friction flows one way only. The mechanism is blind on one side. Signal: direction ratio &lt; 20% or &gt; 80%</td>
+</tr>
+<tr>
+<td><strong style="color:var(--ice)">Instability (instabilité)</strong></td>
+<td>Friction produces change but no convergence. Each revision is re-contested — stick-slip. Signal: revised &gt; 80% over 3+ windows</td>
 </tr>
 <tr>
 <td><strong style="color:var(--ice)">Lineage</strong></td>

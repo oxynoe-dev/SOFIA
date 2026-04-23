@@ -188,5 +188,10 @@ H contributions (orchestrator) and A contributions (persona) are summed. The Con
 | **Session** | A single working conversation between the orchestrator and one persona. |
 | **Window** | A group of N consecutive frictions, used for trend analysis instead of calendar periods. |
 | **Baseline** | The first N frictions of an instance or persona — the reference point for detecting change. |
-| **Domestication** | When a persona stops challenging over time — its friction output converges to pure validation. |
+| **Failure modes** | 5 instrumented failure modes detectable from friction data (tribology vocabulary). Displayed per-instance (5-column panel) and per-persona (non-exclusive tags). |
+| **Slip (glissement)** | Friction not arbitrated — non-resolution rate > 60%. |
+| **Wear (usure)** | Friction smoothed out — challenge % descending, 0 refuted, entropy decreasing. |
+| **Crush (écrasement)** | Friction forced out — rejection rate > 50%, with direction. |
+| **Asymmetry (asymétrie)** | One-way friction — direction ratio < 20% or > 80%. |
+| **Instability (instabilité)** | No convergence — revised > 80% over 3+ windows. |
 | **H2A** | Human-to-Assistant — the protocol that structures friction, contribution, and exchange between orchestrator and personas. |
