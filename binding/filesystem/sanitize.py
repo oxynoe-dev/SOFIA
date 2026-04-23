@@ -96,7 +96,7 @@ def sanitize_mirror_instance(content: dict) -> dict:
         }
     if "map" in content:
         out["map"] = strip_descriptions(content["map"])
-    for key in ("trajectory", "radars"):
+    for key in ("trajectory", "radars", "failure_modes"):
         if key in content:
             out[key] = content[key]
     return out
