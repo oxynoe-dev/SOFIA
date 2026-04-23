@@ -13,6 +13,7 @@ from analysis.cli.mirror import build_mirror
 from analysis.cli.lens import build_lens
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures" / "mini-instance"
+FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures"
 
 
 class TestScan(unittest.TestCase):
@@ -184,6 +185,109 @@ class TestFailureModes(unittest.TestCase):
             for m in diag["modes"]:
                 self.assertIn("mode", m)
                 self.assertIn("level", m)
+
+
+class TestFixtureFailureModes(unittest.TestCase):
+    """T6 — Verify each failure mode fixture triggers its expected alert."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.results = {}
+        fixture_names = [
+            "fixture-glissement",
+            "fixture-usure",
+            "fixture-ecrasement",
+            "fixture-asymetrie",
+            "fixture-instabilite",
+            "fixture-nominale",
+        ]
+        for name in fixture_names:
+            path = FIXTURES_DIR / name
+            records = scan_instances([path])
+            mirror = build_mirror(records)
+            cls.results[name] = mirror["instances"][name]["failure_modes"]
+
+    # --- Glissement ---
+
+    def test_glissement_alert(self):
+        fm = self.results["fixture-glissement"]
+        self.assertEqual(fm["glissement"]["level"], "alert")
+
+    def test_glissement_non_resolution_rate(self):
+        fm = self.results["fixture-glissement"]
+        self.assertGreater(fm["glissement"]["non_resolution_rate"], 60)
+
+    def test_glissement_cross_signal(self):
+        fm = self.results["fixture-glissement"]
+        self.assertTrue(fm["glissement"]["cross_signal"])
+
+    # --- Usure ---
+
+    def test_usure_alert(self):
+        fm = self.results["fixture-usure"]
+        self.assertEqual(fm["usure"]["level"], "alert")
+
+    def test_usure_challenge_descending(self):
+        fm = self.results["fixture-usure"]
+        self.assertEqual(fm["usure"]["challenge_pct_trend"], "descending")
+
+    def test_usure_delta_below_50(self):
+        fm = self.results["fixture-usure"]
+        self.assertLess(fm["usure"]["delta_baseline_recent"], 50)
+
+    # --- Ecrasement ---
+
+    def test_ecrasement_alert(self):
+        fm = self.results["fixture-ecrasement"]
+        self.assertEqual(fm["ecrasement"]["level"], "alert")
+
+    def test_ecrasement_rejection_rate(self):
+        fm = self.results["fixture-ecrasement"]
+        self.assertGreater(fm["ecrasement"]["rejection_rate"], 50)
+
+    # --- Asymetrie ---
+
+    def test_asymetrie_alert(self):
+        fm = self.results["fixture-asymetrie"]
+        self.assertEqual(fm["asymetrie"]["level"], "alert")
+
+    def test_asymetrie_direction_ratio_extreme(self):
+        fm = self.results["fixture-asymetrie"]
+        ratio = fm["asymetrie"]["direction_ratio"]
+        self.assertTrue(ratio == 0 or ratio == 100,
+            f"direction_ratio should be 0 or 100, got {ratio}")
+
+    # --- Instabilite ---
+
+    def test_instabilite_alert(self):
+        fm = self.results["fixture-instabilite"]
+        self.assertEqual(fm["instabilite"]["level"], "alert")
+
+    def test_instabilite_revised_dominant_windows(self):
+        fm = self.results["fixture-instabilite"]
+        self.assertGreaterEqual(fm["instabilite"]["revised_dominant_windows"], 3)
+
+    # --- Nominale ---
+
+    def test_nominale_all_ok(self):
+        fm = self.results["fixture-nominale"]
+        for mode in ("glissement", "usure", "ecrasement", "asymetrie", "instabilite"):
+            self.assertEqual(fm[mode]["level"], "ok",
+                f"{mode} should be ok in nominale, got {fm[mode]['level']}")
+
+    # --- Cross-fixture: no false positives on primary mode ---
+
+    def test_usure_no_glissement_alert(self):
+        self.assertNotEqual(self.results["fixture-usure"]["glissement"]["level"], "alert")
+
+    def test_ecrasement_no_glissement_alert(self):
+        self.assertNotEqual(self.results["fixture-ecrasement"]["glissement"]["level"], "alert")
+
+    def test_asymetrie_no_ecrasement_alert(self):
+        self.assertNotEqual(self.results["fixture-asymetrie"]["ecrasement"]["level"], "alert")
+
+    def test_instabilite_no_ecrasement_alert(self):
+        self.assertNotEqual(self.results["fixture-instabilite"]["ecrasement"]["level"], "alert")
 
 
 class TestCrossInstance(unittest.TestCase):

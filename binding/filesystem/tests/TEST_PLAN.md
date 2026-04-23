@@ -8,7 +8,7 @@
 
 ## Current coverage
 
-### What's tested (62 tests, 2 files)
+### What's tested (62+89 tests, 7 files)
 
 | File | Tests | Covers |
 |------|-------|--------|
@@ -137,6 +137,32 @@ Verify analysis.py end-to-end orchestration.
 
 ---
 
+### T6 — Fixture failure mode tests (`test_pipeline.py :: TestFixtureFailureModes`)
+
+Deterministic fixtures (1 per instrumented failure mode + 1 healthy baseline). Each fixture is a minimal SOFIA instance with hand-written sessions calibrated to trigger a specific mode at alert level.
+
+| ID | Test | Fixture | Status |
+|----|------|---------|--------|
+| T6.1 | glissement = alert | fixture-glissement | done |
+| T6.2 | glissement non_resolution_rate > 60% | fixture-glissement | done |
+| T6.3 | glissement cross_signal = true | fixture-glissement | done |
+| T6.4 | usure = alert | fixture-usure | done |
+| T6.5 | usure challenge_pct_trend = descending | fixture-usure | done |
+| T6.6 | usure delta_baseline_recent < 50% | fixture-usure | done |
+| T6.7 | ecrasement = alert | fixture-ecrasement | done |
+| T6.8 | ecrasement rejection_rate > 50% | fixture-ecrasement | done |
+| T6.9 | asymetrie = alert | fixture-asymetrie | done |
+| T6.10 | asymetrie direction_ratio = 0 or 100 | fixture-asymetrie | done |
+| T6.11 | instabilite = alert | fixture-instabilite | done |
+| T6.12 | instabilite revised_dominant_windows >= 3 | fixture-instabilite | done |
+| T6.13 | nominale = all ok | fixture-nominale | done |
+| T6.14 | usure no glissement alert (false positive) | fixture-usure | done |
+| T6.15 | ecrasement no glissement alert (false positive) | fixture-ecrasement | done |
+| T6.16 | asymetrie no ecrasement alert (false positive) | fixture-asymetrie | done |
+| T6.17 | instabilite no ecrasement alert (false positive) | fixture-instabilite | done |
+
+---
+
 ### E2E-1 — End-to-end: Sofia guide (getting-started)
 
 Test the user journey: follow the getting-started guide from scratch, use Sofia (the persona) to create an instance, add personas, run first session with friction. Manual test — Sofia is a conversational persona, not a script.
@@ -239,6 +265,12 @@ Two axes tested:
 |---------|-----|--------|
 | `mini-instance/` | T1, T5, E2E-1, E2E-2 | exists |
 | `mini-instance-2/` | E2E-2 (second instance, different personas) | exists (charlie, diana) |
+| `fixture-glissement/` | T6 — slip alert (87.5% non-resolution, stable density) | exists (fox, 16 frictions, 4 weeks) |
+| `fixture-usure/` | T6 — wear alert (challenge 75%→0%, delta ~20%) | exists (elm, 14 frictions, 4 weeks) |
+| `fixture-ecrasement/` | T6 — crush alert (66.7% rejection rate, h_crushes_a) | exists (oak, 12 frictions, 4 weeks) |
+| `fixture-asymetrie/` | T6 — asymmetry alert (direction 100% persona-side) | exists (ivy, 6 frictions, 2 weeks) |
+| `fixture-instabilite/` | T6 — instability alert (3 weeks 100% revised) | exists (ash, 12 frictions, 3 weeks) |
+| `fixture-nominale/` | T6 — healthy baseline (all modes ok) | exists (sage, 12 frictions, 3 weeks) |
 | Sample JSON (records, mirror, lens, probe) | T2, T3 | covered by mock dicts in tests |
 | Instance art génératif (shinoe-lab) | E2E-1 | todo — created live via Sofia guide |
 | Instance friction maximale | E2E-3 | todo — created live with strict prohibitions |
