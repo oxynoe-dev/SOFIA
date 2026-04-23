@@ -115,6 +115,77 @@ class TestLens(unittest.TestCase):
         self.assertNotIn("all", self.lens)
 
 
+class TestFailureModes(unittest.TestCase):
+    """Verify failure_modes structure in mirror.json."""
+
+    @classmethod
+    def setUpClass(cls):
+        records = scan_instances([FIXTURES])
+        cls.mirror = build_mirror(records)
+
+    def test_instance_has_failure_modes(self):
+        inst = self.mirror["instances"]["mini-instance"]
+        self.assertIn("failure_modes", inst)
+
+    def test_failure_modes_has_5_keys(self):
+        fm = self.mirror["instances"]["mini-instance"]["failure_modes"]
+        for mode in ("glissement", "usure", "ecrasement", "asymetrie", "instabilite"):
+            self.assertIn(mode, fm)
+
+    def test_each_mode_has_level(self):
+        fm = self.mirror["instances"]["mini-instance"]["failure_modes"]
+        valid_levels = {"ok", "signal", "alert"}
+        mode_keys = ("glissement", "usure", "ecrasement", "asymetrie", "instabilite")
+        for mode_name in mode_keys:
+            mode_data = fm[mode_name]
+            self.assertIn("level", mode_data, f"{mode_name} missing level")
+            self.assertIn(mode_data["level"], valid_levels, f"{mode_name} invalid level: {mode_data['level']}")
+
+    def test_glissement_has_indicators(self):
+        fm = self.mirror["instances"]["mini-instance"]["failure_modes"]["glissement"]
+        for key in ("non_resolution_rate", "recurrence_count", "reflexive_ratification", "cross_signal"):
+            self.assertIn(key, fm)
+
+    def test_usure_has_indicators(self):
+        fm = self.mirror["instances"]["mini-instance"]["failure_modes"]["usure"]
+        for key in ("challenge_pct_trend", "refuted_count_recent", "marker_entropy_trend", "delta_baseline_recent", "cross_signal"):
+            self.assertIn(key, fm)
+
+    def test_ecrasement_has_indicators(self):
+        fm = self.mirror["instances"]["mini-instance"]["failure_modes"]["ecrasement"]
+        for key in ("density_ratio", "revised_rate", "rejection_rate", "direction"):
+            self.assertIn(key, fm)
+
+    def test_asymetrie_has_indicators(self):
+        fm = self.mirror["instances"]["mini-instance"]["failure_modes"]["asymetrie"]
+        for key in ("direction_ratio", "per_persona"):
+            self.assertIn(key, fm)
+
+    def test_instabilite_has_indicators(self):
+        fm = self.mirror["instances"]["mini-instance"]["failure_modes"]["instabilite"]
+        for key in ("revised_rate_recent", "revised_dominant_windows", "recontestation_chains"):
+            self.assertIn(key, fm)
+
+    def test_mini_instance_no_alert(self):
+        """Mini-instance has too little data for any alert."""
+        fm = self.mirror["instances"]["mini-instance"]["failure_modes"]
+        mode_keys = ("glissement", "usure", "ecrasement", "asymetrie", "instabilite")
+        for mode_name in mode_keys:
+            self.assertNotEqual(fm[mode_name]["level"], "alert",
+                f"{mode_name} should not be alert on mini-instance")
+
+    def test_per_persona_diagnostics(self):
+        fm = self.mirror["instances"]["mini-instance"]["failure_modes"]
+        self.assertIn("per_persona", fm)
+        for p, diag in fm["per_persona"].items():
+            self.assertIn("modes", diag)
+            self.assertIn("dominant", diag)
+            self.assertIsInstance(diag["modes"], list)
+            for m in diag["modes"]:
+                self.assertIn("mode", m)
+                self.assertIn("level", m)
+
+
 class TestCrossInstance(unittest.TestCase):
     """Test "all" aggregation with duplicated fixture as 2 instances."""
 

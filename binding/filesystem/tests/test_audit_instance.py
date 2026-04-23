@@ -244,9 +244,9 @@ class TestSignals(unittest.TestCase):
         for s in signals:
             self.assertNotIn("equipe", s)
 
-    def test_domestication(self):
-        # Bob has no friction emitted -> should not trigger domestication
-        # (domestication requires markers, bob has none)
+    def test_usure(self):
+        # Bob has no friction emitted -> should not trigger usure
+        # (usure requires markers, bob has none)
         artifacts, _ = audit.scan_artifacts(FIXTURES)
         markers = audit.build_marker_totals(artifacts)
         # bob should have 0 markers total

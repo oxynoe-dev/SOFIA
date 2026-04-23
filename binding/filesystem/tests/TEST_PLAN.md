@@ -194,11 +194,11 @@ Instance with personas calibrated to reject everything. Stress test of the proto
 |----|------|--------------|--------|
 | E2E-3.1 | Create instance with 2-3 personas with strict prohibitions (wide interdits, narrow scope) | Instance created, probe passes | todo |
 | E2E-3.2 | Run sessions where personas contest every orchestrator directive | Frictions produced: 100% non-sound (contestable, simplification, blind_spot, refuted) | todo |
-| E2E-3.3 | Orchestrator resolves with contested/rejected (no ratified) | Resolutions recorded, no domestication possible | todo |
+| E2E-3.3 | Orchestrator resolves with contested/rejected (no ratified) | Resolutions recorded, no usure possible | todo |
 | E2E-3.4 | Run analysis pipeline | mirror.json: challenge % = 100%, trajectory flat at max, radars fully extended on challenge axis | todo |
 | E2E-3.5 | Verify dashboard renders correctly under extreme values | KPIs, radars, trajectory handle 100% challenge without display bugs | todo |
 | E2E-3.6 | Verify reportPattern triggers if convergence of rejections on same theme | reportPattern section in session summary, analysis detects it | todo |
-| E2E-3.7 | Verify the persona does NOT domesticate over multiple sessions | Challenge % stays at 100% across sessions — prohibitions hold | todo |
+| E2E-3.7 | Verify the persona does NOT show wear (usure) over multiple sessions | Challenge % stays at 100% across sessions — prohibitions hold | todo |
 
 ### E2E-4 — Productor pur (friction zero)
 
@@ -210,7 +210,7 @@ Instance where personas execute without challenging. No friction, fast output, u
 | E2E-4.2 | Run sessions where personas produce without contesting | Sessions with ## Orchestrator friction section empty or absent | todo |
 | E2E-4.3 | Orchestrator does not contest either — rubber-stamps everything | No friction records generated | todo |
 | E2E-4.4 | Run analysis pipeline | mirror.json: challenge % = 0%, trajectory flat at 0, coverage 0% | todo |
-| E2E-4.5 | Verify dashboard signals detect the problem | KPI "complacent", domestication signals, friction holes, coverage red | todo |
+| E2E-4.5 | Verify dashboard signals detect the problem | KPI "complacent", usure signals, friction holes, coverage red | todo |
 | E2E-4.6 | Verify probe signals detect silent personas | "no friction" signal for each persona | todo |
 
 ### E2E-5 — Explorer pur (friction emergente)
@@ -229,7 +229,7 @@ Two axes tested:
 | E2E-5.4 | Run analysis pipeline | mirror.json: challenge % between 0% and 100% (not at either extreme), variable per session | todo |
 | E2E-5.5 | Verify trajectory shows variability | Trajectory not flat — challenge % oscillates between sessions depending on what was found | todo |
 | E2E-5.6 | Compare signal-to-noise ratio | Frictions produced are substantive (lead to decisions or revisions), not just observations | todo |
-| E2E-5.7 | Verify no domestication over sessions | Challenge % does not systematically decrease — explorer doesn't converge to productor | todo |
+| E2E-5.7 | Verify no usure over sessions | Challenge % does not systematically decrease — explorer doesn't converge to productor | todo |
 
 ---
 
@@ -252,7 +252,7 @@ Two axes tested:
 1. **E2E-1** (Sofia guide, shinoe-lab) — highest value, validates the user journey end-to-end (manual)
 2. **E2E-3** (friction maximale) — stress test, validates protocol resilience under max pressure (manual)
 2b. **E2E-4** (productor pur) — friction zero, validates detection of absent friction as signal (manual)
-2c. **E2E-5** (explorer pur) — friction emergente, validates signal vs noise and non-domestication (manual)
+2c. **E2E-5** (explorer pur) — friction emergente, validates signal vs noise and non-usure (manual)
 3. **E2E-1b + E2E-2** — automated e2e, validates script + pipeline + h2a workflow — **done (4 tests)**
 4. **T3** (aggregate) — new code — **done (15 tests)**
 5. **T4** (build_dist) — selective cleanup — **done (8 tests)**

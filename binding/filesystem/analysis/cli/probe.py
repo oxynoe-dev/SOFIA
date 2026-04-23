@@ -2,7 +2,7 @@
 
 Reads instance directly (not records.json):
 - Structural conformity checks (PS/PP/PA/PF/AN/AR/AF/IS/IN/IR)
-- Signals (friction holes, domestication, etc.)
+- Signals (friction holes, usure/wear, etc.)
 - Context sizes per persona
 - Orchestrator friction from session summaries
 
@@ -895,20 +895,23 @@ def generate_signals(
     if no_friction_in:
         signals.append(f"Sans friction entrante : {', '.join(no_friction_in)}")
 
-    # Domestication inter-personas
+    # Usure inter-personas (was: domestication)
     for p in signalable:
         pm = marker_totals.get(p, {})
         total = sum(pm.values())
         if total > 0 and pm.get("sound", 0) == total:
-            signals.append(f"Domestication inter-personas (100% sound) : {p}")
+            signals.append(f"Usure inter-personas (100% sound) : {p}")
 
-    # Domestication orchestrator
+    # Usure orchestrateur (was: domestication orchestrator)
     for p, data in po_friction.items():
         if real_personas and p not in real_personas:
             continue
         total = data["sound"] + data["contestable"] + data["simplification"] + data["blind_spot"] + data["refuted"]
         if total > 0 and data["sound"] == total and data["total_sessions"] >= 10:
-            signals.append(f"Domestication orchestrateur (100% sound, {data['total_sessions']} sessions) : {p}")
+            signals.append(f"Usure orchestrateur (100% sound, {data['total_sessions']} sessions) : {p}")
+
+    # Note: glissement, ecrasement, asymetrie, instabilite are computed
+    # in mirror.py failure_modes (needs full friction_records with directions)
 
     return signals
 
