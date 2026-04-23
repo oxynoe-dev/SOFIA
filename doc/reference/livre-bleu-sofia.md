@@ -377,7 +377,7 @@ La méthode diagnostique des conditions cachées — surautomatisation, deskilli
 
 SOFIA a les mêmes conditions cachées que ce qu'elle dénonce. Elle exige une expertise domaine profonde — mais rien dans la méthode ne valide que l'orchestrateur la possède. Elle détecte les angles morts croisés — mais tous les personas sont calibrés par le même humain, avec les mêmes biais implicites. Elle documente la contamination factuelle — et elle-même l'a subie : une durée approximative propagée dans une trentaine de documents avant d'être corrigée. Elle prône la friction comme mécanisme de qualité — mais aucun mécanisme externe ne challenge la méthode elle-même.
 
-Ce n'est pas une faiblesse qu'on corrigera dans la prochaine version. C'est une propriété structurelle d'un système mono-orchestrateur. La seule parade connue est le regard extérieur — et ce regard, par définition, ne peut pas venir de l'intérieur.
+Ce n'est pas une faiblesse qu'on corrigera dans la prochaine version. C'est une propriété structurelle d'un système mono-orchestrateur. La seule parade connue est le regard extérieur.
 
 ### Trois profils, trois réalités
 

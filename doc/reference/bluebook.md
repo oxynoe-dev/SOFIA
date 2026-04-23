@@ -377,7 +377,7 @@ The method diagnoses hidden conditions — over-automation, deskilling, blind sp
 
 SOFIA has the same hidden conditions as what it denounces. It requires deep domain expertise — but nothing in the method validates that the orchestrator possesses it. It detects cross-persona blind spots — but all personas are calibrated by the same human, with the same implicit biases. It documents factual contamination — and suffered it itself: an approximate duration propagated across some thirty documents before being corrected. It advocates friction as a quality mechanism — but no external mechanism challenges the method itself.
 
-This isn't a weakness that will be fixed in the next version. It's a structural property of a single-orchestrator system. The only known countermeasure is an external perspective — and that perspective, by definition, cannot come from within.
+This isn't a weakness that will be fixed in the next version. It's a structural property of a single-orchestrator system. The only known countermeasure is an external perspective.
 
 ### Three profiles, three realities
 
