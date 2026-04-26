@@ -90,14 +90,6 @@ Not by asking "are you someone who seeks contradiction?" — everyone would say 
 
 ---
 
-## Consequence for communication
-
-Documentation, the site, and the blue book should allow the reader to recognize themselves — or not. No universal promise. A clear signal: "if you recognize yourself in this approach, here is a framework. If you don't, it's probably not for you — and that's OK."
-
-A method that says "you were already doing this, here's how to do it better and reproducibly" is more credible than a method that says "do what you've never done".
-
----
-
 ## Notes
 
 [^1]: The "fresh eye review" is a managerial practice: asking a new team member to produce a critical look at the existing state before acculturation closes their eyes. Same mechanism as SOFIA audit instances — exteriority as a condition of objectivity.
