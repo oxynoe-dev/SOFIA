@@ -26,10 +26,10 @@ A method for orchestrating specialized AI assistants on a project. Each assistan
 
 Five things to know before you start:
 
-1. **One persona = one strict role.** Define what it does NOT do before what it does. Constraint creates useful friction.
-2. **Friction is productive.** If all personas agree, they're useless. Disagreements are the mechanism.
-3. **The orchestrator decides. Always.** Personas propose, challenge, produce. You decide.
-4. **Files are the protocol.** Personas exchange through artifacts (notes, reviews, specs), not chat. Slowness forces clarity.
+1. **One persona = one strict role.** Define what it does NOT do before what it does.
+2. **Friction is productive.** If all personas agree, they're useless.
+3. **The orchestrator decides. Always.** Personas propose, you decide.
+4. **Files are the protocol.** Exchanges go through artifacts, not chat.
 5. **Start small, iterate.** One persona at launch. Others emerge from the work.
 
 ## Instance and project
@@ -48,11 +48,9 @@ Three configurations:
 | **Instance repo + project repo** — the standard case | Analysis history doesn't pollute the product repo |
 | **Instance repo + multiple projects** — cross-cutting personas | Roadmaps in shared/ make the link |
 
-## Orchestration — the orchestrator's role
+## Orchestration in practice
 
-### You are the message bus
-
-Personas don't talk to each other. You carry the context. You can open multiple terminals in parallel — one per persona — to accelerate exchanges:
+You are the message bus. Personas don't talk to each other — you carry the context:
 
 1. You open a session with a persona
 2. It produces a deliverable
@@ -61,38 +59,17 @@ Personas don't talk to each other. You carry the context. You can open multiple 
 5. You transmit the deliverable
 6. You collect the reaction
 
-Each transmission is a moment where you filter, reformulate, add context, decide what is relevant to transmit.
+Each transmission is a moment where you filter, reformulate, add context, decide what is relevant to transmit. It's slow — that's the price of quality.
 
-### What you don't delegate
+## How personas work in practice
 
-- **Prioritization** — which persona intervenes, in what order
-- **Consolidation** — synthesizing feedback from N personas
-- **Decision** — deciding when personas diverge
-- **Filtering** — what is relevant to transmit or not
-
-### The cost
-
-Orchestration takes time. It's the price of quality. If the exchange isn't worth the cost, the subject didn't need multiple personas.
-
-## How personas work
-
-### One persona = one strict role
-
-A persona is not a generic assistant. It is a constrained LLM: a name, a tone, a scope, and above all things it is **not allowed to do**.
-
-Constraint changes everything. An architect who doesn't code is forced to specify. A developer who doesn't decide architecture is forced to question. A strategist without code access thinks in value, not implementation.
-
-Define what the persona **does not do** before defining what it does.
-
-### Friction is the mechanism
-
-If all your personas agree, they're useless. Friction — an architect challenging the dev, a strategist questioning the priority — is the mechanism that produces better decisions.
+An architect who doesn't code is forced to specify. A developer who doesn't decide architecture is forced to question. A strategist without code access thinks in value, not implementation.
 
 Friction without an arbiter is chaos. The arbiter is you. You listen, question, then decide. A persona never validates its own proposals. A persona never forces acceptance of a decision.
 
-### Isolation — each persona in its space
+### Isolation
 
-Each persona operates in its own workspace. It sees only its files. It cannot read or write elsewhere. Isolation forces formal exchanges: to communicate, personas deposit artifacts in a shared space (`shared/`).
+Each persona works in its own workspace. To communicate, personas deposit artifacts in a shared space (`shared/`).
 
 ![Instance anatomy](../figures/fig-instance-anatomy.svg)
 
@@ -100,11 +77,11 @@ The orchestrator is the only one who crosses boundaries — carrying context, fi
 
 ### Files are the protocol
 
-Personas don't "discuss" — they exchange through **artifacts**: reviews, notes, specs. These artifacts are versioned, traceable, and readable by all. File-based exchange is slower than chat. That's the point. Slowness forces clarity.
+Personas exchange through **artifacts**: reviews, notes, specs. These artifacts are versioned, traceable, and readable by all. File-based exchange is slower than chat. That's the point.
 
 ### Emergence — personas appear from the work
 
-Subsequent personas are not planned. They emerge from the work. Every persona includes an **Emergence** section:
+Every persona includes an **Emergence** section:
 
 > *When you deflect a question because it's outside your scope, note the domain. If you deflect 3+ times on the same domain, signal it explicitly.*
 
@@ -112,11 +89,9 @@ The persona doesn't create the new persona — it signals the gap. You decide wh
 
 **Concrete example**: you're working with an architect. After a few sessions, it tells you 3 times "I don't code, you'd need someone to implement." That's the signal — a dev persona is needed. Not because you planned it, but because the work revealed the gap.
 
-### Traceability — if it's not traced, it doesn't exist
+### Traceability
 
 Every session produces a structured summary (Produced, Decisions, Shared notes, Open). The summary is the bridge to the next session — the persona reads it at opening. Without it, continuity is lost.
-
-Decisions are traced in ADRs (context, decision, alternatives, consequences). Exchanges are traced in artifacts with frontmatter (who, to whom, nature, status, date).
 
 ### The "no" test
 

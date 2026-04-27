@@ -72,7 +72,7 @@ The protocol instruments five failure modes — degradations of the friction mec
 
 - **Slip** — friction exists but is never arbitrated. Contestations are logged, resolutions never come. The protocol runs idle.
 - **Wear** — friction was real but the system has smoothed out. Personas soften their pushback, the orchestrator anticipates objections. The form of friction is preserved, the substance is gone.
-- **Crushing** — one side imposes by volume or insistence until the other yields. The contestation mechanism is intact but inoperative under pressure.
+- **Crush** — one side imposes by volume or insistence until the other yields. The contestation mechanism is intact but inoperative under pressure.
 - **Asymmetry** — friction flows in one direction only. One side challenges, the other never does. The mechanism is functional but blind on one side.
 - **Instability** — friction produces change but no convergence. Every revision is re-contested. The surfaces never settle.
 

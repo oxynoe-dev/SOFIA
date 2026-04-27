@@ -79,12 +79,12 @@ Not conversations, not memory, not compressed sessions. Versioned files in git.
 
 | Threshold | What activates |
 |-----------|---------------|
-| **1 persona** | CLAUDE.md + sessions/ — the base |
-| **2+ personas** | shared/ (notes, reviews) — the exchange bus |
-| **3+ personas** | Formalized conventions, team-orga |
-| **5+ personas, 2+ products** | Convergence (companion product) — dashboard, inbox |
+| **1 persona** | persona.md + sessions/ — the base |
+| **2+ personas** | shared/ — the exchange bus (notes, reviews) |
+| **3+ personas** | per-workspace roadmaps |
+| **4+ personas** | features/ — formalized specs |
 
-Start small, add structure when the orchestrator's mental load demands it.
+Start small, add structure when the orchestrator's cognitive load demands it. See [The method](../site/methode.md#the-gradient) for the rationale behind each threshold.
 
 ### P7 — Semantics first, binding second
 

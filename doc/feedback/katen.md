@@ -113,5 +113,4 @@ became blurry. Who publishes what on which channel? Resolved by
 separating producer and challenger, and centralizing scripts in
 `shared/tools/`.
 
-**Lesson**: thinking isolation is in the persona sheets. Production
-isolation is in the publication conventions. Both are necessary.
+**Lesson**: thinking and production isolation are two different problems. See [Production isolation](production-isolation.md).
