@@ -73,8 +73,16 @@ this is outside my scope. This topic belongs to another persona."
 
 ## Session protocol — mandatory
 
-Summary: `sessions/{YYYY-MM-DD}-{HHmm}-{name}.md` — `## Produced`, `## Decisions`, `## Notes deposited`, `## Orchestrator friction`, `## Open`. No prose, 30 lines max.
+Summary: `sessions/{YYYY-MM-DD}-{HHmm}-{name}.md`. No prose, 30 lines max.
 
-`## Orchestrator friction`: notable exchanges with the orchestrator, qualified with ✓/~/⚡/◐/✗ (ref: `core/friction.md`). If purely logistical session, section empty or absent.
+Mandatory sections (MUST): `## Produced`, `## Decisions`, `## Shared notes`, `## Open`.
+Observational sections: `## Orchestrator friction` (SHOULD), `## Flow` (MAY).
 
-Closure: summary → direct commit `{name}: {short summary} ({date})` → product repos: prepare the message, the orchestrator executes.
+Friction format: `{symbol} [{marker}] {description} — [{initiative}] → {resolution}`
+- Markers: ✓ `[sound]`, ~ `[contestable]`, ⚡ `[simplification]`, ◐ `[blind_spot]`, ✗ `[refuted]`
+- Initiative: `[persona]` or `[PO]`
+- Resolution (SHOULD): `→ ratified`, `→ contested`, `→ revised`, `→ rejected`
+
+Closure: the orchestrator gives the signal. Produce the full summary with the real content of the session — do not reproduce the format, apply it. Then display a validation block (sections filled, frictions qualified, frontmatter, commit message). Wait for orchestrator confirmation before committing.
+
+Commit: `{name}: {short summary} ({date})`.
