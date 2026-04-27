@@ -8,11 +8,10 @@ title: Understanding the method
 - A machine with a terminal (macOS, Linux, or WSL on Windows)
 - A code editor (VS Code recommended — Claude Code integrates as an extension)
 - Git installed
-- Node.js installed (for Claude Code)
 
 **Install Claude Code** (reference provider):
 ```bash
-npm install -g @anthropic-ai/claude-code
+curl -fsSL https://claude.ai/install.sh | sh
 ```
 
 SOFIA is provider-agnostic — the method works with any AI tool that can read a persona file and follow system instructions. With another provider (Mistral, Gemini, manual mode): copy the persona and context files as system instructions in your tool.
@@ -32,6 +31,48 @@ Five things to know before you start:
 3. **The orchestrator decides. Always.** Personas propose, challenge, produce. You decide.
 4. **Files are the protocol.** Personas exchange through artifacts (notes, reviews, specs), not chat. Slowness forces clarity.
 5. **Start small, iterate.** One persona at launch. Others emerge from the work.
+
+## Instance and project
+
+A **SOFIA instance** is not your project. It's the space where personas think. Your **project** (code, product, site) lives elsewhere.
+
+![Instance and project](../figures/fig-project-instance.svg)
+
+The instance thinks. The project delivers. Personas work in the instance and produce deliverables that land in the project. Commits in the instance are automatic. Commits in the project go through the orchestrator.
+
+Three configurations:
+
+| Config | When |
+|--------|------|
+| **Single repo** — instance lives in a subfolder of the project | Simple to start, separate when the need arises |
+| **Instance repo + project repo** — the standard case | Analysis history doesn't pollute the product repo |
+| **Instance repo + multiple projects** — cross-cutting personas | Roadmaps in shared/ make the link |
+
+## Orchestration — the orchestrator's role
+
+### You are the message bus
+
+Personas don't talk to each other. You carry the context. You can open multiple terminals in parallel — one per persona — to accelerate exchanges:
+
+1. You open a session with a persona
+2. It produces a deliverable
+3. You close the session
+4. You open a session with another persona
+5. You transmit the deliverable
+6. You collect the reaction
+
+Each transmission is a moment where you filter, reformulate, add context, decide what is relevant to transmit.
+
+### What you don't delegate
+
+- **Prioritization** — which persona intervenes, in what order
+- **Consolidation** — synthesizing feedback from N personas
+- **Decision** — deciding when personas diverge
+- **Filtering** — what is relevant to transmit or not
+
+### The cost
+
+Orchestration takes time. It's the price of quality. If the exchange isn't worth the cost, the subject didn't need multiple personas.
 
 ## How personas work
 
@@ -85,48 +126,6 @@ A well-calibrated persona says "no" regularly:
 - "This decision needs an ADR before I implement"
 
 If your persona never says no, its constraints are too loose.
-
-## Instance and project
-
-A **SOFIA instance** is not your project. It's the space where personas think. Your **project** (code, product, site) lives elsewhere.
-
-![Instance and project](../figures/fig-project-instance.svg)
-
-The instance thinks. The project delivers. Personas work in the instance and produce deliverables that land in the project. Commits in the instance are automatic. Commits in the project go through the orchestrator.
-
-Three configurations:
-
-| Config | When |
-|--------|------|
-| **Single repo** — instance lives in a subfolder of the project | Simple to start, separate when the need arises |
-| **Instance repo + project repo** — the standard case | Analysis history doesn't pollute the product repo |
-| **Instance repo + multiple projects** — cross-cutting personas | Roadmaps in shared/ make the link |
-
-## Orchestration — the orchestrator's role
-
-### You are the message bus
-
-Personas don't talk to each other. You carry the context. You can open multiple terminals in parallel — one per persona — to accelerate exchanges:
-
-1. You open a session with a persona
-2. It produces a deliverable
-3. You close the session
-4. You open a session with another persona
-5. You transmit the deliverable
-6. You collect the reaction
-
-Each transmission is a moment where you filter, reformulate, add context, decide what is relevant to transmit.
-
-### What you don't delegate
-
-- **Prioritization** — which persona intervenes, in what order
-- **Consolidation** — synthesizing feedback from N personas
-- **Decision** — deciding when personas diverge
-- **Filtering** — what is relevant to transmit or not
-
-### The cost
-
-Orchestration takes time. It's the price of quality. If the exchange isn't worth the cost, the subject didn't need multiple personas.
 
 ## Anti-patterns
 
