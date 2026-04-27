@@ -11,6 +11,14 @@ source: core/*.md, doc/concepts/architecture.md
 
 > Specialized roles that think with you. The product emerges from their friction.
 
+An AI assistant that can do everything does nothing well. It agrees too easily, forgets its scope, and produces generic output that reads like it could come from anywhere. The more capable the model, the worse the problem — because a powerful generalist is a convincing generalist.
+
+SOFIA is a method for turning general-purpose AI assistants into a team of specialized roles that constrain each other. Each role has a strict scope, explicit prohibitions, and a stance. They don't talk to each other — a human orchestrator carries the context between them, filters, reformulates, and decides. The friction between roles is not a side effect. It's the mechanism that produces better decisions.
+
+The method works with any AI provider that can read a system prompt. It was developed and validated across hundreds of sessions on real projects, not designed from theory. Everything in it — the principles, the duties, the failure modes — was extracted from observed dysfunction and success.
+
+SOFIA is for people who already use AI assistants and want more from them: sharper output, traceable decisions, and the ability to scale without losing quality. It requires an orchestrator who reads, questions, and decides — the method doesn't work on autopilot.
+
 ---
 
 ## Anatomy of a persona
