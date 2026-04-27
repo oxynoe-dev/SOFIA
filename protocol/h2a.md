@@ -103,11 +103,12 @@ The keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "MAY" are to be interpr
 | Reference | Contribution to H2A |
 |-----------|---------------------|
 | Sheridan & Verplank (1978) | 10 levels of autonomy — historical HITL framework |
-| Toulmin (1958) | Argumentation model — illuminates the 5 markers |
+| Toulmin (1958) | Argumentation model — structural analogy with the 5 markers (rebuttal ~ refuted, qualifier ~ contestable) |
 | Searle (1995) | Constitutive vs regulative rules — core/protocol/doc distinction |
 | Böckeler (2026) | Computational vs inferential — protocol/observational layer distinction |
 | Wood, Bruner & Ross (1976) | Scaffolding — asymmetric collaboration |
 | Elster (1979) | Precommitment — productive constraint |
+| Buçinca, Malaya & Gajos (2021) | Cognitive forcing functions — empirical ground for constitutive friction (without deliberate friction, humans accept AI output without examination) |
 
 ## Structural limitations
 
