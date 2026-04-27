@@ -259,7 +259,7 @@ Deskilling is already measurable. In medicine, adenoma detection rates by endosc
 
 Technology has its limits. So does the method.
 
-When the human disengages, the framework gives way. Four failure modes, all documented in the field.
+When the human disengages, the framework gives way. Six silent failures — the ones no dashboard detects. All documented in the field.
 
 **Factual contamination.** The web is contaminated at scale — models train on their own outputs, errors stabilize, correction becomes impossible. Shumailov et al. call it model collapse[^16]: each generation of model inherits the hallucinations of the previous one. Alemohammad et al. formalize it.
 
@@ -279,6 +279,8 @@ On Katen, Sofia's and Nora's scopes were defined by professional skill — visua
 
 On Katen, the SOFIA method documents friction well between reflection personas — architecture vs code vs strategy. It didn't document multi-persona production chains: who publishes what, on which channel, with which challenger. No persona raised it spontaneously. That's the structural limitation of a single-orchestrator system — and the only one that discipline can't solve. It requires an outside perspective.
 
+**Instrumentation bias.** The measurement layer is produced by the same assistants it measures. A worn persona under-qualifies its own frictions — it reports `[sound]` because it no longer sees the problem. The measurement inherits the biases of the measurer.
+
 **Cost transfer.** Constant human resources doesn't mean constant total resources. Augmentation shifts part of the effort to infrastructure — tokens, compute, energy. There's no magic: what the human no longer carries, the machine carries — and the machine consumes.
 
 On Katen, a work session with one persona consumes between several thousand and several tens of thousands of tokens. Five personas, daily sessions, months of project — the cumulative volume is significant. The method multiplies interactions by design: friction, cross-review, iterations. Every handoff between personas is a computational cost. The full-auto approach consumes differently — fewer round trips, but longer and less controlled chains. The problem isn't specific to the method. It's structural to any intensive use of LLMs.
@@ -287,7 +289,7 @@ The method is sustainable for the human. The question of its energy sustainabili
 
 But this cost isn't static. Epoch AI shows that frontier model capabilities become accessible on a consumer GPU within six to twelve months — and the gap is closing[^29]. What today requires a per-token API charge could tomorrow run locally, on hardware costing a few thousand euros. The cost transfer remains real, but its trajectory is deflationary.
 
-Full-auto tools don't document their failure modes. The method does.
+Full-auto tools don't document their failure modes. The method does. The protocol instruments five more — slip, wear, crush, asymmetry, instability. Those, the dashboard catches.
 
 These limits don't disqualify AI. Brynjolfsson et al. measure medium-term productivity gains across thousands of support agents[^6]. But these gains exist *under conditions*. They frame what you can expect — and what you must not delegate without a safety net.
 
