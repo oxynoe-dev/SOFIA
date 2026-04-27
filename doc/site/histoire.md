@@ -87,4 +87,4 @@ The method was born from constraints. The thesis came after.
 
 ---
 
-Continue → [The method](methode.html) · [Tutorial](tutorial.html)
+Continue → [The method](methode.html)
