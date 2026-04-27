@@ -39,9 +39,19 @@ from analysis.cli.scan import scan_instances, write_records
 from analysis.cli.mirror import build_mirror, write_mirror
 from analysis.cli.lens import build_lens, write_lens
 from analysis.cli.probe import probe_instances, write_probe
+from analysis.lib.constants import SCHEMA_VERSION, get_instance_sofia_version
 from sanitize import sanitize_records, sanitize_mirror, sanitize_lens, sanitize_probe
 
 DATA_DIR = Path(__file__).resolve().parent / "analysis" / "data"
+
+
+def _stamp(data: dict, sofia_versions: dict[str, str] | None = None) -> dict:
+    """Inject schema_version and sofia_versions into a JSON dict."""
+    data["schema_version"] = SCHEMA_VERSION
+    data["generated"] = datetime.now(timezone.utc).isoformat()
+    if sofia_versions:
+        data["sofia_versions"] = sofia_versions
+    return data
 
 
 def _write_index(out: Path, instances: list[str]):
@@ -78,6 +88,10 @@ def run_pipeline(instance_paths: list[Path], only: str | None = None,
 
     targets = {only} if only else views
 
+    # Collect protocol versions from each instance's sofia.md
+    instance_path_map = {p.name: p for p in instance_paths}
+    sofia_versions = {p.name: get_instance_sofia_version(p) for p in instance_paths}
+
     # --- Data pipeline (scan + mirror + lens) ---
     if targets & {"mirror", "lens"}:
         print("  Scanning instances...")
@@ -93,17 +107,18 @@ def run_pipeline(instance_paths: list[Path], only: str | None = None,
                 records_out = sanitize_records(records_out)
             write_records(records_out, inst_out / "records.json")
 
+            inst_ver = {inst_name: sofia_versions.get(inst_name, "unknown")}
             if "mirror" in targets:
                 mirror_single = build_mirror(single)
                 if sanitize:
                     mirror_single = sanitize_mirror(mirror_single)
-                write_mirror(mirror_single, inst_out / "mirror.json")
+                write_mirror(_stamp(mirror_single, inst_ver), inst_out / "mirror.json")
 
             if "lens" in targets:
                 lens_single = build_lens(single)
                 if sanitize:
                     lens_single = sanitize_lens(lens_single)
-                write_lens(lens_single, inst_out / "lens.json")
+                write_lens(_stamp(lens_single, inst_ver), inst_out / "lens.json")
 
             print(f"  ✓ {inst_name}/ — per-instance JSON")
 
@@ -119,14 +134,14 @@ def run_pipeline(instance_paths: list[Path], only: str | None = None,
             mirror = build_mirror(records)
             if sanitize:
                 mirror = sanitize_mirror(mirror)
-            write_mirror(mirror, out / "mirror.json")
+            write_mirror(_stamp(mirror, sofia_versions), out / "mirror.json")
             print(f"  ✓ mirror.json — {len(mirror['instances'])} instances (aggregated)")
 
         if "lens" in targets:
             lens = build_lens(records)
             if sanitize:
                 lens = sanitize_lens(lens)
-            write_lens(lens, out / "lens.json")
+            write_lens(_stamp(lens, sofia_versions), out / "lens.json")
             print(f"  ✓ lens.json — {len(lens['instances'])} instances (aggregated)")
 
         # Write index
@@ -145,17 +160,19 @@ def run_pipeline(instance_paths: list[Path], only: str | None = None,
             probe_single = {inst_name: inst_probe}
             if sanitize:
                 probe_single = sanitize_probe(probe_single)
-            write_probe(probe_single, inst_out / "probe.json")
+            inst_ver = {inst_name: sofia_versions.get(inst_name, "unknown")}
+            write_probe(_stamp(probe_single, inst_ver), inst_out / "probe.json")
+        # Print summary before stamping (stamp mutates the dict)
+        for name, pdata in probe_data.items():
+            checks = pdata["structure"]["checks"]
+            passed = sum(1 for c in checks if c["status"] == "pass")
+            warns = sum(1 for c in checks if c["status"] == "warn")
+            print(f"  ✓ probe.json — {name}: {passed} pass, {warns} warn")
         # Write aggregated probe
         probe_agg = probe_data
         if sanitize:
             probe_agg = sanitize_probe(probe_agg)
-        write_probe(probe_agg, out / "probe.json")
-        for name, data in probe_data.items():
-            checks = data["structure"]["checks"]
-            passed = sum(1 for c in checks if c["status"] == "pass")
-            warns = sum(1 for c in checks if c["status"] == "warn")
-            print(f"  ✓ probe.json — {name}: {passed} pass, {warns} warn")
+        write_probe(_stamp(probe_agg, sofia_versions), out / "probe.json")
 
 
 def main():

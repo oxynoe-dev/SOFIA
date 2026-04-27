@@ -10,7 +10,8 @@ function runProbe() {
     })
     .then(data => {
       PROBE_DATA = data;
-      const instances = Object.keys(data);
+      const _meta = new Set(['schema_version', 'sofia_versions', 'generated']);
+      const instances = Object.keys(data).filter(k => !_meta.has(k));
       subMenu.innerHTML = instances.map(name =>
         `<button data-inst="${name}" onclick="selectProbeInstance('${name}')">${name}</button>`
       ).join('') + `<button onclick="runProbe()" title="Relancer l'audit" style="margin-left:2rem; color:var(--ready); font-size:14px;">⟳ Probe</button>`;

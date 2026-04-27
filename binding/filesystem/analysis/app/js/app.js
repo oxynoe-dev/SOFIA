@@ -68,6 +68,17 @@ function switchTab(tab) {
   subMenu.classList.toggle('visible', tab === 'probe');
   filtersPanel.style.display = noSidebar ? 'none' : '';
 
+  // Show/hide filter controls per tab
+  // Period: lens + records only. Granularity: lens only.
+  var showPeriod = (tab === 'lens' || tab === 'records');
+  var showGran = (tab === 'lens');
+  var lblP = document.getElementById('lbl-period'), selP = document.getElementById('sel-period');
+  var lblG = document.getElementById('lbl-granularity'), selG = document.getElementById('sel-granularity');
+  if (lblP) lblP.style.display = showPeriod ? '' : 'none';
+  if (selP) selP.style.display = showPeriod ? '' : 'none';
+  if (lblG) lblG.style.display = showGran ? '' : 'none';
+  if (selG) selG.style.display = showGran ? '' : 'none';
+
   document.querySelectorAll('.tab-content').forEach(t => {
     t.style.paddingLeft = noSidebar ? '2rem' : '220px';
     if (tab === 'probe') t.style.paddingTop = '36px';
@@ -83,6 +94,7 @@ function switchTab(tab) {
     loadMirrorData().then(() => renderMap());
   }
   if (tab === 'mirror') loadMirrorData().then(() => renderMirror());
+  if (tab === 'records') loadMirrorData().then(() => renderRecords());
   if (tab === 'lens') loadLensData().then(() => renderCurrent());
   if (tab === 'legend') loadLegend();
 }
@@ -139,6 +151,7 @@ function initFilters(data) {
       const tabId = activeTab.id.replace('tab-', '');
       if (tabId === 'lens' && LENS_DATA) renderCurrent();
       if (tabId === 'mirror' && MIRROR_DATA) renderMirror();
+      if (tabId === 'records' && MIRROR_DATA) renderRecords();
     }
   });
   selPersona.addEventListener('change', () => {
@@ -147,9 +160,14 @@ function initFilters(data) {
       const tabId = activeTab.id.replace('tab-', '');
       if (tabId === 'lens' && LENS_DATA) renderCurrent();
       if (tabId === 'mirror' && MIRROR_DATA) renderMirror();
+      if (tabId === 'records' && MIRROR_DATA) renderRecords();
     }
   });
-  document.getElementById('sel-period').addEventListener('change', () => { if (LENS_DATA) renderCurrent(); });
+  document.getElementById('sel-period').addEventListener('change', () => {
+    if (LENS_DATA) renderCurrent();
+    const activeTab = document.querySelector('.tab-content.active');
+    if (activeTab && activeTab.id === 'tab-records' && MIRROR_DATA) renderRecords();
+  });
   document.getElementById('sel-granularity').addEventListener('change', () => { if (LENS_DATA) renderCurrent(); });
 
   populatePersonas();
@@ -280,9 +298,23 @@ document.querySelectorAll('.chart-card, .table-card, .score-card, .instance-card
   card.appendChild(inner);
 });
 
+// Records sort listener
+var recordsSort = document.getElementById('records-sort');
+if (recordsSort) recordsSort.addEventListener('change', () => { if (MIRROR_DATA) renderRecords(); });
+
 // Boot: load mirror data (for Map default view), init filters, render
 loadMirrorData().then(data => {
   initFilters(data);
+  // Display version in footer
+  var versions = data.sofia_versions || {};
+  var el = document.getElementById('footer-version');
+  if (el && Object.keys(versions).length) {
+    var vers = Object.values(versions);
+    var unique = [...new Set(vers)];
+    var label = unique.length === 1 ? unique[0] : unique.join(' / ');
+    var tag = 'v' + unique[0].replace(/-dev$/, '');
+    el.innerHTML = '<a href="https://github.com/oxynoe-dev/sofia/releases/tag/' + tag + '" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">' + label + '</a>';
+  }
   // Map is default — hide sidebar, render
   document.getElementById('filters-panel').style.display = 'none';
   document.querySelectorAll('.tab-content').forEach(t => t.style.paddingLeft = '2rem');

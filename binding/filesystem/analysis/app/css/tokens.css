@@ -69,6 +69,7 @@ main::-webkit-scrollbar-track { background: transparent; }
 main::-webkit-scrollbar-thumb { background: rgba(64,180,160,0.2); border-radius: 3px; }
 main::-webkit-scrollbar-thumb:hover { background: rgba(64,180,160,0.35); }
 main > .tab-content { max-width: 1200px; margin: 0 auto; padding: 24px 2rem 80px 220px; }
+main > #tab-records { max-width: none; }
 @media (max-width: 900px) { main > .tab-content { padding-left: 2rem; } }
 
 .hero {

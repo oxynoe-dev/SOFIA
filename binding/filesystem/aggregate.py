@@ -19,9 +19,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from analysis.lib.constants import SCHEMA_VERSION
 
 
 def _discover_instances(data_dir: Path) -> list[str]:
@@ -309,6 +313,27 @@ def _build_index(data_dir: Path, instances: list[str]) -> dict:
 # ── Main ──
 
 
+def _check_schema_version(data_dir: Path, instances: list[str]) -> bool:
+    """Check that all per-instance JSON share a compatible schema_version."""
+    versions = set()
+    for inst in instances:
+        for jsonfile in ["lens.json", "mirror.json"]:
+            raw = _load_json(data_dir / inst / jsonfile)
+            if raw and "schema_version" in raw:
+                versions.add(raw["schema_version"])
+    if not versions:
+        print("  ⚠ No schema_version found — legacy data, proceeding")
+        return True
+    if len(versions) > 1:
+        print(f"  ✗ Incompatible schema versions across instances: {versions}", file=sys.stderr)
+        return False
+    found = versions.pop()
+    if found != SCHEMA_VERSION:
+        print(f"  ✗ Schema version mismatch: data={found}, expected={SCHEMA_VERSION}. Re-run analysis.py.", file=sys.stderr)
+        return False
+    return True
+
+
 def aggregate(data_dir: Path):
     """Run full aggregation on a data directory."""
     instances = _discover_instances(data_dir)
@@ -316,23 +341,40 @@ def aggregate(data_dir: Path):
         print(f"⚠ No instances found in {data_dir}")
         return
 
+    if not _check_schema_version(data_dir, instances):
+        sys.exit(1)
+
     print(f"Found {len(instances)} instance(s): {', '.join(instances)}")
+
+    # Collect sofia_versions from per-instance JSON
+    sofia_versions = {}
+    for inst in instances:
+        raw = _load_json(data_dir / inst / "mirror.json") or _load_json(data_dir / inst / "lens.json")
+        if raw and "sofia_versions" in raw:
+            sofia_versions.update(raw["sofia_versions"])
+
+    def _stamp(data: dict) -> dict:
+        data["schema_version"] = SCHEMA_VERSION
+        data["generated"] = datetime.now(timezone.utc).isoformat()
+        if sofia_versions:
+            data["sofia_versions"] = sofia_versions
+        return data
 
     # Index
     index = _build_index(data_dir, instances)
-    _write_json(data_dir / "index.json", index)
+    _write_json(data_dir / "index.json", _stamp(index))
     print(f"  ✓ index.json")
 
     # Mirror
     mirror = _aggregate_mirror(data_dir, instances)
     if mirror["instances"]:
-        _write_json(data_dir / "mirror.json", mirror)
+        _write_json(data_dir / "mirror.json", _stamp(mirror))
         print(f"  ✓ mirror.json — {len(mirror['instances'])} instance(s)")
 
     # Lens
     lens = _aggregate_lens(data_dir, instances)
     if lens["instances"]:
-        _write_json(data_dir / "lens.json", lens)
+        _write_json(data_dir / "lens.json", _stamp(lens))
         print(f"  ✓ lens.json — {len(lens['instances'])} instance(s)")
 
     print(f"✓ Aggregation complete → {data_dir}")

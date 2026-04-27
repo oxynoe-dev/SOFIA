@@ -173,6 +173,8 @@ def build_dist(output: Path, data_dir: Path | None = None, sanitize: bool = Fals
     html_content = re.sub(r'<a href="#probe"[^>]*>Probe</a>', '', html_content)
     # Clean Probe from description text
     html_content = html_content.replace(' · <strong>Probe</strong> = conformity audit', '')
+    # Records: remove Description and Source columns (sanitized data has no descriptions)
+    html_content = html_content.replace('<th>Description</th>\n          <th>Source</th>', '')
     (output / "index.html").write_text(html_content, encoding="utf-8")
 
     print(f"✓ Dashboard built → {output}")

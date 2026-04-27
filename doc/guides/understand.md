@@ -61,6 +61,106 @@ You are the message bus. Personas don't talk to each other — you carry the con
 
 Each transmission is a moment where you filter, reformulate, add context, decide what is relevant to transmit. It's slow — that's the price of quality.
 
+## A session in practice
+
+Everything happens in the terminal. You open a session with a persona, work, close, switch. Here's a typical flow — two personas, one disagreement, one resolution.
+
+**Step 1 — Open a session with the architect.**
+
+```
+$ cd methodes/architecture
+$ claude
+
+You: hello
+
+> (reads CLAUDE.md → loads persona + context → reads last session summary)
+> Ready. What are we working on?
+```
+
+Each workspace has a `CLAUDE.md` that points to the persona and context files. You say hello, the assistant boots, loads them, then reads the last session summary to pick up where it left off.
+
+**Step 2 — You ask for a deliverable.**
+
+```
+You: Review the new isolation rules proposed by the dev.
+     The spec is in shared/notes/note-aurele-isolation-rules-axel.md
+
+> (reads the file, analyzes)
+> Three issues: rule 3 conflicts with the existing boundary protocol,
+> rule 5 introduces a dependency we explicitly prohibited in ADR-004,
+> and the scope of rule 7 is ambiguous.
+> I can write a review with my analysis.
+
+You: Go ahead.
+```
+
+**Step 3 — The persona produces and deposits an artifact.**
+
+```
+> Review written: shared/review/review-isolation-rules-aurele.md
+> Frontmatter: for: axel, type: review, status: pending
+```
+
+The review lives in `shared/` — visible to all personas, writable only by the author.
+
+**Step 4 — You close, switch, open with the dev.**
+
+```
+You: Let's close here.
+> (writes session summary → sessions/2026-04-28-1400-aurele.md)
+> aurele: review isolation rules, 3 issues flagged (28/04)
+
+You: Commit.
+```
+
+```
+$ cd produits/development
+$ claude
+
+You: hello
+
+> (reads CLAUDE.md → loads persona + context → reads last session summary)
+> Ready.
+
+You: The architect reviewed your isolation rules.
+     Read shared/review/review-isolation-rules-aurele.md
+```
+
+**Step 5 — Disagreement.**
+
+```
+> (reads the review)
+> I agree on rule 5 — I missed ADR-004. But rule 3 doesn't conflict:
+> the boundary protocol applies to cross-instance exchanges,
+> my rule covers intra-workspace. Different scope.
+```
+
+This is friction. The dev contests one point, accepts another. You — the orchestrator — now have a decision to make.
+
+**Step 6 — You arbitrate.**
+
+```
+You: Rule 3 — the dev is right, the scopes are different.
+     Rule 5 — drop it per ADR-004.
+     Rule 7 — rewrite with an explicit scope.
+```
+
+The dev revises. The architect's friction on rule 3 is marked `contestable → revised` in the session summary. Rule 5 is `sound → ratified`. That's the protocol working — positions are qualified, not just stated.
+
+**Step 7 — Close and commit.**
+
+```
+You: Close.
+> (writes session summary → sessions/2026-04-28-1500-axel.md)
+> Sections: Produced, Decisions, Shared notes, Open
+> Friction: ~ [contestable] rule 3 scope — [axel] → revised
+>           ✓ [sound] rule 5 ADR-004 conflict — [aurele] → ratified
+
+You: Commit.
+```
+
+Two sessions, one deliverable, one disagreement resolved. The entire exchange is traceable: session summaries, review artifact, qualified friction. No chat history needed — the files carry the context.
+
 ## How personas work in practice
 
 An architect who doesn't code is forced to specify. A developer who doesn't decide architecture is forced to question. A strategist without code access thinks in value, not implementation.

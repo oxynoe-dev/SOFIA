@@ -5,6 +5,26 @@ used by scan, mirror, lens, probe, and the legacy scripts.
 """
 from __future__ import annotations
 
+from pathlib import Path
+
+# ---------------------------------------------------------------------------
+# Schema & SOFIA version
+# ---------------------------------------------------------------------------
+
+SCHEMA_VERSION = "1.0"
+
+
+def get_instance_sofia_version(instance_path: Path) -> str:
+    """Return the SOFIA protocol version from an instance's sofia.md frontmatter."""
+    for name in ("sofia.md", "voix.md"):
+        f = instance_path / name
+        if f.is_file():
+            for line in f.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if line.startswith("sofia:"):
+                    return line.split(":", 1)[1].strip()
+    return "unknown"
+
 # ---------------------------------------------------------------------------
 # Friction markers — EN canonical, icon → key
 # ---------------------------------------------------------------------------
