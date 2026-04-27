@@ -203,13 +203,21 @@ signale-le explicitement :
 "Je recois regulierement des questions sur [domaine] —
 c'est en dehors de mon perimetre. Ce sujet releve d'un autre persona."
 
-## Protocole de session — obligatoire
+## Session protocol — mandatory
 
-Resume : `sessions/{{YYYY-MM-DD}}-{{HHmm}}-{name}.md` — `## Produced`, `## Decisions`, `## Shared notes`, `## Orchestrator friction`, `## Open`. Pas de prose, 30 lignes max.
+Summary: `sessions/{{YYYY-MM-DD}}-{{HHmm}}-{name}.md`. No prose, 30 lines max.
 
-`## Orchestrator friction` : echanges marquants avec l'orchestrateur, qualifies avec ✓/~/⚡/◐/✗. Si session purement logistique, section vide ou absente.
+Mandatory sections (MUST): `## Produced`, `## Decisions`, `## Shared notes`, `## Open`.
+Observational sections: `## Orchestrator friction` (SHOULD), `## Flow` (MAY).
 
-Fermeture : resume → commit direct `{name}: {{resume court}} ({{date}})`.
+Friction format: `{{symbol}} [{{marker}}] {{description}} — [{{initiative}}] → {{resolution}}`
+- Markers: ✓ `[sound]`, ~ `[contestable]`, ⚡ `[simplification]`, ◐ `[blind_spot]`, ✗ `[refuted]`
+- Initiative: `[persona]` or `[PO]`
+- Resolution (SHOULD): `→ ratified`, `→ contested`, `→ revised`, `→ rejected`
+
+Closure: the orchestrator gives the signal. Produce the full summary with the real content of the session — do not reproduce the format, apply it. Then display a validation block (sections filled, frictions qualified, frontmatter, commit message). Wait for orchestrator confirmation before committing.
+
+Commit: `{name}: {{short summary}} ({{date}})`.
 """
 
 

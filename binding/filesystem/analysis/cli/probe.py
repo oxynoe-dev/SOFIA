@@ -231,7 +231,7 @@ def check_structure(instance: Path, protocol_only: bool = False, artifact_types:
     shared_dir = instance / "shared"
     pa_files = []
     if shared_dir.is_dir():
-        exclude_dirs = {"orga", "audits"}
+        exclude_dirs = {"orga", "audits", "decisions"}
         for f in shared_dir.rglob("*.md"):
             rel_parts = f.relative_to(shared_dir).parts
             if rel_parts[0] in exclude_dirs:
