@@ -16,16 +16,19 @@
 
 <nav>
   <div class="brand"><svg class="logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64" fill="none"><defs><filter id="rg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="ng" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="32" cy="32" r="17" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="2" filter="url(#rg)"/><circle cx="32" cy="32" r="17" fill="none" stroke="rgba(167,139,250,0.55)" stroke-width="0.6"/><circle cx="32" cy="32" r="12" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="0.3"/><polygon points="32,20 41.4,24.5 43.7,34.2 37.2,42.8 26.8,42.8 20.3,34.2 22.6,24.5" fill="none" stroke="rgba(167,139,250,0.3)" stroke-width="0.4" stroke-linejoin="round"/><circle cx="32" cy="20" r="1.4" fill="#a78bfa" opacity="0.7" filter="url(#ng)"/><circle cx="41.4" cy="24.5" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="43.7" cy="34.2" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="37.2" cy="42.8" r="1.4" fill="#a78bfa" opacity="0.6" filter="url(#ng)"/><circle cx="26.8" cy="42.8" r="1.4" fill="#a78bfa" opacity="0.6" filter="url(#ng)"/><circle cx="20.3" cy="34.2" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="22.6" cy="24.5" r="1.4" fill="#a78bfa" opacity="0.65" filter="url(#ng)"/><circle cx="28" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/><circle cx="32" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/><circle cx="36" cy="32" r="1.2" fill="#a78bfa" opacity="0.8"/></svg> H2A <span>dashboard</span></div>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><button class="active" onclick="switchTab('map')">Map</button></li>
     <li><button onclick="switchTab('mirror')">Mirror</button></li>
     <li><button onclick="switchTab('lens')">Lens</button></li>
     <li><button onclick="switchTab('probe')">Probe</button></li>
     <li><button onclick="switchTab('legend')">Legend</button></li>
   </ul>
+  <button class="burger" id="burger" onclick="toggleBurger()"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="sub-menu" id="probe-instances-menu"></div>
+
+<button class="filters-toggle" id="filters-toggle" onclick="toggleFilters()">Filters</button>
 
 <div class="filters" id="filters-panel">
   <label>Instance</label>

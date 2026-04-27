@@ -37,8 +37,22 @@ function loadMirrorData() {
   return fetch('/mirror').then(r => r.json()).then(data => { MIRROR_DATA = data; return data; });
 }
 
+// ── Mobile toggles ──
+function toggleBurger() {
+  document.getElementById('burger').classList.toggle('open');
+  document.getElementById('nav-links').classList.toggle('open');
+}
+function toggleFilters() {
+  document.getElementById('filters-panel').classList.toggle('open');
+}
+
 // ── Tabs ──
 function switchTab(tab) {
+  // Close mobile burger on tab switch
+  var burger = document.getElementById('burger');
+  if (burger) { burger.classList.remove('open'); }
+  var navLinks = document.getElementById('nav-links');
+  if (navLinks) { navLinks.classList.remove('open'); }
   document.querySelector('main').scrollTop = 0;
   document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));

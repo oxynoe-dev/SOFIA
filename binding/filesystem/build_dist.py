@@ -125,9 +125,12 @@ def build_dist(output: Path, data_dir: Path | None = None, sanitize: bool = Fals
         }
         print("  🔒 Sanitize mode — stripping sensitive fields")
 
+    # Read from external data dir if provided, otherwise from internal DATA_DIR
+    data_src = external_data_dir if external_data_dir and external_data_dir.is_dir() else DATA_DIR
+
     data_out.mkdir(parents=True, exist_ok=True)
     for jsonfile in ["lens.json", "mirror.json"]:
-        src = DATA_DIR / jsonfile
+        src = data_src / jsonfile
         if src.is_file():
             if sanitizer and jsonfile in sanitizer:
                 with open(src) as f:
@@ -141,7 +144,7 @@ def build_dist(output: Path, data_dir: Path | None = None, sanitize: bool = Fals
                         json.dump(data, f, indent=2, ensure_ascii=False)
             else:
                 shutil.copy2(src, data_out / jsonfile)
-                if external_data_dir:
+                if external_data_dir and external_data_dir.resolve() != data_src.resolve():
                     external_data_dir.mkdir(parents=True, exist_ok=True)
                     shutil.copy2(src, external_data_dir / jsonfile)
         else:
