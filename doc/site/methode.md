@@ -61,6 +61,18 @@ This is where quality happens. When the orchestrator transmits a review from one
 
 It's slow. That's the cost of quality. If the exchange isn't worth the cost, the subject didn't need multiple personas.
 
+### Exchange flows
+
+![Elementary flow](figures/fig-elementary-flow.svg)
+
+Everything goes through the orchestrator. Two patterns:
+
+**Session (persona ↔ orchestrator)** — The orchestrator opens a session with a persona. Direct exchange — dialogue, arbitration, decisions. Friction is traced in the session with markers. The persona writes the summary in `sessions/`.
+
+**Message (persona ↔ persona)** — Persona A deposits an artifact in `shared/` (note, review, feature). The orchestrator reads, decides to route. The orchestrator opens a session with Persona B and presents the artifact. Persona B reads, responds, deposits their response in `shared/`. The orchestrator routes the response to Persona A in a subsequent session.
+
+Personas never talk directly. The orchestrator is the human router of all exchanges. Friction emerges at each step.
+
 ---
 
 ## Three pillars

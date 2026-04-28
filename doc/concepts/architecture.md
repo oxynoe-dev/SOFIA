@@ -267,26 +267,7 @@ The protocol/observational distinction traverses the MCD:
 
 ### Exchange flows
 
-![Elementary flow](../figures/fig-elementary-flow.svg)
-
-Everything goes through the orchestrator. Two patterns:
-
-#### Session (persona ↔ orchestrator)
-
-1. The orchestrator opens a session with a persona
-2. Direct exchange — dialogue, arbitration, decisions
-3. Friction is traced in the session with markers
-4. The persona writes the summary in `sessions/`
-
-#### Message (persona ↔ persona)
-
-1. Persona A deposits an artifact in `shared/` (note, review, feature)
-2. The orchestrator reads, decides to route
-3. The orchestrator opens a session with Persona B and presents the artifact
-4. Persona B reads, responds, deposits their response in `shared/`
-5. The orchestrator routes the response to Persona A in a subsequent session
-
-Personas never talk directly. The orchestrator is the human router of all exchanges. Friction emerges at each step.
+Two operational patterns — session (synchronous) and message (asynchronous). See [The method — Exchange flows](../site/methode.md#exchange-flows) for details.
 
 ### SOFIA Instance
 
