@@ -49,7 +49,7 @@ Starting points — not prescriptions.
 
 ---
 
-## Method
+## Concepts
 
 Foundational ideas behind the method.
 
@@ -59,8 +59,6 @@ Foundational ideas behind the method.
 | [Hidden Condition](../concepts/hidden-condition.md) | Target profile, cognitive trait |
 | [Failure Modes](../concepts/failure-modes.md) | How friction can fail — taxonomy |
 | [Derivation](../concepts/derivation-grammar.md) | Two modes of persona creation |
-| [History](histoire.md) | How SOFIA emerged — from context loss to intentional friction |
-| [Field Feedback](../feedback/) | Experience reports from real projects |
 
 ---
 
@@ -75,8 +73,6 @@ The method's invariants and protocol — what SOFIA *is*.
 | [Provider](../../provider/README.md) | Provider bindings (Claude Code, etc.) |
 | [Binding](../../binding/implementation.md) | Filesystem implementation |
 | [Glossary](../reference/lexique.md) | All SOFIA terms defined |
-| [Architecture](../concepts/architecture.md) | 5 layers + canvas, design principles |
-| [ADR](../adr/adrs.md) | Architecture decision records |
 
 ---
 

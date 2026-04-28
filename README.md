@@ -6,9 +6,9 @@
 
 ## Why SOFIA
 
-A single AI assistant can challenge when asked — but nothing in the structure guarantees that the challenge happens. The contestation depends on the practitioner remembering to ask, at the right moment, while the assistant maintains a critical stance across a conversation whose context drifts over time.
+A general-purpose AI assistant agrees too easily, forgets its scope, and produces generic output. After two hours, it loses the thread. The more capable the model, the worse the problem — a powerful generalist is a convincing generalist.
 
-SOFIA addresses two structural limitations. First, friction becomes organizational rather than accidental: multiple AI personas with constrained roles, explicit prohibitions, and a human orchestrator who arbitrates. The friction between roles surfaces blind spots and forces clarification — not because any individual persona is better at challenging, but because the structure makes contestation unavoidable. Second, each persona maintains a persistent memory through structured sessions, versioned artifacts, and isolated workspaces. What one session produces, the next session reads. Decisions, frictions, and contributions accumulate across sessions rather than evaporating with the conversation window.
+SOFIA turns one assistant into a team of constrained roles that challenge each other — and don't lose context between sessions. A human orchestrator arbitrates. The friction between roles is the mechanism that produces better decisions.
 
 ## What SOFIA is
 

@@ -19,7 +19,7 @@ Before contributing, read the getting started guide: [`doc/guides/getting-starte
 | `binding/` | Materialization (filesystem implementation, audit, analysis) | Semi-stable — evolves with tooling |
 | `provider/` | AI provider layer (Claude Code today, others planned) | Volatile — adapts to tools |
 | `canvas/` | Starting points (archetypes, artifact formats, patterns, workflows) | Open to contributions |
-| `doc/` | Guides, architecture, field feedback, ADR | Open to contributions |
+| `doc/` | Guides, [architecture](doc/concepts/architecture.md), [field feedback](doc/feedback/), [ADR](doc/adr/adrs.md) | Open to contributions |
 
 ## Conventions
 

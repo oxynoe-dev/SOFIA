@@ -168,3 +168,4 @@ The [dashboard](../audit/dashboard-guide.md) detects the instrumented modes. The
 - [Dashboard guide](../audit/dashboard-guide.md) — how to read failure mode tags in Mirror
 - [Hidden condition](hidden-condition.md) — orchestrator prerequisites as vulnerability factor
 - [Duties](../../core/duties.md) — the six non-delegable responsibilities
+- [Field feedback](../feedback/) — experience reports from real projects

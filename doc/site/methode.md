@@ -183,6 +183,8 @@ For detection thresholds, signals, and the causal map between the two classes, s
 
 The method was developed and validated on the Katen project — a formally verified orchestration engine for Data & AI pipelines, built with specialized AI personas across hundreds of sessions. The failure modes, the duties, the gradient — none of these were designed upfront. They were extracted from observed dysfunctions and successes over months of daily practice.
 
+[Read the full story →](histoire.md)
+
 ---
 
 Continue → [Understand](doc/guides-understand.html)
