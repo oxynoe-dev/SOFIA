@@ -120,7 +120,7 @@ class TestCreateInstance(unittest.TestCase):
         self._create()
         text = (self.instance / "shared" / "orga" / "contextes" / "contexte-alice-monprojet.md").read_text(encoding="utf-8")
         for section in ["Perimetre", "Documents cles", "Isolation", "Conventions",
-                        "Workflow", "Emergence", "Protocole de session"]:
+                        "Workflow", "Emergence", "Session protocol"]:
             self.assertIn(section, text, f"Section '{section}' absente de contexte")
 
     def test_contexte_has_friction_markers(self):

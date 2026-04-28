@@ -1,5 +1,32 @@
 # Changelog
 
+## v0.3.7 — Validation, dashboard Records, responsive, session walkthrough (2026-04-29)
+
+### Documentation
+- understand.md — full session walkthrough (7 steps: boot, deliverable, review, switch persona, disagreement, arbitrage, closure)
+- doc/concepts/failure-modes.md — taxonomy (instrumented / silent), signals, thresholds, governance duties-to-modes
+- Redundancy review — gradient aligned, duplicates replaced by cross-references (5 themes, P0/P1/P2)
+- methode.md — intro rewritten (problem, answer, anchoring, audience)
+- understand.md — reordered wide-to-precise, deduplicated from methode.md
+- getting-started.md — routing page (understand/setup-sofia/setup-manual/going-further)
+- fig-instance-anatomy.svg — orchestrator removed, layout tightened
+
+### Dashboard
+- Records tab — sortable table of all raw frictions (date, persona, marker, init, resolution, description, source). Filters: instance/persona/period. Description/source hidden in sanitize mode. HTML-escaped descriptions
+- Responsive mobile — burger nav, filter toggles, systematic stacking (breakpoint 768px)
+- Contextual filters per tab — period in lens+records only, granularity in lens only, hidden in mirror
+- Schema version — `schema_version` + `sofia_versions` injected in all JSON. Version visible in dashboard footer
+- Fix build_dist.py — --data-dir reads from source (was write-only)
+- Fix probe.js — filter stamp keys from instance list
+
+### Session protocol
+- Closure validation reformulated — persona produces real summary before validating conformance. Applied to 14 contexts (3 instances)
+- External instance feedback (M1-M3) — template H2A protocol injected, create-instance.py aligned, probe.py excludes decisions/
+
+### Tests
+- Fix test_create_instance — section name FR to EN ("Protocole de session" to "Session protocol")
+- 151 tests, all green
+
 ## v0.3.6 — Failure modes, documentation EN, pedagogical pass, fixtures (2026-04-23)
 
 ### Failure modes — tribology diagnostic
