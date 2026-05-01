@@ -327,7 +327,7 @@ Do not start the audit until these sources have been read.
 
 **Pass 1 — Structural compliance** (script)
 
-Run `python3 binding/filesystem/audit-instance.py <instance-root>` and read the generated report (`<instance>/shared/audits/audit-report.md`). The script checks 30 items (structure, frontmatter, naming, archiving, roadmaps) and produces exchange, friction, and activity matrices.
+Run `python3 binding/filesystem/analysis.py <instance-root> --only probe` and read the generated report. The script checks 30 items (structure, frontmatter, naming, archiving, roadmaps) and produces exchange, friction, and activity matrices.
 
 Sofia does not redo what the script does. She reads the results and identifies:
 - Recurring warnings (structural debt vs one-off oversight)

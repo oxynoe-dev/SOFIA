@@ -290,7 +290,7 @@ The persona MUST NOT close on its own or deposit an artifact without orchestrato
 
 | Tool | Role |
 |------|------|
-| `binding/filesystem/audit-instance.py` | Verifies instance protocol conformity |
+| `binding/filesystem/analysis.py --only probe` | Verifies instance protocol conformity |
 | `binding/filesystem/create-instance.py` | Scaffolds a new instance |
 | `sofia.md` | Meta persona — instantiates, audits. Protocol operator |
 

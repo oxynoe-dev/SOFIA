@@ -160,9 +160,8 @@ Separated from semantics (protocol/) to allow other materializations (REST API, 
 | Component | Role |
 |-----------|------|
 | `implementation.md` | Current stack, operations → concrete gestures mapping |
-| `filesystem/audit-instance.py` | Instance conformity |
 | `filesystem/create-instance.py` | Scaffolds a new instance |
-| `filesystem/analysis/` | Multi-instance analysis pipeline — scan, mirror, lens, probe |
+| `filesystem/analysis/` | Multi-instance analysis pipeline — scan, mirror, lens, probe (incl. conformity) |
 | `filesystem/analysis/analysis.html` | Interactive dashboard — Map, Mirror, Lens, Probe, Legend |
 | `filesystem/conventions.md` | Standard conventions template |
 

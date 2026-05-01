@@ -81,7 +81,7 @@
   <text x="127" y="336" text-anchor="middle" font-size="7" fill="rgba(220,120,90,0.45)">stack + operations mapping</text>
 
   <rect x="220" y="309" width="155" height="34" rx="5" fill="rgba(220,120,90,0.10)" stroke="rgba(220,120,90,0.25)" stroke-width="0.8"/>
-  <text x="297" y="324" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">audit-instance.py</text>
+  <text x="297" y="324" text-anchor="middle" font-size="9" font-weight="500" fill="#f0f8f5">probe.py</text>
   <text x="297" y="336" text-anchor="middle" font-size="7" fill="rgba(220,120,90,0.45)">conformity (60 tests)</text>
 
   <rect x="390" y="309" width="155" height="34" rx="5" fill="rgba(220,120,90,0.10)" stroke="rgba(220,120,90,0.25)" stroke-width="0.8"/>
