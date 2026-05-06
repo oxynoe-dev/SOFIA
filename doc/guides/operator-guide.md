@@ -19,6 +19,8 @@ These operations are constitutive of the SOFIA method. They are not optional fea
 | qualifyFriction() | automatic | closure | persona (pre-fills), orchestrator (validates) |
 | qualifyContribution() | automatic | closure | persona (pre-fills), orchestrator (validates) |
 | reportPattern() | automatic | persona (detection) | persona (observation), orchestrator (qualification) |
+| proposeConsultation() | manual | persona (in session) | persona (consultation note) |
+| authorizeConsultation() | manual | orchestrator | — |
 
 **Golden rule**: the persona does nothing without orchestrator instruction, except closure sections (friction, flow) and reportPattern.
 
@@ -241,6 +243,53 @@ The choice counter is auditable (protocol layer).
 
 ---
 
+## 10. Consultation
+
+**When**: a persona, in session, needs an expert opinion outside their scope. The expected input is short and focused, and a full session of the recipient persona would be heavier than necessary.
+
+**Two paired operations**:
+- `proposeConsultation()` — the emitter persona, in session, deposits a consultation note in `shared/notes/` (`nature: question`) and signals you that an expert opinion is needed. It does **not** spawn before your authorization.
+- `authorizeConsultation()` — you authorize (or decline) verbally. Once authorized, the emitter spawns the recipient sub-agent. The proposal-authorization sequence preserves invariant 3 — you remain the sole boundary-crosser.
+
+**Opportunity rule**: trigger consultation only when the arbitration requires expertise **outside your direct field**. Typical cases: dev → archi, archi → R&D, archi → terrain. Consultations on subjects within your direct field tend to be wasteful (cost without changing the decision).
+
+**Constraints** (prescriptive — they live in the prompt and depend on persona discipline):
+- **Depth 1** — the recipient sub-agent MUST NOT propose another consultation
+- **Minimal context** — only persona, context, and consultation note (no emitter session history, no other artifacts)
+- **Web search authorized** — for external reference verification only
+- **Continuity line** — the recipient's short session summary MUST contain a line in `## Open` pointing to the reply note, so the recipient sees the arbitrated outcome at next real-session boot
+
+**Example flow**:
+
+```
+[Aurele in session]
+> I need an R&D opinion on whether this mechanism aligns with Delphi or multi-agent debate.
+> Can I consult Solene?
+
+[Aurele deposits shared/notes/note-solene-spawn-mechanism-aurele.md (nature: question)]
+
+[Orchestrator]
+> Yes, go ahead.
+
+[Aurele spawns the Solene sub-agent with minimal context.
+ Solene reads persona + context + note, optionally web-searches references,
+ deposits shared/notes/note-aurele-spawn-mechanism-solene.md (nature: response, ref:)
+ and recherche/sessions/2026-05-05-1907-solene-spawn.md (short spawn summary).]
+
+[Orchestrator reads the reply, annotates each friction with its resolution tag
+ directly in the note, may add complementary actions.]
+
+[Aurele resumes their session with the input.]
+```
+
+**Frictions and resolution**: the reply note MAY carry frictions in the standard H2A format. Resolution tags are filled by you afterwards, directly in the reply note (consistent with `markDone()` for artifact resolution).
+
+**Distinction from escalation by note**: escalation opens a full session of the recipient, you route. Consultation opens a short one-shot sub-agent under your authorization, the emitter executes. Choose consultation when the input is short and focused. Choose escalation when the recipient's deep judgment is needed over time. See `canvas/workflows/consultation.md`.
+
+**Reference**: `protocol/exchange.md` §Consultation, `canvas/workflows/consultation.md`, `binding/implementation.md` §Consultation.
+
+---
+
 ## Summary
 
 | Operation | Mode | Who triggers | Who produces |
@@ -254,5 +303,7 @@ The choice counter is auditable (protocol layer).
 | qualifyFriction() | automatic | closure | persona (pre-fills), orchestrator (validates) |
 | qualifyContribution() | automatic | closure | persona (pre-fills), orchestrator (validates) |
 | reportPattern() | automatic | persona (detection) | persona (observation), orchestrator (qualification) |
+| proposeConsultation() | manual | persona (in session) | persona (consultation note) |
+| authorizeConsultation() | manual | orchestrator | — |
 
-**Golden rule**: the persona does nothing without orchestrator instruction, except closure sections (friction, flux) and reportPattern.
+**Golden rule**: the persona does nothing without orchestrator instruction, except closure sections (friction, flow) and reportPattern.

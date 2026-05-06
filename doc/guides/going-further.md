@@ -17,8 +17,15 @@ title: Going further
 
 - [H2A](../../protocol/h2a.md) — the coordination protocol
 - [Friction](../../protocol/friction.md) — markers, resolutions, lineage
-- [Exchange](../../protocol/exchange.md) — sessions, artifacts, routing
+- [Exchange](../../protocol/exchange.md) — sessions, artifacts, consultation, routing
 - [Contribution](../../protocol/contribution.md) — epistemic flow
+
+## Consultation pattern
+
+Inter-persona expert input via authorized one-shot spawn (v0.3.8). Use when the input is short and focused, and a full session of the recipient persona would be heavier than necessary. The orchestrator authorizes each consultation — invariant 3 (Isolation) is preserved.
+
+- [Consultation workflow](../../canvas/workflows/consultation.md) — when to use, structure, distinction from escalation
+- [Exchange §Consultation](../../protocol/exchange.md) — protocol specification
 
 ## The provider
 

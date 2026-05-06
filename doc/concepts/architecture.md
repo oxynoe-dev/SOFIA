@@ -136,7 +136,7 @@ The invariants. Remove them and it is no longer SOFIA.
 |----------|---------|---------------------|
 | `h2a.md` | Invariants, operations, protocol/observational distinction | Entities, invariants, auditability criterion |
 | `friction.md` | 5 markers, 4 PXP resolutions, mutability, reportPattern() | Ratio per assistant, failure mode detection (wear, slip, crush, asymmetry, instability) |
-| `exchange.md` | Sessions (synchronous) and artifacts (asynchronous), frontmatter, naming | Frequency, assistant, date, friction section |
+| `exchange.md` | Sessions (synchronous), artifacts (asynchronous), consultations (one-shot under authorization), frontmatter, naming | Frequency, assistant, date, friction section |
 | `contribution.md` | Epistemic flow — direction (H/A), type (substance, structure, contestation, decision) | H/A tags, substance/structure ratio |
 
 **5 H2A invariants**:
@@ -202,7 +202,7 @@ Everything else. Recommended, not required.
 | `architecture.md` | This document |
 | `getting-started.md` | Complete guide — from prerequisites to first friction |
 | `getting-started.md` | Getting started without Sofia |
-| `operator-guide.md` | 9 H2A operations from the orchestrator's view |
+| `operator-guide.md` | 11 H2A operations from the orchestrator's view |
 | `derivation-grammar.md` | Persona derivation grammar (2 modes, 8 steps) |
 | `hidden-condition.md` | Target profile, self-diagnosis |
 | `bluebook.md` | Blue book in .md |
@@ -223,7 +223,7 @@ Everything else. Recommended, not required.
 | Level | Entities | Nature |
 |-------|---------|--------|
 | **Topology** | Orchestrator, Instance, Space, Persona | The structure — who, where, in what |
-| **Interaction** | Exchange | The flow — sessions and artifacts |
+| **Interaction** | Exchange | The flow — sessions, artifacts, consultations |
 | **Observation** | Friction, Contribution | The signals — epistemic positions and inputs |
 
 ### Entities
@@ -234,7 +234,7 @@ Everything else. Recommended, not required.
 | **Instance** | Method deployment on a project. Identified by `sofia.md` | identifier, spaces, method_version |
 | **Space** | Isolated perimeter of a persona. 1 persona = 1 space | identifier, persona, shared |
 | **Persona** | Constrained role. 7 dimensions (identity, stance, scope, deliverables, prohibitions, challenge, collaboration) | 7 dimensions |
-| **Exchange** | Interaction trace — `session` (synchronous) or `artifact` (asynchronous deposit) | type, instance, space, date |
+| **Exchange** | Interaction trace — `session` (synchronous), `artifact` (asynchronous deposit), or `consultation` (one-shot authorized) | type, instance, space, date |
 | **Friction** | Qualified epistemic position. 5 markers, 4 PXP resolutions | marker, initiative, resolution, description |
 | **Contribution** | Epistemic input. Direction (H/A) + type (substance, structure, contestation, decision) | direction, type, description |
 
@@ -266,7 +266,7 @@ The protocol/observational distinction traverses the MCD:
 
 ### Exchange flows
 
-Two operational patterns — session (synchronous) and message (asynchronous). See [The method — Exchange flows](../site/methode.md#exchange-flows) for details.
+Three operational patterns — session (synchronous), artifact (asynchronous), and consultation (one-shot under authorization). See [The method — Exchange flows](../site/methode.md#exchange-flows) for details.
 
 ### SOFIA Instance
 
