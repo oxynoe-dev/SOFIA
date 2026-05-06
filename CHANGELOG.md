@@ -1,5 +1,34 @@
 # Changelog
 
+## v0.3.8 — Inter-persona consultation (2026-05-06)
+
+### Protocol
+- New consultation mechanism — third exchange mode alongside sessions and artifacts. A persona in session proposes a short one-shot consultation of another persona; the orchestrator authorizes; a sub-agent of the recipient is spawned with minimal context (persona, context, consultation note only). Web search authorized for external reference verification. Depth 1 (no recursive consultation). Preserves invariant 3 (Isolation) via the proposal-authorization sequence
+- 2 new operations in `protocol/h2a.md`: `proposeConsultation()` (persona-initiated), `authorizeConsultation()` (orchestrator-initiated)
+- 4 new structural limitations documented in `protocol/h2a.md`: context-minimal not technically enforced, depth-1 not technically enforced, emitter capture, persona performativity
+
+### Decision
+- ADR-015 — Inter-persona consultation via spawn (Accepted, 2026-05-05). Rationale: Delphi method as theoretical anchoring, explicit distinction from multi-agent debate / LLM-as-judge / ensemble methods. Three options weighed (documented violation, composed operation under authorization, invariant revision) — composed under authorization chosen to preserve invariant 3
+
+### Documentation
+- `protocol/exchange.md` — new §Consultation section (principle, definition, lifecycle, constraints, opportunity rule, friction and resolution, distinction from escalation)
+- `protocol/h2a.md` — operations table + structural limitations updated
+- `binding/implementation.md` — filesystem mapping for consultation operations, short-summary format (`session: "HHmm-spawn"`, `trigger:` field), prescriptive constraints documented
+- `canvas/workflows/consultation.md` — new workflow canvas (when, structure, distinction from escalation, constraints, risks)
+- `canvas/artifacts/session.md` — spawn variant added (lighter format, mandatory continuity line)
+- `doc/concepts/architecture.md` — exchange description, MCD entity Exchange, Interaction level, operator-guide ops count (9 → 11), Exchange flows (2 → 3 patterns)
+- `doc/guides/operator-guide.md` — §10 Consultation, two summary tables incremented
+- `doc/guides/going-further.md` — Consultation pattern section
+- `doc/reference/lexique.md` — Consultation and Spawn entries
+
+### Method
+- First empirical test 2026-05-05 (Aurele → Solene) — Delphi confirmed as theoretical anchoring, two new risks identified (#5 persona performativity, #6 cost/benefit asymmetry), opportunity rule emerged: trigger consultation only when arbitration requires expertise outside the orchestrator's direct field
+- Friction granularity: no global pxp_tag at note level (aggregation loses information); resolutions remain at friction level
+- Experimental tracking initiated: orchestrator post-arbitration auto-evaluation on next 3-5 spawns to assess decision-level value-add
+
+### Tests
+- 151 tests, all green
+
 ## v0.3.7 — Validation, dashboard Records, responsive, session walkthrough (2026-04-29)
 
 ### Documentation
