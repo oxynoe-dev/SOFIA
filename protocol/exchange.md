@@ -166,3 +166,73 @@ The emitting persona does not need to know the recipient's instance. The orchest
 ### Archiving
 
 When an artifact moves to `status: done`, it SHOULD be archived. The archiving mechanism is defined in `binding/implementation.md`.
+
+---
+
+## Consultation
+
+### Principle
+
+A consultation is a short one-shot session of a recipient persona, **proposed** by an emitter persona and **authorized** by the orchestrator before execution. It is a third exchange mode alongside sessions and artifacts, intended for cases where the emitter needs an expert opinion outside their scope and a full session of the recipient would be heavier than necessary.
+
+The consultation preserves invariant 3 (Isolation): the orchestrator remains the sole boundary-crosser, even when the technical execution is delegated to the emitter. The proposal-authorization sequence ensures no persona crosses unilaterally. See `doc/adr/adr-015.md`.
+
+### Definition
+
+A consultation is composed of three exchange units:
+- A **consultation note** (artifact, `nature: question`) deposited by the emitter
+- A **reply note** (artifact, `nature: response`, `ref:` to the consultation note) deposited by the recipient sub-agent
+- A **short session summary** in the recipient's space documenting the spawn
+
+### Specific dimensions
+
+| Dimension | Values | Required |
+|-----------|--------|----------|
+| **emitter** | Persona proposing the consultation | MUST |
+| **recipient** | Persona consulted | MUST |
+| **authorization** | Orchestrator gesture authorizing the spawn | MUST |
+| **trigger** | Reference to the consultation note (filename without extension) | MUST |
+
+### Lifecycle
+
+1. **Propose** — the emitter persona, in session, deposits the consultation note in the shared space and signals to the orchestrator that a consultation is needed.
+2. **Authorize** — the orchestrator MUST explicitly authorize or deny the consultation before execution. Without authorization, the emitter MUST NOT spawn.
+3. **Spawn** — once authorized, the recipient sub-agent is launched with the minimal context defined below. The implementation mechanism is defined in `binding/implementation.md`.
+4. **Reply** — the sub-agent produces a reply note (`nature: response`, `ref:`) in the shared space and a short session summary in its own space.
+5. **Arbitrate** — the orchestrator reads the reply, annotates each friction with its resolution tag (consistent with §Artifact resolution), and may trigger follow-up actions.
+
+### Constraints
+
+| Constraint | Rule |
+|------------|------|
+| **Recursion** | Depth 1 — the recipient sub-agent MUST NOT propose another consultation. If further expertise is needed, it MUST signal it in the short summary's `Open` section. |
+| **Context** | Minimal — the sub-agent receives only its persona file, its context file, and the consultation note. No emitter session history, no other artifacts. |
+| **Web search** | Authorized — the sub-agent MAY perform web searches to verify a reference or check an external fact. This relaxation applies only to external sources. |
+| **Continuity** | The short summary MUST contain a line in `## Open` instructing the recipient to read the arbitrated reply note at the next real session. Without this, the consultation outcome is invisible to the recipient on reboot. |
+
+These constraints are prescriptive — they live in the prompt and in persona discipline. The protocol does not technically guarantee them. See `protocol/h2a.md` §Structural limitations.
+
+### Opportunity rule
+
+A consultation SHOULD be triggered only when the orchestrator's arbitration requires expertise outside their direct field. Typical cases: dev → archi, archi → R&D, archi → terrain. Consultations on subjects within the emitter's own field tend to be wasteful — cost without added value to the decision.
+
+### Friction and resolution
+
+A reply note MAY carry frictions in the standard H2A format (see `friction.md`). Resolution tags are filled by the orchestrator afterwards, directly in the reply note (consistent with §Artifact resolution).
+
+No global resolution tag at the note level — resolutions remain at the friction granularity. A note containing both `→ ratified` and `→ rejected` cannot be summarized by a single tag without losing information.
+
+### Short session summary
+
+The short summary lives in `{recipient-space}/sessions/` with a name carrying a `-spawn` marker (e.g., `2026-05-05-1907-solene-spawn.md`). It carries the standard session frontmatter plus a `trigger:` field pointing to the consultation note. The format is lighter than a regular session summary: minimal sections, fewer lines. The exact format is defined in `binding/implementation.md`.
+
+### Distinction from escalation by note
+
+The escalation pattern (`canvas/workflows/note-escalation.md`) and the consultation differ on two axes:
+
+| Axis | Escalation | Consultation |
+|------|-----------|--------------|
+| Recipient mode | Full session opened by the orchestrator | Short one-shot sub-agent spawned by the emitter under authorization |
+| Initiative | Orchestrator routes after reading the note | Emitter proposes, orchestrator authorizes |
+
+Both remain valid. The consultation is preferred for short, focused expert input; the escalation for cases requiring the recipient's full context and judgment over time.

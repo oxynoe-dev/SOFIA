@@ -16,3 +16,4 @@
 | 012 | Extraction of the binding layer | Accepted | 2026-04-16 |
 | 013 | Technical identifiers in English | Accepted | 2026-04-16 |
 | 014 | Rename implementation/ → binding/, runtime/ → provider/ | Accepted | 2026-04-20 |
+| 015 | Inter-persona consultation via spawn | Accepted | 2026-05-05 |

@@ -65,6 +65,13 @@ New to SOFIA? Read these 10 entries first, in this order:
 **Context**: Core method design. Constraint creates separation, challenge creates friction, arbitration creates decisions.
 **Ref**: `core/principles.md`, `doc/site/methode.md`.
 
+## Consultation
+
+**Definition**: A short one-shot session of a recipient persona, proposed by an emitter persona and authorized by the orchestrator. Third exchange mode alongside sessions and artifacts.
+**Context**: Used when the emitter needs an expert opinion outside their scope and a full session of the recipient would be heavier than necessary. Depth 1, minimal context, web search authorized. Preserves invariant 3 via the proposal-authorization sequence.
+**Not to be confused with**: escalation by note (full session opened by the orchestrator) or session (synchronous interaction with one persona, no proposal-authorization step).
+**Ref**: `protocol/exchange.md` §Consultation, `doc/adr/adr-015.md`, `canvas/workflows/consultation.md`.
+
 ## Contribution
 
 **Definition**: An epistemic input during an exchange — who brought what.
@@ -316,6 +323,13 @@ New to SOFIA? Read these 10 entries first, in this order:
 **Definition**: The isolated perimeter of a persona — one persona, one space.
 **Context**: A constitutive entity of the H2A model. Contains the persona's workspace and sessions.
 **Not to be confused with**: shared space (the exchange bus) or workspace (the implementation directory).
+
+## Spawn
+
+**Definition**: The technical mechanism by which a recipient sub-agent is launched as part of a consultation. Implementation-level term — the protocol-level term is *consultation*.
+**Context**: Provider-specific. In Claude Code, implemented via the `Agent` tool with a constrained prompt (minimal context, depth 1, web search authorized for external references only). Constraints are prescriptive, not technically enforced.
+**Not to be confused with**: consultation (the protocol mechanism — proposal + authorization + spawn + reply + arbitration).
+**Ref**: `binding/implementation.md` §Consultation — filesystem implementation.
 
 ## Validation without reading (validation sans regard)
 

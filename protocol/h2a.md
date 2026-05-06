@@ -52,6 +52,8 @@ Implicit operations derived from entities and dimensions. Their explicit formali
 | qualifyFriction() | persona (pre-fills), orchestrator (validates) | Friction |
 | qualifyContribution() | persona | Contribution |
 | reportPattern() | persona | Friction — meta-operation (see `friction.md`) |
+| proposeConsultation() | persona (in session) | Exchange (consultation), Persona (emitter, recipient) |
+| authorizeConsultation() | orchestrator | Exchange (consultation) — preserves invariant 3 |
 
 ## Protocol / observation distinction
 
@@ -120,6 +122,10 @@ The protocol documents what it cannot guarantee. These limitations are inherent 
 | **Uninstrumented friction** | A participant can express positions in free text without markers. The signal is lost to the protocol. | Friction template in contexts. Depends on participant discipline. |
 | **Silent lineage** | If the `antecedent` field is omitted, the friction chain is broken without signal. The protocol cannot guess that one friction resolves another. | Validation block before commit. Hooks (v0.4). |
 | **Cross-instance exchanges** | Cross-instance routing depends entirely on the orchestrator. No automatic discovery or routing mechanism between instances. | Formalized in `exchange.md` §Cross-instance exchanges. Artifact MUST be deposited in the recipient's shared space. |
+| **Consultation context-minimal not enforced** | A spawned sub-agent's prompt instructs which files to read; nothing prevents reading more. | Prescriptive convention; persona discipline. |
+| **Consultation depth-1 not enforced** | A spawned sub-agent could technically propose another consultation. | Prescriptive convention in the prompt; signal in `Open` section instead. |
+| **Emitter capture** | The emitter formulates the consultation question; alternative framings are not visible to the recipient. | Orchestrator MAY augment the consultation note before authorization. |
+| **Persona performativity (consultation)** | A short-spawned persona may over-perform its persona compared to a long real session. | Comparative audit of spawn vs real-session output (post-tracking). |
 
 ## Origin
 

@@ -280,11 +280,90 @@ Mapping of H2A operations (see `protocol/h2a.md`) to the current implementation.
 | qualifyFriction() | automatic | The persona pre-fills the `## Orchestrator friction` section at closure. The orchestrator validates or corrects |
 | qualifyContribution() | automatic | The persona pre-fills the `## Flow` section at closure. The orchestrator validates or corrects |
 | reportPattern() | automatic | The persona detects a thematic convergence of rejections during the session. It challenges the orchestrator with the observation + 3 argued hypotheses. The orchestrator responds with their choice + justification. At closure, the persona records in a `## reportPattern` section of the summary |
+| proposeConsultation() | manual | The emitter persona, in session, deposits a consultation note (`nature: question`) in `shared/notes/` and signals to the orchestrator that an expert opinion is needed. The persona MUST NOT spawn before authorization |
+| authorizeConsultation() | manual | The orchestrator authorizes the consultation verbally. Once authorized, the emitter persona spawns the recipient sub-agent with the minimal context (persona file + context file + consultation note). See `### Consultation — filesystem implementation` below |
 
 **Manual** = the orchestrator triggers with an explicit gesture.
 **Automatic** = the persona produces at session closure, the orchestrator validates.
 
 The persona MUST NOT close on its own or deposit an artifact without orchestrator instruction.
+
+### Consultation — filesystem implementation
+
+The consultation mechanism (see `protocol/exchange.md` §Consultation) maps onto the filesystem as follows.
+
+**Consultation note** — deposited by the emitter persona in `shared/notes/`:
+
+```yaml
+---
+from: emitter-persona
+to: recipient-persona
+nature: question
+status: new
+date: YYYY-MM-DD
+---
+```
+
+Filename follows the standard note convention (instance-defined), e.g. `note-{recipient}-{subject}-{emitter}.md`.
+
+**Reply note** — deposited by the recipient sub-agent in `shared/notes/` after authorized spawn:
+
+```yaml
+---
+from: recipient-persona
+to: emitter-persona
+nature: response
+status: new
+date: YYYY-MM-DD
+ref: consultation-note-id
+---
+```
+
+The reply note carries the recipient's substantive opinion, optional friction markers (standard H2A format), and any complementary actions. Resolution tags are filled by the orchestrator afterwards directly in this file.
+
+**Short session summary** — deposited by the recipient sub-agent in its own space:
+
+```
+{recipient-space}/sessions/{YYYY-MM-DD}-{HHmm}-{persona}-spawn.md
+```
+
+Frontmatter:
+
+```yaml
+---
+persona: recipient-persona
+date: YYYY-MM-DD
+session: "HHmm-spawn"
+trigger: consultation-note-id
+---
+```
+
+The `-spawn` suffix in the filename and the `HHmm-spawn` value distinguish a spawn summary from a regular session summary. The `trigger:` field is mandatory — it points to the consultation note (filename without extension).
+
+The summary is lighter than a regular session summary:
+
+```markdown
+## Produced
+- reply-note-id
+
+## Friction
+- ref: reply-note (or "none")
+
+## Open
+- {pending items}
+- A reprendre prochaine session vraie : lire arbitrages + actions complementaires dans {reply-note-id} (note arbitree ou non — verifier l'etat)
+```
+
+The last line in `## Open` is mandatory and ensures the recipient persona, on next real-session boot, sees that a spawn happened and the arbitrated reply must be consulted. Without it, the consultation outcome is invisible to the recipient.
+
+**Spawn execution** — the technical mechanism depends on the AI provider. In Claude Code (current provider), the emitter persona uses the `Agent` tool to launch a sub-agent with a prompt that:
+- Lists the exact files the sub-agent must read (persona file, context file, consultation note)
+- Forbids reading other files (instance state, emitter session history, other artifacts)
+- Forbids further consultations (depth 1)
+- Authorizes web search for external reference verification only
+- Requires production of the reply note and the short summary at the paths defined above
+
+These constraints are prescriptive — they live in the prompt and depend on the sub-agent's compliance. The protocol does not technically guarantee them. See `protocol/h2a.md` §Structural limitations.
 
 ### Tooling
 
