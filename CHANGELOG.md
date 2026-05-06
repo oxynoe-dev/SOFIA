@@ -14,6 +14,7 @@
 - `protocol/exchange.md` — new §Consultation section (principle, definition, lifecycle, constraints, opportunity rule, friction and resolution, distinction from escalation)
 - `protocol/h2a.md` — operations table + structural limitations updated
 - `binding/implementation.md` — filesystem mapping for consultation operations, short-summary format (`session: "HHmm-spawn"`, `trigger:` field), prescriptive constraints documented
+- `binding/filesystem/conventions.md` — instance template updated with §Consultation section (create-instance.py propagates the rules to new instances)
 - `canvas/workflows/consultation.md` — new workflow canvas (when, structure, distinction from escalation, constraints, risks)
 - `canvas/artifacts/session.md` — spawn variant added (lighter format, mandatory continuity line)
 - `doc/concepts/architecture.md` — exchange description, MCD entity Exchange, Interaction level, operator-guide ops count (9 → 11), Exchange flows (2 → 3 patterns)

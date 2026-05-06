@@ -133,6 +133,52 @@ When an artifact is processed, each point SHOULD carry a resolution tag in the d
 
 ---
 
+## Consultation
+
+A persona in session MAY propose an inter-persona consultation when an expert opinion outside their scope is needed. The orchestrator authorizes; the recipient is spawned as a one-shot sub-agent. See `protocol/exchange.md` §Consultation, `canvas/workflows/consultation.md`.
+
+### When to propose
+
+Trigger only when the orchestrator's arbitration requires expertise **outside their direct field** (e.g., dev → archi, archi → R&D, archi → terrain). Consultations on subjects within the emitter's own field tend to be wasteful.
+
+### Lifecycle
+
+1. **Propose** — emitter persona deposits a consultation note in `shared/notes/` (`nature: question`) and signals the orchestrator. MUST NOT spawn before authorization.
+2. **Authorize** — orchestrator authorizes (or declines) verbally.
+3. **Spawn** — once authorized, the emitter spawns the recipient sub-agent with minimal context: persona file, context file, consultation note. No emitter session history, no other artifacts.
+4. **Reply** — the sub-agent deposits a reply note (`nature: response`, `ref:` to the consultation note) and a short session summary in its own space.
+5. **Arbitrate** — orchestrator annotates each friction with its resolution tag directly in the reply note.
+
+### Constraints (prescriptive)
+
+- **Depth 1** — the recipient sub-agent MUST NOT propose another consultation
+- **Minimal context** — only persona, context, consultation note (no other artifacts)
+- **Web search authorized** — for external reference verification only
+- **Continuity line** — the short summary MUST contain a line in `## Open` pointing to the reply note for next-session reading
+
+### Short session summary (spawn variant)
+
+The recipient persona produces a lighter session summary in `{space}/sessions/`:
+
+```
+{YYYY-MM-DD}-{HHmm}-{persona}-spawn.md
+```
+
+```yaml
+---
+persona: recipient-persona
+date: YYYY-MM-DD
+session: "HHmm-spawn"
+trigger: consultation-note-id
+---
+```
+
+The `-spawn` suffix and the `HHmm-spawn` value distinguish a spawn summary from a regular session summary. The `trigger:` field is mandatory and points to the consultation note (filename without extension).
+
+See `canvas/artifacts/session.md` §Spawn variant for the body format.
+
+---
+
 ## Friction
 
 Each line carries: marker + description + initiative + resolution.
